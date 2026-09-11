@@ -1,86 +1,87 @@
 """
 Orchestrates one full pipeline iteration:
-  ingest (assumed already refreshed, or run as-is on seed data)
-  -> model (Senate Monte Carlo + House national swing model)
-  -> snapshot (timestamped JSON the dashboard reads to build its
-     iteration history / slider)
+  data/*.json (refreshed by agent_run.py)
+  -> model.run_simulation (national environment + 35 Senate races + 435 House
+     districts, 20,000 correlated Monte Carlo draws)
+  -> iterations/<timestamp>.json (+ latest.json), which build_dashboard.py
+     folds into dashboard.html.
 
-Run this on a schedule (cron, GitHub Action, etc.) after ingest.py has
-refreshed the data files, to build up the iteration history the map
-dashboard visualizes.
+Each snapshot carries a status block (success / partial / failed + issues)
+so a stale or broken data refresh is visible instead of silently serving old
+numbers as fresh.
 """
 
 import json
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from pathlib import Path
 
-from model import run_simulation, house_national_model, load_senate_races
+import model
 
 ITER_DIR = Path(__file__).parent / "iterations"
 ITER_DIR.mkdir(exist_ok=True)
 
+STALE_DAYS = 3
 
-def run_iteration():
+
+def _age_days(iso):
+    try:
+        d = date.fromisoformat(str(iso)[:10])
+    except ValueError:
+        return None
+    return (datetime.now(timezone.utc).date() - d).days
+
+
+def run_iteration(seed=None):
     status = {"state": "success", "issues": []}
 
     try:
-        senate = run_simulation(n_sims=20000)
-    except Exception as e:
+        result = model.run_simulation(n_sims=20000, seed=seed)
+    except Exception as e:  # noqa: BLE001 - we want the message in the snapshot
         status = {"state": "failed", "issues": [f"simulation error: {e}"]}
         raise
 
-    try:
-        house = house_national_model()
-    except Exception as e:
-        status["state"] = "partial"
-        status["issues"].append(f"house model error: {e}")
-        house = {"dem_house_majority_prob": None, "method": "unavailable this run"}
+    fund = model.load_fundamentals()
+    gb = model.load_generic_ballot()
 
-    races = load_senate_races()["races"]
-
-    # Flag if the underlying data looks stale (helps catch a silently
-    # broken ingestion step rather than serving old numbers as fresh)
-    from datetime import date
-    gb_age_days = (date.today() - date.fromisoformat(load_senate_races()["as_of"])).days
-    if gb_age_days > 3:
-        status["state"] = "partial" if status["state"] == "success" else status["state"]
-        status["issues"].append(f"senate ratings data is {gb_age_days} days old")
-
-    seat_detail = []
-    for r in races:
-        seat_detail.append(
-            {
-                "seat_id": r["seat_id"],
-                "state": r["state"],
-                "held_by": r["held_by"],
-                "rating": r["rating"],
-                "dem_win_prob": round(senate["seat_dem_win_prob"][r["seat_id"]], 3),
-            }
-        )
+    # Freshness checks: daily inputs should be days old, not weeks.
+    for label, as_of in (("generic ballot", gb.get("as_of")), ("fundamentals", fund.get("as_of"))):
+        age = _age_days(as_of)
+        if age is not None and age > STALE_DAYS:
+            status["state"] = "partial"
+            status["issues"].append(f"{label} data is {age} days old")
+    for ind in fund["indicators"]:
+        age = _age_days(ind.get("as_of", ""))
+        # monthly releases (CPI, jobs, sentiment) legitimately lag ~6 weeks
+        if age is not None and age > 45:
+            status["issues"].append(f"{ind['label']} last updated {ind['as_of']}")
 
     snapshot = {
+        "schema_version": model.MODEL_VERSION,
         "timestamp": datetime.now(timezone.utc).isoformat(),
         "status": status,
-        "senate": {
-            "dem_control_prob": round(senate["dem_senate_control_prob"], 3),
-            "mean_dem_seats": round(senate["mean_dem_seats"], 1),
-            "seats": seat_detail,
+        **result,
+        "fundamentals_display": {
+            "as_of": fund.get("as_of"),
+            "indicators": [
+                {k: ind.get(k) for k in ("id", "label", "category", "display", "as_of", "compare_display", "compare_label",
+                                          "change_display", "context", "why", "sources", "value")}
+                for ind in fund["indicators"]
+            ],
+            "political": fund["political"],
         },
-        "house": house,
     }
 
     out_path = ITER_DIR / f"{snapshot['timestamp'].replace(':', '-')}.json"
-    out_path.write_text(json.dumps(snapshot, indent=2))
+    out_path.write_text(json.dumps(snapshot, indent=1))
+    (ITER_DIR / "latest.json").write_text(json.dumps(snapshot, indent=1))
 
-    # Also write/refresh a "latest.json" for easy dashboard loading
-    (ITER_DIR / "latest.json").write_text(json.dumps(snapshot, indent=2))
-
+    s, h, e = snapshot["senate"], snapshot["house"], snapshot["environment"]
     print(f"Iteration saved: {out_path.name} [status: {status['state']}]")
-    if status["issues"]:
-        for issue in status["issues"]:
-            print(f"  ! {issue}")
-    print(f"Senate Dem control probability: {snapshot['senate']['dem_control_prob'] * 100:.1f}%")
-    print(f"House Dem majority probability: {snapshot['house']['dem_house_majority_prob'] * 100:.1f}%")
+    for issue in status["issues"]:
+        print(f"  ! {issue}")
+    print(f"National environment: D{e['dem_margin']:+.1f}")
+    print(f"Senate Dem control probability: {s['dem_control_prob'] * 100:.1f}% (mean {s['mean_dem_seats']:.1f} seats)")
+    print(f"House Dem control probability: {h['dem_control_prob'] * 100:.1f}% (mean {h['mean_dem_seats']:.1f} seats)")
     return snapshot
 
 

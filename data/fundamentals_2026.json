@@ -1,0 +1,348 @@
+{
+ "as_of": "2026-09-10",
+ "president_party": "R",
+ "election_date": "2026-11-03",
+ "note": "Everything here is something voters feel directly (prices, jobs, rates, their 401k) or a direct read of how they judge the president. Economic indicators are scored -1..+1 for how they help (+) or hurt (-) the president's party, weighted, and summed into one economic index. Presidential approval enters the fundamentals prior directly. Values are refreshed daily by agent_run.py (refresh_fundamental).",
+ "indicators": [
+  {
+   "id": "gas_price",
+   "label": "Gas price",
+   "category": "prices",
+   "value": 4.3,
+   "unit": "$/gal",
+   "display": "$4.30",
+   "as_of": "2026-09-10",
+   "compare_label": "a year ago",
+   "compare_value": 3.19,
+   "compare_display": "$3.19",
+   "change_display": "+35% vs a year ago",
+   "context": "2026 range: $2.81 (Jan 8) to $4.55 (May 21). Up 13 cents in one week as oil topped $100 on the Iran war.",
+   "why": "The most visible price in America, posted on every corner. Gas spikes track closely with presidential approval and are the clearest way a war abroad lands in voters' budgets.",
+   "score": {
+    "method": "yoy_pct",
+    "neutral": 0.0,
+    "scale": -30.0,
+    "weight": 0.18
+   },
+   "sources": [
+    {
+     "name": "Finder weekly national average (AAA data)",
+     "url": "https://www.finder.com/economics/gas-prices"
+    },
+    {
+     "name": "AAA, Sept 11 2025 national average",
+     "url": "https://gasprices.aaa.com/2025/09/"
+    }
+   ]
+  },
+  {
+   "id": "oil_wti",
+   "label": "Oil (WTI)",
+   "category": "markets",
+   "value": 100.1,
+   "unit": "$/bbl",
+   "display": "$100",
+   "as_of": "2026-09-10",
+   "compare_label": "Brent",
+   "compare_value": 105.37,
+   "compare_display": "$105 Brent",
+   "change_display": "+4.2% on the day",
+   "context": "US-Iran strikes around the Strait of Hormuz; Saudi output at its lowest since 1990. Diesel hit a record high.",
+   "why": "The upstream driver of the gas price and of the energy line in CPI. Shown for context; its effect is counted through gas and inflation, not twice.",
+   "score": {
+    "method": "none",
+    "weight": 0.0
+   },
+   "sources": [
+    {
+     "name": "TheStreet market recap, Sept 10 2026",
+     "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-sept-10-2026"
+    },
+    {
+     "name": "Al Jazeera, Sept 7 2026",
+     "url": "https://www.aljazeera.com/economy/2026/9/7/oil-prices-surge-as-us-iran-strikes-intensify-in-strait-of-hormuz"
+    }
+   ]
+  },
+  {
+   "id": "cpi_inflation",
+   "label": "Inflation (CPI)",
+   "category": "prices",
+   "value": 3.4,
+   "unit": "% y/y",
+   "display": "3.4%",
+   "as_of": "2026-07",
+   "compare_label": "core",
+   "compare_value": 2.5,
+   "compare_display": "2.5% core",
+   "change_display": "Energy +14.7%, gasoline +24.6% y/y",
+   "context": "July CPI; August report due Sept 11 with consensus at 3.4% headline. Food at home +2.7%, shelter +3.2%. Wholesale prices (PPI) accelerated to 5.4% in August.",
+   "why": "Cost of living is the top issue for nearly half of registered voters in every party. Inflation sank Democrats in 2022 despite a strong job market.",
+   "score": {
+    "method": "level",
+    "neutral": 2.5,
+    "scale": -2.0,
+    "weight": 0.18
+   },
+   "sources": [
+    {
+     "name": "BLS CPI, July 2026",
+     "url": "https://www.bls.gov/news.release/cpi.nr0.htm"
+    },
+    {
+     "name": "Kiplinger, August CPI preview",
+     "url": "https://www.kiplinger.com/investing/economy/cpi-report-august-2026-what-to-expect"
+    }
+   ]
+  },
+  {
+   "id": "consumer_sentiment",
+   "label": "Consumer sentiment",
+   "category": "economy",
+   "value": 51.7,
+   "unit": "index",
+   "display": "51.7",
+   "as_of": "2026-08",
+   "compare_label": "a year ago",
+   "compare_value": 58.3,
+   "compare_display": "58.3",
+   "change_display": "-11% vs a year ago",
+   "context": "University of Michigan, final August. Down 6.3% from July. Year-ahead inflation expectations 4.0%. Drop was sharpest among Republicans, older and lower-income consumers.",
+   "why": "How people feel about their own finances, not what GDP says. Sentiment moves with approval and is a leading read on turnout mood.",
+   "score": {
+    "method": "level",
+    "neutral": 75.0,
+    "scale": 20.0,
+    "weight": 0.18
+   },
+   "sources": [
+    {
+     "name": "Advisor Perspectives on UMich, Aug 2026",
+     "url": "https://www.advisorperspectives.com/dshort/updates/2026/08/28/consumer-sentiment-falls-in-august"
+    }
+   ]
+  },
+  {
+   "id": "real_wages",
+   "label": "Real wage growth",
+   "category": "economy",
+   "value": -0.3,
+   "unit": "% y/y",
+   "display": "-0.3%",
+   "as_of": "2026-08",
+   "compare_label": "nominal wages",
+   "compare_value": 3.1,
+   "compare_display": "+3.1% nominal",
+   "change_display": "Pay rising slower than prices",
+   "context": "Average hourly earnings +3.1% y/y (Aug) against 3.4% CPI inflation.",
+   "why": "Paychecks that lose ground to prices are the core of the 'wrong track' mood. Income growth is one of the oldest predictors of how the president's party fares.",
+   "score": {
+    "method": "level",
+    "neutral": 1.0,
+    "scale": 1.5,
+    "weight": 0.1
+   },
+   "sources": [
+    {
+     "name": "BLS Employment Situation, Aug 2026",
+     "url": "https://www.bls.gov/news.release/empsit.nr0.htm"
+    }
+   ]
+  },
+  {
+   "id": "unemployment",
+   "label": "Unemployment",
+   "category": "economy",
+   "value": 4.1,
+   "unit": "%",
+   "display": "4.1%",
+   "as_of": "2026-08",
+   "compare_label": "payrolls",
+   "compare_value": 162,
+   "compare_display": "+162K jobs",
+   "change_display": "Prior 12-month average: +31K a month",
+   "context": "Unchanged in August. Labor force participation 61.6%, down 0.5 pt since January.",
+   "why": "Joblessness is low by historical standards, which blunts economic anger - but hiring has been weak most of the year.",
+   "score": {
+    "method": "level",
+    "neutral": 4.5,
+    "scale": -1.5,
+    "weight": 0.1
+   },
+   "sources": [
+    {
+     "name": "BLS Employment Situation, Aug 2026",
+     "url": "https://www.bls.gov/news.release/empsit.nr0.htm"
+    }
+   ]
+  },
+  {
+   "id": "gdp_growth",
+   "label": "GDP growth",
+   "category": "economy",
+   "value": 1.5,
+   "unit": "% annualized",
+   "display": "1.5%",
+   "as_of": "2026-Q2",
+   "compare_label": "Q1",
+   "compare_value": 2.1,
+   "compare_display": "2.1% in Q1",
+   "change_display": "Slowing",
+   "context": "BEA second estimate for Q2 2026.",
+   "why": "Background condition more than a voting issue; slow growth plus high prices is the stagflation mix that erodes support for the party in power.",
+   "score": {
+    "method": "level",
+    "neutral": 2.0,
+    "scale": 2.0,
+    "weight": 0.08
+   },
+   "sources": [
+    {
+     "name": "BEA via Advisor Perspectives, Q2 2026 second estimate",
+     "url": "https://www.advisorperspectives.com/dshort/updates/2026/08/26/q2-gdp-second-estimate-real-gdp-at-1-5-unchanged"
+    }
+   ]
+  },
+  {
+   "id": "mortgage_rate",
+   "label": "30-yr mortgage rate",
+   "category": "markets",
+   "value": 6.76,
+   "unit": "%",
+   "display": "6.76%",
+   "as_of": "2026-09-10",
+   "compare_label": "a year ago",
+   "compare_value": 6.35,
+   "compare_display": "6.35%",
+   "change_display": "+0.41 pt vs a year ago",
+   "context": "Freddie Mac PMMS. 15-year at 6.09%.",
+   "why": "Housing costs rank second only to health care among costs voters want Congress to address. Higher rates lock younger voters out of buying.",
+   "score": {
+    "method": "level",
+    "neutral": 6.0,
+    "scale": -1.5,
+    "weight": 0.07
+   },
+   "sources": [
+    {
+     "name": "Freddie Mac PMMS, Sept 10 2026",
+     "url": "https://www.globenewswire.com/news-release/2026/09/10/3359803/0/en/mortgage-rates-average-6-76.html"
+    }
+   ]
+  },
+  {
+   "id": "treasury_10y",
+   "label": "10-yr Treasury yield",
+   "category": "markets",
+   "value": 4.95,
+   "unit": "%",
+   "display": "4.95%",
+   "as_of": "2026-09-10",
+   "compare_label": "2-yr",
+   "compare_value": 4.57,
+   "compare_display": "4.57% 2-yr",
+   "change_display": "52-week high; Fed hike odds near 70%",
+   "context": "Bond market is pricing an oil-driven inflation rebound; CME FedWatch puts a September rate hike near 70%.",
+   "why": "Voters don't watch bond yields, but yields set mortgage, auto and card rates, and a Fed hike eight weeks before an election is a headline risk.",
+   "score": {
+    "method": "level",
+    "neutral": 4.0,
+    "scale": -1.5,
+    "weight": 0.03
+   },
+   "sources": [
+    {
+     "name": "TheStreet market recap, Sept 10 2026",
+     "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-sept-10-2026"
+    }
+   ]
+  },
+  {
+   "id": "sp500",
+   "label": "S&P 500",
+   "category": "markets",
+   "value": 7588.31,
+   "unit": "index",
+   "display": "7,588",
+   "as_of": "2026-09-10",
+   "compare_label": "year to date",
+   "compare_value": 11.7,
+   "compare_display": "+11.7% YTD",
+   "change_display": "4 straight down days; record high Aug 13",
+   "context": "Stocks are still up double digits for the year despite the oil shock, but have slipped from the August record as yields rose.",
+   "why": "Matters most to the roughly 6 in 10 households with market exposure through 401(k)s. A weak link to midterm results on its own, but a falling market in October feeds the bad-news cycle.",
+   "score": {
+    "method": "level",
+    "neutral": 5.0,
+    "scale": 15.0,
+    "weight": 0.05,
+    "field": "compare_value"
+   },
+   "sources": [
+    {
+     "name": "Yahoo Finance market close, Sept 10 2026",
+     "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-september-10-dow-sp-500-nasdaq-oil-gains-100-083717303.html"
+    },
+    {
+     "name": "ChartRow S&P 500 YTD",
+     "url": "https://chartrow.com/sp500/ytd"
+    }
+   ]
+  }
+ ],
+ "political": [
+  {
+   "id": "approval",
+   "label": "Trump job approval",
+   "value_net": -22.0,
+   "approve": 35.7,
+   "disapprove": 60.2,
+   "display": "36% / 60%",
+   "as_of": "2026-09-10",
+   "context": "FiftyPlusOne average 35.7 approve / 60.2 disapprove (net -24.5, Sept 9); Silver Bulletin net -19.5 (Sept 10). The model uses the average of the two nets, -22. Reuters/Ipsos has him at 33%. Cost-of-living disapproval near 70%.",
+   "why": "The single strongest predictor of midterm losses. Since WWII the president's party has lost House seats in all but two midterms (1998, 2002), and presidents under 50% approval have lost about 37 seats on average (Gallup).",
+   "sources": [
+    {
+     "name": "FiftyPlusOne approval average",
+     "url": "https://fiftyplusone.news/polls/approval/president"
+    },
+    {
+     "name": "Silver Bulletin approval",
+     "url": "https://www.natesilver.net/p/trump-approval-ratings-nate-silver-bulletin"
+    }
+   ]
+  },
+  {
+   "id": "iran_war",
+   "label": "Iran war: support / oppose",
+   "display": "31% / 63%",
+   "as_of": "2026-08-31",
+   "context": "US and Israeli strikes began Feb 28, 2026. Reuters/Ipsos late August. A Politico poll found 61% say the war has raised their household costs.",
+   "why": "Unpopular wars have hurt the president's party in past midterms (1950, 2006), and this one runs straight through the gas pump.",
+   "sources": [
+    {
+     "name": "Al Jazeera on the war and the midterms, Sept 4 2026",
+     "url": "https://www.aljazeera.com/news/2026/9/4/iran-war-why-us-midterms-could-be-a-pivotal-moment"
+    }
+   ]
+  },
+  {
+   "id": "cost_of_living_track",
+   "label": "Cost of living on wrong track",
+   "display": "74%",
+   "as_of": "2026-09-10",
+   "context": "Reuters/Ipsos via Marketplace. Voters most want Congress to tackle health care, housing, then groceries. Trust on the economy is split: 37% Democrats, 36% Republicans.",
+   "why": "Shows the economic mood is anger at the status quo rather than enthusiasm for the opposition, which is why the economy tilts the race without deciding it on its own.",
+   "sources": [
+    {
+     "name": "Marketplace, Sept 10 2026",
+     "url": "https://www.marketplace.org/story/2026/09/10/cost-of-living-is-a-top-midterm-election-issue-for-voters"
+    },
+    {
+     "name": "Fox News Power Rankings",
+     "url": "https://www.foxnews.com/politics/fox-news-power-rankings-whats-economy"
+    }
+   ]
+  }
+ ]
+}

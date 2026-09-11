@@ -1,49 +1,88 @@
 """
-Election forecasting model.
+2026 midterm forecasting model (v2).
 
-Three layers, same approach used by public forecasters (538-style, The
-Economist, Silver Bulletin):
+Four layers, each documented and inspectable:
 
-1. Rating -> baseline win probability for the seat's current favorite
-   (a documented, adjustable mapping - not a black box)
-2. National environment adjustment from the generic ballot, applied more
-   heavily to races with sparse polling (fundamentals-driven)
-3. Monte Carlo simulation with CORRELATED error across races, because
-   real polling misses tend to move similar states/districts together
-   in the same direction - treating every race as an independent coin
-   flip understates the true uncertainty in chamber control.
+1. National environment. A blend of the generic-ballot polling average and a
+   fundamentals prior built from presidential approval, the historical
+   midterm penalty, and an economic index (gas prices, inflation, consumer
+   sentiment, real wages, jobs, growth, rates, stocks). The polls get more
+   weight as Election Day approaches.
+
+2. Race baselines. Every Senate race and all 435 House districts start from
+   a published race rating (Cook Political Report), converted to an
+   expected Democratic margin. Ratings already bake in the environment at
+   the time they were set, so each seat is shifted only by how far the
+   national environment has moved since then.
+
+3. Atmospherics (Senate toss-up/lean races only). A bounded news-and-
+   campaign-trail adjustment from data/atmospherics_2026.json, capped at
+   +/-0.08 win probability, kept separate so its effect is visible.
+
+4. Monte Carlo simulation with correlated error. Each of 20,000 simulated
+   elections draws ONE national polling miss shared by every race in both
+   chambers, plus independent race-level noise - so misses move similar
+   races together instead of cancelling out, and House and Senate outcomes
+   are correlated the way they are in reality.
+
+Control rules: Democrats need 218 House seats; in the Senate they need 51
+because Vice President Vance breaks a 50-50 tie. In Nebraska the challenger
+is independent Dan Osborn, who says he would not caucus with either party,
+so an Osborn win is counted as "not Republican" but not as a Democratic
+seat for control purposes.
 """
 
 import json
-import random
-import statistics
+from datetime import date, datetime, timezone
 from pathlib import Path
+
+import numpy as np
 
 DATA_DIR = Path(__file__).parent / "data"
 ITER_DIR = Path(__file__).parent / "iterations"
 
-# Baseline win probability for the FAVORED party, by Cook-style rating.
-# These are widely-used rough anchors, not derived from a proprietary model.
-RATING_TO_PROB = {
-    "solid": 0.98,
-    "likely": 0.90,
-    "lean": 0.72,
-    "tossup": 0.52,  # slight edge to whichever party is coded as favorite
-}
+ELECTION_DATE = date(2026, 11, 3)
+MODEL_VERSION = 2
 
-SENATE_SEATS_NOT_UP = 65  # 100 - 35 up in 2026
-SENATE_CURRENT_R = 53
-SENATE_CURRENT_D = 47
+# Expected margin (points) for the favoured party, by rating. Calibrated so a
+# Lean seat wins ~3 in 4, Likely ~19 in 20, Solid essentially always, and a
+# Toss-up tilts a hair toward the party Cook files it under (the holder).
+RATING_MARGIN = {"solid": 18.0, "likely": 9.0, "lean": 4.5, "tossup": 0.5}
+
+HOUSE_SEAT_SD = 5.0          # district-level noise (candidates, local factors)
+SENATE_SEAT_SD = 5.5         # statewide candidate effects are larger
+SENATE_ENV_SENSITIVITY = 0.8  # Senate races track the national mood a bit less
+ATMOSPHERICS_CAP = 0.08
+ATMOSPHERICS_PTS_PER_PROB = 15.0  # near 50%, 0.08 win prob ~= 1.2 pts of margin
+
+# Fundamentals prior (Dem margin when the president is a Republican):
+#   midterm baseline + approval term + economic term.
+# Rough historical check (president's-party House vote margin): 2006, 2010,
+# 2014, 2018 all land within ~2 pts; 2022 (Dobbs) is the known miss.
+MIDTERM_BASELINE = 3.5        # out-party edge in a neutral midterm
+APPROVAL_PTS_PER_NET = 0.20   # each point of net approval = 0.2 pts of margin
+ECON_MAX_PTS = 3.0            # economic index of -1 = +3 pts for the out-party
+
+
+def _load(name):
+    with open(DATA_DIR / name) as f:
+        return json.load(f)
 
 
 def load_senate_races():
-    with open(DATA_DIR / "senate_races_2026.json") as f:
-        return json.load(f)
+    return _load("senate_races_2026.json")
 
 
 def load_generic_ballot():
-    with open(DATA_DIR / "generic_ballot_2026.json") as f:
-        return json.load(f)
+    return _load("generic_ballot_2026.json")
+
+
+def load_house_districts():
+    return _load("house_districts_2026.json")
+
+
+def load_fundamentals():
+    return _load("fundamentals_2026.json")
 
 
 def load_atmospherics():
@@ -55,138 +94,204 @@ def load_atmospherics():
     return {a["seat_id"]: a for a in payload.get("assessments", [])}
 
 
-def seat_probability(race, generic_ballot_margin_dem, atmospherics=None):
-    """
-    Return probability the seat's currently-favored party holds it.
-    Toss-ups get nudged by the national environment since there's no
-    strong seat-specific signal to override it; solid/likely seats are
-    left alone since local fundamentals dominate.
+def days_to_election(today=None):
+    today = today or datetime.now(timezone.utc).date()
+    return max((ELECTION_DATE - today).days, 0)
 
-    atmospherics: optional dict from load_atmospherics(), keyed by
-    seat_id. Applied ONLY to tossup/lean seats, capped at +/-0.08,
-    as a probability-of-Dem-win adjustment - kept separate from and
-    additive to the polling/fundamentals-based number, never silently
-    blended in a way that hides how much it moved the forecast.
-    """
-    base = RATING_TO_PROB[race["rating"]]
-    if race["rating"] == "tossup":
-        shift = max(-0.15, min(0.15, generic_ballot_margin_dem * 0.006))
-        held_by_dem = race["held_by"] == "D"
-        base = base + shift if held_by_dem else base - shift
 
-    prob_favorite_holds = max(0.03, min(0.97, base))
+# ------------------------------------------------------------ fundamentals
+def indicator_score(ind):
+    """Score one indicator -1..+1: positive helps the president's party."""
+    sc = ind.get("score", {})
+    method = sc.get("method", "none")
+    if method == "none" or not sc.get("weight"):
+        return None
+    if method == "yoy_pct":
+        base = ind.get("compare_value") or 0
+        if not base:
+            return None
+        x = (ind["value"] / base - 1) * 100
+    else:
+        x = ind.get(sc.get("field", "value"))
+        if x is None:
+            return None
+    raw = (x - sc["neutral"]) / sc["scale"]
+    return max(-1.0, min(1.0, raw))
 
-    if atmospherics and race["seat_id"] in atmospherics and race["rating"] in ("tossup", "lean"):
-        adj_dem = atmospherics[race["seat_id"]]["adjustment_dem"]
-        adj_dem = max(-0.08, min(0.08, adj_dem))
-        held_by_dem = race["held_by"] == "D"
-        prob_dem_wins = prob_favorite_holds if held_by_dem else (1 - prob_favorite_holds)
-        prob_dem_wins = max(0.02, min(0.98, prob_dem_wins + adj_dem))
-        prob_favorite_holds = prob_dem_wins if held_by_dem else (1 - prob_dem_wins)
 
-    return prob_favorite_holds
+def economic_index(fund):
+    comps, total_w, total = [], 0.0, 0.0
+    for ind in fund["indicators"]:
+        s = indicator_score(ind)
+        w = ind.get("score", {}).get("weight", 0.0)
+        if s is None or not w:
+            continue
+        comps.append({"id": ind["id"], "label": ind["label"], "score": round(s, 3), "weight": w})
+        total += s * w
+        total_w += w
+    index = total / total_w if total_w else 0.0
+    for c in comps:
+        c["contribution"] = round(c["score"] * c["weight"] / total_w, 3)
+    return round(index, 3), comps
+
+
+def fundamentals_prior(fund):
+    sign = 1.0 if fund.get("president_party", "R") == "R" else -1.0
+    approval = next(p for p in fund["political"] if p["id"] == "approval")
+    net = approval["value_net"]
+    index, comps = economic_index(fund)
+    approval_pts = -APPROVAL_PTS_PER_NET * net * sign
+    econ_pts = -index * ECON_MAX_PTS * sign
+    baseline = MIDTERM_BASELINE * sign
+    return {
+        "midterm_baseline_pts": round(baseline, 2),
+        "approval_net": net,
+        "approval_pts": round(approval_pts, 2),
+        "economic_index": index,
+        "economic_pts": round(econ_pts, 2),
+        "economic_components": comps,
+        "prior_dem_margin": round(baseline + approval_pts + econ_pts, 2),
+    }
+
+
+def national_environment(today=None):
+    gb = load_generic_ballot()
+    fund = load_fundamentals()
+    prior = fundamentals_prior(fund)
+    days = days_to_election(today)
+    w_poll = max(0.5, min(0.95, 1 - days / 300))
+    env = w_poll * gb["dem_margin_points"] + (1 - w_poll) * prior["prior_dem_margin"]
+    return {
+        "generic_ballot": gb["dem_margin_points"],
+        "generic_ballot_as_of": gb.get("as_of"),
+        "poll_weight": round(w_poll, 3),
+        "fundamentals": prior,
+        "dem_margin": round(env, 2),
+        "days_to_election": days,
+        "national_error_sd": round(national_error_sd(days), 2),
+    }
+
+
+def national_error_sd(days):
+    # ~2.2 pts irreducible polling miss on Election Day, growing to ~3.8
+    # four months out as there is more time for the environment to move
+    return 2.2 + 1.6 * min(days, 120) / 120
+
+
+# -------------------------------------------------------------- simulation
+def _baseline(rating, lean):
+    m = RATING_MARGIN[rating]
+    return m if lean == "D" else -m
 
 
 def run_simulation(n_sims=20000, seed=None):
-    """
-    Monte Carlo simulation of all 35 Senate races with correlated error.
-    A single national error draw (shared "polling miss") is combined with
-    a race-specific error draw for each simulation, so misses in similar
-    races tend to move together rather than canceling out.
-    """
-    if seed is not None:
-        random.seed(seed)
+    rng = np.random.default_rng(seed)
+    env = national_environment()
+    E = env["dem_margin"]
+    nat = rng.normal(0.0, env["national_error_sd"], n_sims)
 
-    races = load_senate_races()["races"]
-    gb = load_generic_ballot()
-    margin = gb["dem_margin_points"]
-    atmospherics = load_atmospherics()
+    # ---- Senate
+    sen = load_senate_races()
+    atmo = load_atmospherics()
+    races = sen["races"]
+    s_ref = sen.get("ratings_environment_dem_margin", E)
+    s_base = []
+    s_atmo = []
+    for r in races:
+        b = _baseline(r["rating"], r["lean"]) + SENATE_ENV_SENSITIVITY * (E - s_ref)
+        adj = 0.0
+        if r["seat_id"] in atmo and r["rating"] in ("tossup", "lean"):
+            adj = max(-ATMOSPHERICS_CAP, min(ATMOSPHERICS_CAP, atmo[r["seat_id"]]["adjustment_dem"]))
+        s_atmo.append(adj)
+        s_base.append(b + adj * ATMOSPHERICS_PTS_PER_PROB)
+    s_base = np.array(s_base)
+    s_margin = s_base[None, :] + SENATE_ENV_SENSITIVITY * nat[:, None] + rng.normal(0, SENATE_SEAT_SD, (n_sims, len(races)))
+    s_win = s_margin > 0
+    caucus_mask = np.array([r.get("challenger_caucus") != "independent" for r in races])
+    dem_senate = sen["not_up"]["D"] + (s_win & caucus_mask[None, :]).sum(axis=1)
+    rep_senate = sen["not_up"]["R"] + (~s_win).sum(axis=1)
 
-    seat_results = {r["seat_id"]: [] for r in races}
-    dem_seat_counts = []
+    # ---- House
+    hou = load_house_districts()
+    dists = hou["districts"]
+    h_ref = hou.get("ratings_environment_dem_margin", E)
+    h_base = np.array([_baseline(d["rating"], d["lean"]) for d in dists]) + (E - h_ref)
+    h_margin = h_base[None, :] + nat[:, None] + rng.normal(0, HOUSE_SEAT_SD, (n_sims, len(dists)))
+    h_win = h_margin > 0
+    dem_house = h_win.sum(axis=1)
+    majority = hou.get("majority", 218)
 
-    for _ in range(n_sims):
-        # Shared national error: represents a systemic polling miss that
-        # affects all races in the same direction that cycle.
-        national_error = random.gauss(0, 0.05)
-        dem_seats_won = SENATE_CURRENT_D - sum(
-            1 for r in races if r["held_by"] == "D"
-        )  # start from seats NOT up this cycle, held by Dems
+    d_sen_ctrl = dem_senate >= 51
+    d_house_ctrl = dem_house >= majority
 
-        for r in races:
-            p_favorite_holds = seat_probability(r, margin, atmospherics)
-            # race-specific error on top of the shared national error
-            race_error = random.gauss(0, 0.06)
-            adjusted_p = max(0.01, min(0.99, p_favorite_holds + national_error + race_error))
+    def dist_summary(counts, lo, hi):
+        vals, freq = np.unique(counts, return_counts=True)
+        hist = {int(v): round(f / n_sims, 5) for v, f in zip(vals, freq) if lo <= v <= hi}
+        pct = {str(p): int(np.percentile(counts, p)) for p in (5, 10, 25, 50, 75, 90, 95)}
+        return hist, pct
 
-            favorite_wins = random.random() < adjusted_p
-            # translate "favorite holds" into "which party wins the seat"
-            party_wins_dem = (r["held_by"] == "D") == favorite_wins
-            seat_results[r["seat_id"]].append(1 if party_wins_dem else 0)
-            if party_wins_dem:
-                dem_seats_won += 1
+    s_hist, s_pct = dist_summary(dem_senate, 30, 70)
+    h_hist, h_pct = dist_summary(dem_house, 150, 290)
 
-        dem_seat_counts.append(dem_seats_won)
+    senate_seats = []
+    for i, r in enumerate(races):
+        senate_seats.append({
+            "seat_id": r["seat_id"], "state": r["state"], "held_by": r["held_by"],
+            "rating": r["rating"], "lean": r["lean"],
+            "dem_candidate": r.get("dem_candidate"), "rep_candidate": r.get("rep_candidate"),
+            "incumbent": r.get("incumbent"), "notes": r.get("notes", ""),
+            "challenger_caucus": r.get("challenger_caucus"),
+            "atmospherics_adj": s_atmo[i],
+            "expected_margin": round(float(s_base[i]), 2),
+            "dem_win_prob": round(float(s_win[:, i].mean()), 4),
+        })
 
-    seat_probs = {
-        seat_id: sum(results) / len(results) for seat_id, results in seat_results.items()
-    }
-    dem_control_prob = sum(1 for c in dem_seat_counts if c >= 50) / n_sims
-    mean_dem_seats = statistics.mean(dem_seat_counts)
-
-    return {
-        "seat_dem_win_prob": seat_probs,
-        "dem_senate_control_prob": dem_control_prob,
-        "mean_dem_seats": mean_dem_seats,
-        "seat_distribution_sample": sorted(dem_seat_counts)[:: max(1, n_sims // 200)],
-    }
-
-
-def house_national_model():
-    """
-    National-level House forecast from the generic ballot only.
-
-    Individual district-level ratings (Cook PVI, per-district polling)
-    are paywalled at the source and are NOT fabricated here. This
-    function implements a documented empirical relationship instead:
-    historically, a party needs roughly a 1-2 point national vote margin
-    just to win a bare majority of seats due to geographic sorting
-    (the "efficiency gap"), and each additional point of margin beyond
-    that swings a small, roughly linear number of seats.
-
-    This is intentionally a rough national swing model, not a per-district
-    forecast - wire in real Cook PVI / district polling data via
-    data/house_districts.json (see README) to upgrade it.
-    """
-    gb = load_generic_ballot()
-    margin = gb["dem_margin_points"]  # positive = Dem lead
-
-    # Empirical anchor: Dems need roughly +3 national margin to reach 218
-    # seats given current district lines (documented efficiency gap).
-    # Historical swing rule of thumb: ~3 House seats change per 1 point
-    # of national margin shift.
-    effective_margin_for_majority = margin - 3.0
-    mean_seats_above_218 = effective_margin_for_majority * 3.0
-
-    # Uncertainty: national vote-to-seat translation has real variance
-    # (redistricting quirks, candidate quality). Use a normal approx.
-    sd_seats = 12
-    from math import erf, sqrt
-
-    z = (0 - mean_seats_above_218) / sd_seats
-    dem_majority_prob = 1 - 0.5 * (1 + erf(z / sqrt(2)))
+    house_probs = {d["id"]: round(float(h_win[:, i].mean()), 4) for i, d in enumerate(dists)}
+    code = {"solid": "S", "likely": "L", "lean": "N", "tossup": "T"}
+    house_ratings = {d["id"]: code[d["rating"]] + d["lean"] for d in dists}
 
     return {
-        "generic_ballot_dem_margin": margin,
-        "mean_dem_seats_above_218": round(mean_seats_above_218, 1),
-        "dem_house_majority_prob": round(dem_majority_prob, 3),
-        "method": "national swing model - see docstring for limitations",
+        "environment": env,
+        "senate": {
+            "dem_control_prob": round(float(d_sen_ctrl.mean()), 4),
+            "tie_prob": round(float((dem_senate == 50).mean()), 4),
+            "mean_dem_seats": round(float(dem_senate.mean()), 2),
+            "mean_rep_seats": round(float(rep_senate.mean()), 2),
+            "not_up": sen["not_up"],
+            "percentiles": s_pct,
+            "histogram": s_hist,
+            "seats": senate_seats,
+            "ratings_as_of": sen.get("as_of"),
+            "ratings_source": sen.get("ratings_source"),
+        },
+        "house": {
+            "dem_control_prob": round(float(d_house_ctrl.mean()), 4),
+            "mean_dem_seats": round(float(dem_house.mean()), 2),
+            "majority": majority,
+            "percentiles": h_pct,
+            "histogram": h_hist,
+            "district_probs": house_probs,
+            "district_ratings": house_ratings,
+            "ratings_as_of": hou.get("as_of"),
+            "ratings_source": hou.get("ratings_source"),
+        },
+        "joint": {
+            "dem_both": round(float((d_sen_ctrl & d_house_ctrl).mean()), 4),
+            "dem_house_rep_senate": round(float((~d_sen_ctrl & d_house_ctrl).mean()), 4),
+            "rep_house_dem_senate": round(float((d_sen_ctrl & ~d_house_ctrl).mean()), 4),
+            "rep_both": round(float((~d_sen_ctrl & ~d_house_ctrl).mean()), 4),
+        },
+        "n_sims": n_sims,
     }
 
 
 if __name__ == "__main__":
-    senate = run_simulation(n_sims=20000, seed=42)
-    house = house_national_model()
-    print("Senate: Dem control probability = %.1f%%" % (senate["dem_senate_control_prob"] * 100))
-    print("Senate: mean Dem seats = %.1f" % senate["mean_dem_seats"])
-    print("House: Dem majority probability = %.1f%%" % (house["dem_house_majority_prob"] * 100))
+    out = run_simulation(seed=42)
+    e = out["environment"]
+    print(f"Environment: D{e['dem_margin']:+.1f} (poll D{e['generic_ballot']:+.1f} x {e['poll_weight']}, "
+          f"fundamentals D{e['fundamentals']['prior_dem_margin']:+.1f}; econ index {e['fundamentals']['economic_index']})")
+    print(f"Senate: Dem control {out['senate']['dem_control_prob']*100:.1f}% (tie {out['senate']['tie_prob']*100:.1f}%),"
+          f" mean D seats {out['senate']['mean_dem_seats']:.1f}")
+    print(f"House: Dem control {out['house']['dem_control_prob']*100:.1f}%, mean D seats {out['house']['mean_dem_seats']:.1f},"
+          f" 90% range {out['house']['percentiles']['5']}-{out['house']['percentiles']['95']}")
+    print("Joint:", out["joint"])

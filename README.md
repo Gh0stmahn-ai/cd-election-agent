@@ -1,191 +1,142 @@
-# 2026 midterm election forecasting agent
+# 2026 midterm forecast
 
-A working pipeline: ingest data -> model each race -> simulate outcomes ->
-render on an interactive map that can replay how the forecast moved
-across iterations.
+A daily, self-updating forecast of who controls Congress after November 3,
+2026: all 35 Senate races and all 435 House districts, simulated 20,000
+times a day, plus the economic and political readings voters carry into
+the booth.
 
-## Run it
+Open **`dashboard.html`** in any browser. It is one self-contained file
+(no internet connection, CDN or server needed) with:
 
-```bash
-python3 run_pipeline.py
+- **Control of each chamber**: the chance each party wins the Senate and
+  House, the average seat outcome, the 80% range, and the four possible
+  combinations (D sweep, split either way, R sweep).
+- **Seat charts**: a hemicycle of all 100 Senate seats (65 not up, 35 on
+  the ballot) and all 435 House seats, each dot colored by that seat's
+  chance of going Democratic, plus the full distribution of seat totals.
+- **Senate map**: every state with a race shaded by the Democratic chance,
+  with nominees, Cook rating and news-momentum adjustment on hover, and a
+  "races to watch" panel.
+- **House map**: a hexagon map of all 435 districts, one hex per seat,
+  grouped by state near its real location; plus a filterable table of
+  toss-ups, lean and likely seats (and all 435).
+- **What voters are feeling**: gas prices, oil, inflation, consumer
+  sentiment, real wages, jobs, GDP, mortgage rates, bond yields, the stock
+  market, presidential approval, the Iran war and the cost-of-living mood,
+  each with its current value, trend, sources, why it matters, and whether
+  it helps or hurts the party in power, plus a breakdown of exactly how
+  they combine into the national environment.
+- **Forecast over time**, and a slider that replays every past run.
+
+## How the forecast works
+
+1. **National environment** = generic-ballot polling average blended with
+   a fundamentals estimate (midterm penalty + presidential approval + an
+   economic index). Polls get more weight as Election Day nears (82% in
+   mid-September, rising to 95%).
+2. **Race baselines** come from Cook Political Report ratings, converted
+   to expected margins (Solid 18 pts, Likely 9, Lean 4.5, Toss-up 0.5).
+   Ratings already reflect the environment when they were set, so each race
+   is shifted only by how far the environment has moved since.
+3. **News momentum** (Senate toss-up/lean races only): a capped +/-0.08
+   win-probability adjustment from an AI read of campaign coverage, kept
+   separate and shown in each race's tooltip.
+4. **Monte Carlo simulation** with one national polling miss shared by
+   every race in both chambers plus race-level noise, so the chambers move
+   together the way they do in reality.
+
+Democrats need 218 House seats and 51 Senate seats (Vice President Vance
+breaks a 50-50 tie). An independent win in Nebraska (Dan Osborn) is not
+counted toward Democratic control.
+
+### The economic index
+
+Each reading is scored from -1 (hurts the president's party) to +1 (helps)
+against a neutral benchmark, then weighted:
+
+| Indicator | Weight | Neutral point |
+|---|---|---|
+| Gas price, change vs a year ago | 18% | flat |
+| CPI inflation | 18% | 2.5% |
+| Consumer sentiment (UMich) | 18% | 75 |
+| Real wage growth | 10% | +1.0% |
+| Unemployment | 10% | 4.5% |
+| GDP growth | 8% | 2.0% |
+| 30-yr mortgage rate | 7% | 6.0% |
+| S&P 500, year to date | 5% | +5% |
+| 10-yr Treasury yield | 3% | 4.0% |
+
+Oil is shown for context but not scored (its effect already runs through
+gas and inflation). An index of -1 adds 3 points to the out-party's margin
+in the fundamentals estimate; approval adds 0.2 points per point of net
+approval. Settings live at the top of `model.py` and in
+`data/fundamentals_2026.json`.
+
+## Daily automation (GitHub Actions)
+
+`.github/workflows/daily-forecast.yml` runs every day at 16:00 UTC (noon
+Eastern in daylight time) and on demand from the Actions tab:
+
+1. `agent_run.py` - one Claude conversation with web search refreshes the
+   generic ballot, approval, every economic indicator that has a newer
+   figure, Cook rating changes (only with a citation), and the Senate news
+   momentum reads. Every write goes through a validated function in
+   `ingest.py` / `atmospherics.py` (range checks, known ids), never a raw
+   file edit.
+2. `run_pipeline.py` - runs the model and saves `iterations/<timestamp>.json`
+   with a status block that flags stale inputs.
+3. `build_dashboard.py` - rebuilds `dashboard.html` from
+   `dashboard_template.html` and every snapshot.
+4. Commits and pushes the results (rebasing and retrying if the branch
+   moved during the run).
+
+Needs one repository secret, `ANTHROPIC_API_KEY` (a workspace-scoped key
+from console.anthropic.com). Without it the run still re-simulates on the
+last-known data.
+
+## Files
+
+```
+data/
+  generic_ballot_2026.json    generic ballot average
+  fundamentals_2026.json      economic + political indicators, sources, scoring
+  senate_races_2026.json      35 races: rating, lean, nominees, seats not up
+  house_districts_2026.json   all 435 districts: rating, lean, holder
+  atmospherics_2026.json      capped news-momentum reads (Senate)
+geo/
+  states.json                 state shapes, pre-projected to SVG paths
+  house_hex.json              hexagon layout for 435 districts
+  source/                     Natural Earth 1:50m states (public domain)
+tools/
+  build_geometry.py           one-time build of the two geo files
+  seed_house_ratings.py       one-time seed of the 435-district file
+model.py                      environment + simulation
+run_pipeline.py               model -> iterations/ snapshot
+build_dashboard.py            snapshots + template -> dashboard.html
+agent_run.py / ingest.py      the daily data refresh
 ```
 
-This reads `data/senate_races_2026.json` and `data/generic_ballot_2026.json`,
-runs a 20,000-trial Monte Carlo simulation, and writes a timestamped
-snapshot to `iterations/`. Run it again after `ingest.py` refreshes the
-data to build up history for the dashboard slider.
+## Honest limits
 
-Open `dashboard.html` in a browser — it's fully self-contained (the
-iteration history is embedded, and the US map geometry loads from a
-public CDN, so it works offline except for the map shapes themselves).
-
-## What's real vs. what's a placeholder
-
-**Real, sourced data (as of Sept 10, 2026):**
-- All 35 Senate races, current ratings from Cook Political Report /
-  270toWin (solid/likely/lean/toss-up), including the Aug 20, 2026 moves
-  of Iowa and Texas to toss-up
-- Generic congressional ballot average (D+5.5), from RealClearPolling,
-  Silver Bulletin, and Morning Consult trackers
-
-**Modeled, not fabricated:**
-- Win probabilities per Senate seat: a documented rating-to-probability
-  mapping, nudged by the national environment for toss-ups only, run
-  through Monte Carlo simulation with correlated error across races
-- House forecast: a **national swing model** from the generic ballot
-  only, not a per-district forecast
-
-**Known limitation — House district data:** Cook's district-level House
-ratings (all 435 seats) are subscriber-only, and free per-district
-polling/PVI data at that granularity isn't reliably available without a
-paid source. Rather than invent specific district ratings, this pipeline
-computes House control probability from the national vote-to-seat
-relationship only. To get a real district-level House map, add a
-`data/house_districts.json` file (same shape as the Senate file) from
-a source you have access to, and `model.py`'s Monte Carlo function can
-be extended to simulate it the same way as the Senate.
-
-## Architecture
-
-```
-data sources (free/public) -> ingest.py -> data/*.json
-                                              |
-                                              v
-                                          model.py
-                                  (ratings -> probabilities
-                                   -> Monte Carlo simulation)
-                                              |
-                                              v
-                                     run_pipeline.py
-                                (saves iterations/<timestamp>.json)
-                                              |
-                                              v
-                                      dashboard.html
-                            (US map colored by seat probability,
-                             iteration slider, House gauge)
-```
-
-## Atmospherics layer (news/narrative sentiment)
-
-`data/atmospherics_2026.json` holds a bounded, separately-tracked
-adjustment (max +/-0.08 win probability) for toss-up/lean races only,
-based on news coverage and campaign-trail reporting rather than polls.
-It's applied on top of the polling+fundamentals number in `model.py`,
-never blended invisibly - the dashboard and the JSON both show it as
-its own line so you can always see how much it moved the forecast.
-
-Two races (Georgia, Ohio) are live-assessed right now as a working
-demonstration, with real sources cited in the file. `atmospherics.py`
-defines the schema and update function; the actual "read the news and
-judge momentum" step needs an LLM in the loop (see below) - it's not
-something a fixed script can do well.
-
-**Honest limits:** this reads news coverage and public campaign
-reporting, not a live social media firehose - X/Twitter's and Reddit's
-APIs both require paid access for structured data now, so "social
-media" here means what search engines surface (viral moments picked up
-by news outlets, some indexed forum discussion), not a comprehensive
-social listening tool.
-
-## Actioning this in Claude: the daily noon run
-
-The realistic, current way to do this **inside Claude itself**, no
-external server required, is **Claude Cowork's scheduled tasks**
-feature (Settings > available in Cowork on Claude Desktop, Pro/Max/
-Team/Enterprise). It runs a saved prompt on a cadence you set,
-including web research, and can use connectors to read/write files.
-
-Setup:
-1. Put this whole project in a GitHub repo (or a connected Google
-   Drive folder) so the scheduled task has somewhere persistent to
-   read and write - Cowork sessions don't keep local files between
-   runs on their own.
-2. Connect the GitHub (or Drive) connector in Cowork.
-3. Create a scheduled task with a cadence of **daily at 12:00 PM**
-   and a prompt along these lines:
-
-   > Pull the latest `election-agent` project from [repo/folder].
-   > For each toss-up/lean Senate race in `data/senate_races_2026.json`,
-   > web-search recent news and polling coverage, and update
-   > `data/atmospherics_2026.json` following the schema and the +/-0.08
-   > cap already defined there (use `atmospherics.py`'s
-   > `update_atmospherics` contract). Also refresh
-   > `data/generic_ballot_2026.json` from current generic-ballot
-   > tracker pages. Then run `run_pipeline.py` to produce today's
-   > snapshot, regenerate `dashboard.html`, and commit everything back.
-
-4. Cowork notifies you when each run finishes so you can spot-check
-   it rather than trusting it blindly.
-
-**More robust alternative (if you want it running even when nothing's
-open):** Claude Code Desktop's **remote routines** run in the cloud on
-a real cron schedule and can trigger off GitHub events - this is the
-better fit if you want zero-touch daily execution tied to a repo. Same
-prompt, different scheduler.
-
-**On "100% guaranteed" fresh data:** no pipeline that depends on
-external websites can be literally guaranteed - a source can go down,
-change its page structure, or simply not have published anything new
-that day. What's realistic to guarantee is that the pipeline **fails
-loudly**: have the daily task write a `status` field (success/partial/
-failed, with what broke) into each day's snapshot, and check that
-before trusting a number. I'd build that in as the next step rather
-than pretend around the limitation.
-
-## GitHub Actions automation (implemented)
-
-`.github/workflows/daily-forecast.yml` runs the whole daily cycle on a
-schedule, inside this repo, with no external server or Cowork session
-required:
-
-1. **`agent_run.py`** — one Claude conversation, given the current data
-   files, with the built-in web-search tool plus three custom tools
-   wired directly to `ingest.refresh_generic_ballot`,
-   `ingest.refresh_senate_rating`, and `atmospherics.update_atmospherics`.
-   Claude has to actually call `web_search` before it can call any of
-   the data-changing tools — nothing gets written from memory. Rating
-   changes only get written when Claude cites a specific, named-outlet
-   source; every atmospherics call is capped at the same ±0.08 this
-   README already documents. Bounded to 40 tool-use turns per run so a
-   confused run can't loop forever.
-2. **`run_pipeline.py`** — same Monte Carlo pipeline described above,
-   run against whatever `agent_run.py` just wrote (or against
-   yesterday's data, unchanged, if the agent step was skipped).
-3. **`build_dashboard.py`** — folds every file in `iterations/` into
-   `dashboard.html`'s embedded `ITERATIONS` array, so the dashboard's
-   replay slider always reflects the full history in the repo.
-4. Commits and pushes `data/`, `iterations/`, and `dashboard.html` back
-   to `main` if anything changed.
-
-**Setup required:**
-- Add a repo secret named `ANTHROPIC_API_KEY` (Settings → Secrets and
-  variables → Actions → New repository secret) with an API key from
-  [console.anthropic.com](https://console.anthropic.com). Without it,
-  `agent_run.py` prints a notice and exits cleanly — `run_pipeline.py`
-  and `build_dashboard.py` still run against the last-known data, so a
-  missing key degrades gracefully rather than breaking the whole run.
-- The workflow's default `contents: write` permission is enough to
-  push back to `main`; no extra token needed beyond the built-in
-  `GITHUB_TOKEN`.
-- Schedule is `0 16 * * *` (16:00 UTC = noon Eastern during EDT; see
-  the comment in the workflow file about the EST drift). Change the
-  cron line or trigger a one-off run from the Actions tab
-  (`workflow_dispatch`) to test it without waiting for the clock.
-
-**Cost/scope note:** each run does up to ~1-8 web searches per
-toss-up/lean race plus a couple more for the generic ballot, all in one
-conversation — cheap relative to a single day's polling-aggregator
-subscription, but not free. If you'd rather not wire in an API key,
-delete/disable the workflow and use the Cowork scheduled-task or
-Claude Code remote-routine paths described above instead — same
-`update_atmospherics`/`refresh_generic_ballot`/`refresh_senate_rating`
-contracts either way.
-
-## Caveats worth keeping in mind
-
-- Polling misses have gone in different directions in different recent
-  cycles (2016, 2020, 2022) — the correlated-error Monte Carlo is
-  designed to reflect that uncertainty honestly rather than look more
+- **House district shapes.** No public source publishes 2026 district
+  boundaries for the ten states that redrew mid-decade (TX, CA, FL, OH, NC,
+  MO, UT, TN, LA, AL), and every seat counts the same toward 218, so the
+  House map is a hexagon cartogram rather than a geographic district map.
+  Where a district sits inside its state on that map is schematic.
+- **Solid seats.** Cook lists 77 competitive House races; every other seat
+  is treated as Solid for the party that holds, or was drawn to win, it.
+  Florida's district numbers for solid seats under its May 2026 map are
+  best-available.
+- **No district polling.** District-level polling at 435-seat scale isn't
+  public; the House forecast rests on ratings plus the national
+  environment.
+- **Not a certainty.** A 70% chance loses 3 times in 10. The shared
+  national error is there precisely so the forecast doesn't look more
   confident than the data supports.
-- Treat every output as a probability from a stated, inspectable model,
-  not a prediction of certainty.
+- **Fresh data depends on outside sites.** The pipeline can't guarantee a
+  source published something new today; it flags stale inputs in each
+  snapshot's status and on the dashboard instead of hiding them.
+
+Iterations written before the Sept 11, 2026 model upgrade used an earlier,
+simpler model; they stay in `iterations/` for the record but aren't
+charted.
