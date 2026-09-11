@@ -3,31 +3,84 @@
   "method": "News coverage and campaign-trail reporting scored for narrative direction (favorite gaining/losing ground) and intensity (fundraising, endorsements, gaffes, message discipline). This is NOT a poll - it's a bounded nudge applied only to toss-up/lean seats, capped at +/-0.08 win probability, and always shown separately from the polling-based number.",
   "assessments": [
     {
-      "seat_id": "OH-2026-special",
-      "adjustment_dem": 0.03,
-      "rationale": "Brown leads in most recent public polling (Fox +8 in Aug, unchanged since June; Wedgewood +4) and cost-of-living/inflation framing dominates coverage in a way that favors him per Fox's own poll analysis. But RealClearPolling's average is much tighter (Brown 47.8 to Husted 47.2) and some individual polls (NYT/Siena, Quantus) show Husted ahead - genuinely a toss-up in aggregate, with narrative momentum tilted slightly Brown.",
+      "seat_id": "GA-2026",
+      "adjustment_dem": 0.05,
+      "rationale": "Ossoff shows strong polling advantage with Fox News poll showing D+13 (56-43) and Pollsmax average at D+7.5. Ossoff has significant fundraising edge ($25M cash on hand vs Collins' $2.46M) and Collins has controversial social media presence and pending ethics investigation that makes him a poor fit for suburban Atlanta voters. Strong Democratic environment favors the incumbent.",
       "sources": [
-        "https://www.nbc4i.com/news/local-news/columbus/ohios-u-s-senate-race-remains-tight-despite-brown-lead-in-fox-poll/",
-        "https://thehill.com/homenews/campaign/6039515-ohio-senate-race-data-centers-husted-brown/",
-        "https://thehill.com/homenews/campaign/6031596-brown-acton-lead-ohio-polls/"
+        "https://www.foxnews.com/politics/fox-news-poll-early-look-georgia-senate-race",
+        "https://www.pollsmax.com/senate/georgia/",
+        "https://www.cbsnews.com/amp/atlanta/news/jon-ossoff-enters-2026-race-with-25-million-on-hand-as-georgia-senate-battle-heats-up"
       ]
     },
     {
-      "seat_id": "GA-2026",
-      "adjustment_dem": 0.03,
-      "rationale": "test rationale",
+      "seat_id": "IA-2026",
+      "adjustment_dem": 0.04,
+      "rationale": "Iowa has become unexpectedly competitive after Ernst's retirement. Recent Abacus Data poll shows Turek leading D+9 (54-45), and tariff impacts on Iowa farmers are creating headwinds for Republicans. Cook Political moved race to toss-up Aug 20. Multiple polls show very close race with independents helping Democrats. Iowa described as \"canary in the coal mine\" for extent of Democratic wave.",
       "sources": [
-        "http://example.com"
+        "https://pollingsource.com/senate/IA",
+        "https://www.axios.com/local/des-moines/2026/08/20/iowa-senate-governor-races-2026-cook-ratings",
+        "https://uspollingdata.com/senate-2026/iowa/"
+      ]
+    },
+    {
+      "seat_id": "MI-2026",
+      "adjustment_dem": -0.03,
+      "rationale": "Michigan remains very tight but recent polling trend shows tightening toward Republicans. Detroit News poll from early Sept shows Rogers leading 45.8-44.4, reversing earlier Democratic leads. El-Sayed has negative favorability (8 points underwater) and his progressive positions have concerned some Democrats about putting the seat at risk. Decision Desk HQ shows only 66% Democratic win probability, down from earlier in cycle.",
+      "sources": [
+        "https://www.newsweek.com/abdul-el-sayed-polling-blow-michigan-senate-mike-rogers-12421084",
+        "https://decisiondeskhq.substack.com/p/el-sayed-rogers-michigan-senate-trump-approval-generic-ballot-2026-midterms",
+        "https://www.breitbart.com/politics/2026/09/08/poll-rogers-takes-lead-over-socialist-el-sayed-in-michigan-senate-race/"
+      ]
+    },
+    {
+      "seat_id": "OH-2026-special",
+      "adjustment_dem": 0.06,
+      "rationale": "Sherrod Brown showing stronger than expected performance in the red-leaning Ohio special election. Decision Desk HQ average shows Brown leading 49-44, a larger-than-expected edge. Brown's proven track record of running ahead of Democratic baseline in Ohio gives him real chance to flip this seat despite the state's Republican lean.",
+      "sources": [
+        "https://decisiondeskhq.substack.com/p/el-sayed-rogers-michigan-senate-trump-approval-generic-ballot-2026-midterms"
+      ]
+    },
+    {
+      "seat_id": "TX-2026",
+      "adjustment_dem": 0.02,
+      "rationale": "Texas Senate race remains extremely tight with multiple recent polls showing statistical dead heat. Emerson poll (August) shows Paxton 47-46, University of Texas poll shows Talarico leading by 3 points (42-39) with 14% undecided, and Overton Insights shows Talarico leading 44-43.6. Race moved to toss-up by both Cook and Sabato in late August. Competitive environment despite Texas' Republican lean.",
+      "sources": [
+        "https://emersoncollegepolling.com/texas-2026-poll-paxton-and-talarico/",
+        "https://www.houstonpublicmedia.org/articles/news/politics/election-2026/2026/08/25/560302/james-talarico-continues-to-edge-out-ken-paxton-in-texas-u-s-senate-race-new-poll-finds/",
+        "https://thetexan.news/elections/2026/new-poll-shows-texans-split-on-paxton-and-talarico-opposed-to-flock-and-data-centers/article_45a2d21c-9c79-417e-b724-6070cfd03887.html"
+      ]
+    },
+    {
+      "seat_id": "NC-2026",
+      "adjustment_dem": 0.06,
+      "rationale": "Roy Cooper maintains solid lead in North Carolina with recent polls showing consistent Democratic advantage. Elon poll shows Cooper D+11 among likely voters (53-42), High Point University shows D+5 (50-45), and Pollsmax average shows Cooper leading by 5.6 points. Cooper is proven statewide winner who won 5 of 6 elections in years Republicans won presidential vote. Whatley has never run for office before.",
+      "sources": [
+        "https://www.elon.edu/u/news/2026/08/12/elon-poll-cooper-continues-to-lead-in-north-carolina-u-s-senate-race/",
+        "https://thehill.com/homenews/campaign/6043934-cooper-leads-whatley-nc-senate/",
+        "https://www.pollsmax.com/senate/north-carolina/"
+      ]
+    },
+    {
+      "seat_id": "NH-2026",
+      "adjustment_dem": -0.02,
+      "rationale": "New Hampshire primaries just concluded Sept 8 with Pappas and Sununu winning nominations. Recent University of New Hampshire poll (Aug 26) shows Sununu leading 45-43, reversing from June when Pappas led 47-44. Both results within margin of error. Pappas won primary by 32 points over progressive challenger which may help in general. Cook and Sabato rate as Lean Democrat but race has tightened slightly.",
+      "sources": [
+        "https://thehill.com/newsletters/morning-report/6078174-new-hampshire-senate-battleground-2026-midterms-pappas-sununu/",
+        "https://www.nbcnews.com/politics/2026-primary-elections/new-hampshire-senate-results",
+        "https://www.cookpolitical.com/senate/race/488636"
+      ]
+    },
+    {
+      "seat_id": "ME-2026",
+      "adjustment_dem": 0.03,
+      "rationale": "Maine race very competitive with recent polling showing Jackson with narrow edge. CNN poll (Aug 31-Sept 6) shows Jackson leading 48-45, Abacus Data shows Jackson D+9 among likely voters, Fox News shows Jackson D+2 (48-46). Collins is 10 points underwater in favorability (51% unfavorable vs 41% favorable). Jackson benefits from anti-Collins sentiment though his own favorability is also underwater. Ranked-choice voting adds uncertainty but polls suggest Democratic momentum.",
+      "sources": [
+        "https://www.newsweek.com/susan-collins-fourth-polling-blow-since-jackson-launched-senate-run-maine-12423123",
+        "https://www.cnn.com/2026/09/09/politics/cnn-polls-maine-senate-michigan-senate-abdul-el-sayed-susan-collins",
+        "https://www.axios.com/2026/08/14/maine-senate-susan-collins-troy-jackson-graham-platner"
       ]
     }
   ],
-  "not_yet_assessed": [
-    "MI-2026",
-    "TX-2026",
-    "IA-2026",
-    "ME-2026",
-    "NC-2026",
-    "NH-2026"
-  ],
+  "not_yet_assessed": [],
   "note": "The two races above were live-assessed as a working demonstration of the method. The remaining toss-up/lean races need the same treatment - that's exactly the daily job the scheduled agent below performs."
 }
