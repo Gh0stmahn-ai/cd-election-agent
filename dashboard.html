@@ -93,6 +93,21 @@ function seatKeyForFips(fips, us) {
   return fips;
 }
 
+const fipsToAbbrev = Object.fromEntries(Object.entries(stateAbbrevToFips).map(([k,v]) => [String(parseInt(v)), k]));
+let lastRenderedIdx = ITERATIONS.length - 1;
+
+function applyMapFill(idx) {
+  if (!statePaths) return;
+  const snap = ITERATIONS[idx];
+  const byState = {};
+  snap.senate.seats.forEach(s => { byState[s.state.replace("-special","")] = s; });
+  statePaths.attr("fill", d => {
+    const abbrev = fipsToAbbrev[d.id];
+    const seat = byState[abbrev];
+    return seat ? colorForProb(seat.dem_win_prob) : "#d8d5cb";
+  });
+}
+
 d3.json("https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json").then(us => {
   const states = topojson.feature(us, us.objects.states).features;
   statePaths = svg.selectAll("path")
@@ -119,12 +134,17 @@ d3.json("https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json").then(us => {
     })
     .on("mouseleave", () => d3.select("#tooltip").style("opacity",0));
 
-  renderIteration(ITERATIONS.length - 1);
+  applyMapFill(lastRenderedIdx);
+}).catch(err => {
+  svg.append("text")
+    .attr("x", 480).attr("y", 300).attr("text-anchor", "middle")
+    .attr("fill", "#888").style("font-size", "13px")
+    .text("Map shapes failed to load (needs internet access to the CDN) — numbers to the right are still live.");
+  console.error("Map geometry failed to load:", err);
 });
 
-const fipsToAbbrev = Object.fromEntries(Object.entries(stateAbbrevToFips).map(([k,v]) => [String(parseInt(v)), k]));
-
 function renderIteration(idx) {
+  lastRenderedIdx = idx;
   const snap = ITERATIONS[idx];
   seatByState = {};
   snap.senate.seats.forEach(s => {
@@ -132,13 +152,7 @@ function renderIteration(idx) {
     seatByState[baseState] = s;
   });
 
-  if (statePaths) {
-    statePaths.attr("fill", d => {
-      const abbrev = fipsToAbbrev[d.id];
-      const seat = seatByState[abbrev];
-      return seat ? colorForProb(seat.dem_win_prob) : "#d8d5cb";
-    });
-  }
+  applyMapFill(idx);
 
   document.getElementById("senateProb").textContent = (snap.senate.dem_control_prob*100).toFixed(1)+"%";
   document.getElementById("senateBar").style.width = (snap.senate.dem_control_prob*100)+"%";
@@ -160,6 +174,11 @@ const slider = document.getElementById("iterSlider");
 slider.max = ITERATIONS.length - 1;
 slider.value = ITERATIONS.length - 1;
 slider.addEventListener("input", () => renderIteration(+slider.value));
+
+// Render the stat tiles/bars/closest-races list immediately, independent of
+// whether the map geometry fetch above has resolved yet - only the map
+// coloring itself needs to wait on that.
+renderIteration(ITERATIONS.length - 1);
 </script>
 </body>
 </html>
