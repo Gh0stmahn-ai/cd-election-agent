@@ -211,8 +211,33 @@ def main():
         print(f"\nStopped after hitting MAX_TURNS={MAX_TURNS}.")
 
 
+def validate_api_key(key: str) -> str:
+    """
+    Fail fast with a readable message instead of a cryptic httpx crash when
+    the secret holds something other than a bare API key (e.g. someone
+    pasted a whole curl example instead of just the key value).
+    """
+    key = key.strip()
+    if "\n" in key or "\r" in key or " " in key or not key.startswith("sk-ant-"):
+        print(
+            "ANTHROPIC_API_KEY doesn't look like a valid key - expected a single "
+            "line starting with 'sk-ant-' and nothing else. It looks like the "
+            "ANTHROPIC_API_KEY repo secret may contain extra text (e.g. a whole "
+            "curl example) instead of just the key itself.\n"
+            "Fix: go to https://console.anthropic.com/settings/keys, copy ONLY "
+            "the key value (generate a new one if the original isn't visible "
+            "anymore), then update the ANTHROPIC_API_KEY secret at "
+            "Settings -> Secrets and variables -> Actions in the repo.",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+    return key
+
+
 if __name__ == "__main__":
-    if not os.environ.get("ANTHROPIC_API_KEY"):
+    raw_key = os.environ.get("ANTHROPIC_API_KEY", "")
+    if not raw_key:
         print("ANTHROPIC_API_KEY not set - skipping agentic update (data files left as-is).")
         sys.exit(0)
+    os.environ["ANTHROPIC_API_KEY"] = validate_api_key(raw_key)
     main()
