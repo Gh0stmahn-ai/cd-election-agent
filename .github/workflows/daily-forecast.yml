@@ -63,7 +63,27 @@ jobs:
           git add data/ iterations/ dashboard.html
           if git diff --cached --quiet; then
             echo "No changes to commit."
-          else
-            git commit -m "Daily forecast update: $(date -u +%Y-%m-%d)"
-            git push
+            exit 0
           fi
+          git commit -m "Daily forecast update: $(date -u +%Y-%m-%d)"
+
+          # Rebase onto the latest main and retry the push a few times in
+          # case someone pushed (or another run finished) in between this
+          # job's checkout and now - avoids silently losing this run's data
+          # to a plain "fetch first" rejection.
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            if ! git rebase origin/main; then
+              echo "Rebase conflict against origin/main - aborting. A human needs to look at this run."
+              git rebase --abort
+              exit 1
+            fi
+            if git push origin HEAD:main; then
+              echo "Pushed on attempt $attempt."
+              exit 0
+            fi
+            echo "Push attempt $attempt failed (remote moved again) - retrying..."
+            sleep $((attempt * 5))
+          done
+          echo "Failed to push after 5 attempts."
+          exit 1
