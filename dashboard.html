@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>2026 Midterm Forecast — Senate &amp; House</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson-client/3.1.0/topojson-client.min.js"></script>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f5f4f0; margin: 0; padding: 24px; color: #222; }
+  h1 { font-size: 20px; font-weight: 600; margin: 0 0 4px; }
+  .subtitle { color: #666; font-size: 13px; margin-bottom: 20px; }
+  .layout { display: flex; gap: 24px; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; }
+  .card { background: #fff; border: 1px solid #e2e0d8; border-radius: 12px; padding: 20px; }
+  .map-card { flex: 2; min-width: 560px; }
+  .side-card { flex: 1; min-width: 260px; display: flex; flex-direction: column; gap: 16px; }
+  .stat { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
+  .stat-label { font-size: 13px; color: #666; }
+  .stat-value { font-size: 22px; font-weight: 600; }
+  .bar-bg { height: 10px; background: #e6e4dc; border-radius: 5px; overflow: hidden; margin-top: 6px; }
+  .bar-fill { height: 100%; border-radius: 5px; }
+  .legend { display: flex; align-items: center; gap: 8px; font-size: 11px; color: #666; margin-top: 12px; }
+  .legend-swatch { width: 16px; height: 10px; border-radius: 2px; }
+  .slider-row { margin-top: 16px; }
+  .slider-row input[type=range] { width: 100%; }
+  .slider-label { font-size: 12px; color: #666; display: flex; justify-content: space-between; margin-top: 4px; }
+  #tooltip { position: absolute; pointer-events: none; background: #222; color: #fff; padding: 6px 10px; border-radius: 6px; font-size: 12px; opacity: 0; transition: opacity .1s; z-index: 10; }
+  .state { stroke: #fff; stroke-width: 0.75px; cursor: pointer; }
+  .not-up { fill: #d8d5cb; }
+  .note { font-size: 12px; color: #888; line-height: 1.5; margin-top: 12px; }
+  .race-row { display: flex; justify-content: space-between; font-size: 12px; padding: 4px 0; border-bottom: 1px solid #eee; }
+</style>
+</head>
+<body>
+
+<h1>2026 midterm forecast</h1>
+<div class="subtitle">Senate seat-by-seat probabilities and House majority odds — scrub the slider to replay how the forecast moved across pipeline iterations.</div>
+
+<div class="layout">
+  <div class="card map-card">
+    <svg id="map" width="100%" viewBox="0 0 960 600"></svg>
+    <div class="legend">
+      <span>GOP safe</span><div class="legend-swatch" style="background:#a83232"></div>
+      <div class="legend-swatch" style="background:#d99a9a"></div>
+      <div class="legend-swatch" style="background:#dcdcdc"></div>
+      <div class="legend-swatch" style="background:#9ab8d9"></div>
+      <div class="legend-swatch" style="background:#32548a"></div><span>Dem safe</span>
+      <span style="margin-left:16px"><span class="legend-swatch" style="background:#d8d5cb"></span> not up in 2026</span>
+    </div>
+    <div class="slider-row">
+      <input type="range" id="iterSlider" min="0" max="0" value="0">
+      <div class="slider-label"><span id="iterDate">-</span><span id="iterCount"></span></div>
+    </div>
+  </div>
+
+  <div class="side-card">
+    <div class="card">
+      <div class="stat"><span class="stat-label">Senate — Dem control probability</span><span class="stat-value" id="senateProb">-</span></div>
+      <div class="bar-bg"><div class="bar-fill" id="senateBar" style="background:#32548a; width:0%"></div></div>
+      <div class="stat" style="margin-top:12px"><span class="stat-label">Mean Dem seats (of 100)</span><span class="stat-value" id="senateSeats">-</span></div>
+    </div>
+    <div class="card">
+      <div class="stat"><span class="stat-label">House — Dem majority probability</span><span class="stat-value" id="houseProb">-</span></div>
+      <div class="bar-bg"><div class="bar-fill" id="houseBar" style="background:#32548a; width:0%"></div></div>
+      <div class="note">National swing model from the generic ballot only — see README for why district-level House forecasts aren't included yet.</div>
+    </div>
+    <div class="card" style="max-height:260px; overflow-y:auto;">
+      <div class="stat-label" style="margin-bottom:6px;">Closest Senate races</div>
+      <div id="closestRaces"></div>
+    </div>
+  </div>
+</div>
+
+<div id="tooltip"></div>
+
+<script>
+const ITERATIONS = [{"timestamp":"2026-09-11T02:28:38.334063+00:00","status":{"state":"success","issues":[]},"senate":{"dem_control_prob":0.294,"mean_dem_seats":48.6,"seats":[{"seat_id":"AK-2026","state":"AK","held_by":"R","rating":"likely","dem_win_prob":0.102},{"seat_id":"AL-2026","state":"AL","held_by":"R","rating":"solid","dem_win_prob":0.05},{"seat_id":"AR-2026","state":"AR","held_by":"R","rating":"solid","dem_win_prob":0.053},{"seat_id":"CO-2026","state":"CO","held_by":"D","rating":"solid","dem_win_prob":0.946},{"seat_id":"DE-2026","state":"DE","held_by":"D","rating":"solid","dem_win_prob":0.949},{"seat_id":"FL-2026-special","state":"FL-special","held_by":"R","rating":"likely","dem_win_prob":0.103},{"seat_id":"GA-2026","state":"GA","held_by":"D","rating":"tossup","dem_win_prob":0.592},{"seat_id":"IA-2026","state":"IA","held_by":"R","rating":"tossup","dem_win_prob":0.513},{"seat_id":"ID-2026","state":"ID","held_by":"R","rating":"solid","dem_win_prob":0.053},{"seat_id":"IL-2026","state":"IL","held_by":"D","rating":"solid","dem_win_prob":0.945},{"seat_id":"KS-2026","state":"KS","held_by":"R","rating":"likely","dem_win_prob":0.105},{"seat_id":"KY-2026","state":"KY","held_by":"R","rating":"solid","dem_win_prob":0.049},{"seat_id":"LA-2026","state":"LA","held_by":"R","rating":"solid","dem_win_prob":0.053},{"seat_id":"MA-2026","state":"MA","held_by":"D","rating":"solid","dem_win_prob":0.947},{"seat_id":"ME-2026","state":"ME","held_by":"R","rating":"lean","dem_win_prob":0.278},{"seat_id":"MI-2026","state":"MI","held_by":"D","rating":"tossup","dem_win_prob":0.552},{"seat_id":"MN-2026","state":"MN","held_by":"D","rating":"likely","dem_win_prob":0.895},{"seat_id":"MS-2026","state":"MS","held_by":"R","rating":"solid","dem_win_prob":0.052},{"seat_id":"MT-2026","state":"MT","held_by":"R","rating":"solid","dem_win_prob":0.052},{"seat_id":"NC-2026","state":"NC","held_by":"R","rating":"lean","dem_win_prob":0.277},{"seat_id":"NE-2026","state":"NE","held_by":"R","rating":"likely","dem_win_prob":0.102},{"seat_id":"NH-2026","state":"NH","held_by":"D","rating":"lean","dem_win_prob":0.717},{"seat_id":"NJ-2026","state":"NJ","held_by":"D","rating":"solid","dem_win_prob":0.947},{"seat_id":"NM-2026","state":"NM","held_by":"D","rating":"solid","dem_win_prob":0.946},{"seat_id":"OH-2026-special","state":"OH-special","held_by":"R","rating":"tossup","dem_win_prob":0.545},{"seat_id":"OK-2026","state":"OK","held_by":"R","rating":"solid","dem_win_prob":0.051},{"seat_id":"OR-2026","state":"OR","held_by":"D","rating":"solid","dem_win_prob":0.949},{"seat_id":"RI-2026","state":"RI","held_by":"D","rating":"solid","dem_win_prob":0.947},{"seat_id":"SC-2026","state":"SC","held_by":"R","rating":"likely","dem_win_prob":0.107},{"seat_id":"SD-2026","state":"SD","held_by":"R","rating":"solid","dem_win_prob":0.053},{"seat_id":"TN-2026","state":"TN","held_by":"R","rating":"solid","dem_win_prob":0.055},{"seat_id":"TX-2026","state":"TX","held_by":"R","rating":"tossup","dem_win_prob":0.515},{"seat_id":"VA-2026","state":"VA","held_by":"D","rating":"solid","dem_win_prob":0.946},{"seat_id":"WV-2026","state":"WV","held_by":"R","rating":"solid","dem_win_prob":0.053},{"seat_id":"WY-2026","state":"WY","held_by":"R","rating":"solid","dem_win_prob":0.051}]},"house":{"generic_ballot_dem_margin":5.5,"mean_dem_seats_above_218":7.5,"dem_house_majority_prob":0.734,"method":"national swing model - see docstring for limitations"}}];
+
+const stateAbbrevToFips = {"AL":"01","AK":"02","AZ":"04","AR":"05","CA":"06","CO":"08","CT":"09","DE":"10","FL":"12","GA":"13","HI":"15","ID":"16","IL":"17","IN":"18","IA":"19","KS":"20","KY":"21","LA":"22","ME":"23","MD":"24","MA":"25","MI":"26","MN":"27","MS":"28","MO":"29","MT":"30","NE":"31","NV":"32","NH":"33","NJ":"34","NM":"35","NY":"36","NC":"37","ND":"38","OH":"39","OK":"40","OR":"41","PA":"42","RI":"44","SC":"45","SD":"46","TN":"47","TX":"48","UT":"49","VT":"50","VA":"51","WA":"53","WV":"54","WI":"55","WY":"56"};
+
+function colorForProb(p) {
+  // p = probability seat goes Dem. Diverging red-white-blue scale.
+  const scale = d3.scaleLinear().domain([0,0.35,0.5,0.65,1]).range(["#a83232","#d99a9a","#dcdcdc","#9ab8d9","#32548a"]);
+  return scale(p);
+}
+
+let svg = d3.select("#map");
+let projection = d3.geoAlbersUsa().scale(1200).translate([480,300]);
+let path = d3.geoPath().projection(projection);
+let statePaths;
+let seatByState = {};
+
+function seatKeyForFips(fips, us) {
+  return fips;
+}
+
+d3.json("https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json").then(us => {
+  const states = topojson.feature(us, us.objects.states).features;
+  statePaths = svg.selectAll("path")
+    .data(states)
+    .join("path")
+    .attr("class","state")
+    .attr("d", path)
+    .attr("fill", "#d8d5cb")
+    .on("mousemove", function(event, d) {
+      const abbrev = fipsToAbbrev[d.id];
+      const seat = seatByState[abbrev];
+      const tt = d3.select("#tooltip");
+      if (seat) {
+        tt.style("opacity",1)
+          .style("left",(event.pageX+12)+"px")
+          .style("top",(event.pageY+12)+"px")
+          .html(`<strong>${abbrev}</strong> — ${seat.rating} (${(seat.dem_win_prob*100).toFixed(0)}% Dem)`);
+      } else {
+        tt.style("opacity",1)
+          .style("left",(event.pageX+12)+"px")
+          .style("top",(event.pageY+12)+"px")
+          .html(`<strong>${abbrev}</strong> — not up in 2026`);
+      }
+    })
+    .on("mouseleave", () => d3.select("#tooltip").style("opacity",0));
+
+  renderIteration(ITERATIONS.length - 1);
+});
+
+const fipsToAbbrev = Object.fromEntries(Object.entries(stateAbbrevToFips).map(([k,v]) => [String(parseInt(v)), k]));
+
+function renderIteration(idx) {
+  const snap = ITERATIONS[idx];
+  seatByState = {};
+  snap.senate.seats.forEach(s => {
+    const baseState = s.state.replace("-special","");
+    seatByState[baseState] = s;
+  });
+
+  if (statePaths) {
+    statePaths.attr("fill", d => {
+      const abbrev = fipsToAbbrev[d.id];
+      const seat = seatByState[abbrev];
+      return seat ? colorForProb(seat.dem_win_prob) : "#d8d5cb";
+    });
+  }
+
+  document.getElementById("senateProb").textContent = (snap.senate.dem_control_prob*100).toFixed(1)+"%";
+  document.getElementById("senateBar").style.width = (snap.senate.dem_control_prob*100)+"%";
+  document.getElementById("senateSeats").textContent = snap.senate.mean_dem_seats.toFixed(1);
+  document.getElementById("houseProb").textContent = (snap.house.dem_house_majority_prob*100).toFixed(1)+"%";
+  document.getElementById("houseBar").style.width = (snap.house.dem_house_majority_prob*100)+"%";
+  document.getElementById("iterDate").textContent = new Date(snap.timestamp).toLocaleString();
+  document.getElementById("iterCount").textContent = `iteration ${idx+1} of ${ITERATIONS.length}`;
+
+  const closest = [...snap.senate.seats]
+    .filter(s => s.rating === "tossup" || s.rating === "lean")
+    .sort((a,b) => Math.abs(a.dem_win_prob-0.5) - Math.abs(b.dem_win_prob-0.5));
+  document.getElementById("closestRaces").innerHTML = closest.map(s =>
+    `<div class="race-row"><span>${s.state}</span><span>${(s.dem_win_prob*100).toFixed(0)}% D</span></div>`
+  ).join("");
+}
+
+const slider = document.getElementById("iterSlider");
+slider.max = ITERATIONS.length - 1;
+slider.value = ITERATIONS.length - 1;
+slider.addEventListener("input", () => renderIteration(+slider.value));
+</script>
+</body>
+</html>

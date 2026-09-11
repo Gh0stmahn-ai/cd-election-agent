@@ -1,0 +1,264 @@
+{
+  "timestamp": "2026-09-11T02:28:38.334063+00:00",
+  "status": {
+    "state": "success",
+    "issues": []
+  },
+  "senate": {
+    "dem_control_prob": 0.294,
+    "mean_dem_seats": 48.6,
+    "seats": [
+      {
+        "seat_id": "AK-2026",
+        "state": "AK",
+        "held_by": "R",
+        "rating": "likely",
+        "dem_win_prob": 0.102
+      },
+      {
+        "seat_id": "AL-2026",
+        "state": "AL",
+        "held_by": "R",
+        "rating": "solid",
+        "dem_win_prob": 0.05
+      },
+      {
+        "seat_id": "AR-2026",
+        "state": "AR",
+        "held_by": "R",
+        "rating": "solid",
+        "dem_win_prob": 0.053
+      },
+      {
+        "seat_id": "CO-2026",
+        "state": "CO",
+        "held_by": "D",
+        "rating": "solid",
+        "dem_win_prob": 0.946
+      },
+      {
+        "seat_id": "DE-2026",
+        "state": "DE",
+        "held_by": "D",
+        "rating": "solid",
+        "dem_win_prob": 0.949
+      },
+      {
+        "seat_id": "FL-2026-special",
+        "state": "FL-special",
+        "held_by": "R",
+        "rating": "likely",
+        "dem_win_prob": 0.103
+      },
+      {
+        "seat_id": "GA-2026",
+        "state": "GA",
+        "held_by": "D",
+        "rating": "tossup",
+        "dem_win_prob": 0.592
+      },
+      {
+        "seat_id": "IA-2026",
+        "state": "IA",
+        "held_by": "R",
+        "rating": "tossup",
+        "dem_win_prob": 0.513
+      },
+      {
+        "seat_id": "ID-2026",
+        "state": "ID",
+        "held_by": "R",
+        "rating": "solid",
+        "dem_win_prob": 0.053
+      },
+      {
+        "seat_id": "IL-2026",
+        "state": "IL",
+        "held_by": "D",
+        "rating": "solid",
+        "dem_win_prob": 0.945
+      },
+      {
+        "seat_id": "KS-2026",
+        "state": "KS",
+        "held_by": "R",
+        "rating": "likely",
+        "dem_win_prob": 0.105
+      },
+      {
+        "seat_id": "KY-2026",
+        "state": "KY",
+        "held_by": "R",
+        "rating": "solid",
+        "dem_win_prob": 0.049
+      },
+      {
+        "seat_id": "LA-2026",
+        "state": "LA",
+        "held_by": "R",
+        "rating": "solid",
+        "dem_win_prob": 0.053
+      },
+      {
+        "seat_id": "MA-2026",
+        "state": "MA",
+        "held_by": "D",
+        "rating": "solid",
+        "dem_win_prob": 0.947
+      },
+      {
+        "seat_id": "ME-2026",
+        "state": "ME",
+        "held_by": "R",
+        "rating": "lean",
+        "dem_win_prob": 0.278
+      },
+      {
+        "seat_id": "MI-2026",
+        "state": "MI",
+        "held_by": "D",
+        "rating": "tossup",
+        "dem_win_prob": 0.552
+      },
+      {
+        "seat_id": "MN-2026",
+        "state": "MN",
+        "held_by": "D",
+        "rating": "likely",
+        "dem_win_prob": 0.895
+      },
+      {
+        "seat_id": "MS-2026",
+        "state": "MS",
+        "held_by": "R",
+        "rating": "solid",
+        "dem_win_prob": 0.052
+      },
+      {
+        "seat_id": "MT-2026",
+        "state": "MT",
+        "held_by": "R",
+        "rating": "solid",
+        "dem_win_prob": 0.052
+      },
+      {
+        "seat_id": "NC-2026",
+        "state": "NC",
+        "held_by": "R",
+        "rating": "lean",
+        "dem_win_prob": 0.277
+      },
+      {
+        "seat_id": "NE-2026",
+        "state": "NE",
+        "held_by": "R",
+        "rating": "likely",
+        "dem_win_prob": 0.102
+      },
+      {
+        "seat_id": "NH-2026",
+        "state": "NH",
+        "held_by": "D",
+        "rating": "lean",
+        "dem_win_prob": 0.717
+      },
+      {
+        "seat_id": "NJ-2026",
+        "state": "NJ",
+        "held_by": "D",
+        "rating": "solid",
+        "dem_win_prob": 0.947
+      },
+      {
+        "seat_id": "NM-2026",
+        "state": "NM",
+        "held_by": "D",
+        "rating": "solid",
+        "dem_win_prob": 0.946
+      },
+      {
+        "seat_id": "OH-2026-special",
+        "state": "OH-special",
+        "held_by": "R",
+        "rating": "tossup",
+        "dem_win_prob": 0.545
+      },
+      {
+        "seat_id": "OK-2026",
+        "state": "OK",
+        "held_by": "R",
+        "rating": "solid",
+        "dem_win_prob": 0.051
+      },
+      {
+        "seat_id": "OR-2026",
+        "state": "OR",
+        "held_by": "D",
+        "rating": "solid",
+        "dem_win_prob": 0.949
+      },
+      {
+        "seat_id": "RI-2026",
+        "state": "RI",
+        "held_by": "D",
+        "rating": "solid",
+        "dem_win_prob": 0.947
+      },
+      {
+        "seat_id": "SC-2026",
+        "state": "SC",
+        "held_by": "R",
+        "rating": "likely",
+        "dem_win_prob": 0.107
+      },
+      {
+        "seat_id": "SD-2026",
+        "state": "SD",
+        "held_by": "R",
+        "rating": "solid",
+        "dem_win_prob": 0.053
+      },
+      {
+        "seat_id": "TN-2026",
+        "state": "TN",
+        "held_by": "R",
+        "rating": "solid",
+        "dem_win_prob": 0.055
+      },
+      {
+        "seat_id": "TX-2026",
+        "state": "TX",
+        "held_by": "R",
+        "rating": "tossup",
+        "dem_win_prob": 0.515
+      },
+      {
+        "seat_id": "VA-2026",
+        "state": "VA",
+        "held_by": "D",
+        "rating": "solid",
+        "dem_win_prob": 0.946
+      },
+      {
+        "seat_id": "WV-2026",
+        "state": "WV",
+        "held_by": "R",
+        "rating": "solid",
+        "dem_win_prob": 0.053
+      },
+      {
+        "seat_id": "WY-2026",
+        "state": "WY",
+        "held_by": "R",
+        "rating": "solid",
+        "dem_win_prob": 0.051
+      }
+    ]
+  },
+  "house": {
+    "generic_ballot_dem_margin": 5.5,
+    "mean_dem_seats_above_218": 7.5,
+    "dem_house_majority_prob": 0.734,
+    "method": "national swing model - see docstring for limitations"
+  }
+}

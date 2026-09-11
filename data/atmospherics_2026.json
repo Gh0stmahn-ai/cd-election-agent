@@ -1,0 +1,33 @@
+{
+  "as_of": "2026-09-11",
+  "method": "News coverage and campaign-trail reporting scored for narrative direction (favorite gaining/losing ground) and intensity (fundraising, endorsements, gaffes, message discipline). This is NOT a poll - it's a bounded nudge applied only to toss-up/lean seats, capped at +/-0.08 win probability, and always shown separately from the polling-based number.",
+  "assessments": [
+    {
+      "seat_id": "OH-2026-special",
+      "adjustment_dem": 0.03,
+      "rationale": "Brown leads in most recent public polling (Fox +8 in Aug, unchanged since June; Wedgewood +4) and cost-of-living/inflation framing dominates coverage in a way that favors him per Fox's own poll analysis. But RealClearPolling's average is much tighter (Brown 47.8 to Husted 47.2) and some individual polls (NYT/Siena, Quantus) show Husted ahead - genuinely a toss-up in aggregate, with narrative momentum tilted slightly Brown.",
+      "sources": [
+        "https://www.nbc4i.com/news/local-news/columbus/ohios-u-s-senate-race-remains-tight-despite-brown-lead-in-fox-poll/",
+        "https://thehill.com/homenews/campaign/6039515-ohio-senate-race-data-centers-husted-brown/",
+        "https://thehill.com/homenews/campaign/6031596-brown-acton-lead-ohio-polls/"
+      ]
+    },
+    {
+      "seat_id": "GA-2026",
+      "adjustment_dem": 0.03,
+      "rationale": "test rationale",
+      "sources": [
+        "http://example.com"
+      ]
+    }
+  ],
+  "not_yet_assessed": [
+    "MI-2026",
+    "TX-2026",
+    "IA-2026",
+    "ME-2026",
+    "NC-2026",
+    "NH-2026"
+  ],
+  "note": "The two races above were live-assessed as a working demonstration of the method. The remaining toss-up/lean races need the same treatment - that's exactly the daily job the scheduled agent below performs."
+}
