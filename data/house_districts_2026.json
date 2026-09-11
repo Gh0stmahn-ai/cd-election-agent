@@ -1,5 +1,5 @@
 {
- "as_of": "2026-08-25",
+ "as_of": "2026-09-11",
  "ratings_source": "Cook Political Report House race ratings (Aug 25, 2026); unlisted seats Solid for the favored party",
  "ratings_environment_dem_margin": 5.5,
  "ratings_environment_note": "Generic-ballot average when these ratings were set; the model shifts every seat by how far the current national environment has moved from this reference.",
@@ -839,7 +839,8 @@
    "held_by": "R",
    "incumbent": "Hurd",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "note": "Cook Political Report moved CO-03 (Hurd R) from Solid R to Likely R on Sept 10, 2026"
   },
   {
    "id": "CO-4",
@@ -1114,7 +1115,8 @@
    "held_by": "D",
    "incumbent": "Castor",
    "redrawn_2026": true,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "note": "Cook Political Report moved FL-14 (Castor D) from Lean R to Toss Up on Sept 10, 2026"
   },
   {
    "id": "FL-15",
@@ -2269,7 +2271,8 @@
    "held_by": "D",
    "incumbent": "McDonald Rivet",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "note": "Cook Political Report moved MI-08 (McDonald Rivet D) from Lean D to Likely D on Sept 10, 2026"
   },
   {
    "id": "MI-9",
@@ -2291,7 +2294,8 @@
    "held_by": "R",
    "incumbent": "OPEN (James)",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "note": "Cook Political Report moved MI-10 (James R) from Lean R to Toss Up on Sept 10, 2026"
   },
   {
    "id": "MI-11",
@@ -3391,7 +3395,8 @@
    "held_by": "R",
    "incumbent": "Turner",
    "redrawn_2026": true,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "note": "Cook Political Report moved OH-10 (Turner R) from Solid R to Likely R on Sept 10, 2026"
   },
   {
    "id": "OH-11",
@@ -3446,7 +3451,8 @@
    "held_by": "R",
    "incumbent": "Carey",
    "redrawn_2026": true,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "note": "Cook Political Report moved OH-15 (Carey R) from Solid R to Likely R on Sept 10, 2026"
   },
   {
    "id": "OK-1",

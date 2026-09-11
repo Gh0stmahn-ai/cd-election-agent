@@ -1,9 +1,10 @@
 {
-  "as_of": "2026-09-11",
-  "dem_margin_points": 6.6,
-  "note": "Averaged RealClearPolling (D+6.6, Democrats 48.9% vs Republicans 42.3%) and Silver Bulletin (D+6.6 raw average). Both major trackers showing D+6.6, up from the previous D+6.1.",
-  "sources": [
-    "https://x.com/RCPolling/status/2054598142876655974",
-    "https://www.natesilver.net/p/generic-ballot-average-2026-nate-silver-bulletin-congress-polls"
-  ]
+ "as_of": "2026-09-11",
+ "dem_margin_points": 6.0,
+ "note": "Average of RealClearPolitics (D+5.7), Silver Bulletin (D+6.6 as of 8/24), and USPollingData (D+6.3). Morning Consult also showing D+4.",
+ "sources": [
+  "https://www.realclearpolling.com/polls/state-of-the-union/generic-congressional-vote",
+  "https://www.natesilver.net/p/generic-ballot-average-2026-nate-silver-bulletin-congress-polls",
+  "https://uspollingdata.com/polls/"
+ ]
 }
