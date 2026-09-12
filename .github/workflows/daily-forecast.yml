@@ -1,25 +1,21 @@
 name: Daily election forecast update
 
-# Runs the full pipeline once a day:
+# Runs the full pipeline once a day, then publishes the site:
 #   1. agent_run.py   - Claude + web search refreshes the generic ballot,
-#                        any Senate rating changes, and the atmospherics
-#                        read for toss-up/lean races (needs
-#                        ANTHROPIC_API_KEY; skips itself gracefully if the
-#                        secret isn't set, so the rest of the run still
-#                        happens on seed/last-known data)
+#                        approval, economic indicators, rating changes and
+#                        Senate news momentum (needs ANTHROPIC_API_KEY; skips
+#                        itself gracefully if the secret isn't set)
 #   2. run_pipeline.py - Monte Carlo simulation -> new iterations/*.json
-#   3. build_dashboard.py - folds the new iteration into dashboard.html
-#   4. commit + push the changed data/iterations/dashboard back to main
+#   3. build_site.py    - rebuilds the multi-page site in site/
+#   4. commit + push the changed data/iterations/site back to main
+#   5. deploy job - publishes site/ to GitHub Pages
 #
-# Trigger it manually any time from the Actions tab (workflow_dispatch)
-# to test without waiting for the schedule.
+# Trigger it manually any time from the Actions tab (workflow_dispatch).
 
 on:
   schedule:
     # 16:00 UTC = noon Eastern during EDT (Mar-Nov). GitHub Actions cron
-    # doesn't observe DST, so this drifts to 11:00 AM ET during EST
-    # (Nov-Mar) - adjust to '0 17 * * *' for the winter half if you want
-    # it pinned to exactly noon year-round.
+    # doesn't observe DST, so this drifts to 11:00 AM ET during EST.
     - cron: '0 16 * * *'
   workflow_dispatch: {}
 
@@ -45,7 +41,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Agentic data refresh (ballot, ratings, atmospherics)
+      - name: Agentic data refresh (ballot, approval, economy, ratings, momentum)
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python3 agent_run.py
@@ -53,14 +49,14 @@ jobs:
       - name: Run forecasting pipeline
         run: python3 run_pipeline.py
 
-      - name: Rebuild dashboard with new iteration
-        run: python3 build_dashboard.py
+      - name: Rebuild the site with the new run
+        run: python3 build_site.py
 
       - name: Commit and push updated data
         run: |
           git config user.name "election-agent[bot]"
           git config user.email "actions@users.noreply.github.com"
-          git add data/ iterations/ dashboard.html
+          git add data/ iterations/ site/
           if git diff --cached --quiet; then
             echo "No changes to commit."
             exit 0
@@ -69,8 +65,7 @@ jobs:
 
           # Rebase onto the latest main and retry the push a few times in
           # case someone pushed (or another run finished) in between this
-          # job's checkout and now - avoids silently losing this run's data
-          # to a plain "fetch first" rejection.
+          # job's checkout and now.
           for attempt in 1 2 3 4 5; do
             git fetch origin main
             if ! git rebase origin/main; then
@@ -87,3 +82,40 @@ jobs:
           done
           echo "Failed to push after 5 attempts."
           exit 1
+
+  # Publish the freshly built site. Pushes made by the workflow's own
+  # token don't trigger other workflows, so the deploy has to live here
+  # rather than relying on pages.yml's push trigger.
+  deploy:
+    needs: update
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    steps:
+      - name: Check out latest main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Assemble site
+        run: |
+          cp -r site _site
+          touch _site/.nojekyll
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
