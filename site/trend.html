@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How the forecast has moved · 2026 Midterm Forecast</title>
+<meta name="description" content="The chance each party wins the House and Senate, run by run, with the national environment behind each update.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="How the forecast has moved · 2026 Midterm Forecast">
+<meta property="og:description" content="The chance each party wins the House and Senate, run by run, with the national environment behind each update.">
+<meta property="og:url" content="https://gh0stmahn-ai.github.io/trend.html">
+<meta property="og:image" content="https://gh0stmahn-ai.github.io/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How the forecast has moved · 2026 Midterm Forecast">
+<meta name="twitter:description" content="The chance each party wins the House and Senate, run by run, with the national environment behind each update.">
+<meta name="twitter:image" content="https://gh0stmahn-ai.github.io/assets/og.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23f6f5f1'/%3E%3Crect x='5' y='8' width='10' height='18' rx='2' fill='%232a78d6'/%3E%3Crect x='17' y='8' width='10' height='18' rx='2' fill='%23c74845'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="site-head"><div class="bar">
+  <a class="brand plain" href="index.html"><span class="mark"><i></i><i></i></span>2026 Midterm Forecast</a>
+  <nav class="main" aria-label="Sections"><a href="index.html">Overview</a><a href="senate.html">Senate</a><a href="house.html">House</a><a href="economy.html">Economy</a><a href="trend.html" aria-current="page">Trend</a><a href="methodology.html">Methodology</a></nav>
+</div></header>
+
+<div class="wrap">
+<div class="page-head">
+  <h1>How the forecast has moved</h1>
+  <div class="sub">Every daily run is kept, so the forecast can be replayed rather than quietly rewritten.</div>
+</div>
+
+<section>
+  <div class="grid2">
+    <div class="card"><div class="chamber-label">Chance Democrats win the Senate</div>
+      <svg id="trend-senate" viewBox="0 0 520 220" role="img" aria-label="Senate control probability over time"></svg></div>
+    <div class="card"><div class="chamber-label">Chance Democrats win the House</div>
+      <svg id="trend-house" viewBox="0 0 520 220" role="img" aria-label="House control probability over time"></svg></div>
+  </div>
+  <p class="note" id="trend-note"></p>
+</section>
+
+<section>
+  <h2>Every run</h2>
+  <p class="lede">One row per daily run. The national environment is the blend of polling and fundamentals that
+    shifts every race.</p>
+  <div class="card tbl-scroll"><table id="tbl-runs"></table></div>
+</section>
+
+<div class="prev-next"><a href="economy.html">&#8592; Economy</a><a href="methodology.html">Methodology &#8594;</a></div>
+</div>
+
+<footer class="site"><div class="wrap" style="padding-bottom:0">
+  <div id="foot-updated"></div>
+  <div style="margin-top:6px">Built and updated daily by an automated pipeline.
+    <a href="https://github.com/Gh0stmahn-ai/cd-election-agent">Source code and data on GitHub</a>.
+    Forecast, not a prediction: read the <a href="methodology.html">methodology</a> first.</div>
+</div></footer>
+
+<script src="assets/app.js"></script>
+<script>
+const PAGE_DATA = {"site":{"timestamp":"2026-09-11T11:08:04.179086+00:00","status":"success"},"runs":[{"timestamp":"2026-09-11T11:08:04.179086+00:00","senate":0.4454,"senate_seats":50.12,"house":0.6073,"house_seats":220.38,"environment":7.13,"generic_ballot":6.6,"status":"success"}]};
+FC.init();
+(function () {
+  var s = PAGE_DATA.site;
+  var days = Math.max(0, Math.ceil((new Date("2026-11-03T12:00:00Z") - new Date(s.timestamp)) / 86400000));
+  var col = s.status === "success" ? "#0ca30c" : s.status === "partial" ? "#fab219" : "#d03b3b";
+  FC.$("foot-updated").innerHTML = "Forecast run " + FC.fmtDate(s.timestamp, true) + " · " + days +
+    " days to Election Day, Nov 3, 2026 · " +
+    '<span class="pill"><span class="dot" style="background:' + col + '"></span>Data refresh: ' + s.status + "</span>";
+})();
+
+FC.onRender(function () {
+  var runs = PAGE_DATA.runs;
+  FC.renderTrend("trend-senate", runs, "senate", "senate_seats");
+  FC.renderTrend("trend-house", runs, "house", "house_seats");
+  FC.$("trend-note").textContent = runs.length > 1
+    ? runs.length + " runs so far. Each point is one daily pipeline run; hover for the exact numbers."
+    : "This is the first run of the current model. A point is added after every daily run, so the lines build up from here.";
+  var rows = runs.slice().reverse();
+  FC.$("tbl-runs").innerHTML = "<thead><tr><th>Run</th><th class='num'>Senate D</th><th class='num'>Avg D seats</th>" +
+    "<th class='num'>House D</th><th class='num'>Avg D seats</th><th class='num'>Environment</th>" +
+    "<th class='num'>Generic ballot</th><th>Data refresh</th></tr></thead><tbody>" +
+    rows.map(function (r) {
+      return "<tr><td>" + FC.fmtDate(r.timestamp, true) + "</td><td class='num'>" + FC.pct(r.senate) +
+        "</td><td class='num'>" + r.senate_seats.toFixed(1) + "</td><td class='num'>" + FC.pct(r.house) +
+        "</td><td class='num'>" + r.house_seats.toFixed(1) + "</td><td class='num'>" + FC.margin(r.environment) +
+        "</td><td class='num'>" + FC.margin(r.generic_ballot) + "</td><td>" + r.status + "</td></tr>";
+    }).join("") + "</tbody>";
+});
+
+</script>
+</body>
+</html>

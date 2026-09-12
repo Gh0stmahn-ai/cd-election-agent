@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Methodology · 2026 Midterm Forecast</title>
+<meta name="description" content="How the forecast collects data: the daily agent, the validation layer, every source, the economic scoring, the simulation, and the honest limits.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Methodology · 2026 Midterm Forecast">
+<meta property="og:description" content="How the forecast collects data: the daily agent, the validation layer, every source, the economic scoring, the simulation, and the honest limits.">
+<meta property="og:url" content="https://gh0stmahn-ai.github.io/methodology.html">
+<meta property="og:image" content="https://gh0stmahn-ai.github.io/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Methodology · 2026 Midterm Forecast">
+<meta name="twitter:description" content="How the forecast collects data: the daily agent, the validation layer, every source, the economic scoring, the simulation, and the honest limits.">
+<meta name="twitter:image" content="https://gh0stmahn-ai.github.io/assets/og.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23f6f5f1'/%3E%3Crect x='5' y='8' width='10' height='18' rx='2' fill='%232a78d6'/%3E%3Crect x='17' y='8' width='10' height='18' rx='2' fill='%23c74845'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="site-head"><div class="bar">
+  <a class="brand plain" href="index.html"><span class="mark"><i></i><i></i></span>2026 Midterm Forecast</a>
+  <nav class="main" aria-label="Sections"><a href="index.html">Overview</a><a href="senate.html">Senate</a><a href="house.html">House</a><a href="economy.html">Economy</a><a href="trend.html">Trend</a><a href="methodology.html" aria-current="page">Methodology</a></nav>
+</div></header>
+
+<div class="wrap">
+<div class="page-head">
+  <h1>Data collection and methodology</h1>
+  <div class="sub">What is collected, from where, how often, what is checked before it is written, and how it turns into a probability.</div>
+</div>
+
+<section class="prose">
+  <h2>Where the numbers come from</h2>
+  <p>Nothing here is hand-entered day to day. A scheduled job runs at noon Eastern, an AI agent with web search
+  collects the current numbers from public sources, every value it writes passes through a validation layer, the
+  model re-runs, and this site is rebuilt and republished. The steps below are the whole chain.</p>
+
+  <div class="step"><div class="n">1</div><div>
+    <h3>Collect</h3>
+    <p>One Claude conversation is given the current contents of every data file and a list of tasks: refresh the
+    generic ballot, refresh presidential approval, refresh each economic reading that has a newer figure published,
+    look for race rating changes, and write a fresh news-momentum read for each competitive Senate race. It must
+    run a web search before any value it writes, and it is told to average two or three public trackers rather than
+    lean on a single poll. Its search budget and turn count are capped, so a confused run stops instead of looping.</p>
+  </div></div>
+
+  <div class="step"><div class="n">2</div><div>
+    <h3>Write through a validator, never directly</h3>
+    <p>The agent cannot edit a data file. It can only call six functions, each of which checks what it is given:
+    ratings must be one of solid, likely, lean or toss-up; district and race ids must already exist; the generic
+    ballot must fall between D+30 and R+30; the news-momentum nudge is clamped to +/-0.08; and every economic
+    reading has a plausible range (gas $1.50 to $8.00, unemployment 2% to 15%, and so on) so a misread page cannot
+    inject a nonsense number. Sources are required alongside each value, and they are what you see cited on the
+    economy page. A rejected write comes back to the agent as an error it has to fix rather than silently landing.</p>
+  </div></div>
+
+  <div class="step"><div class="n">3</div><div>
+    <h3>Turn readings into a national environment</h3>
+    <p>Polls and fundamentals are blended: today the generic ballot carries
+    82% and the fundamentals estimate 17%, with the
+    poll share rising toward 95% by Election Day. The fundamentals estimate is the historical midterm penalty for
+    the president's party, plus 0.2 points of margin for each point of net approval, plus up to 3 points from the
+    economic index below.</p>
+  </div></div>
+
+  <div class="step"><div class="n">4</div><div>
+    <h3>Simulate every race 20,000 times</h3>
+    <p>Each race starts from its published rating, converted to an expected margin (Solid 18 points, Likely 9,
+    Lean 4.5, Toss-up 0.5 toward the party that holds it). Ratings already reflect the environment when they were
+    set, so a race is shifted only by how far the environment has moved since. Then 20,000 elections are simulated.
+    Each one draws a single national polling miss shared by every race in both chambers, plus race-level noise of 5
+    points in the House and 5.5 in the Senate. That shared miss is why the two chambers move together and why the
+    seat ranges are wide rather than falsely precise.</p>
+  </div></div>
+
+  <div class="step"><div class="n">5</div><div>
+    <h3>Publish, and keep the receipts</h3>
+    <p>Every run is saved as a timestamped snapshot with a status block that flags any input that has gone stale,
+    so a quiet data failure shows up instead of old numbers being served as fresh. Past runs are never overwritten,
+    which is what the <a href="trend.html">trend page</a> replays. The whole repository, including every data file
+    and every past run, is public.</p>
+  </div></div>
+</section>
+
+<section>
+  <h2>Every input, and where it comes from</h2>
+  <div class="card tbl-scroll"><table>
+    <thead><tr><th>Input</th><th>What it is</th><th>Refresh</th><th>As of</th><th>Sources</th></tr></thead>
+    <tbody><tr><td><b>Generic congressional ballot</b></td><td>Average of 2 to 3 public trackers, Democratic minus Republican</td><td>Every day</td><td>2026-09-11</td><td><a href="https://x.com/RCPolling/status/2054598142876655974" target="_blank" rel="noopener">x.com</a> · <a href="https://www.natesilver.net/p/generic-ballot-average-2026-nate-silver-bulletin-congress-polls" target="_blank" rel="noopener">www.natesilver.net</a></td></tr><tr><td><b>Presidential approval</b></td><td>Average of public approval aggregates, net approval feeds the model</td><td>Every day</td><td>2026-09-10</td><td><a href="https://fiftyplusone.news/polls/approval/president" target="_blank" rel="noopener">FiftyPlusOne approval average</a> · <a href="https://www.natesilver.net/p/trump-approval-ratings-nate-silver-bulletin" target="_blank" rel="noopener">Silver Bulletin approval</a></td></tr><tr><td><b>Gas price</b></td><td>$/gal, weight 18% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-09-10</td><td><a href="https://www.finder.com/economics/gas-prices" target="_blank" rel="noopener">Finder weekly national average (AAA data)</a> · <a href="https://gasprices.aaa.com/2025/09/" target="_blank" rel="noopener">AAA, Sept 11 2025 national average</a></td></tr><tr><td><b>Oil (WTI)</b></td><td>Context only, not scored</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-09-10</td><td><a href="https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-sept-10-2026" target="_blank" rel="noopener">TheStreet market recap, Sept 10 2026</a> · <a href="https://www.aljazeera.com/economy/2026/9/7/oil-prices-surge-as-us-iran-strikes-intensify-in-strait-of-hormuz" target="_blank" rel="noopener">Al Jazeera, Sept 7 2026</a></td></tr><tr><td><b>Inflation (CPI)</b></td><td>% y/y, weight 18% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-07</td><td><a href="https://www.bls.gov/news.release/cpi.nr0.htm" target="_blank" rel="noopener">BLS CPI, July 2026</a> · <a href="https://www.kiplinger.com/investing/economy/cpi-report-august-2026-what-to-expect" target="_blank" rel="noopener">Kiplinger, August CPI preview</a></td></tr><tr><td><b>Consumer sentiment</b></td><td>index, weight 18% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-08</td><td><a href="https://www.advisorperspectives.com/dshort/updates/2026/08/28/consumer-sentiment-falls-in-august" target="_blank" rel="noopener">Advisor Perspectives on UMich, Aug 2026</a></td></tr><tr><td><b>Real wage growth</b></td><td>% y/y, weight 10% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-08</td><td><a href="https://www.bls.gov/news.release/empsit.nr0.htm" target="_blank" rel="noopener">BLS Employment Situation, Aug 2026</a></td></tr><tr><td><b>Unemployment</b></td><td>%, weight 10% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-08</td><td><a href="https://www.bls.gov/news.release/empsit.nr0.htm" target="_blank" rel="noopener">BLS Employment Situation, Aug 2026</a></td></tr><tr><td><b>GDP growth</b></td><td>% annualized, weight 8% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-Q2</td><td><a href="https://www.advisorperspectives.com/dshort/updates/2026/08/26/q2-gdp-second-estimate-real-gdp-at-1-5-unchanged" target="_blank" rel="noopener">BEA via Advisor Perspectives, Q2 2026 second estimate</a></td></tr><tr><td><b>30-yr mortgage rate</b></td><td>%, weight 7% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-09-10</td><td><a href="https://www.globenewswire.com/news-release/2026/09/10/3359803/0/en/mortgage-rates-average-6-76.html" target="_blank" rel="noopener">Freddie Mac PMMS, Sept 10 2026</a></td></tr><tr><td><b>10-yr Treasury yield</b></td><td>%, weight 3% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-09-10</td><td><a href="https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-sept-10-2026" target="_blank" rel="noopener">TheStreet market recap, Sept 10 2026</a></td></tr><tr><td><b>S&P 500</b></td><td>index, weight 5% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-09-10</td><td><a href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-september-10-dow-sp-500-nasdaq-oil-gains-100-083717303.html" target="_blank" rel="noopener">Yahoo Finance market close, Sept 10 2026</a> · <a href="https://chartrow.com/sp500/ytd" target="_blank" rel="noopener">ChartRow S&P 500 YTD</a></td></tr><tr><td><b>Senate race ratings</b></td><td>35 races, Cook Political Report</td><td>Checked daily, changed only on a cited rating change</td><td>2026-08-20</td><td><a href="https://www.cookpolitical.com/ratings/senate-race-ratings" target="_blank" rel="noopener">cookpolitical.com</a></td></tr><tr><td><b>House race ratings</b></td><td>435 districts, Cook Political Report</td><td>Checked daily, changed only on a cited rating change</td><td>2026-08-25</td><td><a href="https://www.cookpolitical.com/ratings/house-race-ratings" target="_blank" rel="noopener">cookpolitical.com</a></td></tr><tr><td><b>News momentum (Senate)</b></td><td>8 toss-up and lean races, capped at +/-0.08 win probability</td><td>Every day</td><td>2026-09-11</td><td>Cited in each race's entry in data/atmospherics_2026.json</td></tr><tr><td><b>State and district geometry</b></td><td>Natural Earth 1:50m state shapes; hexagon layout generated once</td><td>Fixed</td><td>2026-09-11</td><td><a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener">naturalearthdata.com</a> (public domain)</td></tr></tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>The economic index, line by line</h2>
+  <p class="lede">Each reading is compared with a neutral benchmark, clipped to the range -1 to +1, and weighted.
+  A negative score hurts the party in power. The last column is what that reading is currently worth, in points of
+  Democratic margin.</p>
+  <div class="card tbl-scroll"><table>
+    <thead><tr><th>Reading</th><th>Current</th><th>Scored on</th><th class="num">Neutral</th><th class="num">Weight</th>
+      <th class="num">Score</th><th class="num">Points of margin</th></tr></thead>
+    <tbody><tr><td>Gas price</td><td>$4.30</td><td>change vs a year ago</td><td class='num'>0.0</td><td class='num'>18%</td><td class='num'>-1.00</td><td class='num'>+0.56</td></tr><tr><td>Inflation (CPI)</td><td>3.4%</td><td>level</td><td class='num'>2.5</td><td class='num'>18%</td><td class='num'>-0.45</td><td class='num'>+0.25</td></tr><tr><td>Consumer sentiment</td><td>51.7</td><td>level</td><td class='num'>75.0</td><td class='num'>18%</td><td class='num'>-1.00</td><td class='num'>+0.56</td></tr><tr><td>Real wage growth</td><td>-0.3%</td><td>level</td><td class='num'>1.0</td><td class='num'>10%</td><td class='num'>-0.87</td><td class='num'>+0.27</td></tr><tr><td>Unemployment</td><td>4.1%</td><td>level</td><td class='num'>4.5</td><td class='num'>10%</td><td class='num'>+0.27</td><td class='num'>-0.08</td></tr><tr><td>GDP growth</td><td>1.5%</td><td>level</td><td class='num'>2.0</td><td class='num'>8%</td><td class='num'>-0.25</td><td class='num'>+0.06</td></tr><tr><td>30-yr mortgage rate</td><td>6.76%</td><td>level</td><td class='num'>6.0</td><td class='num'>7%</td><td class='num'>-0.51</td><td class='num'>+0.11</td></tr><tr><td>10-yr Treasury yield</td><td>4.95%</td><td>level</td><td class='num'>4.0</td><td class='num'>3%</td><td class='num'>-0.63</td><td class='num'>+0.06</td></tr><tr><td>S&P 500</td><td>7,588</td><td>year-to-date %</td><td class='num'>5.0</td><td class='num'>5%</td><td class='num'>+0.45</td><td class='num'>-0.07</td></tr></tbody>
+  </table></div>
+</section>
+
+<section class="prose">
+  <h2>What this does not do</h2>
+  <ul>
+    <li><b>It does not poll districts.</b> District-level polling for 435 seats is not public, so the House forecast
+      rests on published ratings plus the national environment, not on local surveys.</li>
+    <li><b>It does not draw 2026 district lines.</b> No public source publishes boundaries for the ten states that
+      redrew mid-decade, so the House map is a hexagon cartogram. Where a district sits inside its state is
+      schematic, and Florida's district numbers for safe seats under its May 2026 map are best-available.</li>
+    <li><b>It does not treat the AI as an oracle.</b> The agent chooses which published figures to copy and writes a
+      capped, cited judgment about campaign momentum in Senate races. It cannot invent a rating change, move a
+      number outside its plausible range, or touch the model's math.</li>
+    <li><b>It is not a prediction.</b> A 70% chance still loses 3 times in 10, and the shared national error exists
+      precisely so the forecast is not more confident than the evidence.</li>
+    <li><b>It cannot guarantee fresh data.</b> Sources go down and releases slip. When an input ages, the run is
+      marked partial and the reason appears in the footer of every page.</li>
+  </ul>
+</section>
+
+<div class="prev-next"><a href="trend.html">&#8592; Trend</a><span></span></div>
+</div>
+
+<footer class="site"><div class="wrap" style="padding-bottom:0">
+  <div id="foot-updated"></div>
+  <div style="margin-top:6px">Built and updated daily by an automated pipeline.
+    <a href="https://github.com/Gh0stmahn-ai/cd-election-agent">Source code and data on GitHub</a>.
+    Forecast, not a prediction: read the <a href="methodology.html">methodology</a> first.</div>
+</div></footer>
+
+<script src="assets/app.js"></script>
+<script>
+const PAGE_DATA = {"site":{"timestamp":"2026-09-11T11:08:04.179086+00:00","status":"success"}};
+FC.init();
+(function () {
+  var s = PAGE_DATA.site;
+  var days = Math.max(0, Math.ceil((new Date("2026-11-03T12:00:00Z") - new Date(s.timestamp)) / 86400000));
+  var col = s.status === "success" ? "#0ca30c" : s.status === "partial" ? "#fab219" : "#d03b3b";
+  FC.$("foot-updated").innerHTML = "Forecast run " + FC.fmtDate(s.timestamp, true) + " · " + days +
+    " days to Election Day, Nov 3, 2026 · " +
+    '<span class="pill"><span class="dot" style="background:' + col + '"></span>Data refresh: ' + s.status + "</span>";
+})();
+
+</script>
+</body>
+</html>
