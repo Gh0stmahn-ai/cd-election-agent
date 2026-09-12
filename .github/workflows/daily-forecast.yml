@@ -41,10 +41,25 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      # Soft-fail on purpose. If the refresh dies partway through (API
+      # credit exhausted, a source down, a rate limit), it has usually
+      # already written some of today's data through ingest.py. Letting
+      # the job continue means the model still re-simulates and the site
+      # still rebuilds on the freshest data we have, and run_pipeline.py
+      # flags whatever went stale in the snapshot's status block.
       - name: Agentic data refresh (ballot, approval, economy, ratings, momentum)
+        id: refresh
+        continue-on-error: true
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python3 agent_run.py
+
+      - name: Note an incomplete data refresh
+        if: steps.refresh.outcome == 'failure'
+        run: |
+          echo "::warning title=Data refresh incomplete::agent_run.py exited non-zero. \
+          The forecast below was rebuilt on the last-known data plus whatever \
+          today's refresh managed to write before it stopped."
 
       - name: Run forecasting pipeline
         run: python3 run_pipeline.py
