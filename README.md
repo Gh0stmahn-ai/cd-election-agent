@@ -5,28 +5,22 @@ A daily, self-updating forecast of who controls Congress after November 3,
 times a day, plus the economic and political readings voters carry into
 the booth.
 
-Open **`dashboard.html`** in any browser. It is one self-contained file
-(no internet connection, CDN or server needed) with:
+**Live site: https://gh0stmahn-ai.github.io/** (rebuilt and republished
+automatically after every daily run; also mirrored at
+https://gh0stmahn-ai.github.io/cd-election-agent/).
 
-- **Control of each chamber**: the chance each party wins the Senate and
-  House, the average seat outcome, the 80% range, and the four possible
-  combinations (D sweep, split either way, R sweep).
-- **Seat charts**: a hemicycle of all 100 Senate seats (65 not up, 35 on
-  the ballot) and all 435 House seats, each dot colored by that seat's
-  chance of going Democratic, plus the full distribution of seat totals.
-- **Senate map**: every state with a race shaded by the Democratic chance,
-  with nominees, Cook rating and news-momentum adjustment on hover, and a
-  "races to watch" panel.
-- **House map**: a hexagon map of all 435 districts, one hex per seat,
-  grouped by state near its real location; plus a filterable table of
-  toss-ups, lean and likely seats (and all 435).
-- **What voters are feeling**: gas prices, oil, inflation, consumer
-  sentiment, real wages, jobs, GDP, mortgage rates, bond yields, the stock
-  market, presidential approval, the Iran war and the cost-of-living mood,
-  each with its current value, trend, sources, why it matters, and whether
-  it helps or hurts the party in power, plus a breakdown of exactly how
-  they combine into the national environment.
-- **Forecast over time**, and a slider that replays every past run.
+The site is built into `site/` as six pages that share one stylesheet and
+one script, with each page embedding the data it needs, so it works from a
+web server or straight off disk with no CDN, no fetches and no libraries:
+
+| Page | What is on it |
+|---|---|
+| `index.html` | Control odds for both chambers, the four possible outcomes, seat charts, and how the national environment is built |
+| `senate.html` | Map of all 35 races, races to watch, seat distribution, every race in a table |
+| `house.html` | Hexagon map of all 435 districts, seat distribution, filterable race tables |
+| `economy.html` | Every economic and political reading, with sources, and what each one does to the forecast |
+| `trend.html` | How the forecast has moved, run by run |
+| `methodology.html` | Where every number comes from, how it is validated, and the honest limits |
 
 ## How the forecast works
 
@@ -85,10 +79,27 @@ Eastern in daylight time) and on demand from the Actions tab:
    file edit.
 2. `run_pipeline.py` - runs the model and saves `iterations/<timestamp>.json`
    with a status block that flags stale inputs.
-3. `build_dashboard.py` - rebuilds `dashboard.html` from
-   `dashboard_template.html` and every snapshot.
+3. `build_site.py` - rebuilds the six pages in `site/` from
+   `site_template/` and every snapshot.
 4. Commits and pushes the results (rebasing and retrying if the branch
    moved during the run).
+5. Publishes `site/` to GitHub Pages (`deploy` job).
+   `.github/workflows/pages.yml` also republishes whenever a person pushes
+   a change to `site/`.
+
+## Hosting
+
+Two free GitHub Pages sites serve the same `site/` folder:
+
+- **https://gh0stmahn-ai.github.io/** comes from the separate repo
+  `Gh0stmahn-ai.github.io`, whose only job is a scheduled workflow that
+  clones this repo, copies `site/` and deploys it (12:40 ET daily, 40
+  minutes after the forecast run). No tokens needed: this repo is public.
+- **https://gh0stmahn-ai.github.io/cd-election-agent/** is this repo's own
+  Pages deployment, as a mirror.
+
+One-time setup in each repo: Settings -> Pages -> Build and deployment ->
+Source: **GitHub Actions**.
 
 Needs one repository secret, `ANTHROPIC_API_KEY` (a workspace-scoped key
 from console.anthropic.com). Without it the run still re-simulates on the
@@ -110,9 +121,14 @@ geo/
 tools/
   build_geometry.py           one-time build of the two geo files
   seed_house_ratings.py       one-time seed of the 435-district file
+site_template/
+  assets/style.css            shared stylesheet
+  assets/app.js               shared charts, maps and tables
+site/                         the built website (committed, served by Pages)
+assets/og.png                 link-preview image
 model.py                      environment + simulation
 run_pipeline.py               model -> iterations/ snapshot
-build_dashboard.py            snapshots + template -> dashboard.html
+build_site.py                 snapshots + templates -> site/
 agent_run.py / ingest.py      the daily data refresh
 ```
 
