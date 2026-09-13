@@ -66,26 +66,52 @@ in the fundamentals estimate; approval adds 0.2 points per point of net
 approval. Settings live at the top of `model.py` and in
 `data/fundamentals_2026.json`.
 
-## Daily automation (GitHub Actions)
+## Refreshing it
 
-`.github/workflows/daily-forecast.yml` runs every day at 16:00 UTC (noon
-Eastern in daylight time) and on demand from the Actions tab:
+**Press Refresh in the site header.** It opens this repo's
+`Daily election forecast update` workflow; click **Run workflow** and the
+whole chain runs in about two minutes. The same chain runs on its own every
+day at 16:00 UTC (noon Eastern in daylight time).
 
-1. `agent_run.py` - one Claude conversation with web search refreshes the
-   generic ballot, approval, every economic indicator that has a newer
-   figure, Cook rating changes (only with a citation), and the Senate news
-   momentum reads. Every write goes through a validated function in
-   `ingest.py` / `atmospherics.py` (range checks, known ids), never a raw
-   file edit.
-2. `run_pipeline.py` - runs the model and saves `iterations/<timestamp>.json`
+The run form has three optional boxes:
+
+| Box | What it does |
+|---|---|
+| Generic ballot | Type today's average, e.g. `D+6.6` or `R+2.1`. Blank leaves it alone. |
+| Approval | Type `approve/disapprove`, e.g. `38/60`. Blank leaves it alone. |
+| AI refresh | Off by default. **This is the only thing that costs money.** |
+
+### What a run does
+
+1. `refresh_economy.py` - **free, no API key.** Pulls all ten economic
+   readings from the agencies that publish them (BLS, BEA, EIA, Treasury,
+   Freddie Mac, University of Michigan), read through the St. Louis Fed's
+   FRED mirror, which serves each series as keyless CSV. Derived figures
+   (CPI inflation, real wages, year-to-date return) are computed here. It
+   never replaces a newer figure with an older one.
+2. `set_polls.py` - writes the generic ballot and approval you typed, if
+   any. Polling averages live on pages, not in a data feed, so this is the
+   free way to keep them current.
+3. `agent_run.py` - the AI refresh, and the only paid step. One Claude
+   conversation with web search reads polling pages, Cook rating changes
+   and Senate campaign coverage. Skipped unless you tick the box, or set a
+   repository variable `AI_REFRESH=true` to let scheduled runs use it.
+   Needs the `ANTHROPIC_API_KEY` secret and credit on that account.
+4. `run_pipeline.py` - runs the model and saves `iterations/<timestamp>.json`
    with a status block that flags stale inputs.
-3. `build_site.py` - rebuilds the six pages in `site/` from
+5. `build_site.py` - rebuilds the six pages in `site/` from
    `site_template/` and every snapshot.
-4. Commits and pushes the results (rebasing and retrying if the branch
+6. Commits and pushes the results (rebasing and retrying if the branch
    moved during the run).
-5. Publishes `site/` to GitHub Pages (`deploy` job).
+7. Publishes `site/` to GitHub Pages (`deploy` job).
    `.github/workflows/pages.yml` also republishes whenever a person pushes
    a change to `site/`.
+
+Every write in steps 1 to 3 goes through a validated function in
+`ingest.py` / `atmospherics.py` (range checks, known ids), never a raw file
+edit. Steps 1 and 3 soft-fail: if a source is unreachable the run still
+simulates and republishes on the freshest data it has, and each reading
+shows its own as-of date on the site.
 
 ## Hosting
 
@@ -101,9 +127,10 @@ Two free GitHub Pages sites serve the same `site/` folder:
 One-time setup in each repo: Settings -> Pages -> Build and deployment ->
 Source: **GitHub Actions**.
 
-Needs one repository secret, `ANTHROPIC_API_KEY` (a workspace-scoped key
-from console.anthropic.com). Without it the run still re-simulates on the
-last-known data.
+No secrets are needed for a free run. `ANTHROPIC_API_KEY` (a
+workspace-scoped key from console.anthropic.com) is only for the optional
+AI refresh; without it, or without credit on it, that step is skipped and
+everything else still runs.
 
 ## Files
 
@@ -129,7 +156,10 @@ assets/og.png                 link-preview image
 model.py                      environment + simulation
 run_pipeline.py               model -> iterations/ snapshot
 build_site.py                 snapshots + templates -> site/
-agent_run.py / ingest.py      the daily data refresh
+refresh_economy.py            free economic refresh from public data series
+set_polls.py                  manual generic-ballot / approval entry
+agent_run.py                  optional AI refresh (ratings, Senate news)
+ingest.py                     the validated write functions all three use
 ```
 
 ## Honest limits

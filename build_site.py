@@ -15,6 +15,7 @@ and no libraries: the site works from a web server or straight off disk.
 
 Run: python3 build_site.py
 """
+import html
 import json
 import shutil
 from datetime import date, datetime, timezone
@@ -27,6 +28,10 @@ GEO_DIR = BASE / "geo"
 TEMPLATE_DIR = BASE / "site_template"
 OUT = BASE / "site"
 SITE_URL = "https://gh0stmahn-ai.github.io"
+# The Refresh control in the header points here: GitHub's own "Run workflow"
+# page for the daily pipeline. One click there re-runs the forecast on the
+# latest public data, with optional boxes for today's poll numbers.
+RUN_URL = "https://github.com/Gh0stmahn-ai/cd-election-agent/actions/workflows/daily-forecast.yml"
 ELECTION_DATE = date(2026, 11, 3)
 
 NAV = [
@@ -96,6 +101,12 @@ def page(slug, title, description, head_line, body, data, scripts):
 <header class="site-head"><div class="bar">
   <a class="brand plain" href="index.html"><span class="mark"><i></i><i></i></span>2026 Midterm Forecast</a>
   <nav class="main" aria-label="Sections">{nav}</nav>
+  <a class="refresh" href="{RUN_URL}" target="_blank" rel="noopener"
+     title="Re-run the forecast now on the latest public data (opens GitHub Actions)">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M14 8a6 6 0 1 1-1.8-4.3"></path><path d="M14 2v4h-4"></path>
+    </svg>Refresh</a>
 </div></header>
 
 <div class="wrap">
@@ -109,7 +120,8 @@ def page(slug, title, description, head_line, body, data, scripts):
 
 <footer class="site"><div class="wrap" style="padding-bottom:0">
   <div id="foot-updated"></div>
-  <div style="margin-top:6px">Built and updated daily by an automated pipeline.
+  <div style="margin-top:6px">Rebuilt every day at noon Eastern, and any time someone
+    presses <a href="{RUN_URL}">Refresh</a>.
     <a href="https://github.com/Gh0stmahn-ai/cd-election-agent">Source code and data on GitHub</a>.
     Forecast, not a prediction: read the <a href="methodology.html">methodology</a> first.</div>
 </div></footer>
@@ -429,14 +441,28 @@ def build_methodology(snap):
     atmo = json.loads((DATA_DIR / "atmospherics_2026.json").read_text())
     env = snap["environment"]
 
+    def cite(name, url=""):
+        """A source is a link when there's a real URL behind it, plain text otherwise.
+
+        Sources arrive in three shapes: {"name","url"} from the AI refresh and
+        the economy pull, a bare URL string, and a bare outlet name typed by
+        hand. Only the first two can be linked."""
+        url = (url or "").strip()
+        if not url and str(name).startswith(("http://", "https://")):
+            url, name = name, str(name).split("/")[2]
+        name = html.escape(str(name))
+        if not url.startswith(("http://", "https://")):
+            return name
+        return f'<a href="{html.escape(url)}" target="_blank" rel="noopener">{name}</a>'
+
     def srcs(items):
-        return " · ".join(f'<a href="{s["url"]}" target="_blank" rel="noopener">{s["name"]}</a>'
-                          for s in items) or "n/a"
+        out = []
+        for s in items:
+            out.append(cite(s["name"], s.get("url")) if isinstance(s, dict) else cite(s))
+        return " · ".join(out) or "n/a"
 
     rows = [("Generic congressional ballot", "Average of 2 to 3 public trackers, Democratic minus Republican",
-             "Every day", gb.get("as_of"),
-             " · ".join(f'<a href="{u}" target="_blank" rel="noopener">{u.split("/")[2]}</a>'
-                        for u in gb.get("sources", [])))]
+             "Every day", gb.get("as_of"), srcs(gb.get("sources", [])))]
     approval = next(p for p in fund["political"] if p["id"] == "approval")
     rows.append(("Presidential approval", "Average of public approval aggregates, net approval feeds the model",
                  "Every day", approval.get("as_of"), srcs(approval.get("sources", []))))
@@ -479,22 +505,38 @@ def build_methodology(snap):
     body = f"""
 <section class="prose">
   <h2>Where the numbers come from</h2>
-  <p>Nothing here is hand-entered day to day. A scheduled job runs at noon Eastern, an AI agent with web search
-  collects the current numbers from public sources, every value it writes passes through a validation layer, the
-  model re-runs, and this site is rebuilt and republished. The steps below are the whole chain.</p>
+  <p>A scheduled job runs at noon Eastern, collects current numbers from public sources, passes every value
+  through a validation layer, re-runs the model, and rebuilds and republishes this site. Pressing
+  <a href="{RUN_URL}">Refresh</a> runs the same chain on demand. The steps below are the whole of it.</p>
 
   <div class="step"><div class="n">1</div><div>
-    <h3>Collect</h3>
-    <p>One Claude conversation is given the current contents of every data file and a list of tasks: refresh the
-    generic ballot, refresh presidential approval, refresh each economic reading that has a newer figure published,
-    look for race rating changes, and write a fresh news-momentum read for each competitive Senate race. It must
-    run a web search before any value it writes, and it is told to average two or three public trackers rather than
-    lean on a single poll. Its search budget and turn count are capped, so a confused run stops instead of looping.</p>
+    <h3>Collect the economy, from the agencies that publish it</h3>
+    <p>All ten economic readings are pulled straight from the official series: consumer prices, wages, payrolls
+    and unemployment from the Bureau of Labor Statistics, GDP from the Bureau of Economic Analysis, gasoline and
+    oil from the Energy Information Administration, yields from the Treasury, the mortgage rate from Freddie Mac,
+    consumer sentiment from the University of Michigan. Each is read from the St. Louis Fed's FRED mirror, which
+    serves them as plain machine-readable files. Derived figures are computed here rather than copied from
+    anywhere: inflation is the year-over-year change in the CPI index, real wage growth is earnings growth minus
+    that, the year-to-date return is measured from the previous year's closing level. Each reading carries the
+    date the agency published it, shown on the <a href="economy.html">economy page</a>, and a refresh never
+    replaces a newer figure with an older one.</p>
   </div></div>
 
   <div class="step"><div class="n">2</div><div>
+    <h3>Collect the politics, which no one publishes as data</h3>
+    <p>Polling averages, rating changes and campaign news are not data series; they live on pages that have to be
+    read. Two things can do that. An AI refresh, one Claude conversation with web search, is given the current
+    contents of every data file and told to average two or three public trackers rather than lean on a single
+    poll, to change a race rating only with a cited rating change from a named forecaster, and to run a search
+    before any value it writes; its search budget and turn count are capped, so a confused run stops instead of
+    looping. Failing that, the generic ballot and approval can be typed into the run form by hand. Either way the
+    numbers land through the same validator, and the economy above refreshes regardless.</p>
+  </div></div>
+
+  <div class="step"><div class="n">3</div><div>
     <h3>Write through a validator, never directly</h3>
-    <p>The agent cannot edit a data file. It can only call six functions, each of which checks what it is given:
+    <p>Nothing writes to a data file directly, not the economy pull, not the AI refresh, not a number typed by
+    hand. Every value goes through one of the same small set of functions, each of which checks what it is given:
     ratings must be one of solid, likely, lean or toss-up; district and race ids must already exist; the generic
     ballot must fall between D+30 and R+30; the news-momentum nudge is clamped to +/-0.08; and every economic
     reading has a plausible range (gas $1.50 to $8.00, unemployment 2% to 15%, and so on) so a misread page cannot
@@ -502,7 +544,7 @@ def build_methodology(snap):
     economy page. A rejected write comes back to the agent as an error it has to fix rather than silently landing.</p>
   </div></div>
 
-  <div class="step"><div class="n">3</div><div>
+  <div class="step"><div class="n">4</div><div>
     <h3>Turn readings into a national environment</h3>
     <p>Polls and fundamentals are blended: today the generic ballot carries
     {int(env['poll_weight'] * 100)}% and the fundamentals estimate {int((1 - env['poll_weight']) * 100)}%, with the
@@ -511,7 +553,7 @@ def build_methodology(snap):
     economic index below.</p>
   </div></div>
 
-  <div class="step"><div class="n">4</div><div>
+  <div class="step"><div class="n">5</div><div>
     <h3>Simulate every race 20,000 times</h3>
     <p>Each race starts from its published rating, converted to an expected margin (Solid 18 points, Likely 9,
     Lean 4.5, Toss-up 0.5 toward the party that holds it). Ratings already reflect the environment when they were
@@ -521,7 +563,7 @@ def build_methodology(snap):
     seat ranges are wide rather than falsely precise.</p>
   </div></div>
 
-  <div class="step"><div class="n">5</div><div>
+  <div class="step"><div class="n">6</div><div>
     <h3>Publish, and keep the receipts</h3>
     <p>Every run is saved as a timestamped snapshot with a status block that flags any input that has gone stale,
     so a quiet data failure shows up instead of old numbers being served as fresh. Past runs are never overwritten,
