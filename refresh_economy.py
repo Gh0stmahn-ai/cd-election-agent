@@ -111,9 +111,15 @@ def yoy_percent(series_id):
 
 
 def sources_for(*series_ids):
-    out = []
+    """Cite each producer once. Several readings combine two series from the
+    same agency (headline and core CPI, the rate and payrolls), and naming the
+    Bureau of Labor Statistics twice in a row just looks like a bug."""
+    out, seen = [], set()
     for sid in series_ids:
         name, ref = PRODUCER[sid]
+        if name in seen:
+            continue
+        seen.add(name)
         out.append({"name": name, "url": FRED_PAGE.format(ref)})
     return out
 
