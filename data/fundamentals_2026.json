@@ -88,10 +88,6 @@
     {
      "name": "Bureau of Labor Statistics (via FRED)",
      "url": "https://fred.stlouisfed.org/series/CPIAUCSL"
-    },
-    {
-     "name": "Bureau of Labor Statistics (via FRED)",
-     "url": "https://fred.stlouisfed.org/series/CPILFESL"
     }
    ]
   },
@@ -146,10 +142,6 @@
     {
      "name": "Bureau of Labor Statistics (via FRED)",
      "url": "https://fred.stlouisfed.org/series/CES0500000003"
-    },
-    {
-     "name": "Bureau of Labor Statistics (via FRED)",
-     "url": "https://fred.stlouisfed.org/series/CPIAUCSL"
     }
    ]
   },
@@ -177,10 +169,6 @@
     {
      "name": "Bureau of Labor Statistics (via FRED)",
      "url": "https://fred.stlouisfed.org/series/UNRATE"
-    },
-    {
-     "name": "Bureau of Labor Statistics (via FRED)",
-     "url": "https://fred.stlouisfed.org/series/PAYEMS"
     }
    ]
   },
