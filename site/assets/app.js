@@ -365,8 +365,16 @@ function effectChip(scoreForPres) {
 }
 function sourceLinks(list) {
   return (list || []).map(function (s) {
-    return '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.name) + "</a>";
-  }).join(" · ");
+    // Sources come in three shapes: {name, url}, a bare URL string, and a bare
+    // outlet name typed by hand. Only the first two can be linked; the third
+    // still gets named rather than rendered as a dead link.
+    var name = (typeof s === "string") ? s : (s && s.name) || "";
+    var url = (typeof s === "string") ? s : (s && s.url) || "";
+    var isLink = /^https?:\/\//.test(url);
+    if (isLink && name === url) { name = url.split("/")[2] || url; }
+    if (!isLink) { return esc(name); }
+    return '<a href="' + esc(url) + '" target="_blank" rel="noopener">' + esc(name) + "</a>";
+  }).filter(Boolean).join(" · ");
 }
 
 function renderEnvironment(containerId, env) {

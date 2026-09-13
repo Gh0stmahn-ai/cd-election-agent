@@ -60,6 +60,12 @@ nav.main a { text-decoration: none; color: var(--ink-2); padding: 6px 11px; bord
 nav.main a:hover { background: var(--dem-wash); color: var(--ink); }
 nav.main a[aria-current="page"] { background: var(--ink); color: var(--surface); }
 .updated { font-size: 13px; color: var(--muted); }
+a.refresh { display: inline-flex; align-items: center; gap: 6px; margin-left: 10px;
+  padding: 6px 12px; border: 1px solid var(--grid); border-radius: 8px;
+  text-decoration: none; color: var(--ink-2); font-size: 14px; white-space: nowrap; }
+a.refresh:hover { border-color: var(--ink-2); color: var(--ink); }
+a.refresh svg { width: 13px; height: 13px; }
+@media (max-width: 640px) { a.refresh { margin-left: 0; } }
 .page-head { padding: 26px 0 6px; }
 h1 { font-size: 27px; line-height: 1.15; margin: 0; font-weight: 650; letter-spacing: -0.01em; }
 .sub { color: var(--ink-2); margin-top: 6px; max-width: 720px; }

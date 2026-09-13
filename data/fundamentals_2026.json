@@ -1,5 +1,5 @@
 {
- "as_of": "2026-09-11",
+ "as_of": "2026-09-13",
  "president_party": "R",
  "election_date": "2026-11-03",
  "note": "Everything here is something voters feel directly (prices, jobs, rates, their 401k) or a direct read of how they judge the president. Economic indicators are scored -1..+1 for how they help (+) or hurt (-) the president's party, weighted, and summed into one economic index. Presidential approval enters the fundamentals prior directly. Values are refreshed daily by agent_run.py (refresh_fundamental).",
@@ -68,15 +68,15 @@
    "id": "cpi_inflation",
    "label": "Inflation (CPI)",
    "category": "prices",
-   "value": 3.4,
+   "value": 3.7,
    "unit": "% y/y",
-   "display": "3.4%",
-   "as_of": "2026-07",
+   "display": "3.7%",
+   "as_of": "2026-08",
    "compare_label": "core",
-   "compare_value": 2.5,
-   "compare_display": "2.5% core",
-   "change_display": "Energy +14.7%, gasoline +24.6% y/y",
-   "context": "July CPI; August report due Sept 11 with consensus at 3.4% headline. Food at home +2.7%, shelter +3.2%. Wholesale prices (PPI) accelerated to 5.4% in August.",
+   "compare_value": 2.8,
+   "compare_display": "2.8% core",
+   "change_display": "Core (excluding food and energy) +2.8%",
+   "context": "Headline CPI, all urban consumers, versus the same month a year earlier.",
    "why": "Cost of living is the top issue for nearly half of registered voters in every party. Inflation sank Democrats in 2022 despite a strong job market.",
    "score": {
     "method": "level",
@@ -86,12 +86,12 @@
    },
    "sources": [
     {
-     "name": "BLS CPI, July 2026",
-     "url": "https://www.bls.gov/news.release/cpi.nr0.htm"
+     "name": "Bureau of Labor Statistics (via FRED)",
+     "url": "https://fred.stlouisfed.org/series/CPIAUCSL"
     },
     {
-     "name": "Kiplinger, August CPI preview",
-     "url": "https://www.kiplinger.com/investing/economy/cpi-report-august-2026-what-to-expect"
+     "name": "Bureau of Labor Statistics (via FRED)",
+     "url": "https://fred.stlouisfed.org/series/CPILFESL"
     }
    ]
   },
@@ -126,15 +126,15 @@
    "id": "real_wages",
    "label": "Real wage growth",
    "category": "economy",
-   "value": -0.3,
+   "value": -0.6,
    "unit": "% y/y",
-   "display": "-0.3%",
+   "display": "-0.6%",
    "as_of": "2026-08",
    "compare_label": "nominal wages",
    "compare_value": 3.1,
    "compare_display": "+3.1% nominal",
    "change_display": "Pay rising slower than prices",
-   "context": "Average hourly earnings +3.1% y/y (Aug) against 3.4% CPI inflation.",
+   "context": "Average hourly earnings growth minus CPI inflation, both year over year.",
    "why": "Paychecks that lose ground to prices are the core of the 'wrong track' mood. Income growth is one of the oldest predictors of how the president's party fares.",
    "score": {
     "method": "level",
@@ -144,8 +144,12 @@
    },
    "sources": [
     {
-     "name": "BLS Employment Situation, Aug 2026",
-     "url": "https://www.bls.gov/news.release/empsit.nr0.htm"
+     "name": "Bureau of Labor Statistics (via FRED)",
+     "url": "https://fred.stlouisfed.org/series/CES0500000003"
+    },
+    {
+     "name": "Bureau of Labor Statistics (via FRED)",
+     "url": "https://fred.stlouisfed.org/series/CPIAUCSL"
     }
    ]
   },
@@ -158,10 +162,10 @@
    "display": "4.1%",
    "as_of": "2026-08",
    "compare_label": "payrolls",
-   "compare_value": 162,
+   "compare_value": 162.0,
    "compare_display": "+162K jobs",
-   "change_display": "Prior 12-month average: +31K a month",
-   "context": "Unchanged in August. Labor force participation 61.6%, down 0.5 pt since January.",
+   "change_display": "Prior 12-month average: +50K a month",
+   "context": "Unemployment rate with the latest month's change in nonfarm payrolls.",
    "why": "Joblessness is low by historical standards, which blunts economic anger - but hiring has been weak most of the year.",
    "score": {
     "method": "level",
@@ -171,8 +175,12 @@
    },
    "sources": [
     {
-     "name": "BLS Employment Situation, Aug 2026",
-     "url": "https://www.bls.gov/news.release/empsit.nr0.htm"
+     "name": "Bureau of Labor Statistics (via FRED)",
+     "url": "https://fred.stlouisfed.org/series/UNRATE"
+    },
+    {
+     "name": "Bureau of Labor Statistics (via FRED)",
+     "url": "https://fred.stlouisfed.org/series/PAYEMS"
     }
    ]
   },
@@ -188,7 +196,7 @@
    "compare_value": 2.1,
    "compare_display": "2.1% in Q1",
    "change_display": "Slowing",
-   "context": "BEA second estimate for Q2 2026.",
+   "context": "Real GDP, percent change from the preceding quarter at an annual rate.",
    "why": "Background condition more than a voting issue; slow growth plus high prices is the stagflation mix that erodes support for the party in power.",
    "score": {
     "method": "level",
@@ -198,8 +206,8 @@
    },
    "sources": [
     {
-     "name": "BEA via Advisor Perspectives, Q2 2026 second estimate",
-     "url": "https://www.advisorperspectives.com/dshort/updates/2026/08/26/q2-gdp-second-estimate-real-gdp-at-1-5-unchanged"
+     "name": "Bureau of Economic Analysis (via FRED)",
+     "url": "https://fred.stlouisfed.org/series/A191RL1Q225SBEA"
     }
    ]
   },
@@ -212,10 +220,10 @@
    "display": "6.76%",
    "as_of": "2026-09-10",
    "compare_label": "a year ago",
-   "compare_value": 6.35,
-   "compare_display": "6.35%",
-   "change_display": "+0.41 pt vs a year ago",
-   "context": "Freddie Mac PMMS. 15-year at 6.09%.",
+   "compare_value": 6.5,
+   "compare_display": "6.50%",
+   "change_display": "+0.26 pt vs a year ago",
+   "context": "Freddie Mac Primary Mortgage Market Survey, 30-year fixed.",
    "why": "Housing costs rank second only to health care among costs voters want Congress to address. Higher rates lock younger voters out of buying.",
    "score": {
     "method": "level",
@@ -225,8 +233,8 @@
    },
    "sources": [
     {
-     "name": "Freddie Mac PMMS, Sept 10 2026",
-     "url": "https://www.globenewswire.com/news-release/2026/09/10/3359803/0/en/mortgage-rates-average-6-76.html"
+     "name": "Freddie Mac (via FRED)",
+     "url": "https://fred.stlouisfed.org/series/MORTGAGE30US"
     }
    ]
   },
@@ -265,15 +273,15 @@
    "id": "sp500",
    "label": "S&P 500",
    "category": "markets",
-   "value": 7591.7,
+   "value": 7656.98,
    "unit": "index",
-   "display": "7,592",
-   "as_of": "2026-09-10",
+   "display": "7,657",
+   "as_of": "2026-09-11",
    "compare_label": "year to date",
-   "compare_value": 12.3,
-   "compare_display": "+12.3% YTD",
-   "change_display": "4 straight down days; record high Aug 13",
-   "context": "S&P 500 closed at 7,591.7 on Sept 10, down 0.6% on the day amid oil price concerns. YTD gain now +12.3% (price only) through Sept 10.",
+   "compare_value": 11.9,
+   "compare_display": "+11.9% YTD",
+   "change_display": "+11.9% since the 2025 close",
+   "context": "S&P 500 closing level, with the year-to-date return.",
    "why": "Matters most to the roughly 6 in 10 households with market exposure through 401(k)s. A weak link to midterm results on its own, but a falling market in October feeds the bad-news cycle.",
    "score": {
     "method": "level",
@@ -284,12 +292,8 @@
    },
    "sources": [
     {
-     "name": "Yahoo Finance",
-     "url": "https://finance.yahoo.com/quote/%5ESPX/history/"
-    },
-    {
-     "name": "ChartRow",
-     "url": "https://chartrow.com/sp500/ytd"
+     "name": "S&P Dow Jones Indices (via FRED)",
+     "url": "https://fred.stlouisfed.org/series/SP500"
     }
    ]
   }

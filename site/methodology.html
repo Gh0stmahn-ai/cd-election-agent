@@ -23,6 +23,12 @@
 <header class="site-head"><div class="bar">
   <a class="brand plain" href="index.html"><span class="mark"><i></i><i></i></span>2026 Midterm Forecast</a>
   <nav class="main" aria-label="Sections"><a href="index.html">Overview</a><a href="senate.html">Senate</a><a href="house.html">House</a><a href="economy.html">Economy</a><a href="trend.html">Trend</a><a href="methodology.html" aria-current="page">Methodology</a></nav>
+  <a class="refresh" href="https://github.com/Gh0stmahn-ai/cd-election-agent/actions/workflows/daily-forecast.yml" target="_blank" rel="noopener"
+     title="Re-run the forecast now on the latest public data (opens GitHub Actions)">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M14 8a6 6 0 1 1-1.8-4.3"></path><path d="M14 2v4h-4"></path>
+    </svg>Refresh</a>
 </div></header>
 
 <div class="wrap">
@@ -33,22 +39,38 @@
 
 <section class="prose">
   <h2>Where the numbers come from</h2>
-  <p>Nothing here is hand-entered day to day. A scheduled job runs at noon Eastern, an AI agent with web search
-  collects the current numbers from public sources, every value it writes passes through a validation layer, the
-  model re-runs, and this site is rebuilt and republished. The steps below are the whole chain.</p>
+  <p>A scheduled job runs at noon Eastern, collects current numbers from public sources, passes every value
+  through a validation layer, re-runs the model, and rebuilds and republishes this site. Pressing
+  <a href="https://github.com/Gh0stmahn-ai/cd-election-agent/actions/workflows/daily-forecast.yml">Refresh</a> runs the same chain on demand. The steps below are the whole of it.</p>
 
   <div class="step"><div class="n">1</div><div>
-    <h3>Collect</h3>
-    <p>One Claude conversation is given the current contents of every data file and a list of tasks: refresh the
-    generic ballot, refresh presidential approval, refresh each economic reading that has a newer figure published,
-    look for race rating changes, and write a fresh news-momentum read for each competitive Senate race. It must
-    run a web search before any value it writes, and it is told to average two or three public trackers rather than
-    lean on a single poll. Its search budget and turn count are capped, so a confused run stops instead of looping.</p>
+    <h3>Collect the economy, from the agencies that publish it</h3>
+    <p>All ten economic readings are pulled straight from the official series: consumer prices, wages, payrolls
+    and unemployment from the Bureau of Labor Statistics, GDP from the Bureau of Economic Analysis, gasoline and
+    oil from the Energy Information Administration, yields from the Treasury, the mortgage rate from Freddie Mac,
+    consumer sentiment from the University of Michigan. Each is read from the St. Louis Fed's FRED mirror, which
+    serves them as plain machine-readable files. Derived figures are computed here rather than copied from
+    anywhere: inflation is the year-over-year change in the CPI index, real wage growth is earnings growth minus
+    that, the year-to-date return is measured from the previous year's closing level. Each reading carries the
+    date the agency published it, shown on the <a href="economy.html">economy page</a>, and a refresh never
+    replaces a newer figure with an older one.</p>
   </div></div>
 
   <div class="step"><div class="n">2</div><div>
+    <h3>Collect the politics, which no one publishes as data</h3>
+    <p>Polling averages, rating changes and campaign news are not data series; they live on pages that have to be
+    read. Two things can do that. An AI refresh, one Claude conversation with web search, is given the current
+    contents of every data file and told to average two or three public trackers rather than lean on a single
+    poll, to change a race rating only with a cited rating change from a named forecaster, and to run a search
+    before any value it writes; its search budget and turn count are capped, so a confused run stops instead of
+    looping. Failing that, the generic ballot and approval can be typed into the run form by hand. Either way the
+    numbers land through the same validator, and the economy above refreshes regardless.</p>
+  </div></div>
+
+  <div class="step"><div class="n">3</div><div>
     <h3>Write through a validator, never directly</h3>
-    <p>The agent cannot edit a data file. It can only call six functions, each of which checks what it is given:
+    <p>Nothing writes to a data file directly, not the economy pull, not the AI refresh, not a number typed by
+    hand. Every value goes through one of the same small set of functions, each of which checks what it is given:
     ratings must be one of solid, likely, lean or toss-up; district and race ids must already exist; the generic
     ballot must fall between D+30 and R+30; the news-momentum nudge is clamped to +/-0.08; and every economic
     reading has a plausible range (gas $1.50 to $8.00, unemployment 2% to 15%, and so on) so a misread page cannot
@@ -56,7 +78,7 @@
     economy page. A rejected write comes back to the agent as an error it has to fix rather than silently landing.</p>
   </div></div>
 
-  <div class="step"><div class="n">3</div><div>
+  <div class="step"><div class="n">4</div><div>
     <h3>Turn readings into a national environment</h3>
     <p>Polls and fundamentals are blended: today the generic ballot carries
     83% and the fundamentals estimate 17%, with the
@@ -65,7 +87,7 @@
     economic index below.</p>
   </div></div>
 
-  <div class="step"><div class="n">4</div><div>
+  <div class="step"><div class="n">5</div><div>
     <h3>Simulate every race 20,000 times</h3>
     <p>Each race starts from its published rating, converted to an expected margin (Solid 18 points, Likely 9,
     Lean 4.5, Toss-up 0.5 toward the party that holds it). Ratings already reflect the environment when they were
@@ -75,7 +97,7 @@
     seat ranges are wide rather than falsely precise.</p>
   </div></div>
 
-  <div class="step"><div class="n">5</div><div>
+  <div class="step"><div class="n">6</div><div>
     <h3>Publish, and keep the receipts</h3>
     <p>Every run is saved as a timestamped snapshot with a status block that flags any input that has gone stale,
     so a quiet data failure shows up instead of old numbers being served as fresh. Past runs are never overwritten,
@@ -88,7 +110,7 @@
   <h2>Every input, and where it comes from</h2>
   <div class="card tbl-scroll"><table>
     <thead><tr><th>Input</th><th>What it is</th><th>Refresh</th><th>As of</th><th>Sources</th></tr></thead>
-    <tbody><tr><td><b>Generic congressional ballot</b></td><td>Average of 2 to 3 public trackers, Democratic minus Republican</td><td>Every day</td><td>2026-09-11</td><td><a href="https://www.realclearpolling.com/polls/state-of-the-union/generic-congressional-vote" target="_blank" rel="noopener">www.realclearpolling.com</a> · <a href="https://www.natesilver.net/p/generic-ballot-average-2026-nate-silver-bulletin-congress-polls" target="_blank" rel="noopener">www.natesilver.net</a> · <a href="https://uspollingdata.com/polls/" target="_blank" rel="noopener">uspollingdata.com</a></td></tr><tr><td><b>Presidential approval</b></td><td>Average of public approval aggregates, net approval feeds the model</td><td>Every day</td><td>2026-09-11</td><td><a href="https://www.realclearpolling.com/polls/approval/donald-trump/approval-rating" target="_blank" rel="noopener">RealClearPolling</a> · <a href="https://ballotpedia.org/Ballotpedia's_Polling_Index:_Presidential_approval_rating" target="_blank" rel="noopener">Ballotpedia</a> · <a href="https://uspollingdata.com/polls/trump-approval/" target="_blank" rel="noopener">USPollingData</a> · <a href="https://www.natesilver.net/p/trump-approval-ratings-nate-silver-bulletin" target="_blank" rel="noopener">Silver Bulletin</a></td></tr><tr><td><b>Gas price</b></td><td>$/gal, weight 18% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-09-10</td><td><a href="https://www.finder.com/economics/gas-prices" target="_blank" rel="noopener">Finder weekly national average (AAA data)</a> · <a href="https://gasprices.aaa.com/2025/09/" target="_blank" rel="noopener">AAA, Sept 11 2025 national average</a></td></tr><tr><td><b>Oil (WTI)</b></td><td>Context only, not scored</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-09-11</td><td><a href="https://tradingeconomics.com/commodity/crude-oil" target="_blank" rel="noopener">Trading Economics</a> · <a href="https://fortune.com/article/price-of-oil-09-11-2026/" target="_blank" rel="noopener">Fortune</a></td></tr><tr><td><b>Inflation (CPI)</b></td><td>% y/y, weight 18% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-07</td><td><a href="https://www.bls.gov/news.release/cpi.nr0.htm" target="_blank" rel="noopener">BLS CPI, July 2026</a> · <a href="https://www.kiplinger.com/investing/economy/cpi-report-august-2026-what-to-expect" target="_blank" rel="noopener">Kiplinger, August CPI preview</a></td></tr><tr><td><b>Consumer sentiment</b></td><td>index, weight 18% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-08</td><td><a href="https://www.advisorperspectives.com/dshort/updates/2026/08/28/consumer-sentiment-falls-in-august" target="_blank" rel="noopener">Advisor Perspectives on UMich, Aug 2026</a></td></tr><tr><td><b>Real wage growth</b></td><td>% y/y, weight 10% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-08</td><td><a href="https://www.bls.gov/news.release/empsit.nr0.htm" target="_blank" rel="noopener">BLS Employment Situation, Aug 2026</a></td></tr><tr><td><b>Unemployment</b></td><td>%, weight 10% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-08</td><td><a href="https://www.bls.gov/news.release/empsit.nr0.htm" target="_blank" rel="noopener">BLS Employment Situation, Aug 2026</a></td></tr><tr><td><b>GDP growth</b></td><td>% annualized, weight 8% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-Q2</td><td><a href="https://www.advisorperspectives.com/dshort/updates/2026/08/26/q2-gdp-second-estimate-real-gdp-at-1-5-unchanged" target="_blank" rel="noopener">BEA via Advisor Perspectives, Q2 2026 second estimate</a></td></tr><tr><td><b>30-yr mortgage rate</b></td><td>%, weight 7% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-09-10</td><td><a href="https://www.globenewswire.com/news-release/2026/09/10/3359803/0/en/mortgage-rates-average-6-76.html" target="_blank" rel="noopener">Freddie Mac PMMS, Sept 10 2026</a></td></tr><tr><td><b>10-yr Treasury yield</b></td><td>%, weight 3% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-09-11</td><td><a href="https://tradingeconomics.com/united-states/government-bond-yield" target="_blank" rel="noopener">Trading Economics</a> · <a href="https://www.cnbc.com/2026/09/09/treasury-yields-oil-inflation.html" target="_blank" rel="noopener">CNBC</a></td></tr><tr><td><b>S&P 500</b></td><td>index, weight 5% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-09-10</td><td><a href="https://finance.yahoo.com/quote/%5ESPX/history/" target="_blank" rel="noopener">Yahoo Finance</a> · <a href="https://chartrow.com/sp500/ytd" target="_blank" rel="noopener">ChartRow</a></td></tr><tr><td><b>Senate race ratings</b></td><td>35 races, Cook Political Report</td><td>Checked daily, changed only on a cited rating change</td><td>2026-09-11</td><td><a href="https://www.cookpolitical.com/ratings/senate-race-ratings" target="_blank" rel="noopener">cookpolitical.com</a></td></tr><tr><td><b>House race ratings</b></td><td>435 districts, Cook Political Report</td><td>Checked daily, changed only on a cited rating change</td><td>2026-09-11</td><td><a href="https://www.cookpolitical.com/ratings/house-race-ratings" target="_blank" rel="noopener">cookpolitical.com</a></td></tr><tr><td><b>News momentum (Senate)</b></td><td>10 toss-up and lean races, capped at +/-0.08 win probability</td><td>Every day</td><td>2026-09-11</td><td>Cited in each race's entry in data/atmospherics_2026.json</td></tr><tr><td><b>State and district geometry</b></td><td>Natural Earth 1:50m state shapes; hexagon layout generated once</td><td>Fixed</td><td>2026-09-11</td><td><a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener">naturalearthdata.com</a> (public domain)</td></tr></tbody>
+    <tbody><tr><td><b>Generic congressional ballot</b></td><td>Average of 2 to 3 public trackers, Democratic minus Republican</td><td>Every day</td><td>2026-09-11</td><td><a href="https://www.realclearpolling.com/polls/state-of-the-union/generic-congressional-vote" target="_blank" rel="noopener">www.realclearpolling.com</a> · <a href="https://www.natesilver.net/p/generic-ballot-average-2026-nate-silver-bulletin-congress-polls" target="_blank" rel="noopener">www.natesilver.net</a> · <a href="https://uspollingdata.com/polls/" target="_blank" rel="noopener">uspollingdata.com</a></td></tr><tr><td><b>Presidential approval</b></td><td>Average of public approval aggregates, net approval feeds the model</td><td>Every day</td><td>2026-09-11</td><td><a href="https://www.realclearpolling.com/polls/approval/donald-trump/approval-rating" target="_blank" rel="noopener">RealClearPolling</a> · <a href="https://ballotpedia.org/Ballotpedia&#x27;s_Polling_Index:_Presidential_approval_rating" target="_blank" rel="noopener">Ballotpedia</a> · <a href="https://uspollingdata.com/polls/trump-approval/" target="_blank" rel="noopener">USPollingData</a> · <a href="https://www.natesilver.net/p/trump-approval-ratings-nate-silver-bulletin" target="_blank" rel="noopener">Silver Bulletin</a></td></tr><tr><td><b>Gas price</b></td><td>$/gal, weight 18% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-09-10</td><td><a href="https://www.finder.com/economics/gas-prices" target="_blank" rel="noopener">Finder weekly national average (AAA data)</a> · <a href="https://gasprices.aaa.com/2025/09/" target="_blank" rel="noopener">AAA, Sept 11 2025 national average</a></td></tr><tr><td><b>Oil (WTI)</b></td><td>Context only, not scored</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-09-11</td><td><a href="https://tradingeconomics.com/commodity/crude-oil" target="_blank" rel="noopener">Trading Economics</a> · <a href="https://fortune.com/article/price-of-oil-09-11-2026/" target="_blank" rel="noopener">Fortune</a></td></tr><tr><td><b>Inflation (CPI)</b></td><td>% y/y, weight 18% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-08</td><td><a href="https://fred.stlouisfed.org/series/CPIAUCSL" target="_blank" rel="noopener">Bureau of Labor Statistics (via FRED)</a> · <a href="https://fred.stlouisfed.org/series/CPILFESL" target="_blank" rel="noopener">Bureau of Labor Statistics (via FRED)</a></td></tr><tr><td><b>Consumer sentiment</b></td><td>index, weight 18% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-08</td><td><a href="https://www.advisorperspectives.com/dshort/updates/2026/08/28/consumer-sentiment-falls-in-august" target="_blank" rel="noopener">Advisor Perspectives on UMich, Aug 2026</a></td></tr><tr><td><b>Real wage growth</b></td><td>% y/y, weight 10% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-08</td><td><a href="https://fred.stlouisfed.org/series/CES0500000003" target="_blank" rel="noopener">Bureau of Labor Statistics (via FRED)</a> · <a href="https://fred.stlouisfed.org/series/CPIAUCSL" target="_blank" rel="noopener">Bureau of Labor Statistics (via FRED)</a></td></tr><tr><td><b>Unemployment</b></td><td>%, weight 10% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-08</td><td><a href="https://fred.stlouisfed.org/series/UNRATE" target="_blank" rel="noopener">Bureau of Labor Statistics (via FRED)</a> · <a href="https://fred.stlouisfed.org/series/PAYEMS" target="_blank" rel="noopener">Bureau of Labor Statistics (via FRED)</a></td></tr><tr><td><b>GDP growth</b></td><td>% annualized, weight 8% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-Q2</td><td><a href="https://fred.stlouisfed.org/series/A191RL1Q225SBEA" target="_blank" rel="noopener">Bureau of Economic Analysis (via FRED)</a></td></tr><tr><td><b>30-yr mortgage rate</b></td><td>%, weight 7% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-09-10</td><td><a href="https://fred.stlouisfed.org/series/MORTGAGE30US" target="_blank" rel="noopener">Freddie Mac (via FRED)</a></td></tr><tr><td><b>10-yr Treasury yield</b></td><td>%, weight 3% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-09-11</td><td><a href="https://tradingeconomics.com/united-states/government-bond-yield" target="_blank" rel="noopener">Trading Economics</a> · <a href="https://www.cnbc.com/2026/09/09/treasury-yields-oil-inflation.html" target="_blank" rel="noopener">CNBC</a></td></tr><tr><td><b>S&P 500</b></td><td>index, weight 5% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-09-11</td><td><a href="https://fred.stlouisfed.org/series/SP500" target="_blank" rel="noopener">S&amp;P Dow Jones Indices (via FRED)</a></td></tr><tr><td><b>Senate race ratings</b></td><td>35 races, Cook Political Report</td><td>Checked daily, changed only on a cited rating change</td><td>2026-09-11</td><td><a href="https://www.cookpolitical.com/ratings/senate-race-ratings" target="_blank" rel="noopener">cookpolitical.com</a></td></tr><tr><td><b>House race ratings</b></td><td>435 districts, Cook Political Report</td><td>Checked daily, changed only on a cited rating change</td><td>2026-09-11</td><td><a href="https://www.cookpolitical.com/ratings/house-race-ratings" target="_blank" rel="noopener">cookpolitical.com</a></td></tr><tr><td><b>News momentum (Senate)</b></td><td>10 toss-up and lean races, capped at +/-0.08 win probability</td><td>Every day</td><td>2026-09-11</td><td>Cited in each race's entry in data/atmospherics_2026.json</td></tr><tr><td><b>State and district geometry</b></td><td>Natural Earth 1:50m state shapes; hexagon layout generated once</td><td>Fixed</td><td>2026-09-11</td><td><a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener">naturalearthdata.com</a> (public domain)</td></tr></tbody>
   </table></div>
 </section>
 
@@ -100,7 +122,7 @@
   <div class="card tbl-scroll"><table>
     <thead><tr><th>Reading</th><th>Current</th><th>Scored on</th><th class="num">Neutral</th><th class="num">Weight</th>
       <th class="num">Score</th><th class="num">Points of margin</th></tr></thead>
-    <tbody><tr><td>Gas price</td><td>$4.30</td><td>change vs a year ago</td><td class='num'>0.0</td><td class='num'>18%</td><td class='num'>-1.00</td><td class='num'>+0.56</td></tr><tr><td>Inflation (CPI)</td><td>3.4%</td><td>level</td><td class='num'>2.5</td><td class='num'>18%</td><td class='num'>-0.45</td><td class='num'>+0.25</td></tr><tr><td>Consumer sentiment</td><td>51.7</td><td>level</td><td class='num'>75.0</td><td class='num'>18%</td><td class='num'>-1.00</td><td class='num'>+0.56</td></tr><tr><td>Real wage growth</td><td>-0.3%</td><td>level</td><td class='num'>1.0</td><td class='num'>10%</td><td class='num'>-0.87</td><td class='num'>+0.27</td></tr><tr><td>Unemployment</td><td>4.1%</td><td>level</td><td class='num'>4.5</td><td class='num'>10%</td><td class='num'>+0.27</td><td class='num'>-0.08</td></tr><tr><td>GDP growth</td><td>1.5%</td><td>level</td><td class='num'>2.0</td><td class='num'>8%</td><td class='num'>-0.25</td><td class='num'>+0.06</td></tr><tr><td>30-yr mortgage rate</td><td>6.76%</td><td>level</td><td class='num'>6.0</td><td class='num'>7%</td><td class='num'>-0.51</td><td class='num'>+0.11</td></tr><tr><td>10-yr Treasury yield</td><td>4.97%</td><td>level</td><td class='num'>4.0</td><td class='num'>3%</td><td class='num'>-0.65</td><td class='num'>+0.06</td></tr><tr><td>S&P 500</td><td>7,592</td><td>year-to-date %</td><td class='num'>5.0</td><td class='num'>5%</td><td class='num'>+0.49</td><td class='num'>-0.08</td></tr></tbody>
+    <tbody><tr><td>Gas price</td><td>$4.30</td><td>change vs a year ago</td><td class='num'>0.0</td><td class='num'>18%</td><td class='num'>-1.00</td><td class='num'>+0.56</td></tr><tr><td>Inflation (CPI)</td><td>3.7%</td><td>level</td><td class='num'>2.5</td><td class='num'>18%</td><td class='num'>-0.60</td><td class='num'>+0.33</td></tr><tr><td>Consumer sentiment</td><td>51.7</td><td>level</td><td class='num'>75.0</td><td class='num'>18%</td><td class='num'>-1.00</td><td class='num'>+0.56</td></tr><tr><td>Real wage growth</td><td>-0.6%</td><td>level</td><td class='num'>1.0</td><td class='num'>10%</td><td class='num'>-1.00</td><td class='num'>+0.31</td></tr><tr><td>Unemployment</td><td>4.1%</td><td>level</td><td class='num'>4.5</td><td class='num'>10%</td><td class='num'>+0.27</td><td class='num'>-0.08</td></tr><tr><td>GDP growth</td><td>1.5%</td><td>level</td><td class='num'>2.0</td><td class='num'>8%</td><td class='num'>-0.25</td><td class='num'>+0.06</td></tr><tr><td>30-yr mortgage rate</td><td>6.76%</td><td>level</td><td class='num'>6.0</td><td class='num'>7%</td><td class='num'>-0.51</td><td class='num'>+0.11</td></tr><tr><td>10-yr Treasury yield</td><td>4.97%</td><td>level</td><td class='num'>4.0</td><td class='num'>3%</td><td class='num'>-0.65</td><td class='num'>+0.06</td></tr><tr><td>S&P 500</td><td>7,657</td><td>year-to-date %</td><td class='num'>5.0</td><td class='num'>5%</td><td class='num'>+0.46</td><td class='num'>-0.07</td></tr></tbody>
   </table></div>
 </section>
 
@@ -127,14 +149,15 @@
 
 <footer class="site"><div class="wrap" style="padding-bottom:0">
   <div id="foot-updated"></div>
-  <div style="margin-top:6px">Built and updated daily by an automated pipeline.
+  <div style="margin-top:6px">Rebuilt every day at noon Eastern, and any time someone
+    presses <a href="https://github.com/Gh0stmahn-ai/cd-election-agent/actions/workflows/daily-forecast.yml">Refresh</a>.
     <a href="https://github.com/Gh0stmahn-ai/cd-election-agent">Source code and data on GitHub</a>.
     Forecast, not a prediction: read the <a href="methodology.html">methodology</a> first.</div>
 </div></footer>
 
 <script src="assets/app.js"></script>
 <script>
-const PAGE_DATA = {"site":{"timestamp":"2026-09-13T18:35:31.809486+00:00","status":"success"}};
+const PAGE_DATA = {"site":{"timestamp":"2026-09-13T23:29:33.225749+00:00","status":"success"}};
 FC.init();
 (function () {
   var s = PAGE_DATA.site;
