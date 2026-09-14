@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Betting markets · 2026 Midterm Forecast</title>
+<meta name="description" content="What real money says about the 2026 midterms, next to what this model says, and why the two are never averaged together.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Betting markets · 2026 Midterm Forecast">
+<meta property="og:description" content="What real money says about the 2026 midterms, next to what this model says, and why the two are never averaged together.">
+<meta property="og:url" content="https://gh0stmahn-ai.github.io/markets.html">
+<meta property="og:image" content="https://gh0stmahn-ai.github.io/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Betting markets · 2026 Midterm Forecast">
+<meta name="twitter:description" content="What real money says about the 2026 midterms, next to what this model says, and why the two are never averaged together.">
+<meta name="twitter:image" content="https://gh0stmahn-ai.github.io/assets/og.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23f6f5f1'/%3E%3Crect x='5' y='8' width='10' height='18' rx='2' fill='%232a78d6'/%3E%3Crect x='17' y='8' width='10' height='18' rx='2' fill='%23c74845'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="site-head"><div class="bar">
+  <a class="brand plain" href="index.html"><span class="mark"><i></i><i></i></span>2026 Midterm Forecast</a>
+  <nav class="main" aria-label="Sections"><a href="index.html">Overview</a><a href="senate.html">Senate</a><a href="house.html">House</a><a href="economy.html">Economy</a><a href="trend.html">Trend</a><a href="markets.html" aria-current="page">Markets</a><a href="methodology.html">Methodology</a></nav>
+  <a class="refresh" href="https://github.com/Gh0stmahn-ai/cd-election-agent/actions/workflows/daily-forecast.yml" target="_blank" rel="noopener"
+     title="Re-run the forecast now on the latest public data (opens GitHub Actions)">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M14 8a6 6 0 1 1-1.8-4.3"></path><path d="M14 2v4h-4"></path>
+    </svg>Refresh</a>
+</div></header>
+
+<div class="wrap">
+<div class="page-head">
+  <h1>What the betting markets say</h1>
+  <div class="sub">Two exchanges, real money, next to this model's answer. Shown side by side and never blended into the forecast.</div>
+</div>
+
+<section>
+  <div class="card">
+    <div class="chamber-label">Chance Democrats win each chamber</div>
+    <svg id="mkt-compare" viewBox="0 0 520 200" role="img"
+         aria-label="Model and market probabilities for each chamber"></svg>
+    <div class="legend" id="mkt-legend"></div>
+    <p class="note">Filled circle is this model. Hollow shapes are real money: Kalshi is a
+    CFTC-regulated US exchange, Polymarket settles in crypto. Shape rather than colour tells
+    them apart, because on this site blue means Democratic and red means Republican.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Where the model and the market disagree</h2>
+  <p class="lede">A gap is not proof either side is wrong. It is a question worth asking: what
+  does one of them know, or believe, that the other does not?</p>
+  <div class="grid2">
+    <div class="card"><div class="chamber-label">All four outcomes</div>
+      <svg id="mkt-joint" viewBox="0 0 520 210" role="img"
+           aria-label="Model and market probability for each combination of chambers"></svg>
+      <div class="legend" id="mkt-joint-legend"></div>
+      <p class="note">Kalshi prices all four combinations as one market, which is exactly
+      what the model's simulations produce. H is the House, S the Senate.</p>
+    </div>
+    
+  <div class="card">
+    <div class="chamber-label">The generic ballot, as priced</div>
+    <div class="eq">
+      <div class="term"><b id="gb-polls"></b><span>Polling average</span></div>
+      <div class="op">vs</div>
+      <div class="term"><b id="gb-market"></b><span>Kalshi popular vote market</span></div>
+    </div>
+    <p class="note">Kalshi runs a market on the House popular vote margin itself, in two-point
+    bands. The figure above is the average of those bands weighted by price: the margin the
+    market expects. It is the cleanest like-for-like reading here, because it prices the same
+    quantity the model takes from polls. $1,511,938 traded.</p>
+    <svg id="mkt-margin-bins" viewBox="0 0 520 150" role="img"
+         aria-label="Priced probability of each House popular vote margin band"></svg>
+  </div>
+  </div>
+</section>
+
+<section>
+  <h2>Seat counts, on the market's own buckets</h2>
+  <p class="lede">The model counts every possible seat total; the market sells blocks of them.
+  To compare the two, the model's simulations are folded into the market's buckets.</p>
+  <div class="grid2">
+    <div class="card"><div class="chamber-label">Democratic Senate seats</div>
+      <svg id="mkt-senate-seats" viewBox="0 0 520 240" role="img"
+           aria-label="Model and market distribution of Democratic Senate seats"></svg>
+      <div class="legend" id="mkt-senate-legend"></div></div>
+    <div class="card"><div class="chamber-label">Democratic House seats</div>
+      <svg id="mkt-house-seats" viewBox="0 0 520 240" role="img"
+           aria-label="Model and market distribution of Democratic House seats"></svg>
+      <div class="legend" id="mkt-house-legend"></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Race by race</h2>
+  <p class="lede">Every Senate race with a traded market, Democratic win chance either way.
+  Gaps of 10 points or more are picked out.</p>
+  <div id="mkt-races"></div>
+  <p class="note">Nebraska is compared on Dan Osborn's price: he runs as an independent, and
+  the model counts him as neither party.</p>
+</section>
+
+<section class="prose">
+  <h2>Why these numbers are not in the forecast</h2>
+  <p>They are shown, not blended. A prediction market is mostly a weighted digest of the same
+  polls and race ratings this model already reads, so averaging the two would be averaging a
+  thing with itself, while quietly importing the market's own quirks: thin books on minor
+  contracts, the long-standing tendency to overprice long shots, and the occasional single
+  large trader who moves a price on their own.</p>
+  <p>What a market does add is everything a ratings-and-polls model structurally cannot see:
+  candidate quality, a scandal, how a redistricting case is likely to land, what turnout will
+  actually look like. That is why the disagreement is worth showing rather than smoothing
+  away. When the two drift apart, one of them is wrong, and which one is a question you can
+  now watch rather than guess at. Prices are collected fresh on every run, and
+  $36,933,447 has been traded across the four chamber markets above.</p>
+</section>
+
+<div class="prev-next"><a href="trend.html">&#8592; Trend</a><a href="methodology.html">Methodology &#8594;</a></div>
+</div>
+
+<footer class="site"><div class="wrap" style="padding-bottom:0">
+  <div id="foot-updated"></div>
+  <div style="margin-top:6px">Rebuilt every day at noon Eastern, and any time someone
+    presses <a href="https://github.com/Gh0stmahn-ai/cd-election-agent/actions/workflows/daily-forecast.yml">Refresh</a>.
+    <a href="https://github.com/Gh0stmahn-ai/cd-election-agent">Source code and data on GitHub</a>.
+    Forecast, not a prediction: read the <a href="methodology.html">methodology</a> first.</div>
+</div></footer>
+
+<script src="assets/app.js"></script>
+<script>
+const PAGE_DATA = {"site":{"timestamp":"2026-09-14T00:43:51.419558+00:00","status":"success"},"rows":[{"chamber":"Senate","points":[{"key":"model","label":"This model","prob":0.3721},{"key":"kalshi","label":"Kalshi","prob":0.485,"volume":8291573},{"key":"polymarket","label":"Polymarket","prob":0.5303,"volume":4394569}]},{"chamber":"House","points":[{"key":"model","label":"This model","prob":0.5333},{"key":"kalshi","label":"Kalshi","prob":0.819,"volume":13250489},{"key":"polymarket","label":"Polymarket","prob":0.865,"volume":10996816}]}],"joint":[{"label":"DH / DS","model":0.3087,"market":0.4687},{"label":"DH / RS","model":0.2245,"market":0.3503},{"label":"RH / DS","model":0.0635,"market":0.0183},{"label":"RH / RS","model":0.4033,"market":0.1628}],"senateBins":[{"label":"Below 45","model":0.0046,"market":0.0513},{"label":"45","model":0.0158,"market":0.02},{"label":"46","model":0.0398,"market":0.0269},{"label":"47","model":0.0811,"market":0.0411},{"label":"48","model":0.131,"market":0.1027},{"label":"49","model":0.1688,"market":0.1125},{"label":"50","model":0.1867,"market":0.1516},{"label":"51","model":0.1646,"market":0.1516},{"label":"52","model":0.1227,"market":0.132},{"label":"Above 52","model":0.0848,"market":0.2103}],"houseBins":[{"label":"Below 210","model":0.1727,"market":0.0621},{"label":"210-213","model":0.131,"market":0.0509},{"label":"214-217","model":0.1631,"market":0.0499},{"label":"218-221","model":0.1657,"market":0.069},{"label":"222-225","model":0.1431,"market":0.0954},{"label":"226-229","model":0.1006,"market":0.1125},{"label":"230-233","model":0.0603,"market":0.1419},{"label":"234-237","model":0.0347,"market":0.1125},{"label":"238-241","model":0.0158,"market":0.0925},{"label":"242-245","model":0.0072,"market":0.0656},{"label":"246-249","model":0.0034,"market":0.0519},{"label":"Above 249","model":0.0024,"market":0.0959}],"races":[{"state":"ME","special":false,"model":0.5293,"market":0.705,"volume":1341448},{"state":"TX","special":false,"model":0.5429,"market":0.5,"volume":1223419},{"state":"MI","special":false,"model":0.5796,"market":0.603,"volume":783426},{"state":"AK","special":false,"model":0.5245,"market":0.668,"volume":487174},{"state":"OH","special":true,"model":0.5728,"market":0.5228,"volume":314356},{"state":"IA","special":false,"model":0.5001,"market":0.395,"volume":272963},{"state":"NE","special":false,"model":0.0832,"market":0.3191,"volume":243897}],"asOf":"2026-09-14T00:43:50+00:00","genericBallot":{"polls":6.0,"market":7.6},"marginBins":[{"label":"Republicans win","short":"R","prob":0.0797,"sort":-2.0},{"label":"Democrats, 0 to 2%","short":"0-2","prob":0.0398,"sort":1.0},{"label":"Democrats, 2 to 4%","short":"2-4","prob":0.0431,"sort":3.0},{"label":"Democrats, 4 to 6%","short":"4-6","prob":0.1091,"sort":5.0},{"label":"Democrats, 6 to 8%","short":"6-8","prob":0.2134,"sort":7.0},{"label":"Democrats, 8 to 10%","short":"8-10","prob":0.2323,"sort":9.0},{"label":"Democrats, 10 to 12%","short":"10-12","prob":0.166,"sort":11.0},{"label":"Democrats, 12 to 14%","short":"12-14","prob":0.074,"sort":13.0},{"label":"Democrats, 14 to 16%","short":"14-16","prob":0.0242,"sort":15.0},{"label":"Democrats, 16% and above","short":"16+","prob":0.0185,"sort":17.0}]};
+FC.init();
+(function () {
+  var s = PAGE_DATA.site;
+  var days = Math.max(0, Math.ceil((new Date("2026-11-03T12:00:00Z") - new Date(s.timestamp)) / 86400000));
+  var col = s.status === "success" ? "#0ca30c" : s.status === "partial" ? "#fab219" : "#d03b3b";
+  FC.$("foot-updated").innerHTML = "Forecast run " + FC.fmtDate(s.timestamp, true) + " · " + days +
+    " days to Election Day, Nov 3, 2026 · " +
+    '<span class="pill"><span class="dot" style="background:' + col + '"></span>Data refresh: ' + s.status + "</span>";
+})();
+
+FC.onRender(function () {
+  FC.renderMarketCompare("mkt-compare", PAGE_DATA.rows, "mkt-legend");
+  if (PAGE_DATA.genericBallot) {
+    FC.$("gb-polls").textContent = FC.margin(PAGE_DATA.genericBallot.polls);
+    FC.$("gb-market").textContent = FC.margin(PAGE_DATA.genericBallot.market);
+    FC.renderMarginBins("mkt-margin-bins", PAGE_DATA.marginBins);
+  }
+  if (PAGE_DATA.joint.length) {
+    FC.renderPairedBars("mkt-joint", PAGE_DATA.joint, "mkt-joint-legend", "Chance of each outcome");
+  }
+  if (PAGE_DATA.senateBins.length) {
+    FC.renderPairedBars("mkt-senate-seats", PAGE_DATA.senateBins, "mkt-senate-legend",
+      "Democratic Senate seats");
+  }
+  if (PAGE_DATA.houseBins.length) {
+    FC.renderPairedBars("mkt-house-seats", PAGE_DATA.houseBins, "mkt-house-legend",
+      "Democratic House seats");
+  }
+  FC.renderMarketRaces("mkt-races", PAGE_DATA.races);
+});
+
+</script>
+</body>
+</html>

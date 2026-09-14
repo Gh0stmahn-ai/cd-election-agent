@@ -178,6 +178,248 @@ function renderHistogram(svgId, hist, majority, xlabel, chamberName) {
     xlabel + " (share of 20,000 simulations)";
 }
 
+/* ------------------------------------------------------------- markets */
+/* Source identity (model / Kalshi / Polymarket) is carried by SHAPE and a
+   direct label, never by hue: on this site blue means Democratic and red
+   means Republican, so tinting a source would read as a party. */
+var SRC_SHAPE = {model: "circle", kalshi: "square", polymarket: "triangle"};
+
+function srcMark(svg, kind, cx, cy, size, solid) {
+  var half = size / 2, node;
+  if (kind === "square") {
+    node = el("rect", {x: cx - half, y: cy - half, width: size, height: size, rx: 1.5}, svg);
+  } else if (kind === "triangle") {
+    node = el("polygon", {points: [cx + "," + (cy - half - 0.5),
+      (cx + half + 0.5) + "," + (cy + half), (cx - half - 0.5) + "," + (cy + half)].join(" ")}, svg);
+  } else {
+    node = el("circle", {cx: cx, cy: cy, r: half + 0.5}, svg);
+  }
+  node.setAttribute("fill", solid ? css("--ink") : css("--surface"));
+  node.setAttribute("stroke", css("--ink"));
+  node.setAttribute("stroke-width", "2");
+  return node;
+}
+
+function srcLegend(id, sources) {
+  var L = $(id); if (!L) return;
+  L.innerHTML = "";
+  sources.forEach(function (s) {
+    var span = document.createElement("span");
+    span.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" ' +
+      'style="vertical-align:-2px;margin-right:5px"><g></g></svg>' + esc(s.label);
+    L.appendChild(span);
+    srcMark(span.querySelector("g"), SRC_SHAPE[s.key] || "circle", 7, 7, 8, s.key === "model");
+  });
+}
+
+/* Model vs each venue on one 0-100% axis, one row per chamber. The span
+   between the extremes is drawn as a rule so the size of the disagreement
+   is the thing you see first. */
+function renderMarketCompare(svgId, rows, legendId) {
+  var svg = $(svgId); if (!svg) return;
+  clear(svg);
+  var W = 520, rowH = 74, m = {l: 12, r: 12, t: 26, b: 24};
+  var H = m.t + m.b + rows.length * rowH;
+  svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+  var x = function (p) { return m.l + 34 + p * (W - m.l - m.r - 68); };
+
+  [0, 0.25, 0.5, 0.75, 1].forEach(function (v) {
+    el("line", {x1: x(v), x2: x(v), y1: m.t - 6, y2: H - m.b + 2,
+      "class": v === 0.5 ? "axis-line" : "gridline"}, svg);
+    el("text", {x: x(v), y: H - m.b + 16, "text-anchor": "middle"}, svg)
+      .textContent = Math.round(v * 100) + "%";
+  });
+  el("text", {x: x(0.5), y: m.t - 12, "text-anchor": "middle",
+    style: "fill:var(--muted);font-size:11px"}, svg).textContent = "coin flip";
+
+  rows.forEach(function (row, i) {
+    var yTop = m.t + i * rowH, yDot = yTop + 34;
+    el("text", {x: m.l, y: yTop + 12, style: "fill:var(--ink);font-size:13px;font-weight:600"}, svg)
+      .textContent = row.chamber;
+
+    var present = row.points.filter(function (pt) { return pt.prob != null; });
+    if (!present.length) return;
+    var lo = Math.min.apply(null, present.map(function (pt) { return pt.prob; }));
+    var hi = Math.max.apply(null, present.map(function (pt) { return pt.prob; }));
+    if (hi > lo) {
+      el("line", {x1: x(lo), x2: x(hi), y1: yDot, y2: yDot,
+        stroke: css("--axis"), "stroke-width": 2, "stroke-linecap": "round"}, svg);
+      el("text", {x: x((lo + hi) / 2), y: yDot - 13, "text-anchor": "middle",
+        style: "fill:var(--muted);font-size:11px"}, svg)
+        .textContent = Math.round((hi - lo) * 100) + " pt spread";
+    }
+    // Three sources a few points apart put their labels on top of each other,
+    // so a label that would collide drops to a second line instead.
+    var placed = [];
+    present.slice().sort(function (a, b) { return a.prob - b.prob; }).forEach(function (pt) {
+      var node = srcMark(svg, SRC_SHAPE[pt.key] || "circle", x(pt.prob), yDot, 11, pt.key === "model");
+      bindTip(node, function () {
+        return "<b>" + esc(pt.label) + "</b><br>" + pct(pt.prob) + " chance Democrats win the " +
+          row.chamber.toLowerCase() +
+          (pt.volume ? "<br>$" + Number(pt.volume).toLocaleString() + " traded" : "");
+      }, true);
+      var px = x(pt.prob), lane = 0;
+      while (placed.some(function (q) { return q.lane === lane && Math.abs(q.x - px) < 34; })) lane++;
+      placed.push({x: px, lane: lane});
+      el("text", {x: px, y: yDot + 22 + lane * 13, "text-anchor": "middle",
+        style: "fill:var(--ink-2);font-size:11px"}, svg).textContent = pct(pt.prob);
+    });
+  });
+  srcLegend(legendId, rows[0].points.map(function (pt) { return {key: pt.key, label: pt.label}; }));
+}
+
+/* Paired bars over a shared set of buckets: model solid, market outlined.
+   Distinguishable without color, which matters here because hue is spoken
+   for by party. */
+function renderPairedBars(svgId, buckets, legendId, valueLabel) {
+  var svg = $(svgId); if (!svg) return;
+  clear(svg);
+  var n = buckets.length; if (!n) return;
+  // Tilted tick labels need room below the axis, so the plot takes its
+  // height from the element's own viewBox rather than assuming one.
+  var vb = (svg.getAttribute("viewBox") || "0 0 520 210").split(/\s+/);
+  var W = +vb[2] || 520, H = +vb[3] || 210;
+  var m = {l: 36, r: 10, t: 16, b: n > 10 ? 66 : 46};
+  var maxP = 0;
+  buckets.forEach(function (b) { maxP = Math.max(maxP, b.model || 0, b.market || 0); });
+  var yMax = Math.ceil(maxP * 20) / 20 || 0.05;
+  var y = function (v) { return H - m.b - (v / yMax) * (H - m.t - m.b); };
+  var slot = (W - m.l - m.r) / n;
+  var bw = Math.max((slot - 6) / 2, 2);
+
+  [0, yMax / 2, yMax].forEach(function (v) {
+    el("line", {x1: m.l, x2: W - m.r, y1: y(v), y2: y(v),
+      "class": v === 0 ? "axis-line" : "gridline"}, svg);
+    el("text", {x: m.l - 6, y: y(v) + 3.5, "text-anchor": "end"}, svg)
+      .textContent = Math.round(v * 100) + "%";
+  });
+
+  buckets.forEach(function (b, i) {
+    var left = m.l + i * slot + 3;
+    [["model", left, true], ["market", left + bw + 2, false]].forEach(function (spec) {
+      var key = spec[0], v = b[key];
+      if (v == null) return;
+      var h = Math.max(H - m.b - y(v), 0.8);
+      var rect = el("rect", {x: spec[1].toFixed(2), y: y(v).toFixed(2),
+        width: bw.toFixed(2), height: h.toFixed(2), rx: Math.min(3, bw / 2)}, svg);
+      if (spec[2]) {
+        rect.setAttribute("fill", css("--ink"));
+      } else {
+        rect.setAttribute("fill", css("--surface"));
+        rect.setAttribute("stroke", css("--ink"));
+        rect.setAttribute("stroke-width", "2");
+      }
+      bindTip(rect, function () {
+        return "<b>" + esc(b.label) + "</b><br>" +
+          (key === "model" ? "Model" : "Market") + ": " + pct1(v) +
+          (b.model != null && b.market != null
+            ? "<br><span style='opacity:.75'>Model " + pct1(b.model) + " · Market " + pct1(b.market) + "</span>"
+            : "");
+      }, true);
+    });
+    // Twelve seat buckets will not fit side by side at this width, so past
+    // ten they tilt rather than overlap or get dropped.
+    var cx = m.l + i * slot + slot / 2;
+    var tick = el("text", {"font-size": "10px"}, svg);
+    if (n > 10) {
+      tick.setAttribute("x", cx); tick.setAttribute("y", H - m.b + 12);
+      tick.setAttribute("text-anchor", "end");
+      tick.setAttribute("transform", "rotate(-40 " + cx.toFixed(1) + " " + (H - m.b + 12) + ")");
+    } else {
+      tick.setAttribute("x", cx); tick.setAttribute("y", H - m.b + 15);
+      tick.setAttribute("text-anchor", "middle");
+    }
+    tick.textContent = b.label;
+  });
+  el("text", {x: (W + m.l) / 2, y: H - 6, "text-anchor": "middle"}, svg).textContent = valueLabel;
+  srcLegend(legendId, [{key: "model", label: "This model"}, {key: "kalshi", label: "Market"}]);
+}
+
+function money(v) {
+  if (v >= 1e6) return "$" + (v / 1e6).toFixed(1) + "M";
+  if (v >= 1e3) return "$" + Math.round(v / 1e3) + "K";
+  return "$" + Math.round(v);
+}
+
+/* The popular-vote market's own bands. Party colour is the right encoding
+   here, because each band IS a partisan margin. */
+function renderMarginBins(svgId, bins, impliedMargin) {
+  var svg = $(svgId); if (!svg) return;
+  clear(svg);
+  var W = 520, H = 150, m = {l: 34, r: 10, t: 14, b: 40};
+  var n = bins.length; if (!n) return;
+  var maxP = Math.max.apply(null, bins.map(function (b) { return b.prob; }));
+  var yMax = Math.ceil(maxP * 20) / 20 || 0.05;
+  var y = function (v) { return H - m.b - (v / yMax) * (H - m.t - m.b); };
+  var slot = (W - m.l - m.r) / n;
+
+  [0, yMax].forEach(function (v) {
+    el("line", {x1: m.l, x2: W - m.r, y1: y(v), y2: y(v),
+      "class": v === 0 ? "axis-line" : "gridline"}, svg);
+    el("text", {x: m.l - 6, y: y(v) + 3.5, "text-anchor": "end"}, svg)
+      .textContent = Math.round(v * 100) + "%";
+  });
+
+  bins.forEach(function (b, i) {
+    var v = b.prob, h = Math.max(H - m.b - y(v), 0.8);
+    var isRep = /republican/i.test(b.label);
+    var rect = el("rect", {x: (m.l + i * slot + 2).toFixed(2), y: y(v).toFixed(2),
+      width: Math.max(slot - 4, 1).toFixed(2), height: h.toFixed(2), rx: 3,
+      fill: isRep ? css("--rep") : css("--dem")}, svg);
+    bindTip(rect, function () {
+      return "<b>" + esc(b.label) + "</b><br>" + pct1(v) + " chance<br>" +
+        "<span style='opacity:.75'>priced on Kalshi</span>";
+    }, true);
+    el("text", {x: m.l + i * slot + slot / 2, y: H - m.b + 13, "text-anchor": "middle",
+      style: "font-size:9.5px"}, svg).textContent = b.short;
+  });
+  el("text", {x: (W + m.l) / 2, y: H - 6, "text-anchor": "middle"}, svg).textContent =
+    "Democratic margin in the House popular vote, priced bands";
+}
+
+/* Compact overview row: the model's number, and the range the two exchanges
+   are quoting, on one track per chamber. */
+function renderMarketStrip(containerId, rows) {
+  var box = $(containerId); if (!box) return;
+  box.innerHTML = "";
+  rows.forEach(function (r) {
+    var agree = Math.abs(r.model - (r.low + r.high) / 2) < 0.05;
+    var wrap = document.createElement("div");
+    wrap.className = "mstrip";
+    wrap.innerHTML =
+      '<div class="mstrip-name">' + esc(r.chamber) + "</div>" +
+      '<div class="mstrip-track"><div class="mstrip-band"></div>' +
+        '<div class="mstrip-model"></div></div>' +
+      '<div class="mstrip-read"><b>' + pct(r.model) + "</b> model · " +
+        (r.low === r.high ? pct(r.low) : pct(r.low) + " to " + pct(r.high)) + " market</div>" +
+      '<div class="mstrip-verdict">' + (agree ? "broadly agree" :
+        Math.round(Math.abs(r.model - (r.low + r.high) / 2) * 100) + " pt apart") + "</div>";
+    box.appendChild(wrap);
+    var band = wrap.querySelector(".mstrip-band");
+    band.style.left = (r.low * 100) + "%";
+    band.style.width = Math.max((r.high - r.low) * 100, 1.2) + "%";
+    wrap.querySelector(".mstrip-model").style.left = (r.model * 100) + "%";
+  });
+}
+
+function renderMarketRaces(containerId, rows) {
+  var box = $(containerId); if (!box) return;
+  var html = '<table class="grid"><thead><tr><th>Race</th><th class="num">Model</th>' +
+    '<th class="num">Market</th><th class="num">Gap</th><th class="num">Traded</th></tr></thead><tbody>';
+  rows.forEach(function (r) {
+    var gap = r.market - r.model;
+    var big = Math.abs(gap) >= 0.10;
+    var name = (STATE_NAMES[r.state] || r.state) + (r.special ? " (special)" : "");
+    html += "<tr><td>" + esc(name) + "</td>" +
+      '<td class="num">' + pct(r.model) + "</td>" +
+      '<td class="num">' + pct(r.market) + "</td>" +
+      '<td class="num" style="color:' + (big ? "var(--ink)" : "var(--muted)") +
+        (big ? ";font-weight:600" : "") + '">' + signed(gap * 100, 0) + " pt</td>" +
+      '<td class="num" style="color:var(--muted)">' + money(r.volume) + "</td></tr>";
+  });
+  box.innerHTML = html + "</tbody></table>";
+}
+
 /* --------------------------------------------------------------- races */
 function senateTip(r) {
   var cands = [];
@@ -554,6 +796,8 @@ global.FC = {
   renderSenateMap: renderSenateMap, renderWatch: renderWatch, renderSenateTable: renderSenateTable,
   renderHouseMap: renderHouseMap, renderHouseTable: renderHouseTable, renderEnvironment: renderEnvironment,
   renderIndicators: renderIndicators, renderTrend: renderTrend,
+  renderMarketCompare: renderMarketCompare, renderPairedBars: renderPairedBars,
+  renderMarketRaces: renderMarketRaces, renderMarketStrip: renderMarketStrip, renderMarginBins: renderMarginBins,
   senateSeatDots: senateSeatDots, houseSeatDots: houseSeatDots, STATE_NAMES: STATE_NAMES, ELECTION: ELECTION
 };
 })(window);

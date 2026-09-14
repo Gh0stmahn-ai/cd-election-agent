@@ -22,7 +22,7 @@
 <body>
 <header class="site-head"><div class="bar">
   <a class="brand plain" href="index.html"><span class="mark"><i></i><i></i></span>2026 Midterm Forecast</a>
-  <nav class="main" aria-label="Sections"><a href="index.html">Overview</a><a href="senate.html">Senate</a><a href="house.html">House</a><a href="economy.html">Economy</a><a href="trend.html" aria-current="page">Trend</a><a href="methodology.html">Methodology</a></nav>
+  <nav class="main" aria-label="Sections"><a href="index.html">Overview</a><a href="senate.html">Senate</a><a href="house.html">House</a><a href="economy.html">Economy</a><a href="trend.html" aria-current="page">Trend</a><a href="markets.html">Markets</a><a href="methodology.html">Methodology</a></nav>
   <a class="refresh" href="https://github.com/Gh0stmahn-ai/cd-election-agent/actions/workflows/daily-forecast.yml" target="_blank" rel="noopener"
      title="Re-run the forecast now on the latest public data (opens GitHub Actions)">
     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7"
@@ -54,7 +54,7 @@
   <div class="card tbl-scroll"><table id="tbl-runs"></table></div>
 </section>
 
-<div class="prev-next"><a href="economy.html">&#8592; Economy</a><a href="methodology.html">Methodology &#8594;</a></div>
+<div class="prev-next"><a href="economy.html">&#8592; Economy</a><a href="markets.html">Markets &#8594;</a></div>
 </div>
 
 <footer class="site"><div class="wrap" style="padding-bottom:0">
@@ -67,7 +67,7 @@
 
 <script src="assets/app.js"></script>
 <script>
-const PAGE_DATA = {"site":{"timestamp":"2026-09-13T23:34:28.047903+00:00","status":"success"},"runs":[{"timestamp":"2026-09-11T11:08:04.179086+00:00","senate":0.4454,"senate_seats":50.12,"house":0.6073,"house_seats":220.38,"environment":7.13,"generic_ballot":6.6,"status":"success"},{"timestamp":"2026-09-11T19:07:05.592679+00:00","senate":0.3706,"senate_seats":49.74,"house":0.5384,"house_seats":218.6,"environment":6.6,"generic_ballot":6.0,"status":"success"},{"timestamp":"2026-09-12T12:27:32.684843+00:00","senate":0.3716,"senate_seats":49.75,"house":0.5363,"house_seats":218.57,"environment":6.59,"generic_ballot":6.0,"status":"success"},{"timestamp":"2026-09-12T18:11:05.006599+00:00","senate":0.3716,"senate_seats":49.74,"house":0.5403,"house_seats":218.62,"environment":6.59,"generic_ballot":6.0,"status":"success"},{"timestamp":"2026-09-13T18:35:31.809486+00:00","senate":0.3702,"senate_seats":49.74,"house":0.5312,"house_seats":218.53,"environment":6.58,"generic_ballot":6.0,"status":"success"},{"timestamp":"2026-09-13T23:29:33.225749+00:00","senate":0.376,"senate_seats":49.75,"house":0.5336,"house_seats":218.5,"environment":6.6,"generic_ballot":6.0,"status":"success"},{"timestamp":"2026-09-13T23:34:28.047903+00:00","senate":0.378,"senate_seats":49.77,"house":0.5363,"house_seats":218.6,"environment":6.6,"generic_ballot":6.0,"status":"success"}]};
+const PAGE_DATA = {"site":{"timestamp":"2026-09-14T00:43:51.419558+00:00","status":"success"},"runs":[{"timestamp":"2026-09-11T11:08:04.179086+00:00","senate":0.4454,"senate_seats":50.12,"house":0.6073,"house_seats":220.38,"environment":7.13,"generic_ballot":6.6,"status":"success"},{"timestamp":"2026-09-11T19:07:05.592679+00:00","senate":0.3706,"senate_seats":49.74,"house":0.5384,"house_seats":218.6,"environment":6.6,"generic_ballot":6.0,"status":"success"},{"timestamp":"2026-09-12T12:27:32.684843+00:00","senate":0.3716,"senate_seats":49.75,"house":0.5363,"house_seats":218.57,"environment":6.59,"generic_ballot":6.0,"status":"success"},{"timestamp":"2026-09-12T18:11:05.006599+00:00","senate":0.3716,"senate_seats":49.74,"house":0.5403,"house_seats":218.62,"environment":6.59,"generic_ballot":6.0,"status":"success"},{"timestamp":"2026-09-13T18:35:31.809486+00:00","senate":0.3702,"senate_seats":49.74,"house":0.5312,"house_seats":218.53,"environment":6.58,"generic_ballot":6.0,"status":"success"},{"timestamp":"2026-09-13T23:29:33.225749+00:00","senate":0.376,"senate_seats":49.75,"house":0.5336,"house_seats":218.5,"environment":6.6,"generic_ballot":6.0,"status":"success"},{"timestamp":"2026-09-13T23:34:28.047903+00:00","senate":0.378,"senate_seats":49.77,"house":0.5363,"house_seats":218.6,"environment":6.6,"generic_ballot":6.0,"status":"success"},{"timestamp":"2026-09-14T00:43:51.419558+00:00","senate":0.3721,"senate_seats":49.75,"house":0.5333,"house_seats":218.53,"environment":6.59,"generic_ballot":6.0,"status":"success"}]};
 FC.init();
 (function () {
   var s = PAGE_DATA.site;
