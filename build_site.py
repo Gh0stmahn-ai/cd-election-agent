@@ -40,6 +40,7 @@ NAV = [
     ("house.html", "House"),
     ("economy.html", "Economy"),
     ("trend.html", "Trend"),
+    ("markets.html", "Markets"),
     ("methodology.html", "Methodology"),
 ]
 FAVICON = ("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect"
@@ -159,8 +160,41 @@ def site_meta(snap):
 
 
 # ----------------------------------------------------------------- pages
-def build_index(snap, meta):
+def market_strip(snap, markets):
+    """One line on the overview: does real money agree with the model today?
+
+    Returns (html, data) so the overview simply omits the section when no
+    prices have been collected yet.
+    """
+    venues = (markets or {}).get("venues", {})
+    if not venues:
+        return "", None
+    rows = []
+    for chamber, key in (("Senate", "senate_dem"), ("House", "house_dem")):
+        prices = [v[key]["prob"] for v in venues.values() if v.get(key)]
+        if not prices:
+            continue
+        rows.append({"chamber": chamber,
+                     "model": round(snap[chamber.lower()]["dem_control_prob"], 4),
+                     "low": round(min(prices), 4), "high": round(max(prices), 4)})
+    if not rows:
+        return "", None
+    html = """
+<section>
+  <h2>Does the money agree?</h2>
+  <p class="lede">The same two questions, priced by traders on Kalshi and Polymarket. Shown
+    for comparison only: market prices are never blended into this forecast.</p>
+  <div class="card" id="market-strip"></div>
+  <p class="note">Where the two disagree, and why they are kept apart:
+    <a href="markets.html">betting markets &#8594;</a></p>
+</section>
+"""
+    return html, rows
+
+
+def build_index(snap, meta, markets=None):
     s, h, e, j = snap["senate"], snap["house"], snap["environment"], snap["joint"]
+    market_html, market_rows = market_strip(snap, markets)
     body = """
 <section>
   <div class="grid2">
@@ -195,8 +229,10 @@ def build_index(snap, meta):
   <div class="card" id="environment"></div>
   <p class="note">Full detail on the readings behind this: <a href="economy.html">what voters are feeling &#8594;</a></p>
 </section>
-"""
+""" + market_html
     data = {"site": site_meta(snap), "senate": s, "house": h, "environment": e, "joint": j, "meta": meta}
+    if market_rows:
+        data["marketStrip"] = market_rows
     scripts = """
 FC.onRender(function () {
   FC.renderHero("hero-senate", "Senate", PAGE_DATA.senate, 51, 100,
@@ -209,6 +245,7 @@ FC.onRender(function () {
     FC.css("--c0") + '"></span> Not up in 2026');
   FC.renderHemicycle("hemi-house", FC.houseSeatDots(PAGE_DATA.house, PAGE_DATA.meta), PAGE_DATA.house.majority, 4.6, 12, "legend-house");
   FC.renderEnvironment("environment", PAGE_DATA.environment);
+  if (PAGE_DATA.marketStrip) { FC.renderMarketStrip("market-strip", PAGE_DATA.marketStrip); }
 });
 """
     return page("index.html", "2026 Midterm Forecast",
@@ -433,6 +470,277 @@ FC.onRender(function () {
                 body, js(data), scripts)
 
 
+def load_markets():
+    """Prediction market prices, if refresh_markets.py has ever run."""
+    path = DATA_DIR / "markets_2026.json"
+    if not path.exists():
+        return None
+    try:
+        return json.loads(path.read_text())
+    except (ValueError, OSError):
+        return None
+
+
+def seat_bucket_bounds(label):
+    """'226-229' -> (226, 229); 'Below 210' -> (None, 209); 'Above 249' -> (250, None)."""
+    text = label.replace("%", "").strip()
+    digits = [int(t) for t in text.replace("-", " ").split() if t.isdigit()]
+    if not digits:
+        return None
+    low = text.lower()
+    if low.startswith("below"):
+        return (None, digits[0] - 1)
+    if low.startswith("above"):
+        return (digits[0] + 1, None)
+    if len(digits) == 1:
+        return (digits[0], digits[0])
+    return (digits[0], digits[1])
+
+
+def rebin(histogram, market_bins):
+    """Fold the model's per-seat histogram into the market's buckets.
+
+    The two are binned differently (the model counts every seat total, the
+    market sells four-seat blocks), and overlaying mismatched bins is how a
+    chart lies. Re-binning the model onto the market's own buckets is the
+    only comparison that means anything.
+    """
+    rows = []
+    for b in market_bins:
+        bounds = seat_bucket_bounds(b["label"])
+        if bounds is None:
+            continue
+        lo, hi = bounds
+        share = sum(v for k, v in histogram.items()
+                    if (lo is None or int(k) >= lo) and (hi is None or int(k) <= hi))
+        rows.append({"label": b["label"], "lo": lo if lo is not None else -10 ** 6,
+                     "model": round(share, 4),
+                     "market": b.get("prob_normalized", b.get("prob"))})
+    rows.sort(key=lambda r: r["lo"])
+    for r in rows:
+        r.pop("lo")
+    return rows
+
+
+def bin_midpoint_py(label):
+    """Centre of a 'Democrats, 8 to 10%' band, in points of Democratic margin."""
+    text = label.lower()
+    if "republican" in text:
+        return -2.0
+    digits = [float(t) for t in text.replace("%", " ").replace("to", " ").replace(",", " ").split()
+              if t.replace(".", "", 1).isdigit()]
+    if not digits:
+        return 0.0
+    if "above" in text:
+        return digits[0] + 1.0
+    return sum(digits) / len(digits)
+
+
+def build_markets(snap, markets):
+    """Model against the betting markets. Shown, never blended in."""
+    kalshi = (markets or {}).get("venues", {}).get("kalshi", {})
+    poly = (markets or {}).get("venues", {}).get("polymarket", {})
+    senate, house = snap["senate"], snap["house"]
+
+    def venue_point(venue, key, label, vkey):
+        entry = venue.get(key)
+        if not entry:
+            return None
+        return {"key": vkey, "label": label, "prob": entry["prob"], "volume": entry.get("volume")}
+
+    rows = []
+    for chamber, model_prob, key in (("Senate", senate["dem_control_prob"], "senate_dem"),
+                                     ("House", house["dem_control_prob"], "house_dem")):
+        points = [{"key": "model", "label": "This model", "prob": round(model_prob, 4)}]
+        for venue, vkey, label in ((kalshi, "kalshi", "Kalshi"), (poly, "polymarket", "Polymarket")):
+            point = venue_point(venue, key, label, vkey)
+            if point:
+                points.append(point)
+        rows.append({"chamber": chamber, "points": points})
+
+    # Joint outcomes: the model's four-way split against Kalshi's.
+    model_joint = snap.get("joint", {})
+    joint_map = {"D-House, D-Senate": "dem_both", "D-House, R-Senate": "dem_house_rep_senate",
+                 "R-House, D-Senate": "rep_house_dem_senate", "R-House, R-Senate": "rep_both"}
+    joint_rows = []
+    for b in kalshi.get("joint", []):
+        model_key = joint_map.get(b["label"])
+        if model_key is None:
+            continue
+        joint_rows.append({"label": b["label"].replace("-House, ", "H / ").replace("-Senate", "S"),
+                           "model": model_joint.get(model_key),
+                           "market": b.get("prob_normalized", b["prob"])})
+    order = list(joint_map)
+    joint_rows.sort(key=lambda r: order.index(
+        r["label"].replace("H / ", "-House, ").replace("S", "-Senate")) if
+        r["label"].replace("H / ", "-House, ").replace("S", "-Senate") in order else 9)
+
+    senate_bins = rebin(senate["histogram"], kalshi.get("senate_seats", {}).get("bins", []))
+    house_bins = rebin(house["histogram"], kalshi.get("house_seats", {}).get("bins", []))
+
+    # Per-race: model probability against Polymarket's, Democratic side.
+    race_rows = []
+    seats_by_id = {s["seat_id"]: s for s in senate["seats"]}
+    for seat_id, m in sorted((poly.get("races") or {}).items(),
+                             key=lambda kv: -kv[1].get("volume", 0)):
+        seat = seats_by_id.get(seat_id)
+        dem = m["parties"].get("D", {}).get("prob")
+        if seat is None or dem is None:
+            continue
+        # Nebraska's Democratic-caucusing candidate runs as an independent, so
+        # the comparable market price is the independent's, not the Democrat's.
+        if seat.get("challenger_caucus") == "independent" and "I" in m["parties"]:
+            dem = m["parties"]["I"]["prob"]
+        race_rows.append({"state": seat["state"],
+                          "special": "special" in seat_id,
+                          "model": round(seat["dem_win_prob"], 4),
+                          "market": round(dem, 4),
+                          "volume": m.get("volume", 0)})
+
+    gb = kalshi.get("generic_ballot") or {}
+    env = snap["environment"]
+    total_volume = sum(v.get("volume", 0) for v in
+                       [kalshi.get("senate_dem", {}), kalshi.get("house_dem", {}),
+                        poly.get("senate_dem", {}), poly.get("house_dem", {})])
+
+    data = {"site": site_meta(snap),
+            "rows": rows, "joint": joint_rows, "senateBins": senate_bins, "houseBins": house_bins,
+            "races": race_rows, "asOf": (markets or {}).get("as_of")}
+
+    gb_block = ""  # noqa: F841 - rebuilt just below
+    if gb.get("implied_dem_margin") is not None:
+        def short_label(label):
+            """'Democrats, 8 to 10%' -> '8-10'; 'Republicans win' -> 'R'."""
+            if "republican" in label.lower():
+                return "R"
+            digits = [t for t in label.replace("%", " ").replace(",", " ").split() if t.isdigit()]
+            if "above" in label.lower() and digits:
+                return digits[0] + "+"
+            return "-".join(digits) if digits else label
+
+        data["genericBallot"] = {"polls": env["generic_ballot"],
+                                 "market": gb["implied_dem_margin"]}
+        data["marginBins"] = sorted(
+            [{"label": b["label"], "short": short_label(b["label"]),
+              "prob": b.get("prob_normalized", b["prob"]),
+              "sort": bin_midpoint_py(b["label"])} for b in gb.get("bins", [])],
+            key=lambda r: r["sort"])
+        gb_block = f"""
+  <div class="card">
+    <div class="chamber-label">The generic ballot, as priced</div>
+    <div class="eq">
+      <div class="term"><b id="gb-polls"></b><span>Polling average</span></div>
+      <div class="op">vs</div>
+      <div class="term"><b id="gb-market"></b><span>Kalshi popular vote market</span></div>
+    </div>
+    <p class="note">Kalshi runs a market on the House popular vote margin itself, in two-point
+    bands. The figure above is the average of those bands weighted by price: the margin the
+    market expects. It is the cleanest like-for-like reading here, because it prices the same
+    quantity the model takes from polls. ${gb['volume']:,.0f} traded.</p>
+    <svg id="mkt-margin-bins" viewBox="0 0 520 150" role="img"
+         aria-label="Priced probability of each House popular vote margin band"></svg>
+  </div>"""
+
+    body = f"""
+<section>
+  <div class="card">
+    <div class="chamber-label">Chance Democrats win each chamber</div>
+    <svg id="mkt-compare" viewBox="0 0 520 200" role="img"
+         aria-label="Model and market probabilities for each chamber"></svg>
+    <div class="legend" id="mkt-legend"></div>
+    <p class="note">Filled circle is this model. Hollow shapes are real money: Kalshi is a
+    CFTC-regulated US exchange, Polymarket settles in crypto. Shape rather than colour tells
+    them apart, because on this site blue means Democratic and red means Republican.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Where the model and the market disagree</h2>
+  <p class="lede">A gap is not proof either side is wrong. It is a question worth asking: what
+  does one of them know, or believe, that the other does not?</p>
+  <div class="grid2">
+    <div class="card"><div class="chamber-label">All four outcomes</div>
+      <svg id="mkt-joint" viewBox="0 0 520 210" role="img"
+           aria-label="Model and market probability for each combination of chambers"></svg>
+      <div class="legend" id="mkt-joint-legend"></div>
+      <p class="note">Kalshi prices all four combinations as one market, which is exactly
+      what the model's simulations produce. H is the House, S the Senate.</p>
+    </div>
+    {gb_block}
+  </div>
+</section>
+
+<section>
+  <h2>Seat counts, on the market's own buckets</h2>
+  <p class="lede">The model counts every possible seat total; the market sells blocks of them.
+  To compare the two, the model's simulations are folded into the market's buckets.</p>
+  <div class="grid2">
+    <div class="card"><div class="chamber-label">Democratic Senate seats</div>
+      <svg id="mkt-senate-seats" viewBox="0 0 520 240" role="img"
+           aria-label="Model and market distribution of Democratic Senate seats"></svg>
+      <div class="legend" id="mkt-senate-legend"></div></div>
+    <div class="card"><div class="chamber-label">Democratic House seats</div>
+      <svg id="mkt-house-seats" viewBox="0 0 520 240" role="img"
+           aria-label="Model and market distribution of Democratic House seats"></svg>
+      <div class="legend" id="mkt-house-legend"></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Race by race</h2>
+  <p class="lede">Every Senate race with a traded market, Democratic win chance either way.
+  Gaps of 10 points or more are picked out.</p>
+  <div id="mkt-races"></div>
+  <p class="note">Nebraska is compared on Dan Osborn's price: he runs as an independent, and
+  the model counts him as neither party.</p>
+</section>
+
+<section class="prose">
+  <h2>Why these numbers are not in the forecast</h2>
+  <p>They are shown, not blended. A prediction market is mostly a weighted digest of the same
+  polls and race ratings this model already reads, so averaging the two would be averaging a
+  thing with itself, while quietly importing the market's own quirks: thin books on minor
+  contracts, the long-standing tendency to overprice long shots, and the occasional single
+  large trader who moves a price on their own.</p>
+  <p>What a market does add is everything a ratings-and-polls model structurally cannot see:
+  candidate quality, a scandal, how a redistricting case is likely to land, what turnout will
+  actually look like. That is why the disagreement is worth showing rather than smoothing
+  away. When the two drift apart, one of them is wrong, and which one is a question you can
+  now watch rather than guess at. Prices are collected fresh on every run, and
+  ${total_volume:,.0f} has been traded across the four chamber markets above.</p>
+</section>
+"""
+    scripts = """
+FC.onRender(function () {
+  FC.renderMarketCompare("mkt-compare", PAGE_DATA.rows, "mkt-legend");
+  if (PAGE_DATA.genericBallot) {
+    FC.$("gb-polls").textContent = FC.margin(PAGE_DATA.genericBallot.polls);
+    FC.$("gb-market").textContent = FC.margin(PAGE_DATA.genericBallot.market);
+    FC.renderMarginBins("mkt-margin-bins", PAGE_DATA.marginBins);
+  }
+  if (PAGE_DATA.joint.length) {
+    FC.renderPairedBars("mkt-joint", PAGE_DATA.joint, "mkt-joint-legend", "Chance of each outcome");
+  }
+  if (PAGE_DATA.senateBins.length) {
+    FC.renderPairedBars("mkt-senate-seats", PAGE_DATA.senateBins, "mkt-senate-legend",
+      "Democratic Senate seats");
+  }
+  if (PAGE_DATA.houseBins.length) {
+    FC.renderPairedBars("mkt-house-seats", PAGE_DATA.houseBins, "mkt-house-legend",
+      "Democratic House seats");
+  }
+  FC.renderMarketRaces("mkt-races", PAGE_DATA.races);
+});
+"""
+    return page("markets.html", "Betting markets · 2026 Midterm Forecast",
+                "What real money says about the 2026 midterms, next to what this model says, "
+                "and why the two are never averaged together.",
+                ("What the betting markets say",
+                 "Two exchanges, real money, next to this model's answer. Shown side by side and "
+                 "never blended into the forecast."),
+                body, js(data), scripts)
+
+
 def build_methodology(snap):
     fund = json.loads((DATA_DIR / "fundamentals_2026.json").read_text())
     gb = json.loads((DATA_DIR / "generic_ballot_2026.json").read_text())
@@ -485,6 +793,14 @@ def build_methodology(snap):
     rows.append(("State and district geometry", "Natural Earth 1:50m state shapes; hexagon layout generated once",
                  "Fixed", "2026-09-11",
                  '<a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener">naturalearthdata.com</a> (public domain)'))
+    mk = load_markets()
+    if mk:
+        venue_names = ", ".join(v.get("name", k) for k, v in mk.get("venues", {}).items())
+        rows.append(("Betting market prices",
+                     "Chamber control, seat counts, popular vote margin and Senate races. "
+                     "<b>Displayed only, never blended into the forecast</b>",
+                     "Every run", str(mk.get("as_of", ""))[:10],
+                     f'{venue_names} &#183; <a href="markets.html">see the comparison</a>'))
     table = "".join(f"<tr><td><b>{r[0]}</b></td><td>{r[1]}</td><td>{r[2]}</td><td>{r[3]}</td><td>{r[4]}</td></tr>"
                     for r in rows)
 
@@ -603,6 +919,11 @@ def build_methodology(snap):
     <li><b>It does not treat the AI as an oracle.</b> The agent chooses which published figures to copy and writes a
       capped, cited judgment about campaign momentum in Senate races. It cannot invent a rating change, move a
       number outside its plausible range, or touch the model's math.</li>
+    <li><b>It does not follow the betting markets.</b> Kalshi and Polymarket prices are collected every run and
+      shown on the <a href="markets.html">markets page</a>, but nothing on this site is blended with them. A
+      prediction market is mostly a weighted digest of the same polls and ratings this model already reads, so
+      averaging the two would be averaging a thing with itself while importing the market's own quirks. Where the
+      two disagree, both numbers are published and neither is quietly adjusted toward the other.</li>
     <li><b>It is not a prediction.</b> A 70% chance still loses 3 times in 10, and the shared national error exists
       precisely so the forecast is not more confident than the evidence.</li>
     <li><b>It cannot guarantee fresh data.</b> Sources go down and releases slip. When an input ages, the run is
@@ -632,14 +953,19 @@ def main():
     shutil.copy(BASE / "assets" / "og.png", OUT / "assets" / "og.png")
     (OUT / ".nojekyll").write_text("")
 
+    markets = load_markets()
     pages = {
-        "index.html": build_index(latest, meta),
+        "index.html": build_index(latest, meta, markets),
         "senate.html": build_senate(latest),
         "house.html": build_house(latest, meta),
         "economy.html": build_economy(latest),
         "trend.html": build_trend(snaps),
         "methodology.html": build_methodology(latest),
     }
+    if markets:
+        pages["markets.html"] = build_markets(latest, markets)
+    else:
+        print("  (no data/markets_2026.json yet - skipping the markets page)")
     for name, html in pages.items():
         (OUT / name).write_text(html, encoding="utf-8")
 

@@ -20,6 +20,7 @@ web server or straight off disk with no CDN, no fetches and no libraries:
 | `house.html` | Hexagon map of all 435 districts, seat distribution, filterable race tables |
 | `economy.html` | Every economic and political reading, with sources, and what each one does to the forecast |
 | `trend.html` | How the forecast has moved, run by run |
+| `markets.html` | Kalshi and Polymarket prices next to the model, and why they are never blended |
 | `methodology.html` | Where every number comes from, how it is validated, and the honest limits |
 
 ## How the forecast works
@@ -32,10 +33,10 @@ web server or straight off disk with no CDN, no fetches and no libraries:
    to expected margins (Solid 18 pts, Likely 9, Lean 4.5, Toss-up 0.5).
    Ratings already reflect the environment when they were set, so each race
    is shifted only by how far the environment has moved since.
-3. **News momentum** (Senate toss-up/lean races only): a capped +/-0.08
+4. **News momentum** (Senate toss-up/lean races only): a capped +/-0.08
    win-probability adjustment from an AI read of campaign coverage, kept
    separate and shown in each race's tooltip.
-4. **Monte Carlo simulation** with one national polling miss shared by
+5. **Monte Carlo simulation** with one national polling miss shared by
    every race in both chambers plus race-level noise, so the chambers move
    together the way they do in reality.
 
@@ -89,27 +90,34 @@ The run form has three optional boxes:
    FRED mirror, which serves each series as keyless CSV. Derived figures
    (CPI inflation, real wages, year-to-date return) are computed here. It
    never replaces a newer figure with an older one.
-2. `set_polls.py` - writes the generic ballot and approval you typed, if
+2. `refresh_markets.py` - **free, no API key.** Kalshi and Polymarket
+   prices for chamber control, seat counts, the House popular vote margin
+   and every traded Senate race. These are **shown next to the model on the
+   markets page and never blended into it**: a prediction market is mostly a
+   weighted digest of the same polls and ratings the model already reads, so
+   averaging the two would double count while importing the market's own
+   biases. The disagreement is the useful part.
+3. `set_polls.py` - writes the generic ballot and approval you typed, if
    any. Polling averages live on pages, not in a data feed, so this is the
    free way to keep them current.
-3. `agent_run.py` - the AI refresh, and the only paid step. One Claude
+4. `agent_run.py` - the AI refresh, and the only paid step. One Claude
    conversation with web search reads polling pages, Cook rating changes
    and Senate campaign coverage. Skipped unless you tick the box, or set a
    repository variable `AI_REFRESH=true` to let scheduled runs use it.
    Needs the `ANTHROPIC_API_KEY` secret and credit on that account.
-4. `run_pipeline.py` - runs the model and saves `iterations/<timestamp>.json`
+5. `run_pipeline.py` - runs the model and saves `iterations/<timestamp>.json`
    with a status block that flags stale inputs.
-5. `build_site.py` - rebuilds the six pages in `site/` from
+6. `build_site.py` - rebuilds the seven pages in `site/` from
    `site_template/` and every snapshot.
-6. Commits and pushes the results (rebasing and retrying if the branch
+7. Commits and pushes the results (rebasing and retrying if the branch
    moved during the run).
-7. Publishes `site/` to GitHub Pages (`deploy` job).
+8. Publishes `site/` to GitHub Pages (`deploy` job).
    `.github/workflows/pages.yml` also republishes whenever a person pushes
    a change to `site/`.
 
-Every write in steps 1 to 3 goes through a validated function in
+Every write in steps 1 to 4 goes through a validated function in
 `ingest.py` / `atmospherics.py` (range checks, known ids), never a raw file
-edit. Steps 1 and 3 soft-fail: if a source is unreachable the run still
+edit. Steps 1, 2 and 4 soft-fail: if a source is unreachable the run still
 simulates and republishes on the freshest data it has, and each reading
 shows its own as-of date on the site.
 
@@ -157,6 +165,7 @@ model.py                      environment + simulation
 run_pipeline.py               model -> iterations/ snapshot
 build_site.py                 snapshots + templates -> site/
 refresh_economy.py            free economic refresh from public data series
+refresh_markets.py            free prediction market prices (shown, never blended)
 set_polls.py                  manual generic-ballot / approval entry
 agent_run.py                  optional AI refresh (ratings, Senate news)
 ingest.py                     the validated write functions all three use
