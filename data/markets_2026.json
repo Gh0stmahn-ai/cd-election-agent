@@ -1,47 +1,65 @@
 {
- "as_of": "2026-09-14T00:43:50+00:00",
+ "as_of": "2026-09-14T01:12:14+00:00",
  "note": "Shown alongside the model, never blended into it.",
  "venues": {
   "kalshi": {
    "senate_dem": {
     "prob": 0.485,
-    "volume": 8291573
+    "volume": 8291986
    },
    "joint": [
     {
-     "label": "R-House, R-Senate",
-     "prob": 0.165,
-     "volume": 5385141,
-     "prob_normalized": 0.1628
+     "label": "D-House, D-Senate",
+     "prob": 0.475,
+     "volume": 2855403,
+     "prob_normalized": 0.4689
     },
     {
      "label": "D-House, R-Senate",
      "prob": 0.355,
-     "volume": 2125601,
-     "prob_normalized": 0.3503
+     "volume": 2125617,
+     "prob_normalized": 0.3504
+    },
+    {
+     "label": "R-House, R-Senate",
+     "prob": 0.165,
+     "volume": 5385281,
+     "prob_normalized": 0.1629
     },
     {
      "label": "R-House, D-Senate",
-     "prob": 0.0185,
+     "prob": 0.018,
      "volume": 2884346,
-     "prob_normalized": 0.0183
-    },
-    {
-     "label": "D-House, D-Senate",
-     "prob": 0.475,
-     "volume": 2855401,
-     "prob_normalized": 0.4687
+     "prob_normalized": 0.0178
     }
    ],
-   "joint_volume": 13250489,
+   "joint_volume": 13250647,
    "house_dem": {
-    "prob": 0.819,
-    "volume": 13250489
+    "prob": 0.8193,
+    "volume": 13250647
    },
    "generic_ballot": {
     "implied_dem_margin": 7.6,
-    "volume": 1511938,
+    "volume": 1512092,
     "bins": [
+     {
+      "label": "Democrats, 14 to 16%",
+      "prob": 0.0255,
+      "volume": 63558,
+      "prob_normalized": 0.0242
+     },
+     {
+      "label": "Democrats, 4 to 6%",
+      "prob": 0.115,
+      "volume": 53154,
+      "prob_normalized": 0.1091
+     },
+     {
+      "label": "Democrats, 16% and above",
+      "prob": 0.0195,
+      "volume": 108996,
+      "prob_normalized": 0.0185
+     },
      {
       "label": "Republicans win",
       "prob": 0.084,
@@ -49,22 +67,10 @@
       "prob_normalized": 0.0797
      },
      {
-      "label": "Democrats, 8 to 10%",
-      "prob": 0.245,
-      "volume": 135965,
-      "prob_normalized": 0.2323
-     },
-     {
       "label": "Democrats, 0 to 2%",
       "prob": 0.042,
       "volume": 220726,
       "prob_normalized": 0.0398
-     },
-     {
-      "label": "Democrats, 4 to 6%",
-      "prob": 0.115,
-      "volume": 53076,
-      "prob_normalized": 0.1091
      },
      {
       "label": "Democrats, 12 to 14%",
@@ -85,22 +91,16 @@
       "prob_normalized": 0.0431
      },
      {
-      "label": "Democrats, 16% and above",
-      "prob": 0.0195,
-      "volume": 108996,
-      "prob_normalized": 0.0185
-     },
-     {
       "label": "Democrats, 6 to 8%",
       "prob": 0.225,
       "volume": 85584,
       "prob_normalized": 0.2134
      },
      {
-      "label": "Democrats, 14 to 16%",
-      "prob": 0.0255,
-      "volume": 63483,
-      "prob_normalized": 0.0242
+      "label": "Democrats, 8 to 10%",
+      "prob": 0.245,
+      "volume": 135966,
+      "prob_normalized": 0.2323
      }
     ]
    },
@@ -156,6 +156,18 @@
       "prob_normalized": 0.0954
      },
      {
+      "label": "214-217",
+      "prob": 0.051,
+      "volume": 190417,
+      "prob_normalized": 0.0499
+     },
+     {
+      "label": "234-237",
+      "prob": 0.115,
+      "volume": 90790,
+      "prob_normalized": 0.1125
+     },
+     {
       "label": "226-229",
       "prob": 0.115,
       "volume": 97411,
@@ -166,23 +178,11 @@
       "prob": 0.145,
       "volume": 118172,
       "prob_normalized": 0.1419
-     },
-     {
-      "label": "234-237",
-      "prob": 0.115,
-      "volume": 90790,
-      "prob_normalized": 0.1125
-     },
-     {
-      "label": "214-217",
-      "prob": 0.051,
-      "volume": 190417,
-      "prob_normalized": 0.0499
      }
     ]
    },
    "senate_seats": {
-    "volume": 2561073,
+    "volume": 2561247,
     "bins": [
      {
       "label": "50",
@@ -205,7 +205,7 @@
      {
       "label": "49",
       "prob": 0.115,
-      "volume": 145397,
+      "volume": 145421,
       "prob_normalized": 0.1125
      },
      {
@@ -241,7 +241,7 @@
      {
       "label": "Above 52",
       "prob": 0.215,
-      "volume": 780365,
+      "volume": 780515,
       "prob_normalized": 0.2103
      }
     ]
@@ -351,7 +351,7 @@
     },
     "NE-2026": {
      "title": "Nebraska Senate Election Winner  ",
-     "volume": 243897,
+     "volume": 244095,
      "slug": "nebraska-senate-election-winner",
      "parties": {
       "D": {

@@ -1,10 +1,8 @@
 {
- "as_of": "2026-09-11",
- "dem_margin_points": 6.0,
- "note": "Average of RealClearPolitics (D+5.7), Silver Bulletin (D+6.6 as of 8/24), and USPollingData (D+6.3). Morning Consult also showing D+4.",
+ "as_of": "2026-09-14",
+ "dem_margin_points": 6.9,
+ "note": "Average of 6 public poll aggregators (RealClearPolitics, Silver Bulletin, Decision Desk HQ, VoteHub and others) as collated on Wikipedia, updated 2026-09-13",
  "sources": [
-  "https://www.realclearpolling.com/polls/state-of-the-union/generic-congressional-vote",
-  "https://www.natesilver.net/p/generic-ballot-average-2026-nate-silver-bulletin-congress-polls",
-  "https://uspollingdata.com/polls/"
+  "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections"
  ]
 }

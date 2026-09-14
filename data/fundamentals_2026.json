@@ -290,29 +290,17 @@
   {
    "id": "approval",
    "label": "Trump job approval",
-   "value_net": -21.0,
-   "approve": 38.5,
-   "disapprove": 59.5,
-   "display": "38% / 60%",
-   "as_of": "2026-09-11",
-   "context": "Average of RealClearPolitics (39.3% approve), Ballotpedia (40% approve), USPollingData (37.8% approve / 58.4% disapprove), and Silver Bulletin (net -19.5).",
+   "value_net": -21.7,
+   "approve": 37.4,
+   "disapprove": 59.1,
+   "display": "37% / 59%",
+   "as_of": "2026-09-12",
+   "context": "Average of 10 public approval aggregators as collated on Wikipedia.",
    "why": "The single strongest predictor of midterm losses. Since WWII the president's party has lost House seats in all but two midterms (1998, 2002), and presidents under 50% approval have lost about 37 seats on average (Gallup).",
    "sources": [
     {
-     "name": "RealClearPolling",
-     "url": "https://www.realclearpolling.com/polls/approval/donald-trump/approval-rating"
-    },
-    {
-     "name": "Ballotpedia",
-     "url": "https://ballotpedia.org/Ballotpedia's_Polling_Index:_Presidential_approval_rating"
-    },
-    {
-     "name": "USPollingData",
-     "url": "https://uspollingdata.com/polls/trump-approval/"
-    },
-    {
-     "name": "Silver Bulletin",
-     "url": "https://www.natesilver.net/p/trump-approval-ratings-nate-silver-bulletin"
+     "name": "Wikipedia: opinion polling on the second Trump presidency",
+     "url": "https://en.wikipedia.org/wiki/Opinion_polling_on_the_second_Trump_presidency"
     }
    ]
   },
