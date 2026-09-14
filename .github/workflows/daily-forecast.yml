@@ -3,16 +3,18 @@ name: Daily election forecast update
 # Runs the full pipeline once a day, then publishes the site:
 #   1. refresh_economy.py - pulls all 10 economic readings from public data
 #                           series. FREE: no API key, no cost, no LLM.
-#   2. set_polls.py       - writes the generic ballot / approval you typed
+#   2. refresh_markets.py - Kalshi and Polymarket prices, also free. Shown
+#                           beside the model, never blended into it.
+#   3. set_polls.py       - writes the generic ballot / approval you typed
 #                           into the boxes below, if you typed any.
-#   3. agent_run.py       - the AI refresh: reads polling pages, Cook rating
+#   4. agent_run.py       - the AI refresh: reads polling pages, Cook rating
 #                           changes and Senate campaign coverage. This is the
 #                           only step that SPENDS ANTHROPIC API CREDITS, so it
 #                           is off by default and opt-in per run.
-#   4. run_pipeline.py    - Monte Carlo simulation -> new iterations/*.json
-#   5. build_site.py      - rebuilds the multi-page site in site/
-#   6. commit + push the changed data/iterations/site back to main
-#   7. deploy job - publishes site/ to GitHub Pages
+#   5. run_pipeline.py    - Monte Carlo simulation -> new iterations/*.json
+#   6. build_site.py      - rebuilds the multi-page site in site/
+#   7. commit + push the changed data/iterations/site back to main
+#   8. deploy job - publishes site/ to GitHub Pages
 #
 # A scheduled run costs nothing and still refreshes the whole economy.
 # The Refresh control on the site links straight to this workflow.
@@ -68,6 +70,14 @@ jobs:
         continue-on-error: true
         run: python3 refresh_economy.py
 
+      # Also free. Prices are shown next to the model on the markets page and
+      # are never blended into the forecast, so a failure here costs a
+      # comparison, not the forecast.
+      - name: Refresh prediction market prices (free)
+        id: markets
+        continue-on-error: true
+        run: python3 refresh_markets.py
+
       # Polling averages live on pages, not in a data feed, so they are either
       # typed into the boxes above or left alone.
       - name: Apply any poll numbers entered by hand
@@ -90,12 +100,12 @@ jobs:
         run: python3 agent_run.py
 
       - name: Note an incomplete refresh
-        if: steps.economy.outcome == 'failure' || steps.refresh.outcome == 'failure'
+        if: steps.economy.outcome == 'failure' || steps.markets.outcome == 'failure' || steps.refresh.outcome == 'failure'
         run: |
           echo "::warning title=Refresh incomplete::A refresh step exited non-zero \
-          (economy: ${{ steps.economy.outcome }}, AI: ${{ steps.refresh.outcome }}). \
-          The forecast was rebuilt on the freshest data available; every reading \
-          shows its own as-of date on the site."
+          (economy: ${{ steps.economy.outcome }}, markets: ${{ steps.markets.outcome }}, \
+          AI: ${{ steps.refresh.outcome }}). The forecast was rebuilt on the freshest data \
+          available; every reading shows its own as-of date on the site."
 
       - name: Run forecasting pipeline
         run: python3 run_pipeline.py
