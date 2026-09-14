@@ -105,7 +105,38 @@ def competitive_races():
     return [r for r in races if r["rating"] in ("tossup", "lean")]
 
 
+def reachable():
+    """One cheap probe before committing to twenty slow lookups.
+
+    GDELT throttles by IP and blocks shared hosts outright. Both this cloud
+    container and a GitHub Actions runner are refused today, and finding
+    that out one 45-second timeout at a time cost the workflow two and a
+    half minutes for nothing. One short probe answers it, and the moment
+    GDELT starts accepting the runner the rest of the script resumes on its
+    own with no edit needed.
+    """
+    url = API + "?" + urllib.parse.urlencode(
+        {"query": "election", "mode": "timelinetone", "timespan": "1d", "format": "json"})
+    try:
+        req = urllib.request.Request(url, headers=UA)
+        with urllib.request.urlopen(req, timeout=12) as resp:
+            body = resp.read().decode("utf-8", "replace")
+        if body.lstrip().startswith("{"):
+            return True, ""
+        return False, body.strip()[:140]
+    except Exception as e:  # noqa: BLE001
+        return False, str(e)[:140]
+
+
 def main():
+    ok, why = reachable()
+    if not ok:
+        print("GDELT is not serving this runner, so no news tone was collected.")
+        print(f"  reason: {why}")
+        print("  The previous file, if any, is left alone. Nothing else in the run is affected,")
+        print("  because news tone is display-only and never feeds the forecast.")
+        return 1
+
     races, out, issues = competitive_races(), {}, []
     print(f"Reading news tone for {len(races)} competitive Senate races "
           f"(about {len(races) * 2 * PAUSE / 60:.0f} min, GDELT allows one call every 5s).")
