@@ -402,6 +402,42 @@ function renderMarketStrip(containerId, rows) {
   });
 }
 
+/* Attention split between the two candidates in a race. Party colour is
+   correct here: the two halves of the bar ARE the two parties. */
+function renderAttention(containerId, rows) {
+  var box = $(containerId); if (!box) return;
+  box.innerHTML = "";
+  rows.forEach(function (r) {
+    var demPct = r.dem_share * 100;
+    var wrap = document.createElement("div");
+    wrap.className = "attn";
+    wrap.innerHTML =
+      '<div class="attn-name">' + esc(r.state_name) + (r.special ? " <span>(special)</span>" : "") + "</div>" +
+      '<div class="attn-bar"><div class="attn-d"></div><div class="attn-r"></div></div>' +
+      '<div class="attn-read">' +
+        '<span class="attn-side">' + swatch(css("--dem")) + esc(r.dem_last) + " " + Math.round(demPct) + "%</span>" +
+        '<span class="attn-side">' + swatch(css("--rep")) + esc(r.rep_last) + " " + Math.round(100 - demPct) + "%</span>" +
+      "</div>" +
+      '<div class="attn-total">' + Number(r.total_daily).toLocaleString() + "/day" +
+        (r.surge_note ? ' <span class="attn-surge">' + esc(r.surge_note) + "</span>" : "") + "</div>";
+    box.appendChild(wrap);
+
+    var d = wrap.querySelector(".attn-d"), rr = wrap.querySelector(".attn-r");
+    d.style.width = demPct + "%";
+    d.style.background = css("--dem");
+    rr.style.width = (100 - demPct) + "%";
+    rr.style.background = css("--rep");
+    bindTip(d, function () {
+      return "<b>" + esc(r.dem) + "</b><br>" + Number(r.dem_views).toLocaleString() +
+        " views a day<br>" + r.dem_surge + "x their own baseline";
+    }, true);
+    bindTip(rr, function () {
+      return "<b>" + esc(r.rep) + "</b><br>" + Number(r.rep_views).toLocaleString() +
+        " views a day<br>" + r.rep_surge + "x their own baseline";
+    }, true);
+  });
+}
+
 function renderMarketRaces(containerId, rows) {
   var box = $(containerId); if (!box) return;
   var html = '<table class="grid"><thead><tr><th>Race</th><th class="num">Model</th>' +
@@ -797,7 +833,7 @@ global.FC = {
   renderHouseMap: renderHouseMap, renderHouseTable: renderHouseTable, renderEnvironment: renderEnvironment,
   renderIndicators: renderIndicators, renderTrend: renderTrend,
   renderMarketCompare: renderMarketCompare, renderPairedBars: renderPairedBars,
-  renderMarketRaces: renderMarketRaces, renderMarketStrip: renderMarketStrip, renderMarginBins: renderMarginBins,
+  renderMarketRaces: renderMarketRaces, renderAttention: renderAttention, renderMarketStrip: renderMarketStrip, renderMarginBins: renderMarginBins,
   senateSeatDots: senateSeatDots, houseSeatDots: houseSeatDots, STATE_NAMES: STATE_NAMES, ELECTION: ELECTION
 };
 })(window);
