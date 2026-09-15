@@ -204,3 +204,26 @@ tr:hover td { background: var(--dem-wash); }
   .mstrip-read { order: 2; text-align: right; }
   .mstrip-verdict { order: 4; grid-column: 1 / -1; text-align: left; }
 }
+
+/* Attention: how the two candidates in a race split Wikipedia readership. */
+.attn { display: grid; grid-template-columns: 140px 1fr 220px 150px; align-items: center;
+  gap: 14px; padding: 9px 0; border-bottom: 1px solid var(--grid); }
+.attn:last-child { border-bottom: 0; }
+.attn-name { font-weight: 650; }
+.attn-name span { font-weight: 400; color: var(--muted); font-size: 12px; }
+.attn-bar { display: flex; height: 12px; border-radius: 6px; overflow: hidden; gap: 2px; }
+.attn-d, .attn-r { height: 12px; }
+.attn-d { border-radius: 6px 0 0 6px; }
+.attn-r { border-radius: 0 6px 6px 0; }
+.attn-read { display: flex; gap: 14px; font-size: 13px; color: var(--ink-2); }
+.attn-side { white-space: nowrap; }
+.attn-total { font-size: 12px; color: var(--muted); text-align: right; }
+/* The surge note is two names and two numbers, which will not sit on one
+   line beside the daily count at any sensible column width. */
+.attn-surge { display: block; color: var(--ink-2); }
+@media (max-width: 760px) {
+  .attn { grid-template-columns: 1fr auto; gap: 6px 10px; }
+  .attn-bar { grid-column: 1 / -1; order: 3; }
+  .attn-read { grid-column: 1 / -1; order: 4; }
+  .attn-total { order: 2; }
+}
