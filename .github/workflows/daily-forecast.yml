@@ -7,8 +7,8 @@ name: Daily election forecast update
 #                           beside the model, never blended into it.
 #   3. refresh_polls.py   - generic ballot and approval, averaged from the
 #                           aggregator tables Wikipedia maintains. Free.
-#   4. refresh_news.py    - GDELT news tone per race. Free, and collected
-#                           for display only; it never moves a number.
+#   4. refresh_attention.py - Wikipedia readership per candidate. Free, and
+#                           collected for display only; it never moves a number.
 #   5. set_polls.py       - overrides the two poll figures with anything you
 #                           typed into the boxes below.
 #   6. agent_run.py       - the AI refresh: reads polling pages, Cook rating
@@ -90,13 +90,13 @@ jobs:
         continue-on-error: true
         run: python3 refresh_polls.py
 
-      # Free, and experimental. GDELT throttles by IP and may refuse a shared
-      # runner outright; the script gives up quickly and says so if it does.
-      # Nothing it collects is fed into the forecast.
-      - name: Refresh news tone (free, display only)
-        id: news
+      # Free. Wikipedia readership per candidate, which says who people are
+      # looking up, not who they support, so it is displayed and never fed
+      # into the forecast. Slow (the API throttles), hence the soft fail.
+      - name: Refresh candidate attention (free, display only)
+        id: attention
         continue-on-error: true
-        run: python3 refresh_news.py
+        run: python3 refresh_attention.py
 
       # Typed numbers win over the automatic refresh above, so this runs last
       # of the poll steps: it is the override, not the only way in.
@@ -124,7 +124,7 @@ jobs:
         run: |
           echo "::warning title=Refresh incomplete::A refresh step exited non-zero \
           (economy: ${{ steps.economy.outcome }}, markets: ${{ steps.markets.outcome }}, \
-          polls: ${{ steps.polls.outcome }}, news: ${{ steps.news.outcome }}, \
+          polls: ${{ steps.polls.outcome }}, attention: ${{ steps.attention.outcome }}, \
           AI: ${{ steps.refresh.outcome }}). The forecast was rebuilt on the freshest data \
           available; every reading shows its own as-of date on the site."
 
