@@ -166,6 +166,8 @@ run_pipeline.py               model -> iterations/ snapshot
 build_site.py                 snapshots + templates -> site/
 refresh_economy.py            free economic refresh from public data series
 refresh_markets.py            free prediction market prices (shown, never blended)
+refresh_polls.py              free generic ballot + approval from Wikipedia aggregators
+refresh_attention.py          free Wikipedia readership per candidate (shown, never blended)
 set_polls.py                  manual generic-ballot / approval entry
 agent_run.py                  optional AI refresh (ratings, Senate news)
 ingest.py                     the validated write functions all three use

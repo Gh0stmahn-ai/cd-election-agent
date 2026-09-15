@@ -17,6 +17,7 @@ Run: python3 build_site.py
 """
 import html
 import json
+import statistics
 import shutil
 from datetime import date, datetime, timezone
 from pathlib import Path
@@ -33,6 +34,21 @@ SITE_URL = "https://gh0stmahn-ai.github.io"
 # latest public data, with optional boxes for today's poll numbers.
 RUN_URL = "https://github.com/Gh0stmahn-ai/cd-election-agent/actions/workflows/daily-forecast.yml"
 ELECTION_DATE = date(2026, 11, 3)
+
+STATE_NAMES = {
+    "AL": "Alabama", "AK": "Alaska", "AZ": "Arizona", "AR": "Arkansas", "CA": "California",
+    "CO": "Colorado", "CT": "Connecticut", "DE": "Delaware", "FL": "Florida", "GA": "Georgia",
+    "HI": "Hawaii", "ID": "Idaho", "IL": "Illinois", "IN": "Indiana", "IA": "Iowa",
+    "KS": "Kansas", "KY": "Kentucky", "LA": "Louisiana", "ME": "Maine", "MD": "Maryland",
+    "MA": "Massachusetts", "MI": "Michigan", "MN": "Minnesota", "MS": "Mississippi",
+    "MO": "Missouri", "MT": "Montana", "NE": "Nebraska", "NV": "Nevada",
+    "NH": "New Hampshire", "NJ": "New Jersey", "NM": "New Mexico", "NY": "New York",
+    "NC": "North Carolina", "ND": "North Dakota", "OH": "Ohio", "OK": "Oklahoma",
+    "OR": "Oregon", "PA": "Pennsylvania", "RI": "Rhode Island", "SC": "South Carolina",
+    "SD": "South Dakota", "TN": "Tennessee", "TX": "Texas", "UT": "Utah", "VT": "Vermont",
+    "VA": "Virginia", "WA": "Washington", "WV": "West Virginia", "WI": "Wisconsin",
+    "WY": "Wyoming",
+}
 
 NAV = [
     ("index.html", "Overview"),
@@ -257,7 +273,21 @@ FC.onRender(function () {
                 body, js(data), scripts)
 
 
-def build_senate(snap):
+ATTENTION_SECTION = """
+<section>
+  <h2>Who people are looking up</h2>
+  <p class="lede">How each race's two candidates split Wikipedia readership over the past week,
+    and whether either one is being read about far more than usual. This is curiosity, not
+    support: a candidate in trouble gets looked up too. It is shown here and is
+    <b>not part of the forecast</b>.</p>
+  <div class="card" id="attention"></div>
+  <p class="note" id="attention-note"></p>
+</section>
+"""
+
+
+def build_senate(snap, attention=None):
+    rows = attention_rows(attention, snap)
     body = """
 <section>
   <div class="card">
@@ -291,8 +321,8 @@ def build_senate(snap):
   <h2>All 35 races</h2>
   <div class="card tbl-scroll"><table id="tbl-senate"></table></div>
 </section>
-"""
-    data = {"site": site_meta(snap), "senate": snap["senate"], "geo": {"states": {
+""" + (ATTENTION_SECTION if rows else "")
+    data = {"attention": rows, "site": site_meta(snap), "senate": snap["senate"], "geo": {"states": {
         k: {"d": v["d"], "cx": v["cx"], "cy": v["cy"]}
         for k, v in json.loads((GEO_DIR / "states.json").read_text())["states"].items()}}}
     scripts = """
@@ -309,6 +339,14 @@ FC.onRender(function () {
     FC.pct(s.tie_prob) + "</b>. Average outcome: <b>D " + Math.round(s.mean_dem_seats) + " · R " +
     Math.round(100 - s.mean_dem_seats) + "</b>.";
   FC.renderSenateTable("tbl-senate", s);
+  if (PAGE_DATA.attention && PAGE_DATA.attention.length) {
+    FC.renderAttention("attention", PAGE_DATA.attention);
+    var busiest = PAGE_DATA.attention[0];
+    FC.$("attention-note").innerHTML =
+      "Daily article views from Wikipedia, comparing the last 7 days with the 5 weeks before. " +
+      "Busiest race right now: <b>" + FC.esc(busiest.state_name) + "</b> at " +
+      Number(busiest.total_daily).toLocaleString() + " views a day across both candidates.";
+  }
 });
 """
     return page("senate.html", "Senate forecast · 2026 Midterm Forecast",
@@ -468,6 +506,62 @@ FC.onRender(function () {
                 ("How the forecast has moved",
                  "Every daily run is kept, so the forecast can be replayed rather than quietly rewritten."),
                 body, js(data), scripts)
+
+
+def load_attention():
+    """Wikipedia readership per race, if refresh_attention.py has ever run."""
+    path = DATA_DIR / "attention_2026.json"
+    if not path.exists():
+        return None
+    try:
+        return json.loads(path.read_text())
+    except (ValueError, OSError):
+        return None
+
+
+def attention_rows(attention, snap):
+    """The races with a usable split, busiest first, ready for the renderer."""
+    if not attention:
+        return []
+    names = {s["seat_id"]: s for s in snap["senate"]["seats"]}
+    rows = []
+    for seat, race in attention.get("races", {}).items():
+        if "dem_share" not in race:
+            continue
+        dem, rep = race["sides"].get("D"), race["sides"].get("R")
+        if not dem or not rep:
+            continue
+
+        def surge_note():
+            """Name a surge only when it is big enough to mean something.
+
+            When both candidates jump together it is the race that got hot,
+            not either of them, and saying that is both shorter and truer
+            than listing two nearly identical multiples.
+            """
+            d_up, r_up = dem.get("surge"), rep.get("surge")
+            big = [f for f in (d_up, r_up) if f and f >= 1.8]
+            if len(big) == 2 and min(big) / max(big) > 0.75:
+                return f"whole race {statistics.mean(big):.1f}x"
+            notes = []
+            for side in (dem, rep):
+                factor = side.get("surge")
+                if factor and factor >= 1.8:
+                    notes.append(f"{side['candidate'].split()[-1]} {factor:g}x")
+            return " · ".join(notes)
+
+        rows.append({
+            "state_name": STATE_NAMES.get(race.get("state", seat[:2]), seat[:2]),
+            "special": "special" in seat,
+            "dem": dem["candidate"], "rep": rep["candidate"],
+            "dem_last": dem["candidate"].split()[-1], "rep_last": rep["candidate"].split()[-1],
+            "dem_share": race["dem_share"], "total_daily": race["total_daily"],
+            "dem_views": dem.get("recent_daily"), "rep_views": rep.get("recent_daily"),
+            "dem_surge": dem.get("surge"), "rep_surge": rep.get("surge"),
+            "surge_note": surge_note(),
+        })
+    rows.sort(key=lambda r: -r["total_daily"])
+    return rows
 
 
 def load_markets():
@@ -793,6 +887,16 @@ def build_methodology(snap):
     rows.append(("State and district geometry", "Natural Earth 1:50m state shapes; hexagon layout generated once",
                  "Fixed", "2026-09-11",
                  '<a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener">naturalearthdata.com</a> (public domain)'))
+    at = load_attention()
+    if at:
+        n_races = sum(1 for v in at.get("races", {}).values() if "dem_share" in v)
+        rows.append(("Candidate attention",
+                     f"Wikipedia article views for both candidates in {n_races} competitive "
+                     "races. <b>Displayed only, never blended into the forecast</b>",
+                     "Every run", str(at.get("as_of", ""))[:10],
+                     '<a href="https://wikimedia.org/api/rest_v1/" target="_blank" '
+                     'rel="noopener">Wikimedia REST API</a> &#183; '
+                     '<a href="senate.html">see the split</a>'))
     mk = load_markets()
     if mk:
         venue_names = ", ".join(v.get("name", k) for k, v in mk.get("venues", {}).items())
@@ -919,6 +1023,11 @@ def build_methodology(snap):
     <li><b>It does not treat the AI as an oracle.</b> The agent chooses which published figures to copy and writes a
       capped, cited judgment about campaign momentum in Senate races. It cannot invent a rating change, move a
       number outside its plausible range, or touch the model's math.</li>
+    <li><b>It does not mistake attention for support.</b> Wikipedia readership per candidate is
+      collected every run and shown on the <a href="senate.html">Senate page</a>, because a race
+      the country has suddenly started reading about is worth knowing. It is not an input: people
+      look up a candidate who is in trouble just as readily as one who is winning, and a famous
+      incumbent always out-reads a newcomer.</li>
     <li><b>It does not follow the betting markets.</b> Kalshi and Polymarket prices are collected every run and
       shown on the <a href="markets.html">markets page</a>, but nothing on this site is blended with them. A
       prediction market is mostly a weighted digest of the same polls and ratings this model already reads, so
@@ -956,7 +1065,7 @@ def main():
     markets = load_markets()
     pages = {
         "index.html": build_index(latest, meta, markets),
-        "senate.html": build_senate(latest),
+        "senate.html": build_senate(latest, load_attention()),
         "house.html": build_house(latest, meta),
         "economy.html": build_economy(latest),
         "trend.html": build_trend(snaps),

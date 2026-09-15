@@ -23,6 +23,7 @@ import html
 import json
 import re
 import sys
+import time
 import urllib.error
 import urllib.request
 from datetime import datetime
@@ -33,6 +34,7 @@ REST = "https://en.wikipedia.org/api/rest_v1/page/html/"
 # Wikimedia asks automated clients to identify themselves and give a contact.
 UA = {"User-Agent": "cd-election-agent/1.0 (https://github.com/Gh0stmahn-ai/cd-election-agent)"}
 TIMEOUT = 45
+RETRIES = 4
 
 BALLOT_PAGE = "2026_United_States_House_of_Representatives_elections"
 APPROVAL_PAGE = "Opinion_polling_on_the_second_Trump_presidency"
@@ -42,9 +44,24 @@ APPROVAL_URL = f"https://en.wikipedia.org/wiki/{APPROVAL_PAGE}"
 
 
 def fetch(page):
+    """Fetch one article, retrying through Wikipedia's rate limiting.
+
+    A shared runner IP gets throttled, and without a retry a single 429
+    silently costs the day's poll refresh and leaves yesterday's number in
+    place. The throttle clears in seconds.
+    """
     req = urllib.request.Request(REST + page, headers=UA)
-    with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
-        return resp.read().decode("utf-8")
+    last = None
+    for attempt in range(RETRIES):
+        try:
+            with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
+                return resp.read().decode("utf-8")
+        except urllib.error.HTTPError as e:
+            if e.code != 429:
+                raise
+            last = e
+            time.sleep(4 * (attempt + 1))
+    raise last
 
 
 def plain(fragment):
