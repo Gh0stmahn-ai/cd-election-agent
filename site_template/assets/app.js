@@ -577,10 +577,18 @@ function senateTip(r) {
   if (r.rep_candidate) cands.push(swatch(css("--rep")) + esc(r.rep_candidate) + " (R)");
   var who = r.challenger_caucus === "independent" ? "Osborn (I)" : "Democrats";
   var atmo = r.atmospherics_adj ? "<br>News-momentum adjustment: " + signed(r.atmospherics_adj * 100, 0) + " pts to D chance" : "";
+  // Where this race's expected margin came from: its polling, its rating, or a
+  // blend, which is worth showing because the two often disagree.
+  var poll = "";
+  if (r.polling && r.polling.poll_margin != null) {
+    poll = "<br>Polls " + margin(r.polling.poll_margin) + " · rating implies " +
+      margin(r.polling.rating_margin) + "<br><span style='opacity:.8'>" +
+      Math.round(r.polling.weight * 100) + "% of the baseline is the polling average</span>";
+  }
   return "<b>" + STATE_NAMES[r.state] + (r.seat_id.indexOf("special") > -1 ? " (special)" : "") + "</b><br>" +
     (cands.join("<br>") || "Nominees to be decided") +
     "<br>Cook: " + RATING_NAME[r.rating] + (r.rating === "tossup" ? "" : " " + r.lean) + " · held by " + r.held_by +
-    "<br><b>" + who + ": " + pct(r.dem_win_prob) + "</b> · Republicans: " + pct(1 - r.dem_win_prob) + atmo +
+    "<br><b>" + who + ": " + pct(r.dem_win_prob) + "</b> · Republicans: " + pct(1 - r.dem_win_prob) + poll + atmo +
     (r.notes ? "<br><span style='opacity:.8'>" + esc(r.notes) + "</span>" : "");
 }
 
