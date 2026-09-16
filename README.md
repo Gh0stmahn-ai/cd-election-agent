@@ -30,9 +30,12 @@ web server or straight off disk with no CDN, no fetches and no libraries:
    economic index). Polls get more weight as Election Day nears (82% in
    mid-September, rising to 95%).
 2. **Race baselines** come from Cook Political Report ratings, converted
-   to expected margins (Solid 18 pts, Likely 9, Lean 4.5, Toss-up 0.5).
-   Ratings already reflect the environment when they were set, so each race
-   is shifted only by how far the environment has moved since.
+   to expected margins (Solid 18 pts, Likely 9, Lean 4.5, Toss-up 0.5),
+   shifted by how far the environment has moved since the rating was set.
+   Competitive **Senate** races then blend that with their own state polling
+   average, weighted by how many aggregators cover the race and how close
+   Election Day is. **House** seats are separated within their rating by
+   Cook PVI, centred so the rating's average is preserved.
 4. **News momentum** (Senate toss-up/lean races only): a capped +/-0.08
    win-probability adjustment from an AI read of campaign coverage, kept
    separate and shown in each race's tooltip.
@@ -167,6 +170,8 @@ build_site.py                 snapshots + templates -> site/
 refresh_economy.py            free economic refresh from public data series
 refresh_markets.py            free prediction market prices (shown, never blended)
 refresh_polls.py              free generic ballot + approval from Wikipedia aggregators
+refresh_senate_polls.py       free state polling for the competitive Senate races
+tools/fetch_pvi.py            one-time pull of Cook PVI for all 435 districts
 refresh_attention.py          free Wikipedia readership per candidate (shown, never blended)
 attribution.py                re-runs the model per input to explain each day's move
 set_polls.py                  manual generic-ballot / approval entry
