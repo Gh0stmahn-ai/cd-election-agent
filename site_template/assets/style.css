@@ -227,3 +227,55 @@ tr:hover td { background: var(--dem-wash); }
   .attn-read { grid-column: 1 / -1; order: 4; }
   .attn-total { order: 2; }
 }
+
+/* Trend story: one card per day, explaining what moved the forecast. */
+.story { background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+  padding: 18px 20px; margin-bottom: 14px; }
+.story-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+.story-date { font-size: 13px; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.04em; font-weight: 650; }
+.story-move { font-size: 17px; margin-top: 3px; }
+.story-delta { font-size: 20px; font-weight: 700; white-space: nowrap; }
+.story-delta.up { color: var(--dem); }
+.story-delta.down { color: var(--rep); }
+.story-sub { font-size: 12px; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.04em; margin: 16px 0 6px; }
+.story-resid { font-size: 12px; color: var(--muted); }
+.story-facts { margin: 0; padding-left: 18px; }
+.story-facts li { font-size: 14px; color: var(--ink-2); margin-bottom: 3px; }
+.story-facts li.k-rating { color: var(--ink); }
+.story-races { display: flex; flex-direction: column; gap: 4px; }
+.story-race { display: grid; grid-template-columns: 130px 64px 78px 1fr; gap: 10px;
+  font-size: 13px; align-items: baseline; }
+.rc-state { font-weight: 600; }
+.rc-shift { font-variant-numeric: tabular-nums; }
+.rc-to, .rc-why { color: var(--muted); }
+.chamber-toggle { display: inline-flex; gap: 4px; border: 1px solid var(--grid);
+  border-radius: 9px; padding: 3px; margin-bottom: 14px; }
+.chamber-toggle button { border: 0; background: none; color: var(--ink-2); cursor: pointer;
+  font: inherit; font-size: 14px; padding: 5px 14px; border-radius: 7px; }
+.chamber-toggle button[aria-pressed="true"] { background: var(--ink); color: var(--surface); }
+@media (max-width: 640px) {
+  .story-race { grid-template-columns: 1fr auto; }
+  .rc-why { grid-column: 1 / -1; }
+  .story-head { flex-direction: column; gap: 4px; }
+}
+
+/* Driver bars: zero in the middle, Democrats right, Republicans left. */
+.dbars { margin-top: 4px; }
+.dbar { display: grid; grid-template-columns: 190px 1fr 56px; gap: 12px;
+  align-items: center; padding: 3px 0; }
+.dbar-label { font-size: 13px; color: var(--ink-2); text-align: right; }
+.dbar-track { position: relative; height: 14px; }
+.dbar-zero { position: absolute; left: 50%; top: -2px; width: 1px; height: 18px;
+  background: var(--axis); }
+.dbar-fill { position: absolute; top: 0; height: 14px; border-radius: 3px; }
+.dbar-val { font-size: 12px; font-variant-numeric: tabular-nums; font-weight: 600; }
+.dbar-foot { display: flex; justify-content: space-between; font-size: 11px;
+  color: var(--muted); margin: 4px 0 0; padding-left: 202px; }
+@media (max-width: 640px) {
+  .dbar { grid-template-columns: 1fr 44px; gap: 4px 8px; }
+  .dbar-label { text-align: left; }
+  .dbar-track { grid-column: 1 / -1; }
+  .dbar-foot { padding-left: 0; }
+}

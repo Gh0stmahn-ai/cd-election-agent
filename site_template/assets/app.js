@@ -175,7 +175,121 @@ function renderHistogram(svgId, hist, majority, xlabel, chamberName) {
     el("text", {x: x(k) + bw / 2, y: H - m.b + 14, "text-anchor": "middle"}, svg).textContent = k;
   }
   el("text", {x: (W + m.l) / 2, y: H - 4, "text-anchor": "middle"}, svg).textContent =
-    xlabel + " (share of 20,000 simulations)";
+    xlabel + " (share of 100,000 simulations)";
+}
+
+/* --------------------------------------------------------------- story */
+/* Why the forecast moved. A driver that helped Democrats runs right in blue,
+   one that helped Republicans runs left in red, on a zero line: the two
+   directions ARE the two parties, so the diverging palette is literal here.
+   One shared scale across every day, so bar lengths compare between cards. */
+function driverBars(host, drivers, chamber, scale) {
+  /* Built in HTML rather than SVG on purpose: this card is full width on a
+     desktop and 400px on a phone, and an SVG that stretches to fit scales its
+     text with it, so labels come out either huge or unreadable. */
+  host.innerHTML = "";
+  var shown = drivers.filter(function (d) { return Math.abs(d.points[chamber]) >= 0.02; });
+  if (!shown.length) {
+    host.innerHTML = '<div class="story-resid">No single input moved this chamber measurably.</div>';
+    return;
+  }
+  shown.forEach(function (d) {
+    var v = d.points[chamber], helpsDem = v >= 0;
+    var pctOfHalf = Math.min(Math.abs(v) / scale, 1) * 50;
+    var row = document.createElement("div");
+    row.className = "dbar";
+    row.innerHTML =
+      '<div class="dbar-label">' + esc(d.label) + "</div>" +
+      '<div class="dbar-track"><span class="dbar-zero"></span><span class="dbar-fill"></span></div>' +
+      '<div class="dbar-val">' + signed(v, 1) + "</div>";
+    var fill = row.querySelector(".dbar-fill");
+    fill.style.background = helpsDem ? css("--dem") : css("--rep");
+    fill.style.width = Math.max(pctOfHalf, 0.4) + "%";
+    if (helpsDem) { fill.style.left = "50%"; } else { fill.style.right = "50%"; }
+    row.querySelector(".dbar-val").style.color = helpsDem ? css("--dem") : css("--rep");
+    bindTip(fill, function () {
+      return "<b>" + esc(d.label) + "</b><br>" + signed(v, 2) + " points to the " +
+        (helpsDem ? "Democrats" : "Republicans");
+    }, true);
+    host.appendChild(row);
+  });
+  var foot = document.createElement("div");
+  foot.className = "dbar-foot";
+  foot.innerHTML = "<span>helps Republicans</span><span>helps Democrats</span>";
+  host.appendChild(foot);
+}
+
+var CHAMBER_WORD = {house: "House", senate: "Senate"};
+
+function moveWord(v) {
+  var a = Math.abs(v);
+  if (a < 0.2) return "barely moved";
+  return (v > 0 ? "rose " : "fell ") + a.toFixed(1) + " points";
+}
+
+function renderStory(containerId, days, chamber) {
+  var box = $(containerId); if (!box) return;
+  box.innerHTML = "";
+  var scale = 0.5;
+  days.forEach(function (d) {
+    (d.change ? d.change.drivers : []).forEach(function (dr) {
+      scale = Math.max(scale, Math.abs(dr.points[chamber]));
+    });
+  });
+
+  days.forEach(function (d) {
+    var card = document.createElement("div");
+    card.className = "story";
+    var ch = d.change;
+    var total = ch ? ch.total[chamber] : null;
+    var head = '<div class="story-head"><div><div class="story-date">' + esc(d.label) + "</div>" +
+      '<div class="story-move">' +
+        (total === null
+          ? (d.first ? "The first run of the rebuilt model, so there is nothing to compare against yet."
+                     : "This run predates the day-by-day explanation, so no breakdown was recorded.")
+          : "Democrats' " + (CHAMBER_WORD[chamber] || chamber) + " chances " + moveWord(total) +
+            ', to <b>' + Math.round(d[chamber] * 100) + "%</b>") +
+      "</div></div>" +
+      (total === null ? "" :
+        '<div class="story-delta ' + (total >= 0 ? "up" : "down") + '">' + signed(total, 1) + " pt</div>") +
+      "</div>";
+    card.innerHTML = head;
+
+    if (ch && ch.drivers.length) {
+      var wrap = document.createElement("div");
+      wrap.innerHTML = '<div class="story-sub">What moved it</div><div class="dbars"></div>';
+      card.appendChild(wrap);
+      driverBars(wrap.querySelector(".dbars"), ch.drivers, chamber, scale);
+      if (Math.abs(ch.residual[chamber]) >= 0.15) {
+        var note = document.createElement("div");
+        note.className = "story-resid";
+        note.textContent = "Inputs interacting with each other account for the remaining " +
+          signed(ch.residual[chamber], 1) + " points.";
+        card.appendChild(note);
+      }
+    }
+
+    if (ch && ch.facts.length) {
+      card.innerHTML += '<div class="story-sub">What changed in the data</div>' +
+        '<ul class="story-facts">' + ch.facts.map(function (f) {
+          return '<li class="k-' + esc(f.kind) + '">' + esc(f.text) + "</li>";
+        }).join("") + "</ul>";
+    }
+
+    if (ch && ch.races && ch.races.length) {
+      card.innerHTML += '<div class="story-sub">Races that moved</div>' +
+        '<div class="story-races">' + ch.races.slice(0, 6).map(function (r) {
+          var up = r.shift >= 0;
+          return '<div class="story-race"><span class="rc-state">' +
+            esc(STATE_NAMES[r.state] || r.state) + "</span>" +
+            '<span class="rc-shift" style="color:' + (up ? css("--dem") : css("--rep")) + '">' +
+              signed(r.shift, 1) + " pt</span>" +
+            '<span class="rc-to">to ' + Math.round(r.to) + "% D</span>" +
+            '<span class="rc-why">' + esc(r.why) + "</span></div>";
+        }).join("") + "</div>";
+    }
+    box.appendChild(card);
+  });
 }
 
 /* ------------------------------------------------------------- markets */
@@ -833,7 +947,7 @@ global.FC = {
   renderHouseMap: renderHouseMap, renderHouseTable: renderHouseTable, renderEnvironment: renderEnvironment,
   renderIndicators: renderIndicators, renderTrend: renderTrend,
   renderMarketCompare: renderMarketCompare, renderPairedBars: renderPairedBars,
-  renderMarketRaces: renderMarketRaces, renderAttention: renderAttention, renderMarketStrip: renderMarketStrip, renderMarginBins: renderMarginBins,
+  renderMarketRaces: renderMarketRaces, renderAttention: renderAttention, renderStory: renderStory, renderMarketStrip: renderMarketStrip, renderMarginBins: renderMarginBins,
   senateSeatDots: senateSeatDots, houseSeatDots: houseSeatDots, STATE_NAMES: STATE_NAMES, ELECTION: ELECTION
 };
 })(window);
