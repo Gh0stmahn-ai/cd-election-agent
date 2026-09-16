@@ -15,6 +15,7 @@ and no libraries: the site works from a web server or straight off disk.
 
 Run: python3 build_site.py
 """
+import hashlib
 import html
 import json
 import statistics
@@ -66,6 +67,22 @@ FAVICON = ("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox
            " rx='2' fill='%232a78d6'/%3E%3Crect x='17' y='8' width='10' height='18' rx='2' fill='%23c74845'/%3E%3C/svg%3E")
 
 
+# A short hash of the shared assets, appended to their URLs. Without it a
+# browser holding yesterday's app.js will happily pair it with today's HTML,
+# and the moment a page calls a function that only exists in the new file the
+# whole page stops rendering. The pages and their assets have to ship as a set.
+def _asset_version():
+    h = hashlib.sha256()
+    for name in ("app.js", "style.css"):
+        path = TEMPLATE_DIR / "assets" / name
+        if path.exists():
+            h.update(path.read_bytes())
+    return h.hexdigest()[:8]
+
+
+ASSET_V = _asset_version()
+
+
 # ------------------------------------------------------------------ data
 def load_snapshots():
     snaps = []
@@ -114,7 +131,7 @@ def page(slug, title, description, head_line, body, data, scripts):
 <meta name="twitter:description" content="{description}">
 <meta name="twitter:image" content="{SITE_URL}/assets/og.png">
 <link rel="icon" href="{FAVICON}">
-<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/style.css?v={ASSET_V}">
 </head>
 <body>
 <header class="site-head"><div class="bar">
@@ -145,7 +162,7 @@ def page(slug, title, description, head_line, body, data, scripts):
     Forecast, not a prediction: read the <a href="methodology.html">methodology</a> first.</div>
 </div></footer>
 
-<script src="assets/app.js"></script>
+<script src="assets/app.js?v={ASSET_V}"></script>
 <script>
 const PAGE_DATA = {data};
 FC.init();
