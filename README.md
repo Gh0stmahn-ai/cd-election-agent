@@ -30,12 +30,15 @@ web server or straight off disk with no CDN, no fetches and no libraries:
    economic index). Polls get more weight as Election Day nears (82% in
    mid-September, rising to 95%).
 2. **Race baselines** come from Cook Political Report ratings, converted
-   to expected margins (Solid 18 pts, Likely 9, Lean 4.5, Toss-up 0.5),
+   to expected margins (Solid 30 pts, Likely 9.5, Lean 6.3, Toss-up 1.5),
    shifted by how far the environment has moved since the rating was set.
-   Competitive **Senate** races then blend that with their own state polling
-   average, weighted by how many aggregators cover the race and how close
-   Election Day is. **House** seats are separated within their rating by
-   Cook PVI, centred so the rating's average is preserved.
+   Those four numbers are fitted on 1,268 real races, not chosen -- see
+   the backtest below. Competitive **Senate** races then blend that with
+   their own state polling average, weighted by how many aggregators cover
+   the race and how close Election Day is. **House** seats are separated
+   within their rating by Cook PVI, centred so the rating's average is
+   preserved, with a weight that is itself fitted per rating (1.75 points
+   of margin per PVI point among Solid seats, 0.25 among competitive ones).
 4. **News momentum** (Senate toss-up/lean races only): a capped +/-0.08
    win-probability adjustment from an AI read of campaign coverage, kept
    separate and shown in each race's tooltip.
@@ -172,12 +175,46 @@ refresh_markets.py            free prediction market prices (shown, never blende
 refresh_polls.py              free generic ballot + approval from Wikipedia aggregators
 refresh_senate_polls.py       free state polling for the competitive Senate races
 tools/fetch_pvi.py            one-time pull of Cook PVI for all 435 districts
+backtest/                     2018-2022 rebuild that fits and grades the constants
 refresh_attention.py          free Wikipedia readership per candidate (shown, never blended)
 attribution.py                re-runs the model per input to explain each day's move
 set_polls.py                  manual generic-ballot / approval entry
 agent_run.py                  optional AI refresh (ratings, Senate news)
 ingest.py                     the validated write functions all three use
 ```
+
+## Backtest
+
+Every constant in the simulation used to be a guess. `backtest/` rebuilds
+2018, 2020 and 2022 from the final Cook ratings published days before each
+election and the results that followed -- 1,189 House seats and 79 Senate
+races -- and grades the model on them.
+
+```
+rating    races   was   actually won by   spread   favourite held   now
+tossup      117   0.5               1.8      5.4             60%    1.5
+lean         88   4.5               6.7      5.0             93%    6.3
+likely       91   9.0               9.6      5.1             96%    9.5
+solid       972  18.0              32.6     16.6             98%   30.0
+
+mean absolute error per race   13.6 pts -> 5.7 pts
+```
+
+The correlated-error layers were measured the same way: a state's races
+share 2.5 points of miss (2.5 was assumed), the per-race residual is 3.4,
+the national miss has SD 2.6, and the census-division layer is 0.8 rather
+than the 1.5 assumed.
+
+```
+python3 backtest/fetch_history.py     # district results + PVI, 2014-2024
+python3 backtest/fetch_ratings.py     # final Cook ratings for competitive seats
+python3 backtest/fetch_senate.py      # Senate ratings + results
+python3 backtest/report.py            # grade the model, write the summary
+```
+
+Caveats: three cycles is three observations of the national error, so that
+number is a floor rather than a precise estimate; and seats absent from the
+ratings articles are entered as Solid for the party that held them.
 
 ## Honest limits
 
