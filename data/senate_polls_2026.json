@@ -1,5 +1,5 @@
 {
- "as_of": "2026-09-16T19:24:47+00:00",
+ "as_of": "2026-09-16T23:23:58+00:00",
  "source": "Wikipedia per-race election articles",
  "half_life_days": 21,
  "max_age_days": 120,
@@ -42,15 +42,15 @@
    "detail": [
     {
      "label": "270toWin",
-     "margin": 8.0
+     "margin": 6.5
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 6.7
+     "margin": 7.4
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 8.2
+     "margin": 7.7
     },
     {
      "label": "Race to the WH",
@@ -58,11 +58,11 @@
     },
     {
      "label": "RealClearPolitics",
-     "margin": 7.8
+     "margin": 8.0
     },
     {
      "label": "Silver Bulletin",
-     "margin": 8.4
+     "margin": 9.0
     }
    ],
    "rating": "lean",
@@ -72,7 +72,7 @@
    "state": "IA",
    "dem_candidate": "Josh Turek",
    "rep_candidate": "Ashley Hinson",
-   "dem_margin": 0.3,
+   "dem_margin": -0.3,
    "method": "mean of 6 aggregators",
    "n_used": 6,
    "detail": [
@@ -82,23 +82,23 @@
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 1.7
+     "margin": 0.2
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 1.0
+     "margin": 0.2
     },
     {
      "label": "Race to the WH",
-     "margin": 0.4
+     "margin": 0.2
     },
     {
      "label": "RealClearPolitics",
-     "margin": -0.4
+     "margin": -1.1
     },
     {
      "label": "Silver Bulletin",
-     "margin": 1.2
+     "margin": 0.8
     }
    ],
    "rating": "tossup",
@@ -108,7 +108,7 @@
    "state": "ME",
    "dem_candidate": "Troy Jackson",
    "rep_candidate": "Susan Collins",
-   "dem_margin": 3.0,
+   "dem_margin": 2.9,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
@@ -126,11 +126,11 @@
     },
     {
      "label": "RealClearPolitics",
-     "margin": 2.5
+     "margin": 1.8
     },
     {
      "label": "Silver Bulletin",
-     "margin": 4.0
+     "margin": 4.2
     }
    ],
    "rating": "tossup",
@@ -280,7 +280,7 @@
    "state": "TX",
    "dem_candidate": "James Talarico",
    "rep_candidate": "Ken Paxton",
-   "dem_margin": 3.0,
+   "dem_margin": 3.1,
    "method": "mean of 7 aggregators",
    "n_used": 7,
    "detail": [
@@ -310,7 +310,7 @@
     },
     {
      "label": "Silver Bulletin",
-     "margin": 2.4
+     "margin": 2.6
     }
    ],
    "rating": "tossup",

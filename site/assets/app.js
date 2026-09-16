@@ -934,6 +934,124 @@ function houseSeatDots(house, meta) {
 
 function onRender(fn) { renderers.push(fn); fn(); }
 
+/* --------------------------------------------------------- calibration */
+/* Predicted against observed, with the diagonal drawn. One series, so no
+   legend: the title names it. The marks are ink rather than blue or red on
+   purpose, because "was the model right" is not a question about which party
+   won, and a red dot here would read as a Republican one. Each dot carries a
+   95% interval, because eight bins of seventy-five races cannot be read as
+   precise and a bare dot invites exactly that mistake. */
+function renderCalibration(svgId, curve, brier) {
+  var svg = $(svgId); if (!svg || !curve || !curve.length) return;
+  clear(svg);
+  var W = 520, H = 330, m = {l: 44, r: 14, t: 14, b: 44};
+  var lo = 0.45, hi = 1.0;
+  var x = function (v) { return m.l + (v - lo) / (hi - lo) * (W - m.l - m.r); };
+  var y = function (v) { return H - m.b - (v - lo) / (hi - lo) * (H - m.t - m.b); };
+
+  [0.5, 0.6, 0.7, 0.8, 0.9, 1.0].forEach(function (v) {
+    el("line", {x1: m.l, x2: W - m.r, y1: y(v), y2: y(v), "class": "gridline"}, svg);
+    el("text", {x: m.l - 6, y: y(v) + 3.5, "text-anchor": "end"}, svg).textContent = Math.round(v * 100) + "%";
+    el("text", {x: x(v), y: H - m.b + 15, "text-anchor": "middle"}, svg).textContent = Math.round(v * 100) + "%";
+  });
+  el("line", {x1: m.l, x2: W - m.r, y1: y(lo), y2: y(lo), "class": "axis-line"}, svg);
+  el("line", {x1: m.l, x2: m.l, y1: m.t, y2: H - m.b, "class": "axis-line"}, svg);
+
+  el("line", {x1: x(lo), y1: y(lo), x2: x(hi), y2: y(hi), stroke: css("--axis"),
+    "stroke-width": 1.5, "stroke-dasharray": "5 4"}, svg);
+  /* Set along the line it names, in the one stretch of it no dot or whisker
+     reaches. The angle is the plot's own diagonal, which is not 45 degrees
+     unless the box happens to be square. */
+  var ang = -Math.atan2(H - m.t - m.b, W - m.l - m.r) * 180 / Math.PI;
+  var lx = x(0.70), ly = y(0.70) + 13;
+  el("text", {x: lx, y: ly, transform: "rotate(" + ang.toFixed(1) + " " + lx + " " + ly + ")",
+    style: "fill:var(--muted);font-size:11px"}, svg).textContent = "perfectly calibrated";
+
+  curve.forEach(function (c) {
+    var se = Math.sqrt(Math.max(c.observed * (1 - c.observed), 0.0001) / c.n) * 1.96;
+    var top = Math.min(c.observed + se, 1), bot = Math.max(c.observed - se, 0);
+    el("line", {x1: x(c.predicted), x2: x(c.predicted), y1: y(Math.max(top, lo)), y2: y(Math.max(bot, lo)),
+      stroke: css("--axis"), "stroke-width": 2, "stroke-linecap": "round"}, svg);
+  });
+  curve.forEach(function (c) {
+    var dot = el("circle", {cx: x(c.predicted), cy: y(Math.max(c.observed, lo)), r: 6,
+      fill: css("--ink"), stroke: css("--surface"), "stroke-width": 2}, svg);
+    bindTip(dot, function () {
+      return "<b>" + c.n + " races</b><br>The model gave the favourite <b>" + pct(c.predicted) +
+        "</b><br>The favourite actually won <b>" + pct(c.observed) + "</b>";
+    });
+  });
+
+  el("text", {x: (W + m.l) / 2, y: H - 6, "text-anchor": "middle"}, svg)
+    .textContent = "What the model said the favourite's chances were";
+  el("text", {x: 12, y: (H - m.b + m.t) / 2, "text-anchor": "middle",
+    transform: "rotate(-90 12 " + ((H - m.b + m.t) / 2) + ")"}, svg)
+    .textContent = "How often the favourite won";
+  if (brier) {
+    el("text", {x: W - m.r, y: H - m.b - 8, "text-anchor": "end",
+      style: "fill:var(--muted);font-size:11px"}, svg).textContent = "Brier score " + brier.toFixed(3);
+  }
+}
+
+/* ------------------------------------------------------- tipping point */
+function renderTipping(hostId, items, noteId, note) {
+  /* items: [{label, sub, prob, tip}], already sorted. Built in HTML for the
+     same reason the driver bars are: this card runs full width on a desktop
+     and 400px on a phone, and SVG text scales with the box. */
+  var host = $(hostId); if (!host) return;
+  host.innerHTML = "";
+  if (!items || !items.length) {
+    host.innerHTML = '<div class="tipfoot">Control is not in doubt in enough races to name a deciding one.</div>';
+    return;
+  }
+  var max = items[0].prob || 1;
+  items.forEach(function (it) {
+    var row = document.createElement("div");
+    row.className = "tiprow";
+    row.innerHTML = '<div class="lbl">' + esc(it.label) +
+      (it.sub ? ' <i>' + esc(it.sub) + "</i>" : "") + "</div>" +
+      '<div class="tiptrack"><span class="tipfill"></span></div>' +
+      '<div class="val">' + pct1(it.prob) + "</div>";
+    var fill = row.querySelector(".tipfill");
+    fill.style.width = Math.max(it.prob / max * 100, 1.5) + "%";
+    if (it.tip) bindTip(fill, function () { return it.tip; });
+    host.appendChild(row);
+  });
+  if (noteId && $(noteId)) $(noteId).innerHTML = note || "";
+}
+
+function senateTipping(senate, limit) {
+  return senate.seats.filter(function (r) { return r.tipping_prob > 0; })
+    .sort(function (a, b) { return b.tipping_prob - a.tipping_prob; })
+    .slice(0, limit)
+    .map(function (r) {
+      var fav = r.dem_win_prob >= 0.5 ? "D" : "R";
+      return {
+        label: STATE_NAMES[r.state] + (r.seat_id.indexOf("special") > -1 ? " (sp.)" : ""),
+        sub: RATING_NAME[r.rating] + (r.rating === "tossup" ? "" : " " + r.lean),
+        prob: r.tipping_prob,
+        tip: "<b>" + esc(STATE_NAMES[r.state]) + "</b><br>Decides the Senate in <b>" +
+          pct1(r.tipping_prob) + "</b> of simulations<br>Democrats win it " + pct(r.dem_win_prob) +
+          " of the time · currently favoured: " + fav
+      };
+    });
+}
+
+function houseTipping(house, meta, limit) {
+  var t = house.district_tipping || {};
+  return Object.keys(t).sort(function (a, b) { return t[b] - t[a]; }).slice(0, limit)
+    .map(function (id) {
+      var m = (meta || {})[id] || {}, p = house.district_probs[id];
+      return {
+        label: id, sub: STATE_NAMES[m.state] || "",
+        prob: t[id],
+        tip: "<b>" + esc(id) + "</b>" + (m.incumbent ? " · " + esc(m.incumbent) : "") +
+          "<br>Decides the House in <b>" + pct1(t[id]) + "</b> of simulations" +
+          (p === undefined ? "" : "<br>Democrats win it " + pct(p) + " of the time")
+      };
+    });
+}
+
 function init() {
   tip = document.createElement("div");
   tip.id = "tip"; tip.setAttribute("role", "tooltip");
@@ -956,6 +1074,7 @@ global.FC = {
   renderIndicators: renderIndicators, renderTrend: renderTrend,
   renderMarketCompare: renderMarketCompare, renderPairedBars: renderPairedBars,
   renderMarketRaces: renderMarketRaces, renderAttention: renderAttention, renderStory: renderStory, renderMarketStrip: renderMarketStrip, renderMarginBins: renderMarginBins,
+  renderCalibration: renderCalibration, renderTipping: renderTipping, senateTipping: senateTipping, houseTipping: houseTipping,
   senateSeatDots: senateSeatDots, houseSeatDots: houseSeatDots, STATE_NAMES: STATE_NAMES, ELECTION: ELECTION
 };
 })(window);
