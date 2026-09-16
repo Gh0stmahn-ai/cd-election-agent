@@ -19,11 +19,13 @@ Four layers, each documented and inspectable:
    campaign-trail adjustment from data/atmospherics_2026.json, capped at
    +/-0.08 win probability, kept separate so its effect is visible.
 
-4. Monte Carlo simulation with correlated error. Each of 20,000 simulated
+4. Monte Carlo simulation with correlated error. Each of 100,000 simulated
    elections draws ONE national polling miss shared by every race in both
-   chambers, plus independent race-level noise - so misses move similar
-   races together instead of cancelling out, and House and Senate outcomes
-   are correlated the way they are in reality.
+   chambers, a state-level miss shared by every race in a state, and
+   race-level noise sized by the rating - so misses move similar races
+   together instead of cancelling out, and House and Senate outcomes are
+   correlated the way they are in reality. Every constant in this layer is
+   fitted on seven past elections; see backtest/.
 
 Control rules: Democrats need 218 House seats; in the Senate they need 51
 because Vice President Vance breaks a 50-50 tie. In Nebraska the challenger
@@ -54,44 +56,52 @@ MODEL_VERSION = 2
 SEED = 20261103
 N_SIMS = 100_000
 
-# Expected margin (points) for the favoured party, by rating.
+# Expected margin (points) for the favoured party, by chamber and rating.
 #
-# Fitted, not guessed. backtest/ rebuilds 2018, 2020 and 2022 from the final
-# Cook ratings and the actual results -- 1,189 House seats and 79 Senate races
-# -- and reads the average margin inside each bucket:
+# Fitted, not guessed. backtest/ rebuilds seven cycles, 2012 through 2024, from
+# the final Cook ratings and the actual results, and reads the average margin
+# inside each bucket. What it measures:
 #
-#   rating     n      old   fitted   favourite held
-#   tossup   117      0.5      1.8            60%
-#   lean      88      4.5      6.7            93%
-#   likely    91      9.0      9.6            96%
-#   solid    972     18.0     32.6           ~100%
+#   rating   chamber    n    mean margin   favourite held
+#   tossup   house    205            0.7             54%
+#   tossup   senate    35            2.1             63%
+#   lean     house    144            7.0             93%
+#   lean     senate    27           10.2            100%
+#   likely   house    167           11.0             98%
+#   likely   senate    22           14.6            100%
+#   solid    house    930           33.1             99%
+#   solid    senate    42           26.2            100%
 #
-# The old Toss-up and Lean numbers were the costly ones: they had the favourite
-# winning 54% and 81% of those races when the favourite really wins 60% and
-# 93%. Solid was off by fourteen points, which changes no probability -- a
-# Solid seat does not flip at 18 points or at 32 -- but it was the number the
-# site printed as a race's expected margin, so it was wrong in public.
-RATING_MARGIN = {"solid": 30.0, "likely": 9.5, "lean": 6.3, "tossup": 1.5}
+# The chambers really do differ, so the table is split. Where the Senate sample
+# is thin (fewer than 40 races) its estimate is pulled halfway to the House
+# figure rather than taken at face value. The one exception is Solid, where the
+# two chambers are further apart than anywhere else and the difference is
+# structural rather than noise: a safe House seat is a packed district drawn to
+# be lopsided, a safe Senate seat is a whole state that merely leans hard. That
+# one is taken as measured.
+#
+# The old flat numbers -- 18 / 9 / 4.5 / 0.5 -- had the favourite winning a
+# Lean seat 81% of the time when it really wins 93%, and gave every Solid seat
+# 18 points when they win by 33.
+RATING_MARGIN = {
+    "house": {"tossup": 0.8, "lean": 7.0, "likely": 11.0, "solid": 33.0},
+    "senate": {"tossup": 1.5, "lean": 8.5, "likely": 12.5, "solid": 26.0},
+}
 
 # How a polling miss is shaped.
 #
-# A miss is not one national number plus independent local noise. When a model
-# is wrong in Iowa it tends to be wrong in Ohio the same direction, and a state
-# that breaks late breaks late for its Senate race and all of its House seats
-# at once. So the error is split into four nested layers: national, census
-# division, state, and the seat itself.
+# A miss is not one national number plus independent local noise. A state that
+# breaks late breaks late for its Senate race and all of its House seats at
+# once. So the error is split into three nested layers: national, state, and
+# the race itself.
 #
-# The layers are sized so each seat's TOTAL uncertainty is unchanged from the
-# uncorrelated version (5.0 points for a district, 5.5 for a Senate race).
-# Nothing here widens the error bars; it only makes the errors cluster the way
-# real ones do, which is what moves a probability of CONTROL.
+# There used to be a fourth, the census division, on the theory that New
+# England misses together and the Mountain West misses together. Measured
+# across seven cycles that layer is 0.0 points, so it is gone: every point of
+# regional correlation that exists lives at the state line.
 #
-# Fitted on 2018-2022. Residuals around the rating baseline, split by the
-# census division and the state they fall in, measure 0.8 / 2.5 / 3.4 points
-# on competitive races -- 4.3 points of per-race uncertainty in total, once
-# the national miss is set aside. The state layer was assumed at 2.5 and
-# measures 2.5, which is the closest thing to a free hit this project has had.
-# The census-division layer was half again too big.
+# The state layer was assumed at 2.5 before anyone checked and measures 2.3,
+# which is the closest thing to a free hit this project has had.
 # How much of a seat's distance from its rating-mates' partisan lean carries
 # into its expected margin -- now fitted per rating, because the answer turned
 # out to depend entirely on the rating.
@@ -125,26 +135,39 @@ PVI_WEIGHT = {"solid": 1.75, "likely": 0.25, "lean": 0.25, "tossup": 0.25}
 # alone until an index for the new lines exists.
 REDRAWN_2026 = {"TX", "CA", "FL", "OH", "NC", "MO", "UT", "TN", "LA", "AL"}
 
-DIVISION_SD = 1.0            # measured 0.9: divisions matter, but less than assumed
-STATE_SD = 2.8               # measured 2.5-2.9: one state's races share a miss
-HOUSE_TOTAL_SD = 5.0         # measured 4.3 on competitive seats, 5.9 on safe ones
-SENATE_TOTAL_SD = 5.5        # measured 6.0 across 18 backtested toss-ups
+STATE_SD = 2.4               # fitted: one state's races share this much of a miss
+
+# Per-race uncertainty conditional on the national miss, by chamber and rating.
+#
+# It used to be one number for the whole House and one for the whole Senate.
+# The backtest says that is wrong in a specific way: a race everyone is
+# watching is more predictable than a race nobody is, because the watching is
+# what produces the information. Safe seats carry the widest residual and
+# toss-ups the narrowest, which is the opposite of the intuition that close
+# races are the uncertain ones. Close races are uncertain about WHO WINS; they
+# are not uncertain about the margin.
+# Measured across seven cycles, conditional on the national miss. Within the
+# competitive ratings the three buckets are statistically indistinguishable
+# (House 4.8 / 4.3 / 4.9, and the gaps are about one standard error), so they
+# are pooled; competitive against safe is not close, so that split is kept.
+TOTAL_SD = {
+    "house": {"tossup": 4.8, "lean": 4.8, "likely": 4.8, "solid": 6.5},
+    "senate": {"tossup": 5.4, "lean": 5.4, "likely": 5.4, "solid": 8.5},
+}
 
 
-def _residual_sd(total):
-    """What is left for the seat itself once the shared layers are removed."""
-    shared = DIVISION_SD ** 2 + STATE_SD ** 2
-    if total ** 2 <= shared:
-        raise ValueError("shared error layers exceed a seat's total uncertainty")
-    return (total ** 2 - shared) ** 0.5
+def race_sd(chamber, rating):
+    """What is left for the race itself once the shared state miss is removed."""
+    total = TOTAL_SD[chamber][rating]
+    if total <= STATE_SD:
+        raise ValueError(f"state error exceeds the total for {chamber}/{rating}")
+    return (total ** 2 - STATE_SD ** 2) ** 0.5
 
-
-HOUSE_SEAT_SD = _residual_sd(HOUSE_TOTAL_SD)
-SENATE_SEAT_SD = _residual_sd(SENATE_TOTAL_SD)
-
-# Census divisions. Finer than the four regions and closer to how misses have
-# actually clustered: the 2020 error was an upper-Midwest story, not a
-# "Midwest" one.
+# Census divisions. The simulation no longer draws a division-level error: the
+# backtest measured that layer at zero across seven cycles, so every point of
+# regional correlation that exists turns out to live at the state line. The map
+# is kept because the backtest still reports the division covariance, and
+# because the day it stops being zero is worth knowing.
 STATE_DIVISION = {
     "CT": "New England", "ME": "New England", "MA": "New England",
     "NH": "New England", "RI": "New England", "VT": "New England",
@@ -287,17 +310,31 @@ def national_environment(today=None):
     }
 
 
+# Degrees of freedom for the national miss. Five keeps the shoulders close to
+# a normal while giving the tail real weight: a three-standard-deviation miss
+# is roughly five times likelier than the normal would allow.
+NATIONAL_ERROR_DF = 5
+
+
+def _t_scale(df):
+    """A Student t's own standard deviation, so it can be divided back out."""
+    return (df / (df - 2)) ** 0.5
+
+
 def national_error_sd(days):
-    # The Election-Day floor is fitted: across 2018, 2020 and 2022 the average
-    # seat beat its rating by +6.0, +0.8 and -0.0 points, a spread of 2.5. It
-    # grows to ~4.1 four months out, where there is still time for the
-    # environment itself to move rather than merely to be mismeasured.
-    return 2.5 + 1.6 * min(days, 120) / 120
+    # The Election-Day floor is fitted. Across seven cycles the average
+    # competitive race beat its rating by +1.3, -4.2, -5.6, +2.4, -3.8, +0.8
+    # and -0.9 points: a standard deviation of 2.9, and no reliable direction
+    # (the mean of -1.4 is within one and a half standard errors of zero, so
+    # correcting for it would be fitting noise). It grows to ~4.5 four months
+    # out, where there is still time for the environment itself to move rather
+    # than merely to be mismeasured.
+    return 2.9 + 1.6 * min(days, 120) / 120
 
 
 # -------------------------------------------------------------- simulation
-def _baseline(rating, lean):
-    m = RATING_MARGIN[rating]
+def _baseline(chamber, rating, lean):
+    m = RATING_MARGIN[chamber][rating]
     return m if lean == "D" else -m
 
 
@@ -375,24 +412,52 @@ def pvi_adjustments(districts, pvi):
     return out
 
 
+def tipping_point(margins, needed, chunk=20_000):
+    """How often each race is the one that decides control.
+
+    In any single simulated election, sort the races by margin and walk down
+    from the most Democratic. A party that needs `needed` more seats gets them
+    exactly when the `needed`-th race on that ladder goes its way, so that race
+    is the one the majority turns on: every race above it was already won and
+    every race below it was already lost. Counting how often each race lands in
+    that position is the cleanest answer to "which race actually matters".
+
+    Only the k-th largest is wanted, so argpartition does it in linear time
+    rather than sorting, and the work is chunked because the margin matrix is
+    100,000 by 435 and negating it whole would double the peak memory.
+    """
+    n, races = margins.shape
+    if not 1 <= needed <= races:
+        return None                       # control is already settled either way
+    out = np.empty(n, dtype=np.int32)
+    for i in range(0, n, chunk):
+        block = margins[i:i + chunk]
+        out[i:i + chunk] = np.argpartition(-block, needed - 1, axis=1)[:, needed - 1]
+    return np.bincount(out, minlength=races) / n
+
+
 def run_simulation(n_sims=N_SIMS, seed=SEED):
     rng = np.random.default_rng(seed)
     env = national_environment()
     E = env["dem_margin"]
-    nat = rng.normal(0.0, env["national_error_sd"], n_sims)
+    # The national miss is drawn from a Student t rather than a normal, rescaled
+    # so the standard deviation is exactly the fitted one. The centre of the
+    # distribution is unchanged; what changes is that a 2016-sized or
+    # 2020-sized miss stops being a one-in-a-thousand event, which is the only
+    # honest reading of the last decade of polling. Everything else stays
+    # normal: it is the national error that has the fat tail, not a candidate's
+    # local performance.
+    nat = (rng.standard_t(NATIONAL_ERROR_DF, n_sims)
+           * env["national_error_sd"] / _t_scale(NATIONAL_ERROR_DF))
 
-    # The shared layers of the miss, drawn once and reused by every seat that
-    # belongs to them. This is what makes nearby races go wrong together.
-    div_index = {name: i for i, name in enumerate(DIVISIONS)}
-    div_err = rng.normal(0.0, DIVISION_SD, (n_sims, len(DIVISIONS)))
+    # The state layer, drawn once and reused by every race in that state. This
+    # is what makes a state's Senate race and its districts go wrong together.
     state_index = {code: i for i, code in enumerate(sorted(STATE_DIVISION))}
     state_err = rng.normal(0.0, STATE_SD, (n_sims, len(state_index)))
 
     def shared_for(state_codes):
-        """The division and state error columns lined up with a list of seats."""
-        div_cols = [div_index[STATE_DIVISION[c]] for c in state_codes]
-        st_cols = [state_index[c] for c in state_codes]
-        return div_err[:, div_cols] + state_err[:, st_cols]
+        """The state error column lined up with a list of races."""
+        return state_err[:, [state_index[c] for c in state_codes]]
 
     # ---- Senate
     sen = load_senate_races()
@@ -407,7 +472,7 @@ def run_simulation(n_sims=N_SIMS, seed=SEED):
         # The rating's own estimate of today's margin: where the rating put the
         # race, moved by however far the national environment has travelled
         # since the rating was published.
-        from_rating = _baseline(r["rating"], r["lean"]) + SENATE_ENV_SENSITIVITY * (E - s_ref)
+        from_rating = _baseline("senate", r["rating"], r["lean"]) + SENATE_ENV_SENSITIVITY * (E - s_ref)
 
         # A polling average is already a statement about today, so it is blended
         # in as a rival estimate of the same quantity rather than layered on top
@@ -418,8 +483,12 @@ def run_simulation(n_sims=N_SIMS, seed=SEED):
             b = w * entry["dem_margin"] + (1 - w) * from_rating
         else:
             b = from_rating
+        # n_used is carried so attribution can rebuild this race's polling from
+        # the snapshot alone rather than from whatever is in the live file the
+        # next time it runs.
         s_poll_used.append({"weight": round(w, 3),
                             "poll_margin": entry["dem_margin"] if entry else None,
+                            "n_used": entry.get("n_used") if entry else None,
                             "rating_margin": round(from_rating, 2)} if entry else None)
 
         adj = 0.0
@@ -432,10 +501,15 @@ def run_simulation(n_sims=N_SIMS, seed=SEED):
     s_margin = (s_base[None, :]
                 + SENATE_ENV_SENSITIVITY * nat[:, None]
                 + shared_for(s_states)
-                + rng.normal(0, SENATE_SEAT_SD, (n_sims, len(races))))
+                + rng.normal(0, 1, (n_sims, len(races)))
+                * np.array([race_sd("senate", r["rating"]) for r in races]))
     s_win = s_margin > 0
     caucus_mask = np.array([r.get("challenger_caucus") != "independent" for r in races])
     dem_senate = sen["not_up"]["D"] + (s_win & caucus_mask[None, :]).sum(axis=1)
+    # A seat whose challenger would sit as an independent cannot be the seat
+    # that delivers a Democratic majority, so it is off the ladder entirely.
+    s_ladder = np.flatnonzero(caucus_mask)
+    s_tip = tipping_point(s_margin[:, s_ladder], 51 - sen["not_up"]["D"])
     rep_senate = sen["not_up"]["R"] + (~s_win).sum(axis=1)
 
     # ---- House
@@ -444,7 +518,7 @@ def run_simulation(n_sims=N_SIMS, seed=SEED):
     h_ref = hou.get("ratings_environment_dem_margin", E)
     pvi = load_district_pvi()
     h_adj = pvi_adjustments(dists, pvi)
-    h_base = np.array([_baseline(d["rating"], d["lean"]) + a
+    h_base = np.array([_baseline("house", d["rating"], d["lean"]) + a
                        for d, a in zip(dists, h_adj)]) + (E - h_ref)
     # A district shares its state's miss with that state's Senate race, which is
     # why the two chambers now move together more than they used to.
@@ -452,10 +526,12 @@ def run_simulation(n_sims=N_SIMS, seed=SEED):
     h_margin = (h_base[None, :]
                 + nat[:, None]
                 + shared_for(h_states)
-                + rng.normal(0, HOUSE_SEAT_SD, (n_sims, len(dists))))
+                + rng.normal(0, 1, (n_sims, len(dists)))
+                * np.array([race_sd("house", d["rating"]) for d in dists]))
     h_win = h_margin > 0
     dem_house = h_win.sum(axis=1)
     majority = hou.get("majority", 218)
+    h_tip = tipping_point(h_margin, majority)
 
     d_sen_ctrl = dem_senate >= 51
     d_house_ctrl = dem_house >= majority
@@ -469,6 +545,8 @@ def run_simulation(n_sims=N_SIMS, seed=SEED):
     s_hist, s_pct = dist_summary(dem_senate, 30, 70)
     h_hist, h_pct = dist_summary(dem_house, 150, 290)
 
+    s_tipping = ({int(s_ladder[j]): round(float(p), 4) for j, p in enumerate(s_tip)}
+                 if s_tip is not None else {})
     senate_seats = []
     for i, r in enumerate(races):
         senate_seats.append({
@@ -481,9 +559,15 @@ def run_simulation(n_sims=N_SIMS, seed=SEED):
             "polling": s_poll_used[i],
             "expected_margin": round(float(s_base[i]), 2),
             "dem_win_prob": round(float(s_win[:, i].mean()), 4),
+            "tipping_prob": s_tipping.get(i, 0.0),
         })
 
     house_probs = {d["id"]: round(float(h_win[:, i].mean()), 4) for i, d in enumerate(dists)}
+    # Only the districts that are ever decisive are worth carrying: the rest
+    # are zero to four decimal places and every past run is embedded in the
+    # site, so the payload is paid for ten times over.
+    house_tipping = ({d["id"]: round(float(h_tip[i]), 4) for i, d in enumerate(dists)
+                      if h_tip[i] >= 0.0005} if h_tip is not None else {})
     code = {"solid": "S", "likely": "L", "lean": "N", "tossup": "T"}
     house_ratings = {d["id"]: code[d["rating"]] + d["lean"] for d in dists}
 
@@ -508,6 +592,7 @@ def run_simulation(n_sims=N_SIMS, seed=SEED):
             "percentiles": h_pct,
             "histogram": h_hist,
             "district_probs": house_probs,
+            "district_tipping": house_tipping,
             "district_ratings": house_ratings,
             "ratings_as_of": hou.get("as_of"),
             "ratings_source": hou.get("ratings_source"),

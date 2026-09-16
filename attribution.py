@@ -25,9 +25,12 @@ no simulation noise at all: they are the pure effect of the input.
 Whatever the drivers fail to account for is reported as a residual rather
 than quietly spread across them.
 
-Nothing here reads the live data files. Both days are reconstructed from
-their stored snapshots, so an attribution computed today stays reproducible
-and can never be rewritten by tomorrow's data.
+Every daily input is reconstructed from the stored snapshots rather than read
+live, so an attribution computed today stays reproducible and can never be
+rewritten by tomorrow's data. The two things read from the live files are
+calibration tables rather than inputs -- the national environment each ratings
+set was published against, and the partisan index -- and those are read once at
+import rather than per run.
 """
 import contextlib
 import json
@@ -55,12 +58,21 @@ def _reference_margins():
 
 S_REF, H_REF, MAJORITY = _reference_margins()
 
+# The partisan index is a calibration table, not a daily input: it is published
+# once per map and nothing in the daily run touches it. Read once, so a
+# re-run months from now uses the same table this run did.
+try:
+    DISTRICT_PVI = model.load_district_pvi()
+except Exception:                                  # noqa: BLE001 - best effort
+    DISTRICT_PVI = {}
+
 DRIVERS = [
     ("generic_ballot", "Generic ballot"),
     ("approval", "Presidential approval"),
     ("economy", "The economy"),
     ("senate_ratings", "Senate rating changes"),
     ("house_ratings", "House rating changes"),
+    ("senate_polls", "Senate state polling"),
     ("news", "Senate news momentum"),
     ("clock", "Election Day getting closer"),
 ]
@@ -83,6 +95,14 @@ def state_from_snapshot(snap):
         "not_up": sen["not_up"],
         "news": {s["seat_id"]: s.get("atmospherics_adj", 0.0) for s in sen["seats"]},
         "house_ratings": dict(hou["district_ratings"]),
+        # Each race's polling average as that run saw it. Without this the
+        # model would read today's poll file while re-running yesterday, and
+        # every poll move would land in whatever bucket is left over.
+        "senate_polls": {s["seat_id"]: {"dem_margin": s["polling"]["poll_margin"],
+                                        "n_used": s["polling"].get("n_used"),
+                                        "weight": s["polling"].get("weight", 0.0)}
+                         for s in sen["seats"]
+                         if s.get("polling") and s["polling"].get("poll_margin") is not None},
     }
 
 
@@ -109,6 +129,8 @@ def _swap(state, driver, other):
         out["senate_seats"] = seats
     elif driver == "house_ratings":
         out["house_ratings"] = other["house_ratings"]
+    elif driver == "senate_polls":
+        out["senate_polls"] = other["senate_polls"]
     elif driver == "news":
         out["news"] = other["news"]
     elif driver == "clock":
@@ -120,7 +142,8 @@ def _swap(state, driver, other):
 def _as(state):
     """Point the model at a reconstructed day instead of the live data files."""
     saved = (model.load_generic_ballot, model.fundamentals_prior, model.days_to_election,
-             model.load_senate_races, model.load_house_districts, model.load_atmospherics)
+             model.load_senate_races, model.load_house_districts, model.load_atmospherics,
+             model.load_senate_polls, model.load_district_pvi, model.poll_weight)
 
     prior = {
         "midterm_baseline_pts": state["baseline_pts"],
@@ -147,11 +170,28 @@ def _as(state):
         **({"ratings_environment_dem_margin": H_REF} if H_REF is not None else {})}
     model.load_atmospherics = lambda: {
         k: {"adjustment_dem": v} for k, v in state["news"].items()}
+    model.load_senate_polls = lambda: state["senate_polls"]
+    model.load_district_pvi = lambda: DISTRICT_PVI
+
+    def weight(entry, days=None):
+        """The weight the real function would give, or the one that was used.
+
+        Recomputing it keeps the clock driver honest -- a poll is worth more in
+        late October than in July, and that shift belongs to the calendar, not
+        to the polls. Runs saved before n_used was recorded fall back to the
+        weight stored with them.
+        """
+        if entry.get("n_used") is not None:
+            return saved[-1](entry, state["clock"] if days is None else days)
+        return entry.get("weight", 0.0)
+
+    model.poll_weight = weight
     try:
         yield
     finally:
         (model.load_generic_ballot, model.fundamentals_prior, model.days_to_election,
-         model.load_senate_races, model.load_house_districts, model.load_atmospherics) = saved
+         model.load_senate_races, model.load_house_districts, model.load_atmospherics,
+         model.load_senate_polls, model.load_district_pvi, model.poll_weight) = saved
 
 
 def _probs(state, n_sims, seed):
@@ -272,6 +312,17 @@ def facts(prev_snap, now_snap):
     if len(moved_house) > 6:
         out.append({"kind": "rating",
                     "text": f"and {len(moved_house) - 6} more House districts re-rated"})
+
+    for seat_id, entry in sorted(now["senate_polls"].items()):
+        was = prev["senate_polls"].get(seat_id)
+        if was and abs(entry["dem_margin"] - was["dem_margin"]) >= 0.25:
+            out.append({"kind": "poll",
+                        "text": f"{seat_id.split('-')[0]} Senate polling average moved "
+                                f"{margin(was['dem_margin'])} to {margin(entry['dem_margin'])}"})
+        elif not was:
+            out.append({"kind": "poll",
+                        "text": f"{seat_id.split('-')[0]} Senate has a polling average for the first "
+                                f"time, at {margin(entry['dem_margin'])}"})
 
     for seat_id, value in now["news"].items():
         was = prev["news"].get(seat_id, 0.0)
