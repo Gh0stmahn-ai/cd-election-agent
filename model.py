@@ -54,10 +54,24 @@ MODEL_VERSION = 2
 SEED = 20261103
 N_SIMS = 100_000
 
-# Expected margin (points) for the favoured party, by rating. Calibrated so a
-# Lean seat wins ~3 in 4, Likely ~19 in 20, Solid essentially always, and a
-# Toss-up tilts a hair toward the party Cook files it under (the holder).
-RATING_MARGIN = {"solid": 18.0, "likely": 9.0, "lean": 4.5, "tossup": 0.5}
+# Expected margin (points) for the favoured party, by rating.
+#
+# Fitted, not guessed. backtest/ rebuilds 2018, 2020 and 2022 from the final
+# Cook ratings and the actual results -- 1,189 House seats and 79 Senate races
+# -- and reads the average margin inside each bucket:
+#
+#   rating     n      old   fitted   favourite held
+#   tossup   117      0.5      1.8            60%
+#   lean      88      4.5      6.7            93%
+#   likely    91      9.0      9.6            96%
+#   solid    972     18.0     32.6           ~100%
+#
+# The old Toss-up and Lean numbers were the costly ones: they had the favourite
+# winning 54% and 81% of those races when the favourite really wins 60% and
+# 93%. Solid was off by fourteen points, which changes no probability -- a
+# Solid seat does not flip at 18 points or at 32 -- but it was the number the
+# site printed as a race's expected margin, so it was wrong in public.
+RATING_MARGIN = {"solid": 30.0, "likely": 9.5, "lean": 6.3, "tossup": 1.5}
 
 # How a polling miss is shaped.
 #
@@ -72,10 +86,27 @@ RATING_MARGIN = {"solid": 18.0, "likely": 9.0, "lean": 4.5, "tossup": 0.5}
 # Nothing here widens the error bars; it only makes the errors cluster the way
 # real ones do, which is what moves a probability of CONTROL.
 #
-# These three splits are assumptions until the backtest fits them.
+# Fitted on 2018-2022. Residuals around the rating baseline, split by the
+# census division and the state they fall in, measure 0.8 / 2.5 / 3.4 points
+# on competitive races -- 4.3 points of per-race uncertainty in total, once
+# the national miss is set aside. The state layer was assumed at 2.5 and
+# measures 2.5, which is the closest thing to a free hit this project has had.
+# The census-division layer was half again too big.
 # How much of a seat's distance from its rating-mates' partisan lean carries
-# into its expected margin. Unfitted until the backtest; 0.25 means a district
-# ten points more Republican than its rating-mates starts 2.5 points worse.
+# into its expected margin -- now fitted per rating, because the answer turned
+# out to depend entirely on the rating.
+#
+# Regressing actual margin on PVI inside each bucket over 2018-2022:
+#
+#   Solid      slope 1.75   spread 18.4 -> 6.5 points
+#   Likely     slope 0.26   spread  5.1 -> 4.9
+#   Lean       slope 0.21   spread  4.8 -> 4.7
+#   Toss-up    slope 0.13   spread  5.3 -> 5.2
+#
+# Which is the module docstring's own theory, confirmed: a rater who is
+# watching a race closely has already priced its partisanship in, so PVI adds
+# nothing on top. A rater who has written a seat off as Solid has not, and
+# there the index is carrying almost all of the information about the margin.
 # How far a well-polled Senate race is allowed to follow its polls rather than
 # its rating. Reached only when several aggregators cover the race; a thinly
 # polled one keeps leaning on the rating instead of lurching on one survey.
@@ -84,7 +115,7 @@ SENATE_POLL_WEIGHT_FAR = 0.50    # 120+ days out, polls are informative, not fin
 SENATE_POLL_WEIGHT_NEAR = 0.85   # on Election Day, the polls are the story
 SENATE_POLL_FULL_AT = 4          # sources needed for the full weight
 
-PVI_WEIGHT = 0.25
+PVI_WEIGHT = {"solid": 1.75, "likely": 0.25, "lean": 0.25, "tossup": 0.25}
 
 # States that redrew their map mid-decade for 2026. Cook's index still
 # describes the OLD lines there, so applying it would be worse than applying
@@ -94,10 +125,10 @@ PVI_WEIGHT = 0.25
 # alone until an index for the new lines exists.
 REDRAWN_2026 = {"TX", "CA", "FL", "OH", "NC", "MO", "UT", "TN", "LA", "AL"}
 
-DIVISION_SD = 1.5            # New England misses together, the Mountain West misses together
-STATE_SD = 2.5               # one state's Senate race and its districts share a miss
-HOUSE_TOTAL_SD = 5.0         # district-level noise (candidates, local factors)
-SENATE_TOTAL_SD = 5.5        # statewide candidate effects are larger
+DIVISION_SD = 1.0            # measured 0.9: divisions matter, but less than assumed
+STATE_SD = 2.8               # measured 2.5-2.9: one state's races share a miss
+HOUSE_TOTAL_SD = 5.0         # measured 4.3 on competitive seats, 5.9 on safe ones
+SENATE_TOTAL_SD = 5.5        # measured 6.0 across 18 backtested toss-ups
 
 
 def _residual_sd(total):
@@ -257,9 +288,11 @@ def national_environment(today=None):
 
 
 def national_error_sd(days):
-    # ~2.2 pts irreducible polling miss on Election Day, growing to ~3.8
-    # four months out as there is more time for the environment to move
-    return 2.2 + 1.6 * min(days, 120) / 120
+    # The Election-Day floor is fitted: across 2018, 2020 and 2022 the average
+    # seat beat its rating by +6.0, +0.8 and -0.0 points, a spread of 2.5. It
+    # grows to ~4.1 four months out, where there is still time for the
+    # environment itself to move rather than merely to be mismeasured.
+    return 2.5 + 1.6 * min(days, 120) / 120
 
 
 # -------------------------------------------------------------- simulation
@@ -338,7 +371,7 @@ def pvi_adjustments(districts, pvi):
         if not usable(d) or key not in means:
             out.append(0.0)
         else:
-            out.append(PVI_WEIGHT * (pvi[d["id"]] - means[key]))
+            out.append(PVI_WEIGHT[d["rating"]] * (pvi[d["id"]] - means[key]))
     return out
 
 

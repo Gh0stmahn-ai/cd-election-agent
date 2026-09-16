@@ -189,9 +189,22 @@ def compare(prev_snap, now_snap, n_sims=100_000, seed=model.SEED if hasattr(mode
     """Attribute the move between two snapshots to the inputs that caused it."""
     prev, now = state_from_snapshot(prev_snap), state_from_snapshot(now_snap)
     base, final = _probs(prev, n_sims, seed), _probs(now, n_sims, seed)
-    total = {k: final[k] - base[k] for k in base}
+
+    # Yesterday's inputs are re-run under TODAY's code, so if the model itself
+    # changed -- a constant refitted, a new adjustment added -- that shift is
+    # invisible to every driver below and the explained total would quietly
+    # disagree with the trend line it sits under. Measure it directly: the gap
+    # between what was published yesterday and what yesterday's own inputs
+    # produce now is the model change, and nothing else.
+    published = {"senate": prev_snap["senate"]["dem_control_prob"],
+                 "house": prev_snap["house"]["dem_control_prob"]}
+    model_shift = {k: base[k] - published[k] for k in base}
+    total = {k: final[k] - published[k] for k in base}
 
     drivers = []
+    if any(abs(v) >= 0.0002 for v in model_shift.values()):
+        drivers.append({"id": "model", "label": "Model recalibration",
+                        "points": {k: round(v * 100, 3) for k, v in model_shift.items()}})
     for key, label in DRIVERS:
         forward = _probs(_swap(prev, key, now), n_sims, seed)
         backward = _probs(_swap(now, key, prev), n_sims, seed)
