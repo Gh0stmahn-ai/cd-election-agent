@@ -1,0 +1,76 @@
+{
+ "cycles": [
+  "2018",
+  "2020",
+  "2022"
+ ],
+ "races": 1268,
+ "house": 1189,
+ "senate": 79,
+ "mean_abs_error_before": 13.56,
+ "mean_abs_error_after": 5.74,
+ "sd_before": 18.2,
+ "sd_after": 7.06,
+ "buckets": [
+  {
+   "rating": "tossup",
+   "n": 117,
+   "old": 0.5,
+   "fitted": 1.5,
+   "actual": 1.8,
+   "sd": 5.4,
+   "held": 0.598
+  },
+  {
+   "rating": "lean",
+   "n": 88,
+   "old": 4.5,
+   "fitted": 6.3,
+   "actual": 6.7,
+   "sd": 5.0,
+   "held": 0.932
+  },
+  {
+   "rating": "likely",
+   "n": 91,
+   "old": 9.0,
+   "fitted": 9.5,
+   "actual": 9.6,
+   "sd": 5.1,
+   "held": 0.956
+  },
+  {
+   "rating": "solid",
+   "n": 972,
+   "old": 18.0,
+   "fitted": 30.0,
+   "actual": 32.6,
+   "sd": 16.6,
+   "held": 0.984
+  }
+ ],
+ "layers_all": {
+  "national_bias": {
+   "2018": 5.562232495289453,
+   "2020": 0.5303481436295558,
+   "2022": -0.3261958556819915
+  },
+  "national_sd": 2.6,
+  "conditional_sd": 6.57,
+  "division_sd": 0.88,
+  "state_sd": 2.32,
+  "seat_sd": 6.08
+ },
+ "layers_competitive": {
+  "national_bias": {
+   "2018": 1.9104125617361079,
+   "2020": -4.071684151884551,
+   "2022": 0.7941293394480229
+  },
+  "national_sd": 2.6,
+  "conditional_sd": 4.33,
+  "division_sd": 0.75,
+  "state_sd": 2.52,
+  "seat_sd": 3.44
+ }
+}

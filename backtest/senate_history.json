@@ -1,0 +1,640 @@
+{
+ "2018": {
+  "AZ": {
+   "rating": "tossup",
+   "lean": null,
+   "pvi": -5.0,
+   "dem_pct": 50.0,
+   "rep_pct": 47.6,
+   "margin": 2.4
+  },
+  "CT": {
+   "rating": "solid",
+   "lean": "D",
+   "pvi": 6.0,
+   "dem_pct": 59.5,
+   "rep_pct": 39.4,
+   "margin": 20.1
+  },
+  "DE": {
+   "rating": "solid",
+   "lean": "D",
+   "pvi": 6.0,
+   "dem_pct": 60.0,
+   "rep_pct": 37.8,
+   "margin": 22.2
+  },
+  "FL": {
+   "rating": "tossup",
+   "lean": null,
+   "pvi": -2.0,
+   "dem_pct": 49.9,
+   "rep_pct": 50.1,
+   "margin": -0.2
+  },
+  "HI": {
+   "rating": "solid",
+   "lean": "D",
+   "pvi": 18.0,
+   "dem_pct": 71.2,
+   "rep_pct": 28.8,
+   "margin": 42.4
+  },
+  "IN": {
+   "rating": "tossup",
+   "lean": null,
+   "pvi": -9.0,
+   "dem_pct": 45.0,
+   "rep_pct": 50.9,
+   "margin": -5.9
+  },
+  "MD": {
+   "rating": "solid",
+   "lean": "D",
+   "pvi": 12.0,
+   "dem_pct": 64.9,
+   "rep_pct": 30.3,
+   "margin": 34.6
+  },
+  "MA": {
+   "rating": "solid",
+   "lean": "D",
+   "pvi": 12.0,
+   "dem_pct": 60.4,
+   "rep_pct": 36.2,
+   "margin": 24.2
+  },
+  "MI": {
+   "rating": "likely",
+   "lean": "D",
+   "pvi": 1.0,
+   "dem_pct": 52.3,
+   "rep_pct": 45.8,
+   "margin": 6.5
+  },
+  "MO": {
+   "rating": "tossup",
+   "lean": null,
+   "pvi": -9.0,
+   "dem_pct": 45.6,
+   "rep_pct": 51.4,
+   "margin": -5.8
+  },
+  "MT": {
+   "rating": "tossup",
+   "lean": null,
+   "pvi": -11.0,
+   "dem_pct": 50.3,
+   "rep_pct": 46.8,
+   "margin": 3.5
+  },
+  "NE": {
+   "rating": "solid",
+   "lean": "R",
+   "pvi": -14.0,
+   "dem_pct": 38.6,
+   "rep_pct": 57.7,
+   "margin": -19.1
+  },
+  "NV": {
+   "rating": "tossup",
+   "lean": null,
+   "pvi": 1.0,
+   "dem_pct": 50.4,
+   "rep_pct": 45.4,
+   "margin": 5.0
+  },
+  "NJ": {
+   "rating": "tossup",
+   "lean": null,
+   "pvi": 7.0,
+   "dem_pct": 54.0,
+   "rep_pct": 42.8,
+   "margin": 11.2
+  },
+  "NM": {
+   "rating": "solid",
+   "lean": "D",
+   "pvi": 3.0,
+   "dem_pct": 54.1,
+   "rep_pct": 30.5,
+   "margin": 23.6
+  },
+  "ND": {
+   "rating": "lean",
+   "lean": "R",
+   "pvi": -16.0,
+   "dem_pct": 44.5,
+   "rep_pct": 55.5,
+   "margin": -11.0
+  },
+  "OH": {
+   "rating": "likely",
+   "lean": "D",
+   "pvi": -3.0,
+   "dem_pct": 53.4,
+   "rep_pct": 46.6,
+   "margin": 6.8
+  },
+  "PA": {
+   "rating": "likely",
+   "lean": "D",
+   "pvi": null,
+   "dem_pct": 55.7,
+   "rep_pct": 42.6,
+   "margin": 13.1
+  },
+  "RI": {
+   "rating": "solid",
+   "lean": "D",
+   "pvi": 10.0,
+   "dem_pct": 61.6,
+   "rep_pct": 38.4,
+   "margin": 23.2
+  },
+  "TN": {
+   "rating": "tossup",
+   "lean": null,
+   "pvi": -14.0,
+   "dem_pct": 43.9,
+   "rep_pct": 54.7,
+   "margin": -10.8
+  },
+  "TX": {
+   "rating": "tossup",
+   "lean": null,
+   "pvi": -8.0,
+   "dem_pct": 48.3,
+   "rep_pct": 50.9,
+   "margin": -2.6
+  },
+  "UT": {
+   "rating": "solid",
+   "lean": "R",
+   "pvi": -20.0,
+   "dem_pct": 30.9,
+   "rep_pct": 62.6,
+   "margin": -31.7
+  },
+  "VA": {
+   "rating": "solid",
+   "lean": "D",
+   "pvi": 1.0,
+   "dem_pct": 57.1,
+   "rep_pct": 41.1,
+   "margin": 16.0
+  },
+  "WA": {
+   "rating": "solid",
+   "lean": "D",
+   "pvi": 7.0,
+   "dem_pct": 58.4,
+   "rep_pct": 41.6,
+   "margin": 16.8
+  },
+  "WI": {
+   "rating": "likely",
+   "lean": "D",
+   "pvi": null,
+   "dem_pct": 55.4,
+   "rep_pct": 44.6,
+   "margin": 10.8
+  }
+ },
+ "2020": {
+  "AL-S": {
+   "rating": "lean",
+   "lean": "R",
+   "pvi": -14.0,
+   "dem_pct": 39.7,
+   "rep_pct": 60.1,
+   "margin": -20.4
+  },
+  "CO": {
+   "rating": "lean",
+   "lean": "D",
+   "pvi": 1.0,
+   "dem_pct": 53.5,
+   "rep_pct": 44.2,
+   "margin": 9.3
+  },
+  "ID": {
+   "rating": "solid",
+   "lean": "R",
+   "pvi": -19.0,
+   "dem_pct": 33.3,
+   "rep_pct": 62.6,
+   "margin": -29.3
+  },
+  "IL": {
+   "rating": "solid",
+   "lean": "D",
+   "pvi": 7.0,
+   "dem_pct": 54.9,
+   "rep_pct": 38.9,
+   "margin": 16.0
+  },
+  "IA": {
+   "rating": "tossup",
+   "lean": null,
+   "pvi": -3.0,
+   "dem_pct": 45.2,
+   "rep_pct": 51.8,
+   "margin": -6.6
+  },
+  "KS": {
+   "rating": "lean",
+   "lean": "R",
+   "pvi": -13.0,
+   "dem_pct": 41.8,
+   "rep_pct": 53.2,
+   "margin": -11.4
+  },
+  "KY": {
+   "rating": "likely",
+   "lean": "R",
+   "pvi": -15.0,
+   "dem_pct": 38.2,
+   "rep_pct": 57.8,
+   "margin": -19.6
+  },
+  "LA": {
+   "rating": "solid",
+   "lean": "R",
+   "pvi": -11.0,
+   "dem_pct": 19.0,
+   "rep_pct": 59.3,
+   "margin": -40.3
+  },
+  "ME": {
+   "rating": "tossup",
+   "lean": null,
+   "pvi": 3.0,
+   "dem_pct": 42.4,
+   "rep_pct": 51.0,
+   "margin": -8.6
+  },
+  "MI": {
+   "rating": "lean",
+   "lean": "D",
+   "pvi": 1.0,
+   "dem_pct": 49.9,
+   "rep_pct": 48.2,
+   "margin": 1.7
+  },
+  "MN-S": {
+   "rating": "solid",
+   "lean": "D",
+   "pvi": 1.0,
+   "dem_pct": 48.8,
+   "rep_pct": 43.5,
+   "margin": 5.3
+  },
+  "MS-S": {
+   "rating": "likely",
+   "lean": "R",
+   "pvi": -9.0,
+   "dem_pct": 44.1,
+   "rep_pct": 54.1,
+   "margin": -10.0
+  },
+  "MT": {
+   "rating": "tossup",
+   "lean": null,
+   "pvi": -11.0,
+   "dem_pct": 45.0,
+   "rep_pct": 55.0,
+   "margin": -10.0
+  },
+  "NE": {
+   "rating": "solid",
+   "lean": "R",
+   "pvi": -14.0,
+   "dem_pct": 24.4,
+   "rep_pct": 62.7,
+   "margin": -38.3
+  },
+  "NH": {
+   "rating": "solid",
+   "lean": "D",
+   "pvi": 1.0,
+   "dem_pct": 56.7,
+   "rep_pct": 41.0,
+   "margin": 15.7
+  },
+  "NM": {
+   "rating": "solid",
+   "lean": "D",
+   "pvi": 3.0,
+   "dem_pct": 51.7,
+   "rep_pct": 45.6,
+   "margin": 6.1
+  },
+  "NC": {
+   "rating": "tossup",
+   "lean": null,
+   "pvi": -3.0,
+   "dem_pct": 46.9,
+   "rep_pct": 48.7,
+   "margin": -1.8
+  },
+  "OR": {
+   "rating": "solid",
+   "lean": "D",
+   "pvi": 5.0,
+   "dem_pct": 56.9,
+   "rep_pct": 39.3,
+   "margin": 17.6
+  },
+  "RI": {
+   "rating": "solid",
+   "lean": "D",
+   "pvi": 10.0,
+   "dem_pct": 66.6,
+   "rep_pct": 33.4,
+   "margin": 33.2
+  },
+  "SC": {
+   "rating": "tossup",
+   "lean": null,
+   "pvi": -8.0,
+   "dem_pct": 44.2,
+   "rep_pct": 54.5,
+   "margin": -10.3
+  },
+  "SD": {
+   "rating": "solid",
+   "lean": "R",
+   "pvi": -14.0,
+   "dem_pct": 34.3,
+   "rep_pct": 65.7,
+   "margin": -31.4
+  },
+  "TN": {
+   "rating": "solid",
+   "lean": "R",
+   "pvi": -14.0,
+   "dem_pct": 35.2,
+   "rep_pct": 62.2,
+   "margin": -27.0
+  },
+  "TX": {
+   "rating": "lean",
+   "lean": "R",
+   "pvi": -8.0,
+   "dem_pct": 43.9,
+   "rep_pct": 53.5,
+   "margin": -9.6
+  },
+  "VA": {
+   "rating": "solid",
+   "lean": "D",
+   "pvi": 1.0,
+   "dem_pct": 56.0,
+   "rep_pct": 43.9,
+   "margin": 12.1
+  },
+  "WV": {
+   "rating": "solid",
+   "lean": "R",
+   "pvi": -19.0,
+   "dem_pct": 27.0,
+   "rep_pct": 70.3,
+   "margin": -43.3
+  },
+  "WY": {
+   "rating": "solid",
+   "lean": "R",
+   "pvi": -25.0,
+   "dem_pct": 26.9,
+   "rep_pct": 73.1,
+   "margin": -46.2
+  }
+ },
+ "2022": {
+  "AL": {
+   "rating": "solid",
+   "lean": "R",
+   "pvi": -15.0,
+   "dem_pct": 30.9,
+   "rep_pct": 66.6,
+   "margin": -35.7
+  },
+  "AK": {
+   "rating": "solid",
+   "lean": "R",
+   "pvi": -8.0,
+   "dem_pct": 10.4,
+   "rep_pct": 53.7,
+   "margin": -43.3
+  },
+  "AZ-S": {
+   "rating": "tossup",
+   "lean": null,
+   "pvi": -2.0,
+   "dem_pct": 51.4,
+   "rep_pct": 46.5,
+   "margin": 4.9
+  },
+  "AR": {
+   "rating": "solid",
+   "lean": "R",
+   "pvi": -16.0,
+   "dem_pct": 31.0,
+   "rep_pct": 65.8,
+   "margin": -34.8
+  },
+  "CA": {
+   "rating": "solid",
+   "lean": "D",
+   "pvi": 13.0,
+   "dem_pct": 61.1,
+   "rep_pct": 38.9,
+   "margin": 22.2
+  },
+  "CO": {
+   "rating": "lean",
+   "lean": "D",
+   "pvi": 4.0,
+   "dem_pct": 55.9,
+   "rep_pct": 41.3,
+   "margin": 14.6
+  },
+  "CT": {
+   "rating": "solid",
+   "lean": "D",
+   "pvi": 7.0,
+   "dem_pct": 57.5,
+   "rep_pct": 42.5,
+   "margin": 15.0
+  },
+  "FL": {
+   "rating": "likely",
+   "lean": "R",
+   "pvi": -3.0,
+   "dem_pct": 41.3,
+   "rep_pct": 57.7,
+   "margin": -16.4
+  },
+  "GA-S": {
+   "rating": "tossup",
+   "lean": null,
+   "pvi": -3.0,
+   "dem_pct": 51.4,
+   "rep_pct": 48.6,
+   "margin": 2.8
+  },
+  "ID": {
+   "rating": "solid",
+   "lean": "R",
+   "pvi": -18.0,
+   "dem_pct": 28.7,
+   "rep_pct": 60.7,
+   "margin": -32.0
+  },
+  "IL": {
+   "rating": "solid",
+   "lean": "D",
+   "pvi": 7.0,
+   "dem_pct": 56.8,
+   "rep_pct": 41.5,
+   "margin": 15.3
+  },
+  "IN": {
+   "rating": "solid",
+   "lean": "R",
+   "pvi": -11.0,
+   "dem_pct": 37.9,
+   "rep_pct": 58.6,
+   "margin": -20.7
+  },
+  "IA": {
+   "rating": "solid",
+   "lean": "R",
+   "pvi": -6.0,
+   "dem_pct": 43.8,
+   "rep_pct": 56.0,
+   "margin": -12.2
+  },
+  "KS": {
+   "rating": "solid",
+   "lean": "R",
+   "pvi": -10.0,
+   "dem_pct": 37.0,
+   "rep_pct": 60.0,
+   "margin": -23.0
+  },
+  "KY": {
+   "rating": "solid",
+   "lean": "R",
+   "pvi": -16.0,
+   "dem_pct": 38.2,
+   "rep_pct": 61.8,
+   "margin": -23.6
+  },
+  "LA": {
+   "rating": "solid",
+   "lean": "R",
+   "pvi": -12.0,
+   "dem_pct": 17.9,
+   "rep_pct": 61.6,
+   "margin": -43.7
+  },
+  "MD": {
+   "rating": "solid",
+   "lean": "D",
+   "pvi": 14.0,
+   "dem_pct": 65.8,
+   "rep_pct": 34.2,
+   "margin": 31.6
+  },
+  "MO": {
+   "rating": "solid",
+   "lean": "R",
+   "pvi": -10.0,
+   "dem_pct": 42.2,
+   "rep_pct": 55.4,
+   "margin": -13.2
+  },
+  "NV": {
+   "rating": "tossup",
+   "lean": null,
+   "pvi": -1.0,
+   "dem_pct": 48.8,
+   "rep_pct": 48.0,
+   "margin": 0.8
+  },
+  "NH": {
+   "rating": "lean",
+   "lean": "D",
+   "pvi": 1.0,
+   "dem_pct": 53.6,
+   "rep_pct": 44.4,
+   "margin": 9.2
+  },
+  "NY": {
+   "rating": "solid",
+   "lean": "D",
+   "pvi": 10.0,
+   "dem_pct": 56.8,
+   "rep_pct": 42.8,
+   "margin": 14.0
+  },
+  "NC": {
+   "rating": "lean",
+   "lean": "R",
+   "pvi": -3.0,
+   "dem_pct": 47.3,
+   "rep_pct": 50.5,
+   "margin": -3.2
+  },
+  "OH": {
+   "rating": "lean",
+   "lean": "R",
+   "pvi": -6.0,
+   "dem_pct": 46.9,
+   "rep_pct": 53.0,
+   "margin": -6.1
+  },
+  "PA": {
+   "rating": "tossup",
+   "lean": null,
+   "pvi": -2.0,
+   "dem_pct": 51.2,
+   "rep_pct": 46.3,
+   "margin": 4.9
+  },
+  "SD": {
+   "rating": "solid",
+   "lean": "R",
+   "pvi": -16.0,
+   "dem_pct": 26.2,
+   "rep_pct": 69.6,
+   "margin": -43.4
+  },
+  "VT": {
+   "rating": "solid",
+   "lean": "D",
+   "pvi": 16.0,
+   "dem_pct": 68.5,
+   "rep_pct": 28.1,
+   "margin": 40.4
+  },
+  "WA": {
+   "rating": "likely",
+   "lean": "D",
+   "pvi": 8.0,
+   "dem_pct": 57.1,
+   "rep_pct": 42.6,
+   "margin": 14.5
+  },
+  "WI": {
+   "rating": "lean",
+   "lean": "R",
+   "pvi": -2.0,
+   "dem_pct": 49.4,
+   "rep_pct": 50.4,
+   "margin": -1.0
+  }
+ }
+}
