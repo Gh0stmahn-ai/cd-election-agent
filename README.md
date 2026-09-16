@@ -1,7 +1,7 @@
 # 2026 midterm forecast
 
 A daily, self-updating forecast of who controls Congress after November 3,
-2026: all 35 Senate races and all 435 House districts, simulated 20,000
+2026: all 35 Senate races and all 435 House districts, simulated 100,000
 times a day, plus the economic and political readings voters carry into
 the booth.
 
@@ -19,7 +19,7 @@ web server or straight off disk with no CDN, no fetches and no libraries:
 | `senate.html` | Map of all 35 races, races to watch, seat distribution, every race in a table |
 | `house.html` | Hexagon map of all 435 districts, seat distribution, filterable race tables |
 | `economy.html` | Every economic and political reading, with sources, and what each one does to the forecast |
-| `trend.html` | How the forecast has moved, run by run |
+| `trend.html` | How the forecast has moved, and a measured day-by-day account of what moved it |
 | `markets.html` | Kalshi and Polymarket prices next to the model, and why they are never blended |
 | `methodology.html` | Where every number comes from, how it is validated, and the honest limits |
 
@@ -168,6 +168,7 @@ refresh_economy.py            free economic refresh from public data series
 refresh_markets.py            free prediction market prices (shown, never blended)
 refresh_polls.py              free generic ballot + approval from Wikipedia aggregators
 refresh_attention.py          free Wikipedia readership per candidate (shown, never blended)
+attribution.py                re-runs the model per input to explain each day's move
 set_polls.py                  manual generic-ballot / approval entry
 agent_run.py                  optional AI refresh (ratings, Senate news)
 ingest.py                     the validated write functions all three use

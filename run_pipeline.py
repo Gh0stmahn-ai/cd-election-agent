@@ -14,8 +14,12 @@ numbers as fresh.
 import json
 from datetime import date, datetime, timezone
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
+import attribution
 import model
+
+ET = ZoneInfo("America/New_York")
 
 ITER_DIR = Path(__file__).parent / "iterations"
 ITER_DIR.mkdir(exist_ok=True)
@@ -31,11 +35,37 @@ def _age_days(iso):
     return (datetime.now(timezone.utc).date() - d).days
 
 
+def et_day(timestamp):
+    """The Eastern-time date a run belongs to, which is how the site reads."""
+    return datetime.fromisoformat(timestamp).astimezone(ET).date()
+
+
+def previous_days_snapshot(today_et):
+    """The last snapshot from an earlier day, for the day-over-day story.
+
+    Comparing against the previous RUN would split one day's news across
+    however many times the workflow happened to fire. Comparing against the
+    last run of the previous day gives one clean story per day.
+    """
+    best = None
+    for path in sorted(ITER_DIR.glob("2026-*.json")):
+        try:
+            snap = json.loads(path.read_text())
+        except (OSError, ValueError):
+            continue
+        if snap.get("schema_version") != model.MODEL_VERSION or "environment" not in snap:
+            continue
+        if et_day(snap["timestamp"]) < today_et:
+            if best is None or snap["timestamp"] > best["timestamp"]:
+                best = snap
+    return best
+
+
 def run_iteration(seed=None):
     status = {"state": "success", "issues": []}
 
     try:
-        result = model.run_simulation(n_sims=20000, seed=seed)
+        result = model.run_simulation(seed=seed) if seed is not None else model.run_simulation()
     except Exception as e:  # noqa: BLE001 - we want the message in the snapshot
         status = {"state": "failed", "issues": [f"simulation error: {e}"]}
         raise
@@ -71,6 +101,17 @@ def run_iteration(seed=None):
         },
     }
 
+    # Why it moved, measured by re-running the model with one input held back
+    # at a time. Computed here rather than at build time so the explanation is
+    # fixed to the day it describes and can never be rewritten later.
+    previous = previous_days_snapshot(et_day(snapshot["timestamp"]))
+    if previous is not None:
+        try:
+            snapshot["change"] = attribution.compare(previous, snapshot)
+        except Exception as e:  # noqa: BLE001 - a missing explanation is not a failed forecast
+            status["issues"].append(f"could not attribute the change: {e}")
+            print(f"  ! attribution skipped: {e}")
+
     out_path = ITER_DIR / f"{snapshot['timestamp'].replace(':', '-')}.json"
     out_path.write_text(json.dumps(snapshot, indent=1))
     (ITER_DIR / "latest.json").write_text(json.dumps(snapshot, indent=1))
@@ -82,6 +123,13 @@ def run_iteration(seed=None):
     print(f"National environment: D{e['dem_margin']:+.1f}")
     print(f"Senate Dem control probability: {s['dem_control_prob'] * 100:.1f}% (mean {s['mean_dem_seats']:.1f} seats)")
     print(f"House Dem control probability: {h['dem_control_prob'] * 100:.1f}% (mean {h['mean_dem_seats']:.1f} seats)")
+    change = snapshot.get("change")
+    if change:
+        print(f"Since {et_day(change['from'])}: senate {change['total']['senate']:+.1f} pt, "
+              f"house {change['total']['house']:+.1f} pt")
+        for driver in change["drivers"][:4]:
+            print(f"    {driver['label']}: senate {driver['points']['senate']:+.1f}, "
+                  f"house {driver['points']['house']:+.1f}")
     return snapshot
 
 

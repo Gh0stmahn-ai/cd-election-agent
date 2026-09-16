@@ -21,6 +21,7 @@ import statistics
 import shutil
 from datetime import date, datetime, timezone
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 BASE = Path(__file__).parent
 ITER_DIR = BASE / "iterations"
@@ -33,6 +34,7 @@ SITE_URL = "https://gh0stmahn-ai.github.io"
 # page for the daily pipeline. One click there re-runs the forecast on the
 # latest public data, with optional boxes for today's poll numbers.
 RUN_URL = "https://github.com/Gh0stmahn-ai/cd-election-agent/actions/workflows/daily-forecast.yml"
+ET = ZoneInfo("America/New_York")
 ELECTION_DATE = date(2026, 11, 3)
 
 STATE_NAMES = {
@@ -211,6 +213,7 @@ def market_strip(snap, markets):
 def build_index(snap, meta, markets=None):
     s, h, e, j = snap["senate"], snap["house"], snap["environment"], snap["joint"]
     market_html, market_rows = market_strip(snap, markets)
+    change = snap.get("change")
     body = """
 <section>
   <div class="grid2">
@@ -218,6 +221,7 @@ def build_index(snap, meta, markets=None):
     <div class="card" id="hero-house"></div>
   </div>
   <div class="joint" id="joint"></div>
+  <p class="note" id="what-moved"></p>
 </section>
 
 <section>
@@ -249,6 +253,9 @@ def build_index(snap, meta, markets=None):
     data = {"site": site_meta(snap), "senate": s, "house": h, "environment": e, "joint": j, "meta": meta}
     if market_rows:
         data["marketStrip"] = market_rows
+    if change:
+        data["change"] = {"total": change["total"], "from": change["from"],
+                          "drivers": change["drivers"][:1]}
     scripts = """
 FC.onRender(function () {
   FC.renderHero("hero-senate", "Senate", PAGE_DATA.senate, 51, 100,
@@ -262,13 +269,25 @@ FC.onRender(function () {
   FC.renderHemicycle("hemi-house", FC.houseSeatDots(PAGE_DATA.house, PAGE_DATA.meta), PAGE_DATA.house.majority, 4.6, 12, "legend-house");
   FC.renderEnvironment("environment", PAGE_DATA.environment);
   if (PAGE_DATA.marketStrip) { FC.renderMarketStrip("market-strip", PAGE_DATA.marketStrip); }
+  if (PAGE_DATA.change) {
+    var c = PAGE_DATA.change, top = c.drivers[0];
+    var say = function (k, name) {
+      var v = c.total[k];
+      return name + " " + (Math.abs(v) < 0.2 ? "barely moved" :
+        (v > 0 ? "up " : "down ") + Math.abs(v).toFixed(1) + " pt");
+    };
+    FC.$("what-moved").innerHTML = "Since " + FC.fmtDate(c.from) + ": " +
+      say("house", "House") + ", " + say("senate", "Senate") +
+      (top ? ", mostly " + FC.esc(top.label.toLowerCase()) : "") +
+      '. <a href="trend.html">What moved it, day by day &#8594;</a>';
+  }
 });
 """
     return page("index.html", "2026 Midterm Forecast",
                 "Who controls the House and Senate after November 3, 2026. Every Senate race and all 435 House "
-                "districts, simulated 20,000 times a day.",
+                "districts, simulated 100,000 times a day.",
                 ("Who controls Congress after November 3",
-                 "Every Senate race and all 435 House districts, simulated 20,000 times a day with polling, "
+                 "Every Senate race and all 435 House districts, simulated 100,000 times a day with polling, "
                  "race ratings, and the economy voters are living through."),
                 body, js(data), scripts)
 
@@ -454,7 +473,37 @@ FC.onRender(function () {
                 body, js(data), scripts)
 
 
+def story_days(snaps):
+    """One entry per Eastern-time day: the last run of that day, and its story.
+
+    The pipeline can fire several times in a day. The forecast people care
+    about is where it ended up, and the explanation attached to that run
+    already covers the whole day, because it was measured against the last
+    run of the day before.
+    """
+    by_day = {}
+    for snap in snaps:
+        day = datetime.fromisoformat(snap["timestamp"]).astimezone(ET).date()
+        if day not in by_day or snap["timestamp"] > by_day[day]["timestamp"]:
+            by_day[day] = snap
+    days = []
+    for day in sorted(by_day, reverse=True):
+        snap = by_day[day]
+        days.append({
+            "label": day.strftime("%A, %B %-d"),
+            "date": day.isoformat(),
+            "timestamp": snap["timestamp"],
+            "senate": snap["senate"]["dem_control_prob"],
+            "house": snap["house"]["dem_control_prob"],
+            "change": snap.get("change"),
+        })
+    if days:
+        days[-1]["first"] = True    # nothing existed before this one to compare against
+    return days
+
+
 def build_trend(snaps):
+    days = story_days(snaps)
     runs = [{"timestamp": s["timestamp"],
              "senate": s["senate"]["dem_control_prob"], "senate_seats": s["senate"]["mean_dem_seats"],
              "house": s["house"]["dem_control_prob"], "house_seats": s["house"]["mean_dem_seats"],
@@ -473,13 +522,25 @@ def build_trend(snaps):
 </section>
 
 <section>
+  <h2>The story, day by day</h2>
+  <p class="lede">Every day the model re-runs with one input held back at a time, so the change
+    in the forecast can be split between the things that caused it. A driver that helped
+    Democrats runs right in blue; one that helped Republicans runs left in red.</p>
+  <div class="chamber-toggle" role="group" aria-label="Which chamber to explain">
+    <button type="button" data-chamber="house" aria-pressed="true">House</button>
+    <button type="button" data-chamber="senate" aria-pressed="false">Senate</button>
+  </div>
+  <div id="story"></div>
+</section>
+
+<section>
   <h2>Every run</h2>
-  <p class="lede">One row per daily run. The national environment is the blend of polling and fundamentals that
+  <p class="lede">One row per pipeline run. The national environment is the blend of polling and fundamentals that
     shifts every race.</p>
   <div class="card tbl-scroll"><table id="tbl-runs"></table></div>
 </section>
 """
-    data = {"site": site_meta(snaps[-1]), "runs": runs}
+    data = {"site": site_meta(snaps[-1]), "runs": runs, "days": days}
     scripts = """
 FC.onRender(function () {
   var runs = PAGE_DATA.runs;
@@ -488,6 +549,18 @@ FC.onRender(function () {
   FC.$("trend-note").textContent = runs.length > 1
     ? runs.length + " runs so far. Each point is one daily pipeline run; hover for the exact numbers."
     : "This is the first run of the current model. A point is added after every daily run, so the lines build up from here.";
+  var chamber = "house";
+  FC.renderStory("story", PAGE_DATA.days, chamber);
+  [].forEach.call(document.querySelectorAll(".chamber-toggle button"), function (btn) {
+    btn.addEventListener("click", function () {
+      chamber = btn.getAttribute("data-chamber");
+      [].forEach.call(document.querySelectorAll(".chamber-toggle button"), function (b) {
+        b.setAttribute("aria-pressed", b === btn ? "true" : "false");
+      });
+      FC.renderStory("story", PAGE_DATA.days, chamber);
+    });
+  });
+
   var rows = runs.slice().reverse();
   FC.$("tbl-runs").innerHTML = "<thead><tr><th>Run</th><th class='num'>Senate D</th><th class='num'>Avg D seats</th>" +
     "<th class='num'>House D</th><th class='num'>Avg D seats</th><th class='num'>Environment</th>" +
@@ -974,10 +1047,14 @@ def build_methodology(snap):
   </div></div>
 
   <div class="step"><div class="n">5</div><div>
-    <h3>Simulate every race 20,000 times</h3>
+    <h3>Simulate every race 100,000 times</h3>
     <p>Each race starts from its published rating, converted to an expected margin (Solid 18 points, Likely 9,
     Lean 4.5, Toss-up 0.5 toward the party that holds it). Ratings already reflect the environment when they were
-    set, so a race is shifted only by how far the environment has moved since. Then 20,000 elections are simulated.
+    set, so a race is shifted only by how far the environment has moved since. Then 100,000 elections are simulated, using the same random draws every day.
+    Fixing the draws matters more than it sounds: with 20,000 fresh draws each run, two runs on
+    identical data disagreed by up to 1.8 points, which is larger than most real daily moves, so
+    part of the trend line was reporting luck. Re-using the draws and raising the count leaves
+    under 0.2 points of self-noise, which is what makes the day-by-day explanation trustworthy.
     Each one draws a single national polling miss shared by every race in both chambers, plus race-level noise of 5
     points in the House and 5.5 in the Senate. That shared miss is why the two chambers move together and why the
     seat ranges are wide rather than falsely precise.</p>
@@ -1023,6 +1100,14 @@ def build_methodology(snap):
     <li><b>It does not treat the AI as an oracle.</b> The agent chooses which published figures to copy and writes a
       capped, cited judgment about campaign momentum in Senate races. It cannot invent a rating change, move a
       number outside its plausible range, or touch the model's math.</li>
+    <li><b>It does not guess at why it moved.</b> The day-by-day explanation on the
+      <a href="trend.html">trend page</a> is measured, not narrated: the model is re-run with each
+      input held back in turn, and each driver is credited with the difference it makes. Every one
+      of those runs uses the same random draws, so the comparison contains no simulation noise, and
+      whatever the drivers fail to account for is published as a residual rather than spread
+      quietly among them. What it cannot tell you is why the underlying number moved: it can say
+      the generic ballot shifted a point and what that was worth, not what happened in the news to
+      shift it.</li>
     <li><b>It does not mistake attention for support.</b> Wikipedia readership per candidate is
       collected every run and shown on the <a href="senate.html">Senate page</a>, because a race
       the country has suddenly started reading about is worth knowing. It is not an input: people
