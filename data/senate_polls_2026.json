@@ -1,0 +1,323 @@
+{
+ "as_of": "2026-09-16T01:44:34+00:00",
+ "source": "Wikipedia per-race election articles",
+ "half_life_days": 21,
+ "max_age_days": 120,
+ "races": {
+  "AK-2026": {
+   "state": "AK",
+   "dem_candidate": "Mary Peltola",
+   "rep_candidate": "Dan Sullivan",
+   "dem_margin": 1.5,
+   "method": "mean of 4 aggregators",
+   "n_used": 4,
+   "detail": [
+    {
+     "label": "Decision Desk HQ",
+     "margin": 2.1
+    },
+    {
+     "label": "Race to the WH",
+     "margin": 0.7
+    },
+    {
+     "label": "RealClearPolitics",
+     "margin": 2.0
+    },
+    {
+     "label": "Silver Bulletin",
+     "margin": 1.2
+    }
+   ],
+   "rating": "tossup",
+   "rating_lean": "R"
+  },
+  "GA-2026": {
+   "state": "GA",
+   "dem_candidate": "Jon Ossoff",
+   "rep_candidate": "Mike Collins",
+   "dem_margin": 7.9,
+   "method": "mean of 6 aggregators",
+   "n_used": 6,
+   "detail": [
+    {
+     "label": "270toWin",
+     "margin": 8.0
+    },
+    {
+     "label": "Decision Desk HQ",
+     "margin": 6.7
+    },
+    {
+     "label": "FiftyPlusOne",
+     "margin": 8.2
+    },
+    {
+     "label": "Race to the WH",
+     "margin": 8.6
+    },
+    {
+     "label": "RealClearPolitics",
+     "margin": 7.8
+    },
+    {
+     "label": "Silver Bulletin",
+     "margin": 8.4
+    }
+   ],
+   "rating": "lean",
+   "rating_lean": "D"
+  },
+  "IA-2026": {
+   "state": "IA",
+   "dem_candidate": "Josh Turek",
+   "rep_candidate": "Ashley Hinson",
+   "dem_margin": 0.2,
+   "method": "mean of 6 aggregators",
+   "n_used": 6,
+   "detail": [
+    {
+     "label": "270toWin",
+     "margin": -2.5
+    },
+    {
+     "label": "Decision Desk HQ",
+     "margin": 2.1
+    },
+    {
+     "label": "FiftyPlusOne",
+     "margin": 0.7
+    },
+    {
+     "label": "Race to the WH",
+     "margin": 0.5
+    },
+    {
+     "label": "RealClearPolitics",
+     "margin": -0.5
+    },
+    {
+     "label": "Silver Bulletin",
+     "margin": 1.2
+    }
+   ],
+   "rating": "tossup",
+   "rating_lean": "R"
+  },
+  "ME-2026": {
+   "state": "ME",
+   "dem_candidate": "Troy Jackson",
+   "rep_candidate": "Susan Collins",
+   "dem_margin": 3.0,
+   "method": "mean of 5 aggregators",
+   "n_used": 5,
+   "detail": [
+    {
+     "label": "270toWin",
+     "margin": 2.3
+    },
+    {
+     "label": "FiftyPlusOne",
+     "margin": 3.3
+    },
+    {
+     "label": "Race to the WH",
+     "margin": 2.8
+    },
+    {
+     "label": "RealClearPolitics",
+     "margin": 2.5
+    },
+    {
+     "label": "Silver Bulletin",
+     "margin": 4.0
+    }
+   ],
+   "rating": "tossup",
+   "rating_lean": "R"
+  },
+  "MI-2026": {
+   "state": "MI",
+   "dem_candidate": "Abdul El-Sayed",
+   "rep_candidate": "Mike Rogers",
+   "dem_margin": 2.5,
+   "method": "mean of 6 aggregators",
+   "n_used": 6,
+   "detail": [
+    {
+     "label": "270toWin",
+     "margin": 2.2
+    },
+    {
+     "label": "Decision Desk HQ",
+     "margin": 2.9
+    },
+    {
+     "label": "FiftyPlusOne",
+     "margin": 3.2
+    },
+    {
+     "label": "Race to the WH",
+     "margin": 2.1
+    },
+    {
+     "label": "RealClearPolitics",
+     "margin": 1.8
+    },
+    {
+     "label": "Silver Bulletin",
+     "margin": 3.0
+    }
+   ],
+   "rating": "tossup",
+   "rating_lean": "D"
+  },
+  "NC-2026": {
+   "state": "NC",
+   "dem_candidate": "Roy Cooper",
+   "rep_candidate": "Michael Whatley",
+   "dem_margin": 8.2,
+   "method": "mean of 6 aggregators",
+   "n_used": 6,
+   "detail": [
+    {
+     "label": "270toWin",
+     "margin": 8.4
+    },
+    {
+     "label": "Decision Desk HQ",
+     "margin": 7.7
+    },
+    {
+     "label": "FiftyPlusOne",
+     "margin": 8.8
+    },
+    {
+     "label": "Race to the WH",
+     "margin": 7.9
+    },
+    {
+     "label": "RealClearPolitics",
+     "margin": 7.8
+    },
+    {
+     "label": "Silver Bulletin",
+     "margin": 8.8
+    }
+   ],
+   "rating": "lean",
+   "rating_lean": "D"
+  },
+  "NH-2026": {
+   "state": "NH",
+   "dem_candidate": "Chris Pappas",
+   "rep_candidate": "John E. Sununu",
+   "dem_margin": 3.7,
+   "method": "mean of 5 aggregators",
+   "n_used": 5,
+   "detail": [
+    {
+     "label": "270toWin",
+     "margin": 1.7
+    },
+    {
+     "label": "Decision Desk HQ",
+     "margin": 3.9
+    },
+    {
+     "label": "Race to the WH",
+     "margin": 4.2
+    },
+    {
+     "label": "RealClearPolitics",
+     "margin": 4.0
+    },
+    {
+     "label": "Silver Bulletin",
+     "margin": 4.9
+    }
+   ],
+   "rating": "tossup",
+   "rating_lean": "D"
+  },
+  "OH-2026-special": {
+   "state": "OH",
+   "dem_candidate": "Sherrod Brown",
+   "rep_candidate": "Jon Husted",
+   "dem_margin": 5.1,
+   "method": "mean of 6 aggregators",
+   "n_used": 6,
+   "detail": [
+    {
+     "label": "270toWin",
+     "margin": 6.0
+    },
+    {
+     "label": "Decision Desk HQ",
+     "margin": 6.0
+    },
+    {
+     "label": "FiftyPlusOne",
+     "margin": 6.4
+    },
+    {
+     "label": "Race to the WH",
+     "margin": 4.9
+    },
+    {
+     "label": "RealClearPolitics",
+     "margin": 3.3
+    },
+    {
+     "label": "Silver Bulletin",
+     "margin": 4.1
+    }
+   ],
+   "rating": "tossup",
+   "rating_lean": "R"
+  },
+  "TX-2026": {
+   "state": "TX",
+   "dem_candidate": "James Talarico",
+   "rep_candidate": "Ken Paxton",
+   "dem_margin": 3.1,
+   "method": "mean of 7 aggregators",
+   "n_used": 7,
+   "detail": [
+    {
+     "label": "270toWin",
+     "margin": 3.4
+    },
+    {
+     "label": "Decision Desk HQ",
+     "margin": 3.8
+    },
+    {
+     "label": "FiftyPlusOne",
+     "margin": 3.6
+    },
+    {
+     "label": "Race to the WH",
+     "margin": 2.7
+    },
+    {
+     "label": "RealClearPolitics",
+     "margin": 2.6
+    },
+    {
+     "label": "The Texas Tribune",
+     "margin": 3.4
+    },
+    {
+     "label": "Silver Bulletin",
+     "margin": 2.4
+    }
+   ],
+   "rating": "tossup",
+   "rating_lean": "R"
+  }
+ },
+ "issues": [
+  "KS-2026: both nominees are not settled yet"
+ ]
+}
