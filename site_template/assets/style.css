@@ -279,3 +279,27 @@ tr:hover td { background: var(--dem-wash); }
   .dbar-track { grid-column: 1 / -1; }
   .dbar-foot { padding-left: 0; }
 }
+
+/* Tipping-point bars: one direction, ranked, party colour kept out of it.
+   The bar length is how often a race decides control, which is a question
+   about importance rather than about which side wins, so it uses the neutral
+   grey rather than the blue/red pair. The favourite is named in the row
+   instead, where it cannot be mistaken for the measure itself. */
+.tiprow { display: grid; grid-template-columns: 148px 1fr 52px; gap: 12px;
+  align-items: center; padding: 4px 0; }
+.tiprow .lbl { font-size: 13px; color: var(--ink); text-align: right;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tiprow .lbl i { font-style: normal; color: var(--muted); font-size: 11px; }
+.tiptrack { position: relative; height: 15px; border-radius: 3px; background: var(--notup); }
+.tipfill { position: absolute; left: 0; top: 0; height: 15px; border-radius: 3px;
+  background: var(--ink-2); min-width: 2px; }
+.tiprow .val { font-size: 12px; font-variant-numeric: tabular-nums; font-weight: 600;
+  color: var(--ink); }
+.tipfoot { font-size: 12px; color: var(--muted); margin: 10px 0 0; }
+@media (max-width: 640px) {
+  .tiprow { grid-template-columns: 1fr 48px; gap: 2px 8px;
+    grid-template-areas: "lbl val" "track track"; }
+  .tiprow .lbl { text-align: left; grid-area: lbl; }
+  .tiprow .val { grid-area: val; text-align: right; }
+  .tiptrack { grid-area: track; }
+}
