@@ -89,9 +89,31 @@
 
   <div class="step"><div class="n">5</div><div>
     <h3>Simulate every race 100,000 times</h3>
+    <p><b>Senate races follow their own polling.</b> For every competitive Senate race the model reads the
+    state polling averages published on that race's Wikipedia article, collating RealClearPolitics,
+    Silver Bulletin, Decision Desk HQ, 270toWin and others. The polling average and the rating are two
+    rival estimates of the same thing, today's margin, so they are blended rather than stacked: stacking
+    would count the national environment twice. How much of the blend is polling depends on how many
+    aggregators cover the race and how close Election Day is, rising from half to 85% as November nears.
+    Before this existed, every toss-up carried the identical D+1.3 baseline and the forecast literally
+    could not tell Iowa from Maine.</p>
+
+    <p><b>House seats are separated by partisan lean.</b> A rating puts a seat in a class; Cook's Partisan
+    Voting Index says where inside that class it sits. Each district's baseline is nudged by how far its
+    index is from the typical index of seats with the same rating, centred so a rating's average is left
+    exactly where the rater put it. This changes little among toss-ups, which Cook has already sorted
+    tightly, and a great deal among safe seats, where the old model treated a Solid R district at D+12 as
+    being exactly as safe as one at R+33. The ten states that redrew mid-decade are excluded, because the
+    published index still describes their old lines.</p>
+
     <p>Each race starts from its published rating, converted to an expected margin (Solid 18 points, Likely 9,
     Lean 4.5, Toss-up 0.5 toward the party that holds it). Ratings already reflect the environment when they were
-    set, so a race is shifted only by how far the environment has moved since. Then 100,000 elections are simulated, using the same random draws every day.
+    set, so a race is shifted only by how far the environment has moved since. A polling miss is not one national number plus independent local noise, so the error is drawn in four
+    nested layers: national, census division, state, and the seat itself. Two districts in the same state
+    now move together about twice as much as they used to, and a state's Senate race shares its miss with
+    its own House seats. Each seat's total uncertainty is unchanged by this; only the clustering is, which
+    is what a probability of control is mostly made of.
+    Then 100,000 elections are simulated, using the same random draws every day.
     Fixing the draws matters more than it sounds: with 20,000 fresh draws each run, two runs on
     identical data disagreed by up to 1.8 points, which is larger than most real daily moves, so
     part of the trend line was reporting luck. Re-using the draws and raising the count leaves
@@ -179,7 +201,7 @@
 
 <script src="assets/app.js"></script>
 <script>
-const PAGE_DATA = {"site":{"timestamp":"2026-09-16T00:24:41.088999+00:00","status":"success"}};
+const PAGE_DATA = {"site":{"timestamp":"2026-09-16T01:59:01.400180+00:00","status":"success"}};
 FC.init();
 (function () {
   var s = PAGE_DATA.site;
