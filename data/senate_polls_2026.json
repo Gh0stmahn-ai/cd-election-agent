@@ -1,5 +1,5 @@
 {
- "as_of": "2026-09-16T02:23:30+00:00",
+ "as_of": "2026-09-16T19:24:47+00:00",
  "source": "Wikipedia per-race election articles",
  "half_life_days": 21,
  "max_age_days": 120,
@@ -72,29 +72,29 @@
    "state": "IA",
    "dem_candidate": "Josh Turek",
    "rep_candidate": "Ashley Hinson",
-   "dem_margin": 0.2,
+   "dem_margin": 0.3,
    "method": "mean of 6 aggregators",
    "n_used": 6,
    "detail": [
     {
      "label": "270toWin",
-     "margin": -2.5
+     "margin": -2.0
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 2.1
+     "margin": 1.7
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 0.7
+     "margin": 1.0
     },
     {
      "label": "Race to the WH",
-     "margin": 0.5
+     "margin": 0.4
     },
     {
      "label": "RealClearPolitics",
-     "margin": -0.5
+     "margin": -0.4
     },
     {
      "label": "Silver Bulletin",
@@ -244,7 +244,7 @@
    "state": "OH",
    "dem_candidate": "Sherrod Brown",
    "rep_candidate": "Jon Husted",
-   "dem_margin": 5.1,
+   "dem_margin": 4.8,
    "method": "mean of 6 aggregators",
    "n_used": 6,
    "detail": [
@@ -258,15 +258,15 @@
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 6.4
+     "margin": 5.5
     },
     {
      "label": "Race to the WH",
-     "margin": 4.9
+     "margin": 4.1
     },
     {
      "label": "RealClearPolitics",
-     "margin": 3.3
+     "margin": 3.2
     },
     {
      "label": "Silver Bulletin",
@@ -280,13 +280,13 @@
    "state": "TX",
    "dem_candidate": "James Talarico",
    "rep_candidate": "Ken Paxton",
-   "dem_margin": 3.1,
+   "dem_margin": 3.0,
    "method": "mean of 7 aggregators",
    "n_used": 7,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 3.4
+     "margin": 2.8
     },
     {
      "label": "Decision Desk HQ",
@@ -306,7 +306,7 @@
     },
     {
      "label": "The Texas Tribune",
-     "margin": 3.4
+     "margin": 3.3
     },
     {
      "label": "Silver Bulletin",
