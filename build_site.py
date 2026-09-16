@@ -233,12 +233,14 @@ def build_index(snap, meta, markets=None):
       <div class="chamber-label">Senate · 100 seats</div>
       <svg id="hemi-senate" viewBox="0 0 520 300" role="img" aria-label="Senate seats"></svg>
       <div class="legend" id="legend-senate"></div>
+      <p class="note" id="tip-senate-line"></p>
       <p class="note">65 seats are not on the ballot (hollow dots). <a href="senate.html">Senate map and races &#8594;</a></p>
     </div>
     <div class="card">
       <div class="chamber-label">House · 435 seats</div>
       <svg id="hemi-house" viewBox="0 0 520 300" role="img" aria-label="House seats"></svg>
       <div class="legend" id="legend-house"></div>
+      <p class="note" id="tip-house-line"></p>
       <p class="note">All 435 seats are on the ballot. <a href="house.html">House map and races &#8594;</a></p>
     </div>
   </div>
@@ -267,6 +269,21 @@ FC.onRender(function () {
     '<span class="ring" style="border-color:' + FC.css("--c6") + '"></span><span class="ring" style="border-color:' +
     FC.css("--c0") + '"></span> Not up in 2026');
   FC.renderHemicycle("hemi-house", FC.houseSeatDots(PAGE_DATA.house, PAGE_DATA.meta), PAGE_DATA.house.majority, 4.6, 12, "legend-house");
+  var tipLine = function (id, items, say, withSub) {
+    var box = FC.$(id); if (!box || !items.length) return;
+    var it = items[0];
+    box.innerHTML = say(FC.esc(it.label) + (withSub && it.sub ? " (" + FC.esc(it.sub) + ")" : ""),
+      FC.pct1(it.prob));
+  };
+  tipLine("tip-senate-line", FC.senateTipping(PAGE_DATA.senate, 1), function (name, p) {
+    return "Control runs through <b>" + name + "</b> more often than anywhere else: it is the race that " +
+      "delivers the 51st seat in " + p + " of simulations.";
+  });
+  tipLine("tip-house-line", FC.houseTipping(PAGE_DATA.house, PAGE_DATA.meta, 1), function (name, p) {
+    return "No single district carries the House the way one state can carry the Senate. The likeliest " +
+      "decider, <b>" + name + "</b>, delivers the " + PAGE_DATA.house.majority + "th seat in " + p +
+      " of simulations.";
+  }, true);
   FC.renderEnvironment("environment", PAGE_DATA.environment);
   if (PAGE_DATA.marketStrip) { FC.renderMarketStrip("market-strip", PAGE_DATA.marketStrip); }
   if (PAGE_DATA.change) {
@@ -322,6 +339,15 @@ def build_senate(snap, attention=None):
 </section>
 
 <section>
+  <h2>Where control is actually decided</h2>
+  <p class="lede">Not which race is closest, but which one the majority turns on.</p>
+  <div class="card">
+    <div id="tip-senate"></div>
+    <p class="tipfoot" id="tip-senate-note"></p>
+  </div>
+</section>
+
+<section>
   <div class="grid2">
     <div class="card">
       <div class="chamber-label">The chamber, seat by seat</div>
@@ -357,6 +383,11 @@ FC.onRender(function () {
     "for control, because Vice President Vance breaks a 50-50 tie. Chance of exactly 50-50: <b>" +
     FC.pct(s.tie_prob) + "</b>. Average outcome: <b>D " + Math.round(s.mean_dem_seats) + " · R " +
     Math.round(100 - s.mean_dem_seats) + "</b>.";
+  FC.renderTipping("tip-senate", FC.senateTipping(s, 10), "tip-senate-note",
+    "In every simulated election the races are lined up from most Democratic to least, and the one that " +
+    "delivers the 51st seat is the one control turned on. A race can be a coin flip and still rarely be " +
+    "decisive, and a race can be leaning and still decide everything, because what matters is where it " +
+    "sits in the order, not how close it is.");
   FC.renderSenateTable("tbl-senate", s);
   if (PAGE_DATA.attention && PAGE_DATA.attention.length) {
     FC.renderAttention("attention", PAGE_DATA.attention);
@@ -406,6 +437,15 @@ def build_house(snap, meta):
 </section>
 
 <section>
+  <h2>Where control is actually decided</h2>
+  <p class="lede">The districts that deliver the 218th seat, and how often each one is the one that does it.</p>
+  <div class="card">
+    <div id="tip-house"></div>
+    <p class="tipfoot" id="tip-house-note"></p>
+  </div>
+</section>
+
+<section>
   <h2>The races</h2>
   <p class="lede">Cook Political Report ratings, with this model's win probability for each seat.</p>
   <div class="card">
@@ -425,6 +465,11 @@ FC.onRender(function () {
   FC.$("house-facts").innerHTML = "Democrats need <b>" + h.majority + "</b> of 435. Average outcome: <b>D " +
     Math.round(h.mean_dem_seats) + " · R " + Math.round(435 - h.mean_dem_seats) + "</b>. 80% of simulations land " +
     "between <b>" + h.percentiles["10"] + "</b> and <b>" + h.percentiles["90"] + "</b> Democratic seats.";
+  FC.renderTipping("tip-house", FC.houseTipping(h, PAGE_DATA.meta, 12), "tip-house-note",
+    "Spread thinner than the Senate's, and that is the finding rather than a flaw: with 435 seats and a " +
+    "large field of near-identical toss-ups, no single district carries the majority the way one state can " +
+    "carry the Senate. The order is what decides it, so a district that is safe for one side and a district " +
+    "nobody is contesting are both, correctly, never decisive.");
   FC.renderHouseTable("house-tabs", "tbl-house", h, PAGE_DATA.meta);
 });
 """
@@ -909,76 +954,112 @@ FC.onRender(function () {
 
 
 BACKTEST_LABEL = {"tossup": "Toss-up", "lean": "Lean", "likely": "Likely", "solid": "Solid"}
+BACKTEST_FILE = "backtest_2018_2022.json"
 
 
-def backtest_section():
-    """The grade the model earned on 2018, 2020 and 2022.
+def backtest_data():
+    """The backtest summary, or None on a clone that has never run it."""
+    path = DATA_DIR / BACKTEST_FILE
+    return json.loads(path.read_text()) if path.exists() else None
 
-    Returns an empty string when the file is absent so the site still builds
-    on a clone that has never run the backtest.
-    """
-    path = DATA_DIR / "backtest_2018_2022.json"
-    if not path.exists():
+
+def backtest_section(bt):
+    if not bt:
         return ""
-    bt = json.loads(path.read_text())
     rows = ""
     for b in bt["buckets"]:
         rows += (f"<tr><td>{BACKTEST_LABEL[b['rating']]}</td>"
-                 f"<td class='num'>{b['n']}</td>"
+                 f"<td class='num'>{b['n']:,}</td>"
                  f"<td class='num'>{b['old']:.1f}</td>"
                  f"<td class='num'>{b['actual']:.1f}</td>"
                  f"<td class='num'>{b['sd']:.1f}</td>"
                  f"<td class='num'>{b['held']:.0%}</td>"
-                 f"<td class='num'>{b['fitted']:.1f}</td></tr>")
-    lay = bt["layers_competitive"]
-    cycles = ", ".join(bt["cycles"][:-1]) + " and " + bt["cycles"][-1]
+                 f"<td class='num'>{b['fitted_house']:.1f}</td>"
+                 f"<td class='num'>{b['fitted_senate']:.1f}</td></tr>")
+    lay = bt["layers"]
+    span = f"{bt['cycles'][0]} to {bt['cycles'][-1]}"
+    full = ", ".join(bt["full_cycles"][:-1]) + " and " + bt["full_cycles"][-1]
+    vals = list(bt["layers"]["national_bias"].values())
+    bias = ", ".join(f"{v:+.1f}" for v in vals[:-1]) + f" and {vals[-1]:+.1f}"
     return f"""
 <section class="prose" id="backtest">
-  <h2>Graded against {cycles}</h2>
+  <h2>Graded against seven past elections</h2>
   <p class="lede">Every constant in the simulation used to be a guess with a comment next to it saying so.
-  They are now fitted on {bt['races']:,} real races -- {bt['house']:,} House seats and {bt['senate']} Senate
-  races from {cycles} -- rebuilt from the final Cook ratings published days before each election and the
-  results that followed. Run the old settings against those races and the average seat is missed by
+  They are now fitted on {bt['races']:,} real races, rebuilt from the final Cook ratings published days
+  before each election and the results that followed. {bt['competitive']} of them are races some rater
+  called competitive, covering every cycle from {span}; the other {bt['safe']:,} are the safe seats of
+  {full}, the cycles where a partisan index exists for all 435 districts. Run the settings this project
+  started with against those races and the average one is missed by
   <b>{bt['mean_abs_error_before']:.1f} points</b>. Run the current ones and it is
   <b>{bt['mean_abs_error_after']:.1f}</b>.</p>
 
   <div class="card tbl-scroll"><table>
-    <thead><tr><th>Rating</th><th class="num">Races</th><th class="num">Model said</th>
+    <thead><tr><th>Rating</th><th class="num">Races</th><th class="num">Old model</th>
       <th class="num">Actually won by</th><th class="num">Spread</th>
-      <th class="num">Favourite held</th><th class="num">Model now says</th></tr></thead>
+      <th class="num">Favourite held</th><th class="num">Now, House</th>
+      <th class="num">Now, Senate</th></tr></thead>
     <tbody>{rows}</tbody>
   </table></div>
 
-  <p>The expensive error was Solid. A Solid seat was given 18 points; Solid seats actually win by 33, and
-  the spread inside that bucket is 17 points wide -- the model was treating a Solid R district at R+33 and
-  one at D+12 as equally out of reach. That costs no probability directly, because neither flips at 18
-  points or at 30, but it was what the site printed as a race's expected margin, and it was the reason the
-  partisan index had to start doing real work.</p>
+  <p>The expensive error was Solid. A Solid seat was given 18 points; safe House seats actually win by 33
+  and safe Senate seats by 26, and the spread inside that bucket is sixteen points wide. The model was
+  treating a Solid R district at R+33 and one at D+12 as equally out of reach. That costs almost no
+  probability directly, because neither flips at 18 points or at 33, but it was what the site printed as a
+  race's expected margin, and it was the reason the partisan index had to start doing real work: inside
+  the Solid buckets a point of Cook index is worth {bt['pvi_slopes'].get('solid', 1.75):.2f} points of
+  margin, and using it cuts the spread there from eighteen points to six.</p>
 
-  <p>The quieter error was Toss-up and Lean. A toss-up favourite was given a 54% chance and really wins
-  60%; a Lean favourite was given 81% and really wins 93%. Both have been moved to what the record shows.
-  This is not a thumb on the scale for either party -- it says the party already holding a close seat wins
-  it more often than a coin flip -- but it does cut against the Democrats in this particular cycle, who are
-  defending five of this year's toss-up House seats to the Republicans' sixteen.</p>
+  <p>The quieter error was Toss-up and Lean, and that one moves probabilities. A toss-up favourite was
+  given a 54% chance and really wins {bt['buckets'][0]['held']:.0%}; a Lean favourite was given 81% and
+  really wins {bt['buckets'][1]['held']:.0%}. Both have been moved to what the record shows. This is not a
+  thumb on the scale for either party, it says the party already holding a close seat wins it more often
+  than a coin flip, but it does cut against the Democrats in this particular cycle, who are defending five
+  of this year's toss-up House seats to the Republicans' sixteen.</p>
 
-  <p>What survived is worth as much as what changed. The correlated-error structure was built on three
-  guesses about how a polling miss clusters. Measured on the same races, a state's races share
-  {lay['state_sd']:.1f} points of miss, against 2.5 assumed before anyone checked; the per-race residual is
-  {lay['seat_sd']:.1f} points; and the national miss has a standard deviation of {lay['national_sd']:.1f}
-  points, which is why that floor moved from 2.2 to 2.5. Only the census-division layer was badly off, at
-  {lay['division_sd']:.1f} points against 1.5 assumed -- regional misses are real, but they live at the
-  state line, not the census division.</p>
+  <h3>Is it calibrated?</h3>
+  <p>The test a forecast cannot talk its way around: of all the races where the model said the favourite
+  had about a 70% chance, did the favourite win about 70% of the time? Each dot is
+  {bt['calibration'][0]['n']} races. The whiskers are 95% intervals, which is the width at which seventy-odd
+  races can actually be read.</p>
+  <div class="card">
+    <svg id="calibration" viewBox="0 0 520 330" role="img"
+      aria-label="Predicted win probability against how often the favourite actually won"></svg>
+  </div>
 
-  <p>Two honest limits. Three cycles is three observations of the national error, which is why that number
-  is treated as a floor and not a precise estimate. And the ratings articles list only seats some rater
-  called competitive, so every unlisted seat is entered as Solid for the party that held it -- true in
-  almost every case, and the handful where it is not are the {int((1 - bt['buckets'][3]['held']) * bt['buckets'][3]['n'])}
-  Solid seats in the table that the favourite did not hold.</p>
+  <p>Two readings, and the second is the more useful one. The dots sit close to the line, which is the
+  point of drawing it. But almost every dot above 60% sits slightly <i>above</i> the line, meaning
+  favourites win a little more often than the model says they will. That is under-confidence, and it is the
+  safer direction to be wrong in, but it is a real tilt rather than noise: it shows up in five bins running.
+  The one bin that leans the other way is the leftmost, where the model calls a race a hair better than even
+  and the favourite wins slightly less often than that. The Brier score, which is the average squared
+  distance between what was said and what happened, is {bt['brier']:.3f}; always guessing 50% would score
+  0.25.</p>
+
+  <h3>What survived</h3>
+  <p>The correlated-error structure was built on three guesses about how a polling miss clusters. Measured
+  on the same races, a state's races share <b>{lay['state_sd']:.1f} points</b> of miss, against 2.5 assumed
+  before anyone checked, and the per-race residual is {lay['race_sd']:.1f} points. The census-division
+  layer measured <b>{lay['division_sd']:.1f}</b>, so it has been removed from the simulation entirely:
+  regional misses are real, but every point of them lives at the state line.</p>
+
+  <p>The national miss is the one that needed the extra cycles. Across the seven, the average competitive
+  race beat its rating by {bias} points, a standard deviation of <b>{lay['national_sd']:.1f}</b>. That is
+  now the Election-Day floor, and because misses of that kind have come in clusters rather than
+  independently, the simulation draws it from a distribution with heavier tails than a bell curve. The
+  centre is unchanged; a 2016-sized miss simply stops being treated as impossible.</p>
+
+  <p>Two honest limits. Seven observations is still seven, so the national error is treated as a floor
+  rather than a precise estimate, and the model does not correct for the average of those seven being
+  slightly Republican, because at this sample size that average is indistinguishable from zero. And the
+  ratings articles list only the seats some rater called competitive, so in the three full cycles every
+  unlisted seat is entered as Solid for the party that held it. That is true in almost every case, and the
+  exceptions are the safe seats in the table that the favourite did not hold.</p>
 </section>
 """
 
 
 def build_methodology(snap):
+    bt = backtest_data()
     fund = json.loads((DATA_DIR / "fundamentals_2026.json").read_text())
     gb = json.loads((DATA_DIR / "generic_ballot_2026.json").read_text())
     sen = json.loads((DATA_DIR / "senate_races_2026.json").read_text())
@@ -1131,34 +1212,40 @@ def build_methodology(snap):
     Voting Index says where inside that class it sits. Each district's baseline is nudged by how far its
     index is from the typical index of seats with the same rating, centred so a rating's average is left
     exactly where the rater put it. How hard that nudge pushes is now measured rather than guessed, and it
-    turns out to depend entirely on the rating: among safe seats the index moves the margin 1.75 points per
-    point of index, among toss-ups barely 0.1. A rater watching a race closely has already priced its
+    turns out to depend entirely on the rating: among safe seats the index moves the margin 1.7 points per
+    point of index, among competitive ones about 0.2, which is inside the noise. A rater watching a race closely has already priced its
     partisanship in; a rater who wrote a seat off as Solid has not. The ten states that redrew mid-decade
     are excluded, because the published index still describes their old lines.</p>
 
-    <p>Each race starts from its published rating, converted to an expected margin (Solid 30 points, Likely 9.5,
-    Lean 6.3, Toss-up 1.5 toward the party that holds it). Those four numbers are read off 1,268 real races rather
-    than chosen; the <a href="#backtest">backtest below</a> shows the working. Ratings already reflect the environment when they were
-    set, so a race is shifted only by how far the environment has moved since. A polling miss is not one national number plus independent local noise, so the error is drawn in four
-    nested layers: national, census division, state, and the seat itself, sized from the same backtest.
-    Two districts in the same state
-    now move together about twice as much as they used to, and a state's Senate race shares its miss with
-    its own House seats. Each seat's total uncertainty is unchanged by this; only the clustering is, which
-    is what a probability of control is mostly made of.
-    Then 100,000 elections are simulated, using the same random draws every day.
+    <p><b>Each race starts from its published rating</b>, converted to an expected margin: in the House,
+    Solid 33 points, Likely 11, Lean 7, Toss-up 0.8 toward the party that holds it; in the Senate, 26, 12.5,
+    8.5 and 1.5. Those numbers are read off 1,572 real races rather than chosen, and the chambers are
+    listed separately because they measure differently. The <a href="#backtest">backtest below</a> shows the
+    working. Ratings already reflect the environment when they were set, so a race is shifted only by how
+    far the environment has moved since.</p>
+
+    <p><b>A polling miss is not one national number plus independent local noise</b>, so it is drawn in
+    three nested layers: national, state, and the race itself. A state's Senate race shares its miss with
+    its own House seats, which is why the two chambers move together. The national layer is drawn from a
+    heavier-tailed distribution than a bell curve, because misses the size of 2016's and 2020's have
+    happened twice in a decade and a bell curve would call that nearly impossible. The race layer depends on
+    the rating: a race everyone is watching turns out to be more predictable than one nobody is, 4.8 points
+    of spread against 6.5 for a safe House seat, because the watching is what produces the information.</p>
+
+    <p><b>Then 100,000 elections are simulated, using the same random draws every day.</b>
     Fixing the draws matters more than it sounds: with 20,000 fresh draws each run, two runs on
     identical data disagreed by up to 1.8 points, which is larger than most real daily moves, so
     part of the trend line was reporting luck. Re-using the draws and raising the count leaves
-    under 0.2 points of self-noise, which is what makes the day-by-day explanation trustworthy.
-    Each one draws a single national polling miss shared by every race in both chambers, plus race-level noise of 5
-    points in the House and 5.5 in the Senate. That shared miss is why the two chambers move together and why the
-    seat ranges are wide rather than falsely precise.</p>
+    under 0.2 points of self-noise, which is what makes the day-by-day explanation trustworthy. Each
+    simulated election is also asked which race delivered the deciding seat, which is what the
+    <a href="senate.html">Senate</a> and <a href="house.html">House</a> pages report as a tipping point.</p>
   </div></div>
 
   <div class="step"><div class="n">6</div><div>
     <h3>Check the whole thing against elections that already happened</h3>
-    <p>Every constant above is fitted on 2018, 2020 and 2022 and then graded on them. What the grading
-    changed, and by how much, is set out in full <a href="#backtest">below</a>.</p>
+    <p>Every constant above is fitted on seven past elections and then graded on them, including a
+    calibration check: when the model says 70%, does it happen 70% of the time? What the grading changed,
+    and by how much, is set out in full <a href="#backtest">below</a>.</p>
   </div></div>
 
   <div class="step"><div class="n">7</div><div>
@@ -1190,7 +1277,7 @@ def build_methodology(snap):
   </table></div>
 </section>
 
-{backtest_section()}
+{backtest_section(bt)}
 
 <section class="prose">
   <h2>What this does not do</h2>
@@ -1208,9 +1295,10 @@ def build_methodology(snap):
       input held back in turn, and each driver is credited with the difference it makes. Every one
       of those runs uses the same random draws, so the comparison contains no simulation noise, and
       whatever the drivers fail to account for is published as a residual rather than spread
-      quietly among them. When the model itself changes -- a constant refitted against the
-      backtest, say -- that shows up as its own driver, <i>Model recalibration</i>, rather than
-      being blamed on the data. What it cannot tell you is why the underlying number moved: it can
+      quietly among them. Every daily input is rebuilt from the two snapshots being compared rather
+      than read live, so a change made overnight can never be backdated into an old explanation, and
+      when the model itself changes -- a constant refitted against the backtest, say -- that shows up
+      as its own driver, <i>Model recalibration</i>, rather than being blamed on the data. What it cannot tell you is why the underlying number moved: it can
       say the generic ballot shifted a point and what that was worth, not what happened in the news
       to shift it.</li>
     <li><b>It does not mistake attention for support.</b> Wikipedia readership per candidate is
@@ -1236,7 +1324,13 @@ def build_methodology(snap):
                 ("Data collection and methodology",
                  "What is collected, from where, how often, what is checked before it is written, and how it turns "
                  "into a probability."),
-                body, js({"site": site_meta(snap)}), "")
+                body, js({"site": site_meta(snap), "backtest": bt}),
+                """
+FC.onRender(function () {
+  var bt = PAGE_DATA.backtest;
+  if (bt) FC.renderCalibration("calibration", bt.calibration, bt.brier);
+});
+""")
 
 
 def main():

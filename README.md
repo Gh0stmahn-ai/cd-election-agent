@@ -30,21 +30,27 @@ web server or straight off disk with no CDN, no fetches and no libraries:
    economic index). Polls get more weight as Election Day nears (82% in
    mid-September, rising to 95%).
 2. **Race baselines** come from Cook Political Report ratings, converted
-   to expected margins (Solid 30 pts, Likely 9.5, Lean 6.3, Toss-up 1.5),
-   shifted by how far the environment has moved since the rating was set.
-   Those four numbers are fitted on 1,268 real races, not chosen -- see
-   the backtest below. Competitive **Senate** races then blend that with
-   their own state polling average, weighted by how many aggregators cover
-   the race and how close Election Day is. **House** seats are separated
-   within their rating by Cook PVI, centred so the rating's average is
-   preserved, with a weight that is itself fitted per rating (1.75 points
-   of margin per PVI point among Solid seats, 0.25 among competitive ones).
+   to expected margins -- House: Solid 33 pts, Likely 11, Lean 7, Toss-up
+   0.8; Senate: 26, 12.5, 8.5, 1.5 -- shifted by how far the environment
+   has moved since the rating was set. Those numbers are fitted on 1,572
+   real races, not chosen; see the backtest below. Competitive **Senate**
+   races then blend that with their own state polling average, weighted by
+   how many aggregators cover the race and how close Election Day is.
+   **House** seats are separated within their rating by Cook PVI, centred
+   so the rating's average is preserved, with a weight that is itself
+   fitted per rating (1.7 points of margin per PVI point among Solid
+   seats, 0.25 among competitive ones).
 4. **News momentum** (Senate toss-up/lean races only): a capped +/-0.08
    win-probability adjustment from an AI read of campaign coverage, kept
    separate and shown in each race's tooltip.
 5. **Monte Carlo simulation** with one national polling miss shared by
-   every race in both chambers plus race-level noise, so the chambers move
-   together the way they do in reality.
+   every race in both chambers, a state-level miss shared by every race in
+   a state, and race-level noise that depends on the rating, so the
+   chambers move together the way they do in reality. The national miss is
+   drawn from a Student t rather than a normal: a 2016-sized polling error
+   should not be treated as impossible. Each simulated election also
+   reports which race delivered the deciding seat, published as a
+   **tipping point** on the Senate and House pages.
 
 Democrats need 218 House seats and 51 Senate seats (Vice President Vance
 breaks a 50-50 tie). An independent win in Nebraska (Dan Osborn) is not
@@ -178,6 +184,7 @@ tools/fetch_pvi.py            one-time pull of Cook PVI for all 435 districts
 backtest/                     2018-2022 rebuild that fits and grades the constants
 refresh_attention.py          free Wikipedia readership per candidate (shown, never blended)
 attribution.py                re-runs the model per input to explain each day's move
+backtest/report.py            grades model.py against seven past elections
 set_polls.py                  manual generic-ballot / approval entry
 agent_run.py                  optional AI refresh (ratings, Senate news)
 ingest.py                     the validated write functions all three use
@@ -186,35 +193,42 @@ ingest.py                     the validated write functions all three use
 ## Backtest
 
 Every constant in the simulation used to be a guess. `backtest/` rebuilds
-2018, 2020 and 2022 from the final Cook ratings published days before each
-election and the results that followed -- 1,189 House seats and 79 Senate
-races -- and grades the model on them.
+seven cycles, 2012 through 2024, from the final Cook ratings published days
+before each election and the results that followed, and grades the model on
+them: 600 races that some rater called competitive across all seven cycles,
+plus 972 safe seats from 2018, 2020 and 2022, the cycles with a published
+partisan index for all 435 districts.
 
 ```
-rating    races   was   actually won by   spread   favourite held   now
-tossup      117   0.5               1.8      5.4             60%    1.5
-lean         88   4.5               6.7      5.0             93%    6.3
-likely       91   9.0               9.6      5.1             96%    9.5
-solid       972  18.0              32.6     16.6             98%   30.0
+rating    races   was   actually won by   spread   favourite held   now (H/S)
+tossup      240   0.5               0.9      5.8             55%    0.8 / 1.5
+lean        171   4.5               7.5      5.2             94%    7.0 / 8.5
+likely      189   9.0              11.4      6.1             98%   11.0 / 12.5
+solid       972  18.0              32.8     16.2             99%   33.0 / 26.0
 
-mean absolute error per race   13.6 pts -> 5.7 pts
+mean absolute error per race   11.8 pts -> 5.2 pts
+Brier score on competitive races                0.114
 ```
 
-The correlated-error layers were measured the same way: a state's races
-share 2.5 points of miss (2.5 was assumed), the per-race residual is 3.4,
-the national miss has SD 2.6, and the census-division layer is 0.8 rather
-than the 1.5 assumed.
+Error layers, measured on the same races: the national miss has a standard
+deviation of 2.8 points, a state's races share 2.3 points of miss, and the
+per-race residual is 4.2. The census-division layer measured 0.0 and has
+been removed from the simulation.
 
 ```
-python3 backtest/fetch_history.py     # district results + PVI, 2014-2024
-python3 backtest/fetch_ratings.py     # final Cook ratings for competitive seats
+python3 backtest/fetch_history.py     # district results + PVI, 2012-2024
+python3 backtest/fetch_ratings.py     # final Cook ratings, competitive seats
 python3 backtest/fetch_senate.py      # Senate ratings + results
 python3 backtest/report.py            # grade the model, write the summary
 ```
 
-Caveats: three cycles is three observations of the national error, so that
-number is a floor rather than a precise estimate; and seats absent from the
-ratings articles are entered as Solid for the party that held them.
+`report.py` compares the constants currently in `model.py` against the ones
+the project started with, so editing a constant and re-running it says
+immediately whether the change was an improvement.
+
+Caveats: seven observations is still seven, so the national error is a floor
+rather than a precise estimate; and seats absent from a ratings article are
+entered as Solid for the party that held them.
 
 ## Honest limits
 
