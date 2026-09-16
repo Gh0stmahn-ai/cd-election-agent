@@ -1,76 +1,154 @@
 {
  "cycles": [
+  "2012",
+  "2014",
+  "2016",
+  "2018",
+  "2020",
+  "2022",
+  "2024"
+ ],
+ "full_cycles": [
   "2018",
   "2020",
   "2022"
  ],
- "races": 1268,
- "house": 1189,
- "senate": 79,
- "mean_abs_error_before": 13.56,
- "mean_abs_error_after": 5.74,
- "sd_before": 18.2,
- "sd_after": 7.06,
+ "races": 1572,
+ "competitive": 600,
+ "safe": 972,
+ "house": 1446,
+ "senate": 126,
+ "mean_abs_error_before": 11.84,
+ "mean_abs_error_after": 5.21,
+ "sd_before": 16.57,
+ "sd_after": 6.57,
  "buckets": [
   {
    "rating": "tossup",
-   "n": 117,
+   "n": 240,
    "old": 0.5,
-   "fitted": 1.5,
-   "actual": 1.8,
-   "sd": 5.4,
-   "held": 0.598
+   "fitted_house": 0.8,
+   "fitted_senate": 1.5,
+   "actual": 0.9,
+   "sd": 5.8,
+   "held": 0.554
   },
   {
    "rating": "lean",
-   "n": 88,
+   "n": 171,
    "old": 4.5,
-   "fitted": 6.3,
-   "actual": 6.7,
-   "sd": 5.0,
-   "held": 0.932
+   "fitted_house": 7.0,
+   "fitted_senate": 8.5,
+   "actual": 7.5,
+   "sd": 5.2,
+   "held": 0.942
   },
   {
    "rating": "likely",
-   "n": 91,
+   "n": 189,
    "old": 9.0,
-   "fitted": 9.5,
-   "actual": 9.6,
-   "sd": 5.1,
-   "held": 0.956
+   "fitted_house": 11.0,
+   "fitted_senate": 12.5,
+   "actual": 11.4,
+   "sd": 6.1,
+   "held": 0.979
   },
   {
    "rating": "solid",
    "n": 972,
    "old": 18.0,
-   "fitted": 30.0,
-   "actual": 32.6,
-   "sd": 16.6,
-   "held": 0.984
+   "fitted_house": 33.0,
+   "fitted_senate": 26.0,
+   "actual": 32.8,
+   "sd": 16.2,
+   "held": 0.991
   }
  ],
- "layers_all": {
-  "national_bias": {
-   "2018": 5.562232495289453,
-   "2020": 0.5303481436295558,
-   "2022": -0.3261958556819915
-  },
-  "national_sd": 2.6,
-  "conditional_sd": 6.57,
-  "division_sd": 0.88,
-  "state_sd": 2.32,
-  "seat_sd": 6.08
+ "pvi_slopes": {
+  "tossup": 0.46,
+  "lean": 0.16,
+  "likely": -0.05,
+  "solid": 1.72
  },
- "layers_competitive": {
+ "layers": {
   "national_bias": {
-   "2018": 1.9104125617361079,
-   "2020": -4.071684151884551,
-   "2022": 0.7941293394480229
+   "2012": 1.25,
+   "2014": -4.1,
+   "2016": -5.21,
+   "2018": 2.55,
+   "2020": -3.94,
+   "2022": 0.75,
+   "2024": -1.12
   },
-  "national_sd": 2.6,
-  "conditional_sd": 4.33,
-  "division_sd": 0.75,
-  "state_sd": 2.52,
-  "seat_sd": 3.44
- }
+  "national_sd": 2.82,
+  "conditional_sd": 4.74,
+  "division_sd": 0.0,
+  "state_sd": 2.29,
+  "race_sd": 4.15
+ },
+ "race_sd_by_rating": {
+  "tossup": {
+   "n": 240,
+   "conditional_sd": 4.68,
+   "race_sd": 4.08
+  },
+  "lean": {
+   "n": 171,
+   "conditional_sd": 4.25,
+   "race_sd": 3.58
+  },
+  "likely": {
+   "n": 189,
+   "conditional_sd": 4.84,
+   "race_sd": 4.26
+  },
+  "solid": {
+   "n": 972,
+   "conditional_sd": 6.05,
+   "race_sd": 5.6
+  }
+ },
+ "calibration": [
+  {
+   "n": 75,
+   "predicted": 0.5306,
+   "observed": 0.4533
+  },
+  {
+   "n": 75,
+   "predicted": 0.5769,
+   "observed": 0.5867
+  },
+  {
+   "n": 75,
+   "predicted": 0.6271,
+   "observed": 0.7333
+  },
+  {
+   "n": 75,
+   "predicted": 0.8267,
+   "observed": 0.8933
+  },
+  {
+   "n": 75,
+   "predicted": 0.9021,
+   "observed": 0.96
+  },
+  {
+   "n": 75,
+   "predicted": 0.9464,
+   "observed": 0.96
+  },
+  {
+   "n": 75,
+   "predicted": 0.974,
+   "observed": 0.9867
+  },
+  {
+   "n": 75,
+   "predicted": 0.9832,
+   "observed": 0.9733
+  }
+ ],
+ "brier": 0.1149
 }

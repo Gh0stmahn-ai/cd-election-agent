@@ -13,7 +13,7 @@ RAW = os.path.join(HERE, "raw")
 UA = "cd-election-agent/1.0 (https://github.com/Gh0stmahn-ai/cd-election-agent; research)"
 API = "https://en.wikipedia.org/w/api.php"
 
-YEARS = [2014, 2016, 2018, 2020, 2022, 2024]
+YEARS = [2012, 2014, 2016, 2018, 2020, 2022, 2024]
 
 
 def wikitext(page, tries=6):
@@ -38,6 +38,18 @@ def wikitext(page, tries=6):
 PVI_RE = re.compile(r"\{\{\s*Shading PVI\s*\|([^}]*)\}\}", re.I)
 USHR_RE = re.compile(r"\{\{\s*ushr\s*\|([^}|]+)\|([^}|]+)(?:\|[^}]*)?\}\}", re.I)
 PCT_RE = re.compile(r"\(([A-Za-z .'\-]+?)\)\s*([0-9]+(?:\.[0-9]+)?)%")
+REF_RE = re.compile(r"<ref[^>]*/>|<ref[^>]*>.*?</ref>", re.I | re.S)
+
+
+def strip_refs(text):
+    """Footnotes sit between a candidate's party and their percentage.
+
+    In several cycles the citation is written inline -- "(Republican)<ref
+    name=...>...</ref> 64.0%" -- which puts arbitrary text between the two
+    things PCT_RE needs adjacent. Dropping the refs first is what makes those
+    years parse at all.
+    """
+    return REF_RE.sub("", text)
 INC_PARTY_RE = re.compile(r"Party shading/(?:Text/(Democratic|Republican)|(Democratic|Republican)/Text)")
 OPEN_WORDS = ("retir", "new seat", "open seat", "not seek", "resign", "died",
               "lost renomination", "lost in the primary", "lost primary",
@@ -80,6 +92,7 @@ def parse_pvi(arg):
 
 def parse_row(row):
     """One table row -> (district, pvi, dem_pct, rep_pct) or None."""
+    row = strip_refs(row)
     m = USHR_RE.search(row)
     if not m:
         return None

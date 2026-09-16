@@ -12,7 +12,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from fetch_history import wikitext, USHR_RE, PVI_RE, parse_pvi, STATE_CODE
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-CYCLES = [2018, 2020, 2022]
+CYCLES = [2012, 2014, 2016, 2018, 2020, 2022, 2024]
 
 RATING_RE = re.compile(r"\{\{\s*USRaceRating\s*\|([^}|]+)(?:\|([^}|]+))?\s*\}\}", re.I)
 NORM = {"tossup": "tossup", "toss up": "tossup", "tilt": "tossup",
