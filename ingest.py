@@ -45,12 +45,21 @@ def _write(name, payload):
     (DATA_DIR / name).write_text(json.dumps(payload, indent=1))
 
 
-def refresh_generic_ballot(new_margin: float, source_notes: str, sources: list[str]):
-    """Overwrite the generic-ballot average (Dem minus Rep, points)."""
+def refresh_generic_ballot(new_margin: float, source_notes: str, sources: list[str],
+                           detail: dict | None = None):
+    """Overwrite the generic-ballot average (Dem minus Rep, points).
+
+    `detail` carries the working when the average was built here rather than
+    copied from someone else's: how many polls, how concentrated the weights
+    were, the standard error, and the house effects that were removed. The
+    model reads only dem_margin_points; the site reads the rest.
+    """
     if not -30 <= float(new_margin) <= 30:
         raise ValueError("generic ballot margin out of range")
     payload = {"as_of": _today(), "dem_margin_points": round(float(new_margin), 2),
                "note": source_notes, "sources": sources}
+    if detail:
+        payload["detail"] = detail
     _write("generic_ballot_2026.json", payload)
     return payload
 
