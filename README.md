@@ -19,7 +19,7 @@ web server or straight off disk with no CDN, no fetches and no libraries:
 | `senate.html` | Map of all 35 races, races to watch with a four-source ruler and a trend line each, where control is decided, every race in a table |
 | `house.html` | Hexagon map of all 435 districts, where control is decided, seat distribution, filterable race tables |
 | `scenarios.html` | Drag the national environment and watch control odds, seat counts and individual races move |
-| `economy.html` | Every economic and political reading, with sources, and what each one does to the forecast |
+| `economy.html` | Every economic and political reading with sources, how the poll average is built, and the special elections |
 | `trend.html` | How the forecast has moved, and a measured day-by-day account of what moved it |
 | `markets.html` | Kalshi and Polymarket prices next to the model, and why they are never blended |
 | `methodology.html` | Where every number comes from, how it is validated, and the honest limits |
@@ -194,6 +194,7 @@ refresh_senate_polls.py       free state polling for the competitive Senate race
 tools/fetch_pvi.py            one-time pull of Cook PVI for all 435 districts
 backtest/                     2018-2022 rebuild that fits and grades the constants
 refresh_attention.py          free Wikipedia readership per candidate (shown, never blended)
+refresh_specials.py           state legislative specials vs their 2024 baselines (shown, never blended)
 attribution.py                re-runs the model per input to explain each day's move
 data/scenarios.json           the forecast across a range of national environments
 backtest/report.py            grades model.py against seven past elections

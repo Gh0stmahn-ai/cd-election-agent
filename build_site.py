@@ -689,6 +689,18 @@ def build_economy(snap):
 </section>
 
 <section>
+  <h2>What people have actually been doing</h2>
+  <p class="lede">Every contested state legislative special election this year, placed by how far its
+    result ran from the same district's 2024 presidential margin. Polls ask what people might do;
+    these are ballots that were cast.</p>
+  <div class="card">
+    <svg id="specials" viewBox="0 0 560 250" role="img"
+      aria-label="Special election results against their 2024 presidential baselines"></svg>
+    <p class="note" id="specials-note"></p>
+  </div>
+</section>
+
+<section>
   <h2>How people judge the president</h2>
   <div class="grid3" id="political"></div>
 </section>
@@ -702,12 +714,15 @@ def build_economy(snap):
 </section>
 """
     ballot = json.loads((DATA_DIR / "generic_ballot_2026.json").read_text())
+    specials_path = DATA_DIR / "specials_2026.json"
     data = {"site": site_meta(snap), "environment": snap["environment"],
-            "display": snap["fundamentals_display"], "ballot": ballot}
+            "display": snap["fundamentals_display"], "ballot": ballot,
+            "specials": json.loads(specials_path.read_text()) if specials_path.exists() else None}
     scripts = """
 FC.onRender(function () {
   FC.renderEnvironment("environment", PAGE_DATA.environment);
   FC.renderPollAverage("pollavg", PAGE_DATA.ballot);
+  FC.renderSpecials("specials", PAGE_DATA.specials, "specials-note");
   FC.renderIndicators("indicators", "political", PAGE_DATA.display, PAGE_DATA.environment);
 });
 """
@@ -1531,6 +1546,13 @@ def build_methodology(snap):
       as its own driver, <i>Model recalibration</i>, rather than being blamed on the data. What it cannot tell you is why the underlying number moved: it can
       say the generic ballot shifted a point and what that was worth, not what happened in the news
       to shift it.</li>
+    <li><b>It does not price in the special elections.</b> Contested state legislative specials are
+      collected every run and shown on the <a href="economy.html">inputs page</a>, measured against
+      the same district's 2024 presidential margin. They are the most interesting number on this
+      site that the forecast ignores, and the reason is a coefficient: a swing of ten points in
+      off-cycle legislative races does not translate into ten points of House margin, and the only
+      honest way to learn what it does translate into is to fit it against past cycles. That has not
+      been done, so the number is published and left out.</li>
     <li><b>It does not mistake attention for support.</b> Wikipedia readership per candidate is
       collected every run and shown on the <a href="senate.html">Senate page</a>, because a race
       the country has suddenly started reading about is worth knowing. It is not an input: people
