@@ -361,6 +361,9 @@ tr:hover td { background: var(--dem-wash); }
   padding: 9px 12px; border: 1px solid var(--axis); border-radius: 10px;
   background: var(--surface); font-size: 13px; }
 .ribbon .lead { color: var(--ink-2); white-space: nowrap; }
+/* The quiet-day sentence is a sentence, so it wraps. Giving it the nowrap
+   the chips need pushed the page wider than the phone it was on. */
+.ribbon .quiet { color: var(--ink-2); }
 .ribbon .chips { display: flex; gap: 6px; flex-wrap: wrap; }
 .chip { display: inline-flex; align-items: baseline; gap: 5px; padding: 2px 8px;
   border-radius: 999px; border: 1px solid var(--axis); white-space: nowrap;
@@ -373,3 +376,38 @@ tr:hover td { background: var(--dem-wash); }
 
 /* Sparkline: one race's odds over the runs so far. */
 .spark { display: block; width: 100%; height: 30px; margin-top: 8px; }
+
+/* The poll average, shown as the polls it is made of. */
+.pollavg-top { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 4px; }
+.pollavg-top .cell { text-align: center; padding: 8px 4px; }
+.pollavg-top .cap { font-size: 11px; color: var(--muted); text-transform: uppercase;
+  letter-spacing: .06em; }
+.pollavg-top .big { font-size: 30px; font-weight: 700; margin: 3px 0 1px;
+  font-variant-numeric: tabular-nums; }
+.pollavg-top .sub { font-size: 12px; color: var(--ink-2); }
+.polltable { width: 100%; border-collapse: collapse; font-size: 13px; }
+.polltable th { text-align: left; font-weight: 600; color: var(--muted); font-size: 11px;
+  text-transform: uppercase; letter-spacing: .05em; padding: 5px 8px 5px 0; }
+.polltable td { padding: 4px 8px 4px 0; border-top: 1px solid var(--axis);
+  font-variant-numeric: tabular-nums; }
+.polltable td.name { font-variant-numeric: normal; }
+.polltable .wbar { display: inline-block; height: 7px; border-radius: 2px;
+  background: var(--ink-2); vertical-align: middle; min-width: 2px; }
+.he { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+  gap: 8px; font-size: 13px; padding: 3px 0; }
+.he .nm { text-align: right; color: var(--ink); }
+.he .tr { position: relative; height: 12px; width: 150px; }
+.he .zero { position: absolute; left: 50%; top: -2px; width: 1px; height: 16px;
+  background: var(--axis); }
+.he .fl { position: absolute; top: 0; height: 12px; border-radius: 2px; }
+.he .v { font-size: 12px; font-variant-numeric: tabular-nums; font-weight: 600; }
+@media (max-width: 640px) {
+  .pollavg-top { grid-template-columns: 1fr; gap: 2px; }
+  .pollavg-top .cell { display: flex; align-items: baseline; gap: 8px; justify-content: space-between;
+    text-align: left; padding: 5px 0; border-bottom: 1px solid var(--axis); }
+  .pollavg-top .big { font-size: 22px; }
+  .polltable .hide-sm { display: none; }
+  .he { gap: 6px; }
+  .he .tr { width: 72px; }
+  .he .nm { font-size: 12px; }
+}

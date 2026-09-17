@@ -32,7 +32,17 @@ function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function 
 function fmtDate(iso, withTime) {
   var opts = {month: "short", day: "numeric", year: "numeric", timeZone: "America/New_York"};
   if (withTime) { opts.hour = "numeric"; opts.minute = "2-digit"; }
-  return new Date(iso).toLocaleString("en-US", opts) + (withTime ? " ET" : "");
+  /* A bare YYYY-MM-DD parses as UTC midnight, which is the previous evening in
+     Eastern time, so a poll that finished on the 15th would be printed as the
+     14th. Anchoring a date-only string at midday puts it safely inside its
+     own day in any US zone. */
+  var when = /^\d{4}-\d{2}-\d{2}$/.test(String(iso)) ? iso + "T12:00:00Z" : iso;
+  return new Date(when).toLocaleString("en-US", opts) + (withTime ? " ET" : "");
+}
+function titleCase(text) {
+  return String(text).replace(/\b([a-z])([a-z'&.-]*)/g, function (_, a, b) {
+    return a.toUpperCase() + b;
+  });
 }
 function luminance(hex) {
   var h = hex.replace("#", ""), i, out = 0, w = [0.2126, 0.7152, 0.0722];
@@ -975,7 +985,7 @@ function renderRibbon(hostId, change, kind, limit) {
     return (r.kind || "senate") === kind;
   });
   if (!races.length) {
-    host.innerHTML = '<div class="ribbon"><span class="lead">No race moved more than a point ' +
+    host.innerHTML = '<div class="ribbon"><span class="quiet">No race moved more than a point ' +
       'and a half since ' + esc(fmtDate(change.from)) + ".</span></div>";
     return;
   }
@@ -1114,6 +1124,87 @@ function bindRulers(root, race) {
     }, present[0]);
   });
   bindTip(track, function () { return describe(nearest); });
+}
+
+/* ------------------------------------------------------- poll average */
+/* The generic ballot, shown as the polls it is made of rather than as a
+   number someone has to take on trust. Three things a reader should be able
+   to check: how many polls, how far apart they are, and what was subtracted
+   from each pollster before averaging. */
+function renderPollAverage(hostId, ballot) {
+  var host = $(hostId); if (!host) return;
+  var d = ballot && ballot.detail;
+  if (!d) { host.innerHTML = ""; return; }
+  var agg = d.aggregators;
+
+  var html = '<div class="chamber-label">How the generic ballot is built</div>' +
+    '<div class="pollavg-top">' +
+    '<div class="cell"><div class="cap">This model</div><div class="big" style="color:' +
+      css(ballot.dem_margin_points >= 0 ? "--dem" : "--rep") + '">' +
+      margin(ballot.dem_margin_points) + '</div><div class="sub">&plusmn; ' +
+      d.stderr.toFixed(1) + " on " + d.n_polls + " polls</div></div>" +
+    '<div class="cell"><div class="cap">Published aggregators</div><div class="big" style="color:' +
+      (agg ? css(agg.margin >= 0 ? "--dem" : "--rep") : "var(--muted)") + '">' +
+      (agg ? margin(agg.margin) : "&mdash;") + "</div><div class=\"sub\">" +
+      (agg ? agg.n_aggregators + " of them, for comparison" : "not available today") + "</div></div>" +
+    '<div class="cell"><div class="cap">Spread between polls</div><div class="big">' +
+      d.spread.toFixed(1) + '</div><div class="sub">points, ' + d.n_pollsters +
+      " pollsters</div></div>" +
+    "</div>";
+
+  if (d.flat !== undefined) {
+    html += '<p class="note" style="margin:2px 0 0">The polls in the window average <b>' +
+      margin(d.flat) + "</b>, but that is where the race was about " + Math.round(d.mean_age_days) +
+      " days ago, which is where the weights sit. The line through them puts today at <b>" +
+      margin(ballot.dem_margin_points) + "</b>" +
+      (Math.abs(d.trend_per_week) >= 0.05
+        ? ", a move of " + signed(d.trend_per_week, 2) + " a week"
+        : ", with no trend worth speaking of") + ".</p>";
+  }
+
+  if (d.house_effects && d.house_effects.length) {
+    var max = Math.max.apply(null, d.house_effects.map(function (e) { return Math.abs(e.effect); }));
+    html += '<div class="chamber-label" style="margin-top:14px">What was taken out first</div>' +
+      '<p class="note" style="margin:0 0 6px">Each pollster\'s standing lean against the rest of the ' +
+      'field, measured over the whole cycle and subtracted before averaging. A house that leans ' +
+      'Republican is not wrong, it is just consistently offset, and averaging it in raw would ' +
+      'import that offset.</p><div>';
+    d.house_effects.forEach(function (e) {
+      var w = Math.min(Math.abs(e.effect) / max, 1) * 50;
+      html += '<div class="he"><span class="nm">' + esc(e.pollster) + '</span>' +
+        '<span class="tr"><span class="zero"></span>' +
+        '<span class="fl" style="background:' + css(e.effect >= 0 ? "--dem" : "--rep") +
+        ";width:" + Math.max(w, 1).toFixed(1) + "%;" + (e.effect >= 0 ? "left:50%" : "right:50%") +
+        '"></span></span><span class="v" style="color:' + css(e.effect >= 0 ? "--dem" : "--rep") +
+        '">' + signed(e.effect, 1) + "</span></div>";
+    });
+    html += "</div>";
+  }
+
+  if (d.recent && d.recent.length) {
+    var top = Math.max.apply(null, d.recent.map(function (p) { return p.weight; })) || 1;
+    html += '<div class="chamber-label" style="margin-top:14px">The most recent polls</div>' +
+      '<div class="tbl-scroll"><table class="polltable"><thead><tr><th>Pollster</th>' +
+      '<th class="hide-sm">Dates</th><th class="hide-sm">Sample</th><th>Raw</th>' +
+      '<th>Adjusted</th><th>Weight</th></tr></thead><tbody>';
+    d.recent.forEach(function (p) {
+      html += "<tr><td class=\"name\">" + esc(p.source) + "</td>" +
+        '<td class="hide-sm" style="color:var(--muted)">' + esc(fmtDate(p.date)) + "</td>" +
+        '<td class="hide-sm" style="color:var(--muted)">' +
+          (p.n ? Number(p.n).toLocaleString() : "&mdash;") +
+          (p.population ? " " + esc(p.population) : "") + "</td>" +
+        "<td>" + margin(p.margin) + "</td>" +
+        '<td style="color:' + css(p.adjusted >= 0 ? "--dem" : "--rep") + '">' +
+          margin(p.adjusted) + "</td>" +
+        '<td><span class="wbar" style="width:' + (p.weight / top * 46 + 2).toFixed(1) + 'px"></span></td></tr>';
+    });
+    html += "</tbody></table></div>";
+  }
+
+  html += '<p class="note">' + esc(d.method) + " Weights are shown relative to the heaviest poll. " +
+    "The standard error is how precise the average is, not how wrong the polls might be on " +
+    "Election Day; that second number is much larger and lives in the simulation.</p>";
+  host.innerHTML = html;
 }
 
 /* ----------------------------------------------------------- scenarios */
@@ -1435,14 +1526,14 @@ function init() {
 
 global.FC = {
   init: init, onRender: onRender, $: $, esc: esc, pct: pct, pct1: pct1, signed: signed, margin: margin,
-  fmtDate: fmtDate, css: css, binColor: binColor, legendBins: legendBins, headlineFor: headlineFor,
+  fmtDate: fmtDate, titleCase: titleCase, css: css, binColor: binColor, legendBins: legendBins, headlineFor: headlineFor,
   renderHero: renderHero, renderJoint: renderJoint, renderHemicycle: renderHemicycle, renderHistogram: renderHistogram,
   renderSenateMap: renderSenateMap, renderWatch: renderWatch, renderSenateTable: renderSenateTable,
   renderHouseMap: renderHouseMap, renderHouseTable: renderHouseTable, renderEnvironment: renderEnvironment,
   renderIndicators: renderIndicators, renderTrend: renderTrend,
   renderMarketCompare: renderMarketCompare, renderPairedBars: renderPairedBars,
   renderMarketRaces: renderMarketRaces, renderAttention: renderAttention, renderStory: renderStory, renderMarketStrip: renderMarketStrip, renderMarginBins: renderMarginBins,
-  raceRuler: raceRuler, bindRulers: bindRulers, renderRibbon: renderRibbon, sparkline: sparkline,
+  renderPollAverage: renderPollAverage, raceRuler: raceRuler, bindRulers: bindRulers, renderRibbon: renderRibbon, sparkline: sparkline,
   renderCalibration: renderCalibration, renderScenarios: renderScenarios,
   scnCrossing: scnCrossing, scnLookup: scnLookup, renderTipping: renderTipping, senateTipping: senateTipping, houseTipping: houseTipping,
   senateSeatDots: senateSeatDots, houseSeatDots: houseSeatDots, STATE_NAMES: STATE_NAMES, ELECTION: ELECTION
