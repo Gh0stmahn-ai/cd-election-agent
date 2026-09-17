@@ -249,7 +249,10 @@ entered as Solid for the party that held them.
   boundaries for the ten states that redrew mid-decade (TX, CA, FL, OH, NC,
   MO, UT, TN, LA, AL), and every seat counts the same toward 218, so the
   House map is a hexagon cartogram rather than a geographic district map.
-  Where a district sits inside its state on that map is schematic.
+  Where a district sits inside its state on that map is schematic. The
+  partisan index for the new lines is published and is used: 427 of 435
+  districts now carry a 2026 PVI, and only Missouri's eight, whose 2026
+  index has not appeared, run on their rating alone.
 - **Solid seats.** Cook lists 77 competitive House races; every other seat
   is treated as Solid for the party that holds, or was drawn to win, it.
   Florida's district numbers for solid seats under its May 2026 map are

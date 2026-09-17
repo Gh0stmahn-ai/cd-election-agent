@@ -128,14 +128,6 @@ SENATE_POLL_FULL_AT = 4          # sources needed for the full weight
 
 PVI_WEIGHT = {"solid": 1.75, "likely": 0.25, "lean": 0.25, "tossup": 0.25}
 
-# States that redrew their map mid-decade for 2026. Cook's index still
-# describes the OLD lines there, so applying it would be worse than applying
-# nothing: Missouri's 5th shows D+12 from a Kansas City seat that the new map
-# deliberately broke up, and using that would pull a seat drawn to be
-# Republican six points toward the Democrats. These states keep the rating
-# alone until an index for the new lines exists.
-REDRAWN_2026 = {"TX", "CA", "FL", "OH", "NC", "MO", "UT", "TN", "LA", "AL"}
-
 STATE_SD = 2.4               # fitted: one state's races share this much of a miss
 
 # Per-race uncertainty conditional on the national miss, by chamber and rating.
@@ -390,9 +382,15 @@ def pvi_adjustments(districts, pvi):
     """
     if not pvi:
         return [0.0] * len(districts)
+
+    # A district is adjusted when an index exists for the lines it is actually
+    # being elected on, and not otherwise. This used to be a hard-coded list of
+    # the ten states that redrew mid-decade, because the published index still
+    # described their old maps; now that tools/fetch_pvi.py reads the 2026
+    # index, only the districts genuinely without one are left out, and the
+    # data decides rather than a list somebody has to remember to update.
     def usable(d):
-        return (pvi.get(d["id"]) is not None
-                and d["id"].split("-")[0] not in REDRAWN_2026)
+        return pvi.get(d["id"]) is not None
 
     totals, counts = {}, {}
     for d in districts:

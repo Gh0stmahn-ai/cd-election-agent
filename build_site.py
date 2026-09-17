@@ -1277,6 +1277,9 @@ def backtest_section(bt):
 
 def build_methodology(snap):
     bt = backtest_data()
+    pvi = json.loads((DATA_DIR / "district_pvi.json").read_text())
+    pvi_have = len(pvi.get("districts", {}))
+    pvi_missing = len(pvi.get("missing", [])) or (435 - pvi_have)
     fund = json.loads((DATA_DIR / "fundamentals_2026.json").read_text())
     gb = json.loads((DATA_DIR / "generic_ballot_2026.json").read_text())
     sen = json.loads((DATA_DIR / "senate_races_2026.json").read_text())
@@ -1454,8 +1457,10 @@ def build_methodology(snap):
     exactly where the rater put it. How hard that nudge pushes is now measured rather than guessed, and it
     turns out to depend entirely on the rating: among safe seats the index moves the margin 1.7 points per
     point of index, among competitive ones about 0.2, which is inside the noise. A rater watching a race closely has already priced its
-    partisanship in; a rater who wrote a seat off as Solid has not. The ten states that redrew mid-decade
-    are excluded, because the published index still describes their old lines.</p>
+    partisanship in; a rater who wrote a seat off as Solid has not. A district is adjusted only where an
+    index exists for the lines it is actually being elected on, which is now {pvi_have} of 435; the
+    {pvi_missing} that have none keep their rating alone rather than borrow a number from a map that no
+    longer exists.</p>
 
     <p><b>Each race starts from its published rating</b>, converted to an expected margin: in the House,
     Solid 33 points, Likely 11, Lean 7, Toss-up 0.8 toward the party that holds it; in the Senate, 26, 12.5,
@@ -1529,9 +1534,11 @@ def build_methodology(snap):
   <ul>
     <li><b>It does not poll districts.</b> District-level polling for 435 seats is not public, so the House forecast
       rests on published ratings plus the national environment, not on local surveys.</li>
-    <li><b>It does not draw 2026 district lines.</b> No public source publishes boundaries for the ten states that
-      redrew mid-decade, so the House map is a hexagon cartogram. Where a district sits inside its state is
-      schematic, and Florida's district numbers for safe seats under its May 2026 map are best-available.</li>
+    <li><b>It does not draw 2026 district lines.</b> No public source publishes boundaries for the ten states
+      that redrew mid-decade, so the House map is a hexagon cartogram. Where a district sits inside its state
+      is schematic, and Florida's district numbers for safe seats under its May 2026 map are best-available.
+      The partisan index for those new lines <i>is</i> published and is now used: only Missouri, whose 2026
+      index has not appeared, still runs on its rating alone.</li>
     <li><b>It does not treat the AI as an oracle.</b> The agent chooses which published figures to copy and writes a
       capped, cited judgment about campaign momentum in Senate races. It cannot invent a rating change, move a
       number outside its plausible range, or touch the model's math.</li>
