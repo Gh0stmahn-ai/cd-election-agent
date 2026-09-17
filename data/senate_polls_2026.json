@@ -1,5 +1,5 @@
 {
- "as_of": "2026-09-17T11:29:04+00:00",
+ "as_of": "2026-09-17T19:35:50+00:00",
  "source": "Wikipedia per-race election articles",
  "half_life_days": 21,
  "max_age_days": 120,
@@ -8,21 +8,25 @@
    "state": "AK",
    "dem_candidate": "Mary Peltola",
    "rep_candidate": "Dan Sullivan",
-   "dem_margin": 1.5,
-   "method": "mean of 4 aggregators",
-   "n_used": 4,
+   "dem_margin": 2.9,
+   "method": "mean of 5 aggregators",
+   "n_used": 5,
    "detail": [
     {
      "label": "Decision Desk HQ",
-     "margin": 2.1
+     "margin": 3.9
+    },
+    {
+     "label": "FiftyPlusOne",
+     "margin": 2.8
     },
     {
      "label": "Race to the WH",
-     "margin": 0.7
+     "margin": 3.2
     },
     {
      "label": "RealClearPolitics",
-     "margin": 2.0
+     "margin": 3.0
     },
     {
      "label": "Silver Bulletin",
@@ -108,12 +112,16 @@
    "state": "ME",
    "dem_candidate": "Troy Jackson",
    "rep_candidate": "Susan Collins",
-   "dem_margin": 2.7,
-   "method": "mean of 5 aggregators",
-   "n_used": 5,
+   "dem_margin": 2.4,
+   "method": "mean of 6 aggregators",
+   "n_used": 6,
    "detail": [
     {
      "label": "270toWin",
+     "margin": 1.4
+    },
+    {
+     "label": "Decision Desk HQ",
      "margin": 1.4
     },
     {
@@ -122,7 +130,7 @@
     },
     {
      "label": "Race to the WH",
-     "margin": 2.8
+     "margin": 2.4
     },
     {
      "label": "RealClearPolitics",
@@ -140,17 +148,17 @@
    "state": "MI",
    "dem_candidate": "Abdul El-Sayed",
    "rep_candidate": "Mike Rogers",
-   "dem_margin": 2.5,
+   "dem_margin": 2.4,
    "method": "mean of 6 aggregators",
    "n_used": 6,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 2.2
+     "margin": 1.4
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 2.9
+     "margin": 2.7
     },
     {
      "label": "FiftyPlusOne",
@@ -162,7 +170,7 @@
     },
     {
      "label": "RealClearPolitics",
-     "margin": 1.8
+     "margin": 2.0
     },
     {
      "label": "Silver Bulletin",
@@ -280,21 +288,21 @@
    "state": "TX",
    "dem_candidate": "James Talarico",
    "rep_candidate": "Ken Paxton",
-   "dem_margin": 3.1,
+   "dem_margin": 3.0,
    "method": "mean of 7 aggregators",
    "n_used": 7,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 2.8
+     "margin": 3.0
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 3.8
+     "margin": 3.2
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 3.6
+     "margin": 3.4
     },
     {
      "label": "Race to the WH",
@@ -302,15 +310,15 @@
     },
     {
      "label": "RealClearPolitics",
-     "margin": 2.6
+     "margin": 2.9
     },
     {
      "label": "The Texas Tribune",
-     "margin": 3.3
+     "margin": 3.2
     },
     {
      "label": "Silver Bulletin",
-     "margin": 2.6
+     "margin": 2.7
     }
    ],
    "rating": "tossup",
