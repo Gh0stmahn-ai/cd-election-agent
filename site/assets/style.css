@@ -303,3 +303,73 @@ tr:hover td { background: var(--dem-wash); }
   .tiprow .val { grid-area: val; text-align: right; }
   .tiptrack { grid-area: track; }
 }
+
+/* Scenario explorer: one slider, two readouts, a response curve. */
+.scn-top { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 4px; }
+.scn-read { text-align: center; padding: 10px 6px; }
+.scn-read .cap { font-size: 12px; color: var(--muted); text-transform: uppercase;
+  letter-spacing: .06em; }
+.scn-read .big { font-size: 42px; font-weight: 700; line-height: 1.05; margin: 4px 0 2px;
+  font-variant-numeric: tabular-nums; }
+.scn-read .seats { font-size: 13px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.scn-slider { margin: 6px 0 2px; }
+.scn-slider input[type=range] { width: 100%; accent-color: var(--ink-2); }
+.scn-val { display: flex; justify-content: space-between; align-items: baseline;
+  font-size: 13px; color: var(--ink-2); gap: 10px; }
+.scn-val b { font-size: 17px; color: var(--ink); font-variant-numeric: tabular-nums; }
+.scn-reset { background: none; border: 1px solid var(--axis); color: var(--ink-2);
+  border-radius: 7px; padding: 3px 9px; font: inherit; font-size: 12px; cursor: pointer; }
+.scn-reset:hover { background: var(--dem-wash); color: var(--ink); }
+.scn-flips { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 20px; margin-top: 6px; }
+.flip { display: flex; align-items: baseline; gap: 8px; font-size: 13px; padding: 2px 0; }
+.flip .who { font-weight: 600; }
+.flip .arrow { color: var(--muted); }
+.flip .to { font-variant-numeric: tabular-nums; }
+.flip.d .to { color: var(--dem); }
+.flip.r .to { color: var(--rep); }
+@media (max-width: 640px) {
+  .scn-top { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .scn-read .big { font-size: 32px; }
+  .scn-flips { grid-template-columns: 1fr; }
+}
+
+/* Race ruler: four estimates of the same race on one 0-100% axis.
+   The scale is a probability, so the blue-to-red wash tracks who is favoured
+   and the marks themselves stay in ink: what separates them is which source
+   they came from, not which party, and a red mark would say the wrong thing. */
+.ruler { margin: 9px 0 2px; }
+.ruler-track { position: relative; height: 26px; border-radius: 4px;
+  background: linear-gradient(90deg, var(--rep-wash) 0%, var(--surface) 50%, var(--dem-wash) 100%);
+  border: 1px solid var(--axis); }
+.ruler-mid { position: absolute; left: 50%; top: -3px; width: 1px; height: 32px;
+  background: var(--ink-2); opacity: .55; }
+.ruler-mark { position: absolute; top: 3px; height: 20px; width: 2px; background: var(--ink);
+  transform: translateX(-1px); }
+.ruler-mark.soft { background: var(--ink-2); height: 14px; top: 6px; }
+.ruler-dot { position: absolute; top: 7px; width: 12px; height: 12px; border-radius: 50%;
+  transform: translateX(-6px); border: 2px solid var(--surface); background: var(--ink); }
+.ruler-key { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: 6px;
+  font-size: 11px; color: var(--muted); }
+.ruler-key span { display: inline-flex; align-items: center; gap: 4px; }
+.ruler-key i { display: inline-block; width: 2px; height: 11px; background: var(--ink-2); }
+.ruler-key i.dot { width: 9px; height: 9px; border-radius: 50%; background: var(--ink); }
+.ruler-ends { display: flex; justify-content: space-between; font-size: 10px;
+  color: var(--muted); margin-top: 2px; }
+
+/* Moved-today ribbon: what shifted since the last run of the previous day. */
+.ribbon { display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  padding: 9px 12px; border: 1px solid var(--axis); border-radius: 10px;
+  background: var(--surface); font-size: 13px; }
+.ribbon .lead { color: var(--ink-2); white-space: nowrap; }
+.ribbon .chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.chip { display: inline-flex; align-items: baseline; gap: 5px; padding: 2px 8px;
+  border-radius: 999px; border: 1px solid var(--axis); white-space: nowrap;
+  font-variant-numeric: tabular-nums; cursor: default; }
+.chip b { font-weight: 600; }
+.chip.up { color: var(--dem); border-color: color-mix(in srgb, var(--dem) 35%, transparent); }
+.chip.down { color: var(--rep); border-color: color-mix(in srgb, var(--rep) 35%, transparent); }
+.chip .nm { color: var(--ink); }
+.ribbon .more { color: var(--muted); white-space: nowrap; }
+
+/* Sparkline: one race's odds over the runs so far. */
+.spark { display: block; width: 100%; height: 30px; margin-top: 8px; }
