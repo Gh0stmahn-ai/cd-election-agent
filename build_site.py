@@ -403,15 +403,7 @@ def build_senate(snap, attention=None, markets=None, snaps=None):
   <div class="watch-grid" id="watch-senate"></div>
 </section>
 
-<section>
-  <h2>Who has the money</h2>
-  <p class="lede">Cash in the bank on each side, as a share of the two together, for the races
-    both sides are still contesting.</p>
-  <div class="card">
-    <div id="money-senate"></div>
-    <p class="note" id="money-senate-note"></p>
-  </div>
-</section>
+"""+ money_section("senate", "for the races\n    both sides are still contesting") +"""
 
 <section>
   <h2>Where control is actually decided</h2>
@@ -536,6 +528,8 @@ def build_house(snap, meta):
   </div>
 </section>
 
+"""+ money_section("house", "for the\n    competitive districts both parties are still contesting") +"""
+
 <section>
   <h2>The races</h2>
   <p class="lede">Cook Political Report ratings, with this model's win probability for each seat.</p>
@@ -547,6 +541,9 @@ def build_house(snap, meta):
 """
     data = {"site": site_meta(snap), "house": snap["house"], "meta": meta,
             "change": snap.get("change"),
+            "money": chamber_money("house", [
+                d for d, p in snap["house"]["district_probs"].items()
+                if 0.02 < p < 0.98]),
             "hex": json.loads((GEO_DIR / "house_hex.json").read_text())}
     scripts = """
 FC.onRender(function () {
@@ -564,6 +561,9 @@ FC.onRender(function () {
     "large field of near-identical toss-ups, no single district carries the majority the way one state can " +
     "carry the Senate. The order is what decides it, so a district that is safe for one side and a district " +
     "nobody is contesting are both, correctly, never decisive.");
+  FC.renderMoney("money-house", PAGE_DATA.money, Object.keys(h.district_probs)
+    .filter(function (id) { var p = h.district_probs[id]; return p > 0.02 && p < 0.98; })
+    .map(function (id) { return {key: id}; }), "money-house-note", 12);
   FC.renderHouseTable("house-tabs", "tbl-house", h, PAGE_DATA.meta);
 });
 """
@@ -922,18 +922,43 @@ def load_json(name):
         return None
 
 
-def chamber_money(chamber):
-    """The campaign-finance file, cut down to one chamber.
+def money_section(chamber, scope):
+    """The money panel's markup, or nothing at all.
+
+    The refresh step is allowed to fail, so the file can be absent. A heading
+    over an empty card is worse than no heading: it tells the reader something
+    is missing without telling them what.
+    """
+    money = chamber_money(chamber)
+    if not money or not money.get("races"):
+        return ""
+    return f"""<section>
+  <h2>Who has the money</h2>
+  <p class="lede">Cash in the bank on each side, as a share of the two together, {scope}.</p>
+  <div class="card">
+    <div id="money-{chamber}"></div>
+    <p class="note" id="money-{chamber}-note"></p>
+  </div>
+</section>
+"""
+
+
+def chamber_money(chamber, keys=None):
+    """The campaign-finance file, cut down to what one page will draw.
 
     The whole file is five hundred races; a page that draws thirty-five of
     them has no business carrying the other four hundred and sixty, least of
-    all one that is embedded in the site once per build.
+    all one that is embedded in the site once per build. The House goes
+    further and names its districts, because four hundred and forty-eight
+    filings would be a quarter of a megabyte to show twelve rows.
     """
     data = load_json("money_2026.json")
     if not data:
         return None
+    want = None if keys is None else set(keys)
     return dict(data, races={k: v for k, v in data["races"].items()
-                             if v.get("chamber") == chamber})
+                             if v.get("chamber") == chamber
+                             and (want is None or k in want)})
 
 
 def load_markets():
