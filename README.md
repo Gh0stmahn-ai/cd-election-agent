@@ -16,8 +16,9 @@ web server or straight off disk with no CDN, no fetches and no libraries:
 | Page | What is on it |
 |---|---|
 | `index.html` | Control odds for both chambers, the four possible outcomes, seat charts, and how the national environment is built |
-| `senate.html` | Map of all 35 races, races to watch, seat distribution, every race in a table |
-| `house.html` | Hexagon map of all 435 districts, seat distribution, filterable race tables |
+| `senate.html` | Map of all 35 races, races to watch with a four-source ruler and a trend line each, where control is decided, every race in a table |
+| `house.html` | Hexagon map of all 435 districts, where control is decided, seat distribution, filterable race tables |
+| `scenarios.html` | Drag the national environment and watch control odds, seat counts and individual races move |
 | `economy.html` | Every economic and political reading, with sources, and what each one does to the forecast |
 | `trend.html` | How the forecast has moved, and a measured day-by-day account of what moved it |
 | `markets.html` | Kalshi and Polymarket prices next to the model, and why they are never blended |
@@ -43,7 +44,11 @@ web server or straight off disk with no CDN, no fetches and no libraries:
 4. **News momentum** (Senate toss-up/lean races only): a capped +/-0.08
    win-probability adjustment from an AI read of campaign coverage, kept
    separate and shown in each race's tooltip.
-5. **Monte Carlo simulation** with one national polling miss shared by
+5. **Scenario grid.** After the published run, the whole model is re-run
+   across a range of national environments with the same random draws and
+   written to `data/scenarios.json`, which is what lets the Scenarios page
+   answer "what would it take" in the browser with no server.
+6. **Monte Carlo simulation** with one national polling miss shared by
    every race in both chambers, a state-level miss shared by every race in
    a state, and race-level noise that depends on the rating, so the
    chambers move together the way they do in reality. The national miss is
@@ -119,7 +124,7 @@ The run form has three optional boxes:
    Needs the `ANTHROPIC_API_KEY` secret and credit on that account.
 5. `run_pipeline.py` - runs the model and saves `iterations/<timestamp>.json`
    with a status block that flags stale inputs.
-6. `build_site.py` - rebuilds the seven pages in `site/` from
+6. `build_site.py` - rebuilds the eight pages in `site/` from
    `site_template/` and every snapshot.
 7. Commits and pushes the results (rebasing and retrying if the branch
    moved during the run).
@@ -184,6 +189,7 @@ tools/fetch_pvi.py            one-time pull of Cook PVI for all 435 districts
 backtest/                     2018-2022 rebuild that fits and grades the constants
 refresh_attention.py          free Wikipedia readership per candidate (shown, never blended)
 attribution.py                re-runs the model per input to explain each day's move
+data/scenarios.json           the forecast across a range of national environments
 backtest/report.py            grades model.py against seven past elections
 set_polls.py                  manual generic-ballot / approval entry
 agent_run.py                  optional AI refresh (ratings, Senate news)

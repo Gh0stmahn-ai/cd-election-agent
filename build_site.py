@@ -8,6 +8,7 @@ One page per section, sharing assets/style.css and assets/app.js:
   house.html        Hexagon map of all 435 districts, race tables
   economy.html      What voters are feeling, and how it feeds the model
   trend.html        How the forecast has moved, run by run
+  scenarios.html    What the forecast would say under a different environment
   methodology.html  Where every number comes from, and how it is used
 
 Each page embeds only the data it needs, so there are no fetches, no CDN
@@ -57,6 +58,7 @@ NAV = [
     ("index.html", "Overview"),
     ("senate.html", "Senate"),
     ("house.html", "House"),
+    ("scenarios.html", "Scenarios"),
     ("economy.html", "Economy"),
     ("trend.html", "Trend"),
     ("markets.html", "Markets"),
@@ -339,9 +341,55 @@ ATTENTION_SECTION = """
 """
 
 
-def build_senate(snap, attention=None):
+def market_probs(markets, seats):
+    """Polymarket's Democratic price per Senate race, keyed by seat.
+
+    Nebraska's Democratic-caucusing candidate runs as an independent, so the
+    comparable price there is the independent's rather than the Democrat's.
+    """
+    poly = (markets or {}).get("venues", {}).get("polymarket", {})
+    by_id = {s["seat_id"]: s for s in seats}
+    out = {}
+    for seat_id, m in (poly.get("races") or {}).items():
+        seat = by_id.get(seat_id)
+        if seat is None:
+            continue
+        parties = m.get("parties", {})
+        side = "I" if seat.get("challenger_caucus") == "independent" and "I" in parties else "D"
+        prob = parties.get(side, {}).get("prob")
+        if prob is not None:
+            out[seat_id] = round(prob, 4)
+    return out
+
+
+def race_history(snaps, limit=30):
+    """Each Senate race's odds across the runs stored so far.
+
+    One number per race per run is cheap; the point is a shape, not a series
+    anyone reads off. Capped so a year of daily runs does not end up inside
+    every page.
+    """
+    recent = snaps[-limit:]
+    if len(recent) < 3:
+        return None
+    series = {}
+    for snap in recent:
+        for seat in snap["senate"]["seats"]:
+            series.setdefault(seat["seat_id"], []).append(round(seat["dem_win_prob"], 4))
+    n = len(recent)
+    series = {k: v for k, v in series.items() if len(v) == n}
+    if not series:
+        return None
+    return {"from": recent[0]["timestamp"], "series": series}
+
+
+def build_senate(snap, attention=None, markets=None, snaps=None):
     rows = attention_rows(attention, snap)
     body = """
+<section>
+  <div id="ribbon-senate"></div>
+</section>
+
 <section>
   <div class="card">
     <svg id="map-senate" viewBox="0 0 980 600" role="img" aria-label="Map of 2026 Senate races"></svg>
@@ -384,22 +432,30 @@ def build_senate(snap, attention=None):
   <div class="card tbl-scroll"><table id="tbl-senate"></table></div>
 </section>
 """ + (ATTENTION_SECTION if rows else "")
-    data = {"attention": rows, "site": site_meta(snap), "senate": snap["senate"], "geo": {"states": {
+    senate = json.loads(json.dumps(snap["senate"]))
+    prices = market_probs(markets, senate["seats"])
+    for seat in senate["seats"]:
+        seat["market_prob"] = prices.get(seat["seat_id"])
+    data = {"attention": rows, "site": site_meta(snap), "senate": senate,
+            "history": race_history(snaps or []), "change": snap.get("change"), "geo": {"states": {
         k: {"d": v["d"], "cx": v["cx"], "cy": v["cy"]}
         for k, v in json.loads((GEO_DIR / "states.json").read_text())["states"].items()}}}
     scripts = """
 FC.onRender(function () {
   var s = PAGE_DATA.senate;
   FC.renderSenateMap("map-senate", s, PAGE_DATA.geo, "legend-senate-map");
-  FC.renderWatch("watch-senate", s, 8);
+  FC.renderWatch("watch-senate", s, 8, PAGE_DATA.history);
+  FC.renderRibbon("ribbon-senate", PAGE_DATA.change, "senate", 8);
   FC.renderHemicycle("hemi-senate", FC.senateSeatDots(s), 51, 9.2, 5, "legend-senate",
     '<span class="ring" style="border-color:' + FC.css("--c6") + '"></span><span class="ring" style="border-color:' +
     FC.css("--c0") + '"></span> Not up in 2026');
   FC.renderHistogram("hist-senate", s.histogram, 51, "Democratic Senate seats", "Senate");
   FC.$("senate-facts").innerHTML = "Democrats hold " + s.not_up.D + " seats that are not on the ballot and need 51 " +
     "for control, because Vice President Vance breaks a 50-50 tie. Chance of exactly 50-50: <b>" +
-    FC.pct(s.tie_prob) + "</b>. Average outcome: <b>D " + Math.round(s.mean_dem_seats) + " · R " +
-    Math.round(100 - s.mean_dem_seats) + "</b>.";
+    FC.pct(s.tie_prob) + "</b>. Middle outcome: <b>D " + s.percentiles["50"] + " · R " +
+    (100 - s.percentiles["50"]) + "</b>, with 80% of simulations between <b>" +
+    s.percentiles["10"] + "</b> and <b>" + s.percentiles["90"] + "</b> Democratic seats. " +
+    "Hover any bar for the chance of at least that many.";
   FC.renderTipping("tip-senate", FC.senateTipping(s, 10), "tip-senate-note",
     "In every simulated election the races are lined up from most Democratic to least, and the one that " +
     "delivers the 51st seat is the one control turned on. A race can be a coin flip and still rarely be " +
@@ -427,6 +483,10 @@ FC.onRender(function () {
 
 def build_house(snap, meta):
     body = """
+<section>
+  <div id="ribbon-house"></div>
+</section>
+
 <section>
   <div class="card">
     <svg id="map-house" role="img" aria-label="Hexagon map of all 435 House districts"></svg>
@@ -472,6 +532,7 @@ def build_house(snap, meta):
 </section>
 """
     data = {"site": site_meta(snap), "house": snap["house"], "meta": meta,
+            "change": snap.get("change"),
             "hex": json.loads((GEO_DIR / "house_hex.json").read_text())}
     scripts = """
 FC.onRender(function () {
@@ -479,9 +540,11 @@ FC.onRender(function () {
   FC.renderHouseMap("map-house", h, PAGE_DATA.hex, PAGE_DATA.meta, "legend-house-map");
   FC.renderHemicycle("hemi-house", FC.houseSeatDots(h, PAGE_DATA.meta), h.majority, 4.6, 12, "legend-house");
   FC.renderHistogram("hist-house", h.histogram, h.majority, "Democratic House seats", "House");
-  FC.$("house-facts").innerHTML = "Democrats need <b>" + h.majority + "</b> of 435. Average outcome: <b>D " +
-    Math.round(h.mean_dem_seats) + " · R " + Math.round(435 - h.mean_dem_seats) + "</b>. 80% of simulations land " +
-    "between <b>" + h.percentiles["10"] + "</b> and <b>" + h.percentiles["90"] + "</b> Democratic seats.";
+  FC.$("house-facts").innerHTML = "Democrats need <b>" + h.majority + "</b> of 435. Middle outcome: <b>D " +
+    h.percentiles["50"] + " · R " + (435 - h.percentiles["50"]) + "</b>, with 80% of simulations between <b>" +
+    h.percentiles["10"] + "</b> and <b>" + h.percentiles["90"] + "</b> Democratic seats. " +
+    "Hover any bar for the chance of at least that many.";
+  FC.renderRibbon("ribbon-house", PAGE_DATA.change, "house", 10);
   FC.renderTipping("tip-house", FC.houseTipping(h, PAGE_DATA.meta, 12), "tip-house-note",
     "Spread thinner than the Senate's, and that is the finding rather than a flaw: with 435 seats and a " +
     "large field of near-identical toss-ups, no single district carries the majority the way one state can " +
@@ -496,6 +559,122 @@ FC.onRender(function () {
                 ("The House",
                  "All 435 seats are on the ballot. Democrats need 218 for the majority, against maps that ten "
                  "states redrew mid-decade."),
+                body, js(data), scripts)
+
+
+def build_scenarios(snap, meta):
+    """What the forecast would say if the national environment were different."""
+    path = DATA_DIR / "scenarios.json"
+    if not path.exists():
+        return None
+    grid = json.loads(path.read_text())
+    body = """
+<section>
+  <div class="card">
+    <div class="scn-val">
+      <span>Drag to change the national environment</span>
+      <span><b id="scn-gb"></b> generic ballot</span>
+      <button type="button" class="scn-reset" id="scn-reset">Back to today</button>
+    </div>
+    <div class="scn-slider">
+      <input type="range" id="scn-slider" aria-label="National generic-ballot margin">
+    </div>
+    <div class="scn-top">
+      <div class="scn-read">
+        <div class="cap">Democratic Senate</div>
+        <div class="big" id="scn-senate"></div>
+        <div class="seats" id="scn-senate-seats"></div>
+      </div>
+      <div class="scn-read">
+        <div class="cap">Democratic House</div>
+        <div class="big" id="scn-house"></div>
+        <div class="seats" id="scn-house-seats"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="card">
+    <div class="chamber-label">Chance of control, across the range</div>
+    <svg id="scn-curve" viewBox="0 0 560 330" role="img"
+      aria-label="Democratic chance of controlling each chamber, by national environment"></svg>
+    <p class="note">Every point on both curves is a full run of the model with the same random
+      draws, so the shape is the model's answer to the environment and nothing else. The faint
+      dashed upright marks where the forecast sits today; the solid one follows the slider, and
+      the two sit on top of each other until you move it.</p>
+  </div>
+</section>
+
+<section>
+  <h2>What changes hands</h2>
+  <p class="lede">Races that fall on the other side of even, compared with where the forecast sits today.</p>
+  <div class="card">
+    <div class="scn-flips" id="scn-flips"></div>
+    <p class="note" id="scn-flip-note"></p>
+  </div>
+</section>
+
+<section class="prose">
+  <h2>How to read this</h2>
+  <p>{crossings}</p>
+  <p>This is not a forecast of the generic ballot. It is the model answering a conditional: if the
+  national environment were this instead of what it is, everything else being as it is today, here is
+  what it would say. Ratings, state polls, the partisan index and the shape of the error are all held
+  where they are; only the national number moves.</p>
+  <p>The grid runs from R+{lo_lab} to D+{hi_lab} in one-point steps and the page interpolates between
+  them, which is why the numbers move smoothly rather than in jumps. Each point is {sims:,} simulated
+  elections rather than the {full:,} the published forecast uses: the comparison between points is what
+  matters here, and using the same draws at every point means the difference between two points carries
+  no simulation noise at all.</p>
+</section>
+"""
+    def phrase(key, chamber):
+        pts = grid["points"]
+        for i in range(len(pts) - 1):
+            a, b = pts[i][key], pts[i + 1][key]
+            if (a - 0.5) * (b - 0.5) <= 0 and a != b:
+                t = (0.5 - a) / (b - a)
+                gb = pts[i]["generic_ballot"] + t * (pts[i + 1]["generic_ballot"] - pts[i]["generic_ballot"])
+                side = "D+" if gb >= 0 else "R+"
+                return (f"the {chamber} is a coin flip at a generic ballot of "
+                        f"<b>{side}{abs(gb):.1f}</b>")
+        lo_p, hi_p = pts[0][key], pts[-1][key]
+        if lo_p > 0.5:
+            return f"Democrats hold the {chamber} across the whole range"
+        if hi_p < 0.5:
+            return f"Democrats never reach even odds in the {chamber} anywhere on this range"
+        return f"the {chamber} does not cross fifty cleanly on this range"
+
+    today_gb = grid["today"]["generic_ballot"]
+    crossings = (f"On today's inputs, {phrase('senate_prob', 'Senate')}, and "
+                 f"{phrase('house_prob', 'House')}. The generic ballot is currently "
+                 f"<b>{'D+' if today_gb >= 0 else 'R+'}{abs(today_gb):.1f}</b>.")
+    body = body.format(crossings=crossings,
+                       lo_lab=f"{abs(grid['points'][0]['generic_ballot']):.0f}",
+                       hi_lab=f"{abs(grid['points'][-1]['generic_ballot']):.0f}",
+                       sims=grid["n_sims"], full=snap.get("n_sims", 100000))
+
+    data = {"site": site_meta(snap), "grid": grid,
+            "senate": [{"seat_id": r["seat_id"], "rating": r["rating"], "state": r["state"]}
+                       for r in snap["senate"]["seats"]],
+            "meta": {k: {"state": v["state"]} for k, v in meta.items()}}
+    scripts = """
+FC.onRender(function () {
+  FC.renderScenarios(PAGE_DATA.grid, PAGE_DATA.senate, PAGE_DATA.meta, {
+    slider: "scn-slider", gb: "scn-gb", reset: "scn-reset", curve: "scn-curve",
+    senProb: "scn-senate", houProb: "scn-house",
+    senSeats: "scn-senate-seats", houSeats: "scn-house-seats",
+    flips: "scn-flips", flipNote: "scn-flip-note"
+  });
+});
+"""
+    return page("scenarios.html", "Scenarios · 2026 Midterm Forecast",
+                "What the forecast would say under a different national environment: drag the "
+                "generic ballot and watch control probabilities and individual races move.",
+                ("What would it take",
+                 "The same model, re-run across a range of national environments. Drag the slider "
+                 "and every race moves with it."),
                 body, js(data), scripts)
 
 
@@ -1249,6 +1428,11 @@ def build_methodology(snap):
     the rating: a race everyone is watching turns out to be more predictable than one nobody is, 4.8 points
     of spread against 6.5 for a safe House seat, because the watching is what produces the information.</p>
 
+    <p><b>The same run is repeated across a range of national environments</b> and written out as a
+    lookup table, which is what the <a href="scenarios.html">Scenarios page</a> reads. Every point on
+    that grid uses the same draws as every other, so moving along it can only change an answer
+    because the environment changed.</p>
+
     <p><b>Then 100,000 elections are simulated, using the same random draws every day.</b>
     Fixing the draws matters more than it sounds: with 20,000 fresh draws each run, two runs on
     identical data disagreed by up to 1.8 points, which is larger than most real daily moves, so
@@ -1366,12 +1550,17 @@ def main():
     markets = load_markets()
     pages = {
         "index.html": build_index(latest, meta, markets),
-        "senate.html": build_senate(latest, load_attention()),
+        "senate.html": build_senate(latest, load_attention(), markets, snaps),
         "house.html": build_house(latest, meta),
         "economy.html": build_economy(latest),
         "trend.html": build_trend(snaps),
         "methodology.html": build_methodology(latest),
     }
+    scenarios = build_scenarios(latest, meta)
+    if scenarios:
+        pages["scenarios.html"] = scenarios
+    else:
+        print("  (no data/scenarios.json yet - skipping the scenarios page)")
     if markets:
         pages["markets.html"] = build_markets(latest, markets)
     else:
