@@ -108,6 +108,16 @@ jobs:
         continue-on-error: true
         run: python3 refresh_attention.py
 
+      # State legislative special elections against their 2024 presidential
+      # baselines: the one leading indicator here, and the only input that
+      # records what people did rather than what they told a pollster. Shown
+      # on the site and never fed into the forecast, because turning a swing
+      # into a forecast needs a coefficient nobody has fitted yet.
+      - name: Refresh special elections (free, display only)
+        id: specials
+        continue-on-error: true
+        run: python3 refresh_specials.py
+
       # Typed numbers win over the automatic refresh above, so this runs last
       # of the poll steps: it is the override, not the only way in.
       - name: Apply any poll numbers entered by hand
