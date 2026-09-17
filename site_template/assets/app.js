@@ -155,6 +155,22 @@ function renderHistogram(svgId, hist, majority, xlabel, chamberName) {
     el("line", {x1: m.l, x2: W - m.r, y1: y(v), y2: y(v), "class": v === 0 ? "axis-line" : "gridline"}, svg);
     el("text", {x: m.l - 6, y: y(v) + 3.5, "text-anchor": "end"}, svg).textContent = Math.round(v * 100) + "%";
   });
+  /* Cumulative totals, so a bar can answer the question people actually have
+     -- what are the odds of at least this many seats -- rather than the one
+     the height happens to encode, which is the odds of exactly this many and
+     is never interesting on its own.
+
+     Summed over the WHOLE histogram, not the bars that survived the drawing
+     threshold. Summing the drawn ones instead silently drops both tails, and
+     the bar at the majority line then disagrees with the headline probability
+     on the same page. */
+  var all = Object.keys(hist).map(function (k) { return [+k, hist[k]]; })
+    .sort(function (a, b) { return a[0] - b[0]; });
+  var atLeast = {}, running = 0;
+  for (var j = all.length - 1; j >= 0; j--) {
+    running += all[j][1];
+    atLeast[all[j][0]] = running;
+  }
   var gap = bw > 5 ? 2 : bw > 2.5 ? 1 : 0;
   entries.forEach(function (e) {
     var k = e[0], v = e[1], h = H - m.b - y(v);
@@ -162,10 +178,12 @@ function renderHistogram(svgId, hist, majority, xlabel, chamberName) {
       width: Math.max(bw - gap, 0.8).toFixed(2), height: Math.max(h, 0.5).toFixed(2),
       rx: Math.min(2, (bw - gap) / 2), fill: k >= majority ? css("--dem") : css("--rep")}, svg);
     bindTip(r, function () {
-      return "<b>" + k + " Democratic seats</b><br>" + pct1(v) + " of simulations<br>" +
+      return "<b>" + k + " Democratic seats</b><br>At least " + k + ": <b>" +
+        pct1(atLeast[k]) + "</b> of simulations<br>Exactly " + k + ": " + pct1(v) + "<br>" +
         (k >= majority ? "Democratic" : "Republican") + " " + chamberName + " majority";
     });
   });
+
   var mx = x(majority);
   el("line", {x1: mx, x2: mx, y1: m.t - 8, y2: H - m.b, stroke: css("--ink"), "stroke-width": 1.2}, svg);
   el("text", {x: mx + 4, y: m.t - 2, style: "fill:var(--ink);font-size:11px"}, svg).textContent =
@@ -280,8 +298,12 @@ function renderStory(containerId, days, chamber) {
       card.innerHTML += '<div class="story-sub">Races that moved</div>' +
         '<div class="story-races">' + ch.races.slice(0, 6).map(function (r) {
           var up = r.shift >= 0;
-          return '<div class="story-race"><span class="rc-state">' +
-            esc(STATE_NAMES[r.state] || r.state) + "</span>" +
+          /* Older runs carry Senate races only and no label; newer ones carry
+             both chambers, and a district's own name is what identifies it. */
+          var name = r.label
+            ? (r.kind === "house" ? r.label : (STATE_NAMES[r.state] || r.state) + " Senate")
+            : (STATE_NAMES[r.state] || r.state);
+          return '<div class="story-race"><span class="rc-state">' + esc(name) + "</span>" +
             '<span class="rc-shift" style="color:' + (up ? css("--dem") : css("--rep")) + '">' +
               signed(r.shift, 1) + " pt</span>" +
             '<span class="rc-to">to ' + Math.round(r.to) + "% D</span>" +
@@ -634,7 +656,7 @@ function renderSenateMap(svgId, senate, geo, legendId) {
     ";border:1px solid " + css("--axis") + '"></i>No race');
 }
 
-function renderWatch(containerId, senate, limit) {
+function renderWatch(containerId, senate, limit, history) {
   var box = $(containerId); if (!box) return;
   var watch = senate.seats.filter(function (r) { return r.dem_win_prob > 0.03 && r.dem_win_prob < 0.97; })
     .sort(function (a, b) { return Math.abs(a.dem_win_prob - 0.5) - Math.abs(b.dem_win_prob - 0.5); });
@@ -651,8 +673,17 @@ function renderWatch(containerId, senate, limit) {
       '<span class="pbar" role="img" aria-label="Democratic chance ' + pct(r.dem_win_prob) + '"><i style="width:' +
       (r.dem_win_prob * 100) + '%"></i></span><div class="who"><b>' + d + "</b> vs <b>" + rr + "</b><br>Cook: " +
       RATING_NAME[r.rating] + (r.rating === "tossup" ? "" : " " + r.lean) + " · held by " + r.held_by + atmo +
-      "</div></div>";
+      "</div>" + raceRuler(r) + "</div>";
   }).join("");
+  [].forEach.call(box.querySelectorAll(".wcard"), function (card, i) {
+    bindRulers(card, shown[i]);
+    if (history && history.series) {
+      sparkline(card, history.series[shown[i].seat_id], {
+        name: STATE_NAMES[shown[i].state], firstDate: fmtDate(history.from),
+        label: "Democratic chance over the runs so far"
+      });
+    }
+  });
 }
 
 function renderSenateTable(tableId, senate) {
@@ -934,6 +965,343 @@ function houseSeatDots(house, meta) {
 
 function onRender(fn) { renderers.push(fn); fn(); }
 
+/* -------------------------------------------------------------- ribbon */
+/* What moved since the last run of the previous day. The same measurement the
+   trend page explains at length, reduced to the one line a returning reader
+   wants before anything else: did anything happen. */
+function renderRibbon(hostId, change, kind, limit) {
+  var host = $(hostId); if (!host || !change) return;
+  var races = (change.races || []).filter(function (r) {
+    return (r.kind || "senate") === kind;
+  });
+  if (!races.length) {
+    host.innerHTML = '<div class="ribbon"><span class="lead">No race moved more than a point ' +
+      'and a half since ' + esc(fmtDate(change.from)) + ".</span></div>";
+    return;
+  }
+  var shown = races.slice(0, limit || 8);
+  host.innerHTML = '<div class="ribbon"><span class="lead">Moved since ' +
+    esc(fmtDate(change.from)) + '</span><span class="chips">' +
+    shown.map(function (r, i) {
+      return '<span class="chip ' + (r.shift >= 0 ? "up" : "down") + '" data-i="' + i + '">' +
+        '<span class="nm">' + esc(r.label || r.state) + "</span><b>" +
+        signed(r.shift, 1) + "</b></span>";
+    }).join("") + "</span>" +
+    (races.length > shown.length
+      ? '<span class="more">and ' + (races.length - shown.length) + " more</span>"
+      : "") +
+    ' <a class="more" href="trend.html">Why &#8594;</a></div>';
+  [].forEach.call(host.querySelectorAll(".chip"), function (chip) {
+    var r = shown[+chip.getAttribute("data-i")];
+    bindTip(chip, function () {
+      return "<b>" + esc(r.label || r.state) + "</b><br>" + pct1(r.from / 100) + " to " +
+        pct1(r.to / 100) + " Democratic<br>Moved by " + esc(r.why);
+    });
+  });
+}
+
+/* ----------------------------------------------------------- sparkline */
+function sparkline(host, series, opts) {
+  /* One race's odds across the runs stored so far. Deliberately unlabelled:
+     it is there to say "steady" or "sliding", and the exact numbers are two
+     inches above it. */
+  if (!series || series.length < 3) return;
+  var W = 200, H = 30, pad = 3;
+  var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+  svg.setAttribute("class", "spark");
+  svg.setAttribute("preserveAspectRatio", "none");
+  svg.setAttribute("role", "img");
+  svg.setAttribute("aria-label", opts.label || "Trend");
+  var lo = Math.min.apply(null, series), hi = Math.max.apply(null, series);
+  var span = Math.max(hi - lo, 0.06);
+  var mid = (hi + lo) / 2;
+  lo = mid - span / 2; hi = mid + span / 2;
+  var x = function (i) { return pad + i / (series.length - 1) * (W - pad * 2); };
+  var y = function (v) { return H - pad - (v - lo) / (hi - lo) * (H - pad * 2); };
+  if (lo < 0.5 && hi > 0.5) {
+    el("line", {x1: 0, x2: W, y1: y(0.5), y2: y(0.5), stroke: css("--axis"),
+      "stroke-width": 1, "stroke-dasharray": "3 3", vectorEffect: "non-scaling-stroke"}, svg);
+  }
+  var last = series[series.length - 1];
+  el("path", {d: series.map(function (v, i) {
+      return (i ? "L" : "M") + x(i).toFixed(1) + " " + y(v).toFixed(1);
+    }).join(" "), fill: "none", stroke: css(last >= 0.5 ? "--dem" : "--rep"),
+    "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round",
+    vectorEffect: "non-scaling-stroke"}, svg);
+  el("circle", {cx: x(series.length - 1), cy: y(last), r: 2.6,
+    fill: css(last >= 0.5 ? "--dem" : "--rep"), vectorEffect: "non-scaling-stroke"}, svg);
+  host.appendChild(svg);
+  bindTip(svg, function () {
+    return "<b>" + esc(opts.name || "") + "</b><br>" + pct(series[0]) + " on " +
+      esc(opts.firstDate || "the first stored run") + ", " + pct(last) + " now";
+  });
+}
+
+/* --------------------------------------------------------------- ruler */
+/* Four readings of one race on a single 0-100% axis: what the rating implies
+   on its own, what the state polls imply on their own, what the market is
+   paying, and where the model landed. Probability rather than margin, because
+   a market price is natively a probability and converting it back into a
+   margin near the ends is mostly an artefact of the conversion. */
+var RULER_SOURCES = [
+  {key: "rating_prob", label: "Rating alone", cls: "ruler-mark soft"},
+  {key: "poll_prob", label: "State polls alone", cls: "ruler-mark"},
+  {key: "market_prob", label: "Betting market", cls: "ruler-mark soft"},
+  {key: "dem_win_prob", label: "This model", cls: "ruler-dot"}
+];
+
+function raceRuler(race) {
+  var marks = RULER_SOURCES.filter(function (src) {
+    return race[src.key] !== null && race[src.key] !== undefined;
+  });
+  if (marks.length < 2) return "";
+  var html = '<div class="ruler"><div class="ruler-track"><span class="ruler-mid"></span>';
+  marks.forEach(function (src) {
+    var p = race[src.key];
+    html += '<span class="' + src.cls + '" style="left:' + (p * 100).toFixed(1) + '%"' +
+      ' data-k="' + src.key + '"></span>';
+  });
+  html += "</div>";
+  html += '<div class="ruler-ends"><span>Republican certain</span><span>Democrat certain</span></div>';
+  html += '<div class="ruler-key">' + marks.map(function (src) {
+    return '<span><i class="' + (src.cls.indexOf("dot") > -1 ? "dot" : "") + '"></i>' +
+      esc(src.label) + " " + pct(race[src.key]) + "</span>";
+  }).join("") + "</div></div>";
+  return html;
+}
+
+function bindRulers(root, race) {
+  /* One handler on the whole track, picking whichever mark the pointer is
+     nearest. The marks are 2px wide and four sources routinely land inside a
+     point of each other, so per-mark hit areas either miss on a laptop or
+     overlap each other and leave some of them unreachable at any pixel. */
+  var track = root.querySelector(".ruler-track");
+  if (!track) return;
+  var present = RULER_SOURCES.filter(function (s) {
+    return race[s.key] !== null && race[s.key] !== undefined;
+  });
+  if (present.length < 2) return;
+
+  var nearest = present[0];
+  function describe(src) {
+    var extra = "";
+    if (src.key === "rating_prob") {
+      extra = "<br>What the Cook rating implies with no polling at all. Every toss-up gets " +
+        "the same number here, which is the problem the state polls solve.";
+    } else if (src.key === "poll_prob" && race.polling) {
+      extra = "<br>From " + margin(race.polling.poll_margin) + " in the state polling average" +
+        (race.polling.n_used ? ", across " + race.polling.n_used + " source" +
+          (race.polling.n_used === 1 ? "" : "s") : "") + ".";
+    } else if (src.key === "market_prob") {
+      extra = "<br>Real money on Polymarket. Shown here, never blended into the forecast.";
+    } else if (src.key === "dem_win_prob") {
+      extra = "<br>The published forecast: rating and polls blended, then simulated.";
+    }
+    var who = race.challenger_caucus === "independent"
+      ? "The Democratic-caucusing independent wins " : "Democrats win ";
+    return "<b>" + esc(src.label) + "</b><br>" + who + pct(race[src.key]) + extra;
+  }
+
+  /* Registered before bindTip, because listeners on the same element run in
+     the order they were added and the tooltip has to read a pointer position
+     that is already up to date. */
+  track.addEventListener("mousemove", function (ev) {
+    var box = track.getBoundingClientRect();
+    var at = box.width ? (ev.clientX - box.left) / box.width : 0;
+    nearest = present.reduce(function (best, src) {
+      return Math.abs(race[src.key] - at) < Math.abs(race[best.key] - at) ? src : best;
+    }, present[0]);
+  });
+  bindTip(track, function () { return describe(nearest); });
+}
+
+/* ----------------------------------------------------------- scenarios */
+/* The whole forecast, precomputed across a range of national environments so
+   a browser can answer "what would it take" by interpolating rather than by
+   asking a server. Every grid point was run with the same random draws, so
+   moving along the curve can only change an answer because the environment
+   changed, never because the dice did. */
+function scnLookup(grid, gb) {
+  var pts = grid.points, i = 0;
+  while (i < pts.length - 2 && pts[i + 1].generic_ballot < gb) i++;
+  var a = pts[i], b = pts[i + 1] || a;
+  var span = b.generic_ballot - a.generic_ballot;
+  var t = span ? Math.max(0, Math.min(1, (gb - a.generic_ballot) / span)) : 0;
+  var mix = function (key) { return a[key] + (b[key] - a[key]) * t; };
+  var races = function (key) {
+    var out = {};
+    Object.keys(a[key]).forEach(function (k) {
+      var va = a[key][k], vb = b[key][k];
+      out[k] = vb === undefined ? va : va + (vb - va) * t;
+    });
+    return out;
+  };
+  return {senate_prob: mix("senate_prob"), house_prob: mix("house_prob"),
+          senate_seats: mix("senate_seats"), house_seats: mix("house_seats"),
+          senate_races: races("senate_races"), house_races: races("house_races")};
+}
+
+function scnCrossing(grid, key) {
+  /* The generic ballot at which a chamber becomes a coin flip. Null when the
+     grid never crosses fifty, which is itself worth saying out loud. */
+  var pts = grid.points;
+  for (var i = 0; i < pts.length - 1; i++) {
+    var a = pts[i][key], b = pts[i + 1][key];
+    if ((a - 0.5) * (b - 0.5) <= 0 && a !== b) {
+      var t = (0.5 - a) / (b - a);
+      return pts[i].generic_ballot + t * (pts[i + 1].generic_ballot - pts[i].generic_ballot);
+    }
+  }
+  return null;
+}
+
+function renderScenarioCurve(svgId, grid, gb) {
+  var svg = $(svgId); if (!svg) return;
+  clear(svg);
+  var W = 560, H = 330, m = {l: 42, r: 76, t: 16, b: 44};
+  var pts = grid.points;
+  var lo = pts[0].generic_ballot, hi = pts[pts.length - 1].generic_ballot;
+  var x = function (v) { return m.l + (v - lo) / (hi - lo) * (W - m.l - m.r); };
+  var y = function (p) { return H - m.b - p * (H - m.t - m.b); };
+
+  /* Above the fifty line is a Democratic majority, below it a Republican one.
+     The wash says which without a legend having to. */
+  el("rect", {x: m.l, y: y(1), width: W - m.l - m.r, height: y(0.5) - y(1),
+    fill: css("--dem-wash")}, svg);
+  el("rect", {x: m.l, y: y(0.5), width: W - m.l - m.r, height: y(0) - y(0.5),
+    fill: css("--rep-wash")}, svg);
+
+  [0, 0.25, 0.5, 0.75, 1].forEach(function (p) {
+    el("line", {x1: m.l, x2: W - m.r, y1: y(p), y2: y(p),
+      "class": p === 0.5 ? "axis-line" : "gridline"}, svg);
+    el("text", {x: m.l - 6, y: y(p) + 3.5, "text-anchor": "end"}, svg).textContent =
+      Math.round(p * 100) + "%";
+  });
+  for (var v = Math.ceil(lo / 4) * 4; v <= hi; v += 4) {
+    el("line", {x1: x(v), x2: x(v), y1: m.t, y2: H - m.b, "class": "gridline"}, svg);
+    el("text", {x: x(v), y: H - m.b + 15, "text-anchor": "middle"}, svg).textContent =
+      (v > 0 ? "D+" : v < 0 ? "R+" : "") + Math.abs(v);
+  }
+
+  /* Both lines are the same measure -- the Democratic chance -- so they share
+     a hue and are told apart by dash and by a label at the end of each. */
+  [["senate_prob", "Senate", ""], ["house_prob", "House", "6 4"]].forEach(function (spec) {
+    var d = pts.map(function (p, i) {
+      return (i ? "L" : "M") + x(p.generic_ballot).toFixed(1) + " " + y(p[spec[0]]).toFixed(1);
+    }).join(" ");
+    el("path", {d: d, fill: "none", stroke: css("--dem"), "stroke-width": 2.4,
+      "stroke-dasharray": spec[2], "stroke-linejoin": "round"}, svg);
+    var last = pts[pts.length - 1];
+    el("text", {x: W - m.r + 8, y: y(last[spec[0]]) + 4,
+      style: "fill:var(--ink);font-size:13px;font-weight:600"}, svg).textContent = spec[1];
+  });
+
+  var today = grid.today.generic_ballot;
+  el("line", {x1: x(today), x2: x(today), y1: m.t, y2: H - m.b,
+    stroke: css("--axis"), "stroke-width": 1.5, "stroke-dasharray": "3 3"}, svg);
+  el("text", {x: x(today), y: m.t - 3, "text-anchor": "middle",
+    style: "fill:var(--muted);font-size:11px"}, svg).textContent = "today";
+
+  var here = scnLookup(grid, gb);
+  el("line", {x1: x(gb), x2: x(gb), y1: m.t, y2: H - m.b,
+    stroke: css("--ink"), "stroke-width": 1.5}, svg);
+  [["senate_prob", "Senate"], ["house_prob", "House"]].forEach(function (k) {
+    var dot = el("circle", {cx: x(gb), cy: y(here[k[0]]), r: 5.5, fill: css("--ink"),
+      stroke: css("--surface"), "stroke-width": 2}, svg);
+    bindTip(dot, function () {
+      return "<b>" + k[1] + "</b><br>At a generic ballot of " + margin(gb) +
+        ", Democrats control it <b>" + pct(here[k[0]]) + "</b> of the time";
+    });
+  });
+
+  el("text", {x: (W - m.r + m.l) / 2, y: H - 6, "text-anchor": "middle"}, svg)
+    .textContent = "National generic-ballot margin";
+}
+
+function renderScenarios(grid, senateSeats, houseMeta, ids) {
+  var slider = $(ids.slider); if (!slider || !grid) return;
+  var pts = grid.points;
+  var lo = pts[0].generic_ballot, hi = pts[pts.length - 1].generic_ballot;
+  var today = grid.today.generic_ballot;
+  var base = scnLookup(grid, today);
+  var senById = {};
+  (senateSeats || []).forEach(function (r) { senById[r.seat_id] = r; });
+
+  /* The lattice is anchored on today rather than on a round number, so the
+     slider's own starting position is a grid point and the page opens on the
+     model's answer rather than on an interpolation between two neighbours. */
+  var step = 0.1;
+  slider.step = step;
+  slider.min = (today - Math.floor((today - lo) / step) * step).toFixed(2);
+  slider.max = (today + Math.floor((hi - today) / step) * step).toFixed(2);
+  slider.value = today;
+
+  function flipRow(name, sub, from, to) {
+    var toD = to >= 0.5;
+    return '<div class="flip ' + (toD ? "d" : "r") + '"><span class="who">' + esc(name) +
+      '</span><span class="arrow">' + pct(from) + " &#8594; </span><span class=\"to\">" +
+      pct(to) + "</span>" + (sub ? ' <span class="arrow">' + esc(sub) + "</span>" : "") + "</div>";
+  }
+
+  function draw() {
+    var gb = +slider.value, here = scnLookup(grid, gb);
+    $(ids.gb).innerHTML = Math.abs(gb) < 0.06 ? "Even" : margin(gb);
+    $(ids.senProb).textContent = pct(here.senate_prob);
+    $(ids.houProb).textContent = pct(here.house_prob);
+    $(ids.senSeats).textContent = "D " + Math.round(here.senate_seats) + " · R " +
+      Math.round(100 - here.senate_seats);
+    $(ids.houSeats).textContent = "D " + Math.round(here.house_seats) + " · R " +
+      Math.round(435 - here.house_seats);
+    $(ids.senProb).style.color = css(here.senate_prob >= 0.5 ? "--dem" : "--rep");
+    $(ids.houProb).style.color = css(here.house_prob >= 0.5 ? "--dem" : "--rep");
+    renderScenarioCurve(ids.curve, grid, gb);
+
+    var flips = [];
+    Object.keys(here.senate_races).forEach(function (k) {
+      var was = base.senate_races[k], now = here.senate_races[k];
+      /* A race sitting on 50.0 has not really changed hands, and rounding it
+         for display would print "changed to 50%", which is not a claim. */
+      if ((was >= 0.5) !== (now >= 0.5) && Math.abs(now - 0.5) >= 0.005) {
+        var r = senById[k] || {};
+        flips.push({chamber: "s", sort: Math.abs(now - 0.5), html: flipRow(
+          STATE_NAMES[k.split("-")[0]] + " Senate",
+          r.rating ? RATING_NAME[r.rating] : "", was, now)});
+      }
+    });
+    Object.keys(here.house_races).forEach(function (k) {
+      var was = base.house_races[k], now = here.house_races[k];
+      if ((was >= 0.5) !== (now >= 0.5) && Math.abs(now - 0.5) >= 0.005) {
+        var m = (houseMeta || {})[k] || {};
+        flips.push({chamber: "h", sort: Math.abs(now - 0.5), html: flipRow(
+          k, STATE_NAMES[m.state] || "", was, now)});
+      }
+    });
+    /* Senate first: one state is worth more attention than one district, and
+       the list is capped. Within a chamber, the most decisive flips lead. */
+    flips.sort(function (a, b) {
+      return (a.chamber === b.chamber) ? b.sort - a.sort : (a.chamber === "s" ? -1 : 1);
+    });
+    var box = $(ids.flips), note = $(ids.flipNote);
+    if (!flips.length) {
+      box.innerHTML = "";
+      note.textContent = Math.abs(gb - today) < 0.3
+        ? "This is where the forecast sits today, so nothing has changed hands."
+        : "No race changes hands at this environment.";
+    } else {
+      box.innerHTML = flips.slice(0, 24).map(function (f) { return f.html; }).join("");
+      note.textContent = flips.length + " race" + (flips.length === 1 ? "" : "s") +
+        " change hands against where the forecast sits today" +
+        (flips.length > 24 ? ", the 24 that move furthest shown" : "") + ".";
+    }
+  }
+
+  slider.addEventListener("input", draw);
+  var reset = $(ids.reset);
+  if (reset) reset.addEventListener("click", function () { slider.value = today; draw(); });
+  draw();
+}
+
 /* --------------------------------------------------------- calibration */
 /* Predicted against observed, with the diagonal drawn. One series, so no
    legend: the title names it. The marks are ink rather than blue or red on
@@ -1074,7 +1442,9 @@ global.FC = {
   renderIndicators: renderIndicators, renderTrend: renderTrend,
   renderMarketCompare: renderMarketCompare, renderPairedBars: renderPairedBars,
   renderMarketRaces: renderMarketRaces, renderAttention: renderAttention, renderStory: renderStory, renderMarketStrip: renderMarketStrip, renderMarginBins: renderMarginBins,
-  renderCalibration: renderCalibration, renderTipping: renderTipping, senateTipping: senateTipping, houseTipping: houseTipping,
+  raceRuler: raceRuler, bindRulers: bindRulers, renderRibbon: renderRibbon, sparkline: sparkline,
+  renderCalibration: renderCalibration, renderScenarios: renderScenarios,
+  scnCrossing: scnCrossing, scnLookup: scnLookup, renderTipping: renderTipping, senateTipping: senateTipping, houseTipping: houseTipping,
   senateSeatDots: senateSeatDots, houseSeatDots: houseSeatDots, STATE_NAMES: STATE_NAMES, ELECTION: ELECTION
 };
 })(window);
