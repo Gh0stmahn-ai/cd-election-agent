@@ -1126,6 +1126,87 @@ function bindRulers(root, race) {
   bindTip(track, function () { return describe(nearest); });
 }
 
+/* -------------------------------------------------- special elections */
+/* One dot per contested special election, placed by how far its result ran
+   from the same district's 2024 presidential margin. Diverging blue and red
+   on a neutral zero, because the measure genuinely has a direction: a dot to
+   the right is a district that moved toward the Democrats. The dots are
+   stacked into lanes rather than jittered randomly, so the shape of the
+   distribution is readable and the picture does not change between renders. */
+function renderSpecials(svgId, data, noteId) {
+  var svg = $(svgId); if (!svg || !data || !data.races || !data.races.length) return;
+  clear(svg);
+  var W = 560, m = {l: 14, r: 14, t: 26, b: 42}, r = 5.5;
+  var swings = data.races.map(function (q) { return q.swing; });
+  var lo = Math.min(-5, Math.floor(Math.min.apply(null, swings) / 5) * 5);
+  var hi = Math.max(5, Math.ceil(Math.max.apply(null, swings) / 5) * 5);
+  var x = function (v) { return m.l + (v - lo) / (hi - lo) * (W - m.l - m.r); };
+
+  /* Lanes are assigned before anything is drawn so the box can be exactly as
+     tall as the stack needs. A fixed height either wastes half the card when
+     the results are spread out or clips the pile when they are not. */
+  var sorted = data.races.slice().sort(function (a, b) { return a.swing - b.swing; });
+  var used = [], placed = [];
+  sorted.forEach(function (race) {
+    var cx = x(race.swing), lane = 0;
+    while (used[lane] !== undefined && cx - used[lane] < r * 2 + 1) lane++;
+    used[lane] = cx;
+    placed.push({race: race, cx: cx, lane: lane});
+  });
+  var H = m.t + m.b + (used.length + 1) * (r * 2 + 1) + 6;
+  svg.setAttribute("viewBox", "0 0 " + W + " " + H.toFixed(0));
+
+  for (var g = Math.ceil(lo / 10) * 10; g <= hi; g += 10) {
+    el("line", {x1: x(g), x2: x(g), y1: m.t, y2: H - m.b, "class": "gridline"}, svg);
+    el("text", {x: x(g), y: H - m.b + 15, "text-anchor": "middle"}, svg).textContent =
+      (g > 0 ? "+" : "") + g;
+  }
+  el("line", {x1: x(0), x2: x(0), y1: m.t - 10, y2: H - m.b + 2,
+    stroke: css("--ink"), "stroke-width": 1.4}, svg);
+  el("text", {x: x(0), y: m.t - 14, "text-anchor": "middle",
+    style: "fill:var(--ink-2);font-size:11px"}, svg).textContent = "matched 2024";
+
+  placed.forEach(function (slot) {
+    var race = slot.race, cx = slot.cx;
+    var cy = H - m.b - 8 - slot.lane * (r * 2 + 1);
+    var dot = el("circle", {cx: cx.toFixed(1), cy: cy.toFixed(1), r: r,
+      fill: css(race.swing >= 0 ? "--dem" : "--rep"),
+      stroke: css("--surface"), "stroke-width": 1.5}, svg);
+    bindTip(dot, function () {
+      return "<b>" + esc(race.seat) + "</b><br>" + fmtDate(race.date) +
+        "<br>Result " + margin(race.margin) + ", 2024 presidential " + margin(race.pres_margin) +
+        "<br><b>" + signed(race.swing, 1) + "</b> toward the " +
+        (race.swing >= 0 ? "Democrats" : "Republicans") +
+        (race.flip ? "<br>The seat changed hands." : "");
+    });
+  });
+
+  var med = x(data.median_swing);
+  el("line", {x1: med, x2: med, y1: m.t, y2: H - m.b,
+    stroke: css("--ink-2"), "stroke-width": 1.5, "stroke-dasharray": "4 3"}, svg);
+  el("text", {x: med + 5, y: m.t + 10, style: "fill:var(--ink-2);font-size:11px"}, svg)
+    .textContent = "median " + signed(data.median_swing, 1);
+
+  el("text", {x: W / 2, y: H - 6, "text-anchor": "middle"}, svg).textContent =
+    "Points better or worse than the district's 2024 presidential margin";
+
+  if (noteId && $(noteId)) {
+    var q = (data.by_quarter || []).filter(function (b) { return b.n >= 3; })
+      .map(function (b) { return b.period + " " + signed(b.median, 1) + " (" + b.n + ")"; })
+      .join(" &middot; ");
+    $(noteId).innerHTML =
+      "<b>" + data.dem_ahead + " of " + data.n + "</b> contested specials have run ahead of the " +
+      "2024 baseline for Democrats, by a median of <b>" + signed(data.median_swing, 1) +
+      "</b> and <b>" + signed(data.weighted_swing, 1) + "</b> weighted by turnout. " +
+      data.flips_to_d + " seats have changed hands to the Democrats and " + data.flips_to_r +
+      " to the Republicans, with " + data.upcoming + " specials still to come." +
+      (q ? " By quarter: " + q + "." : "") +
+      " This is shown here and is <b>not part of the forecast</b>: turning a swing into a " +
+      "forecast needs a coefficient, and the only honest way to get one is to fit it against " +
+      "past cycles, which has not been done yet.";
+  }
+}
+
 /* ------------------------------------------------------- poll average */
 /* The generic ballot, shown as the polls it is made of rather than as a
    number someone has to take on trust. Three things a reader should be able
@@ -1533,7 +1614,7 @@ global.FC = {
   renderIndicators: renderIndicators, renderTrend: renderTrend,
   renderMarketCompare: renderMarketCompare, renderPairedBars: renderPairedBars,
   renderMarketRaces: renderMarketRaces, renderAttention: renderAttention, renderStory: renderStory, renderMarketStrip: renderMarketStrip, renderMarginBins: renderMarginBins,
-  renderPollAverage: renderPollAverage, raceRuler: raceRuler, bindRulers: bindRulers, renderRibbon: renderRibbon, sparkline: sparkline,
+  renderPollAverage: renderPollAverage, renderSpecials: renderSpecials, raceRuler: raceRuler, bindRulers: bindRulers, renderRibbon: renderRibbon, sparkline: sparkline,
   renderCalibration: renderCalibration, renderScenarios: renderScenarios,
   scnCrossing: scnCrossing, scnLookup: scnLookup, renderTipping: renderTipping, senateTipping: senateTipping, houseTipping: houseTipping,
   senateSeatDots: senateSeatDots, houseSeatDots: houseSeatDots, STATE_NAMES: STATE_NAMES, ELECTION: ELECTION
