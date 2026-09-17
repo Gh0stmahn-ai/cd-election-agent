@@ -118,6 +118,14 @@ jobs:
         continue-on-error: true
         run: python3 refresh_specials.py
 
+      # Campaign money from the FEC's own bulk file. The one input that leads
+      # rather than lags, and like the others of its kind it is shown and not
+      # fed into the forecast.
+      - name: Refresh campaign finance (free, display only)
+        id: money
+        continue-on-error: true
+        run: python3 refresh_fec.py
+
       # Typed numbers win over the automatic refresh above, so this runs last
       # of the poll steps: it is the override, not the only way in.
       - name: Apply any poll numbers entered by hand
