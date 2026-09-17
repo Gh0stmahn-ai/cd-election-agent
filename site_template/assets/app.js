@@ -1132,64 +1132,102 @@ function bindRulers(root, race) {
    the measure is whose money it is. The dollar figures are printed because a
    70% share of four hundred thousand and a 70% share of forty million are not
    the same fact. */
-function money(n) {
-  var v = Math.abs(n);
-  if (v >= 1e6) return "$" + (v / 1e6).toFixed(v >= 1e7 ? 0 : 1) + "M";
-  if (v >= 1e3) return "$" + Math.round(v / 1e3) + "k";
-  return "$" + Math.round(v);
+function cashLabel(n) {
+  /* Rounding happens before the bucket is chosen, or $999,600 rounds to a
+     thousand thousands and prints as "$1000k". */
+  var v = Math.abs(n), sign = n < 0 ? "-" : "";
+  if (v >= 999500) return sign + "$" + (v / 1e6).toFixed(v >= 9950000 ? 0 : 1) + "M";
+  if (v >= 1e3) return sign + "$" + Math.round(v / 1e3) + "k";
+  return sign + "$" + Math.round(v);
+}
+
+/* A row's name: a Senate seat is its state (with the special elections
+   marked), a House district is its own id, which is already readable. */
+function moneyLabel(race) {
+  if (race.label) return race.label;
+  var id = race.key || race.seat_id || "";
+  if (race.seat_id) {
+    return (STATE_NAMES[race.state] || race.state) +
+      (id.indexOf("special") > -1 ? " (sp.)" : "");
+  }
+  return id;
 }
 
 function renderMoney(hostId, data, races, noteId, limit) {
   var host = $(hostId); if (!host || !data || !data.races) return;
   var rows = [];
   (races || []).forEach(function (race) {
-    var m = data.races[race.seat_id];
+    var m = data.races[race.key || race.seat_id];
     /* Both sides or neither. A race where one side has no filing at all is
        usually a candidate who runs as an independent -- Nebraska's does --
        and drawing that as a total wipeout for the money would be a claim
        about the race rather than about the filings. */
-    if (!m || m.dem_cash_share === null || !m.dem || !m.rep) return;
+    if (!m || m.dem_cash_share == null || !m.dem || !m.rep) return;
     rows.push({race: race, m: m});
   });
-  if (!rows.length) { host.innerHTML = ""; return; }
+  if (noteId && $(noteId)) {
+    $(noteId).innerHTML = "Cash on hand at each campaign's last filed report" +
+      (data.latest_report ? ", mostly through " + esc(fmtDate(data.latest_report)) : "") +
+      ". Money is the one thing here that leads rather than " +
+      "lags: a rater moves a seat once it is already competitive, and the donors were making the " +
+      "same judgement a few months earlier with a cheque. It is shown and <b>not part of the " +
+      "forecast</b>, for the same reason as the markets and the specials: nobody has fitted what " +
+      "a money advantage is worth.";
+  }
+  if (!rows.length) {
+    host.innerHTML = '<p class="note">No filings to show.</p>';
+    return;
+  }
+  /* Which rows to show is a different question from how to order them. Taking
+     the top of a list sorted by share would show one end of it only -- with
+     seventy competitive districts that means twelve Democratic blowouts and
+     not one Republican one. So the rows are chosen by the size of the gap in
+     dollars, which is where the money actually is, and then laid out by share
+     so the chart still reads from one side to the other. */
+  if (limit && rows.length > limit) {
+    rows.sort(function (a, b) {
+      return Math.abs(b.m.cash_gap) - Math.abs(a.m.cash_gap);
+    });
+    rows = rows.slice(0, limit);
+  }
   rows.sort(function (a, b) { return b.m.dem_cash_share - a.m.dem_cash_share; });
-  if (limit) rows = rows.slice(0, limit);
 
   host.innerHTML = rows.map(function (row) {
     var m = row.m, share = m.dem_cash_share;
     var d = (m.dem || {}).cash || 0, r = (m.rep || {}).cash || 0;
     var w = Math.abs(share - 0.5) * 100;
-    return '<div class="money-row"><span class="st">' +
-      esc(STATE_NAMES[row.race.state] || row.race.state) +
-      (row.race.seat_id.indexOf("special") > -1 ? " (sp.)" : "") + "</span>" +
+    return '<div class="money-row"><span class="st">' + esc(moneyLabel(row.race)) + "</span>" +
       '<span class="tr"><span class="mid"></span><span class="fl" style="background:' +
         css(share >= 0.5 ? "--dem" : "--rep") + ";width:" + Math.max(w, 0.6).toFixed(1) + "%;" +
         (share >= 0.5 ? "left:50%" : "right:50%") + '"></span></span>' +
-      '<span class="amt"><b style="color:' + css("--dem") + '">' + money(d) +
-        "</b> vs <b style=\"color:" + css("--rep") + '">' + money(r) + "</b></span></div>";
+      '<span class="amt"><b style="color:' + css("--dem") + '">' + cashLabel(d) +
+        "</b> vs <b style=\"color:" + css("--rep") + '">' + cashLabel(r) + "</b></span></div>";
   }).join("");
 
   [].forEach.call(host.querySelectorAll(".money-row"), function (node, i) {
     var m = rows[i].m, race = rows[i].race;
     bindTip(node.querySelector(".tr"), function () {
       var d = m.dem || {}, r = m.rep || {};
-      return "<b>" + esc(STATE_NAMES[race.state] || race.state) + "</b><br>" +
-        esc(d.name || "No Democratic filing") + ": " + money(d.cash || 0) + " in the bank" +
-        (d.name ? " of " + money(d.receipts || 0) + " raised" : "") + "<br>" +
-        esc(r.name || "No Republican filing") + ": " + money(r.cash || 0) + " in the bank" +
-        (r.name ? " of " + money(r.receipts || 0) + " raised" : "") +
-        (d.as_of ? "<br>Last reports cover to " + esc(fmtDate(d.as_of)) : "");
+      /* Cash and receipts are not a part and a whole: an account can hold
+         more than it raised this cycle, because what was left over from the
+         last one carried across. So the two read side by side, not one out
+         of the other.
+
+         Each side carries its own coverage date. Forty of the contested
+         races have two campaigns whose last reports are weeks apart, and a
+         single date over both of them would present the older balance as
+         though it were current. */
+      function side(c, missing) {
+        if (!c.name) return missing;
+        return esc(c.name) + ": " + cashLabel(c.cash || 0) + " in the bank, " +
+          cashLabel(c.receipts || 0) + " raised this cycle" +
+          (c.as_of ? " (to " + esc(fmtDate(c.as_of)) + ")" : "");
+      }
+      return "<b>" + esc(moneyLabel(race)) + "</b><br>" +
+        side(d, "No Democratic filing") + "<br>" + side(r, "No Republican filing");
     });
   });
 
-  if (noteId && $(noteId)) {
-    $(noteId).innerHTML = "Cash on hand at each campaign's last filed report, mostly through " +
-      esc(fmtDate(data.latest_report)) + ". Money is the one thing here that leads rather than " +
-      "lags: a rater moves a seat once it is already competitive, and the donors were making the " +
-      "same judgement a few months earlier with a cheque. It is shown and <b>not part of the " +
-      "forecast</b>, for the same reason as the markets and the specials: nobody has fitted what " +
-      "a money advantage is worth.";
-  }
 }
 
 /* -------------------------------------------------- special elections */
