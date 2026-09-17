@@ -1,29 +1,31 @@
 #!/usr/bin/env python3
 """
-Cook Partisan Voting Index for all 435 districts. Free, no key.
+Cook PVI for all 435 districts, on the lines they are actually being elected on.
 
-PVI says how a district votes relative to the nation: R+17 means it ran 17
-points more Republican than the country. It is the missing ingredient that
-lets two seats with the same rating stop being interchangeable.
+The first version of this read Cook's published 2025 index, which describes
+the maps as they stood before ten states redrew mid-decade. That left the
+model with no partisan baseline at all for 181 districts -- a fifth of the
+House, and disproportionately the interesting fifth, since a state does not
+redraw a map it is happy with.
 
-Using Cook's own index alongside Cook's own ratings is deliberate: the two are
-built on the same view of the map, so the index differentiates within a rating
-rather than arguing with it.
+Wikipedia's per-state tables on the 2026 House elections article carry a
+"2026 PVI" column: the index for the new lines, district by district,
+including every redrawn state. That is what this reads now.
 
-Writes data/district_pvi.json. Re-run when Cook republishes the index.
+Writes data/district_pvi.json.  Run:  python3 tools/fetch_pvi.py
 """
-import html
 import json
+import os
 import re
 import sys
-import urllib.request
-from datetime import date
-from pathlib import Path
 
-DATA = Path(__file__).resolve().parent.parent / "data"
-PAGE = "Cook_Partisan_Voting_Index"
-URL = "https://en.wikipedia.org/api/rest_v1/page/html/" + PAGE
-UA = {"User-Agent": "cd-election-agent/1.0 (https://github.com/Gh0stmahn-ai/cd-election-agent)"}
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+import refresh_polls as RP
+
+PAGE = "2026_United_States_House_of_Representatives_elections"
+URL = f"https://en.wikipedia.org/wiki/{PAGE}"
+OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                   "data", "district_pvi.json")
 
 STATE_CODE = {
     "Alabama": "AL", "Alaska": "AK", "Arizona": "AZ", "Arkansas": "AR", "California": "CA",
@@ -39,89 +41,121 @@ STATE_CODE = {
     "Virginia": "VA", "Washington": "WA", "West Virginia": "WV", "Wisconsin": "WI",
     "Wyoming": "WY",
 }
+LOCATION_RE = re.compile(r"^([A-Z][a-z]+(?: [A-Z][a-z]+)*)\s+(\d{1,2}|at-large)\b", re.I)
+PVI_RE = re.compile(r"^\s*(EVEN|E|([DR])\s*\+\s*(\d{1,2}))\s*$", re.I)
 
 
-def text(fragment):
-    fragment = re.sub(r"<sup.*?</sup>", " ", fragment, flags=re.S)
-    fragment = re.sub(r"<[^>]+>", " ", fragment)
-    return re.sub(r"\s+", " ", html.unescape(fragment)).strip()
+def cells(row_html):
+    return [RP.plain(c) for c in re.findall(r"<t[dh][^>]*>(.*?)</t[dh]>", row_html, re.S)]
 
 
-def parse_pvi(value):
-    """'R+17' -> -17.0, 'D+5' -> 5.0, 'EVEN' -> 0.0. Democratic is positive."""
-    v = value.strip().upper().replace("−", "-")
-    if v.startswith("EVEN") or v == "0":
+def parse_pvi(text):
+    """'R+17' -> -17.0, 'D+7' -> 7.0, 'EVEN' -> 0.0, anything else -> None."""
+    m = PVI_RE.match(text or "")
+    if not m:
+        return None
+    if m.group(1).upper() in ("EVEN", "E"):
         return 0.0
-    m = re.match(r"([DR])\s*\+\s*(\d+(?:\.\d+)?)", v)
-    if not m:
-        return None
-    n = float(m.group(2))
-    return n if m.group(1) == "D" else -n
+    size = float(m.group(3))
+    return size if m.group(2).upper() == "D" else -size
 
 
-def district_id(name):
+def district_id(location):
     """'Alabama 1' -> 'AL-1'; 'Alaska at-large' -> 'AK-AL'."""
-    label = name.strip()
-    m = re.match(r"^(.*?)\s+(\d+|at-large|At-large|AL)$", label)
+    m = LOCATION_RE.match(location.strip())
     if not m:
         return None
-    state, seat = m.group(1).strip(), m.group(2)
-    code = STATE_CODE.get(state)
+    code = STATE_CODE.get(m.group(1).strip())
     if not code:
         return None
-    return f"{code}-AL" if seat.lower() in ("at-large", "al") else f"{code}-{int(seat)}"
+    seat = m.group(2)
+    return f"{code}-{'AL' if seat.lower() == 'at-large' else int(seat)}"
+
+
+def harvest(page_html):
+    """Every (district, PVI) pair on the page, read by column name.
+
+    The tables do not agree on column order -- some lead with the member,
+    some with the index, and the redistricting summary carries both the old
+    and the new one -- so the PVI column is located by its heading on each
+    table rather than by position. "New 2026 PVI" wins over "Original 2025
+    PVI" where a table shows both, which is the whole point of this rewrite.
+    """
+    found = {}
+    for table in re.findall(r"<table.*?</table>", page_html, re.S):
+        rows = re.findall(r"<tr.*?</tr>", table, re.S)
+        if len(rows) < 3:
+            continue
+        header, start = None, 0
+        for i, row in enumerate(rows[:3]):
+            head = [c.lower() for c in cells(row)]
+            if any(h.startswith("location") for h in head) and any("pvi" in h for h in head):
+                header, start = head, i + 1
+                break
+        if not header:
+            continue
+
+        # Only columns that say 2026. Several states' tables still carry the
+        # 2025 index, which describes the old lines, and taking it because it
+        # was the only one on offer is precisely the error this rewrite
+        # exists to fix: Missouri's 5th reads D+12 under the old map and was
+        # deliberately broken up under the new one.
+        pvi_cols = [i for i, h in enumerate(header) if "pvi" in h and "2026" in h]
+        if not pvi_cols:
+            continue
+
+        # The redistricting summary tables are keyed to the MEMBER, not the
+        # seat -- "Texas 35, running in the 37th" -- so which district their
+        # new index belongs to is ambiguous. They are identifiable by showing
+        # the old index alongside, and they are skipped: the per-state tables
+        # cover every district they would have contributed, and agree with
+        # them everywhere the two overlap.
+        if any("original" in h for h in header):
+            continue
+
+        i_loc = next(i for i, h in enumerate(header) if h.startswith("location"))
+        i_pvi = pvi_cols[0]
+        for row in rows[start:]:
+            c = cells(row)
+            if len(c) <= max(i_loc, i_pvi):
+                continue
+            district = district_id(c[i_loc])
+            value = parse_pvi(c[i_pvi])
+            if district and value is not None:
+                found.setdefault(district, value)
+    return found
 
 
 def main():
-    req = urllib.request.Request(URL, headers=UA)
-    page = urllib.request.urlopen(req, timeout=60).read().decode("utf-8")
+    districts = harvest(RP.fetch(PAGE))
+    if len(districts) < 400:
+        raise SystemExit(f"only found {len(districts)} districts with a 2026 PVI; not writing")
 
-    table = None
-    for candidate in re.findall(r"<table.*?</table>", page, re.S):
-        rows = re.findall(r"<tr.*?</tr>", candidate, re.S)
-        if len(rows) < 400:
-            continue
-        header = text(rows[0]).lower()
-        if "pvi" in header and "district" in header:
-            table = rows
-            break
-    if table is None:
-        print("Could not find the district PVI table on the page.", file=sys.stderr)
-        return 1
-
-    pvi, skipped = {}, []
-    for row in table[1:]:
-        cells = [text(c) for c in re.findall(r"<t[hd][^>]*>(.*?)</t[hd]>", row, re.S)]
-        cells = [c for c in cells if c]
-        if len(cells) < 2:
-            continue
-        seat, score = district_id(cells[0]), parse_pvi(cells[1])
-        if seat is None or score is None:
-            skipped.append(cells[0])
-            continue
-        pvi[seat] = score
-
-    if len(pvi) < 400:
-        print(f"Only parsed {len(pvi)} districts; refusing to overwrite.", file=sys.stderr)
-        return 1
+    seats = json.load(open(os.path.join(os.path.dirname(OUT), "house_districts_2026.json")))
+    missing = sorted(d["id"] for d in seats["districts"] if d["id"] not in districts)
 
     payload = {
-        "as_of": date.today().isoformat(),
-        "source": "Cook Partisan Voting Index, via Wikipedia",
-        "url": f"https://en.wikipedia.org/wiki/{PAGE}",
-        "note": ("Democratic-positive points. A district's presidential lean relative to the "
-                 "nation. Districts redrawn for 2026 may still carry their previous lines' "
-                 "index, which is the same limitation the House map already documents."),
-        "districts": dict(sorted(pvi.items())),
+        "as_of": RP.datetime.now().date().isoformat(),
+        "index": "Cook Partisan Voting Index, 2026 lines",
+        "note": ("Democratic minus Republican, in points. Read from the per-state tables on "
+                 "Wikipedia's 2026 House elections article, which carry the index for the maps "
+                 "actually being used this year. A district absent from this file has no "
+                 "published index for its current lines, and the model gives it no partisan "
+                 "adjustment rather than a wrong one."),
+        "missing": missing,
+        "sources": [URL],
+        "districts": dict(sorted(districts.items())),
     }
-    (DATA / "district_pvi.json").write_text(json.dumps(payload, indent=1))
-    lean_d = sum(1 for v in pvi.values() if v > 0)
-    print(f"Wrote {len(pvi)} district PVI scores ({lean_d} Democratic-leaning, "
-          f"{len(pvi) - lean_d} Republican-leaning).")
-    if skipped:
-        print(f"Skipped {len(skipped)}: {', '.join(skipped[:5])}")
-    return 0
+    with open(OUT, "w") as fh:
+        json.dump(payload, fh, indent=1)
+    lean_d = sum(1 for v in districts.values() if v > 0)
+    print(f"wrote {OUT}: {len(districts)} districts "
+          f"({lean_d} lean Democratic, {len(districts) - lean_d} lean Republican or even)")
+    if missing:
+        states = sorted({d.split("-")[0] for d in missing})
+        print(f"  no 2026 index published for {len(missing)} districts in {', '.join(states)}; "
+              "those keep their rating alone")
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    main()
