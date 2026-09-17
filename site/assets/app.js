@@ -1126,6 +1126,72 @@ function bindRulers(root, race) {
   bindTip(track, function () { return describe(nearest); });
 }
 
+/* --------------------------------------------------------------- money */
+/* Cash on hand for each side, drawn as a share of the two together so races
+   of wildly different size can sit in one column. Party colour is right here:
+   the measure is whose money it is. The dollar figures are printed because a
+   70% share of four hundred thousand and a 70% share of forty million are not
+   the same fact. */
+function money(n) {
+  var v = Math.abs(n);
+  if (v >= 1e6) return "$" + (v / 1e6).toFixed(v >= 1e7 ? 0 : 1) + "M";
+  if (v >= 1e3) return "$" + Math.round(v / 1e3) + "k";
+  return "$" + Math.round(v);
+}
+
+function renderMoney(hostId, data, races, noteId, limit) {
+  var host = $(hostId); if (!host || !data || !data.races) return;
+  var rows = [];
+  (races || []).forEach(function (race) {
+    var m = data.races[race.seat_id];
+    /* Both sides or neither. A race where one side has no filing at all is
+       usually a candidate who runs as an independent -- Nebraska's does --
+       and drawing that as a total wipeout for the money would be a claim
+       about the race rather than about the filings. */
+    if (!m || m.dem_cash_share === null || !m.dem || !m.rep) return;
+    rows.push({race: race, m: m});
+  });
+  if (!rows.length) { host.innerHTML = ""; return; }
+  rows.sort(function (a, b) { return b.m.dem_cash_share - a.m.dem_cash_share; });
+  if (limit) rows = rows.slice(0, limit);
+
+  host.innerHTML = rows.map(function (row) {
+    var m = row.m, share = m.dem_cash_share;
+    var d = (m.dem || {}).cash || 0, r = (m.rep || {}).cash || 0;
+    var w = Math.abs(share - 0.5) * 100;
+    return '<div class="money-row"><span class="st">' +
+      esc(STATE_NAMES[row.race.state] || row.race.state) +
+      (row.race.seat_id.indexOf("special") > -1 ? " (sp.)" : "") + "</span>" +
+      '<span class="tr"><span class="mid"></span><span class="fl" style="background:' +
+        css(share >= 0.5 ? "--dem" : "--rep") + ";width:" + Math.max(w, 0.6).toFixed(1) + "%;" +
+        (share >= 0.5 ? "left:50%" : "right:50%") + '"></span></span>' +
+      '<span class="amt"><b style="color:' + css("--dem") + '">' + money(d) +
+        "</b> vs <b style=\"color:" + css("--rep") + '">' + money(r) + "</b></span></div>";
+  }).join("");
+
+  [].forEach.call(host.querySelectorAll(".money-row"), function (node, i) {
+    var m = rows[i].m, race = rows[i].race;
+    bindTip(node.querySelector(".tr"), function () {
+      var d = m.dem || {}, r = m.rep || {};
+      return "<b>" + esc(STATE_NAMES[race.state] || race.state) + "</b><br>" +
+        esc(d.name || "No Democratic filing") + ": " + money(d.cash || 0) + " in the bank" +
+        (d.name ? " of " + money(d.receipts || 0) + " raised" : "") + "<br>" +
+        esc(r.name || "No Republican filing") + ": " + money(r.cash || 0) + " in the bank" +
+        (r.name ? " of " + money(r.receipts || 0) + " raised" : "") +
+        (d.as_of ? "<br>Last reports cover to " + esc(fmtDate(d.as_of)) : "");
+    });
+  });
+
+  if (noteId && $(noteId)) {
+    $(noteId).innerHTML = "Cash on hand at each campaign's last filed report, mostly through " +
+      esc(fmtDate(data.latest_report)) + ". Money is the one thing here that leads rather than " +
+      "lags: a rater moves a seat once it is already competitive, and the donors were making the " +
+      "same judgement a few months earlier with a cheque. It is shown and <b>not part of the " +
+      "forecast</b>, for the same reason as the markets and the specials: nobody has fitted what " +
+      "a money advantage is worth.";
+  }
+}
+
 /* -------------------------------------------------- special elections */
 /* One dot per contested special election, placed by how far its result ran
    from the same district's 2024 presidential margin. Diverging blue and red
@@ -1614,7 +1680,7 @@ global.FC = {
   renderIndicators: renderIndicators, renderTrend: renderTrend,
   renderMarketCompare: renderMarketCompare, renderPairedBars: renderPairedBars,
   renderMarketRaces: renderMarketRaces, renderAttention: renderAttention, renderStory: renderStory, renderMarketStrip: renderMarketStrip, renderMarginBins: renderMarginBins,
-  renderPollAverage: renderPollAverage, renderSpecials: renderSpecials, raceRuler: raceRuler, bindRulers: bindRulers, renderRibbon: renderRibbon, sparkline: sparkline,
+  renderMoney: renderMoney, renderPollAverage: renderPollAverage, renderSpecials: renderSpecials, raceRuler: raceRuler, bindRulers: bindRulers, renderRibbon: renderRibbon, sparkline: sparkline,
   renderCalibration: renderCalibration, renderScenarios: renderScenarios,
   scnCrossing: scnCrossing, scnLookup: scnLookup, renderTipping: renderTipping, senateTipping: senateTipping, houseTipping: houseTipping,
   senateSeatDots: senateSeatDots, houseSeatDots: houseSeatDots, STATE_NAMES: STATE_NAMES, ELECTION: ELECTION

@@ -1,17 +1,23 @@
 {
- "as_of": "2026-09-17T10:37:27+00:00",
+ "as_of": "2026-09-17T10:54:10+00:00",
  "note": "Shown alongside the model, never blended into it.",
  "venues": {
   "kalshi": {
    "senate_dem": {
     "prob": 0.555,
-    "volume": 8958160
+    "volume": 8958172
    },
    "joint": [
     {
+     "label": "Democrats sweep",
+     "prob": 0.565,
+     "volume": 3294469,
+     "prob_normalized": 0.5553
+    },
+    {
      "label": "D-House, R-Senate",
      "prob": 0.315,
-     "volume": 2243736,
+     "volume": 2245239,
      "prob_normalized": 0.3096
     },
     {
@@ -21,32 +27,26 @@
      "prob_normalized": 0.1229
     },
     {
-     "label": "Democrats sweep",
-     "prob": 0.565,
-     "volume": 3293921,
-     "prob_normalized": 0.5553
-    },
-    {
      "label": "R-House, D-Senate",
      "prob": 0.0125,
      "volume": 3035308,
      "prob_normalized": 0.0123
     }
    ],
-   "joint_volume": 14825462,
+   "joint_volume": 14827513,
    "house_dem": {
     "prob": 0.3096,
-    "volume": 14825462
+    "volume": 14827513
    },
    "generic_ballot": {
     "implied_dem_margin": 8.0,
     "volume": 1580297,
     "bins": [
      {
-      "label": "Democrats, 6 to 8%",
-      "prob": 0.225,
-      "volume": 86307,
-      "prob_normalized": 0.2129
+      "label": "Democrats, 2 to 4%",
+      "prob": 0.0435,
+      "volume": 145084,
+      "prob_normalized": 0.0412
      },
      {
       "label": "Democrats, 12 to 14%",
@@ -55,16 +55,16 @@
       "prob_normalized": 0.0899
      },
      {
+      "label": "Democrats, 6 to 8%",
+      "prob": 0.225,
+      "volume": 86307,
+      "prob_normalized": 0.2129
+     },
+     {
       "label": "Democrats, 4 to 6%",
       "prob": 0.0935,
       "volume": 76160,
       "prob_normalized": 0.0885
-     },
-     {
-      "label": "Democrats, 2 to 4%",
-      "prob": 0.0435,
-      "volume": 145084,
-      "prob_normalized": 0.0412
      },
      {
       "label": "Democrats, 10 to 12%",
@@ -185,6 +185,18 @@
     "volume": 2661117,
     "bins": [
      {
+      "label": "49",
+      "prob": 0.115,
+      "volume": 145779,
+      "prob_normalized": 0.1079
+     },
+     {
+      "label": "Above 52",
+      "prob": 0.275,
+      "volume": 848213,
+      "prob_normalized": 0.2581
+     },
+     {
       "label": "48",
       "prob": 0.088,
       "volume": 183285,
@@ -197,12 +209,6 @@
       "prob_normalized": 0.1455
      },
      {
-      "label": "Above 52",
-      "prob": 0.275,
-      "volume": 848213,
-      "prob_normalized": 0.2581
-     },
-     {
       "label": "52",
       "prob": 0.135,
       "volume": 276617,
@@ -213,12 +219,6 @@
       "prob": 0.021,
       "volume": 193098,
       "prob_normalized": 0.0197
-     },
-     {
-      "label": "49",
-      "prob": 0.115,
-      "volume": 145779,
-      "prob_normalized": 0.1079
      },
      {
       "label": "Below 45",
@@ -252,11 +252,11 @@
   "polymarket": {
    "house_dem": {
     "prob": 0.885,
-    "volume": 11387576
+    "volume": 11387588
    },
    "senate_dem": {
     "prob": 0.5909,
-    "volume": 4561890
+    "volume": 4561898
    },
    "races": {
     "ME-2026": {
@@ -276,7 +276,7 @@
     },
     "TX-2026": {
      "title": "Texas Senate Election Winner",
-     "volume": 1298058,
+     "volume": 1298920,
      "slug": "texas-senate-election-winner",
      "parties": {
       "D": {
@@ -295,11 +295,11 @@
      "slug": "michigan-senate-election-winner",
      "parties": {
       "D": {
-       "prob": 0.6533,
+       "prob": 0.6566,
        "label": "Abdul El-Sayed (D)"
       },
       "R": {
-       "prob": 0.3467,
+       "prob": 0.3434,
        "label": "Mike Rogers (R)"
       }
      }
@@ -321,7 +321,7 @@
     },
     "OH-2026-special": {
      "title": "Ohio Senate Election Winner",
-     "volume": 377794,
+     "volume": 377798,
      "slug": "ohio-senate-election-winner",
      "parties": {
       "D": {

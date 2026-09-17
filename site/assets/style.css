@@ -411,3 +411,21 @@ tr:hover td { background: var(--dem-wash); }
   .he .tr { width: 72px; }
   .he .nm { font-size: 12px; }
 }
+
+/* Money: each side's cash on hand, as a share of the two together. */
+.money-row { display: grid; grid-template-columns: 120px 1fr 118px; gap: 10px;
+  align-items: center; padding: 4px 0; font-size: 13px; }
+.money-row .st { text-align: right; color: var(--ink); }
+.money-row .tr { position: relative; height: 16px; border-radius: 3px; background: var(--notup); }
+.money-row .mid { position: absolute; left: 50%; top: -2px; width: 1px; height: 20px;
+  background: var(--ink-2); opacity: .5; }
+.money-row .fl { position: absolute; top: 0; height: 16px; }
+.money-row .amt { font-variant-numeric: tabular-nums; font-size: 12px; color: var(--ink-2);
+  white-space: nowrap; }
+.money-row .amt b { color: var(--ink); }
+@media (max-width: 640px) {
+  .money-row { grid-template-columns: 1fr auto; grid-template-areas: "st amt" "tr tr"; gap: 2px 8px; }
+  .money-row .st { text-align: left; grid-area: st; }
+  .money-row .amt { grid-area: amt; text-align: right; }
+  .money-row .tr { grid-area: tr; }
+}

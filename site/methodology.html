@@ -17,7 +17,7 @@
 <meta name="twitter:description" content="How the forecast collects data: the daily agent, the validation layer, every source, the economic scoring, the simulation, and the honest limits.">
 <meta name="twitter:image" content="https://gh0stmahn-ai.github.io/assets/og.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23f6f5f1'/%3E%3Crect x='5' y='8' width='10' height='18' rx='2' fill='%232a78d6'/%3E%3Crect x='17' y='8' width='10' height='18' rx='2' fill='%23c74845'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="assets/style.css?v=24e5f616">
+<link rel="stylesheet" href="assets/style.css?v=9c3a4621">
 </head>
 <body>
 <header class="site-head"><div class="bar">
@@ -297,6 +297,10 @@
       as its own driver, <i>Model recalibration</i>, rather than being blamed on the data. What it cannot tell you is why the underlying number moved: it can
       say the generic ballot shifted a point and what that was worth, not what happened in the news
       to shift it.</li>
+    <li><b>It does not price in the money.</b> Every campaign's receipts and cash on hand are pulled
+      from the FEC's bulk file each run and shown on the <a href="senate.html">Senate page</a>.
+      Money leads rather than lags, which is exactly what makes it tempting, and exactly why it is
+      left out until somebody has measured what a cash advantage is actually worth.</li>
     <li><b>It does not price in the special elections.</b> Contested state legislative specials are
       collected every run and shown on the <a href="economy.html">inputs page</a>, measured against
       the same district's 2024 presidential margin. They are the most interesting number on this
@@ -332,9 +336,9 @@
     Forecast, not a prediction: read the <a href="methodology.html">methodology</a> first.</div>
 </div></footer>
 
-<script src="assets/app.js?v=24e5f616"></script>
+<script src="assets/app.js?v=9c3a4621"></script>
 <script>
-const PAGE_DATA = {"site":{"timestamp":"2026-09-17T10:38:52.696522+00:00","status":"success"},"backtest":{"cycles":["2012","2014","2016","2018","2020","2022","2024"],"full_cycles":["2018","2020","2022"],"races":1572,"competitive":600,"safe":972,"house":1446,"senate":126,"mean_abs_error_before":11.84,"mean_abs_error_after":5.21,"sd_before":16.57,"sd_after":6.57,"buckets":[{"rating":"tossup","n":240,"old":0.5,"fitted_house":0.8,"fitted_senate":1.5,"actual":0.9,"sd":5.8,"held":0.554},{"rating":"lean","n":171,"old":4.5,"fitted_house":7.0,"fitted_senate":8.5,"actual":7.5,"sd":5.2,"held":0.942},{"rating":"likely","n":189,"old":9.0,"fitted_house":11.0,"fitted_senate":12.5,"actual":11.4,"sd":6.1,"held":0.979},{"rating":"solid","n":972,"old":18.0,"fitted_house":33.0,"fitted_senate":26.0,"actual":32.8,"sd":16.2,"held":0.991}],"pvi_slopes":{"tossup":0.46,"lean":0.16,"likely":-0.05,"solid":1.72},"layers":{"national_bias":{"2012":1.25,"2014":-4.1,"2016":-5.21,"2018":2.55,"2020":-3.94,"2022":0.75,"2024":-1.12},"national_sd":2.82,"conditional_sd":4.74,"division_sd":0.0,"state_sd":2.29,"race_sd":4.15},"race_sd_by_rating":{"tossup":{"n":240,"conditional_sd":4.68,"race_sd":4.08},"lean":{"n":171,"conditional_sd":4.25,"race_sd":3.58},"likely":{"n":189,"conditional_sd":4.84,"race_sd":4.26},"solid":{"n":972,"conditional_sd":6.05,"race_sd":5.6}},"calibration":[{"n":75,"predicted":0.5306,"observed":0.4533},{"n":75,"predicted":0.5769,"observed":0.5867},{"n":75,"predicted":0.6271,"observed":0.7333},{"n":75,"predicted":0.8267,"observed":0.8933},{"n":75,"predicted":0.9021,"observed":0.96},{"n":75,"predicted":0.9464,"observed":0.96},{"n":75,"predicted":0.974,"observed":0.9867},{"n":75,"predicted":0.9832,"observed":0.9733}],"brier":0.1149}};
+const PAGE_DATA = {"site":{"timestamp":"2026-09-17T10:55:58.285567+00:00","status":"success"},"backtest":{"cycles":["2012","2014","2016","2018","2020","2022","2024"],"full_cycles":["2018","2020","2022"],"races":1572,"competitive":600,"safe":972,"house":1446,"senate":126,"mean_abs_error_before":11.84,"mean_abs_error_after":5.21,"sd_before":16.57,"sd_after":6.57,"buckets":[{"rating":"tossup","n":240,"old":0.5,"fitted_house":0.8,"fitted_senate":1.5,"actual":0.9,"sd":5.8,"held":0.554},{"rating":"lean","n":171,"old":4.5,"fitted_house":7.0,"fitted_senate":8.5,"actual":7.5,"sd":5.2,"held":0.942},{"rating":"likely","n":189,"old":9.0,"fitted_house":11.0,"fitted_senate":12.5,"actual":11.4,"sd":6.1,"held":0.979},{"rating":"solid","n":972,"old":18.0,"fitted_house":33.0,"fitted_senate":26.0,"actual":32.8,"sd":16.2,"held":0.991}],"pvi_slopes":{"tossup":0.46,"lean":0.16,"likely":-0.05,"solid":1.72},"layers":{"national_bias":{"2012":1.25,"2014":-4.1,"2016":-5.21,"2018":2.55,"2020":-3.94,"2022":0.75,"2024":-1.12},"national_sd":2.82,"conditional_sd":4.74,"division_sd":0.0,"state_sd":2.29,"race_sd":4.15},"race_sd_by_rating":{"tossup":{"n":240,"conditional_sd":4.68,"race_sd":4.08},"lean":{"n":171,"conditional_sd":4.25,"race_sd":3.58},"likely":{"n":189,"conditional_sd":4.84,"race_sd":4.26},"solid":{"n":972,"conditional_sd":6.05,"race_sd":5.6}},"calibration":[{"n":75,"predicted":0.5306,"observed":0.4533},{"n":75,"predicted":0.5769,"observed":0.5867},{"n":75,"predicted":0.6271,"observed":0.7333},{"n":75,"predicted":0.8267,"observed":0.8933},{"n":75,"predicted":0.9021,"observed":0.96},{"n":75,"predicted":0.9464,"observed":0.96},{"n":75,"predicted":0.974,"observed":0.9867},{"n":75,"predicted":0.9832,"observed":0.9733}],"brier":0.1149}};
 FC.init();
 (function () {
   var s = PAGE_DATA.site;
