@@ -29,7 +29,12 @@ web server or straight off disk with no CDN, no fetches and no libraries:
 1. **National environment** = generic-ballot polling average blended with
    a fundamentals estimate (midterm penalty + presidential approval + an
    economic index). Polls get more weight as Election Day nears (82% in
-   mid-September, rising to 95%).
+   mid-September, rising to 95%). The polling average is built here from
+   the individual polls by `pollavg.py` -- weighted by recency, sample size
+   and population, one reading per pollster per field period, each
+   pollster's standing lean measured across the cycle and subtracted, no
+   pollster over a fifth of the weight -- and comes with a standard error.
+   The published aggregators are kept as a cross-check, not as the source.
 2. **Race baselines** come from Cook Political Report ratings, converted
    to expected margins -- House: Solid 33 pts, Likely 11, Lean 7, Toss-up
    0.8; Senate: 26, 12.5, 8.5, 1.5 -- shifted by how far the environment
@@ -183,7 +188,8 @@ run_pipeline.py               model -> iterations/ snapshot
 build_site.py                 snapshots + templates -> site/
 refresh_economy.py            free economic refresh from public data series
 refresh_markets.py            free prediction market prices (shown, never blended)
-refresh_polls.py              free generic ballot + approval from Wikipedia aggregators
+refresh_polls.py              free generic ballot + approval from Wikipedia
+pollavg.py                    our own poll average: weighting and house effects
 refresh_senate_polls.py       free state polling for the competitive Senate races
 tools/fetch_pvi.py            one-time pull of Cook PVI for all 435 districts
 backtest/                     2018-2022 rebuild that fits and grades the constants

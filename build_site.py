@@ -685,6 +685,10 @@ def build_economy(snap):
 </section>
 
 <section>
+  <div class="card" id="pollavg"></div>
+</section>
+
+<section>
   <h2>How people judge the president</h2>
   <div class="grid3" id="political"></div>
 </section>
@@ -697,11 +701,13 @@ def build_economy(snap):
   <div class="grid3" id="indicators"></div>
 </section>
 """
+    ballot = json.loads((DATA_DIR / "generic_ballot_2026.json").read_text())
     data = {"site": site_meta(snap), "environment": snap["environment"],
-            "display": snap["fundamentals_display"]}
+            "display": snap["fundamentals_display"], "ballot": ballot}
     scripts = """
 FC.onRender(function () {
   FC.renderEnvironment("environment", PAGE_DATA.environment);
+  FC.renderPollAverage("pollavg", PAGE_DATA.ballot);
   FC.renderIndicators("indicators", "political", PAGE_DATA.display, PAGE_DATA.environment);
 });
 """
@@ -1363,14 +1369,34 @@ def build_methodology(snap):
   </div></div>
 
   <div class="step"><div class="n">2</div><div>
-    <h3>Collect the politics, which no one publishes as data</h3>
-    <p>Polling averages, rating changes and campaign news are not data series; they live on pages that have to be
-    read. Two things can do that. An AI refresh, one Claude conversation with web search, is given the current
-    contents of every data file and told to average two or three public trackers rather than lean on a single
-    poll, to change a race rating only with a cited rating change from a named forecaster, and to run a search
-    before any value it writes; its search budget and turn count are capped, so a confused run stops instead of
-    looping. Failing that, the generic ballot and approval can be typed into the run form by hand. Either way the
-    numbers land through the same validator, and the economy above refreshes regardless.</p>
+    <h3>Build the generic ballot from the polls themselves</h3>
+    <p><b>The most important input is now averaged here rather than copied.</b> It used to be an average of
+    the published aggregators, which is a decent number and a poor input: six aggregators reading mostly
+    the same polls is one set of polls counted six times with someone else's weights, each updated on its
+    own schedule, and arriving with no error bar at all.</p>
+
+    <p>Every individual poll on Wikipedia's maintained list is read instead, and the average is built where
+    the weighting can be seen: half weight at three weeks old, credit for sample size that stops paying out
+    after about seven thousand people, likely voters ahead of registered voters, one reading per pollster
+    per field period, and no single pollster allowed more than a fifth of the total. Each pollster's
+    standing lean is measured across the whole cycle and subtracted first, so a house that runs two points
+    Republican is corrected rather than either trusted or thrown away.</p>
+
+    <p>The last step is the one that matters most and is easiest to miss. A weighted average does not
+    describe today; it describes the middle of its own window, about a month back, and so it lags by
+    however far the race has travelled since. That is a bias, not noise, and shortening the window does not
+    fix it, it only trades the bias for a jumpier number. So a line is fitted through the polls and read off
+    at today's date, with its slope shrunk by its own significance and capped, so a genuinely moving race is
+    followed and a merely noisy one is not chased. What comes out is a number with a standard error
+    attached, and the published aggregators are shown next to it on the
+    <a href="economy.html">inputs page</a> as a cross-check rather than as the source. They currently
+    differ by about a point, which is the honest size of the disagreement between reasonable methods.</p>
+
+    <p>Race ratings and campaign news still have to be read rather than fetched. An AI refresh, one Claude
+    conversation with web search, can do that: it is given the current contents of every data file and told
+    to change a race rating only with a cited rating change from a named forecaster, and to run a search
+    before any value it writes; its search budget and turn count are capped, so a confused run stops
+    instead of looping. It is optional, and everything else runs without it.</p>
   </div></div>
 
   <div class="step"><div class="n">3</div><div>
@@ -1388,7 +1414,10 @@ def build_methodology(snap):
     <h3>Turn readings into a national environment</h3>
     <p>Polls and fundamentals are blended: today the generic ballot carries
     {int(env['poll_weight'] * 100)}% and the fundamentals estimate {int((1 - env['poll_weight']) * 100)}%, with the
-    poll share rising toward 95% by Election Day. The fundamentals estimate is the historical midterm penalty for
+    poll share rising toward 95% by Election Day. The polling average's own standard error is published but
+    deliberately not added to the simulation's error: the national miss was fitted against forecasts built
+    on inputs of the same kind, so that sampling noise is already inside the 2.9 points, and counting it
+    twice would widen the range on a technicality. The fundamentals estimate is the historical midterm penalty for
     the president's party, plus 0.2 points of margin for each point of net approval, plus up to 3 points from the
     economic index below.</p>
   </div></div>
