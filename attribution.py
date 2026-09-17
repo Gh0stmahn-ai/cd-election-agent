@@ -338,10 +338,41 @@ def _name(rating, lean):
         ("" if rating == "tossup" and not lean else f" {lean}")
 
 
+def _poll_margin(seat):
+    polling = seat.get("polling") or {}
+    return polling.get("poll_margin")
+
+
+def _env_moved(prev_snap, now_snap, points=0.05):
+    """Did the national environment itself actually change between two runs?
+
+    Worth asking before blaming it. A day where the model's own constants were
+    refitted moves every race without the environment moving at all, and
+    saying "the national environment" there is simply false -- visibly so,
+    because a uniform environment shift cannot move two races in opposite
+    directions, which a recalibration routinely does.
+    """
+    try:
+        return abs(now_snap["environment"]["dem_margin"]
+                   - prev_snap["environment"]["dem_margin"]) >= points
+    except (KeyError, TypeError):
+        return True
+
+
 def race_moves(prev_snap, now_snap, threshold=0.015):
-    """Senate races whose odds moved enough to be worth naming."""
-    before = {s["seat_id"]: s for s in prev_snap["senate"]["seats"]}
+    """Every race, either chamber, whose odds moved enough to be worth naming.
+
+    The reason is read off what actually differs between the two runs rather
+    than inferred from the size of the move: a re-rating, a shift in that
+    race's own polling average, a change in its news momentum, or, when none
+    of those moved, the national environment carrying it along with everything
+    else.
+    """
     out = []
+    carried = ("the national environment" if _env_moved(prev_snap, now_snap)
+               else "a change to the model itself")
+
+    before = {s["seat_id"]: s for s in prev_snap["senate"]["seats"]}
     for seat in now_snap["senate"]["seats"]:
         was = before.get(seat["seat_id"])
         if not was:
@@ -353,16 +384,46 @@ def race_moves(prev_snap, now_snap, threshold=0.015):
         if (was["rating"], was["lean"]) != (seat["rating"], seat["lean"]):
             reasons.append(f"re-rated {_name(was['rating'], was['lean'])} to "
                            f"{_name(seat['rating'], seat['lean'])}")
+        old_poll, new_poll = _poll_margin(was), _poll_margin(seat)
+        if old_poll is not None and new_poll is not None and abs(new_poll - old_poll) >= 0.25:
+            reasons.append("its own state polling")
+        elif old_poll is None and new_poll is not None:
+            reasons.append("a state polling average arriving")
         if abs(seat.get("atmospherics_adj", 0) - was.get("atmospherics_adj", 0)) >= 0.005:
             reasons.append("news momentum")
         if not reasons:
-            reasons.append("the national environment")
-        out.append({"seat_id": seat["seat_id"], "state": seat.get("state", seat["seat_id"][:2]),
+            reasons.append(carried)
+        out.append({"kind": "senate",
+                    "id": seat["seat_id"],
+                    "seat_id": seat["seat_id"], "state": seat.get("state", seat["seat_id"][:2]),
+                    "label": seat.get("state", seat["seat_id"][:2]) + " Senate",
                     "dem_candidate": seat.get("dem_candidate"),
                     "rep_candidate": seat.get("rep_candidate"),
                     "from": round(was["dem_win_prob"] * 100, 1),
                     "to": round(seat["dem_win_prob"] * 100, 1),
                     "shift": round(shift * 100, 1),
                     "why": " and ".join(reasons)})
+
+    was_probs = prev_snap["house"].get("district_probs") or {}
+    was_ratings = prev_snap["house"].get("district_ratings") or {}
+    now_ratings = now_snap["house"].get("district_ratings") or {}
+    for district, prob in (now_snap["house"].get("district_probs") or {}).items():
+        old = was_probs.get(district)
+        if old is None:
+            continue
+        shift = prob - old
+        if abs(shift) < threshold:
+            continue
+        a, b = was_ratings.get(district), now_ratings.get(district)
+        if a and b and a != b:
+            why = (f"re-rated {_name(CODE_RATING[a[0]], a[1])} to "
+                   f"{_name(CODE_RATING[b[0]], b[1])}")
+        else:
+            why = carried
+        out.append({"kind": "house", "id": district, "state": district.split("-")[0],
+                    "label": district,
+                    "from": round(old * 100, 1), "to": round(prob * 100, 1),
+                    "shift": round(shift * 100, 1), "why": why})
+
     out.sort(key=lambda r: -abs(r["shift"]))
     return out

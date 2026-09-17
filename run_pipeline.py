@@ -2,9 +2,11 @@
 Orchestrates one full pipeline iteration:
   data/*.json (refreshed by agent_run.py)
   -> model.run_simulation (national environment + 35 Senate races + 435 House
-     districts, 20,000 correlated Monte Carlo draws)
-  -> iterations/<timestamp>.json (+ latest.json), which build_dashboard.py
-     folds into dashboard.html.
+     districts, 100,000 correlated Monte Carlo draws)
+  -> iterations/<timestamp>.json (+ latest.json), which build_site.py folds
+     into the published pages
+  -> data/scenarios.json, the same model re-run across a range of national
+     environments so the site can answer "what would it take" offline.
 
 Each snapshot carries a status block (success / partial / failed + issues)
 so a stale or broken data refresh is visible instead of silently serving old
@@ -111,6 +113,20 @@ def run_iteration(seed=None):
         except Exception as e:  # noqa: BLE001 - a missing explanation is not a failed forecast
             status["issues"].append(f"could not attribute the change: {e}")
             print(f"  ! attribution skipped: {e}")
+
+    # The scenario grid: the same forecast re-run across a range of national
+    # environments so the site can answer "what would it take" without another
+    # server. Written beside the data rather than into the snapshot, because it
+    # is derived and every snapshot is embedded in the site ten times over.
+    try:
+        grid = model.scenario_grid()
+        (Path(__file__).parent / "data" / "scenarios.json").write_text(
+            json.dumps(grid, separators=(",", ":")))
+        print(f"Scenario grid: {len(grid['points'])} points, "
+              f"D{grid['points'][0]['env']:+.0f} to D{grid['points'][-1]['env']:+.0f}")
+    except Exception as e:  # noqa: BLE001 - the forecast does not depend on it
+        status["issues"].append(f"could not build the scenario grid: {e}")
+        print(f"  ! scenario grid skipped: {e}")
 
     out_path = ITER_DIR / f"{snapshot['timestamp'].replace(':', '-')}.json"
     out_path.write_text(json.dumps(snapshot, indent=1))

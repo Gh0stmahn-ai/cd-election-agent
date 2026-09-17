@@ -35,6 +35,7 @@ seat for control purposes.
 """
 
 import json
+import math
 from datetime import date, datetime, timezone
 from pathlib import Path
 
@@ -412,6 +413,101 @@ def pvi_adjustments(districts, pvi):
     return out
 
 
+SCENARIO_LO, SCENARIO_HI, SCENARIO_STEP = -8.0, 16.0, 1.0
+SCENARIO_SIMS = 40_000
+
+
+def scenario_grid(lo=SCENARIO_LO, hi=SCENARIO_HI, step=SCENARIO_STEP,
+                  n_sims=SCENARIO_SIMS, seed=SEED):
+    """The whole forecast, re-run across a range of national environments.
+
+    Every point uses the same random draws, so the curve is the model's
+    response to the environment and contains no simulation noise: moving one
+    point along the grid can only change an answer because the environment
+    changed. That is also why fewer draws are enough here than the published
+    forecast uses -- the comparison between points is what matters here, not
+    the level, and two points sharing draws differ by no simulation noise.
+
+    A browser can interpolate this table instantly, which is what turns "what
+    would Democrats need in the generic ballot" from a question someone has to
+    ask into one they can answer by dragging a slider.
+    """
+    env0 = national_environment()
+    w, prior = env0["poll_weight"], env0["fundamentals"]["prior_dem_margin"]
+    # Today's own environment is added to the grid, so the slider's starting
+    # position is the model evaluated there rather than interpolated between
+    # two neighbours. What is left between this page and the headline forecast
+    # is only the draw count.
+    values = []
+    value = lo
+    while value <= hi + 1e-9:
+        values.append(round(value, 2))
+        value += step
+    today = round(env0["dem_margin"], 2)
+    if lo < today < hi and today not in values:
+        values.append(today)
+    values.sort()
+
+    points, seen = [], set()
+    for value in values:
+        out = run_simulation(n_sims=n_sims, seed=seed, env_margin=value)
+        sen, hou = out["senate"], out["house"]
+        points.append({
+            "env": round(value, 2),
+            # The generic ballot that would produce this environment, since the
+            # environment is a blend and the ballot is the number people know.
+            "generic_ballot": round((value - (1 - w) * prior) / w, 2),
+            "senate_prob": sen["dem_control_prob"],
+            "house_prob": hou["dem_control_prob"],
+            "senate_seats": round(sen["mean_dem_seats"], 1),
+            "house_seats": round(hou["mean_dem_seats"], 1),
+            "senate_races": {s["seat_id"]: round(s["dem_win_prob"], 3) for s in sen["seats"]},
+            "house_races": {k: round(v, 3) for k, v in hou["district_probs"].items()},
+        })
+        for district, p in points[-1]["house_races"].items():
+            if 0.03 < p < 0.97:
+                seen.add(("h", district))
+
+    # All 35 Senate races are cheap to carry. The House is not: only districts
+    # that are in play somewhere on the grid are kept, because the other three
+    # hundred are 0 or 1 at every point and would treble the file.
+    h_keep = {k for kind, k in seen if kind == "h"}
+    for point in points:
+        point["house_races"] = {k: v for k, v in point["house_races"].items() if k in h_keep}
+
+    return {
+        "as_of": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "n_sims": n_sims,
+        "today": {"env": env0["dem_margin"], "generic_ballot": env0["generic_ballot"]},
+        "poll_weight": w,
+        "points": points,
+    }
+
+
+# How much of the national miss reaches a race, by chamber. A statewide race
+# is less exposed to a national polling error than a district is, which is why
+# the simulation scales the Senate's share of it.
+ENV_SENSITIVITY = {"house": 1.0, "senate": SENATE_ENV_SENSITIVITY}
+
+
+def _implied_prob(dem_margin, chamber, rating, days=None):
+    """The win probability a single margin implies, on its own.
+
+    The same spread the simulation uses -- this race's share of the national
+    miss, plus its own -- but read analytically rather than drawn, because the
+    point is to show what one source claims in isolation, not to re-run the
+    model with everything else deleted. Getting the national share wrong here
+    would put the rating's mark a point or two off its own simulated answer on
+    every race that has no polling, which is exactly where the two are
+    supposed to agree.
+    """
+    if dem_margin is None:
+        return None
+    nat = national_error_sd(days_to_election() if days is None else days)
+    sd = ((ENV_SENSITIVITY[chamber] * nat) ** 2 + TOTAL_SD[chamber][rating] ** 2) ** 0.5
+    return round(0.5 * (1 + math.erf(dem_margin / (sd * 2 ** 0.5))), 4)
+
+
 def tipping_point(margins, needed, chunk=20_000):
     """How often each race is the one that decides control.
 
@@ -436,9 +532,19 @@ def tipping_point(margins, needed, chunk=20_000):
     return np.bincount(out, minlength=races) / n
 
 
-def run_simulation(n_sims=N_SIMS, seed=SEED):
+def run_simulation(n_sims=N_SIMS, seed=SEED, env_margin=None):
+    """One full forecast.
+
+    env_margin replaces the national environment with a stated value, which is
+    what the scenario grid uses to ask "what would this look like if the
+    generic ballot were D+4 instead". Everything else -- ratings, polls,
+    atmospherics, the shape of the error -- is left exactly as it is, so the
+    answer is the model's, not a hand-drawn curve.
+    """
     rng = np.random.default_rng(seed)
     env = national_environment()
+    if env_margin is not None:
+        env = dict(env, dem_margin=round(float(env_margin), 2), hypothetical=True)
     E = env["dem_margin"]
     # The national miss is drawn from a Student t rather than a normal, rescaled
     # so the standard deviation is exactly the fitted one. The centre of the
@@ -560,6 +666,15 @@ def run_simulation(n_sims=N_SIMS, seed=SEED):
             "expected_margin": round(float(s_base[i]), 2),
             "dem_win_prob": round(float(s_win[:, i].mean()), 4),
             "tipping_prob": s_tipping.get(i, 0.0),
+            # What each source would say on its own, so the site can show the
+            # rating, the polls and the model on one scale instead of asking a
+            # reader to compare a margin against a probability.
+            "rating_prob": _implied_prob(s_poll_used[i]["rating_margin"], "senate", r["rating"])
+                           if s_poll_used[i] else _implied_prob(float(s_base[i]) - s_atmo[i]
+                                                                * ATMOSPHERICS_PTS_PER_PROB,
+                                                                "senate", r["rating"]),
+            "poll_prob": (_implied_prob(s_poll_used[i]["poll_margin"], "senate", r["rating"])
+                          if s_poll_used[i] and s_poll_used[i]["poll_margin"] is not None else None),
         })
 
     house_probs = {d["id"]: round(float(h_win[:, i].mean()), 4) for i, d in enumerate(dists)}
