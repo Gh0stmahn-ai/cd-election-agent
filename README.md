@@ -195,6 +195,7 @@ tools/fetch_pvi.py            one-time pull of Cook PVI for all 435 districts
 backtest/                     2018-2022 rebuild that fits and grades the constants
 refresh_attention.py          free Wikipedia readership per candidate (shown, never blended)
 refresh_specials.py           state legislative specials vs their 2024 baselines (shown, never blended)
+refresh_fec.py                campaign receipts and cash on hand from the FEC (shown, never blended)
 attribution.py                re-runs the model per input to explain each day's move
 data/scenarios.json           the forecast across a range of national environments
 backtest/report.py            grades model.py against seven past elections

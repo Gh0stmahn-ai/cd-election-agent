@@ -404,6 +404,16 @@ def build_senate(snap, attention=None, markets=None, snaps=None):
 </section>
 
 <section>
+  <h2>Who has the money</h2>
+  <p class="lede">Cash in the bank on each side, as a share of the two together, for the races
+    both sides are still contesting.</p>
+  <div class="card">
+    <div id="money-senate"></div>
+    <p class="note" id="money-senate-note"></p>
+  </div>
+</section>
+
+<section>
   <h2>Where control is actually decided</h2>
   <p class="lede">Not which race is closest, but which one the majority turns on.</p>
   <div class="card">
@@ -437,7 +447,8 @@ def build_senate(snap, attention=None, markets=None, snaps=None):
     for seat in senate["seats"]:
         seat["market_prob"] = prices.get(seat["seat_id"])
     data = {"attention": rows, "site": site_meta(snap), "senate": senate,
-            "history": race_history(snaps or []), "change": snap.get("change"), "geo": {"states": {
+            "history": race_history(snaps or []), "change": snap.get("change"),
+            "money": chamber_money("senate"), "geo": {"states": {
         k: {"d": v["d"], "cx": v["cx"], "cy": v["cy"]}
         for k, v in json.loads((GEO_DIR / "states.json").read_text())["states"].items()}}}
     scripts = """
@@ -456,6 +467,9 @@ FC.onRender(function () {
     (100 - s.percentiles["50"]) + "</b>, with 80% of simulations between <b>" +
     s.percentiles["10"] + "</b> and <b>" + s.percentiles["90"] + "</b> Democratic seats. " +
     "Hover any bar for the chance of at least that many.";
+  FC.renderMoney("money-senate", PAGE_DATA.money,
+    s.seats.filter(function (r) { return r.dem_win_prob > 0.02 && r.dem_win_prob < 0.98; }),
+    "money-senate-note", 12);
   FC.renderTipping("tip-senate", FC.senateTipping(s, 10), "tip-senate-note",
     "In every simulated election the races are lined up from most Democratic to least, and the one that " +
     "delivers the 51st seat is the one control turned on. A race can be a coin flip and still rarely be " +
@@ -897,6 +911,29 @@ def attention_rows(attention, snap):
         })
     rows.sort(key=lambda r: -r["total_daily"])
     return rows
+
+
+def load_json(name):
+    """One data file, or None when it has never been fetched."""
+    path = DATA_DIR / name
+    try:
+        return json.loads(path.read_text())
+    except (OSError, ValueError):
+        return None
+
+
+def chamber_money(chamber):
+    """The campaign-finance file, cut down to one chamber.
+
+    The whole file is five hundred races; a page that draws thirty-five of
+    them has no business carrying the other four hundred and sixty, least of
+    all one that is embedded in the site once per build.
+    """
+    data = load_json("money_2026.json")
+    if not data:
+        return None
+    return dict(data, races={k: v for k, v in data["races"].items()
+                             if v.get("chamber") == chamber})
 
 
 def load_markets():
@@ -1553,6 +1590,10 @@ def build_methodology(snap):
       as its own driver, <i>Model recalibration</i>, rather than being blamed on the data. What it cannot tell you is why the underlying number moved: it can
       say the generic ballot shifted a point and what that was worth, not what happened in the news
       to shift it.</li>
+    <li><b>It does not price in the money.</b> Every campaign's receipts and cash on hand are pulled
+      from the FEC's bulk file each run and shown on the <a href="senate.html">Senate page</a>.
+      Money leads rather than lags, which is exactly what makes it tempting, and exactly why it is
+      left out until somebody has measured what a cash advantage is actually worth.</li>
     <li><b>It does not price in the special elections.</b> Contested state legislative specials are
       collected every run and shown on the <a href="economy.html">inputs page</a>, measured against
       the same district's 2024 presidential margin. They are the most interesting number on this
