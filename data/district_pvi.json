@@ -1,8 +1,20 @@
 {
- "as_of": "2026-09-16",
- "source": "Cook Partisan Voting Index, via Wikipedia",
- "url": "https://en.wikipedia.org/wiki/Cook_Partisan_Voting_Index",
- "note": "Democratic-positive points. A district's presidential lean relative to the nation. Districts redrawn for 2026 may still carry their previous lines' index, which is the same limitation the House map already documents.",
+ "as_of": "2026-09-17",
+ "index": "Cook Partisan Voting Index, 2026 lines",
+ "note": "Democratic minus Republican, in points. Read from the per-state tables on Wikipedia's 2026 House elections article, which carry the index for the maps actually being used this year. A district absent from this file has no published index for its current lines, and the model gives it no partisan adjustment rather than a wrong one.",
+ "missing": [
+  "MO-1",
+  "MO-2",
+  "MO-3",
+  "MO-4",
+  "MO-5",
+  "MO-6",
+  "MO-7",
+  "MO-8"
+ ],
+ "sources": [
+  "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections"
+ ],
  "districts": {
   "AK-AL": -6.0,
   "AL-1": -17.0,
@@ -223,14 +235,6 @@
   "MN-6": -10.0,
   "MN-7": -18.0,
   "MN-8": -7.0,
-  "MO-1": 29.0,
-  "MO-2": -4.0,
-  "MO-3": -13.0,
-  "MO-4": -21.0,
-  "MO-5": 12.0,
-  "MO-6": -19.0,
-  "MO-7": -21.0,
-  "MO-8": -27.0,
   "MS-1": -18.0,
   "MS-2": 11.0,
   "MS-3": -14.0,
