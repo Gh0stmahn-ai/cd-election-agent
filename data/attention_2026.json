@@ -1,5 +1,5 @@
 {
- "as_of": "2026-09-17T00:53:45+00:00",
+ "as_of": "2026-09-17T10:38:51+00:00",
  "window": {
   "start": "2026-08-02",
   "end": "2026-09-16",
@@ -17,23 +17,23 @@
      "candidate": "Mary Peltola",
      "article": "Mary Peltola",
      "url": "https://en.wikipedia.org/wiki/Mary_Peltola",
-     "recent_daily": 2219,
-     "baseline_daily": 2264,
-     "surge": 0.98,
-     "days": 45
+     "recent_daily": 2296,
+     "baseline_daily": 2236,
+     "surge": 1.03,
+     "days": 46
     },
     "R": {
      "candidate": "Dan Sullivan",
      "article": "Dan Sullivan (U.S. senator)",
      "url": "https://en.wikipedia.org/wiki/Dan_Sullivan_%28U.S._senator%29",
-     "recent_daily": 850,
-     "baseline_daily": 1138,
-     "surge": 0.75,
-     "days": 45
+     "recent_daily": 872,
+     "baseline_daily": 1128,
+     "surge": 0.77,
+     "days": 46
     }
    },
-   "dem_share": 0.723,
-   "total_daily": 3069
+   "dem_share": 0.7247,
+   "total_daily": 3168
   },
   "GA-2026": {
    "state": "GA",
@@ -42,23 +42,23 @@
      "candidate": "Jon Ossoff",
      "article": "Jon Ossoff",
      "url": "https://en.wikipedia.org/wiki/Jon_Ossoff",
-     "recent_daily": 11912,
-     "baseline_daily": 18444,
-     "surge": 0.65,
-     "days": 45
+     "recent_daily": 13411,
+     "baseline_daily": 18169,
+     "surge": 0.74,
+     "days": 46
     },
     "R": {
      "candidate": "Mike Collins",
      "article": "Mike Collins (politician)",
      "url": "https://en.wikipedia.org/wiki/Mike_Collins_%28politician%29",
-     "recent_daily": 1170,
-     "baseline_daily": 1389,
-     "surge": 0.84,
-     "days": 45
+     "recent_daily": 1133,
+     "baseline_daily": 1385,
+     "surge": 0.82,
+     "days": 46
     }
    },
-   "dem_share": 0.9106,
-   "total_daily": 13082
+   "dem_share": 0.9221,
+   "total_daily": 14544
   },
   "IA-2026": {
    "state": "IA",
@@ -67,23 +67,23 @@
      "candidate": "Josh Turek",
      "article": "Josh Turek",
      "url": "https://en.wikipedia.org/wiki/Josh_Turek",
-     "recent_daily": 1606,
-     "baseline_daily": 1473,
-     "surge": 1.09,
-     "days": 45
+     "recent_daily": 1612,
+     "baseline_daily": 1469,
+     "surge": 1.1,
+     "days": 46
     },
     "R": {
      "candidate": "Ashley Hinson",
      "article": "Ashley Hinson",
      "url": "https://en.wikipedia.org/wiki/Ashley_Hinson",
-     "recent_daily": 1188,
-     "baseline_daily": 1219,
-     "surge": 0.97,
-     "days": 45
+     "recent_daily": 1257,
+     "baseline_daily": 1213,
+     "surge": 1.04,
+     "days": 46
     }
    },
-   "dem_share": 0.5748,
-   "total_daily": 2794
+   "dem_share": 0.5619,
+   "total_daily": 2869
   },
   "KS-2026": {
    "state": "KS",
@@ -92,10 +92,10 @@
      "candidate": "Roger Marshall",
      "article": "Roger Marshall",
      "url": "https://en.wikipedia.org/wiki/Roger_Marshall",
-     "recent_daily": 4513,
-     "baseline_daily": 927,
-     "surge": 4.87,
-     "days": 45
+     "recent_daily": 3551,
+     "baseline_daily": 1135,
+     "surge": 3.13,
+     "days": 46
     }
    }
   },
@@ -106,23 +106,23 @@
      "candidate": "Troy Jackson",
      "article": "Troy Jackson",
      "url": "https://en.wikipedia.org/wiki/Troy_Jackson",
-     "recent_daily": 1323,
-     "baseline_daily": 1993,
-     "surge": 0.66,
-     "days": 45
+     "recent_daily": 1199,
+     "baseline_daily": 1992,
+     "surge": 0.6,
+     "days": 46
     },
     "R": {
      "candidate": "Susan Collins",
      "article": "Susan Collins",
      "url": "https://en.wikipedia.org/wiki/Susan_Collins",
-     "recent_daily": 1355,
-     "baseline_daily": 1604,
-     "surge": 0.84,
-     "days": 45
+     "recent_daily": 1366,
+     "baseline_daily": 1603,
+     "surge": 0.85,
+     "days": 46
     }
    },
-   "dem_share": 0.494,
-   "total_daily": 2678
+   "dem_share": 0.4674,
+   "total_daily": 2565
   },
   "MI-2026": {
    "state": "MI",
@@ -131,23 +131,23 @@
      "candidate": "Abdul El-Sayed",
      "article": "Abdul El-Sayed",
      "url": "https://en.wikipedia.org/wiki/Abdul_El-Sayed",
-     "recent_daily": 14317,
-     "baseline_daily": 68597,
-     "surge": 0.21,
-     "days": 45
+     "recent_daily": 14970,
+     "baseline_daily": 67175,
+     "surge": 0.22,
+     "days": 46
     },
     "R": {
      "candidate": "Mike Rogers",
      "article": "Mike Rogers (Michigan politician)",
      "url": "https://en.wikipedia.org/wiki/Mike_Rogers_%28Michigan_politician%29",
-     "recent_daily": 3792,
-     "baseline_daily": 8227,
-     "surge": 0.46,
-     "days": 45
+     "recent_daily": 4244,
+     "baseline_daily": 8092,
+     "surge": 0.52,
+     "days": 46
     }
    },
-   "dem_share": 0.7906,
-   "total_daily": 18109
+   "dem_share": 0.7791,
+   "total_daily": 19214
   },
   "NC-2026": {
    "state": "NC",
@@ -156,23 +156,23 @@
      "candidate": "Roy Cooper",
      "article": "Roy Cooper",
      "url": "https://en.wikipedia.org/wiki/Roy_Cooper",
-     "recent_daily": 2151,
-     "baseline_daily": 1330,
-     "surge": 1.62,
-     "days": 45
+     "recent_daily": 2226,
+     "baseline_daily": 1337,
+     "surge": 1.67,
+     "days": 46
     },
     "R": {
      "candidate": "Michael Whatley",
      "article": "Michael Whatley",
      "url": "https://en.wikipedia.org/wiki/Michael_Whatley",
-     "recent_daily": 1683,
-     "baseline_daily": 948,
-     "surge": 1.77,
-     "days": 45
+     "recent_daily": 1870,
+     "baseline_daily": 957,
+     "surge": 1.95,
+     "days": 46
     }
    },
-   "dem_share": 0.561,
-   "total_daily": 3834
+   "dem_share": 0.5435,
+   "total_daily": 4096
   },
   "NH-2026": {
    "state": "NH",
@@ -181,23 +181,23 @@
      "candidate": "Chris Pappas",
      "article": "Chris Pappas (American politician)",
      "url": "https://en.wikipedia.org/wiki/Chris_Pappas_%28American_politician%29",
-     "recent_daily": 5833,
-     "baseline_daily": 1531,
-     "surge": 3.81,
-     "days": 45
+     "recent_daily": 3168,
+     "baseline_daily": 2026,
+     "surge": 1.56,
+     "days": 46
     },
     "R": {
      "candidate": "John E. Sununu",
      "article": "John E. Sununu",
      "url": "https://en.wikipedia.org/wiki/John_E._Sununu",
-     "recent_daily": 6035,
-     "baseline_daily": 1727,
-     "surge": 3.5,
-     "days": 45
+     "recent_daily": 2767,
+     "baseline_daily": 2338,
+     "surge": 1.18,
+     "days": 46
     }
    },
-   "dem_share": 0.4915,
-   "total_daily": 11868
+   "dem_share": 0.5338,
+   "total_daily": 5935
   },
   "OH-2026-special": {
    "state": "OH",
@@ -206,23 +206,23 @@
      "candidate": "Sherrod Brown",
      "article": "Sherrod Brown",
      "url": "https://en.wikipedia.org/wiki/Sherrod_Brown",
-     "recent_daily": 2656,
-     "baseline_daily": 1756,
-     "surge": 1.51,
-     "days": 45
+     "recent_daily": 2779,
+     "baseline_daily": 1759,
+     "surge": 1.58,
+     "days": 46
     },
     "R": {
      "candidate": "Jon Husted",
      "article": "Jon Husted",
      "url": "https://en.wikipedia.org/wiki/Jon_Husted",
-     "recent_daily": 2059,
-     "baseline_daily": 1426,
-     "surge": 1.44,
-     "days": 45
+     "recent_daily": 2040,
+     "baseline_daily": 1437,
+     "surge": 1.42,
+     "days": 46
     }
    },
-   "dem_share": 0.5633,
-   "total_daily": 4715
+   "dem_share": 0.5767,
+   "total_daily": 4819
   },
   "TX-2026": {
    "state": "TX",
@@ -231,23 +231,23 @@
      "candidate": "James Talarico",
      "article": "James Talarico",
      "url": "https://en.wikipedia.org/wiki/James_Talarico",
-     "recent_daily": 37496,
-     "baseline_daily": 10030,
-     "surge": 3.74,
-     "days": 45
+     "recent_daily": 38541,
+     "baseline_daily": 10153,
+     "surge": 3.8,
+     "days": 46
     },
     "R": {
      "candidate": "Ken Paxton",
      "article": "Ken Paxton",
      "url": "https://en.wikipedia.org/wiki/Ken_Paxton",
-     "recent_daily": 13989,
-     "baseline_daily": 4396,
-     "surge": 3.18,
-     "days": 45
+     "recent_daily": 14345,
+     "baseline_daily": 4486,
+     "surge": 3.2,
+     "days": 46
     }
    },
-   "dem_share": 0.7283,
-   "total_daily": 51485
+   "dem_share": 0.7288,
+   "total_daily": 52886
   }
  },
  "issues": []

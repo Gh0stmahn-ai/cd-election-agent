@@ -17,7 +17,7 @@
 <meta name="twitter:description" content="How the forecast collects data: the daily agent, the validation layer, every source, the economic scoring, the simulation, and the honest limits.">
 <meta name="twitter:image" content="https://gh0stmahn-ai.github.io/assets/og.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23f6f5f1'/%3E%3Crect x='5' y='8' width='10' height='18' rx='2' fill='%232a78d6'/%3E%3Crect x='17' y='8' width='10' height='18' rx='2' fill='%23c74845'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="assets/style.css?v=544ba0cc">
+<link rel="stylesheet" href="assets/style.css?v=24e5f616">
 </head>
 <body>
 <header class="site-head"><div class="bar">
@@ -57,14 +57,34 @@
   </div></div>
 
   <div class="step"><div class="n">2</div><div>
-    <h3>Collect the politics, which no one publishes as data</h3>
-    <p>Polling averages, rating changes and campaign news are not data series; they live on pages that have to be
-    read. Two things can do that. An AI refresh, one Claude conversation with web search, is given the current
-    contents of every data file and told to average two or three public trackers rather than lean on a single
-    poll, to change a race rating only with a cited rating change from a named forecaster, and to run a search
-    before any value it writes; its search budget and turn count are capped, so a confused run stops instead of
-    looping. Failing that, the generic ballot and approval can be typed into the run form by hand. Either way the
-    numbers land through the same validator, and the economy above refreshes regardless.</p>
+    <h3>Build the generic ballot from the polls themselves</h3>
+    <p><b>The most important input is now averaged here rather than copied.</b> It used to be an average of
+    the published aggregators, which is a decent number and a poor input: six aggregators reading mostly
+    the same polls is one set of polls counted six times with someone else's weights, each updated on its
+    own schedule, and arriving with no error bar at all.</p>
+
+    <p>Every individual poll on Wikipedia's maintained list is read instead, and the average is built where
+    the weighting can be seen: half weight at three weeks old, credit for sample size that stops paying out
+    after about seven thousand people, likely voters ahead of registered voters, one reading per pollster
+    per field period, and no single pollster allowed more than a fifth of the total. Each pollster's
+    standing lean is measured across the whole cycle and subtracted first, so a house that runs two points
+    Republican is corrected rather than either trusted or thrown away.</p>
+
+    <p>The last step is the one that matters most and is easiest to miss. A weighted average does not
+    describe today; it describes the middle of its own window, about a month back, and so it lags by
+    however far the race has travelled since. That is a bias, not noise, and shortening the window does not
+    fix it, it only trades the bias for a jumpier number. So a line is fitted through the polls and read off
+    at today's date, with its slope shrunk by its own significance and capped, so a genuinely moving race is
+    followed and a merely noisy one is not chased. What comes out is a number with a standard error
+    attached, and the published aggregators are shown next to it on the
+    <a href="economy.html">inputs page</a> as a cross-check rather than as the source. They currently
+    differ by about a point, which is the honest size of the disagreement between reasonable methods.</p>
+
+    <p>Race ratings and campaign news still have to be read rather than fetched. An AI refresh, one Claude
+    conversation with web search, can do that: it is given the current contents of every data file and told
+    to change a race rating only with a cited rating change from a named forecaster, and to run a search
+    before any value it writes; its search budget and turn count are capped, so a confused run stops
+    instead of looping. It is optional, and everything else runs without it.</p>
   </div></div>
 
   <div class="step"><div class="n">3</div><div>
@@ -82,7 +102,10 @@
     <h3>Turn readings into a national environment</h3>
     <p>Polls and fundamentals are blended: today the generic ballot carries
     84% and the fundamentals estimate 15%, with the
-    poll share rising toward 95% by Election Day. The fundamentals estimate is the historical midterm penalty for
+    poll share rising toward 95% by Election Day. The polling average's own standard error is published but
+    deliberately not added to the simulation's error: the national miss was fitted against forecasts built
+    on inputs of the same kind, so that sampling noise is already inside the 2.9 points, and counting it
+    twice would widen the range on a technicality. The fundamentals estimate is the historical midterm penalty for
     the president's party, plus 0.2 points of margin for each point of net approval, plus up to 3 points from the
     economic index below.</p>
   </div></div>
@@ -104,8 +127,10 @@
     exactly where the rater put it. How hard that nudge pushes is now measured rather than guessed, and it
     turns out to depend entirely on the rating: among safe seats the index moves the margin 1.7 points per
     point of index, among competitive ones about 0.2, which is inside the noise. A rater watching a race closely has already priced its
-    partisanship in; a rater who wrote a seat off as Solid has not. The ten states that redrew mid-decade
-    are excluded, because the published index still describes their old lines.</p>
+    partisanship in; a rater who wrote a seat off as Solid has not. A district is adjusted only where an
+    index exists for the lines it is actually being elected on, which is now 427 of 435; the
+    8 that have none keep their rating alone rather than borrow a number from a map that no
+    longer exists.</p>
 
     <p><b>Each race starts from its published rating</b>, converted to an expected margin: in the House,
     Solid 33 points, Likely 11, Lean 7, Toss-up 0.8 toward the party that holds it; in the Senate, 26, 12.5,
@@ -156,7 +181,7 @@
   <h2>Every input, and where it comes from</h2>
   <div class="card tbl-scroll"><table>
     <thead><tr><th>Input</th><th>What it is</th><th>Refresh</th><th>As of</th><th>Sources</th></tr></thead>
-    <tbody><tr><td><b>Generic congressional ballot</b></td><td>Average of 2 to 3 public trackers, Democratic minus Republican</td><td>Every day</td><td>2026-09-17</td><td><a href="https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections" target="_blank" rel="noopener">en.wikipedia.org</a></td></tr><tr><td><b>Presidential approval</b></td><td>Average of public approval aggregates, net approval feeds the model</td><td>Every day</td><td>2026-09-12</td><td><a href="https://en.wikipedia.org/wiki/Opinion_polling_on_the_second_Trump_presidency" target="_blank" rel="noopener">Wikipedia: opinion polling on the second Trump presidency</a></td></tr><tr><td><b>Gas price</b></td><td>$/gal, weight 18% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-09-14</td><td><a href="https://fred.stlouisfed.org/series/GASREGW" target="_blank" rel="noopener">U.S. Energy Information Administration (via FRED)</a></td></tr><tr><td><b>Oil (WTI)</b></td><td>Context only, not scored</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-09-15</td><td><a href="https://fred.stlouisfed.org/series/DCOILWTICO" target="_blank" rel="noopener">U.S. Energy Information Administration (via FRED)</a></td></tr><tr><td><b>Inflation (CPI)</b></td><td>% y/y, weight 18% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-08</td><td><a href="https://fred.stlouisfed.org/series/CPIAUCSL" target="_blank" rel="noopener">Bureau of Labor Statistics (via FRED)</a></td></tr><tr><td><b>Consumer sentiment</b></td><td>index, weight 18% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-08</td><td><a href="https://www.advisorperspectives.com/dshort/updates/2026/08/28/consumer-sentiment-falls-in-august" target="_blank" rel="noopener">Advisor Perspectives on UMich, Aug 2026</a></td></tr><tr><td><b>Real wage growth</b></td><td>% y/y, weight 10% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-08</td><td><a href="https://fred.stlouisfed.org/series/CES0500000003" target="_blank" rel="noopener">Bureau of Labor Statistics (via FRED)</a></td></tr><tr><td><b>Unemployment</b></td><td>%, weight 10% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-08</td><td><a href="https://fred.stlouisfed.org/series/UNRATE" target="_blank" rel="noopener">Bureau of Labor Statistics (via FRED)</a></td></tr><tr><td><b>GDP growth</b></td><td>% annualized, weight 8% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-Q2</td><td><a href="https://fred.stlouisfed.org/series/A191RL1Q225SBEA" target="_blank" rel="noopener">Bureau of Economic Analysis (via FRED)</a></td></tr><tr><td><b>30-yr mortgage rate</b></td><td>%, weight 7% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-09-10</td><td><a href="https://fred.stlouisfed.org/series/MORTGAGE30US" target="_blank" rel="noopener">Freddie Mac (via FRED)</a></td></tr><tr><td><b>10-yr Treasury yield</b></td><td>%, weight 3% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-09-15</td><td><a href="https://fred.stlouisfed.org/series/DGS10" target="_blank" rel="noopener">U.S. Treasury (via FRED)</a></td></tr><tr><td><b>S&P 500</b></td><td>index, weight 5% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-09-16</td><td><a href="https://fred.stlouisfed.org/series/SP500" target="_blank" rel="noopener">S&amp;P Dow Jones Indices (via FRED)</a></td></tr><tr><td><b>Senate race ratings</b></td><td>35 races, Cook Political Report</td><td>Checked daily, changed only on a cited rating change</td><td>2026-09-11</td><td><a href="https://www.cookpolitical.com/ratings/senate-race-ratings" target="_blank" rel="noopener">cookpolitical.com</a></td></tr><tr><td><b>House race ratings</b></td><td>435 districts, Cook Political Report</td><td>Checked daily, changed only on a cited rating change</td><td>2026-09-11</td><td><a href="https://www.cookpolitical.com/ratings/house-race-ratings" target="_blank" rel="noopener">cookpolitical.com</a></td></tr><tr><td><b>News momentum (Senate)</b></td><td>10 toss-up and lean races, capped at +/-0.08 win probability</td><td>Every day</td><td>2026-09-11</td><td>Cited in each race's entry in data/atmospherics_2026.json</td></tr><tr><td><b>State and district geometry</b></td><td>Natural Earth 1:50m state shapes; hexagon layout generated once</td><td>Fixed</td><td>2026-09-11</td><td><a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener">naturalearthdata.com</a> (public domain)</td></tr><tr><td><b>Candidate attention</b></td><td>Wikipedia article views for both candidates in 9 competitive races. <b>Displayed only, never blended into the forecast</b></td><td>Every run</td><td>2026-09-17</td><td><a href="https://wikimedia.org/api/rest_v1/" target="_blank" rel="noopener">Wikimedia REST API</a> &#183; <a href="senate.html">see the split</a></td></tr><tr><td><b>Betting market prices</b></td><td>Chamber control, seat counts, popular vote margin and Senate races. <b>Displayed only, never blended into the forecast</b></td><td>Every run</td><td>2026-09-17</td><td>Kalshi, Polymarket &#183; <a href="markets.html">see the comparison</a></td></tr></tbody>
+    <tbody><tr><td><b>Generic congressional ballot</b></td><td>Average of 2 to 3 public trackers, Democratic minus Republican</td><td>Every day</td><td>2026-09-17</td><td><a href="https://en.wikipedia.org/wiki/2026_United_States_elections" target="_blank" rel="noopener">en.wikipedia.org</a> · <a href="https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections" target="_blank" rel="noopener">en.wikipedia.org</a></td></tr><tr><td><b>Presidential approval</b></td><td>Average of public approval aggregates, net approval feeds the model</td><td>Every day</td><td>2026-09-12</td><td><a href="https://en.wikipedia.org/wiki/Opinion_polling_on_the_second_Trump_presidency" target="_blank" rel="noopener">Wikipedia: opinion polling on the second Trump presidency</a></td></tr><tr><td><b>Gas price</b></td><td>$/gal, weight 18% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-09-14</td><td><a href="https://fred.stlouisfed.org/series/GASREGW" target="_blank" rel="noopener">U.S. Energy Information Administration (via FRED)</a></td></tr><tr><td><b>Oil (WTI)</b></td><td>Context only, not scored</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-09-15</td><td><a href="https://fred.stlouisfed.org/series/DCOILWTICO" target="_blank" rel="noopener">U.S. Energy Information Administration (via FRED)</a></td></tr><tr><td><b>Inflation (CPI)</b></td><td>% y/y, weight 18% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-08</td><td><a href="https://fred.stlouisfed.org/series/CPIAUCSL" target="_blank" rel="noopener">Bureau of Labor Statistics (via FRED)</a></td></tr><tr><td><b>Consumer sentiment</b></td><td>index, weight 18% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-08</td><td><a href="https://www.advisorperspectives.com/dshort/updates/2026/08/28/consumer-sentiment-falls-in-august" target="_blank" rel="noopener">Advisor Perspectives on UMich, Aug 2026</a></td></tr><tr><td><b>Real wage growth</b></td><td>% y/y, weight 10% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-08</td><td><a href="https://fred.stlouisfed.org/series/CES0500000003" target="_blank" rel="noopener">Bureau of Labor Statistics (via FRED)</a></td></tr><tr><td><b>Unemployment</b></td><td>%, weight 10% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-08</td><td><a href="https://fred.stlouisfed.org/series/UNRATE" target="_blank" rel="noopener">Bureau of Labor Statistics (via FRED)</a></td></tr><tr><td><b>GDP growth</b></td><td>% annualized, weight 8% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-Q2</td><td><a href="https://fred.stlouisfed.org/series/A191RL1Q225SBEA" target="_blank" rel="noopener">Bureau of Economic Analysis (via FRED)</a></td></tr><tr><td><b>30-yr mortgage rate</b></td><td>%, weight 7% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-09-10</td><td><a href="https://fred.stlouisfed.org/series/MORTGAGE30US" target="_blank" rel="noopener">Freddie Mac (via FRED)</a></td></tr><tr><td><b>10-yr Treasury yield</b></td><td>%, weight 3% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-09-15</td><td><a href="https://fred.stlouisfed.org/series/DGS10" target="_blank" rel="noopener">U.S. Treasury (via FRED)</a></td></tr><tr><td><b>S&P 500</b></td><td>index, weight 5% of the economic index</td><td>Daily where the source updates daily, otherwise at each release</td><td>2026-09-16</td><td><a href="https://fred.stlouisfed.org/series/SP500" target="_blank" rel="noopener">S&amp;P Dow Jones Indices (via FRED)</a></td></tr><tr><td><b>Senate race ratings</b></td><td>35 races, Cook Political Report</td><td>Checked daily, changed only on a cited rating change</td><td>2026-09-11</td><td><a href="https://www.cookpolitical.com/ratings/senate-race-ratings" target="_blank" rel="noopener">cookpolitical.com</a></td></tr><tr><td><b>House race ratings</b></td><td>435 districts, Cook Political Report</td><td>Checked daily, changed only on a cited rating change</td><td>2026-09-11</td><td><a href="https://www.cookpolitical.com/ratings/house-race-ratings" target="_blank" rel="noopener">cookpolitical.com</a></td></tr><tr><td><b>News momentum (Senate)</b></td><td>10 toss-up and lean races, capped at +/-0.08 win probability</td><td>Every day</td><td>2026-09-11</td><td>Cited in each race's entry in data/atmospherics_2026.json</td></tr><tr><td><b>State and district geometry</b></td><td>Natural Earth 1:50m state shapes; hexagon layout generated once</td><td>Fixed</td><td>2026-09-11</td><td><a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener">naturalearthdata.com</a> (public domain)</td></tr><tr><td><b>Candidate attention</b></td><td>Wikipedia article views for both candidates in 9 competitive races. <b>Displayed only, never blended into the forecast</b></td><td>Every run</td><td>2026-09-17</td><td><a href="https://wikimedia.org/api/rest_v1/" target="_blank" rel="noopener">Wikimedia REST API</a> &#183; <a href="senate.html">see the split</a></td></tr><tr><td><b>Betting market prices</b></td><td>Chamber control, seat counts, popular vote margin and Senate races. <b>Displayed only, never blended into the forecast</b></td><td>Every run</td><td>2026-09-17</td><td>Kalshi, Polymarket &#183; <a href="markets.html">see the comparison</a></td></tr></tbody>
   </table></div>
 </section>
 
@@ -253,9 +278,11 @@
   <ul>
     <li><b>It does not poll districts.</b> District-level polling for 435 seats is not public, so the House forecast
       rests on published ratings plus the national environment, not on local surveys.</li>
-    <li><b>It does not draw 2026 district lines.</b> No public source publishes boundaries for the ten states that
-      redrew mid-decade, so the House map is a hexagon cartogram. Where a district sits inside its state is
-      schematic, and Florida's district numbers for safe seats under its May 2026 map are best-available.</li>
+    <li><b>It does not draw 2026 district lines.</b> No public source publishes boundaries for the ten states
+      that redrew mid-decade, so the House map is a hexagon cartogram. Where a district sits inside its state
+      is schematic, and Florida's district numbers for safe seats under its May 2026 map are best-available.
+      The partisan index for those new lines <i>is</i> published and is now used: only Missouri, whose 2026
+      index has not appeared, still runs on its rating alone.</li>
     <li><b>It does not treat the AI as an oracle.</b> The agent chooses which published figures to copy and writes a
       capped, cited judgment about campaign momentum in Senate races. It cannot invent a rating change, move a
       number outside its plausible range, or touch the model's math.</li>
@@ -270,6 +297,13 @@
       as its own driver, <i>Model recalibration</i>, rather than being blamed on the data. What it cannot tell you is why the underlying number moved: it can
       say the generic ballot shifted a point and what that was worth, not what happened in the news
       to shift it.</li>
+    <li><b>It does not price in the special elections.</b> Contested state legislative specials are
+      collected every run and shown on the <a href="economy.html">inputs page</a>, measured against
+      the same district's 2024 presidential margin. They are the most interesting number on this
+      site that the forecast ignores, and the reason is a coefficient: a swing of ten points in
+      off-cycle legislative races does not translate into ten points of House margin, and the only
+      honest way to learn what it does translate into is to fit it against past cycles. That has not
+      been done, so the number is published and left out.</li>
     <li><b>It does not mistake attention for support.</b> Wikipedia readership per candidate is
       collected every run and shown on the <a href="senate.html">Senate page</a>, because a race
       the country has suddenly started reading about is worth knowing. It is not an input: people
@@ -298,9 +332,9 @@
     Forecast, not a prediction: read the <a href="methodology.html">methodology</a> first.</div>
 </div></footer>
 
-<script src="assets/app.js?v=544ba0cc"></script>
+<script src="assets/app.js?v=24e5f616"></script>
 <script>
-const PAGE_DATA = {"site":{"timestamp":"2026-09-17T00:53:47.713086+00:00","status":"success"},"backtest":{"cycles":["2012","2014","2016","2018","2020","2022","2024"],"full_cycles":["2018","2020","2022"],"races":1572,"competitive":600,"safe":972,"house":1446,"senate":126,"mean_abs_error_before":11.84,"mean_abs_error_after":5.21,"sd_before":16.57,"sd_after":6.57,"buckets":[{"rating":"tossup","n":240,"old":0.5,"fitted_house":0.8,"fitted_senate":1.5,"actual":0.9,"sd":5.8,"held":0.554},{"rating":"lean","n":171,"old":4.5,"fitted_house":7.0,"fitted_senate":8.5,"actual":7.5,"sd":5.2,"held":0.942},{"rating":"likely","n":189,"old":9.0,"fitted_house":11.0,"fitted_senate":12.5,"actual":11.4,"sd":6.1,"held":0.979},{"rating":"solid","n":972,"old":18.0,"fitted_house":33.0,"fitted_senate":26.0,"actual":32.8,"sd":16.2,"held":0.991}],"pvi_slopes":{"tossup":0.46,"lean":0.16,"likely":-0.05,"solid":1.72},"layers":{"national_bias":{"2012":1.25,"2014":-4.1,"2016":-5.21,"2018":2.55,"2020":-3.94,"2022":0.75,"2024":-1.12},"national_sd":2.82,"conditional_sd":4.74,"division_sd":0.0,"state_sd":2.29,"race_sd":4.15},"race_sd_by_rating":{"tossup":{"n":240,"conditional_sd":4.68,"race_sd":4.08},"lean":{"n":171,"conditional_sd":4.25,"race_sd":3.58},"likely":{"n":189,"conditional_sd":4.84,"race_sd":4.26},"solid":{"n":972,"conditional_sd":6.05,"race_sd":5.6}},"calibration":[{"n":75,"predicted":0.5306,"observed":0.4533},{"n":75,"predicted":0.5769,"observed":0.5867},{"n":75,"predicted":0.6271,"observed":0.7333},{"n":75,"predicted":0.8267,"observed":0.8933},{"n":75,"predicted":0.9021,"observed":0.96},{"n":75,"predicted":0.9464,"observed":0.96},{"n":75,"predicted":0.974,"observed":0.9867},{"n":75,"predicted":0.9832,"observed":0.9733}],"brier":0.1149}};
+const PAGE_DATA = {"site":{"timestamp":"2026-09-17T10:38:52.696522+00:00","status":"success"},"backtest":{"cycles":["2012","2014","2016","2018","2020","2022","2024"],"full_cycles":["2018","2020","2022"],"races":1572,"competitive":600,"safe":972,"house":1446,"senate":126,"mean_abs_error_before":11.84,"mean_abs_error_after":5.21,"sd_before":16.57,"sd_after":6.57,"buckets":[{"rating":"tossup","n":240,"old":0.5,"fitted_house":0.8,"fitted_senate":1.5,"actual":0.9,"sd":5.8,"held":0.554},{"rating":"lean","n":171,"old":4.5,"fitted_house":7.0,"fitted_senate":8.5,"actual":7.5,"sd":5.2,"held":0.942},{"rating":"likely","n":189,"old":9.0,"fitted_house":11.0,"fitted_senate":12.5,"actual":11.4,"sd":6.1,"held":0.979},{"rating":"solid","n":972,"old":18.0,"fitted_house":33.0,"fitted_senate":26.0,"actual":32.8,"sd":16.2,"held":0.991}],"pvi_slopes":{"tossup":0.46,"lean":0.16,"likely":-0.05,"solid":1.72},"layers":{"national_bias":{"2012":1.25,"2014":-4.1,"2016":-5.21,"2018":2.55,"2020":-3.94,"2022":0.75,"2024":-1.12},"national_sd":2.82,"conditional_sd":4.74,"division_sd":0.0,"state_sd":2.29,"race_sd":4.15},"race_sd_by_rating":{"tossup":{"n":240,"conditional_sd":4.68,"race_sd":4.08},"lean":{"n":171,"conditional_sd":4.25,"race_sd":3.58},"likely":{"n":189,"conditional_sd":4.84,"race_sd":4.26},"solid":{"n":972,"conditional_sd":6.05,"race_sd":5.6}},"calibration":[{"n":75,"predicted":0.5306,"observed":0.4533},{"n":75,"predicted":0.5769,"observed":0.5867},{"n":75,"predicted":0.6271,"observed":0.7333},{"n":75,"predicted":0.8267,"observed":0.8933},{"n":75,"predicted":0.9021,"observed":0.96},{"n":75,"predicted":0.9464,"observed":0.96},{"n":75,"predicted":0.974,"observed":0.9867},{"n":75,"predicted":0.9832,"observed":0.9733}],"brier":0.1149}};
 FC.init();
 (function () {
   var s = PAGE_DATA.site;

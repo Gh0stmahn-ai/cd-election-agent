@@ -1,5 +1,5 @@
 {
- "as_of": "2026-09-17T00:52:49+00:00",
+ "as_of": "2026-09-17T10:37:53+00:00",
  "source": "Wikipedia per-race election articles",
  "half_life_days": 21,
  "max_age_days": 120,
@@ -26,7 +26,7 @@
     },
     {
      "label": "Silver Bulletin",
-     "margin": 1.2
+     "margin": 1.4
     }
    ],
    "rating": "tossup",
@@ -62,7 +62,7 @@
     },
     {
      "label": "Silver Bulletin",
-     "margin": 9.0
+     "margin": 9.1
     }
    ],
    "rating": "lean",
@@ -108,17 +108,17 @@
    "state": "ME",
    "dem_candidate": "Troy Jackson",
    "rep_candidate": "Susan Collins",
-   "dem_margin": 2.9,
+   "dem_margin": 2.7,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 2.3
+     "margin": 1.4
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 3.3
+     "margin": 3.2
     },
     {
      "label": "Race to the WH",
@@ -154,7 +154,7 @@
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 3.2
+     "margin": 3.0
     },
     {
      "label": "Race to the WH",
@@ -166,7 +166,7 @@
     },
     {
      "label": "Silver Bulletin",
-     "margin": 3.0
+     "margin": 3.1
     }
    ],
    "rating": "tossup",
@@ -176,7 +176,7 @@
    "state": "NC",
    "dem_candidate": "Roy Cooper",
    "rep_candidate": "Michael Whatley",
-   "dem_margin": 8.2,
+   "dem_margin": 8.3,
    "method": "mean of 6 aggregators",
    "n_used": 6,
    "detail": [
@@ -202,7 +202,7 @@
     },
     {
      "label": "Silver Bulletin",
-     "margin": 8.8
+     "margin": 8.9
     }
    ],
    "rating": "lean",
@@ -212,7 +212,7 @@
    "state": "NH",
    "dem_candidate": "Chris Pappas",
    "rep_candidate": "John E. Sununu",
-   "dem_margin": 3.7,
+   "dem_margin": 3.8,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
@@ -234,7 +234,7 @@
     },
     {
      "label": "Silver Bulletin",
-     "margin": 4.9
+     "margin": 5.0
     }
    ],
    "rating": "tossup",
@@ -270,7 +270,7 @@
     },
     {
      "label": "Silver Bulletin",
-     "margin": 4.1
+     "margin": 3.9
     }
    ],
    "rating": "tossup",

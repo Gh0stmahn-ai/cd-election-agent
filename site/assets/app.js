@@ -32,7 +32,17 @@ function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function 
 function fmtDate(iso, withTime) {
   var opts = {month: "short", day: "numeric", year: "numeric", timeZone: "America/New_York"};
   if (withTime) { opts.hour = "numeric"; opts.minute = "2-digit"; }
-  return new Date(iso).toLocaleString("en-US", opts) + (withTime ? " ET" : "");
+  /* A bare YYYY-MM-DD parses as UTC midnight, which is the previous evening in
+     Eastern time, so a poll that finished on the 15th would be printed as the
+     14th. Anchoring a date-only string at midday puts it safely inside its
+     own day in any US zone. */
+  var when = /^\d{4}-\d{2}-\d{2}$/.test(String(iso)) ? iso + "T12:00:00Z" : iso;
+  return new Date(when).toLocaleString("en-US", opts) + (withTime ? " ET" : "");
+}
+function titleCase(text) {
+  return String(text).replace(/\b([a-z])([a-z'&.-]*)/g, function (_, a, b) {
+    return a.toUpperCase() + b;
+  });
 }
 function luminance(hex) {
   var h = hex.replace("#", ""), i, out = 0, w = [0.2126, 0.7152, 0.0722];
@@ -975,7 +985,7 @@ function renderRibbon(hostId, change, kind, limit) {
     return (r.kind || "senate") === kind;
   });
   if (!races.length) {
-    host.innerHTML = '<div class="ribbon"><span class="lead">No race moved more than a point ' +
+    host.innerHTML = '<div class="ribbon"><span class="quiet">No race moved more than a point ' +
       'and a half since ' + esc(fmtDate(change.from)) + ".</span></div>";
     return;
   }
@@ -1114,6 +1124,168 @@ function bindRulers(root, race) {
     }, present[0]);
   });
   bindTip(track, function () { return describe(nearest); });
+}
+
+/* -------------------------------------------------- special elections */
+/* One dot per contested special election, placed by how far its result ran
+   from the same district's 2024 presidential margin. Diverging blue and red
+   on a neutral zero, because the measure genuinely has a direction: a dot to
+   the right is a district that moved toward the Democrats. The dots are
+   stacked into lanes rather than jittered randomly, so the shape of the
+   distribution is readable and the picture does not change between renders. */
+function renderSpecials(svgId, data, noteId) {
+  var svg = $(svgId); if (!svg || !data || !data.races || !data.races.length) return;
+  clear(svg);
+  var W = 560, m = {l: 14, r: 14, t: 26, b: 42}, r = 5.5;
+  var swings = data.races.map(function (q) { return q.swing; });
+  var lo = Math.min(-5, Math.floor(Math.min.apply(null, swings) / 5) * 5);
+  var hi = Math.max(5, Math.ceil(Math.max.apply(null, swings) / 5) * 5);
+  var x = function (v) { return m.l + (v - lo) / (hi - lo) * (W - m.l - m.r); };
+
+  /* Lanes are assigned before anything is drawn so the box can be exactly as
+     tall as the stack needs. A fixed height either wastes half the card when
+     the results are spread out or clips the pile when they are not. */
+  var sorted = data.races.slice().sort(function (a, b) { return a.swing - b.swing; });
+  var used = [], placed = [];
+  sorted.forEach(function (race) {
+    var cx = x(race.swing), lane = 0;
+    while (used[lane] !== undefined && cx - used[lane] < r * 2 + 1) lane++;
+    used[lane] = cx;
+    placed.push({race: race, cx: cx, lane: lane});
+  });
+  var H = m.t + m.b + (used.length + 1) * (r * 2 + 1) + 6;
+  svg.setAttribute("viewBox", "0 0 " + W + " " + H.toFixed(0));
+
+  for (var g = Math.ceil(lo / 10) * 10; g <= hi; g += 10) {
+    el("line", {x1: x(g), x2: x(g), y1: m.t, y2: H - m.b, "class": "gridline"}, svg);
+    el("text", {x: x(g), y: H - m.b + 15, "text-anchor": "middle"}, svg).textContent =
+      (g > 0 ? "+" : "") + g;
+  }
+  el("line", {x1: x(0), x2: x(0), y1: m.t - 10, y2: H - m.b + 2,
+    stroke: css("--ink"), "stroke-width": 1.4}, svg);
+  el("text", {x: x(0), y: m.t - 14, "text-anchor": "middle",
+    style: "fill:var(--ink-2);font-size:11px"}, svg).textContent = "matched 2024";
+
+  placed.forEach(function (slot) {
+    var race = slot.race, cx = slot.cx;
+    var cy = H - m.b - 8 - slot.lane * (r * 2 + 1);
+    var dot = el("circle", {cx: cx.toFixed(1), cy: cy.toFixed(1), r: r,
+      fill: css(race.swing >= 0 ? "--dem" : "--rep"),
+      stroke: css("--surface"), "stroke-width": 1.5}, svg);
+    bindTip(dot, function () {
+      return "<b>" + esc(race.seat) + "</b><br>" + fmtDate(race.date) +
+        "<br>Result " + margin(race.margin) + ", 2024 presidential " + margin(race.pres_margin) +
+        "<br><b>" + signed(race.swing, 1) + "</b> toward the " +
+        (race.swing >= 0 ? "Democrats" : "Republicans") +
+        (race.flip ? "<br>The seat changed hands." : "");
+    });
+  });
+
+  var med = x(data.median_swing);
+  el("line", {x1: med, x2: med, y1: m.t, y2: H - m.b,
+    stroke: css("--ink-2"), "stroke-width": 1.5, "stroke-dasharray": "4 3"}, svg);
+  el("text", {x: med + 5, y: m.t + 10, style: "fill:var(--ink-2);font-size:11px"}, svg)
+    .textContent = "median " + signed(data.median_swing, 1);
+
+  el("text", {x: W / 2, y: H - 6, "text-anchor": "middle"}, svg).textContent =
+    "Points better or worse than the district's 2024 presidential margin";
+
+  if (noteId && $(noteId)) {
+    var q = (data.by_quarter || []).filter(function (b) { return b.n >= 3; })
+      .map(function (b) { return b.period + " " + signed(b.median, 1) + " (" + b.n + ")"; })
+      .join(" &middot; ");
+    $(noteId).innerHTML =
+      "<b>" + data.dem_ahead + " of " + data.n + "</b> contested specials have run ahead of the " +
+      "2024 baseline for Democrats, by a median of <b>" + signed(data.median_swing, 1) +
+      "</b> and <b>" + signed(data.weighted_swing, 1) + "</b> weighted by turnout. " +
+      data.flips_to_d + " seats have changed hands to the Democrats and " + data.flips_to_r +
+      " to the Republicans, with " + data.upcoming + " specials still to come." +
+      (q ? " By quarter: " + q + "." : "") +
+      " This is shown here and is <b>not part of the forecast</b>: turning a swing into a " +
+      "forecast needs a coefficient, and the only honest way to get one is to fit it against " +
+      "past cycles, which has not been done yet.";
+  }
+}
+
+/* ------------------------------------------------------- poll average */
+/* The generic ballot, shown as the polls it is made of rather than as a
+   number someone has to take on trust. Three things a reader should be able
+   to check: how many polls, how far apart they are, and what was subtracted
+   from each pollster before averaging. */
+function renderPollAverage(hostId, ballot) {
+  var host = $(hostId); if (!host) return;
+  var d = ballot && ballot.detail;
+  if (!d) { host.innerHTML = ""; return; }
+  var agg = d.aggregators;
+
+  var html = '<div class="chamber-label">How the generic ballot is built</div>' +
+    '<div class="pollavg-top">' +
+    '<div class="cell"><div class="cap">This model</div><div class="big" style="color:' +
+      css(ballot.dem_margin_points >= 0 ? "--dem" : "--rep") + '">' +
+      margin(ballot.dem_margin_points) + '</div><div class="sub">&plusmn; ' +
+      d.stderr.toFixed(1) + " on " + d.n_polls + " polls</div></div>" +
+    '<div class="cell"><div class="cap">Published aggregators</div><div class="big" style="color:' +
+      (agg ? css(agg.margin >= 0 ? "--dem" : "--rep") : "var(--muted)") + '">' +
+      (agg ? margin(agg.margin) : "&mdash;") + "</div><div class=\"sub\">" +
+      (agg ? agg.n_aggregators + " of them, for comparison" : "not available today") + "</div></div>" +
+    '<div class="cell"><div class="cap">Spread between polls</div><div class="big">' +
+      d.spread.toFixed(1) + '</div><div class="sub">points, ' + d.n_pollsters +
+      " pollsters</div></div>" +
+    "</div>";
+
+  if (d.flat !== undefined) {
+    html += '<p class="note" style="margin:2px 0 0">The polls in the window average <b>' +
+      margin(d.flat) + "</b>, but that is where the race was about " + Math.round(d.mean_age_days) +
+      " days ago, which is where the weights sit. The line through them puts today at <b>" +
+      margin(ballot.dem_margin_points) + "</b>" +
+      (Math.abs(d.trend_per_week) >= 0.05
+        ? ", a move of " + signed(d.trend_per_week, 2) + " a week"
+        : ", with no trend worth speaking of") + ".</p>";
+  }
+
+  if (d.house_effects && d.house_effects.length) {
+    var max = Math.max.apply(null, d.house_effects.map(function (e) { return Math.abs(e.effect); }));
+    html += '<div class="chamber-label" style="margin-top:14px">What was taken out first</div>' +
+      '<p class="note" style="margin:0 0 6px">Each pollster\'s standing lean against the rest of the ' +
+      'field, measured over the whole cycle and subtracted before averaging. A house that leans ' +
+      'Republican is not wrong, it is just consistently offset, and averaging it in raw would ' +
+      'import that offset.</p><div>';
+    d.house_effects.forEach(function (e) {
+      var w = Math.min(Math.abs(e.effect) / max, 1) * 50;
+      html += '<div class="he"><span class="nm">' + esc(e.pollster) + '</span>' +
+        '<span class="tr"><span class="zero"></span>' +
+        '<span class="fl" style="background:' + css(e.effect >= 0 ? "--dem" : "--rep") +
+        ";width:" + Math.max(w, 1).toFixed(1) + "%;" + (e.effect >= 0 ? "left:50%" : "right:50%") +
+        '"></span></span><span class="v" style="color:' + css(e.effect >= 0 ? "--dem" : "--rep") +
+        '">' + signed(e.effect, 1) + "</span></div>";
+    });
+    html += "</div>";
+  }
+
+  if (d.recent && d.recent.length) {
+    var top = Math.max.apply(null, d.recent.map(function (p) { return p.weight; })) || 1;
+    html += '<div class="chamber-label" style="margin-top:14px">The most recent polls</div>' +
+      '<div class="tbl-scroll"><table class="polltable"><thead><tr><th>Pollster</th>' +
+      '<th class="hide-sm">Dates</th><th class="hide-sm">Sample</th><th>Raw</th>' +
+      '<th>Adjusted</th><th>Weight</th></tr></thead><tbody>';
+    d.recent.forEach(function (p) {
+      html += "<tr><td class=\"name\">" + esc(p.source) + "</td>" +
+        '<td class="hide-sm" style="color:var(--muted)">' + esc(fmtDate(p.date)) + "</td>" +
+        '<td class="hide-sm" style="color:var(--muted)">' +
+          (p.n ? Number(p.n).toLocaleString() : "&mdash;") +
+          (p.population ? " " + esc(p.population) : "") + "</td>" +
+        "<td>" + margin(p.margin) + "</td>" +
+        '<td style="color:' + css(p.adjusted >= 0 ? "--dem" : "--rep") + '">' +
+          margin(p.adjusted) + "</td>" +
+        '<td><span class="wbar" style="width:' + (p.weight / top * 46 + 2).toFixed(1) + 'px"></span></td></tr>';
+    });
+    html += "</tbody></table></div>";
+  }
+
+  html += '<p class="note">' + esc(d.method) + " Weights are shown relative to the heaviest poll. " +
+    "The standard error is how precise the average is, not how wrong the polls might be on " +
+    "Election Day; that second number is much larger and lives in the simulation.</p>";
+  host.innerHTML = html;
 }
 
 /* ----------------------------------------------------------- scenarios */
@@ -1435,14 +1607,14 @@ function init() {
 
 global.FC = {
   init: init, onRender: onRender, $: $, esc: esc, pct: pct, pct1: pct1, signed: signed, margin: margin,
-  fmtDate: fmtDate, css: css, binColor: binColor, legendBins: legendBins, headlineFor: headlineFor,
+  fmtDate: fmtDate, titleCase: titleCase, css: css, binColor: binColor, legendBins: legendBins, headlineFor: headlineFor,
   renderHero: renderHero, renderJoint: renderJoint, renderHemicycle: renderHemicycle, renderHistogram: renderHistogram,
   renderSenateMap: renderSenateMap, renderWatch: renderWatch, renderSenateTable: renderSenateTable,
   renderHouseMap: renderHouseMap, renderHouseTable: renderHouseTable, renderEnvironment: renderEnvironment,
   renderIndicators: renderIndicators, renderTrend: renderTrend,
   renderMarketCompare: renderMarketCompare, renderPairedBars: renderPairedBars,
   renderMarketRaces: renderMarketRaces, renderAttention: renderAttention, renderStory: renderStory, renderMarketStrip: renderMarketStrip, renderMarginBins: renderMarginBins,
-  raceRuler: raceRuler, bindRulers: bindRulers, renderRibbon: renderRibbon, sparkline: sparkline,
+  renderPollAverage: renderPollAverage, renderSpecials: renderSpecials, raceRuler: raceRuler, bindRulers: bindRulers, renderRibbon: renderRibbon, sparkline: sparkline,
   renderCalibration: renderCalibration, renderScenarios: renderScenarios,
   scnCrossing: scnCrossing, scnLookup: scnLookup, renderTipping: renderTipping, senateTipping: senateTipping, houseTipping: houseTipping,
   senateSeatDots: senateSeatDots, houseSeatDots: houseSeatDots, STATE_NAMES: STATE_NAMES, ELECTION: ELECTION
