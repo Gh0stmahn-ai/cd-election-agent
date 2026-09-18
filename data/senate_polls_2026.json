@@ -1,5 +1,5 @@
 {
- "as_of": "2026-09-17T19:35:50+00:00",
+ "as_of": "2026-09-18T18:55:40+00:00",
  "source": "Wikipedia per-race election articles",
  "half_life_days": 21,
  "max_age_days": 120,
@@ -184,29 +184,29 @@
    "state": "NC",
    "dem_candidate": "Roy Cooper",
    "rep_candidate": "Michael Whatley",
-   "dem_margin": 8.3,
+   "dem_margin": 9.0,
    "method": "mean of 6 aggregators",
    "n_used": 6,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 8.4
-    },
-    {
-     "label": "Decision Desk HQ",
-     "margin": 7.7
-    },
-    {
-     "label": "FiftyPlusOne",
      "margin": 8.8
     },
     {
+     "label": "Decision Desk HQ",
+     "margin": 9.1
+    },
+    {
+     "label": "FiftyPlusOne",
+     "margin": 9.1
+    },
+    {
      "label": "Race to the WH",
-     "margin": 7.9
+     "margin": 9.5
     },
     {
      "label": "RealClearPolitics",
-     "margin": 7.8
+     "margin": 8.8
     },
     {
      "label": "Silver Bulletin",
@@ -220,17 +220,21 @@
    "state": "NH",
    "dem_candidate": "Chris Pappas",
    "rep_candidate": "John E. Sununu",
-   "dem_margin": 3.8,
-   "method": "mean of 5 aggregators",
-   "n_used": 5,
+   "dem_margin": 3.9,
+   "method": "mean of 6 aggregators",
+   "n_used": 6,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 1.7
+     "margin": 3.3
     },
     {
      "label": "Decision Desk HQ",
      "margin": 3.9
+    },
+    {
+     "label": "FiftyPlusOne",
+     "margin": 2.2
     },
     {
      "label": "Race to the WH",
@@ -238,7 +242,7 @@
     },
     {
      "label": "RealClearPolitics",
-     "margin": 4.0
+     "margin": 4.8
     },
     {
      "label": "Silver Bulletin",

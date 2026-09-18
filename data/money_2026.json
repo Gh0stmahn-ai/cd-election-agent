@@ -1,5 +1,5 @@
 {
- "as_of": "2026-09-17",
+ "as_of": "2026-09-18",
  "latest_report": "2026-06-30",
  "n_races": 470,
  "note": "Best-funded Democrat and Republican in each race, from the FEC's bulk candidate summaries. Cash on hand is as of each campaign's last filed report, so races differ by a few weeks. Shown on this site and not fed into the forecast.",
@@ -853,15 +853,15 @@
     "name": "Huffman, Jared",
     "incumbent": true,
     "receipts": 978277,
-    "spent": 886964,
-    "cash": 1075956,
+    "spent": 886217,
+    "cash": 1076703,
     "debts": 2131,
     "as_of": "2026-06-30",
     "named": false
    },
    "rep": null,
    "dem_cash_share": 1.0,
-   "cash_gap": 1075956
+   "cash_gap": 1076703
   },
   "CA-20": {
    "chamber": "house",
