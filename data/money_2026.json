@@ -1,5 +1,5 @@
 {
- "as_of": "2026-09-18",
+ "as_of": "2026-09-19",
  "latest_report": "2026-06-30",
  "n_races": 470,
  "note": "Best-funded Democrat and Republican in each race, from the FEC's bulk candidate summaries. Cash on hand is as of each campaign's last filed report, so races differ by a few weeks. Shown on this site and not fed into the forecast.",
@@ -9339,9 +9339,9 @@
    "dem": {
     "name": "Nair, Mark",
     "incumbent": false,
-    "receipts": 98699,
-    "spent": 87889,
-    "cash": 10909,
+    "receipts": 101896,
+    "spent": 87979,
+    "cash": 14017,
     "debts": 0,
     "as_of": "2026-06-30",
     "named": false
@@ -9356,8 +9356,8 @@
     "as_of": "2026-06-30",
     "named": false
    },
-   "dem_cash_share": 0.002,
-   "cash_gap": -5399892
+   "dem_cash_share": 0.0026,
+   "cash_gap": -5396784
   },
   "TX-14": {
    "chamber": "house",
