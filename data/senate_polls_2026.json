@@ -1,5 +1,5 @@
 {
- "as_of": "2026-09-19T18:28:08+00:00",
+ "as_of": "2026-09-20T18:32:18+00:00",
  "source": "Wikipedia per-race election articles",
  "half_life_days": 21,
  "max_age_days": 120,
@@ -76,13 +76,13 @@
    "state": "IA",
    "dem_candidate": "Josh Turek",
    "rep_candidate": "Ashley Hinson",
-   "dem_margin": -0.4,
+   "dem_margin": -0.3,
    "method": "mean of 6 aggregators",
    "n_used": 6,
    "detail": [
     {
      "label": "270toWin",
-     "margin": -2.0
+     "margin": -1.6
     },
     {
      "label": "Decision Desk HQ",
@@ -90,15 +90,15 @@
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 0.3
+     "margin": 0.5
     },
     {
      "label": "Race to the WH",
-     "margin": 0.2
+     "margin": 0.3
     },
     {
      "label": "RealClearPolitics",
-     "margin": -1.1
+     "margin": -1.3
     },
     {
      "label": "Silver Bulletin",
