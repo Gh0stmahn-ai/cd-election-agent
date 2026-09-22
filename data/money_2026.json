@@ -1,5 +1,5 @@
 {
- "as_of": "2026-09-21",
+ "as_of": "2026-09-22",
  "latest_report": "2026-06-30",
  "n_races": 470,
  "note": "Best-funded Democrat and Republican in each race, from the FEC's bulk candidate summaries. Cash on hand is as of each campaign's last filed report, so races differ by a few weeks. Shown on this site and not fed into the forecast.",
@@ -5898,7 +5898,7 @@
     "receipts": 1303394,
     "spent": 801193,
     "cash": 502201,
-    "debts": 246238,
+    "debts": 209089,
     "as_of": "2026-06-30",
     "named": false
    },

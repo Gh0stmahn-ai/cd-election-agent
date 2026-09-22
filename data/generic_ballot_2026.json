@@ -1,17 +1,17 @@
 {
- "as_of": "2026-09-21",
- "dem_margin_points": 7.32,
- "note": "Our own average of 30 individual polls from 21 pollsters, 2026-07-24 to 2026-09-17, plus or minus 0.8. Published aggregators say D+7.6",
+ "as_of": "2026-09-22",
+ "dem_margin_points": 7.34,
+ "note": "Our own average of 30 individual polls from 21 pollsters, 2026-07-24 to 2026-09-17, plus or minus 0.8. Published aggregators say D+7.9",
  "sources": [
   "https://en.wikipedia.org/wiki/2026_United_States_elections",
   "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections"
  ],
  "detail": {
-  "stderr": 0.82,
+  "stderr": 0.84,
   "spread": 2.15,
   "flat": 6.77,
   "trend_per_week": 0.14,
-  "mean_age_days": 27.5,
+  "mean_age_days": 28.5,
   "n_polls": 30,
   "n_effective": 19.8,
   "n_pollsters": 21,
@@ -75,8 +75,8 @@
     "n": 1007,
     "population": "LV",
     "margin": 6.0,
-    "adjusted": 6.23,
-    "weight": 0.983
+    "adjusted": 6.22,
+    "weight": 0.951
    },
    {
     "source": "Big Data Poll/Public Polling Project",
@@ -85,7 +85,7 @@
     "population": "LV",
     "margin": 11.0,
     "adjusted": 9.56,
-    "weight": 1.488
+    "weight": 1.44
    },
    {
     "source": "Napolitan News/RMG Research",
@@ -94,7 +94,7 @@
     "population": "RV",
     "margin": 8.0,
     "adjusted": 7.65,
-    "weight": 1.167
+    "weight": 1.129
    },
    {
     "source": "The Rainey Center",
@@ -103,7 +103,7 @@
     "population": "RV",
     "margin": 6.0,
     "adjusted": 6.74,
-    "weight": 0.8
+    "weight": 0.774
    },
    {
     "source": "CBS News / YouGov",
@@ -112,7 +112,7 @@
     "population": "LV",
     "margin": 8.0,
     "adjusted": 7.81,
-    "weight": 1.063
+    "weight": 1.029
    },
    {
     "source": "Catawba College / YouGov",
@@ -121,7 +121,7 @@
     "population": "LV",
     "margin": 11.0,
     "adjusted": 10.01,
-    "weight": 0.664
+    "weight": 0.642
    },
    {
     "source": "Harvard / Harris Poll / HarrisX",
@@ -130,7 +130,7 @@
     "population": "LV",
     "margin": -2.0,
     "adjusted": 0.82,
-    "weight": 0.784
+    "weight": 0.758
    },
    {
     "source": "Emerson College",
@@ -139,7 +139,7 @@
     "population": "LV",
     "margin": 8.0,
     "adjusted": 7.16,
-    "weight": 0.352
+    "weight": 0.341
    },
    {
     "source": "Reuters / Ipsos",
@@ -148,7 +148,7 @@
     "population": "RV",
     "margin": 5.0,
     "adjusted": 6.93,
-    "weight": 0.297
+    "weight": 0.287
    },
    {
     "source": "The Bullfinch Group",
@@ -157,7 +157,7 @@
     "population": "RV",
     "margin": 5.0,
     "adjusted": 4.12,
-    "weight": 0.317
+    "weight": 0.307
    },
    {
     "source": "Echelon Insights",
@@ -165,8 +165,8 @@
     "n": 1002,
     "population": "LV",
     "margin": 5.0,
-    "adjusted": 5.82,
-    "weight": 0.353
+    "adjusted": 5.81,
+    "weight": 0.341
    },
    {
     "source": "Morning Consult",
@@ -175,15 +175,15 @@
     "population": "RV",
     "margin": 4.0,
     "adjusted": 5.78,
-    "weight": 0.823
+    "weight": 0.796
    }
   ],
   "aggregators": {
-   "margin": 7.6,
-   "rep": 42.0,
-   "dem": 49.6,
+   "margin": 7.9,
+   "rep": 41.9,
+   "dem": 49.8,
    "n_aggregators": 4,
-   "as_of": "2026-09-20"
+   "as_of": "2026-09-22"
   }
  }
 }
