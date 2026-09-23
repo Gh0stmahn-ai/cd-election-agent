@@ -1,5 +1,5 @@
 {
- "as_of": "2026-09-22",
+ "as_of": "2026-09-23",
  "latest_report": "2026-06-30",
  "n_races": 470,
  "note": "Best-funded Democrat and Republican in each race, from the FEC's bulk candidate summaries. Cash on hand is as of each campaign's last filed report, so races differ by a few weeks. Shown on this site and not fed into the forecast.",
@@ -386,11 +386,11 @@
    "dem": {
     "name": "Treble, Jonathan",
     "incumbent": false,
-    "receipts": 3979424,
-    "spent": 3320814,
-    "cash": 658610,
+    "receipts": 4463614,
+    "spent": 4463614,
+    "cash": 0,
     "debts": 0,
-    "as_of": "2026-07-01",
+    "as_of": "2026-09-22",
     "named": false
    },
    "rep": {
@@ -403,8 +403,8 @@
     "as_of": "2026-07-31",
     "named": false
    },
-   "dem_cash_share": 0.4532,
-   "cash_gap": -135865
+   "dem_cash_share": 0.0,
+   "cash_gap": -794475
   },
   "AZ-2": {
    "chamber": "house",
@@ -2524,18 +2524,9 @@
     "as_of": "2026-07-29",
     "named": false
    },
-   "rep": {
-    "name": "Carbonara, Michael",
-    "incumbent": false,
-    "receipts": 6332573,
-    "spent": 6295983,
-    "cash": 36589,
-    "debts": 4238902,
-    "as_of": "2026-07-29",
-    "named": false
-   },
-   "dem_cash_share": 0.9726,
-   "cash_gap": 1260095
+   "rep": null,
+   "dem_cash_share": 1.0,
+   "cash_gap": 1296684
   },
   "FL-23": {
    "chamber": "house",
@@ -7496,13 +7487,13 @@
     "incumbent": false,
     "receipts": 1666542,
     "spent": 957956,
-    "cash": 710120,
+    "cash": 724906,
     "debts": 56746,
     "as_of": "2026-07-09",
     "named": false
    },
-   "dem_cash_share": 0.8889,
-   "cash_gap": 4969830
+   "dem_cash_share": 0.8868,
+   "cash_gap": 4955044
   },
   "NY-4": {
    "chamber": "house",
@@ -8820,9 +8811,9 @@
    "dem": {
     "name": "Lehmacher, Eunice",
     "incumbent": false,
-    "receipts": 40413,
+    "receipts": 40813,
     "spent": 23114,
-    "cash": 17299,
+    "cash": 17699,
     "debts": 100,
     "as_of": "2026-06-30",
     "named": false
@@ -8837,8 +8828,8 @@
     "as_of": "2026-06-30",
     "named": false
    },
-   "dem_cash_share": 0.0733,
-   "cash_gap": -201442
+   "dem_cash_share": 0.0749,
+   "cash_gap": -201042
   },
   "SC-4": {
    "chamber": "house",

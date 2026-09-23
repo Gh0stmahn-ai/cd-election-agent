@@ -1,5 +1,5 @@
 {
- "as_of": "2026-09-22T19:36:34+00:00",
+ "as_of": "2026-09-23T19:31:25+00:00",
  "source": "Wikipedia per-race election articles",
  "half_life_days": 21,
  "max_age_days": 120,
@@ -40,25 +40,25 @@
    "state": "GA",
    "dem_candidate": "Jon Ossoff",
    "rep_candidate": "Mike Collins",
-   "dem_margin": 7.1,
+   "dem_margin": 7.8,
    "method": "mean of 6 aggregators",
    "n_used": 6,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 5.0
+     "margin": 6.7
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 6.4
+     "margin": 7.2
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 7.7
+     "margin": 9.0
     },
     {
      "label": "Race to the WH",
-     "margin": 6.9
+     "margin": 8.0
     },
     {
      "label": "RealClearPolitics",
@@ -66,7 +66,7 @@
     },
     {
      "label": "Silver Bulletin",
-     "margin": 9.1
+     "margin": 8.2
     }
    ],
    "rating": "lean",
@@ -76,9 +76,9 @@
    "state": "IA",
    "dem_candidate": "Josh Turek",
    "rep_candidate": "Ashley Hinson",
-   "dem_margin": 0.9,
-   "method": "mean of 6 aggregators",
-   "n_used": 6,
+   "dem_margin": 0.7,
+   "method": "mean of 5 aggregators",
+   "n_used": 5,
    "detail": [
     {
      "label": "270toWin",
@@ -91,10 +91,6 @@
     {
      "label": "FiftyPlusOne",
      "margin": 0.5
-    },
-    {
-     "label": "Race to the WH",
-     "margin": 1.6
     },
     {
      "label": "RealClearPolitics",
@@ -148,29 +144,29 @@
    "state": "MI",
    "dem_candidate": "Abdul El-Sayed",
    "rep_candidate": "Mike Rogers",
-   "dem_margin": 2.4,
+   "dem_margin": 3.2,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 2.2
+     "margin": 3.0
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 2.5
+     "margin": 3.9
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 2.6
+     "margin": 2.9
     },
     {
      "label": "RealClearPolitics",
-     "margin": 2.1
+     "margin": 2.8
     },
     {
      "label": "Silver Bulletin",
-     "margin": 2.8
+     "margin": 3.3
     }
    ],
    "rating": "tossup",
@@ -180,21 +176,21 @@
    "state": "NC",
    "dem_candidate": "Roy Cooper",
    "rep_candidate": "Michael Whatley",
-   "dem_margin": 8.9,
+   "dem_margin": 8.8,
    "method": "mean of 6 aggregators",
    "n_used": 6,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 8.8
+     "margin": 8.6
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 9.1
+     "margin": 8.6
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 9.1
+     "margin": 9.8
     },
     {
      "label": "Race to the WH",
@@ -202,7 +198,7 @@
     },
     {
      "label": "RealClearPolitics",
-     "margin": 8.8
+     "margin": 8.5
     },
     {
      "label": "Silver Bulletin",
@@ -288,37 +284,33 @@
    "state": "TX",
    "dem_candidate": "James Talarico",
    "rep_candidate": "Ken Paxton",
-   "dem_margin": 2.9,
-   "method": "mean of 7 aggregators",
-   "n_used": 7,
+   "dem_margin": 3.1,
+   "method": "mean of 6 aggregators",
+   "n_used": 6,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 2.4
+     "margin": 3.0
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 3.1
+     "margin": 3.2
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 3.1
-    },
-    {
-     "label": "Race to the WH",
-     "margin": 3.0
+     "margin": 3.4
     },
     {
      "label": "RealClearPolitics",
-     "margin": 2.6
+     "margin": 2.8
     },
     {
      "label": "The Texas Tribune",
-     "margin": 3.0
+     "margin": 3.1
     },
     {
      "label": "Silver Bulletin",
-     "margin": 2.8
+     "margin": 3.4
     }
    ],
    "rating": "tossup",
