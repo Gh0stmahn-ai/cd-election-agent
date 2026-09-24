@@ -1,5 +1,5 @@
 {
- "as_of": "2026-09-23",
+ "as_of": "2026-09-24",
  "latest_report": "2026-06-30",
  "n_races": 470,
  "note": "Best-funded Democrat and Republican in each race, from the FEC's bulk candidate summaries. Cash on hand is as of each campaign's last filed report, so races differ by a few weeks. Shown on this site and not fed into the forecast.",
@@ -2596,15 +2596,15 @@
    "rep": {
     "name": "Singer, Scott M.",
     "incumbent": false,
-    "receipts": 2245960,
-    "spent": 1779741,
-    "cash": 466219,
+    "receipts": 2256719,
+    "spent": 1780241,
+    "cash": 476478,
     "debts": 579453,
     "as_of": "2026-07-29",
     "named": false
    },
-   "dem_cash_share": 0.8015,
-   "cash_gap": 1416415
+   "dem_cash_share": 0.798,
+   "cash_gap": 1406156
   },
   "FL-26": {
    "chamber": "house",
@@ -10013,11 +10013,11 @@
    "dem": {
     "name": "Hunter, Marvalette",
     "incumbent": false,
-    "receipts": 137093,
-    "spent": 137082,
-    "cash": 11,
+    "receipts": 137123,
+    "spent": 137123,
+    "cash": 0,
     "debts": 0,
-    "as_of": "2026-06-30",
+    "as_of": "2026-09-18",
     "named": false
    },
    "rep": {
@@ -10030,8 +10030,8 @@
     "as_of": "2026-06-30",
     "named": false
    },
-   "dem_cash_share": 0.0001,
-   "cash_gap": -89122
+   "dem_cash_share": 0.0,
+   "cash_gap": -89133
   },
   "TX-4": {
    "chamber": "house",
