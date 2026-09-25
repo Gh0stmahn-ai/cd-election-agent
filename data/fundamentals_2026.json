@@ -1,5 +1,5 @@
 {
- "as_of": "2026-09-24",
+ "as_of": "2026-09-25",
  "president_party": "R",
  "election_date": "2026-11-03",
  "note": "Everything here is something voters feel directly (prices, jobs, rates, their 401k) or a direct read of how they judge the president. Economic indicators are scored -1..+1 for how they help (+) or hurt (-) the president's party, weighted, and summed into one economic index. Presidential approval enters the fundamentals prior directly. Values are refreshed daily by agent_run.py (refresh_fundamental).",
@@ -92,10 +92,10 @@
    "display": "51.7",
    "as_of": "2026-08",
    "compare_label": "a year ago",
-   "compare_value": 58.3,
-   "compare_display": "58.3",
+   "compare_value": 58.2,
+   "compare_display": "58.2",
    "change_display": "-11% vs a year ago",
-   "context": "University of Michigan, final August. Down 6.3% from July. Year-ahead inflation expectations 4.0%. Drop was sharpest among Republicans, older and lower-income consumers.",
+   "context": "University of Michigan Index of Consumer Sentiment, 1966 = 100.",
    "why": "How people feel about their own finances, not what GDP says. Sentiment moves with approval and is a leading read on turnout mood.",
    "score": {
     "method": "level",
@@ -105,8 +105,8 @@
    },
    "sources": [
     {
-     "name": "Advisor Perspectives on UMich, Aug 2026",
-     "url": "https://www.advisorperspectives.com/dshort/updates/2026/08/28/consumer-sentiment-falls-in-august"
+     "name": "University of Michigan (via FRED)",
+     "url": "https://fred.stlouisfed.org/series/UMCSENT"
     }
    ]
   },
@@ -222,14 +222,14 @@
    "id": "treasury_10y",
    "label": "10-yr Treasury yield",
    "category": "markets",
-   "value": 4.96,
+   "value": 5.11,
    "unit": "%",
-   "display": "4.96%",
-   "as_of": "2026-09-22",
+   "display": "5.11%",
+   "as_of": "2026-09-23",
    "compare_label": "2-yr",
-   "compare_value": 4.71,
-   "compare_display": "4.71% 2-yr",
-   "change_display": "10s-2s spread +0.25 pt (steep)",
+   "compare_value": 4.85,
+   "compare_display": "4.85% 2-yr",
+   "change_display": "10s-2s spread +0.26 pt (steep)",
    "context": "Constant-maturity Treasury yields; the 2-year tracks Fed expectations.",
    "why": "Voters don't watch bond yields, but yields set mortgage, auto and card rates, and a Fed hike eight weeks before an election is a headline risk.",
    "score": {
@@ -249,14 +249,14 @@
    "id": "sp500",
    "label": "S&P 500",
    "category": "markets",
-   "value": 7706.03,
+   "value": 7704.13,
    "unit": "index",
-   "display": "7,706",
-   "as_of": "2026-09-23",
+   "display": "7,704",
+   "as_of": "2026-09-24",
    "compare_label": "year to date",
-   "compare_value": 12.6,
-   "compare_display": "+12.6% YTD",
-   "change_display": "+12.6% since the 2025 close",
+   "compare_value": 12.5,
+   "compare_display": "+12.5% YTD",
+   "change_display": "+12.5% since the 2025 close",
    "context": "S&P 500 closing level, with the year-to-date return.",
    "why": "Matters most to the roughly 6 in 10 households with market exposure through 401(k)s. A weak link to midterm results on its own, but a falling market in October feeds the bad-news cycle.",
    "score": {

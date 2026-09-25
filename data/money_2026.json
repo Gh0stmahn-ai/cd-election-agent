@@ -1,5 +1,5 @@
 {
- "as_of": "2026-09-24",
+ "as_of": "2026-09-25",
  "latest_report": "2026-06-30",
  "n_races": 470,
  "note": "Best-funded Democrat and Republican in each race, from the FEC's bulk candidate summaries. Cash on hand is as of each campaign's last filed report, so races differ by a few weeks. Shown on this site and not fed into the forecast.",
@@ -46,16 +46,7 @@
   "AK-AL": {
    "chamber": "house",
    "state": "AK",
-   "dem": {
-    "name": "Schultz, Matthew Damian",
-    "incumbent": false,
-    "receipts": 865433,
-    "spent": 394752,
-    "cash": 470681,
-    "debts": 0,
-    "as_of": "2026-06-30",
-    "named": false
-   },
+   "dem": null,
    "rep": {
     "name": "Begich, Nicholas III",
     "incumbent": true,
@@ -66,8 +57,8 @@
     "as_of": "2026-07-29",
     "named": false
    },
-   "dem_cash_share": 0.1311,
-   "cash_gap": -2648477
+   "dem_cash_share": 0.0,
+   "cash_gap": -3119158
   },
   "AL-1": {
    "chamber": "house",
@@ -7544,16 +7535,16 @@
    "dem": {
     "name": "Meng, Grace",
     "incumbent": true,
-    "receipts": 2033045,
-    "spent": 1967862,
-    "cash": 1034068,
+    "receipts": 2034045,
+    "spent": 1972862,
+    "cash": 1030068,
     "debts": 0,
     "as_of": "2026-06-30",
     "named": false
    },
    "rep": null,
    "dem_cash_share": 1.0,
-   "cash_gap": 1034068
+   "cash_gap": 1030068
   },
   "NY-7": {
    "chamber": "house",
@@ -10779,18 +10770,9 @@
     "as_of": "2026-07-15",
     "named": false
    },
-   "rep": {
-    "name": "Basler, Douglas Michael",
-    "incumbent": false,
-    "receipts": 99242,
-    "spent": 94764,
-    "cash": 5021,
-    "debts": 760,
-    "as_of": "2026-07-15",
-    "named": false
-   },
-   "dem_cash_share": 0.9943,
-   "cash_gap": 864528
+   "rep": null,
+   "dem_cash_share": 1.0,
+   "cash_gap": 869549
   },
   "WI-1": {
    "chamber": "house",
