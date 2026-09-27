@@ -1,5 +1,5 @@
 {
- "as_of": "2026-09-26T19:05:19+00:00",
+ "as_of": "2026-09-27T19:36:13+00:00",
  "source": "Wikipedia per-race election articles",
  "half_life_days": 21,
  "max_age_days": 120,
@@ -76,29 +76,29 @@
    "state": "IA",
    "dem_candidate": "Josh Turek",
    "rep_candidate": "Ashley Hinson",
-   "dem_margin": 0.7,
+   "dem_margin": 1.4,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 0.4
+     "margin": 1.6
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 1.7
+     "margin": 2.0
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 0.5
+     "margin": 0.9
     },
     {
      "label": "RealClearPolitics",
-     "margin": 0.4
+     "margin": 0.5
     },
     {
      "label": "Silver Bulletin",
-     "margin": 0.7
+     "margin": 1.9
     }
    ],
    "rating": "tossup",
@@ -108,21 +108,21 @@
    "state": "ME",
    "dem_candidate": "Troy Jackson",
    "rep_candidate": "Susan Collins",
-   "dem_margin": 1.4,
+   "dem_margin": 1.5,
    "method": "mean of 6 aggregators",
    "n_used": 6,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 1.2
+     "margin": 1.0
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 0.5
+     "margin": 1.4
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 2.1
+     "margin": 2.4
     },
     {
      "label": "Race to the WH",
@@ -130,11 +130,11 @@
     },
     {
      "label": "RealClearPolitics",
-     "margin": 0.8
+     "margin": 0.9
     },
     {
      "label": "Silver Bulletin",
-     "margin": 2.9
+     "margin": 2.5
     }
    ],
    "rating": "tossup",
@@ -154,15 +154,15 @@
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 3.4
+     "margin": 3.1
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 3.3
+     "margin": 3.1
     },
     {
      "label": "RealClearPolitics",
-     "margin": 2.7
+     "margin": 3.0
     },
     {
      "label": "Silver Bulletin",
@@ -212,33 +212,29 @@
    "state": "NH",
    "dem_candidate": "Chris Pappas",
    "rep_candidate": "John E. Sununu",
-   "dem_margin": 4.4,
-   "method": "mean of 6 aggregators",
-   "n_used": 6,
+   "dem_margin": 5.9,
+   "method": "mean of 5 aggregators",
+   "n_used": 5,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 2.8
+     "margin": 5.0
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 5.4
+     "margin": 6.9
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 2.4
-    },
-    {
-     "label": "Race to the WH",
-     "margin": 4.9
+     "margin": 4.4
     },
     {
      "label": "RealClearPolitics",
-     "margin": 4.9
+     "margin": 6.5
     },
     {
      "label": "Silver Bulletin",
-     "margin": 5.8
+     "margin": 6.5
     }
    ],
    "rating": "tossup",
