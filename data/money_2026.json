@@ -1,5 +1,5 @@
 {
- "as_of": "2026-09-27",
+ "as_of": "2026-09-28",
  "latest_report": "2026-06-30",
  "n_races": 470,
  "note": "Best-funded Democrat and Republican in each race, from the FEC's bulk candidate summaries. Cash on hand is as of each campaign's last filed report, so races differ by a few weeks. Shown on this site and not fed into the forecast.",
@@ -3597,9 +3597,9 @@
    "dem": {
     "name": "Todd, Jennifer Ann",
     "incumbent": false,
-    "receipts": 122996,
-    "spent": 82735,
-    "cash": 34290,
+    "receipts": 113341,
+    "spent": 79584,
+    "cash": 33757,
     "debts": 0,
     "as_of": "2026-06-30",
     "named": false
@@ -3614,8 +3614,8 @@
     "as_of": "2026-06-30",
     "named": false
    },
-   "dem_cash_share": 0.0406,
-   "cash_gap": -776137
+   "dem_cash_share": 0.04,
+   "cash_gap": -776670
   },
   "IL-16": {
    "chamber": "house",

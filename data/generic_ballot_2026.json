@@ -1,22 +1,22 @@
 {
- "as_of": "2026-09-27",
- "dem_margin_points": 9.17,
- "note": "Our own average of 57 individual polls from 31 pollsters, 2026-07-29 to 2026-09-22, plus or minus 0.6. Published aggregators say D+8.2",
+ "as_of": "2026-09-28",
+ "dem_margin_points": 9.32,
+ "note": "Our own average of 55 individual polls from 31 pollsters, 2026-08-02 to 2026-09-22, plus or minus 0.6. Published aggregators say D+8.2",
  "sources": [
   "https://en.wikipedia.org/wiki/2026_United_States_elections",
   "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections"
  ],
  "detail": {
-  "stderr": 0.55,
-  "spread": 2.3,
+  "stderr": 0.58,
+  "spread": 2.31,
   "flat": 8.02,
-  "trend_per_week": 0.41,
-  "mean_age_days": 19.8,
-  "n_polls": 57,
-  "n_effective": 41.0,
+  "trend_per_week": 0.45,
+  "mean_age_days": 20.3,
+  "n_polls": 55,
+  "n_effective": 40.2,
   "n_pollsters": 31,
   "newest": "2026-09-22",
-  "oldest": "2026-07-29",
+  "oldest": "2026-08-02",
   "house_effects": [
    {
     "pollster": "RMG Research",
@@ -76,7 +76,7 @@
     "population": "LV",
     "margin": 11.0,
     "adjusted": 10.03,
-    "weight": 0.948
+    "weight": 0.917
    },
    {
     "source": "McLaughlin & Associates (R)",
@@ -85,7 +85,7 @@
     "population": "LV",
     "margin": 5.0,
     "adjusted": 7.93,
-    "weight": 0.948
+    "weight": 0.917
    },
    {
     "source": "The Economist / YouGov",
@@ -94,7 +94,7 @@
     "population": "LV",
     "margin": 14.0,
     "adjusted": 14.33,
-    "weight": 0.906
+    "weight": 0.876
    },
    {
     "source": "Echelon Insights",
@@ -103,7 +103,7 @@
     "population": "LV",
     "margin": 8.0,
     "adjusted": 8.64,
-    "weight": 0.918
+    "weight": 0.888
    },
    {
     "source": "Strength In Numbers /Verasight",
@@ -112,7 +112,7 @@
     "population": "LV",
     "margin": 10.0,
     "adjusted": 7.9,
-    "weight": 0.918
+    "weight": 0.888
    },
    {
     "source": "ActiVote",
@@ -121,7 +121,7 @@
     "population": "LV",
     "margin": 6.0,
     "adjusted": 7.13,
-    "weight": 0.917
+    "weight": 0.887
    },
    {
     "source": "Morning Consult",
@@ -130,7 +130,7 @@
     "population": "LV",
     "margin": 7.0,
     "adjusted": 8.76,
-    "weight": 2.381
+    "weight": 2.304
    },
    {
     "source": "Reuters / Ipsos",
@@ -139,7 +139,7 @@
     "population": "RV",
     "margin": 8.0,
     "adjusted": 9.83,
-    "weight": 0.79
+    "weight": 0.765
    },
    {
     "source": "Quantus Insights (R)",
@@ -148,7 +148,7 @@
     "population": "LV",
     "margin": 8.0,
     "adjusted": 8.43,
-    "weight": 0.979
+    "weight": 0.947
    },
    {
     "source": "CNN /SSRS",
@@ -157,7 +157,7 @@
     "population": "RV",
     "margin": 8.0,
     "adjusted": 8.03,
-    "weight": 0.674
+    "weight": 0.652
    },
    {
     "source": "John Zogby Strategies",
@@ -166,7 +166,7 @@
     "population": "LV",
     "margin": 6.0,
     "adjusted": 6.34,
-    "weight": 0.807
+    "weight": 0.78
    },
    {
     "source": "Marist University",
@@ -175,7 +175,7 @@
     "population": "RV",
     "margin": 12.0,
     "adjusted": 9.21,
-    "weight": 0.766
+    "weight": 0.741
    }
   ],
   "aggregators": {
