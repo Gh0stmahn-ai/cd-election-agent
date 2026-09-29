@@ -1,5 +1,5 @@
 {
- "as_of": "2026-09-28",
+ "as_of": "2026-09-29",
  "latest_report": "2026-06-30",
  "n_races": 470,
  "note": "Best-funded Democrat and Republican in each race, from the FEC's bulk candidate summaries. Cash on hand is as of each campaign's last filed report, so races differ by a few weeks. Shown on this site and not fed into the forecast.",
@@ -10867,15 +10867,15 @@
    "rep": {
     "name": "Fitzgerald, Scott",
     "incumbent": true,
-    "receipts": 1376100,
-    "spent": 886619,
-    "cash": 1327087,
+    "receipts": 1369100,
+    "spent": 886691,
+    "cash": 1320016,
     "debts": 0,
     "as_of": "2026-07-22",
     "named": false
    },
    "dem_cash_share": 0.0,
-   "cash_gap": -1327087
+   "cash_gap": -1320016
   },
   "WI-6": {
    "chamber": "house",

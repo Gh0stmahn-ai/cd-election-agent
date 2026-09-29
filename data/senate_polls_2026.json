@@ -1,5 +1,5 @@
 {
- "as_of": "2026-09-28T21:38:26+00:00",
+ "as_of": "2026-09-29T20:29:43+00:00",
  "source": "Wikipedia per-race election articles",
  "half_life_days": 21,
  "max_age_days": 120,
@@ -244,29 +244,29 @@
    "state": "OH",
    "dem_candidate": "Sherrod Brown",
    "rep_candidate": "Jon Husted",
-   "dem_margin": 4.1,
+   "dem_margin": 4.5,
    "method": "mean of 6 aggregators",
    "n_used": 6,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 3.0
+     "margin": 4.0
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 2.6
+     "margin": 4.5
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 5.8
+     "margin": 5.1
     },
     {
      "label": "Race to the WH",
-     "margin": 4.7
+     "margin": 5.0
     },
     {
      "label": "RealClearPolitics",
-     "margin": 4.0
+     "margin": 3.8
     },
     {
      "label": "Silver Bulletin",
