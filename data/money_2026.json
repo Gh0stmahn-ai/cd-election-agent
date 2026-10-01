@@ -1,5 +1,5 @@
 {
- "as_of": "2026-09-30",
+ "as_of": "2026-10-01",
  "latest_report": "2026-06-30",
  "n_races": 470,
  "note": "Best-funded Democrat and Republican in each race, from the FEC's bulk candidate summaries. Cash on hand is as of each campaign's last filed report, so races differ by a few weeks. Shown on this site and not fed into the forecast.",
@@ -2915,8 +2915,8 @@
    "dem": {
     "name": "Harden, Christopher Matthew",
     "incumbent": false,
-    "receipts": 76330,
-    "spent": 63995,
+    "receipts": 74664,
+    "spent": 72427,
     "cash": 2237,
     "debts": 87,
     "as_of": "2026-06-30",
@@ -3046,8 +3046,8 @@
    "rep": {
     "name": "Collins, Michael A Jr",
     "incumbent": false,
-    "receipts": 7409350,
-    "spent": 5932539,
+    "receipts": 7409349,
+    "spent": 5932538,
     "cash": 2079981,
     "debts": 461916,
     "as_of": "2026-06-30",
@@ -5028,11 +5028,11 @@
    "dem": {
     "name": "Stevens, Haley",
     "incumbent": true,
-    "receipts": 1564028,
-    "spent": 2317733,
-    "cash": 30,
-    "debts": 7008,
-    "as_of": "2026-06-30",
+    "receipts": 1571873,
+    "spent": 2325609,
+    "cash": 0,
+    "debts": 0,
+    "as_of": "2026-09-30",
     "named": false
    },
    "rep": {
@@ -5045,8 +5045,8 @@
     "as_of": "2026-07-15",
     "named": false
    },
-   "dem_cash_share": 0.0002,
-   "cash_gap": -121095
+   "dem_cash_share": 0.0,
+   "cash_gap": -121125
   },
   "MI-12": {
    "chamber": "house",
@@ -9183,11 +9183,11 @@
    "dem": {
     "name": "Bryan, Dewey Gordon",
     "incumbent": false,
-    "receipts": 169350,
-    "spent": 127058,
-    "cash": 42292,
+    "receipts": 226145,
+    "spent": 225794,
+    "cash": 351,
     "debts": 0,
-    "as_of": "2026-07-17",
+    "as_of": "2026-09-30",
     "named": false
    },
    "rep": {
@@ -9200,8 +9200,8 @@
     "as_of": "2026-07-17",
     "named": false
    },
-   "dem_cash_share": 0.0139,
-   "cash_gap": -2964546
+   "dem_cash_share": 0.0001,
+   "cash_gap": -3006487
   },
   "TN-9": {
    "chamber": "house",

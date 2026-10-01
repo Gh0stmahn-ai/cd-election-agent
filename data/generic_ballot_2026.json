@@ -1,20 +1,20 @@
 {
- "as_of": "2026-09-30",
- "dem_margin_points": 9.67,
- "note": "Our own average of 60 individual polls from 32 pollsters, 2026-08-02 to 2026-09-28, plus or minus 0.6. Published aggregators say D+8.3",
+ "as_of": "2026-10-01",
+ "dem_margin_points": 9.69,
+ "note": "Our own average of 61 individual polls from 33 pollsters, 2026-08-02 to 2026-09-28, plus or minus 0.6. Published aggregators say D+8.4",
  "sources": [
   "https://en.wikipedia.org/wiki/2026_United_States_elections",
   "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections"
  ],
  "detail": {
   "stderr": 0.63,
-  "spread": 2.71,
+  "spread": 2.67,
   "flat": 8.28,
   "trend_per_week": 0.49,
-  "mean_age_days": 19.7,
-  "n_polls": 60,
-  "n_effective": 44.0,
-  "n_pollsters": 32,
+  "mean_age_days": 20.4,
+  "n_polls": 61,
+  "n_effective": 44.9,
+  "n_pollsters": 33,
   "newest": "2026-09-28",
   "oldest": "2026-08-02",
   "house_effects": [
@@ -76,7 +76,7 @@
     "population": "LV",
     "margin": 2.0,
     "adjusted": 5.21,
-    "weight": 1.552
+    "weight": 1.502
    },
    {
     "source": "The Economist / YouGov",
@@ -85,7 +85,7 @@
     "population": "LV",
     "margin": 15.0,
     "adjusted": 15.23,
-    "weight": 1.048
+    "weight": 1.014
    },
    {
     "source": "Quinnipiac University",
@@ -94,7 +94,7 @@
     "population": "RV",
     "margin": 12.0,
     "adjusted": 9.86,
-    "weight": 0.926
+    "weight": 0.896
    },
    {
     "source": "Angus Reid Global",
@@ -103,7 +103,7 @@
     "population": "RV",
     "margin": 16.0,
     "adjusted": 14.37,
-    "weight": 0.818
+    "weight": 0.791
    },
    {
     "source": "Emerson College",
@@ -112,7 +112,7 @@
     "population": "LV",
     "margin": 11.0,
     "adjusted": 10.04,
-    "weight": 0.859
+    "weight": 0.831
    },
    {
     "source": "McLaughlin & Associates (R)",
@@ -121,7 +121,7 @@
     "population": "LV",
     "margin": 5.0,
     "adjusted": 7.94,
-    "weight": 0.859
+    "weight": 0.831
    },
    {
     "source": "The Economist / YouGov",
@@ -130,7 +130,7 @@
     "population": "LV",
     "margin": 14.0,
     "adjusted": 14.23,
-    "weight": 0.82
+    "weight": 0.794
    },
    {
     "source": "Echelon Insights",
@@ -139,7 +139,7 @@
     "population": "LV",
     "margin": 8.0,
     "adjusted": 8.65,
-    "weight": 0.832
+    "weight": 0.805
    },
    {
     "source": "Strength In Numbers /Verasight",
@@ -148,7 +148,16 @@
     "population": "LV",
     "margin": 10.0,
     "adjusted": 7.92,
-    "weight": 0.832
+    "weight": 0.805
+   },
+   {
+    "source": "Impact Research (D)/National Research Inc. (R)",
+    "date": "2026-09-21",
+    "n": 1500,
+    "population": "RV",
+    "margin": 8.0,
+    "adjusted": 8.02,
+    "weight": 0.886
    },
    {
     "source": "ActiVote",
@@ -157,7 +166,7 @@
     "population": "LV",
     "margin": 6.0,
     "adjusted": 7.17,
-    "weight": 0.831
+    "weight": 0.804
    },
    {
     "source": "Morning Consult",
@@ -166,24 +175,15 @@
     "population": "LV",
     "margin": 7.0,
     "adjusted": 8.78,
-    "weight": 2.157
-   },
-   {
-    "source": "Reuters / Ipsos",
-    "date": "2026-09-20",
-    "n": 979,
-    "population": "RV",
-    "margin": 8.0,
-    "adjusted": 9.85,
-    "weight": 0.716
+    "weight": 2.087
    }
   ],
   "aggregators": {
-   "margin": 8.3,
+   "margin": 8.4,
    "rep": 42.1,
-   "dem": 50.4,
+   "dem": 50.5,
    "n_aggregators": 5,
-   "as_of": "2026-09-29"
+   "as_of": "2026-09-30"
   }
  }
 }
