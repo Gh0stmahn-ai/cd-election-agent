@@ -1,28 +1,28 @@
 {
- "as_of": "2026-10-01",
- "dem_margin_points": 9.69,
- "note": "Our own average of 61 individual polls from 33 pollsters, 2026-08-02 to 2026-09-28, plus or minus 0.6. Published aggregators say D+8.4",
+ "as_of": "2026-10-02",
+ "dem_margin_points": 9.63,
+ "note": "Our own average of 61 individual polls from 33 pollsters, 2026-08-03 to 2026-09-28, plus or minus 0.7. Published aggregators say D+8.3",
  "sources": [
   "https://en.wikipedia.org/wiki/2026_United_States_elections",
   "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections"
  ],
  "detail": {
-  "stderr": 0.63,
-  "spread": 2.67,
-  "flat": 8.28,
-  "trend_per_week": 0.49,
-  "mean_age_days": 20.4,
+  "stderr": 0.67,
+  "spread": 2.7,
+  "flat": 8.22,
+  "trend_per_week": 0.47,
+  "mean_age_days": 20.9,
   "n_polls": 61,
-  "n_effective": 44.9,
+  "n_effective": 45.2,
   "n_pollsters": 33,
   "newest": "2026-09-28",
-  "oldest": "2026-08-02",
+  "oldest": "2026-08-03",
   "house_effects": [
    {
     "pollster": "Harvard",
     "polls": 8,
     "in_average": 2,
-    "effect": -3.21
+    "effect": -3.2
    },
    {
     "pollster": "RMG Research",
@@ -46,7 +46,7 @@
     "pollster": "Quinnipiac University",
     "polls": 8,
     "in_average": 2,
-    "effect": 2.14
+    "effect": 2.15
    },
    {
     "pollster": "Strength In Numbers",
@@ -62,9 +62,9 @@
    },
    {
     "pollster": "Morning Consult",
-    "polls": 47,
+    "polls": 48,
     "in_average": 6,
-    "effect": -1.78
+    "effect": -1.82
    }
   ],
   "method": "Weighted by recency (21-day half-life), sample size and population, with each pollster's standing lean removed and no pollster allowed more than a fifth of the total weight. The average is then read off a line fitted through the polls at today's date rather than taken flat, because a weighted mean sits at the middle of its window and lags whenever the race is moving.",
@@ -75,8 +75,8 @@
     "n": 2200,
     "population": "LV",
     "margin": 2.0,
-    "adjusted": 5.21,
-    "weight": 1.502
+    "adjusted": 5.2,
+    "weight": 1.453
    },
    {
     "source": "The Economist / YouGov",
@@ -85,7 +85,7 @@
     "population": "LV",
     "margin": 15.0,
     "adjusted": 15.23,
-    "weight": 1.014
+    "weight": 0.981
    },
    {
     "source": "Quinnipiac University",
@@ -93,8 +93,8 @@
     "n": 1032,
     "population": "RV",
     "margin": 12.0,
-    "adjusted": 9.86,
-    "weight": 0.896
+    "adjusted": 9.85,
+    "weight": 0.867
    },
    {
     "source": "Angus Reid Global",
@@ -102,8 +102,8 @@
     "n": 919,
     "population": "RV",
     "margin": 16.0,
-    "adjusted": 14.37,
-    "weight": 0.791
+    "adjusted": 14.36,
+    "weight": 0.766
    },
    {
     "source": "Emerson College",
@@ -112,7 +112,7 @@
     "population": "LV",
     "margin": 11.0,
     "adjusted": 10.04,
-    "weight": 0.831
+    "weight": 0.804
    },
    {
     "source": "McLaughlin & Associates (R)",
@@ -121,7 +121,7 @@
     "population": "LV",
     "margin": 5.0,
     "adjusted": 7.94,
-    "weight": 0.831
+    "weight": 0.804
    },
    {
     "source": "The Economist / YouGov",
@@ -130,7 +130,7 @@
     "population": "LV",
     "margin": 14.0,
     "adjusted": 14.23,
-    "weight": 0.794
+    "weight": 0.768
    },
    {
     "source": "Echelon Insights",
@@ -139,7 +139,7 @@
     "population": "LV",
     "margin": 8.0,
     "adjusted": 8.65,
-    "weight": 0.805
+    "weight": 0.778
    },
    {
     "source": "Strength In Numbers /Verasight",
@@ -148,7 +148,7 @@
     "population": "LV",
     "margin": 10.0,
     "adjusted": 7.92,
-    "weight": 0.805
+    "weight": 0.778
    },
    {
     "source": "Impact Research (D)/National Research Inc. (R)",
@@ -156,8 +156,8 @@
     "n": 1500,
     "population": "RV",
     "margin": 8.0,
-    "adjusted": 8.02,
-    "weight": 0.886
+    "adjusted": 8.0,
+    "weight": 0.857
    },
    {
     "source": "ActiVote",
@@ -165,8 +165,8 @@
     "n": 1000,
     "population": "LV",
     "margin": 6.0,
-    "adjusted": 7.17,
-    "weight": 0.804
+    "adjusted": 7.15,
+    "weight": 0.778
    },
    {
     "source": "Morning Consult",
@@ -174,16 +174,16 @@
     "n": 18336,
     "population": "LV",
     "margin": 7.0,
-    "adjusted": 8.78,
-    "weight": 2.087
+    "adjusted": 8.82,
+    "weight": 2.019
    }
   ],
   "aggregators": {
-   "margin": 8.4,
+   "margin": 8.3,
    "rep": 42.1,
-   "dem": 50.5,
+   "dem": 50.4,
    "n_aggregators": 5,
-   "as_of": "2026-09-30"
+   "as_of": "2026-10-01"
   }
  }
 }

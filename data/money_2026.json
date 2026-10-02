@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-01",
+ "as_of": "2026-10-02",
  "latest_report": "2026-06-30",
  "n_races": 470,
  "note": "Best-funded Democrat and Republican in each race, from the FEC's bulk candidate summaries. Cash on hand is as of each campaign's last filed report, so races differ by a few weeks. Shown on this site and not fed into the forecast.",
@@ -801,15 +801,15 @@
    "rep": {
     "name": "Lewis, Shane",
     "incumbent": false,
-    "receipts": 60180,
-    "spent": 56873,
-    "cash": 3307,
-    "debts": 40225,
-    "as_of": "2026-06-30",
+    "receipts": 107049,
+    "spent": 103699,
+    "cash": 3349,
+    "debts": 58289,
+    "as_of": "2026-09-30",
     "named": false
    },
-   "dem_cash_share": 0.9949,
-   "cash_gap": 640034
+   "dem_cash_share": 0.9948,
+   "cash_gap": 639992
   },
   "CA-19": {
    "chamber": "house",
@@ -2376,13 +2376,13 @@
    "chamber": "house",
    "state": "FL",
    "dem": {
-    "name": "Sapp, Howard Lee",
+    "name": "Arias, Victor M.",
     "incumbent": false,
-    "receipts": 53596,
-    "spent": 55307,
-    "cash": -1710,
-    "debts": 0,
-    "as_of": "2026-07-29",
+    "receipts": 57816,
+    "spent": 38669,
+    "cash": 19147,
+    "debts": 36454,
+    "as_of": "2026-09-30",
     "named": false
    },
    "rep": {
@@ -2395,8 +2395,8 @@
     "as_of": "2026-07-29",
     "named": false
    },
-   "dem_cash_share": 0.0,
-   "cash_gap": -2244531
+   "dem_cash_share": 0.0085,
+   "cash_gap": -2225384
   },
   "FL-2": {
    "chamber": "house",
@@ -3206,18 +3206,18 @@
    "chamber": "house",
    "state": "HI",
    "dem": {
-    "name": "Case, Edward",
-    "incumbent": true,
-    "receipts": 1093795,
-    "spent": 810804,
-    "cash": 599649,
-    "debts": 0,
-    "as_of": "2026-07-19",
+    "name": "Keohokalole, Jarrett",
+    "incumbent": false,
+    "receipts": 1142928,
+    "spent": 1121380,
+    "cash": 21549,
+    "debts": 28862,
+    "as_of": "2026-09-30",
     "named": false
    },
    "rep": null,
    "dem_cash_share": 1.0,
-   "cash_gap": 599649
+   "cash_gap": 21549
   },
   "HI-2": {
    "chamber": "house",
@@ -9685,10 +9685,10 @@
     "name": "Lineberger, Ernest Robinson III",
     "incumbent": false,
     "receipts": 122446,
-    "spent": 122512,
-    "cash": 3427,
+    "spent": 122814,
+    "cash": 3125,
     "debts": 36000,
-    "as_of": "2026-06-30",
+    "as_of": "2026-09-30",
     "named": false
    },
    "rep": {
@@ -9701,8 +9701,8 @@
     "as_of": "2026-06-30",
     "named": false
    },
-   "dem_cash_share": 0.0024,
-   "cash_gap": -1408085
+   "dem_cash_share": 0.0022,
+   "cash_gap": -1408387
   },
   "TX-27": {
    "chamber": "house",
