@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-02",
+ "as_of": "2026-10-03",
  "latest_report": "2026-06-30",
  "n_races": 470,
  "note": "Best-funded Democrat and Republican in each race, from the FEC's bulk candidate summaries. Cash on hand is as of each campaign's last filed report, so races differ by a few weeks. Shown on this site and not fed into the forecast.",
@@ -3369,7 +3369,7 @@
     "spent": 2287482,
     "cash": 0,
     "debts": 0,
-    "as_of": "2026-06-30",
+    "as_of": "2026-09-30",
     "named": false
    },
    "dem_cash_share": 1.0,
@@ -5777,7 +5777,7 @@
     "spent": 280333,
     "cash": -16,
     "debts": 245000,
-    "as_of": "2026-06-30",
+    "as_of": "2026-09-30",
     "named": false
    },
    "dem_cash_share": 1.0,
@@ -7477,14 +7477,14 @@
     "name": "Lipetri, Mike",
     "incumbent": false,
     "receipts": 1666542,
-    "spent": 957956,
-    "cash": 724906,
+    "spent": 959806,
+    "cash": 723056,
     "debts": 56746,
-    "as_of": "2026-07-09",
+    "as_of": "2026-09-30",
     "named": false
    },
-   "dem_cash_share": 0.8868,
-   "cash_gap": 4955044
+   "dem_cash_share": 0.8871,
+   "cash_gap": 4956894
   },
   "NY-4": {
    "chamber": "house",

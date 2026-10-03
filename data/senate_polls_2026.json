@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-02T20:25:18+00:00",
+ "as_of": "2026-10-03T19:03:57+00:00",
  "source": "Wikipedia per-race election articles",
  "half_life_days": 21,
  "max_age_days": 120,
@@ -8,7 +8,7 @@
    "state": "AK",
    "dem_candidate": "Mary Peltola",
    "rep_candidate": "Dan Sullivan",
-   "dem_margin": 2.0,
+   "dem_margin": 1.9,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
@@ -30,7 +30,7 @@
     },
     {
      "label": "Silver Bulletin",
-     "margin": 2.6
+     "margin": 2.0
     }
    ],
    "rating": "tossup",
