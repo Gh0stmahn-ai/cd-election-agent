@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-04",
+ "as_of": "2026-10-05",
  "latest_report": "2026-06-30",
  "n_races": 470,
  "note": "Best-funded Democrat and Republican in each race, from the FEC's bulk candidate summaries. Cash on hand is as of each campaign's last filed report, so races differ by a few weeks. Shown on this site and not fed into the forecast.",
@@ -2008,15 +2008,15 @@
    "rep": {
     "name": "Austin, George Patrick",
     "incumbent": false,
-    "receipts": 283997,
-    "spent": 84046,
-    "cash": 199951,
+    "receipts": 313952,
+    "spent": 189215,
+    "cash": 124737,
     "debts": 240000,
-    "as_of": "2026-06-30",
+    "as_of": "2026-09-30",
     "named": false
    },
-   "dem_cash_share": 0.7511,
-   "cash_gap": 403283
+   "dem_cash_share": 0.8287,
+   "cash_gap": 478497
   },
   "CT-3": {
    "chamber": "house",
@@ -2587,15 +2587,15 @@
    "rep": {
     "name": "Singer, Scott M.",
     "incumbent": false,
-    "receipts": 2256719,
+    "receipts": 2265702,
     "spent": 1780241,
-    "cash": 476478,
+    "cash": 485461,
     "debts": 579453,
     "as_of": "2026-07-29",
     "named": false
    },
-   "dem_cash_share": 0.798,
-   "cash_gap": 1406156
+   "dem_cash_share": 0.795,
+   "cash_gap": 1397173
   },
   "FL-26": {
    "chamber": "house",
@@ -6439,15 +6439,15 @@
    "rep": {
     "name": "Dilorenzo, Anthony",
     "incumbent": false,
-    "receipts": 2500778,
+    "receipts": 2509761,
     "spent": 2311692,
-    "cash": 189086,
+    "cash": 198069,
     "debts": 1750000,
     "as_of": "2026-08-19",
     "named": false
    },
-   "dem_cash_share": 0.8068,
-   "cash_gap": 600780
+   "dem_cash_share": 0.7995,
+   "cash_gap": 591797
   },
   "NH-2": {
    "chamber": "house",
@@ -9988,15 +9988,15 @@
    "rep": {
     "name": "Pena, Lauren B.",
     "incumbent": false,
-    "receipts": 117890,
-    "spent": 117120,
-    "cash": 770,
+    "receipts": 130033,
+    "spent": 127435,
+    "cash": 2598,
     "debts": 0,
-    "as_of": "2026-06-30",
+    "as_of": "2026-09-30",
     "named": false
    },
-   "dem_cash_share": 0.9987,
-   "cash_gap": 596235
+   "dem_cash_share": 0.9957,
+   "cash_gap": 594407
   },
   "TX-38": {
    "chamber": "house",

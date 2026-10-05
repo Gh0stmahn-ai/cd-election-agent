@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-04T19:16:50+00:00",
+ "as_of": "2026-10-05T22:21:15+00:00",
  "source": "Wikipedia per-race election articles",
  "half_life_days": 21,
  "max_age_days": 120,
@@ -40,17 +40,17 @@
    "state": "GA",
    "dem_candidate": "Jon Ossoff",
    "rep_candidate": "Mike Collins",
-   "dem_margin": 7.7,
+   "dem_margin": 8.4,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 6.7
+     "margin": 7.6
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 7.2
+     "margin": 9.0
     },
     {
      "label": "FiftyPlusOne",
@@ -58,11 +58,11 @@
     },
     {
      "label": "RealClearPolitics",
-     "margin": 7.5
+     "margin": 8.0
     },
     {
      "label": "Silver Bulletin",
-     "margin": 8.2
+     "margin": 8.3
     }
    ],
    "rating": "lean",
@@ -104,21 +104,21 @@
    "state": "ME",
    "dem_candidate": "Troy Jackson",
    "rep_candidate": "Susan Collins",
-   "dem_margin": 1.5,
+   "dem_margin": 1.2,
    "method": "mean of 6 aggregators",
    "n_used": 6,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 1.5
+     "margin": 0.8
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 1.4
+     "margin": 0.7
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 2.3
+     "margin": 2.1
     },
     {
      "label": "Race to the WH",
@@ -126,11 +126,11 @@
     },
     {
      "label": "RealClearPolitics",
-     "margin": 0.2
+     "margin": 0.1
     },
     {
      "label": "Silver Bulletin",
-     "margin": 2.2
+     "margin": 2.0
     }
    ],
    "rating": "tossup",
@@ -272,7 +272,7 @@
    "state": "TX",
    "dem_candidate": "James Talarico",
    "rep_candidate": "Ken Paxton",
-   "dem_margin": 3.1,
+   "dem_margin": 3.2,
    "method": "mean of 6 aggregators",
    "n_used": 6,
    "detail": [
@@ -286,7 +286,7 @@
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 3.2
+     "margin": 3.3
     },
     {
      "label": "RealClearPolitics",
@@ -294,11 +294,11 @@
     },
     {
      "label": "The Texas Tribune",
-     "margin": 2.1
+     "margin": 2.5
     },
     {
      "label": "Silver Bulletin",
-     "margin": 3.4
+     "margin": 3.5
     }
    ],
    "rating": "tossup",

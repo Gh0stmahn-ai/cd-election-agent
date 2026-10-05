@@ -1,22 +1,22 @@
 {
- "as_of": "2026-10-04",
- "dem_margin_points": 9.63,
- "note": "Our own average of 59 individual polls from 33 pollsters, 2026-08-05 to 2026-09-28, plus or minus 0.7. Published aggregators say D+8.3",
+ "as_of": "2026-10-05",
+ "dem_margin_points": 9.31,
+ "note": "Our own average of 60 individual polls from 33 pollsters, 2026-08-07 to 2026-10-02, plus or minus 0.7. Published aggregators say D+8.2",
  "sources": [
   "https://en.wikipedia.org/wiki/2026_United_States_elections",
   "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections"
  ],
  "detail": {
-  "stderr": 0.72,
-  "spread": 2.68,
-  "flat": 8.23,
-  "trend_per_week": 0.45,
-  "mean_age_days": 21.9,
-  "n_polls": 59,
-  "n_effective": 44.8,
+  "stderr": 0.69,
+  "spread": 2.62,
+  "flat": 8.18,
+  "trend_per_week": 0.37,
+  "mean_age_days": 21.4,
+  "n_polls": 60,
+  "n_effective": 45.7,
   "n_pollsters": 33,
-  "newest": "2026-09-28",
-  "oldest": "2026-08-05",
+  "newest": "2026-10-02",
+  "oldest": "2026-08-07",
   "house_effects": [
    {
     "pollster": "Harvard",
@@ -64,11 +64,29 @@
     "pollster": "Morning Consult",
     "polls": 48,
     "in_average": 6,
-    "effect": -1.82
+    "effect": -1.83
    }
   ],
   "method": "Weighted by recency (21-day half-life), sample size and population, with each pollster's standing lean removed and no pollster allowed more than a fifth of the total weight. The average is then read off a line fitted through the polls at today's date rather than taken flat, because a weighted mean sits at the middle of its window and lags whenever the race is moving.",
   "recent": [
+   {
+    "source": "CBS News / YouGov",
+    "date": "2026-10-02",
+    "n": 1572,
+    "population": "LV",
+    "margin": 9.0,
+    "adjusted": 8.95,
+    "weight": 1.27
+   },
+   {
+    "source": "ActiVote",
+    "date": "2026-10-02",
+    "n": 1000,
+    "population": "LV",
+    "margin": 4.0,
+    "adjusted": 5.49,
+    "weight": 1.013
+   },
    {
     "source": "Harvard / Harris Poll / HarrisX",
     "date": "2026-09-28",
@@ -76,7 +94,7 @@
     "population": "LV",
     "margin": 2.0,
     "adjusted": 5.2,
-    "weight": 1.36
+    "weight": 1.316
    },
    {
     "source": "AlphaROC/The Independent Center",
@@ -85,7 +103,7 @@
     "population": "A",
     "margin": 6.0,
     "adjusted": 6.68,
-    "weight": 0.642
+    "weight": 0.621
    },
    {
     "source": "The Economist / YouGov",
@@ -94,7 +112,7 @@
     "population": "LV",
     "margin": 15.0,
     "adjusted": 15.23,
-    "weight": 0.919
+    "weight": 0.889
    },
    {
     "source": "Quinnipiac University",
@@ -103,7 +121,7 @@
     "population": "RV",
     "margin": 12.0,
     "adjusted": 9.85,
-    "weight": 0.811
+    "weight": 0.785
    },
    {
     "source": "Angus Reid Global",
@@ -112,7 +130,7 @@
     "population": "RV",
     "margin": 16.0,
     "adjusted": 14.35,
-    "weight": 0.717
+    "weight": 0.693
    },
    {
     "source": "Emerson College",
@@ -121,7 +139,7 @@
     "population": "LV",
     "margin": 11.0,
     "adjusted": 10.04,
-    "weight": 0.752
+    "weight": 0.728
    },
    {
     "source": "McLaughlin & Associates (R)",
@@ -130,7 +148,7 @@
     "population": "LV",
     "margin": 5.0,
     "adjusted": 7.93,
-    "weight": 0.752
+    "weight": 0.728
    },
    {
     "source": "The Economist / YouGov",
@@ -139,7 +157,7 @@
     "population": "LV",
     "margin": 14.0,
     "adjusted": 14.23,
-    "weight": 0.719
+    "weight": 0.695
    },
    {
     "source": "Echelon Insights",
@@ -148,7 +166,7 @@
     "population": "LV",
     "margin": 8.0,
     "adjusted": 8.65,
-    "weight": 0.729
+    "weight": 0.705
    },
    {
     "source": "Strength In Numbers /Verasight",
@@ -157,33 +175,15 @@
     "population": "LV",
     "margin": 10.0,
     "adjusted": 7.9,
-    "weight": 0.729
-   },
-   {
-    "source": "Impact Research (D)/National Research Inc. (R)",
-    "date": "2026-09-21",
-    "n": 1500,
-    "population": "RV",
-    "margin": 8.0,
-    "adjusted": 8.0,
-    "weight": 0.802
-   },
-   {
-    "source": "ActiVote",
-    "date": "2026-09-21",
-    "n": 1000,
-    "population": "LV",
-    "margin": 6.0,
-    "adjusted": 7.14,
-    "weight": 0.728
+    "weight": 0.705
    }
   ],
   "aggregators": {
-   "margin": 8.3,
-   "rep": 42.1,
-   "dem": 50.4,
+   "margin": 8.2,
+   "rep": 42.6,
+   "dem": 50.8,
    "n_aggregators": 5,
-   "as_of": "2026-10-03"
+   "as_of": "2026-10-05"
   }
  }
 }
