@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-05",
+ "as_of": "2026-10-06",
  "latest_report": "2026-06-30",
  "n_races": 470,
  "note": "Best-funded Democrat and Republican in each race, from the FEC's bulk candidate summaries. Cash on hand is as of each campaign's last filed report, so races differ by a few weeks. Shown on this site and not fed into the forecast.",
@@ -679,8 +679,8 @@
    "dem": {
     "name": "Gray, Adam C.",
     "incumbent": true,
-    "receipts": 4191397,
-    "spent": 2311244,
+    "receipts": 4192448,
+    "spent": 2312295,
     "cash": 2072111,
     "debts": 0,
     "as_of": "2026-06-30",
@@ -912,8 +912,8 @@
    "dem": {
     "name": "Villegas, Randy",
     "incumbent": false,
-    "receipts": 2645560,
-    "spent": 2073768,
+    "receipts": 2645566,
+    "spent": 2073773,
     "cash": 571792,
     "debts": 0,
     "as_of": "2026-06-30",
@@ -1164,15 +1164,15 @@
    "rep": {
     "name": "Ching, Eric J",
     "incumbent": false,
-    "receipts": 81571,
-    "spent": 56899,
-    "cash": 64913,
+    "receipts": 96570,
+    "spent": 122508,
+    "cash": 14302,
     "debts": 0,
-    "as_of": "2026-06-30",
+    "as_of": "2026-09-30",
     "named": false
    },
-   "dem_cash_share": 0.8001,
-   "cash_gap": 194890
+   "dem_cash_share": 0.9478,
+   "cash_gap": 245501
   },
   "CA-32": {
    "chamber": "house",
@@ -2847,15 +2847,15 @@
    "rep": {
     "name": "Chalifoux, Thomas E. Colonel Jr.",
     "incumbent": false,
-    "receipts": 3139737,
-    "spent": 1776689,
-    "cash": 1966256,
-    "debts": 4912816,
-    "as_of": "2026-07-29",
+    "receipts": 3155929,
+    "spent": 3687318,
+    "cash": 71819,
+    "debts": 3812816,
+    "as_of": "2026-09-30",
     "named": false
    },
-   "dem_cash_share": 0.3765,
-   "cash_gap": -778901
+   "dem_cash_share": 0.943,
+   "cash_gap": 1115536
   },
   "GA-1": {
    "chamber": "house",
