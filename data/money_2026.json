@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-06",
+ "as_of": "2026-10-07",
  "latest_report": "2026-06-30",
  "n_races": 470,
  "note": "Best-funded Democrat and Republican in each race, from the FEC's bulk candidate summaries. Cash on hand is as of each campaign's last filed report, so races differ by a few weeks. Shown on this site and not fed into the forecast.",
@@ -1190,15 +1190,15 @@
    "rep": {
     "name": "Thompson, Larry",
     "incumbent": false,
-    "receipts": 34316,
-    "spent": 32142,
-    "cash": 2174,
-    "debts": 19291,
-    "as_of": "2026-06-30",
+    "receipts": 52881,
+    "spent": 51926,
+    "cash": 955,
+    "debts": 26291,
+    "as_of": "2026-09-30",
     "named": false
    },
-   "dem_cash_share": 0.2163,
-   "cash_gap": -1574
+   "dem_cash_share": 0.3859,
+   "cash_gap": -355
   },
   "CA-33": {
    "chamber": "house",
@@ -6466,14 +6466,14 @@
     "name": "Williams, Lily Tang",
     "incumbent": false,
     "receipts": 1199750,
-    "spent": 701451,
-    "cash": 627779,
+    "spent": 683213,
+    "cash": 646017,
     "debts": 120000,
     "as_of": "2026-08-19",
     "named": false
    },
-   "dem_cash_share": 0.8114,
-   "cash_gap": 2073286
+   "dem_cash_share": 0.807,
+   "cash_gap": 2055048
   },
   "NH-2026": {
    "chamber": "senate",
@@ -8049,12 +8049,12 @@
    "chamber": "house",
    "state": "OK",
    "dem": {
-    "name": "Pixley, Jeffrey",
+    "name": "Jacob, Mitchell Leigh",
     "incumbent": false,
-    "receipts": 73533,
-    "spent": 73533,
-    "cash": 0,
-    "debts": 0,
+    "receipts": 115002,
+    "spent": 95470,
+    "cash": 19532,
+    "debts": 22500,
     "as_of": "2026-09-30",
     "named": false
    },
@@ -8068,8 +8068,8 @@
     "as_of": "2026-06-30",
     "named": false
    },
-   "dem_cash_share": 0.0,
-   "cash_gap": -2599733
+   "dem_cash_share": 0.0075,
+   "cash_gap": -2580201
   },
   "OK-5": {
    "chamber": "house",
@@ -8802,11 +8802,11 @@
    "dem": {
     "name": "Lehmacher, Eunice",
     "incumbent": false,
-    "receipts": 40813,
-    "spent": 23114,
-    "cash": 17699,
+    "receipts": 92928,
+    "spent": 43374,
+    "cash": 49554,
     "debts": 100,
-    "as_of": "2026-06-30",
+    "as_of": "2026-09-30",
     "named": false
    },
    "rep": {
@@ -8819,8 +8819,8 @@
     "as_of": "2026-06-30",
     "named": false
    },
-   "dem_cash_share": 0.0749,
-   "cash_gap": -201042
+   "dem_cash_share": 0.1847,
+   "cash_gap": -169187
   },
   "SC-4": {
    "chamber": "house",
