@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-07",
+ "as_of": "2026-10-08",
  "latest_report": "2026-06-30",
  "n_races": 470,
  "note": "Best-funded Democrat and Republican in each race, from the FEC's bulk candidate summaries. Cash on hand is as of each campaign's last filed report, so races differ by a few weeks. Shown on this site and not fed into the forecast.",
@@ -8688,9 +8688,18 @@
     "as_of": "2026-08-20",
     "named": false
    },
-   "rep": null,
-   "dem_cash_share": 1.0,
-   "cash_gap": 1512712
+   "rep": {
+    "name": "Mellor, Victor G.",
+    "incumbent": false,
+    "receipts": 2999002,
+    "spent": 2722098,
+    "cash": 276904,
+    "debts": 2175000,
+    "as_of": "2026-08-20",
+    "named": false
+   },
+   "dem_cash_share": 0.8453,
+   "cash_gap": 1235808
   },
   "RI-2026": {
    "chamber": "senate",
@@ -9789,15 +9798,15 @@
    "rep": {
     "name": "Self, Keith Alan",
     "incumbent": false,
-    "receipts": 645503,
-    "spent": 542149,
-    "cash": 212694,
+    "receipts": 841267,
+    "spent": 662689,
+    "cash": 287919,
     "debts": 0,
-    "as_of": "2026-06-30",
+    "as_of": "2026-09-30",
     "named": false
    },
-   "dem_cash_share": 0.171,
-   "cash_gap": -168816
+   "dem_cash_share": 0.1322,
+   "cash_gap": -244041
   },
   "TX-30": {
    "chamber": "house",

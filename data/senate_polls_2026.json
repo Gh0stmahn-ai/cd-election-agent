@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-07T21:03:54+00:00",
+ "as_of": "2026-10-08T21:05:25+00:00",
  "source": "Wikipedia per-race election articles",
  "half_life_days": 21,
  "max_age_days": 120,
@@ -82,11 +82,11 @@
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 1.8
+     "margin": 1.6
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 1.0
+     "margin": 1.1
     },
     {
      "label": "RealClearPolitics",
@@ -94,7 +94,7 @@
     },
     {
      "label": "Silver Bulletin",
-     "margin": 1.3
+     "margin": 1.6
     }
    ],
    "rating": "tossup",
@@ -136,7 +136,7 @@
    "state": "MI",
    "dem_candidate": "Abdul El-Sayed",
    "rep_candidate": "Mike Rogers",
-   "dem_margin": 3.6,
+   "dem_margin": 3.4,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
@@ -146,19 +146,19 @@
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 3.3
+     "margin": 2.7
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 3.4
+     "margin": 3.5
     },
     {
      "label": "RealClearPolitics",
-     "margin": 3.4
+     "margin": 3.2
     },
     {
      "label": "Silver Bulletin",
-     "margin": 3.7
+     "margin": 3.4
     }
    ],
    "rating": "tossup",
@@ -168,7 +168,7 @@
    "state": "NC",
    "dem_candidate": "Roy Cooper",
    "rep_candidate": "Michael Whatley",
-   "dem_margin": 9.4,
+   "dem_margin": 9.2,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
@@ -178,19 +178,19 @@
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 9.6
+     "margin": 8.9
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 10.0
+     "margin": 9.8
     },
     {
      "label": "RealClearPolitics",
-     "margin": 9.0
+     "margin": 8.8
     },
     {
      "label": "Silver Bulletin",
-     "margin": 9.2
+     "margin": 9.3
     }
    ],
    "rating": "lean",
@@ -200,29 +200,29 @@
    "state": "NH",
    "dem_candidate": "Chris Pappas",
    "rep_candidate": "John E. Sununu",
-   "dem_margin": 5.9,
+   "dem_margin": 6.5,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 5.0
+     "margin": 5.4
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 6.9
+     "margin": 7.2
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 4.4
+     "margin": 6.6
     },
     {
      "label": "RealClearPolitics",
-     "margin": 6.5
+     "margin": 5.9
     },
     {
      "label": "Silver Bulletin",
-     "margin": 6.5
+     "margin": 7.3
     }
    ],
    "rating": "tossup",
@@ -242,19 +242,19 @@
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 2.6
+     "margin": 2.3
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 4.1
+     "margin": 4.3
     },
     {
      "label": "RealClearPolitics",
-     "margin": 3.2
+     "margin": 3.1
     },
     {
      "label": "Silver Bulletin",
-     "margin": 4.2
+     "margin": 4.4
     }
    ],
    "rating": "tossup",
@@ -274,23 +274,23 @@
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 3.3
-    },
-    {
-     "label": "FiftyPlusOne",
-     "margin": 3.7
-    },
-    {
-     "label": "RealClearPolitics",
      "margin": 3.1
     },
     {
+     "label": "FiftyPlusOne",
+     "margin": 3.2
+    },
+    {
+     "label": "RealClearPolitics",
+     "margin": 2.8
+    },
+    {
      "label": "The Texas Tribune",
-     "margin": 2.5
+     "margin": 3.2
     },
     {
      "label": "Silver Bulletin",
-     "margin": 3.5
+     "margin": 3.4
     }
    ],
    "rating": "tossup",
