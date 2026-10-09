@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-08",
+ "as_of": "2026-10-09",
  "latest_report": "2026-06-30",
  "n_races": 470,
  "note": "Best-funded Democrat and Republican in each race, from the FEC's bulk candidate summaries. Cash on hand is as of each campaign's last filed report, so races differ by a few weeks. Shown on this site and not fed into the forecast.",
@@ -3519,11 +3519,11 @@
    "dem": {
     "name": "Fortier, Julie Dr.",
     "incumbent": false,
-    "receipts": 88060,
-    "spent": 28244,
-    "cash": 59815,
+    "receipts": 145608,
+    "spent": 103473,
+    "cash": 42135,
     "debts": 0,
-    "as_of": "2026-06-30",
+    "as_of": "2026-09-30",
     "named": false
    },
    "rep": {
@@ -3536,8 +3536,8 @@
     "as_of": "2026-06-30",
     "named": false
    },
-   "dem_cash_share": 0.0704,
-   "cash_gap": -730184
+   "dem_cash_share": 0.0506,
+   "cash_gap": -747864
   },
   "IL-13": {
    "chamber": "house",
@@ -8284,11 +8284,11 @@
    "dem": {
     "name": "Stelson, Janelle",
     "incumbent": false,
-    "receipts": 6364069,
-    "spent": 1900667,
-    "cash": 4478639,
+    "receipts": 8689754,
+    "spent": 6187777,
+    "cash": 2517215,
     "debts": 0,
-    "as_of": "2026-06-30",
+    "as_of": "2026-09-30",
     "named": false
    },
    "rep": {
@@ -8301,8 +8301,8 @@
     "as_of": "2026-06-30",
     "named": false
    },
-   "dem_cash_share": 0.6115,
-   "cash_gap": 1632663
+   "dem_cash_share": 0.4694,
+   "cash_gap": -328761
   },
   "PA-11": {
    "chamber": "house",
@@ -8837,9 +8837,9 @@
    "dem": {
     "name": "McClain, Courtney",
     "incumbent": false,
-    "receipts": 32993,
-    "spent": 37392,
-    "cash": 1207,
+    "receipts": 100496,
+    "spent": 68857,
+    "cash": 30989,
     "debts": 0,
     "as_of": "2026-09-30",
     "named": false
@@ -8854,8 +8854,8 @@
     "as_of": "2026-06-30",
     "named": false
    },
-   "dem_cash_share": 0.0154,
-   "cash_gap": -76018
+   "dem_cash_share": 0.2864,
+   "cash_gap": -46236
   },
   "SC-5": {
    "chamber": "house",
@@ -10996,11 +10996,11 @@
    "dem": {
     "name": "Parsi, Ahsan",
     "incumbent": false,
-    "receipts": 134245,
-    "spent": 90575,
-    "cash": 43669,
+    "receipts": 250041,
+    "spent": 134908,
+    "cash": 115134,
     "debts": 0,
-    "as_of": "2026-06-30",
+    "as_of": "2026-09-30",
     "named": false
    },
    "rep": {
@@ -11013,8 +11013,8 @@
     "as_of": "2026-06-30",
     "named": false
    },
-   "dem_cash_share": 0.0549,
-   "cash_gap": -707403
+   "dem_cash_share": 0.1329,
+   "cash_gap": -635938
   },
   "WV-2026": {
    "chamber": "senate",
