@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-09T20:36:28+00:00",
+ "as_of": "2026-10-10T19:51:33+00:00",
  "source": "Wikipedia per-race election articles",
  "half_life_days": 21,
  "max_age_days": 120,
@@ -270,15 +270,15 @@
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 3.1
+     "margin": 3.3
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 3.2
+     "margin": 3.3
     },
     {
      "label": "RealClearPolitics",
-     "margin": 2.8
+     "margin": 3.0
     },
     {
      "label": "The Texas Tribune",
@@ -286,7 +286,7 @@
     },
     {
      "label": "Silver Bulletin",
-     "margin": 3.4
+     "margin": 3.3
     }
    ],
    "rating": "tossup",

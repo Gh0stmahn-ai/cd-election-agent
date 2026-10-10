@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-09",
+ "as_of": "2026-10-10",
  "latest_report": "2026-06-30",
  "n_races": 470,
  "note": "Best-funded Democrat and Republican in each race, from the FEC's bulk candidate summaries. Cash on hand is as of each campaign's last filed report, so races differ by a few weeks. Shown on this site and not fed into the forecast.",
@@ -3598,8 +3598,8 @@
     "name": "Todd, Jennifer Ann",
     "incumbent": false,
     "receipts": 113341,
-    "spent": 79584,
-    "cash": 33757,
+    "spent": 82084,
+    "cash": 31257,
     "debts": 0,
     "as_of": "2026-06-30",
     "named": false
@@ -3614,8 +3614,8 @@
     "as_of": "2026-06-30",
     "named": false
    },
-   "dem_cash_share": 0.04,
-   "cash_gap": -776670
+   "dem_cash_share": 0.0371,
+   "cash_gap": -779170
   },
   "IL-16": {
    "chamber": "house",
@@ -5418,15 +5418,15 @@
    "rep": {
     "name": "Xiong, Paul",
     "incumbent": false,
-    "receipts": 60577,
-    "spent": 39503,
-    "cash": 21074,
+    "receipts": 68145,
+    "spent": 64577,
+    "cash": 3567,
     "debts": 0,
-    "as_of": "2026-07-22",
+    "as_of": "2026-09-30",
     "named": false
    },
-   "dem_cash_share": 0.9595,
-   "cash_gap": 477623
+   "dem_cash_share": 0.9929,
+   "cash_gap": 495130
   },
   "MN-5": {
    "chamber": "house",
@@ -5444,15 +5444,15 @@
    "rep": {
     "name": "Al-Aqidi, Dalia",
     "incumbent": false,
-    "receipts": 1128979,
-    "spent": 1117385,
-    "cash": 50512,
-    "debts": 6821,
-    "as_of": "2026-07-22",
+    "receipts": 1242455,
+    "spent": 1267656,
+    "cash": 13719,
+    "debts": 0,
+    "as_of": "2026-09-30",
     "named": false
    },
-   "dem_cash_share": 0.9639,
-   "cash_gap": 1296853
+   "dem_cash_share": 0.9899,
+   "cash_gap": 1333646
   },
   "MN-6": {
    "chamber": "house",
@@ -5486,8 +5486,8 @@
    "dem": {
     "name": "Osberg, Erik",
     "incumbent": false,
-    "receipts": 334945,
-    "spent": 220512,
+    "receipts": 329967,
+    "spent": 215339,
     "cash": 114432,
     "debts": 0,
     "as_of": "2026-07-22",
@@ -6230,11 +6230,11 @@
    "dem": {
     "name": "Hardy, Kimberly Dr.",
     "incumbent": false,
-    "receipts": 293818,
-    "spent": 228801,
-    "cash": 65017,
+    "receipts": 376110,
+    "spent": 351028,
+    "cash": 25082,
     "debts": 0,
-    "as_of": "2026-06-30",
+    "as_of": "2026-09-30",
     "named": false
    },
    "rep": {
@@ -6247,8 +6247,8 @@
     "as_of": "2026-06-30",
     "named": false
    },
-   "dem_cash_share": 0.0275,
-   "cash_gap": -2236470
+   "dem_cash_share": 0.0108,
+   "cash_gap": -2276405
   },
   "NC-8": {
    "chamber": "house",
@@ -6257,10 +6257,10 @@
     "name": "Oppenheim, Jesse",
     "incumbent": false,
     "receipts": 314099,
-    "spent": 264787,
-    "cash": 49313,
+    "spent": 279518,
+    "cash": 34581,
     "debts": 0,
-    "as_of": "2026-06-30",
+    "as_of": "2026-09-30",
     "named": false
    },
    "rep": {
@@ -6273,8 +6273,8 @@
     "as_of": "2026-06-30",
     "named": false
    },
-   "dem_cash_share": 0.0869,
-   "cash_gap": -468540
+   "dem_cash_share": 0.0626,
+   "cash_gap": -483272
   },
   "NC-9": {
    "chamber": "house",
@@ -6871,15 +6871,15 @@
    "rep": {
     "name": "Marker, Larry E",
     "incumbent": false,
-    "receipts": 33525,
-    "spent": 21675,
-    "cash": 11850,
+    "receipts": 92011,
+    "spent": 81050,
+    "cash": 1942,
     "debts": 0,
-    "as_of": "2026-06-30",
+    "as_of": "2026-09-30",
     "named": false
    },
-   "dem_cash_share": 0.9973,
-   "cash_gap": 4384904
+   "dem_cash_share": 0.9996,
+   "cash_gap": 4394812
   },
   "NM-3": {
    "chamber": "house",
@@ -9547,15 +9547,15 @@
    "rep": {
     "name": "Paxton, Warren Kenneth Jr.",
     "incumbent": false,
-    "receipts": 9248699,
-    "spent": 7492915,
-    "cash": 1755783,
+    "receipts": 9248692,
+    "spent": 7493398,
+    "cash": 1755294,
     "debts": 0,
-    "as_of": "2026-06-30",
+    "as_of": "2026-09-30",
     "named": true
    },
    "dem_cash_share": 0.9247,
-   "cash_gap": 19792372
+   "cash_gap": 19792861
   },
   "TX-21": {
    "chamber": "house",
@@ -10393,16 +10393,16 @@
    "dem": {
     "name": "Scott, Robert C",
     "incumbent": true,
-    "receipts": 688200,
-    "spent": 659220,
-    "cash": 191843,
+    "receipts": 688444,
+    "spent": 709197,
+    "cash": 145929,
     "debts": 3191,
     "as_of": "2026-07-15",
     "named": false
    },
    "rep": null,
    "dem_cash_share": 1.0,
-   "cash_gap": 191843
+   "cash_gap": 145929
   },
   "VA-4": {
    "chamber": "house",
@@ -10411,7 +10411,7 @@
     "name": "McClellan, Jennifer",
     "incumbent": true,
     "receipts": 1135225,
-    "spent": 991901,
+    "spent": 991881,
     "cash": 197426,
     "debts": 0,
     "as_of": "2026-07-15",
