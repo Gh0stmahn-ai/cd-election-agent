@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-10",
+ "as_of": "2026-10-11",
  "latest_report": "2026-06-30",
  "n_races": 470,
  "note": "Best-funded Democrat and Republican in each race, from the FEC's bulk candidate summaries. Cash on hand is as of each campaign's last filed report, so races differ by a few weeks. Shown on this site and not fed into the forecast.",
@@ -4227,11 +4227,11 @@
    "dem": {
     "name": "Compton, William Dakota",
     "incumbent": false,
-    "receipts": 69569,
-    "spent": 66766,
-    "cash": 184,
+    "receipts": 71464,
+    "spent": 68613,
+    "cash": 421,
     "debts": 0,
-    "as_of": "2026-06-30",
+    "as_of": "2026-09-30",
     "named": false
    },
    "rep": {
@@ -4244,8 +4244,8 @@
     "as_of": "2026-06-30",
     "named": false
    },
-   "dem_cash_share": 0.0001,
-   "cash_gap": -1718087
+   "dem_cash_share": 0.0002,
+   "cash_gap": -1717850
   },
   "KY-2026": {
    "chamber": "senate",
@@ -5392,15 +5392,15 @@
    "rep": {
     "name": "Wittrock, Quentin",
     "incumbent": false,
-    "receipts": 265498,
-    "spent": 51651,
-    "cash": 213847,
+    "receipts": 269176,
+    "spent": 99214,
+    "cash": 169962,
     "debts": 0,
-    "as_of": "2026-07-22",
+    "as_of": "2026-09-30",
     "named": false
    },
-   "dem_cash_share": 0.6594,
-   "cash_gap": 200095
+   "dem_cash_share": 0.7089,
+   "cash_gap": 243980
   },
   "MN-4": {
    "chamber": "house",
@@ -5998,15 +5998,15 @@
    "rep": {
     "name": "Edwards, Chuck",
     "incumbent": true,
-    "receipts": 939985,
-    "spent": 563005,
-    "cash": 485744,
-    "debts": 10500,
-    "as_of": "2026-06-30",
+    "receipts": 1025828,
+    "spent": 719549,
+    "cash": 415043,
+    "debts": 0,
+    "as_of": "2026-09-30",
     "named": false
    },
-   "dem_cash_share": 0.8181,
-   "cash_gap": 1699034
+   "dem_cash_share": 0.8404,
+   "cash_gap": 1769735
   },
   "NC-12": {
    "chamber": "house",
@@ -9330,8 +9330,8 @@
    "dem": {
     "name": "Nair, Mark",
     "incumbent": false,
-    "receipts": 101896,
-    "spent": 87979,
+    "receipts": 102243,
+    "spent": 87493,
     "cash": 14017,
     "debts": 0,
     "as_of": "2026-06-30",
