@@ -1,17 +1,17 @@
 {
- "as_of": "2026-10-11",
- "dem_margin_points": 9.05,
+ "as_of": "2026-10-12",
+ "dem_margin_points": 9.09,
  "note": "Our own average of 66 individual polls from 37 pollsters, 2026-08-16 to 2026-10-05, plus or minus 0.7. Published aggregators say D+8.4",
  "sources": [
   "https://en.wikipedia.org/wiki/2026_United_States_elections",
   "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections"
  ],
  "detail": {
-  "stderr": 0.67,
+  "stderr": 0.69,
   "spread": 2.33,
   "flat": 8.23,
   "trend_per_week": 0.28,
-  "mean_age_days": 20.7,
+  "mean_age_days": 21.7,
   "n_polls": 66,
   "n_effective": 45.7,
   "n_pollsters": 37,
@@ -76,7 +76,7 @@
     "population": "LV",
     "margin": 11.0,
     "adjusted": 11.17,
-    "weight": 0.993
+    "weight": 0.961
    },
    {
     "source": "Reuters / Ipsos",
@@ -85,7 +85,7 @@
     "population": "RV",
     "margin": 7.0,
     "adjusted": 8.79,
-    "weight": 1.55
+    "weight": 1.5
    },
    {
     "source": "Morning Consult",
@@ -94,7 +94,7 @@
     "population": "LV",
     "margin": 7.0,
     "adjusted": 8.77,
-    "weight": 2.381
+    "weight": 2.304
    },
    {
     "source": "Pew Research Center",
@@ -103,7 +103,7 @@
     "population": "RV",
     "margin": 8.0,
     "adjusted": 8.06,
-    "weight": 1.581
+    "weight": 1.529
    },
    {
     "source": "Cygnal (R)",
@@ -112,7 +112,7 @@
     "population": "LV",
     "margin": 9.0,
     "adjusted": 8.95,
-    "weight": 1.017
+    "weight": 0.984
    },
    {
     "source": "CBS News / YouGov",
@@ -121,7 +121,7 @@
     "population": "LV",
     "margin": 9.0,
     "adjusted": 8.93,
-    "weight": 1.042
+    "weight": 1.008
    },
    {
     "source": "ActiVote",
@@ -130,7 +130,7 @@
     "population": "LV",
     "margin": 4.0,
     "adjusted": 5.45,
-    "weight": 0.831
+    "weight": 0.804
    },
    {
     "source": "Centerline Research & Strategy",
@@ -139,7 +139,7 @@
     "population": "LV",
     "margin": 8.0,
     "adjusted": 8.07,
-    "weight": 0.775
+    "weight": 0.75
    },
    {
     "source": "Rasmussen Reports (R)",
@@ -148,7 +148,7 @@
     "population": "LV",
     "margin": 3.0,
     "adjusted": 4.05,
-    "weight": 1.042
+    "weight": 1.008
    },
    {
     "source": "Harvard / Harris Poll / HarrisX",
@@ -157,7 +157,7 @@
     "population": "LV",
     "margin": 2.0,
     "adjusted": 5.16,
-    "weight": 1.08
+    "weight": 1.045
    },
    {
     "source": "AlphaROC",
@@ -166,7 +166,7 @@
     "population": "A",
     "margin": 6.0,
     "adjusted": 6.64,
-    "weight": 0.51
+    "weight": 0.493
    },
    {
     "source": "The Economist / YouGov",
@@ -175,7 +175,7 @@
     "population": "LV",
     "margin": 15.0,
     "adjusted": 15.17,
-    "weight": 0.729
+    "weight": 0.705
    }
   ],
   "aggregators": {

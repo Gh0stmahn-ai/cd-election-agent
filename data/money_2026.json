@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-11",
+ "as_of": "2026-10-12",
  "latest_report": "2026-06-30",
  "n_races": 470,
  "note": "Best-funded Democrat and Republican in each race, from the FEC's bulk candidate summaries. Cash on hand is as of each campaign's last filed report, so races differ by a few weeks. Shown on this site and not fed into the forecast.",
@@ -3020,15 +3020,15 @@
    "rep": {
     "name": "Day, Matt",
     "incumbent": false,
-    "receipts": 206344,
-    "spent": 204576,
-    "cash": 1768,
+    "receipts": 217006,
+    "spent": 217006,
+    "cash": 0,
     "debts": 50000,
-    "as_of": "2026-06-30",
+    "as_of": "2026-09-30",
     "named": false
    },
-   "dem_cash_share": 0.9961,
-   "cash_gap": 446040
+   "dem_cash_share": 1.0,
+   "cash_gap": 447808
   },
   "GA-2026": {
    "chamber": "senate",
@@ -3139,11 +3139,11 @@
    "dem": {
     "name": "Kozycki, Anthony Lawrence",
     "incumbent": false,
-    "receipts": 392831,
-    "spent": 115405,
-    "cash": 277427,
-    "debts": 316702,
-    "as_of": "2026-06-30",
+    "receipts": 883487,
+    "spent": 200105,
+    "cash": 683382,
+    "debts": 716702,
+    "as_of": "2026-09-30",
     "named": false
    },
    "rep": {
@@ -3156,8 +3156,8 @@
     "as_of": "2026-06-30",
     "named": false
    },
-   "dem_cash_share": 0.2158,
-   "cash_gap": -730557
+   "dem_cash_share": 0.404,
+   "cash_gap": -324602
   },
   "GA-8": {
    "chamber": "house",
@@ -3805,11 +3805,11 @@
    "rep": {
     "name": "Koppie, Chad",
     "incumbent": false,
-    "receipts": 55451,
-    "spent": 55408,
+    "receipts": 58215,
+    "spent": 58173,
     "cash": 42,
     "debts": 0,
-    "as_of": "2026-06-30",
+    "as_of": "2026-09-30",
     "named": false
    },
    "dem_cash_share": 0.9999,
@@ -5486,10 +5486,10 @@
    "dem": {
     "name": "Osberg, Erik",
     "incumbent": false,
-    "receipts": 329967,
+    "receipts": 330067,
     "spent": 215339,
-    "cash": 114432,
-    "debts": 0,
+    "cash": 114727,
+    "debts": 5173,
     "as_of": "2026-07-22",
     "named": false
    },
@@ -5503,8 +5503,8 @@
     "as_of": "2026-07-22",
     "named": false
    },
-   "dem_cash_share": 0.1106,
-   "cash_gap": -805391
+   "dem_cash_share": 0.1109,
+   "cash_gap": -805096
   },
   "MN-8": {
    "chamber": "house",
@@ -5593,13 +5593,13 @@
     "incumbent": true,
     "receipts": 950350,
     "spent": 636335,
-    "cash": 471459,
+    "cash": 464459,
     "debts": 894000,
     "as_of": "2026-07-15",
     "named": false
    },
    "dem_cash_share": 0.0059,
-   "cash_gap": -468683
+   "cash_gap": -461683
   },
   "MO-4": {
    "chamber": "house",
@@ -8388,11 +8388,11 @@
    "dem": {
     "name": "Bradstock, David Alan",
     "incumbent": false,
-    "receipts": 201421,
-    "spent": 166713,
-    "cash": 34707,
+    "receipts": 370028,
+    "spent": 305818,
+    "cash": 64210,
     "debts": 0,
-    "as_of": "2026-06-30",
+    "as_of": "2026-09-30",
     "named": false
    },
    "rep": {
@@ -8405,8 +8405,8 @@
     "as_of": "2026-06-30",
     "named": false
    },
-   "dem_cash_share": 0.0338,
-   "cash_gap": -955974
+   "dem_cash_share": 0.0609,
+   "cash_gap": -926471
   },
   "PA-15": {
    "chamber": "house",
@@ -9287,11 +9287,11 @@
    "dem": {
     "name": "Reynolds, Claire Anne",
     "incumbent": false,
-    "receipts": 89281,
-    "spent": 42491,
-    "cash": 46790,
+    "receipts": 122572,
+    "spent": 69049,
+    "cash": 53523,
     "debts": 3317,
-    "as_of": "2026-06-30",
+    "as_of": "2026-09-30",
     "named": false
    },
    "rep": {
@@ -9304,8 +9304,8 @@
     "as_of": "2026-06-30",
     "named": false
    },
-   "dem_cash_share": 0.016,
-   "cash_gap": -2834934
+   "dem_cash_share": 0.0182,
+   "cash_gap": -2828201
   },
   "TX-12": {
    "chamber": "house",
@@ -10591,16 +10591,16 @@
    "dem": {
     "name": "Strickland, Marilyn",
     "incumbent": true,
-    "receipts": 1511304,
-    "spent": 1414394,
-    "cash": 677498,
+    "receipts": 1842714,
+    "spent": 1719024,
+    "cash": 704278,
     "debts": 50000,
-    "as_of": "2026-07-15",
+    "as_of": "2026-09-30",
     "named": false
    },
    "rep": null,
    "dem_cash_share": 1.0,
-   "cash_gap": 677498
+   "cash_gap": 704278
   },
   "WA-2": {
    "chamber": "house",
@@ -10942,13 +10942,13 @@
    "chamber": "house",
    "state": "WI",
    "dem": {
-    "name": "Scheffler, Mark Christopher",
+    "name": "Crosson, Rick",
     "incumbent": false,
-    "receipts": 136755,
-    "spent": 126664,
-    "cash": 10091,
-    "debts": 25000,
-    "as_of": "2026-07-22",
+    "receipts": 142421,
+    "spent": 96777,
+    "cash": 45644,
+    "debts": 0,
+    "as_of": "2026-09-30",
     "named": false
    },
    "rep": {
@@ -10961,8 +10961,8 @@
     "as_of": "2026-07-22",
     "named": false
    },
-   "dem_cash_share": 0.0192,
-   "cash_gap": -505470
+   "dem_cash_share": 0.0813,
+   "cash_gap": -469917
   },
   "WV-1": {
    "chamber": "house",

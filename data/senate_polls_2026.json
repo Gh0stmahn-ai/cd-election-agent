@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-11T19:58:11+00:00",
+ "as_of": "2026-10-12T22:46:26+00:00",
  "source": "Wikipedia per-race election articles",
  "half_life_days": 21,
  "max_age_days": 120,
@@ -14,15 +14,15 @@
    "detail": [
     {
      "label": "Decision Desk HQ",
-     "margin": 2.5
+     "margin": 2.4
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 2.9
+     "margin": 2.8
     },
     {
      "label": "RealClearPolitics",
-     "margin": 1.2
+     "margin": 1.5
     },
     {
      "label": "Silver Bulletin",
@@ -36,7 +36,7 @@
    "state": "GA",
    "dem_candidate": "Jon Ossoff",
    "rep_candidate": "Mike Collins",
-   "dem_margin": 8.4,
+   "dem_margin": 8.5,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
@@ -46,19 +46,19 @@
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 9.0
+     "margin": 8.8
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 9.0
+     "margin": 9.2
     },
     {
      "label": "RealClearPolitics",
-     "margin": 8.0
+     "margin": 8.1
     },
     {
      "label": "Silver Bulletin",
-     "margin": 8.3
+     "margin": 9.0
     }
    ],
    "rating": "lean",
@@ -132,7 +132,7 @@
    "state": "MI",
    "dem_candidate": "Abdul El-Sayed",
    "rep_candidate": "Mike Rogers",
-   "dem_margin": 3.4,
+   "dem_margin": 3.5,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
@@ -142,7 +142,7 @@
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 2.7
+     "margin": 3.4
     },
     {
      "label": "FiftyPlusOne",
@@ -150,11 +150,11 @@
     },
     {
      "label": "RealClearPolitics",
-     "margin": 3.2
+     "margin": 3.1
     },
     {
      "label": "Silver Bulletin",
-     "margin": 3.4
+     "margin": 3.5
     }
    ],
    "rating": "tossup",
@@ -164,7 +164,7 @@
    "state": "NC",
    "dem_candidate": "Roy Cooper",
    "rep_candidate": "Michael Whatley",
-   "dem_margin": 9.2,
+   "dem_margin": 9.1,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
@@ -174,19 +174,19 @@
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 8.9
+     "margin": 8.4
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 9.8
+     "margin": 10.0
     },
     {
      "label": "RealClearPolitics",
-     "margin": 8.8
+     "margin": 9.0
     },
     {
      "label": "Silver Bulletin",
-     "margin": 9.3
+     "margin": 9.0
     }
    ],
    "rating": "lean",
