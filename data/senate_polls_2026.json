@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-12T22:46:26+00:00",
+ "as_of": "2026-10-13T21:02:01+00:00",
  "source": "Wikipedia per-race election articles",
  "half_life_days": 21,
  "max_age_days": 120,
@@ -164,7 +164,7 @@
    "state": "NC",
    "dem_candidate": "Roy Cooper",
    "rep_candidate": "Michael Whatley",
-   "dem_margin": 9.1,
+   "dem_margin": 9.7,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
@@ -174,19 +174,19 @@
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 8.4
+     "margin": 10.2
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 10.0
+     "margin": 10.4
     },
     {
      "label": "RealClearPolitics",
-     "margin": 9.0
+     "margin": 9.5
     },
     {
      "label": "Silver Bulletin",
-     "margin": 9.0
+     "margin": 9.2
     }
    ],
    "rating": "lean",
@@ -260,33 +260,33 @@
    "state": "TX",
    "dem_candidate": "James Talarico",
    "rep_candidate": "Ken Paxton",
-   "dem_margin": 3.3,
+   "dem_margin": 3.2,
    "method": "mean of 6 aggregators",
    "n_used": 6,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 4.0
+     "margin": 3.6
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 3.3
+     "margin": 2.3
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 3.3
+     "margin": 3.6
     },
     {
      "label": "RealClearPolitics",
-     "margin": 3.0
+     "margin": 2.7
     },
     {
      "label": "The Texas Tribune",
-     "margin": 3.2
+     "margin": 3.3
     },
     {
      "label": "Silver Bulletin",
-     "margin": 3.3
+     "margin": 3.4
     }
    ],
    "rating": "tossup",

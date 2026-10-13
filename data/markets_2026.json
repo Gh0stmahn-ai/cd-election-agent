@@ -1,248 +1,248 @@
 {
- "as_of": "2026-10-12T22:45:56+00:00",
+ "as_of": "2026-10-13T21:01:34+00:00",
  "note": "Shown alongside the model, never blended into it.",
  "venues": {
   "kalshi": {
    "senate_dem": {
     "prob": 0.615,
-    "volume": 14246419
+    "volume": 14377686
    },
    "joint": [
     {
-     "label": "R-House, D-Senate",
-     "prob": 0.0075,
-     "volume": 11409408,
-     "prob_normalized": 0.0074
-    },
-    {
      "label": "Democrats sweep",
      "prob": 0.605,
-     "volume": 4896439,
-     "prob_normalized": 0.5975
+     "volume": 4958654,
+     "prob_normalized": 0.6008
     },
     {
-     "label": "Republicans sweep",
-     "prob": 0.105,
-     "volume": 17265052,
-     "prob_normalized": 0.1037
+     "label": "R-House, D-Senate",
+     "prob": 0.0075,
+     "volume": 11579750,
+     "prob_normalized": 0.0074
     },
     {
      "label": "D-House, R-Senate",
      "prob": 0.295,
-     "volume": 4042782,
-     "prob_normalized": 0.2914
+     "volume": 4098549,
+     "prob_normalized": 0.2929
+    },
+    {
+     "label": "Republicans sweep",
+     "prob": 0.0995,
+     "volume": 17884063,
+     "prob_normalized": 0.0988
     }
    ],
-   "joint_volume": 37613681,
+   "joint_volume": 38521016,
    "house_dem": {
-    "prob": 0.2914,
-    "volume": 37613681
+    "prob": 0.2929,
+    "volume": 38521016
    },
    "generic_ballot": {
     "implied_dem_margin": 8.1,
-    "volume": 2462339,
+    "volume": 2481031,
     "bins": [
      {
-      "label": "Democrats, 0 to 2%",
-      "prob": 0.0345,
-      "volume": 319550,
-      "prob_normalized": 0.0332
+      "label": "Democrats, 2 to 4%",
+      "prob": 0.055,
+      "volume": 245168,
+      "prob_normalized": 0.0518
      },
      {
-      "label": "Democrats, 16% and above",
-      "prob": 0.0155,
-      "volume": 178132,
-      "prob_normalized": 0.0149
+      "label": "Republicans win",
+      "prob": 0.0535,
+      "volume": 842917,
+      "prob_normalized": 0.0504
      },
      {
       "label": "Democrats, 12 to 14%",
       "prob": 0.0885,
-      "volume": 149366,
-      "prob_normalized": 0.0851
+      "volume": 149826,
+      "prob_normalized": 0.0833
+     },
+     {
+      "label": "Democrats, 6 to 8%",
+      "prob": 0.22,
+      "volume": 149317,
+      "prob_normalized": 0.2071
      },
      {
       "label": "Democrats, 14 to 16%",
       "prob": 0.0305,
-      "volume": 112176,
-      "prob_normalized": 0.0293
+      "volume": 112926,
+      "prob_normalized": 0.0287
      },
      {
-      "label": "Democrats, 6 to 8%",
-      "prob": 0.195,
-      "volume": 147252,
-      "prob_normalized": 0.1874
-     },
-     {
-      "label": "Republicans win",
-      "prob": 0.0565,
-      "volume": 831642,
-      "prob_normalized": 0.0543
+      "label": "Democrats, 16% and above",
+      "prob": 0.0165,
+      "volume": 179786,
+      "prob_normalized": 0.0155
      },
      {
       "label": "Democrats, 4 to 6%",
       "prob": 0.105,
-      "volume": 135316,
-      "prob_normalized": 0.1009
+      "volume": 135376,
+      "prob_normalized": 0.0988
      },
      {
-      "label": "Democrats, 10 to 12%",
-      "prob": 0.195,
-      "volume": 177754,
-      "prob_normalized": 0.1874
+      "label": "Democrats, 0 to 2%",
+      "prob": 0.0335,
+      "volume": 320324,
+      "prob_normalized": 0.0315
      },
      {
       "label": "Democrats, 8 to 10%",
       "prob": 0.265,
-      "volume": 166706,
-      "prob_normalized": 0.2547
+      "volume": 167073,
+      "prob_normalized": 0.2494
      },
      {
-      "label": "Democrats, 2 to 4%",
-      "prob": 0.055,
-      "volume": 244445,
-      "prob_normalized": 0.0529
+      "label": "Democrats, 10 to 12%",
+      "prob": 0.195,
+      "volume": 178318,
+      "prob_normalized": 0.1835
      }
     ]
    },
    "house_seats": {
-    "volume": 2748352,
+    "volume": 2810900,
     "bins": [
-     {
-      "label": "Below 210",
-      "prob": 0.0485,
-      "volume": 417706,
-      "prob_normalized": 0.0476
-     },
-     {
-      "label": "222-225",
-      "prob": 0.0755,
-      "volume": 123003,
-      "prob_normalized": 0.0741
-     },
      {
       "label": "246-249",
       "prob": 0.0655,
-      "volume": 163627,
-      "prob_normalized": 0.0643
+      "volume": 165855,
+      "prob_normalized": 0.0644
      },
      {
       "label": "242-245",
-      "prob": 0.0775,
-      "volume": 144561,
-      "prob_normalized": 0.0761
-     },
-     {
-      "label": "218-221",
-      "prob": 0.043,
-      "volume": 157608,
-      "prob_normalized": 0.0422
+      "prob": 0.0795,
+      "volume": 150036,
+      "prob_normalized": 0.0781
      },
      {
       "label": "214-217",
-      "prob": 0.0375,
-      "volume": 300292,
-      "prob_normalized": 0.0368
-     },
-     {
-      "label": "226-229",
-      "prob": 0.0925,
-      "volume": 146337,
-      "prob_normalized": 0.0908
+      "prob": 0.0325,
+      "volume": 300485,
+      "prob_normalized": 0.0319
      },
      {
       "label": "234-237",
       "prob": 0.145,
-      "volume": 172076,
-      "prob_normalized": 0.1423
+      "volume": 177666,
+      "prob_normalized": 0.1425
+     },
+     {
+      "label": "218-221",
+      "prob": 0.0475,
+      "volume": 169845,
+      "prob_normalized": 0.0467
      },
      {
       "label": "230-233",
       "prob": 0.155,
-      "volume": 170670,
-      "prob_normalized": 0.1521
+      "volume": 176394,
+      "prob_normalized": 0.1523
+     },
+     {
+      "label": "226-229",
+      "prob": 0.105,
+      "volume": 162139,
+      "prob_normalized": 0.1032
+     },
+     {
+      "label": "222-225",
+      "prob": 0.0715,
+      "volume": 127116,
+      "prob_normalized": 0.0703
      },
      {
       "label": "238-241",
       "prob": 0.125,
-      "volume": 154042,
-      "prob_normalized": 0.1227
+      "volume": 159868,
+      "prob_normalized": 0.1229
+     },
+     {
+      "label": "Below 210",
+      "prob": 0.0455,
+      "volume": 417715,
+      "prob_normalized": 0.0447
      },
      {
       "label": "Above 249",
       "prob": 0.125,
-      "volume": 557609,
-      "prob_normalized": 0.1227
+      "volume": 562757,
+      "prob_normalized": 0.1229
      },
      {
       "label": "210-213",
-      "prob": 0.029,
-      "volume": 240821,
-      "prob_normalized": 0.0285
+      "prob": 0.0205,
+      "volume": 241024,
+      "prob_normalized": 0.0201
      }
     ]
    },
    "senate_seats": {
-    "volume": 4320388,
+    "volume": 4406161,
     "bins": [
+     {
+      "label": "46",
+      "prob": 0.0235,
+      "volume": 323069,
+      "prob_normalized": 0.0224
+     },
+     {
+      "label": "49",
+      "prob": 0.091,
+      "volume": 264910,
+      "prob_normalized": 0.0867
+     },
+     {
+      "label": "47",
+      "prob": 0.0405,
+      "volume": 339459,
+      "prob_normalized": 0.0386
+     },
      {
       "label": "51",
       "prob": 0.125,
-      "volume": 286170,
-      "prob_normalized": 0.1204
-     },
-     {
-      "label": "48",
-      "prob": 0.0645,
-      "volume": 250448,
-      "prob_normalized": 0.0621
-     },
-     {
-      "label": "Below 45",
-      "prob": 0.039,
-      "volume": 462906,
-      "prob_normalized": 0.0376
-     },
-     {
-      "label": "46",
-      "prob": 0.0225,
-      "volume": 318158,
-      "prob_normalized": 0.0217
+      "volume": 294458,
+      "prob_normalized": 0.1192
      },
      {
       "label": "Above 52",
       "prob": 0.355,
-      "volume": 1321286,
-      "prob_normalized": 0.342
+      "volume": 1328456,
+      "prob_normalized": 0.3384
      },
      {
-      "label": "49",
-      "prob": 0.084,
-      "volume": 230889,
-      "prob_normalized": 0.0809
+      "label": "Below 45",
+      "prob": 0.036,
+      "volume": 467231,
+      "prob_normalized": 0.0343
+     },
+     {
+      "label": "48",
+      "prob": 0.0665,
+      "volume": 256310,
+      "prob_normalized": 0.0634
      },
      {
       "label": "45",
-      "prob": 0.0195,
-      "volume": 300332,
-      "prob_normalized": 0.0188
-     },
-     {
-      "label": "47",
-      "prob": 0.0385,
-      "volume": 333501,
-      "prob_normalized": 0.0371
+      "prob": 0.0215,
+      "volume": 309848,
+      "prob_normalized": 0.0205
      },
      {
       "label": "52",
       "prob": 0.165,
-      "volume": 600083,
-      "prob_normalized": 0.159
+      "volume": 603645,
+      "prob_normalized": 0.1573
      },
      {
       "label": "50",
       "prob": 0.125,
-      "volume": 216615,
-      "prob_normalized": 0.1204
+      "volume": 218775,
+      "prob_normalized": 0.1192
      }
     ]
    },
@@ -252,46 +252,46 @@
   "polymarket": {
    "house_dem": {
     "prob": 0.905,
-    "volume": 16552900
+    "volume": 16708327
    },
    "senate_dem": {
     "prob": 0.635,
-    "volume": 6350879
+    "volume": 6405976
    },
    "races": {
     "ME-2026": {
      "title": "Maine Senate Election Winner",
-     "volume": 2224615,
+     "volume": 2233877,
      "slug": "maine-senate-election-winner",
      "parties": {
       "D": {
-       "prob": 0.585,
+       "prob": 0.5891,
        "label": "Troy Jackson (D)"
       },
       "R": {
-       "prob": 0.415,
+       "prob": 0.4109,
        "label": "Susan Collins (R)"
       }
      }
     },
     "TX-2026": {
      "title": "Texas Senate Election Winner",
-     "volume": 3433358,
+     "volume": 3531255,
      "slug": "texas-senate-election-winner",
      "parties": {
       "D": {
-       "prob": 0.6378,
+       "prob": 0.645,
        "label": "James Talarico (D)"
       },
       "R": {
-       "prob": 0.3622,
+       "prob": 0.355,
        "label": "Ken Paxton (R)"
       }
      }
     },
     "MI-2026": {
      "title": "Michigan Senate Election Winner",
-     "volume": 1615350,
+     "volume": 1628900,
      "slug": "michigan-senate-election-winner",
      "parties": {
       "D": {
@@ -306,22 +306,22 @@
     },
     "AK-2026": {
      "title": "Alaska Senate Election Winner",
-     "volume": 1250586,
+     "volume": 1273787,
      "slug": "alaska-senate-election-winner",
      "parties": {
       "R": {
-       "prob": 0.2825,
+       "prob": 0.2654,
        "label": "Sen. Dan Sullivan"
       },
       "D": {
-       "prob": 0.7175,
+       "prob": 0.7346,
        "label": "Mary Peltola"
       }
      }
     },
     "OH-2026-special": {
      "title": "Ohio Senate Election Winner",
-     "volume": 1151594,
+     "volume": 1156265,
      "slug": "ohio-senate-election-winner",
      "parties": {
       "D": {
@@ -336,22 +336,22 @@
     },
     "IA-2026": {
      "title": "Iowa Senate Election Winner",
-     "volume": 870584,
+     "volume": 873877,
      "slug": "iowa-senate-election-winner",
      "parties": {
       "D": {
-       "prob": 0.4208,
+       "prob": 0.425,
        "label": "Josh Turek (D)"
       },
       "R": {
-       "prob": 0.5792,
+       "prob": 0.575,
        "label": "Ashley Hinson (R)"
       }
      }
     },
     "NE-2026": {
      "title": "Nebraska Senate Election Winner  ",
-     "volume": 592389,
+     "volume": 607211,
      "slug": "nebraska-senate-election-winner",
      "parties": {
       "D": {

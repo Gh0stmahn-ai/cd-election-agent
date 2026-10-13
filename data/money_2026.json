@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-12",
+ "as_of": "2026-10-13",
  "latest_report": "2026-06-30",
  "n_races": 470,
  "note": "Best-funded Democrat and Republican in each race, from the FEC's bulk candidate summaries. Cash on hand is as of each campaign's last filed report, so races differ by a few weeks. Shown on this site and not fed into the forecast.",
@@ -715,15 +715,15 @@
    "rep": {
     "name": "Huang, Wendy Fiona Ms.",
     "incumbent": false,
-    "receipts": 41023,
-    "spent": 34739,
-    "cash": 6284,
+    "receipts": 41073,
+    "spent": 34741,
+    "cash": 6332,
     "debts": 30207,
-    "as_of": "2026-06-30",
+    "as_of": "2026-09-30",
     "named": false
    },
-   "dem_cash_share": 0.8908,
-   "cash_gap": 44952
+   "dem_cash_share": 0.89,
+   "cash_gap": 44904
   },
   "CA-15": {
    "chamber": "house",
@@ -1826,10 +1826,10 @@
     "name": "Kelloff, Alexander George",
     "incumbent": false,
     "receipts": 1296968,
-    "spent": 1125024,
-    "cash": 171626,
-    "debts": 671219,
-    "as_of": "2026-06-30",
+    "spent": 1292290,
+    "cash": 4360,
+    "debts": 632962,
+    "as_of": "2026-09-30",
     "named": false
    },
    "rep": {
@@ -1842,8 +1842,8 @@
     "as_of": "2026-06-30",
     "named": false
    },
-   "dem_cash_share": 0.0888,
-   "cash_gap": -1589223
+   "dem_cash_share": 0.0025,
+   "cash_gap": -1756489
   },
   "CO-4": {
    "chamber": "house",
@@ -2951,15 +2951,15 @@
    "rep": {
     "name": "Allen, Richard W",
     "incumbent": true,
-    "receipts": 993220,
-    "spent": 847219,
-    "cash": 1320958,
+    "receipts": 1207041,
+    "spent": 937936,
+    "cash": 1444062,
     "debts": 1639945,
-    "as_of": "2026-06-30",
+    "as_of": "2026-09-30",
     "named": false
    },
-   "dem_cash_share": 0.0026,
-   "cash_gap": -1317456
+   "dem_cash_share": 0.0024,
+   "cash_gap": -1440560
   },
   "GA-13": {
    "chamber": "house",
@@ -4656,13 +4656,13 @@
    "chamber": "house",
    "state": "MA",
    "dem": {
-    "name": "Koh, Daniel Arrigg",
+    "name": "Beccia, John",
     "incumbent": false,
-    "receipts": 4716543,
-    "spent": 2723575,
-    "cash": 1994307,
-    "debts": 69000,
-    "as_of": "2026-08-12",
+    "receipts": 5197587,
+    "spent": 5184470,
+    "cash": 13117,
+    "debts": 4678735,
+    "as_of": "2026-09-30",
     "named": false
    },
    "rep": {
@@ -4675,8 +4675,8 @@
     "as_of": "2026-08-12",
     "named": false
    },
-   "dem_cash_share": 0.9135,
-   "cash_gap": 1805389
+   "dem_cash_share": 0.0649,
+   "cash_gap": -175801
   },
   "MA-7": {
    "chamber": "house",
@@ -5124,15 +5124,15 @@
    "rep": {
     "name": "Rogers, Michael J",
     "incumbent": false,
-    "receipts": 10898177,
-    "spent": 6680643,
-    "cash": 4473237,
+    "receipts": 10903169,
+    "spent": 6743884,
+    "cash": 4414988,
     "debts": 0,
-    "as_of": "2026-07-15",
+    "as_of": "2026-09-30",
     "named": true
    },
-   "dem_cash_share": 0.3633,
-   "cash_gap": -1920474
+   "dem_cash_share": 0.3664,
+   "cash_gap": -1862225
   },
   "MI-3": {
    "chamber": "house",
@@ -5643,15 +5643,15 @@
    "rep": {
     "name": "Burks, Taylor",
     "incumbent": false,
-    "receipts": 1154910,
-    "spent": 436279,
-    "cash": 718631,
-    "debts": 900000,
-    "as_of": "2026-07-15",
+    "receipts": 1171087,
+    "spent": 1162348,
+    "cash": 8739,
+    "debts": 565000,
+    "as_of": "2026-09-30",
     "named": false
    },
-   "dem_cash_share": 0.614,
-   "cash_gap": 424251
+   "dem_cash_share": 0.9924,
+   "cash_gap": 1134143
   },
   "MO-6": {
    "chamber": "house",
@@ -6465,15 +6465,15 @@
    "rep": {
     "name": "Williams, Lily Tang",
     "incumbent": false,
-    "receipts": 1199750,
-    "spent": 683213,
-    "cash": 646017,
+    "receipts": 1377170,
+    "spent": 844004,
+    "cash": 662646,
     "debts": 120000,
-    "as_of": "2026-08-19",
+    "as_of": "2026-09-30",
     "named": false
    },
-   "dem_cash_share": 0.807,
-   "cash_gap": 2055048
+   "dem_cash_share": 0.803,
+   "cash_gap": 2038419
   },
   "NH-2026": {
    "chamber": "senate",
@@ -7043,16 +7043,16 @@
    "dem": {
     "name": "Goldman, Daniel",
     "incumbent": true,
-    "receipts": 8365109,
-    "spent": 8138828,
-    "cash": 1158530,
-    "debts": 7518995,
-    "as_of": "2026-06-30",
+    "receipts": 8699480,
+    "spent": 9619371,
+    "cash": 12358,
+    "debts": 7097702,
+    "as_of": "2026-09-30",
     "named": false
    },
    "rep": null,
    "dem_cash_share": 1.0,
-   "cash_gap": 1158530
+   "cash_gap": 12358
   },
   "NY-11": {
    "chamber": "house",
@@ -7139,15 +7139,15 @@
    "rep": {
     "name": "Forte, Tina",
     "incumbent": false,
-    "receipts": 803141,
-    "spent": 882618,
-    "cash": 2738,
+    "receipts": 817731,
+    "spent": 895223,
+    "cash": 4723,
     "debts": 15000,
-    "as_of": "2026-06-30",
+    "as_of": "2026-09-30",
     "named": false
    },
-   "dem_cash_share": 0.9998,
-   "cash_gap": 15958194
+   "dem_cash_share": 0.9997,
+   "cash_gap": 15956209
   },
   "NY-15": {
    "chamber": "house",
@@ -7819,16 +7819,16 @@
    "dem": {
     "name": "Beatty, Joyce",
     "incumbent": true,
-    "receipts": 1201451,
-    "spent": 1137204,
-    "cash": 2776821,
+    "receipts": 1447581,
+    "spent": 1406740,
+    "cash": 2753415,
     "debts": 2500,
-    "as_of": "2026-06-30",
+    "as_of": "2026-09-30",
     "named": false
    },
    "rep": null,
    "dem_cash_share": 1.0,
-   "cash_gap": 2776821
+   "cash_gap": 2753415
   },
   "OH-4": {
    "chamber": "house",
@@ -8977,15 +8977,15 @@
    "rep": {
     "name": "Johnson, Dusty",
     "incumbent": true,
-    "receipts": 1694900,
-    "spent": 5546921,
-    "cash": 1393104,
+    "receipts": 1706922,
+    "spent": 5553838,
+    "cash": 1398209,
     "debts": 0,
-    "as_of": "2026-06-30",
+    "as_of": "2026-09-30",
     "named": false
    },
-   "dem_cash_share": 0.0738,
-   "cash_gap": -1282126
+   "dem_cash_share": 0.0735,
+   "cash_gap": -1287231
   },
   "TN-1": {
    "chamber": "house",
@@ -9599,15 +9599,15 @@
    "rep": {
     "name": "Nehls, Troy",
     "incumbent": true,
-    "receipts": 429506,
-    "spent": 566874,
-    "cash": 151711,
+    "receipts": 429606,
+    "spent": 607157,
+    "cash": 111528,
     "debts": 127,
-    "as_of": "2026-06-30",
+    "as_of": "2026-09-30",
     "named": false
    },
-   "dem_cash_share": 0.0008,
-   "cash_gap": -151584
+   "dem_cash_share": 0.0011,
+   "cash_gap": -111401
   },
   "TX-23": {
    "chamber": "house",
@@ -10185,11 +10185,11 @@
    "dem": {
     "name": "Crosby, Peter",
     "incumbent": false,
-    "receipts": 60225,
-    "spent": 31698,
-    "cash": 23283,
+    "receipts": 138382,
+    "spent": 84385,
+    "cash": 48753,
     "debts": 0,
-    "as_of": "2026-06-30",
+    "as_of": "2026-09-30",
     "named": false
    },
    "rep": {
@@ -10202,8 +10202,8 @@
     "as_of": "2026-06-30",
     "named": false
    },
-   "dem_cash_share": 0.0122,
-   "cash_gap": -1863679
+   "dem_cash_share": 0.0252,
+   "cash_gap": -1838209
   },
   "UT-3": {
    "chamber": "house",
