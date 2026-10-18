@@ -1,20 +1,20 @@
 {
- "as_of": "2026-10-17",
+ "as_of": "2026-10-18",
  "dem_margin_points": 8.75,
- "note": "Our own average of 67 individual polls from 36 pollsters, 2026-08-24 to 2026-10-14, plus or minus 0.6. Published aggregators say D+8.2",
+ "note": "Our own average of 68 individual polls from 37 pollsters, 2026-08-24 to 2026-10-14, plus or minus 0.6. Published aggregators say D+8.3",
  "sources": [
   "https://en.wikipedia.org/wiki/2026_United_States_elections",
   "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections"
  ],
  "detail": {
-  "stderr": 0.61,
-  "spread": 2.11,
-  "flat": 8.37,
+  "stderr": 0.63,
+  "spread": 2.1,
+  "flat": 8.34,
   "trend_per_week": 0.13,
-  "mean_age_days": 20.9,
-  "n_polls": 67,
-  "n_effective": 46.6,
-  "n_pollsters": 36,
+  "mean_age_days": 21.9,
+  "n_polls": 68,
+  "n_effective": 47.2,
+  "n_pollsters": 37,
   "newest": "2026-10-14",
   "oldest": "2026-08-24",
   "house_effects": [
@@ -28,19 +28,19 @@
     "pollster": "RMG Research",
     "polls": 15,
     "in_average": 2,
-    "effect": -2.98
-   },
-   {
-    "pollster": "McLaughlin & Associates",
-    "polls": 15,
-    "in_average": 2,
-    "effect": -2.76
+    "effect": -2.97
    },
    {
     "pollster": "Marist University",
     "polls": 4,
     "in_average": 1,
-    "effect": 2.76
+    "effect": 2.77
+   },
+   {
+    "pollster": "McLaughlin & Associates",
+    "polls": 15,
+    "in_average": 2,
+    "effect": -2.75
    },
    {
     "pollster": "Quinnipiac University",
@@ -64,7 +64,7 @@
     "pollster": "Morning Consult",
     "polls": 51,
     "in_average": 7,
-    "effect": -1.76
+    "effect": -1.75
    }
   ],
   "method": "Weighted by recency (21-day half-life), sample size and population, with each pollster's standing lean removed and no pollster allowed more than a fifth of the total weight. The average is then read off a line fitted through the polls at today's date rather than taken flat, because a weighted mean sits at the middle of its window and lags whenever the race is moving.",
@@ -75,8 +75,8 @@
     "n": 2000,
     "population": "RV",
     "margin": 8.0,
-    "adjusted": 10.98,
-    "weight": 1.289
+    "adjusted": 10.97,
+    "weight": 1.247
    },
    {
     "source": "ActiVote",
@@ -84,8 +84,8 @@
     "n": 1000,
     "population": "LV",
     "margin": 6.0,
-    "adjusted": 7.55,
-    "weight": 1.013
+    "adjusted": 7.54,
+    "weight": 0.98
    },
    {
     "source": "The Economist / YouGov",
@@ -94,7 +94,7 @@
     "population": "RV",
     "margin": 7.0,
     "adjusted": 7.18,
-    "weight": 1.011
+    "weight": 0.978
    },
    {
     "source": "Beacon Research (D)/ Shaw & Co. Research (R)",
@@ -102,8 +102,8 @@
     "n": 1202,
     "population": "RV",
     "margin": 9.0,
-    "adjusted": 8.92,
-    "weight": 0.935
+    "adjusted": 8.91,
+    "weight": 0.905
    },
    {
     "source": "Morning Consult",
@@ -111,8 +111,8 @@
     "n": 17654,
     "population": "LV",
     "margin": 7.0,
-    "adjusted": 8.76,
-    "weight": 2.404
+    "adjusted": 8.75,
+    "weight": 2.363
    },
    {
     "source": "Cygnal (R)",
@@ -120,8 +120,8 @@
     "n": 1500,
     "population": "LV",
     "margin": 9.0,
-    "adjusted": 8.92,
-    "weight": 1.087
+    "adjusted": 8.91,
+    "weight": 1.052
    },
    {
     "source": "TrueDot",
@@ -130,7 +130,7 @@
     "population": "LV",
     "margin": 7.0,
     "adjusted": 7.28,
-    "weight": 0.847
+    "weight": 0.82
    },
    {
     "source": "Focaldata",
@@ -139,7 +139,7 @@
     "population": "LV",
     "margin": 8.0,
     "adjusted": 7.52,
-    "weight": 1.116
+    "weight": 1.08
    },
    {
     "source": "The Economist / YouGov",
@@ -148,7 +148,7 @@
     "population": "LV",
     "margin": 11.0,
     "adjusted": 11.18,
-    "weight": 0.815
+    "weight": 0.788
    },
    {
     "source": "Reuters / Ipsos",
@@ -157,7 +157,7 @@
     "population": "RV",
     "margin": 7.0,
     "adjusted": 8.79,
-    "weight": 1.272
+    "weight": 1.23
    },
    {
     "source": "Morning Consult",
@@ -165,8 +165,8 @@
     "n": 17659,
     "population": "LV",
     "margin": 7.0,
-    "adjusted": 8.76,
-    "weight": 1.908
+    "adjusted": 8.75,
+    "weight": 1.876
    },
    {
     "source": "Pew Research Center",
@@ -174,16 +174,16 @@
     "n": 3917,
     "population": "RV",
     "margin": 8.0,
-    "adjusted": 8.07,
-    "weight": 1.297
+    "adjusted": 8.06,
+    "weight": 1.255
    }
   ],
   "aggregators": {
-   "margin": 8.2,
-   "rep": 42.3,
-   "dem": 50.5,
+   "margin": 8.3,
+   "rep": 42.5,
+   "dem": 50.8,
    "n_aggregators": 5,
-   "as_of": "2026-10-16"
+   "as_of": "2026-10-18"
   }
  }
 }

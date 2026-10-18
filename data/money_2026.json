@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-17",
+ "as_of": "2026-10-18",
  "latest_report": "2026-09-30",
  "n_races": 470,
  "note": "Best-funded Democrat and Republican in each race, from the FEC's bulk candidate summaries. Cash on hand is as of each campaign's last filed report, so races differ by a few weeks. Shown on this site and not fed into the forecast.",
@@ -786,15 +786,15 @@
    "rep": {
     "name": "Lewis, Shane",
     "incumbent": false,
-    "receipts": 107049,
-    "spent": 103699,
-    "cash": 3349,
-    "debts": 58289,
-    "as_of": "2026-09-30",
+    "receipts": 115469,
+    "spent": 111052,
+    "cash": 4417,
+    "debts": 61789,
+    "as_of": "2026-10-14",
     "named": false
    },
-   "dem_cash_share": 0.9953,
-   "cash_gap": 710405
+   "dem_cash_share": 0.9938,
+   "cash_gap": 709337
   },
   "CA-19": {
    "chamber": "house",
@@ -6719,11 +6719,11 @@
    "dem": {
     "name": "Peace, Rachel",
     "incumbent": false,
-    "receipts": 92650,
-    "spent": 83215,
-    "cash": 9436,
+    "receipts": 101426,
+    "spent": 86994,
+    "cash": 14431,
     "debts": 19412,
-    "as_of": "2026-09-30",
+    "as_of": "2026-10-14",
     "named": false
    },
    "rep": {
@@ -6736,8 +6736,8 @@
     "as_of": "2026-09-30",
     "named": false
    },
-   "dem_cash_share": 0.0168,
-   "cash_gap": -543427
+   "dem_cash_share": 0.0254,
+   "cash_gap": -538432
   },
   "NJ-5": {
    "chamber": "house",
@@ -9396,11 +9396,11 @@
    "dem": {
     "name": "Nair, Mark",
     "incumbent": false,
-    "receipts": 131772,
-    "spent": 117142,
-    "cash": 14630,
+    "receipts": 137624,
+    "spent": 134800,
+    "cash": 2824,
     "debts": 0,
-    "as_of": "2026-09-30",
+    "as_of": "2026-10-14",
     "named": false
    },
    "rep": {
@@ -9413,8 +9413,8 @@
     "as_of": "2026-09-30",
     "named": false
    },
-   "dem_cash_share": 0.0027,
-   "cash_gap": -5410861
+   "dem_cash_share": 0.0005,
+   "cash_gap": -5422667
   },
   "TX-14": {
    "chamber": "house",
@@ -10209,11 +10209,11 @@
    "dem": {
     "name": "Jones, Laura",
     "incumbent": false,
-    "receipts": 29899,
-    "spent": 26830,
-    "cash": 5570,
+    "receipts": 30782,
+    "spent": 29168,
+    "cash": 4115,
     "debts": 2040,
-    "as_of": "2026-09-30",
+    "as_of": "2026-10-14",
     "named": false
    },
    "rep": {
@@ -10227,7 +10227,7 @@
     "named": false
    },
    "dem_cash_share": 1.0,
-   "cash_gap": 5570
+   "cash_gap": 4115
   },
   "TX-9": {
    "chamber": "house",

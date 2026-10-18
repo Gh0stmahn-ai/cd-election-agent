@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-17T18:14:33+00:00",
+ "as_of": "2026-10-18T18:30:03+00:00",
  "source": "Wikipedia per-race election articles",
  "half_life_days": 21,
  "max_age_days": 120,
@@ -8,7 +8,7 @@
    "state": "AK",
    "dem_candidate": "Mary Peltola",
    "rep_candidate": "Dan Sullivan",
-   "dem_margin": 2.4,
+   "dem_margin": 2.6,
    "method": "mean of 4 aggregators",
    "n_used": 4,
    "detail": [
@@ -22,7 +22,7 @@
     },
     {
      "label": "RealClearPolitics",
-     "margin": 1.5
+     "margin": 2.5
     },
     {
      "label": "Silver Bulletin",
@@ -196,7 +196,7 @@
    "state": "NH",
    "dem_candidate": "Chris Pappas",
    "rep_candidate": "John E. Sununu",
-   "dem_margin": 6.5,
+   "dem_margin": 6.6,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
@@ -210,15 +210,15 @@
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 6.6
+     "margin": 6.9
     },
     {
      "label": "RealClearPolitics",
-     "margin": 5.9
+     "margin": 6.5
     },
     {
      "label": "Silver Bulletin",
-     "margin": 7.3
+     "margin": 7.1
     }
    ],
    "rating": "tossup",
