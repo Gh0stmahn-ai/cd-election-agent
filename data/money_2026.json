@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-18",
+ "as_of": "2026-10-19",
  "latest_report": "2026-09-30",
  "n_races": 470,
  "note": "Best-funded Democrat and Republican in each race, from the FEC's bulk candidate summaries. Cash on hand is as of each campaign's last filed report, so races differ by a few weeks. Shown on this site and not fed into the forecast.",
@@ -1993,15 +1993,15 @@
    "rep": {
     "name": "Austin, George Patrick",
     "incumbent": false,
-    "receipts": 313952,
-    "spent": 189215,
-    "cash": 124737,
+    "receipts": 314977,
+    "spent": 218265,
+    "cash": 96712,
     "debts": 240000,
-    "as_of": "2026-09-30",
+    "as_of": "2026-10-14",
     "named": false
    },
-   "dem_cash_share": 0.8347,
-   "cash_gap": 504962
+   "dem_cash_share": 0.8669,
+   "cash_gap": 532987
   },
   "CT-3": {
    "chamber": "house",
@@ -4516,11 +4516,11 @@
    "dem": {
     "name": "McKay, Dan",
     "incumbent": false,
-    "receipts": 90000,
-    "spent": 109075,
-    "cash": -19056,
-    "debts": 39238,
-    "as_of": "2026-07-18",
+    "receipts": 110132,
+    "spent": 127710,
+    "cash": -22578,
+    "debts": 34238,
+    "as_of": "2026-09-30",
     "named": false
    },
    "rep": {
@@ -7885,15 +7885,15 @@
    "rep": {
     "name": "Jordan, James D.",
     "incumbent": true,
-    "receipts": 5538295,
-    "spent": 8411837,
-    "cash": 4613338,
+    "receipts": 5563811,
+    "spent": 8581377,
+    "cash": 4469315,
     "debts": 0,
     "as_of": "2026-09-30",
     "named": false
    },
    "dem_cash_share": 0.0,
-   "cash_gap": -4613338
+   "cash_gap": -4469315
   },
   "OH-5": {
    "chamber": "house",
@@ -11098,11 +11098,11 @@
    "dem": {
     "name": "Parsi, Ahsan",
     "incumbent": false,
-    "receipts": 250041,
-    "spent": 134908,
-    "cash": 115134,
+    "receipts": 276741,
+    "spent": 187965,
+    "cash": 88775,
     "debts": 0,
-    "as_of": "2026-09-30",
+    "as_of": "2026-10-14",
     "named": false
    },
    "rep": {
@@ -11115,8 +11115,8 @@
     "as_of": "2026-09-30",
     "named": false
    },
-   "dem_cash_share": 0.1234,
-   "cash_gap": -702439
+   "dem_cash_share": 0.0979,
+   "cash_gap": -728798
   },
   "WV-2026": {
    "chamber": "senate",
