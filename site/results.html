@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Results · 2026 Midterm Forecast</title>
+<meta name="description" content="Live results for every Senate and House race, graded against the final forecast.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Results · 2026 Midterm Forecast">
+<meta property="og:description" content="Live results for every Senate and House race, graded against the final forecast.">
+<meta property="og:url" content="https://gh0stmahn-ai.github.io/results.html">
+<meta property="og:image" content="https://gh0stmahn-ai.github.io/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Results · 2026 Midterm Forecast">
+<meta name="twitter:description" content="Live results for every Senate and House race, graded against the final forecast.">
+<meta name="twitter:image" content="https://gh0stmahn-ai.github.io/assets/og.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23f6f5f1'/%3E%3Crect x='5' y='8' width='10' height='18' rx='2' fill='%232a78d6'/%3E%3Crect x='17' y='8' width='10' height='18' rx='2' fill='%23c74845'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/style.css?v=af14fe11">
+</head>
+<body>
+<header class="site-head"><div class="bar">
+  <a class="brand plain" href="index.html"><span class="mark"><i></i><i></i></span>2026 Midterm Forecast</a>
+  <nav class="main" aria-label="Sections"><a href="index.html">Overview</a><a href="results.html" aria-current="page">Results</a><a href="senate.html">Senate</a><a href="house.html">House</a><a href="scenarios.html">Scenarios</a><a href="economy.html">Economy</a><a href="trend.html">Trend</a><a href="markets.html">Markets</a><a href="methodology.html">Methodology</a></nav>
+  <a class="refresh" href="https://github.com/Gh0stmahn-ai/cd-election-agent/actions/workflows/daily-forecast.yml" target="_blank" rel="noopener"
+     title="Re-run the forecast now on the latest public data (opens GitHub Actions)">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M14 8a6 6 0 1 1-1.8-4.3"></path><path d="M14 2v4h-4"></path>
+    </svg>Refresh</a>
+</div></header>
+
+<div class="wrap">
+<div class="page-head">
+  <h1>Results</h1>
+  <div class="sub">Every race's call and count as they come in, set against the forecast that was sealed before the polls opened.</div>
+</div>
+
+
+<div class="res-status" id="res-status"></div>
+
+<section>
+  <div class="grid2">
+    <div class="card" id="res-senate"></div>
+    <div class="card" id="res-house"></div>
+  </div>
+  <noscript></noscript>
+</section>
+
+<section id="res-events-wrap" hidden>
+  <h2>Latest calls</h2>
+  <div class="card"><ol class="res-events" id="res-events"></ol></div>
+</section>
+
+<section id="res-score-wrap" hidden>
+  <h2>How the forecast is doing</h2>
+  <p class="lede">Graded only on races that have been called, so the grade moves as the night goes on.</p>
+  <div class="score-tiles" id="res-score"></div>
+  <div class="grid2" style="margin-top:12px">
+    <div class="card">
+      <div class="chamber-label">Calibration</div>
+      <svg id="res-calib" viewBox="0 0 520 300" role="img" aria-label="Forecast probability against how often Democrats won"></svg>
+      <p class="note" id="res-calib-note"></p>
+    </div>
+    <div class="card">
+      <div class="chamber-label">The forecast's biggest misses so far</div>
+      <div id="res-misses"></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Every race</h2>
+  <p class="lede">Forecast, call and count side by side. "Vs forecast" is how far the count's margin
+    runs from the margin the forecast expected, in points: blue when the Democrat is doing better than
+    forecast, red when the Republican is.</p>
+  <div class="card">
+    <div class="tabs" id="res-tabs" role="group" aria-label="Filter races"></div>
+    <div class="tbl-scroll"><table id="res-table"></table></div>
+  </div>
+</section>
+
+<section>
+  <h2>Where these numbers come from</h2>
+  <div class="card prose">
+    <p>The forecast is sealed at 5 am Eastern on Election Day, before any poll opens; that sealed version is what every result is graded against.</p>
+    <p><b>Calls</b> come from Wikipedia's 2026 Senate and House articles, where editors mark a winner
+      as the networks call each race. A call is taken here only after it has stood for four minutes and
+      only once every poll in that state has closed, and a call that is taken down there is withdrawn
+      here too. Nothing on this page projects a winner from a partial count.</p>
+    <p><b>Counts</b> come from the official results feeds of the seven states that publish one free and
+      open to automated reading: Georgia, North Carolina, Texas, Iowa, Nebraska, Alaska and Florida. Other
+      states' races show a call without a running count, and pick up vote shares once Wikipedia lists them.
+      Alaska counts first choices on election night and runs its ranked-choice rounds on November 18.</p>
+    <p><b>The grade.</b> The Brier score is the average squared gap between the forecast's probability
+      and what happened (0 is perfect; always saying 50% scores 0.25). It is set against the same score
+      for the ratings alone, which is what a reader who just took Cook's rating would have got.</p>
+    <div id="res-sources"></div>
+  </div>
+</section>
+
+<div class="prev-next"><a href="index.html">&#8592; Overview</a><a href="senate.html">Senate &#8594;</a></div>
+</div>
+
+<footer class="site"><div class="wrap" style="padding-bottom:0">
+  <div id="foot-updated"></div>
+  <div style="margin-top:6px">Rebuilt every day at noon Eastern, and any time someone
+    presses <a href="https://github.com/Gh0stmahn-ai/cd-election-agent/actions/workflows/daily-forecast.yml">Refresh</a>.
+    <a href="https://github.com/Gh0stmahn-ai/cd-election-agent">Source code and data on GitHub</a>.
+    Forecast, not a prediction: read the <a href="methodology.html">methodology</a> first.</div>
+</div></footer>
+
+<script src="assets/app.js?v=af14fe11"></script>
+<script>
+const PAGE_DATA = {"site":{"timestamp":"2026-10-20T09:09:09.504393+00:00","status":"success"},"results_config":{"raw":"https://raw.githubusercontent.com/Gh0stmahn-ai/cd-election-agent/main/data/results_2026.json","local":"data/results_2026.json","forecast":{"senate":{"p":0.6082,"median":51,"p10":49,"p90":53,"not_up":{"D":34,"R":31,"note":"65 seats not up in 2026: 34 in the Democratic caucus (incl. King and Sanders), 31 Republican."},"seats":100,"needed":51},"house":{"p":0.7588,"median":223,"p10":213,"p90":233,"seats":435,"needed":218}}}};
+FC.init();
+(function () {
+  var s = PAGE_DATA.site;
+  var days = Math.max(0, Math.ceil((new Date("2026-11-03T12:00:00Z") - new Date(s.timestamp)) / 86400000));
+  var col = s.status === "success" ? "#0ca30c" : s.status === "partial" ? "#fab219" : "#d03b3b";
+  if (s.final) {
+    FC.$("foot-updated").innerHTML = "Final forecast, run " + FC.fmtDate(s.timestamp, true) +
+      " and sealed before the polls opened on Nov 3, 2026";
+    return;
+  }
+  FC.$("foot-updated").innerHTML = "Forecast run " + FC.fmtDate(s.timestamp, true) + " · " + days +
+    " days to Election Day, Nov 3, 2026 · " +
+    '<span class="pill"><span class="dot" style="background:' + col + '"></span>Data refresh: ' + s.status + "</span>";
+})();
+
+FC.renderResults(PAGE_DATA.results_config);
+
+</script>
+</body>
+</html>

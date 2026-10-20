@@ -204,7 +204,16 @@
   "AL-6": {
    "chamber": "house",
    "state": "AL",
-   "dem": null,
+   "dem": {
+    "name": "Mercer, Maurice",
+    "incumbent": false,
+    "receipts": 30339,
+    "spent": 17232,
+    "cash": 13107,
+    "debts": 3590,
+    "as_of": "2026-09-30",
+    "named": false
+   },
    "rep": {
     "name": "Palmer, Gary",
     "incumbent": true,
@@ -215,8 +224,8 @@
     "as_of": "2026-09-30",
     "named": false
    },
-   "dem_cash_share": 0.0,
-   "cash_gap": -103984
+   "dem_cash_share": 0.1119,
+   "cash_gap": -90877
   },
   "AL-7": {
    "chamber": "house",
@@ -952,7 +961,7 @@
     "receipts": 1882112,
     "spent": 1024257,
     "cash": 3501724,
-    "debts": 25735,
+    "debts": 25737,
     "as_of": "2026-09-30",
     "named": false
    },
@@ -1149,15 +1158,15 @@
    "rep": {
     "name": "Ching, Eric J",
     "incumbent": false,
-    "receipts": 96570,
-    "spent": 122508,
-    "cash": 14302,
+    "receipts": 97170,
+    "spent": 127035,
+    "cash": 10375,
     "debts": 0,
-    "as_of": "2026-09-30",
+    "as_of": "2026-10-14",
     "named": false
    },
-   "dem_cash_share": 0.9414,
-   "cash_gap": 215388
+   "dem_cash_share": 0.9568,
+   "cash_gap": 219315
   },
   "CA-32": {
    "chamber": "house",
@@ -1483,11 +1492,11 @@
    "dem": {
     "name": "Correa, Lou",
     "incumbent": true,
-    "receipts": 1484850,
-    "spent": 982369,
-    "cash": 2369844,
-    "debts": 5000,
-    "as_of": "2026-09-30",
+    "receipts": 1493329,
+    "spent": 1037296,
+    "cash": 2323395,
+    "debts": 0,
+    "as_of": "2026-10-14",
     "named": false
    },
    "rep": {
@@ -1501,7 +1510,7 @@
     "named": false
    },
    "dem_cash_share": 0.9976,
-   "cash_gap": 2364195
+   "cash_gap": 2317746
   },
   "CA-47": {
    "chamber": "house",
@@ -3358,9 +3367,9 @@
    "dem": {
     "name": "Dawson, Dave",
     "incumbent": false,
-    "receipts": 240238,
-    "spent": 176242,
-    "cash": 63996,
+    "receipts": 245248,
+    "spent": 176252,
+    "cash": 68996,
     "debts": 0,
     "as_of": "2026-09-30",
     "named": false
@@ -3376,7 +3385,7 @@
     "named": false
    },
    "dem_cash_share": 1.0,
-   "cash_gap": 63996
+   "cash_gap": 68996
   },
   "ID-1": {
    "chamber": "house",
@@ -3420,15 +3429,15 @@
    "rep": {
     "name": "Simpson, Michael",
     "incumbent": true,
-    "receipts": 1316626,
-    "spent": 1137249,
-    "cash": 284582,
+    "receipts": 1409212,
+    "spent": 1213826,
+    "cash": 300591,
     "debts": 0,
-    "as_of": "2026-09-30",
+    "as_of": "2026-10-14",
     "named": false
    },
-   "dem_cash_share": 0.1291,
-   "cash_gap": -242414
+   "dem_cash_share": 0.123,
+   "cash_gap": -258423
   },
   "ID-2026": {
    "chamber": "senate",
@@ -3626,9 +3635,9 @@
    "dem": {
     "name": "Nolley, Paul",
     "incumbent": false,
-    "receipts": 605010,
-    "spent": 316010,
-    "cash": 289001,
+    "receipts": 603606,
+    "spent": 315952,
+    "cash": 287654,
     "debts": 0,
     "as_of": "2026-09-30",
     "named": false
@@ -3643,8 +3652,8 @@
     "as_of": "2026-09-30",
     "named": false
    },
-   "dem_cash_share": 0.0437,
-   "cash_gap": -6029518
+   "dem_cash_share": 0.0435,
+   "cash_gap": -6030865
   },
   "IL-17": {
    "chamber": "house",
@@ -4452,7 +4461,7 @@
     "spent": 12350191,
     "cash": 5359,
     "debts": 4597909,
-    "as_of": "2026-09-30",
+    "as_of": "2026-10-14",
     "named": false
    },
    "dem_cash_share": 0.9943,
@@ -4543,7 +4552,7 @@
    "rep": {
     "name": "Miguez, Blake",
     "incumbent": false,
-    "receipts": 7641696,
+    "receipts": 7645022,
     "spent": 5519813,
     "cash": 2125209,
     "debts": 2513458,
@@ -5231,11 +5240,11 @@
    "dem": {
     "name": "Vukasovich, Christian A",
     "incumbent": false,
-    "receipts": 141622,
-    "spent": 105589,
-    "cash": 36034,
+    "receipts": 151704,
+    "spent": 112188,
+    "cash": 39517,
     "debts": 0,
-    "as_of": "2026-09-30",
+    "as_of": "2026-10-14",
     "named": false
    },
    "rep": {
@@ -5248,8 +5257,8 @@
     "as_of": "2026-09-30",
     "named": false
    },
-   "dem_cash_share": 0.0283,
-   "cash_gap": -1200687
+   "dem_cash_share": 0.031,
+   "cash_gap": -1197204
   },
   "MI-6": {
    "chamber": "house",
@@ -5724,11 +5733,11 @@
    "dem": {
     "name": "Hesketh, Missi",
     "incumbent": false,
-    "receipts": 50540,
-    "spent": 22134,
-    "cash": 33543,
+    "receipts": 110697,
+    "spent": 71556,
+    "cash": 44261,
     "debts": 0,
-    "as_of": "2026-07-15",
+    "as_of": "2026-10-15",
     "named": false
    },
    "rep": {
@@ -5741,8 +5750,8 @@
     "as_of": "2026-09-30",
     "named": false
    },
-   "dem_cash_share": 0.0337,
-   "cash_gap": -927650
+   "dem_cash_share": 0.044,
+   "cash_gap": -916932
   },
   "MO-8": {
    "chamber": "house",
@@ -6115,10 +6124,10 @@
     "name": "Caldwell, Brent",
     "incumbent": false,
     "receipts": 78144,
-    "spent": 82692,
-    "cash": -4548,
+    "spent": 82737,
+    "cash": -4593,
     "debts": 10297,
-    "as_of": "2026-06-30",
+    "as_of": "2026-09-30",
     "named": false
    },
    "rep": {
@@ -6278,11 +6287,11 @@
    "dem": {
     "name": "Hardy, Kimberly Dr.",
     "incumbent": false,
-    "receipts": 376110,
-    "spent": 351028,
-    "cash": 25082,
+    "receipts": 390475,
+    "spent": 370057,
+    "cash": 20419,
     "debts": 0,
-    "as_of": "2026-09-30",
+    "as_of": "2026-10-14",
     "named": false
    },
    "rep": {
@@ -6295,8 +6304,8 @@
     "as_of": "2026-09-30",
     "named": false
    },
-   "dem_cash_share": 0.0118,
-   "cash_gap": -2079755
+   "dem_cash_share": 0.0096,
+   "cash_gap": -2084418
   },
   "NC-8": {
    "chamber": "house",
@@ -8031,16 +8040,16 @@
    "dem": {
     "name": "Croisant, John Thomas",
     "incumbent": false,
-    "receipts": 207748,
-    "spent": 150609,
-    "cash": 57139,
+    "receipts": 217469,
+    "spent": 179180,
+    "cash": 38289,
     "debts": 0,
-    "as_of": "2026-09-30",
+    "as_of": "2026-10-14",
     "named": false
    },
    "rep": null,
    "dem_cash_share": 1.0,
-   "cash_gap": 57139
+   "cash_gap": 38289
   },
   "OK-2": {
    "chamber": "house",
@@ -8868,11 +8877,11 @@
    "dem": {
     "name": "Lehmacher, Eunice",
     "incumbent": false,
-    "receipts": 92928,
-    "spent": 43374,
-    "cash": 49554,
+    "receipts": 98662,
+    "spent": 76687,
+    "cash": 21976,
     "debts": 100,
-    "as_of": "2026-09-30",
+    "as_of": "2026-10-14",
     "named": false
    },
    "rep": {
@@ -8885,8 +8894,8 @@
     "as_of": "2026-09-30",
     "named": false
    },
-   "dem_cash_share": 0.1604,
-   "cash_gap": -209771
+   "dem_cash_share": 0.0781,
+   "cash_gap": -237349
   },
   "SC-4": {
    "chamber": "house",
@@ -11003,11 +11012,11 @@
    "dem": {
     "name": "Smith, Bradley",
     "incumbent": false,
-    "receipts": 295060,
-    "spent": 150492,
-    "cash": 144568,
+    "receipts": 322261,
+    "spent": 230958,
+    "cash": 91303,
     "debts": 0,
-    "as_of": "2026-09-30",
+    "as_of": "2026-10-14",
     "named": false
    },
    "rep": {
@@ -11020,8 +11029,8 @@
     "as_of": "2026-09-30",
     "named": false
    },
-   "dem_cash_share": 0.1504,
-   "cash_gap": -672268
+   "dem_cash_share": 0.1005,
+   "cash_gap": -725533
   },
   "WI-7": {
    "chamber": "house",

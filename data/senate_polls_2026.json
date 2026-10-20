@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-20T00:38:46+00:00",
+ "as_of": "2026-10-20T09:08:08+00:00",
  "source": "Wikipedia per-race election articles",
  "half_life_days": 21,
  "max_age_days": 120,
@@ -68,7 +68,7 @@
    "state": "IA",
    "dem_candidate": "Josh Turek",
    "rep_candidate": "Ashley Hinson",
-   "dem_margin": 1.0,
+   "dem_margin": 0.5,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
@@ -78,19 +78,19 @@
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 1.0
+     "margin": -0.4
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 0.8
+     "margin": 0.4
     },
     {
      "label": "RealClearPolitics",
-     "margin": 0.6
+     "margin": -0.1
     },
     {
      "label": "Silver Bulletin",
-     "margin": 1.1
+     "margin": 1.0
     }
    ],
    "rating": "tossup",
@@ -228,7 +228,7 @@
    "state": "OH",
    "dem_candidate": "Sherrod Brown",
    "rep_candidate": "Jon Husted",
-   "dem_margin": 3.1,
+   "dem_margin": 3.0,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
@@ -246,7 +246,7 @@
     },
     {
      "label": "RealClearPolitics",
-     "margin": 3.3
+     "margin": 2.8
     },
     {
      "label": "Silver Bulletin",

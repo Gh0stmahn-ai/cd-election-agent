@@ -278,11 +278,11 @@
   {
    "id": "approval",
    "label": "Trump job approval",
-   "value_net": -24.0,
-   "approve": 36.9,
+   "value_net": -24.3,
+   "approve": 36.6,
    "disapprove": 60.9,
    "display": "37% / 61%",
-   "as_of": "2026-10-16",
+   "as_of": "2026-10-19",
    "context": "Average of 9 public approval aggregators as collated on Wikipedia.",
    "why": "The single strongest predictor of midterm losses. Since WWII the president's party has lost House seats in all but two midterms (1998, 2002), and presidents under 50% approval have lost about 37 seats on average (Gallup).",
    "sources": [
