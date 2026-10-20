@@ -83,7 +83,8 @@ def get(url, binary=False, headers=None):
         try:
             with urllib.request.urlopen(req, timeout=TIMEOUT, context=SSL) as resp:
                 body = resp.read()
-                if resp.headers.get("Content-Encoding") == "gzip":
+                # Some of these servers gzip without saying so.
+                if resp.headers.get("Content-Encoding") == "gzip" or body[:2] == b"\x1f\x8b":
                     import gzip
                     body = gzip.decompress(body)
                 return body if binary else body.decode(resp.headers.get_content_charset() or "utf-8",
@@ -98,7 +99,14 @@ def get(url, binary=False, headers=None):
 
 
 def get_json(url, headers=None):
-    return json.loads(get(url, headers=headers))
+    text = get(url, headers=headers).lstrip("\ufeff")
+    try:
+        return json.loads(text)
+    except ValueError:
+        # Say what came back instead: a block page reads very differently from
+        # a half-written file, and the error is shown on the Results page.
+        snippet = " ".join(text[:90].split()) or "an empty response"
+        raise ValueError(f"not JSON from {urllib.parse.urlsplit(url).netloc}: {snippet!r}") from None
 
 
 def party_code(raw):
