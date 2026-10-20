@@ -1696,6 +1696,109 @@ function houseTipping(house, meta, limit) {
     });
 }
 
+/* ------------------------------------------------------------ countdown */
+/* Counts to the moment the first polls close, not to midnight: 6 pm Eastern
+   on November 3 is when parts of Indiana and Kentucky close and the first
+   votes start being counted, which is the instant this forecast stops being
+   the only information there is. Daylight saving ends on November 1, so
+   Election Day is on Eastern Standard Time and 6 pm is 23:00 UTC. The last
+   polls close at 1 am Eastern, in the far west of Alaska.
+
+   Deliberately plain ink rather than party colour: a clock belongs to
+   neither side. */
+var POLLS_FIRST_CLOSE = Date.UTC(2026, 10, 3, 23, 0, 0);
+var POLLS_LAST_CLOSE = Date.UTC(2026, 10, 4, 6, 0, 0);
+var ELECTION_DAY_START = Date.UTC(2026, 10, 3, 5, 0, 0);   /* midnight Eastern */
+var EARLY_VOTE_WINDS_DOWN = Date.UTC(2026, 9, 31, 4, 0, 0);  /* Saturday Oct 31, midnight Eastern */
+var countdownTimer = null;
+
+function countdownParts(ms) {
+  var s = Math.max(0, Math.floor(ms / 1000));
+  return {d: Math.floor(s / 86400), h: Math.floor(s % 86400 / 3600),
+          m: Math.floor(s % 3600 / 60), s: s % 60};
+}
+function plural(n, one, many) { return n === 1 ? one : many; }
+
+function renderCountdown(hostId, nowFn) {
+  var host = $(hostId); if (!host) return;
+  var now = nowFn || function () { return Date.now(); };
+  if (countdownTimer) { clearTimeout(countdownTimer); countdownTimer = null; }
+
+  host.innerHTML =
+    '<div class="cd-when"><span class="cd-kicker" id="' + hostId + '-kicker"></span>' +
+      '<span class="cd-date">Tuesday, November 3</span></div>' +
+    '<div class="cd-clock" aria-hidden="true" id="' + hostId + '-clock">' +
+      ["d", "h", "m", "s"].map(function (u) {
+        return '<div class="cd-unit" data-u="' + u + '"><span class="cd-n">--</span><span class="cd-l"></span></div>';
+      }).join("") +
+    '</div>' +
+    '<div class="cd-note" id="' + hostId + '-note"></div>' +
+    /* The ticking digits are hidden from assistive tech, which would otherwise
+       read sixty changes a minute; this sentence carries the same fact and
+       is refreshed once a minute, without being announced as it changes. */
+    '<span class="sr-only" role="timer" aria-live="off" id="' + hostId + '-sr"></span>';
+
+  var kicker = $(hostId + "-kicker"), note = $(hostId + "-note"), clock = $(hostId + "-clock"),
+      sr = $(hostId + "-sr"), lastSpoken = "";
+  var units = {};
+  [].forEach.call(host.querySelectorAll(".cd-unit"), function (n) {
+    units[n.getAttribute("data-u")] = {n: n.querySelector(".cd-n"), l: n.querySelector(".cd-l")};
+  });
+  var LABELS = {d: ["day", "days"], h: ["hour", "hours"], m: ["minute", "minutes"], s: ["second", "seconds"]};
+
+  function tick() {
+    var t = now();
+    if (t >= POLLS_LAST_CLOSE) {
+      host.classList.add("cd-done");
+      kicker.textContent = "Election Day";
+      clock.hidden = true;
+      note.innerHTML = "Every poll has closed. The forecast on this page was made before a single vote " +
+        "was counted.";
+      sr.textContent = "";
+      return;
+    }
+    if (t >= POLLS_FIRST_CLOSE) {
+      host.classList.add("cd-done");
+      kicker.textContent = "Election night";
+      clock.hidden = true;
+      note.innerHTML = "<b>Polls are closing.</b> The first closed at 6 pm Eastern; the last close at " +
+        "1 am Eastern, in Alaska. Votes are being counted.";
+      sr.textContent = "";
+      countdownTimer = setTimeout(tick, Math.min(60000, POLLS_LAST_CLOSE - t + 50));
+      return;
+    }
+    host.classList.remove("cd-done");
+    clock.hidden = false;
+    var p = countdownParts(POLLS_FIRST_CLOSE - t);
+    ["d", "h", "m", "s"].forEach(function (u) {
+      var v = p[u];
+      units[u].n.textContent = u === "d" ? String(v) : (v < 10 ? "0" : "") + v;
+      units[u].l.textContent = plural(v, LABELS[u][0], LABELS[u][1]);
+    });
+    /* On the day itself the days box would only ever read 0. */
+    units.d.n.parentNode.hidden = p.d === 0;
+    var today = t >= ELECTION_DAY_START;
+    kicker.textContent = today ? "It is Election Day" : "Election Day";
+    /* Most states end early voting on the Friday to Monday before, so the
+       line stops saying it is open once that weekend arrives. */
+    var earlyOpen = t < EARLY_VOTE_WINDS_DOWN;
+    note.innerHTML = today
+      ? "until the first polls close, at 6 pm Eastern. Most polls opened this morning between 6 and 7 am local time."
+      : "until the first polls close, at 6 pm Eastern on Election Day." +
+        (earlyOpen ? " Early voting is open in most states." : " Polls open Tuesday morning.");
+    /* What a screen reader hears, refreshed once a minute rather than once a second. */
+    var spoken = (p.d === 0 && p.h === 0 && p.m === 0)
+      ? "Less than a minute until the first polls close on Election Day."
+      : (p.d ? p.d + " " + plural(p.d, "day", "days") + ", " : "") +
+        p.h + " " + plural(p.h, "hour", "hours") + " and " + p.m + " " + plural(p.m, "minute", "minutes") +
+        " until the first polls close on Election Day.";
+    if (spoken !== lastSpoken) { sr.textContent = spoken; lastSpoken = spoken; }
+    /* Land on the next whole second rather than drifting with setInterval. */
+    countdownTimer = setTimeout(tick, 1000 - (t % 1000) + 5);
+  }
+  tick();
+}
+
 function init() {
   tip = document.createElement("div");
   tip.id = "tip"; tip.setAttribute("role", "tooltip");
@@ -1710,7 +1813,8 @@ function init() {
 }
 
 global.FC = {
-  init: init, onRender: onRender, $: $, esc: esc, pct: pct, pct1: pct1, signed: signed, margin: margin,
+  init: init, onRender: onRender, renderCountdown: renderCountdown, countdownParts: countdownParts,
+  POLLS_FIRST_CLOSE: POLLS_FIRST_CLOSE, POLLS_LAST_CLOSE: POLLS_LAST_CLOSE, $: $, esc: esc, pct: pct, pct1: pct1, signed: signed, margin: margin,
   fmtDate: fmtDate, titleCase: titleCase, css: css, binColor: binColor, legendBins: legendBins, headlineFor: headlineFor,
   renderHero: renderHero, renderJoint: renderJoint, renderHemicycle: renderHemicycle, renderHistogram: renderHistogram,
   renderSenateMap: renderSenateMap, renderWatch: renderWatch, renderSenateTable: renderSenateTable,
