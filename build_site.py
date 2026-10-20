@@ -234,6 +234,11 @@ def build_index(snap, meta, markets=None):
     market_html, market_rows = market_strip(snap, markets)
     change = snap.get("change")
     body = """
+<div class="countdown" id="countdown">
+  <div class="cd-when"><span class="cd-kicker">Election Day</span>
+    <span class="cd-date">Tuesday, November 3</span></div>
+</div>
+
 <section>
   <div class="grid2">
     <div class="card" id="hero-senate"></div>
@@ -278,6 +283,9 @@ def build_index(snap, meta, markets=None):
         data["change"] = {"total": change["total"], "from": change["from"],
                           "drivers": change["drivers"][:1]}
     scripts = """
+/* Outside onRender: a theme change redraws the charts, and the clock has no
+   colours to redraw, so it is started once rather than restarted. */
+FC.renderCountdown("countdown");
 FC.onRender(function () {
   FC.renderHero("hero-senate", "Senate", PAGE_DATA.senate, 51, 100,
     "<span>50-50 tie (Vance breaks it for the GOP) <b>" + FC.pct(PAGE_DATA.senate.tie_prob) + "</b></span>");
