@@ -30,6 +30,15 @@ on:
     # 16:00 UTC = noon Eastern during EDT (Mar-Nov). GitHub Actions cron
     # doesn't observe DST, so this drifts to 11:00 AM ET during EST.
     - cron: '0 16 * * *'
+    # The final forecast: 10:05 UTC on November 3 is 5:05 am Eastern, before
+    # any poll opens. The first run at or after 10:00 UTC that day seals its
+    # result into data/final_forecast.json (see freeze.py). No run that starts
+    # after 6 am Eastern re-models: if both early runs fail, the next run seals
+    # the newest forecast made before the polls opened (the seal-late job).
+    # After that, every run stops at the gate below.
+    - cron: '5 10 3 11 *'
+    # A second try in case the first is late or fails; still before 6 am ET.
+    - cron: '35 10 3 11 *'
   workflow_dispatch:
     inputs:
       generic_ballot:
@@ -53,7 +62,51 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # Once the final forecast is sealed nothing here should run at all: no data
+  # refresh, no model, no rebuild. The election-night results workflow owns the
+  # site from then on.
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      state: ${{ steps.freeze.outputs.state }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Is the forecast frozen?
+        id: freeze
+        run: python3 freeze.py check
+
+  # Both early runs failed and the polls are open: seal the last forecast that
+  # was made before they opened, without refreshing or modelling anything.
+  seal-late:
+    needs: gate
+    if: needs.gate.outputs.state == 'late'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - name: Seal the last forecast made before the polls opened
+        run: python3 freeze.py seal
+      - name: Rebuild the site
+        run: python3 build_site.py
+      - name: Commit and push
+        run: |
+          git config user.name "election-agent[bot]"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/ site/
+          git commit -m "Final forecast, sealed late from the last run before the polls opened" || exit 0
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main && git rebase origin/main && git push origin HEAD:main && exit 0
+            git rebase --abort 2>/dev/null || true
+            sleep $((attempt * 5))
+          done
+          exit 1
+
   update:
+    needs: gate
+    if: needs.gate.outputs.state == 'live' || needs.gate.outputs.state == 'final-run'
     runs-on: ubuntu-latest
     steps:
       - name: Check out repo
@@ -159,6 +212,19 @@ jobs:
       - name: Run forecasting pipeline
         run: python3 run_pipeline.py
 
+      # Re-checked here rather than trusted from the gate, because this job can
+      # start minutes after the gate ran. The first run on or after 5 am
+      # Eastern on November 3 seals its own result as the final forecast.
+      - name: Seal the final forecast if it is time
+        id: seal
+        run: |
+          state=$(python3 freeze.py check)
+          echo "Freeze state: $state"
+          if [ "$state" = "final-run" ]; then
+            python3 freeze.py seal
+            echo "sealed=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Rebuild the site with the new run
         run: python3 build_site.py
 
@@ -171,7 +237,11 @@ jobs:
             echo "No changes to commit."
             exit 0
           fi
-          git commit -m "Daily forecast update: $(date -u +%Y-%m-%d)"
+          if [ "${{ steps.seal.outputs.sealed }}" = "true" ]; then
+            git commit -m "Final forecast, sealed before the polls open: $(date -u +%Y-%m-%dT%H:%MZ)"
+          else
+            git commit -m "Daily forecast update: $(date -u +%Y-%m-%d)"
+          fi
 
           # Rebase onto the latest main and retry the push a few times in
           # case someone pushed (or another run finished) in between this
@@ -197,7 +267,8 @@ jobs:
   # token don't trigger other workflows, so the deploy has to live here
   # rather than relying on pages.yml's push trigger.
   deploy:
-    needs: update
+    needs: [update, seal-late]
+    if: always() && (needs.update.result == 'success' || needs['seal-late'].result == 'success')
     runs-on: ubuntu-latest
     permissions:
       contents: read
