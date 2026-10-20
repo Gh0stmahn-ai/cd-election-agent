@@ -1696,6 +1696,371 @@ function houseTipping(house, meta, limit) {
     });
 }
 
+/* -------------------------------------------------------------- results */
+/* Election night. The results file is re-read straight from the repository
+   every minute while votes are being counted (the page's own copy is only as
+   fresh as the last site rebuild), and every ten minutes either side of that.
+   Everything shown is drawn from that one file, so a page left open all night
+   keeps itself current without a reload. */
+var RESULTS_RAW = "https://raw.githubusercontent.com/Gh0stmahn-ai/cd-election-agent/main/data/results_2026.json";
+var RESULTS_LOCAL = "data/results_2026.json";
+var RES = {data: null, cfg: null, filter: "senate", timer: null, failures: 0, lastOk: null, listeners: []};
+
+function fmtTime(iso) {
+  if (!iso) return "";
+  return new Date(iso).toLocaleTimeString("en-US", {hour: "numeric", minute: "2-digit", timeZone: "America/New_York"})
+    .toLowerCase().replace(" ", " ") + " ET";
+}
+function partyName(p) { return p === "D" ? "Democrat" : p === "R" ? "Republican" : "Independent"; }
+function partyColor(p) { return p === "D" ? css("--dem") : p === "R" ? css("--rep") : css("--ink-2"); }
+
+function fetchResults(preferLocal) {
+  /* A thirty-second bucket as the cache-buster: every open page asks for the
+     same URL within a bucket, which is kind to the server, and none waits on
+     a stale copy for longer than that. */
+  var bust = "?t=" + Math.floor(Date.now() / 30000);
+  var order = preferLocal ? [RESULTS_LOCAL, RESULTS_RAW + bust] : [RESULTS_RAW + bust, RESULTS_LOCAL + bust];
+  function attempt(i) {
+    if (i >= order.length) return Promise.reject(new Error("no results source reachable"));
+    return fetch(order[i], {cache: "no-store"}).then(function (r) {
+      if (!r.ok) throw new Error(r.status);
+      return r.json();
+    }).then(function (d) {
+      /* The site's own copy is only as fresh as the last rebuild: mark it. */
+      RES.fallback = order[i].indexOf(RESULTS_LOCAL) === 0;
+      return d;
+    }).catch(function () { return attempt(i + 1); });
+  }
+  return attempt(0);
+}
+
+function resultsCadence(d) {
+  var now = Date.now();
+  if (!d) return 60000;
+  if (now < POLLS_FIRST_CLOSE - 30 * 60000) return 10 * 60000;
+  if (d.phase === "complete") return 10 * 60000;
+  if (now > POLLS_LAST_CLOSE + 4 * 86400000) return 10 * 60000;
+  return 60000;
+}
+
+function startResultsPolling(onData, preferLocal) {
+  RES.listeners.push(onData);
+  if (RES.listenersStarted) { if (RES.data) onData(RES.data); return; }
+  RES.listenersStarted = true;
+  function tick(local) {
+    fetchResults(local).then(function (d) {
+      /* Never step backwards: a cached copy older than what is on screen is ignored. */
+      if (!RES.data || !d.updated || d.updated >= RES.data.updated) RES.data = d;
+      RES.failures = 0;
+      RES.lastOk = Date.now();
+      RES.listeners.forEach(function (fn) { fn(RES.data); });
+    }).catch(function () {
+      RES.failures += 1;
+      RES.listeners.forEach(function (fn) { fn(RES.data, true); });
+    }).then(function () { schedule(resultsCadence(RES.data)); });
+  }
+  /* A hidden tab checks back every fifteen seconds but does not fetch until
+     someone is looking at it again. */
+  function schedule(delay) {
+    if (RES.timer) clearTimeout(RES.timer);
+    RES.timer = setTimeout(function () {
+      if (document.visibilityState === "hidden") { schedule(15000); return; }
+      tick(false);
+    }, delay);
+  }
+  tick(!!preferLocal);
+  document.addEventListener("visibilitychange", function () {
+    if (document.visibilityState === "visible" && RES.lastOk && Date.now() - RES.lastOk > resultsCadence(RES.data)) tick(false);
+  });
+}
+
+function renderResults(cfg) {
+  RES.cfg = cfg;
+  if (cfg && cfg.raw) RESULTS_RAW = cfg.raw;
+  if (cfg && cfg.local) RESULTS_LOCAL = cfg.local;
+  renderResultsAll(null);
+  startResultsPolling(function (d, failed) { renderResultsAll(d, failed); }, false);
+}
+
+function renderResultsAll(d, failed) {
+  var cfg = RES.cfg || {forecast: {}};
+  resStatus("res-status", d, failed);
+  resTally("res-senate", "senate", d, cfg.forecast.senate);
+  resTally("res-house", "house", d, cfg.forecast.house);
+  var started = d && d.phase !== "before";
+  var hasCalls = d && d.scorecard && d.scorecard.races_called > 0;
+  var ew = $("res-events-wrap"), sw = $("res-score-wrap");
+  if (ew) ew.hidden = !(d && d.events && d.events.length);
+  if (sw) sw.hidden = !hasCalls;
+  if (d && d.events) resEvents("res-events", d.events);
+  if (hasCalls) {
+    resScore("res-score", d.scorecard);
+    resCalib("res-calib", d.scorecard.calibration, "res-calib-note");
+    resMisses("res-misses", d.scorecard);
+  }
+  resTable("res-tabs", "res-table", d, started);
+  resSources("res-sources", d);
+}
+
+function resStatus(id, d, failed) {
+  var box = $(id); if (!box) return;
+  var now = Date.now();
+  var html;
+  if (!d) {
+    html = '<span class="pill"><span class="dot" style="background:var(--muted)"></span>Loading results</span>';
+  } else if (d.phase === "before" && now < POLLS_FIRST_CLOSE) {
+    html = '<span class="pill"><span class="dot" style="background:var(--muted)"></span>Before the polls close</span>' +
+      "<span>The first polls close at 6 pm Eastern on Tuesday, November 3. Calls and counts appear here as they come in.</span>";
+  } else {
+    var live = d.phase !== "complete";
+    html = '<span class="pill"><span class="dot' + (live ? ' live' : '') + '" style="background:' +
+      (live ? "#0ca30c" : "var(--ink)") + '"></span>' + (live ? "Counting" : "All races called") + "</span>" +
+      "<span>Updated " + esc(fmtTime(d.updated)) + " · " +
+      (live ? "checked every minute; new results can take up to five minutes to reach this page"
+            : "every race has a call") + "</span>";
+  }
+  if (failed) html += '<span class="res-warn">Could not reach the results file just now; showing the last copy.</span>';
+  else if (RES.fallback && d && d.phase !== "before") {
+    html += '<span class="res-warn">Showing the copy saved with this page, which can be older than the live file.</span>';
+  }
+  box.innerHTML = html;
+}
+
+function resTally(id, chamber, d, fc) {
+  var box = $(id); if (!box || !fc) return;
+  var t = d && d.tally ? d.tally[chamber] : null;
+  var total = fc.seats, need = fc.needed;
+  var D = t ? t.D : (chamber === "senate" && fc.not_up ? fc.not_up.D : 0);
+  var R = t ? t.R : (chamber === "senate" && fc.not_up ? fc.not_up.R : 0);
+  var I = t ? (t.I || t.O || 0) : 0;
+  var open = total - D - R - I;
+  var name = chamber === "senate" ? "Senate" : "House";
+  var control = t && t.control;
+  var started = d && d.phase && d.phase !== "before";
+  var head = control
+    ? (control === "D" ? "Democrats win the " : "Republicans win the ") + name
+    : (!started ? name + ": " + open + " seats on the ballot" : name + ": " + open + " seat" + (open === 1 ? "" : "s") + " to call");
+  function seg(n, color, label) {
+    return n > 0 ? '<i style="width:' + (100 * n / total) + '%;background:' + color + '" title="' + label + '"></i>' : "";
+  }
+  var bar = '<div class="res-bar">' + seg(D, css("--dem"), "Democratic seats") +
+    seg(open, "var(--grid)", "Not yet called") + seg(I, css("--ink-2"), "Independent") +
+    seg(R, css("--rep"), "Republican seats") +
+    '<span class="need" style="left:' + (100 * need / total) + '%"></span></div>';
+  var note = "";
+  if (chamber === "senate") {
+    note = "Includes the " + (fc.not_up ? fc.not_up.D + " Democratic and " + fc.not_up.R + " Republican" : "") +
+      " seats not on the ballot. Democrats need " + need + "; the Vice President breaks a 50-50 tie for Republicans.";
+  } else {
+    note = need + " for a majority.";
+  }
+  var exp = t && started && !control
+    ? "<div class=\"res-proj\">Called seats plus the final forecast's odds in the races left: about <b>D " +
+      t.expected_D.toFixed(0) + "</b></div>" : "";
+  var fcLine = (d && d.frozen_forecast ? "Final forecast" : "Current forecast") + ": Democrats " + pct(fc.p) +
+    " to win the " + name + ", most likely " +
+    fc.median + " Democratic seats (80% between " + fc.p10 + " and " + fc.p90 + ").";
+  box.innerHTML = '<div class="chamber-label">' + name + "</div>" +
+    '<div class="res-head">' + esc(head) + "</div>" +
+    '<div class="res-nums"><span style="color:' + css("--dem") + '"><b>' + D + "</b> D</span>" +
+    (I ? '<span><b>' + I + "</b> I</span>" : "") +
+    '<span style="color:' + css("--rep") + '"><b>' + R + "</b> R</span>" +
+    '<span class="muted"><b>' + open + "</b> " + (started ? "to call" : "on the ballot") + "</span></div>" + bar + exp +
+    '<p class="note">' + note + " " + fcLine + "</p>";
+}
+
+function resEvents(id, events) {
+  var box = $(id); if (!box) return;
+  box.innerHTML = events.slice(0, 12).map(function (e) {
+    var when = '<span class="t">' + esc(fmtTime(e.t)) + "</span>";
+    if (e.type === "control") {
+      return "<li>" + when + "<span><b>" + (e.winner === "D" ? "Democrats" : "Republicans") + " win the " +
+        (e.chamber === "senate" ? "Senate" : "House") + "</b></span></li>";
+    }
+    if (e.type === "retraction") {
+      return "<li>" + when + "<span>Call withdrawn in <b>" + esc(e.label || e.race) + "</b></span></li>";
+    }
+    var pw = e.p == null ? null : (e.dem_side ? e.p : 1 - e.p);
+    var upset = pw != null && pw < 0.5;
+    return "<li" + (upset ? ' class="upset"' : "") + ">" + when + "<span>" +
+      '<span class="sw" style="background:' + partyColor(e.winner) + '"></span>' +
+      "<b>" + esc(e.label || e.race) + "</b>: " + esc(titleCase(String(e.name || "").toLowerCase())) +
+      " (" + partyName(e.winner) + ")" +
+      (pw != null ? ' <span class="muted">forecast gave ' + pct(pw) + (upset ? ", an upset" : "") + "</span>" : "") +
+      "</span></li>";
+  }).join("");
+}
+
+function resScore(id, sc) {
+  var box = $(id); if (!box) return;
+  var b = sc.brier || {};
+  function tile(k, v, sub) {
+    return '<div class="j"><div class="k">' + k + '</div><div class="v">' + v + "</div>" +
+      (sub ? '<div class="s">' + sub + "</div>" : "") + "</div>";
+  }
+  var ctl = ["senate", "house"].map(function (c) {
+    var x = sc.control[c];
+    if (!x || !x.outcome) return null;
+    return (c === "senate" ? "Senate" : "House") + ": " + (x.outcome === "D" ? "Democrats" : "Republicans") +
+      ", which the forecast gave " + pct(x.p_outcome);
+  }).filter(Boolean).join("<br>");
+  var m = sc.margins || {};
+  function mline(x, name) {
+    if (!x) return null;
+    var who = x.bias >= 0 ? "Democrats" : "Republicans";
+    return name + ": " + who + " ran " + Math.abs(x.bias).toFixed(1) + " pts ahead of the forecast margin on average (" +
+      x.n + " races; typical miss " + x.mae.toFixed(1) + " pts)";
+  }
+  var margins = [mline(m.senate, "Senate"), mline(m.house, "House")].filter(Boolean).join("<br>");
+  var seats = ["senate", "house"].map(function (c) {
+    var x = (sc.seats || {})[c];
+    if (!x) return null;
+    return (c === "senate" ? "Senate" : "House") + ": " + x.actual_D + " Democratic seats against a forecast median of " +
+      x.forecast_median + (x.in_80 ? ", inside" : ", outside") + " the forecast's 80% range";
+  }).filter(Boolean).join("<br>");
+  if (seats) ctl = (ctl ? ctl + "<br>" : "") + seats;
+  box.innerHTML =
+    tile("Races called", sc.races_called, sc.n_misses + " went to the side the forecast had as the underdog") +
+    tile("Brier score, forecast", b.model == null ? "-" : b.model.toFixed(3),
+         "Ratings alone: " + (b.rating == null ? "-" : b.rating.toFixed(3)) + " · always 50%: 0.250 · lower is better") +
+    tile("Margins against the forecast", margins ? "" : "-", margins || "Appears once counts are close to complete") +
+    tile("Control", ctl ? "" : "Not decided", ctl || "Shown once a party reaches a majority");
+}
+
+function resCalib(svgId, cal, noteId) {
+  var svg = $(svgId); if (!svg) return;
+  clear(svg);
+  var W = 520, H = 300, m = {l: 44, r: 14, t: 12, b: 40};
+  var x = function (p) { return m.l + p * (W - m.l - m.r); };
+  var y = function (p) { return H - m.b - p * (H - m.t - m.b); };
+  [0, 0.25, 0.5, 0.75, 1].forEach(function (v) {
+    el("line", {x1: x(0), x2: x(1), y1: y(v), y2: y(v), stroke: css("--grid")}, svg);
+    el("text", {x: m.l - 6, y: y(v) + 4, "text-anchor": "end", "font-size": 11, fill: css("--muted")}, svg).textContent = Math.round(v * 100) + "%";
+    el("text", {x: x(v), y: H - m.b + 16, "text-anchor": "middle", "font-size": 11, fill: css("--muted")}, svg).textContent = Math.round(v * 100) + "%";
+  });
+  el("line", {x1: x(0), y1: y(0), x2: x(1), y2: y(1), stroke: css("--axis"), "stroke-dasharray": "4 4"}, svg);
+  var maxN = Math.max.apply(null, cal.map(function (b) { return b.n; }).concat([1]));
+  cal.forEach(function (b) {
+    if (!b.n) return;
+    var c = el("circle", {cx: x(b.mean_p), cy: y(b.rate), r: 4 + 10 * Math.sqrt(b.n / maxN),
+      fill: css("--ink"), "fill-opacity": 0.75, stroke: css("--surface"), "stroke-width": 1.5}, svg);
+    bindTip(c, function () {
+      return "<b>Forecast " + Math.round(b.lo * 100) + " to " + Math.round(b.hi * 100) + "% Democratic</b><br>" +
+        b.n + " races, average forecast " + pct(b.mean_p) + "<br>Democrats won " + b.wins + " (" + pct(b.rate) + ")";
+    });
+  });
+  el("text", {x: (m.l + W - m.r) / 2, y: H - 6, "text-anchor": "middle", "font-size": 12, fill: css("--ink-2")}, svg)
+    .textContent = "Forecast chance of a Democratic win";
+  var yl = el("text", {x: 12, y: (m.t + H - m.b) / 2, "text-anchor": "middle", "font-size": 12, fill: css("--ink-2"),
+    transform: "rotate(-90 12 " + ((m.t + H - m.b) / 2) + ")"}, svg);
+  yl.textContent = "How often Democrats won";
+  if ($(noteId)) $(noteId).textContent = "Each dot is a group of called races. On the dashed line, a 70% forecast came true 70% of the time; dot size is the number of races.";
+}
+
+function resMisses(id, sc) {
+  var box = $(id); if (!box) return;
+  if (!sc.misses.length) { box.innerHTML = '<p class="note">No upsets yet: every called race went to the side the forecast favoured.</p>'; return; }
+  box.innerHTML = '<table><thead><tr><th>Race</th><th>Winner</th><th class="num">Forecast gave the winner</th></tr></thead><tbody>' +
+    sc.misses.map(function (x) {
+      return "<tr><td>" + esc(x.label) + '</td><td><span class="sw" style="background:' + partyColor(x.winner) + '"></span>' +
+        esc(titleCase(String(x.name || "").toLowerCase())) + '</td><td class="num">' + pct(x.p_winner) + "</td></tr>";
+    }).join("") + "</tbody></table>";
+}
+
+function resTable(tabsId, tableId, d, started) {
+  var table = $(tableId), tabs = $(tabsId);
+  if (!table || !d || !d.races) return;
+  var all = Object.keys(d.races).map(function (k) { return d.races[k]; });
+  var groups = {
+    senate: ["Senate", function (r) { return r.chamber === "senate"; }],
+    competitive: ["Competitive House", function (r) { return r.chamber === "house" && r.forecast.p >= 0.05 && r.forecast.p <= 0.95; }],
+    upsets: ["Upsets", function (r) { return r.call && ((r.call.dem_side ? r.forecast.p : 1 - r.forecast.p) < 0.5); }],
+    house: ["All House", function (r) { return r.chamber === "house"; }]
+  };
+  if (!groups[RES.filter]) RES.filter = "senate";
+  if (tabs) {
+    tabs.innerHTML = "";
+    Object.keys(groups).forEach(function (k) {
+      var n = all.filter(groups[k][1]).length;
+      if (k === "upsets" && !started) return;
+      var b = document.createElement("button");
+      b.type = "button";
+      b.textContent = groups[k][0] + " (" + n + ")";
+      b.setAttribute("aria-pressed", k === RES.filter ? "true" : "false");
+      b.addEventListener("click", function () { RES.filter = k; resTable(tabsId, tableId, d, started); });
+      tabs.appendChild(b);
+    });
+  }
+  var rows = all.filter(groups[RES.filter][1]).sort(function (a, b) {
+    return Math.abs(a.forecast.p - 0.5) - Math.abs(b.forecast.p - 0.5) || a.id.localeCompare(b.id, "en", {numeric: true});
+  });
+  function status(r) {
+    if (r.call) {
+      return '<span class="sw" style="background:' + partyColor(r.call.party) + '"></span><b>' +
+        esc(titleCase(String(r.call.name || "").toLowerCase())) + "</b> (" + r.call.party + ")";
+    }
+    if (r.status === "counting") return '<span class="muted">Counting</span>';
+    return '<span class="muted">Polls close ' + esc(fmtTime(r.polls_close)) + "</span>";
+  }
+  function count(r) {
+    var c = r.count;
+    if (!c || c.margin == null) return '<td class="num muted">-</td><td class="num muted">-</td>';
+    var m = c.margin;
+    var rep = c.reporting == null ? (c.source === "wikipedia" ? "listed" : "") : Math.round(c.reporting * 100) + "%";
+    var side = r.independent_side ? "I+" : "D+";
+    return '<td class="num" title="' + esc(c.reporting_label || "") + '">' + (m >= 0 ? side : "R+") + Math.abs(m).toFixed(1) +
+      '</td><td class="num muted">' + rep + "</td>";
+  }
+  function versus(r) {
+    var c = r.count;
+    if (!c || c.margin == null || r.forecast.margin == null) return '<td class="num muted">-</td>';
+    var dlt = c.margin - r.forecast.margin;
+    return '<td class="num" style="color:' + (dlt >= 0 ? css("--dem") : css("--rep")) + '">' +
+      (dlt >= 0 ? "+" : "-") + Math.abs(dlt).toFixed(1) + "</td>";
+  }
+  table.innerHTML = '<thead><tr><th>Race</th><th class="num">Forecast D win</th><th>Called for</th>' +
+    '<th class="num">Count</th><th class="num">In</th><th class="num">Vs forecast</th></tr></thead><tbody>' +
+    rows.map(function (r) {
+      return "<tr><td>" + esc(r.label) + '</td><td class="num">' + pct(r.forecast.p) + "</td><td>" + status(r) +
+        "</td>" + count(r) + versus(r) + "</tr>";
+    }).join("") + "</tbody>";
+}
+
+function resSources(id, d) {
+  var box = $(id); if (!box || !d || !d.sources) return;
+  box.innerHTML = '<div class="res-sources">' + Object.keys(d.sources).map(function (k) {
+    var s = d.sources[k];
+    var dot = s.ok === true ? "#0ca30c" : s.ok === false ? "#d03b3b" : "var(--muted)";
+    var tip = s.ok === false ? "Not reachable: " + (s.error || "") : s.ok === null && s.error ? s.error :
+      s.last_ok ? "Read " + fmtTime(s.last_ok) : "Not read yet";
+    return '<a class="pill" href="' + esc(s.url) + '" target="_blank" rel="noopener" title="' + esc(tip) + '">' +
+      '<span class="dot" style="background:' + dot + '"></span>' + esc(s.label) + "</a>";
+  }).join("") + "</div>";
+}
+
+/* The overview's band after the polls start closing: the two tallies and a
+   way into the full results. */
+function renderResultsBand(host) {
+  startResultsPolling(function (d) {
+    if (!d || !d.tally) return;
+    var s = d.tally.senate, h = d.tally.house;
+    function part(name, t, total) {
+      var open = total - t.D - t.R - (t.I || t.O || 0);
+      return '<span class="rb-c"><span class="cd-kicker">' + name + "</span>" +
+        '<span class="rb-n"><b style="color:' + css("--dem") + '">D ' + t.D + "</b> · " +
+        '<b style="color:' + css("--rep") + '">R ' + t.R + "</b>" + ((t.I || 0) ? " · I " + t.I : "") +
+        ' <span class="muted">· ' + open + " to call</span></span>" +
+        (t.control ? '<span class="rb-win">' + (t.control === "D" ? "Democrats" : "Republicans") + " win</span>" : "") +
+        "</span>";
+    }
+    var band = host.querySelector(".rb") || document.createElement("div");
+    band.className = "rb";
+    band.innerHTML = part("Senate", s, 100) + part("House", h, 435) +
+      '<a class="rb-go" href="results.html">Live results &#8594;</a>';
+    if (!band.parentNode) host.appendChild(band);
+  }, false);
+}
+
 /* ------------------------------------------------------------ countdown */
 /* Counts to the moment the first polls close, not to midnight: 6 pm Eastern
    on November 3 is when parts of Indiana and Kentucky close and the first
@@ -1754,6 +2119,7 @@ function renderCountdown(hostId, nowFn) {
       clock.hidden = true;
       note.innerHTML = "Every poll has closed. The forecast on this page was made before a single vote " +
         "was counted.";
+      if (!host.querySelector(".rb")) renderResultsBand(host);
       sr.textContent = "";
       return;
     }
@@ -1763,6 +2129,7 @@ function renderCountdown(hostId, nowFn) {
       clock.hidden = true;
       note.innerHTML = "<b>Polls are closing.</b> The first closed at 6 pm Eastern; the last close at " +
         "1 am Eastern, in Alaska. Votes are being counted.";
+      if (!host.querySelector(".rb")) renderResultsBand(host);
       sr.textContent = "";
       countdownTimer = setTimeout(tick, Math.min(60000, POLLS_LAST_CLOSE - t + 50));
       return;
@@ -1813,7 +2180,8 @@ function init() {
 }
 
 global.FC = {
-  init: init, onRender: onRender, renderCountdown: renderCountdown, countdownParts: countdownParts,
+  init: init, onRender: onRender, renderCountdown: renderCountdown, renderResults: renderResults,
+  fmtTime: fmtTime, countdownParts: countdownParts,
   POLLS_FIRST_CLOSE: POLLS_FIRST_CLOSE, POLLS_LAST_CLOSE: POLLS_LAST_CLOSE, $: $, esc: esc, pct: pct, pct1: pct1, signed: signed, margin: margin,
   fmtDate: fmtDate, titleCase: titleCase, css: css, binColor: binColor, legendBins: legendBins, headlineFor: headlineFor,
   renderHero: renderHero, renderJoint: renderJoint, renderHemicycle: renderHemicycle, renderHistogram: renderHistogram,

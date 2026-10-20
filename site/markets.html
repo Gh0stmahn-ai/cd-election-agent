@@ -17,12 +17,12 @@
 <meta name="twitter:description" content="What real money says about the 2026 midterms, next to what this model says, and why the two are never averaged together.">
 <meta name="twitter:image" content="https://gh0stmahn-ai.github.io/assets/og.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23f6f5f1'/%3E%3Crect x='5' y='8' width='10' height='18' rx='2' fill='%232a78d6'/%3E%3Crect x='17' y='8' width='10' height='18' rx='2' fill='%23c74845'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="assets/style.css?v=dccc5904">
+<link rel="stylesheet" href="assets/style.css?v=af14fe11">
 </head>
 <body>
 <header class="site-head"><div class="bar">
   <a class="brand plain" href="index.html"><span class="mark"><i></i><i></i></span>2026 Midterm Forecast</a>
-  <nav class="main" aria-label="Sections"><a href="index.html">Overview</a><a href="senate.html">Senate</a><a href="house.html">House</a><a href="scenarios.html">Scenarios</a><a href="economy.html">Economy</a><a href="trend.html">Trend</a><a href="markets.html" aria-current="page">Markets</a><a href="methodology.html">Methodology</a></nav>
+  <nav class="main" aria-label="Sections"><a href="index.html">Overview</a><a href="results.html">Results</a><a href="senate.html">Senate</a><a href="house.html">House</a><a href="scenarios.html">Scenarios</a><a href="economy.html">Economy</a><a href="trend.html">Trend</a><a href="markets.html" aria-current="page">Markets</a><a href="methodology.html">Methodology</a></nav>
   <a class="refresh" href="https://github.com/Gh0stmahn-ai/cd-election-agent/actions/workflows/daily-forecast.yml" target="_blank" rel="noopener"
      title="Re-run the forecast now on the latest public data (opens GitHub Actions)">
     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7"
@@ -36,6 +36,7 @@
   <h1>What the betting markets say</h1>
   <div class="sub">Two exchanges, real money, next to this model's answer. Shown side by side and never blended into the forecast.</div>
 </div>
+
 
 <section>
   <div class="card">
@@ -72,7 +73,7 @@
     <p class="note">Kalshi runs a market on the House popular vote margin itself, in two-point
     bands. The figure above is the average of those bands weighted by price: the margin the
     market expects. It is the cleanest like-for-like reading here, because it prices the same
-    quantity the model takes from polls. $2,768,800 traded.</p>
+    quantity the model takes from polls. $2,787,948 traded.</p>
     <svg id="mkt-margin-bins" viewBox="0 0 520 150" role="img"
          aria-label="Priced probability of each House popular vote margin band"></svg>
   </div>
@@ -116,7 +117,7 @@
   actually look like. That is why the disagreement is worth showing rather than smoothing
   away. When the two drift apart, one of them is wrong, and which one is a question you can
   now watch rather than guess at. Prices are collected fresh on every run, and
-  $84,720,329 has been traded across the four chamber markets above.</p>
+  $85,651,941 has been traded across the four chamber markets above.</p>
 </section>
 
 <div class="prev-next"><a href="trend.html">&#8592; Trend</a><a href="methodology.html">Methodology &#8594;</a></div>
@@ -130,14 +131,19 @@
     Forecast, not a prediction: read the <a href="methodology.html">methodology</a> first.</div>
 </div></footer>
 
-<script src="assets/app.js?v=dccc5904"></script>
+<script src="assets/app.js?v=af14fe11"></script>
 <script>
-const PAGE_DATA = {"site":{"timestamp":"2026-10-20T00:39:50.046554+00:00","status":"success"},"rows":[{"chamber":"Senate","points":[{"key":"model","label":"This model","prob":0.6152},{"key":"kalshi","label":"Kalshi","prob":0.625,"volume":15654473},{"key":"polymarket","label":"Polymarket","prob":0.635,"volume":7203974}]},{"chamber":"House","points":[{"key":"model","label":"This model","prob":0.7577},{"key":"kalshi","label":"Kalshi","prob":0.2689,"volume":43207430},{"key":"polymarket","label":"Polymarket","prob":0.915,"volume":18654452}]}],"joint":[{"label":"DH / RS","model":0.202,"market":0.2689},{"label":"RH / DS","model":0.0595,"market":0.0073}],"senateBins":[{"label":"Below 45","model":0.0014,"market":0.0285},{"label":"45","model":0.0028,"market":0.0214},{"label":"46","model":0.0085,"market":0.0252},{"label":"47","model":0.0242,"market":0.0356},{"label":"48","model":0.0569,"market":0.0622},{"label":"49","model":0.1131,"market":0.0765},{"label":"50","model":0.1778,"market":0.1188},{"label":"51","model":0.226,"market":0.1093},{"label":"52","model":0.211,"market":0.1758},{"label":"Above 52","model":0.1782,"market":0.3468}],"houseBins":[{"label":"Below 210","model":0.0542,"market":0.0394},{"label":"210-213","model":0.0648,"market":0.0285},{"label":"214-217","model":0.1232,"market":0.0323},{"label":"218-221","model":0.1917,"market":0.0404},{"label":"222-225","model":0.2159,"market":0.0698},{"label":"226-229","model":0.1688,"market":0.0774},{"label":"230-233","model":0.0967,"market":0.1472},{"label":"234-237","model":0.0441,"market":0.1662},{"label":"238-241","model":0.0206,"market":0.1282},{"label":"242-245","model":0.0093,"market":0.0869},{"label":"246-249","model":0.0048,"market":0.0651},{"label":"Above 249","model":0.0056,"market":0.1187}],"races":[{"state":"TX","special":false,"model":0.6778,"market":0.6089,"volume":4211636},{"state":"ME","special":false,"model":0.6278,"market":0.625,"volume":2316525},{"state":"MI","special":false,"model":0.7036,"market":0.695,"volume":1914314},{"state":"AK","special":false,"model":0.6541,"market":0.742,"volume":1464737},{"state":"OH","special":true,"model":0.7218,"market":0.635,"volume":1378018},{"state":"IA","special":false,"model":0.5477,"market":0.4208,"volume":917022},{"state":"NE","special":false,"model":0.0495,"market":0.2919,"volume":728990}],"asOf":"2026-10-20T00:38:19+00:00","genericBallot":{"polls":8.79,"market":8.3},"marginBins":[{"label":"Republicans win","short":"R","prob":0.0537,"sort":-2.0},{"label":"Democrats, 0 to 2%","short":"0-2","prob":0.0251,"sort":1.0},{"label":"Democrats, 2 to 4%","short":"2-4","prob":0.0379,"sort":3.0},{"label":"Democrats, 4 to 6%","short":"4-6","prob":0.0882,"sort":5.0},{"label":"Democrats, 6 to 8%","short":"6-8","prob":0.1921,"sort":7.0},{"label":"Democrats, 8 to 10%","short":"8-10","prob":0.2611,"sort":9.0},{"label":"Democrats, 10 to 12%","short":"10-12","prob":0.202,"sort":11.0},{"label":"Democrats, 12 to 14%","short":"12-14","prob":0.0892,"sort":13.0},{"label":"Democrats, 14 to 16%","short":"14-16","prob":0.032,"sort":15.0},{"label":"Democrats, 16% and above","short":"16+","prob":0.0187,"sort":17.0}]};
+const PAGE_DATA = {"site":{"timestamp":"2026-10-20T09:09:09.504393+00:00","status":"success"},"rows":[{"chamber":"Senate","points":[{"key":"model","label":"This model","prob":0.6082},{"key":"kalshi","label":"Kalshi","prob":0.625,"volume":15704623},{"key":"polymarket","label":"Polymarket","prob":0.6386,"volume":7224982}]},{"chamber":"House","points":[{"key":"model","label":"This model","prob":0.7588},{"key":"kalshi","label":"Kalshi","prob":0.8952,"volume":43952642},{"key":"polymarket","label":"Polymarket","prob":0.915,"volume":18769694}]}],"joint":[{"label":"DH / DS","model":0.5507,"market":0.6247},{"label":"DH / RS","model":0.2081,"market":0.2705},{"label":"RH / DS","model":0.0575,"market":0.0074},{"label":"RH / RS","model":0.1837,"market":0.0974}],"senateBins":[{"label":"Below 45","model":0.0014,"market":0.0277},{"label":"45","model":0.0028,"market":0.0212},{"label":"46","model":0.0089,"market":0.0244},{"label":"47","model":0.0249,"market":0.0371},{"label":"48","model":0.0583,"market":0.0616},{"label":"49","model":0.1152,"market":0.0757},{"label":"50","model":0.1803,"market":0.1269},{"label":"51","model":0.2267,"market":0.1081},{"label":"52","model":0.2085,"market":0.174},{"label":"Above 52","model":0.173,"market":0.3432}],"houseBins":[{"label":"Below 210","model":0.0539,"market":0.0387},{"label":"210-213","model":0.0645,"market":0.0252},{"label":"214-217","model":0.1226,"market":0.0312},{"label":"218-221","model":0.1913,"market":0.0396},{"label":"222-225","model":0.216,"market":0.0686},{"label":"226-229","model":0.1692,"market":0.0854},{"label":"230-233","model":0.0972,"market":0.1446},{"label":"234-237","model":0.0442,"market":0.1632},{"label":"238-241","model":0.0208,"market":0.1259},{"label":"242-245","model":0.0094,"market":0.0854},{"label":"246-249","model":0.0048,"market":0.0662},{"label":"Above 249","model":0.0056,"market":0.1259}],"races":[{"state":"TX","special":false,"model":0.6779,"market":0.6188,"volume":4288327},{"state":"ME","special":false,"model":0.6279,"market":0.635,"volume":2317679},{"state":"MI","special":false,"model":0.7037,"market":0.698,"volume":1959407},{"state":"AK","special":false,"model":0.6542,"market":0.7346,"volume":1467409},{"state":"OH","special":true,"model":0.7179,"market":0.6414,"volume":1387739},{"state":"IA","special":false,"model":0.5209,"market":0.4208,"volume":917485},{"state":"NE","special":false,"model":0.0496,"market":0.2919,"volume":736370}],"asOf":"2026-10-20T09:07:37+00:00","genericBallot":{"polls":8.79,"market":8.3},"marginBins":[{"label":"Republicans win","short":"R","prob":0.0541,"sort":-2.0},{"label":"Democrats, 0 to 2%","short":"0-2","prob":0.0239,"sort":1.0},{"label":"Democrats, 2 to 4%","short":"2-4","prob":0.0375,"sort":3.0},{"label":"Democrats, 4 to 6%","short":"4-6","prob":0.0872,"sort":5.0},{"label":"Democrats, 6 to 8%","short":"6-8","prob":0.1998,"sort":7.0},{"label":"Democrats, 8 to 10%","short":"8-10","prob":0.2583,"sort":9.0},{"label":"Democrats, 10 to 12%","short":"10-12","prob":0.1998,"sort":11.0},{"label":"Democrats, 12 to 14%","short":"12-14","prob":0.0882,"sort":13.0},{"label":"Democrats, 14 to 16%","short":"14-16","prob":0.0327,"sort":15.0},{"label":"Democrats, 16% and above","short":"16+","prob":0.0185,"sort":17.0}]};
 FC.init();
 (function () {
   var s = PAGE_DATA.site;
   var days = Math.max(0, Math.ceil((new Date("2026-11-03T12:00:00Z") - new Date(s.timestamp)) / 86400000));
   var col = s.status === "success" ? "#0ca30c" : s.status === "partial" ? "#fab219" : "#d03b3b";
+  if (s.final) {
+    FC.$("foot-updated").innerHTML = "Final forecast, run " + FC.fmtDate(s.timestamp, true) +
+      " and sealed before the polls opened on Nov 3, 2026";
+    return;
+  }
   FC.$("foot-updated").innerHTML = "Forecast run " + FC.fmtDate(s.timestamp, true) + " · " + days +
     " days to Election Day, Nov 3, 2026 · " +
     '<span class="pill"><span class="dot" style="background:' + col + '"></span>Data refresh: ' + s.status + "</span>";
