@@ -683,6 +683,11 @@ def run_simulation(n_sims=N_SIMS, seed=SEED, env_margin=None):
                       if h_tip[i] >= 0.0005} if h_tip is not None else {})
     code = {"solid": "S", "likely": "L", "lean": "N", "tossup": "T"}
     house_ratings = {d["id"]: code[d["rating"]] + d["lean"] for d in dists}
+    # The centre of each district's distribution, which is what a result gets
+    # scored against once there is one. The Senate has always carried this as
+    # expected_margin; the House did not, and a forecast that cannot say how
+    # far off it was in each district can only be graded on who won.
+    house_margins = {d["id"]: round(float(h_base[i]), 1) for i, d in enumerate(dists)}
 
     return {
         "environment": env,
@@ -707,6 +712,7 @@ def run_simulation(n_sims=N_SIMS, seed=SEED, env_margin=None):
             "district_probs": house_probs,
             "district_tipping": house_tipping,
             "district_ratings": house_ratings,
+            "district_margins": house_margins,
             "ratings_as_of": hou.get("as_of"),
             "ratings_source": hou.get("ratings_source"),
         },

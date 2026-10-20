@@ -202,7 +202,58 @@ backtest/report.py            grades model.py against seven past elections
 set_polls.py                  manual generic-ballot / approval entry
 agent_run.py                  optional AI refresh (ratings, Senate news)
 ingest.py                     the validated write functions all three use
+freeze.py                     seals the final forecast on the morning of Nov 3
+results.py                    election night: reads, calls, tallies, scorecard
+results_feeds.py              the official state feeds and the Wikipedia call reader
+tests/test_results.py         offline checks for every parser and call rule
+tools/simulate_night.py       plays a simulated election night through results.py
+data/final_forecast.json      the sealed forecast (from Nov 3)
+data/results_2026.json        results and scorecard, read live by the site
 ```
+
+## Election night
+
+**The freeze.** The first forecast run at or after 5 am Eastern on November 3
+(10:00 UTC, before any poll opens) seals its result into
+`data/final_forecast.json`: the whole forecast, the market prices at the same
+moment, the rating-only probability for every race, and a fingerprint of every
+input file. From then on the daily workflow stops at its gate and
+`run_pipeline.py` refuses to model again, and every page says the forecast is
+final. A dedicated 5:05 am run makes the seal; if it is late or fails, the
+noon run does it instead. `python3 freeze.py check` says which state it is in.
+
+**Results.** `results.yml` starts at 5:07 pm Eastern on November 3 and keeps a
+collector running through the night, about one read a minute
+(`results.py loop`), then a read every half hour through November. It writes
+`data/results_2026.json`, which the Results page and the overview re-read every
+minute straight from the repository, so the pages stay current between site
+rebuilds.
+
+| What | Where it comes from |
+|---|---|
+| Live counts | Official state feeds: Georgia, North Carolina, Texas, Iowa, Nebraska, Alaska, Florida (`results_feeds.py`) |
+| Race calls, all 470 races | Wikipedia's 2026 Senate and House articles, where editors mark winners as the networks call them |
+| Final vote shares elsewhere | The same Wikipedia tables, once editors add them |
+
+Michigan, Ohio and Kansas block automated readers and Maine and New Hampshire
+have no statewide election-night system, so those states show calls without
+running counts. Nothing here projects a winner from a partial count. A
+Wikipedia call is accepted only after it has stood for four minutes and every
+poll in the state has closed, a mark left over from before the polls closed
+needs vote shares beside it, and a call that is taken down is withdrawn and
+logged (`data/results_log.jsonl`).
+
+**The scorecard** grades only called races: Brier score and log loss against
+the ratings-only baseline and a coin flip, calibration, the forecast's biggest
+misses, margin error once counts are near complete, which party won each
+chamber against the forecast's odds, and, once every race is called, where the
+real seat count fell in the forecast's distribution.
+
+**Rehearsing.** `python3 tests/test_results.py` checks every parser and call
+rule offline. `python3 tools/simulate_night.py --check` plays a whole simulated
+night through the real code (in a scratch copy of the repo: it writes the
+results files). To test the workflow on GitHub without touching the real
+files, run *Election night results* by hand with a scratch branch name.
 
 ## Backtest
 

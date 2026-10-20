@@ -54,6 +54,18 @@ PM_RACES = {
 }
 
 
+
+def canonical_balance_label(label):
+    """One spelling for each of the four balance-of-power outcomes."""
+    text = " ".join(str(label).split())
+    low = text.lower()
+    if "sweep" in low:
+        if low.startswith("democrat"):
+            return "D-House, D-Senate"
+        if low.startswith("republican"):
+            return "R-House, R-Senate"
+    return text
+
 def get(url):
     req = urllib.request.Request(url, headers=UA)
     with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
@@ -224,6 +236,14 @@ def collect():
 
     balance = attempt("kalshi balance of power", lambda: kalshi_event(K_BALANCE))
     if balance:
+        # Kalshi renamed the two same-party outcomes to "Democrats sweep" and
+        # "Republicans sweep". Everything downstream reads the "D-House,
+        # D-Senate" form, and House control is summed from labels starting
+        # "D-House", so the rename silently dropped the sweep from it: the
+        # market's Democratic House odds read 27% while the contract itself
+        # was trading near 90%. Put the old names back at the door.
+        for r in balance:
+            r["label"] = canonical_balance_label(r["label"])
         normalized(balance)
         kalshi["joint"] = balance
         kalshi["joint_volume"] = sum(r["volume"] for r in balance)

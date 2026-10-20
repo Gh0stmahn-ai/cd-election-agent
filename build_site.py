@@ -56,6 +56,7 @@ STATE_NAMES = {
 
 NAV = [
     ("index.html", "Overview"),
+    ("results.html", "Results"),
     ("senate.html", "Senate"),
     ("house.html", "House"),
     ("scenarios.html", "Scenarios"),
@@ -84,6 +85,43 @@ def _asset_version():
 
 ASSET_V = _asset_version()
 
+# The sealed final forecast, once there is one (see freeze.py). Set in main().
+FINAL = None
+
+
+def final_banner():
+    """The line every page carries once the forecast is sealed."""
+    if not FINAL:
+        return ""
+    return f"""<div class="final-banner" role="note">
+  <span class="pill"><span class="dot" style="background:var(--ink)"></span>Final forecast</span>
+  <span>{final_made_line()} These numbers will not change; they are what the results get
+    graded against. <a href="results.html">Results and the scorecard &#8594;</a></span>
+</div>"""
+
+
+def final_made_line():
+    """When the final forecast was MADE, which is what matters, worded from the
+    actual times rather than assumed."""
+    made = datetime.fromisoformat(FINAL["forecast_timestamp"]).astimezone(ET)
+    sealed = datetime.fromisoformat(FINAL["frozen_at"]).astimezone(ET)
+    first_open = datetime(2026, 11, 3, 11, 0, tzinfo=timezone.utc)
+    first_close = datetime(2026, 11, 3, 23, 0, tzinfo=timezone.utc)
+
+    def fmt(t):
+        return t.strftime("%-I:%M ") + t.strftime("%p").lower() + " Eastern on " + t.strftime("%B %-d")
+    before = ("before any polls opened" if made < first_open
+              else "before any votes were counted" if made < first_close else "after counting had begun")
+    line = f"Made at {fmt(made)}, {before}"
+    if abs((sealed - made).total_seconds()) > 3600:
+        line += f", and sealed at {fmt(sealed)}"
+    return line + "."
+
+
+def house_for_page(house):
+    """The House block as pages embed it: district margins are for scoring only."""
+    return {k: v for k, v in house.items() if k != "district_margins"}
+
 
 # ------------------------------------------------------------------ data
 def load_snapshots():
@@ -109,6 +147,28 @@ def js(obj):
 
 
 # ----------------------------------------------------------------- shell
+def refresh_link():
+    if FINAL:
+        # Pressing Refresh after the freeze would run a workflow that stops at
+        # its own gate, which is a button that does nothing. Say why instead.
+        return ('<span class="refresh" title="The final forecast is sealed and no longer re-runs">'
+                'Final forecast</span>')
+    return f"""<a class="refresh" href="{RUN_URL}" target="_blank" rel="noopener"
+     title="Re-run the forecast now on the latest public data (opens GitHub Actions)">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M14 8a6 6 0 1 1-1.8-4.3"></path><path d="M14 2v4h-4"></path>
+    </svg>Refresh</a>"""
+
+
+def footer_cadence():
+    if FINAL:
+        return ("The forecast was sealed on the morning of Election Day and no longer changes. "
+                "Results update every few minutes from official state feeds and Wikipedia.")
+    return f"""Rebuilt every day at noon Eastern, and any time someone
+    presses <a href="{RUN_URL}">Refresh</a>."""
+
+
 def page(slug, title, description, head_line, body, data, scripts):
     nav = "".join(
         '<a href="%s"%s>%s</a>' % (href, ' aria-current="page"' if href == slug else "", label)
@@ -139,12 +199,7 @@ def page(slug, title, description, head_line, body, data, scripts):
 <header class="site-head"><div class="bar">
   <a class="brand plain" href="index.html"><span class="mark"><i></i><i></i></span>2026 Midterm Forecast</a>
   <nav class="main" aria-label="Sections">{nav}</nav>
-  <a class="refresh" href="{RUN_URL}" target="_blank" rel="noopener"
-     title="Re-run the forecast now on the latest public data (opens GitHub Actions)">
-    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7"
-         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <path d="M14 8a6 6 0 1 1-1.8-4.3"></path><path d="M14 2v4h-4"></path>
-    </svg>Refresh</a>
+  {refresh_link()}
 </div></header>
 
 <div class="wrap">
@@ -152,14 +207,14 @@ def page(slug, title, description, head_line, body, data, scripts):
   <h1>{head_line[0]}</h1>
   <div class="sub">{head_line[1]}</div>
 </div>
+{final_banner()}
 {body}
 {prev_next(slug)}
 </div>
 
 <footer class="site"><div class="wrap" style="padding-bottom:0">
   <div id="foot-updated"></div>
-  <div style="margin-top:6px">Rebuilt every day at noon Eastern, and any time someone
-    presses <a href="{RUN_URL}">Refresh</a>.
+  <div style="margin-top:6px">{footer_cadence()}
     <a href="https://github.com/Gh0stmahn-ai/cd-election-agent">Source code and data on GitHub</a>.
     Forecast, not a prediction: read the <a href="methodology.html">methodology</a> first.</div>
 </div></footer>
@@ -172,6 +227,11 @@ FC.init();
   var s = PAGE_DATA.site;
   var days = Math.max(0, Math.ceil((new Date("{ELECTION_DATE}T12:00:00Z") - new Date(s.timestamp)) / 86400000));
   var col = s.status === "success" ? "#0ca30c" : s.status === "partial" ? "#fab219" : "#d03b3b";
+  if (s.final) {{
+    FC.$("foot-updated").innerHTML = "Final forecast, run " + FC.fmtDate(s.timestamp, true) +
+      " and sealed before the polls opened on Nov 3, 2026";
+    return;
+  }}
   FC.$("foot-updated").innerHTML = "Forecast run " + FC.fmtDate(s.timestamp, true) + " · " + days +
     " days to Election Day, Nov 3, 2026 · " +
     '<span class="pill"><span class="dot" style="background:' + col + '"></span>Data refresh: ' + s.status + "</span>";
@@ -193,7 +253,10 @@ def prev_next(slug):
 
 
 def site_meta(snap):
-    return {"timestamp": snap["timestamp"], "status": snap.get("status", {}).get("state", "success")}
+    meta = {"timestamp": snap["timestamp"], "status": snap.get("status", {}).get("state", "success")}
+    if FINAL:
+        meta["final"] = True
+    return meta
 
 
 # ----------------------------------------------------------------- pages
@@ -276,7 +339,8 @@ def build_index(snap, meta, markets=None):
   <p class="note">Full detail on the readings behind this: <a href="economy.html">what voters are feeling &#8594;</a></p>
 </section>
 """ + market_html
-    data = {"site": site_meta(snap), "senate": s, "house": h, "environment": e, "joint": j, "meta": meta}
+    data = {"site": site_meta(snap), "senate": s, "house": house_for_page(h), "environment": e,
+            "joint": j, "meta": meta}
     if market_rows:
         data["marketStrip"] = market_rows
     if change:
@@ -547,7 +611,7 @@ def build_house(snap, meta):
   </div>
 </section>
 """
-    data = {"site": site_meta(snap), "house": snap["house"], "meta": meta,
+    data = {"site": site_meta(snap), "house": house_for_page(snap["house"]), "meta": meta,
             "change": snap.get("change"),
             "money": chamber_money("house", [
                 d for d, p in snap["house"]["district_probs"].items()
@@ -1345,6 +1409,115 @@ def backtest_section(bt):
 """
 
 
+RESULTS_RAW = ("https://raw.githubusercontent.com/Gh0stmahn-ai/cd-election-agent/main/"
+               "data/results_2026.json")
+
+
+def build_results(snap):
+    """Election night and after: every race's call and count against the
+    sealed forecast, and the scorecard. The page fetches the results file
+    itself and re-reads it every minute, straight from the repository, so it
+    stays current between site rebuilds."""
+    s, h = snap["senate"], snap["house"]
+    results = load_json("results_2026.json")
+    sealed = ""
+    if FINAL:
+        sealed = "The forecast these results are graded against is the sealed final forecast. " + final_made_line()
+    else:
+        sealed = ("The forecast is sealed at 5 am Eastern on Election Day, before any poll opens; that sealed "
+                  "version is what every result is graded against.")
+    nojs = ""
+    if results:
+        t = results["tally"]
+        nojs = (f"<p class=\"note\">As of the last site rebuild: Senate D {t['senate']['D']}, R {t['senate']['R']}, "
+                f"{t['senate']['uncalled']} uncalled; House D {t['house']['D']}, R {t['house']['R']}, "
+                f"{t['house']['uncalled']} uncalled.</p>")
+    body = f"""
+<div class="res-status" id="res-status"></div>
+
+<section>
+  <div class="grid2">
+    <div class="card" id="res-senate"></div>
+    <div class="card" id="res-house"></div>
+  </div>
+  <noscript>{nojs}</noscript>
+</section>
+
+<section id="res-events-wrap" hidden>
+  <h2>Latest calls</h2>
+  <div class="card"><ol class="res-events" id="res-events"></ol></div>
+</section>
+
+<section id="res-score-wrap" hidden>
+  <h2>How the forecast is doing</h2>
+  <p class="lede">Graded only on races that have been called, so the grade moves as the night goes on.</p>
+  <div class="score-tiles" id="res-score"></div>
+  <div class="grid2" style="margin-top:12px">
+    <div class="card">
+      <div class="chamber-label">Calibration</div>
+      <svg id="res-calib" viewBox="0 0 520 300" role="img" aria-label="Forecast probability against how often Democrats won"></svg>
+      <p class="note" id="res-calib-note"></p>
+    </div>
+    <div class="card">
+      <div class="chamber-label">The forecast's biggest misses so far</div>
+      <div id="res-misses"></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Every race</h2>
+  <p class="lede">Forecast, call and count side by side. "Vs forecast" is how far the count's margin
+    runs from the margin the forecast expected, in points: blue when the Democrat is doing better than
+    forecast, red when the Republican is.</p>
+  <div class="card">
+    <div class="tabs" id="res-tabs" role="group" aria-label="Filter races"></div>
+    <div class="tbl-scroll"><table id="res-table"></table></div>
+  </div>
+</section>
+
+<section>
+  <h2>Where these numbers come from</h2>
+  <div class="card prose">
+    <p>{sealed}</p>
+    <p><b>Calls</b> come from Wikipedia's 2026 Senate and House articles, where editors mark a winner
+      as the networks call each race. A call is taken here only after it has stood for four minutes and
+      only once every poll in that state has closed, and a call that is taken down there is withdrawn
+      here too. Nothing on this page projects a winner from a partial count.</p>
+    <p><b>Counts</b> come from the official results feeds of the seven states that publish one free and
+      open to automated reading: Georgia, North Carolina, Texas, Iowa, Nebraska, Alaska and Florida. Other
+      states' races show a call without a running count, and pick up vote shares once Wikipedia lists them.
+      Alaska counts first choices on election night and runs its ranked-choice rounds on November 18.</p>
+    <p><b>The grade.</b> The Brier score is the average squared gap between the forecast's probability
+      and what happened (0 is perfect; always saying 50% scores 0.25). It is set against the same score
+      for the ratings alone, which is what a reader who just took Cook's rating would have got.</p>
+    <div id="res-sources"></div>
+  </div>
+</section>
+"""
+    config = {
+        "raw": RESULTS_RAW, "local": "data/results_2026.json",
+        "forecast": {
+            "senate": {"p": s["dem_control_prob"], "median": s["percentiles"].get("50"),
+                       "p10": s["percentiles"].get("10"), "p90": s["percentiles"].get("90"),
+                       "not_up": s.get("not_up"), "seats": 100, "needed": 51},
+            "house": {"p": h["dem_control_prob"], "median": h["percentiles"].get("50"),
+                      "p10": h["percentiles"].get("10"), "p90": h["percentiles"].get("90"),
+                      "seats": 435, "needed": h.get("majority", 218)},
+        },
+    }
+    data = {"site": site_meta(snap), "results_config": config}
+    scripts = """
+FC.renderResults(PAGE_DATA.results_config);
+"""
+    return page("results.html", "Results · 2026 Midterm Forecast",
+                "Live results for every Senate and House race, graded against the final forecast.",
+                ("Results",
+                 "Every race's call and count as they come in, set against the forecast that was sealed "
+                 "before the polls opened."),
+                body, js(data), scripts)
+
+
 def build_methodology(snap):
     bt = backtest_data()
     pvi = json.loads((DATA_DIR / "district_pvi.json").read_text())
@@ -1671,6 +1844,14 @@ def main():
     if not snaps:
         raise SystemExit("No model-v2 snapshots in iterations/ - run run_pipeline.py first.")
     latest, meta = snaps[-1], house_meta()
+    global FINAL
+    try:
+        FINAL = json.loads((DATA_DIR / "final_forecast.json").read_text())
+    except (OSError, ValueError):
+        FINAL = None
+    if FINAL:
+        # The sealed run is the forecast, whatever else is lying in iterations/.
+        latest = FINAL["forecast"]
 
     if OUT.exists():
         shutil.rmtree(OUT)
@@ -1697,8 +1878,26 @@ def main():
         pages["markets.html"] = build_markets(latest, markets)
     else:
         print("  (no data/markets_2026.json yet - skipping the markets page)")
+    pages["results.html"] = build_results(latest)
     for name, html in pages.items():
         (OUT / name).write_text(html, encoding="utf-8")
+    # A same-origin copy of the results, read first on page load and used as
+    # the fallback if the repository's raw file cannot be reached.
+    results_file = DATA_DIR / "results_2026.json"
+    (OUT / "data").mkdir(exist_ok=True)
+    if results_file.exists():
+        shutil.copy(results_file, OUT / "data" / "results_2026.json")
+    else:
+        # Before the collector has run there is still something worth showing:
+        # every race, what the forecast says about it, and when its polls close.
+        try:
+            import results as results_mod
+            fc, mk, bl, frozen = results_mod.load_forecast()
+            preview, _ = results_mod.build({}, results_mod.utcnow(), fc, mk, bl, frozen,
+                                           results_mod.public_sources({}))
+            (OUT / "data" / "results_2026.json").write_text(json.dumps(preview, separators=(",", ":")))
+        except Exception as e:  # noqa: BLE001 - the page copes without it
+            print(f"  (no results preview: {e})")
 
     total = sum(f.stat().st_size for f in OUT.rglob("*") if f.is_file())
     print(f"site/: {len(pages)} pages, {len(snaps)} run(s) embedded, {total / 1024:.0f} KB total")

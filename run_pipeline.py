@@ -150,4 +150,13 @@ def run_iteration(seed=None):
 
 
 if __name__ == "__main__":
+    import os
+    import sys
+    import freeze
+    # Defence in depth: the workflow already skips this step once the forecast
+    # is sealed, but a hand-run on someone's laptop should not be able to
+    # overwrite the record either.
+    if freeze.state() in ("frozen", "late") and os.environ.get("ALLOW_AFTER_FREEZE") != "1":
+        print("The polls have opened or the final forecast is sealed; not modelling again.")
+        sys.exit(0)
     run_iteration()
