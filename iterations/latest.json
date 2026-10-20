@@ -1,6 +1,6 @@
 {
  "schema_version": 2,
- "timestamp": "2026-10-20T09:09:09.504393+00:00",
+ "timestamp": "2026-10-20T19:54:11.248765+00:00",
  "status": {
   "state": "success",
   "issues": []
@@ -11,8 +11,8 @@
   "poll_weight": 0.95,
   "fundamentals": {
    "midterm_baseline_pts": 3.5,
-   "approval_net": -24.3,
-   "approval_pts": 4.86,
+   "approval_net": -24.7,
+   "approval_pts": 4.94,
    "economic_index": -0.649,
    "economic_pts": 1.95,
    "economic_components": [
@@ -80,15 +80,15 @@
      "contribution": 0.025
     }
    ],
-   "prior_dem_margin": 10.31
+   "prior_dem_margin": 10.39
   },
   "dem_margin": 8.87,
   "days_to_election": 14,
   "national_error_sd": 3.09
  },
  "senate": {
-  "dem_control_prob": 0.6082,
-  "tie_prob": 0.1803,
+  "dem_control_prob": 0.6086,
+  "tie_prob": 0.1802,
   "mean_dem_seats": 50.85,
   "mean_rep_seats": 49.1,
   "not_up": {
@@ -110,16 +110,16 @@
    "41": 4e-05,
    "42": 0.0001,
    "43": 0.00029,
-   "44": 0.00093,
-   "45": 0.00282,
-   "46": 0.00893,
-   "47": 0.0249,
-   "48": 0.05827,
-   "49": 0.11517,
-   "50": 0.1803,
-   "51": 0.22673,
-   "52": 0.20852,
-   "53": 0.12821,
+   "44": 0.0009,
+   "45": 0.00279,
+   "46": 0.00882,
+   "47": 0.02487,
+   "48": 0.05821,
+   "49": 0.11511,
+   "50": 0.18025,
+   "51": 0.22694,
+   "52": 0.2086,
+   "53": 0.12829,
    "54": 0.038,
    "55": 0.00527,
    "56": 0.00106,
@@ -153,7 +153,7 @@
     },
     "expected_margin": 2.33,
     "dem_win_prob": 0.6542,
-    "tipping_prob": 0.1317,
+    "tipping_prob": 0.1318,
     "rating_prob": 0.5801,
     "poll_prob": 0.6693
    },
@@ -272,7 +272,7 @@
     },
     "expected_margin": 9.61,
     "dem_win_prob": 0.9485,
-    "tipping_prob": 0.0338,
+    "tipping_prob": 0.034,
     "rating_prob": 0.9704,
     "poll_prob": 0.9239
    },
@@ -296,7 +296,7 @@
     },
     "expected_margin": 0.33,
     "dem_win_prob": 0.5209,
-    "tipping_prob": 0.1362,
+    "tipping_prob": 0.1364,
     "rating_prob": 0.5801,
     "poll_prob": 0.5336
    },
@@ -434,7 +434,7 @@
     },
     "expected_margin": 1.93,
     "dem_win_prob": 0.6279,
-    "tipping_prob": 0.1345,
+    "tipping_prob": 0.1346,
     "rating_prob": 0.5801,
     "poll_prob": 0.6382
    },
@@ -458,7 +458,7 @@
     },
     "expected_margin": 3.16,
     "dem_win_prob": 0.7037,
-    "tipping_prob": 0.1208,
+    "tipping_prob": 0.1209,
     "rating_prob": 0.7603,
     "poll_prob": 0.6992
    },
@@ -533,15 +533,15 @@
     "atmospherics_adj": 0.06,
     "polling": {
      "weight": 0.809,
-     "poll_margin": 9.7,
+     "poll_margin": 9.9,
      "n_used": 5,
      "rating_margin": 11.2
     },
-    "expected_margin": 10.89,
-    "dem_win_prob": 0.9662,
-    "tipping_prob": 0.0243,
+    "expected_margin": 11.05,
+    "dem_win_prob": 0.9678,
+    "tipping_prob": 0.0232,
     "rating_prob": 0.9704,
-    "poll_prob": 0.9488
+    "poll_prob": 0.9523
    },
    {
     "seat_id": "NE-2026",
@@ -582,7 +582,7 @@
     },
     "expected_margin": 5.69,
     "dem_win_prob": 0.8323,
-    "tipping_prob": 0.0887,
+    "tipping_prob": 0.0888,
     "rating_prob": 0.7603,
     "poll_prob": 0.8668
    },
@@ -739,7 +739,7 @@
     "polling": null,
     "expected_margin": -23.3,
     "dem_win_prob": 0.0043,
-    "tipping_prob": 0.0015,
+    "tipping_prob": 0.0016,
     "rating_prob": 0.0042,
     "poll_prob": null
    },
@@ -782,7 +782,7 @@
     },
     "expected_margin": 2.71,
     "dem_win_prob": 0.6779,
-    "tipping_prob": 0.1268,
+    "tipping_prob": 0.127,
     "rating_prob": 0.5801,
     "poll_prob": 0.6753
    },
@@ -2417,10 +2417,10 @@
   "ratings_source": "Cook Political Report House race ratings (Aug 25, 2026); unlisted seats Solid for the favored party"
  },
  "joint": {
-  "dem_both": 0.5507,
-  "dem_house_rep_senate": 0.2081,
-  "rep_house_dem_senate": 0.0575,
-  "rep_both": 0.1837
+  "dem_both": 0.551,
+  "dem_house_rep_senate": 0.2078,
+  "rep_house_dem_senate": 0.0576,
+  "rep_both": 0.1836
  },
  "n_sims": 100000,
  "fundamentals_display": {
@@ -2430,11 +2430,11 @@
     "id": "gas_price",
     "label": "Gas price",
     "category": "prices",
-    "display": "$4.33",
-    "as_of": "2026-10-12",
-    "compare_display": "$3.12",
+    "display": "$4.28",
+    "as_of": "2026-10-19",
+    "compare_display": "$3.06",
     "compare_label": "a year ago",
-    "change_display": "+39% vs a year ago",
+    "change_display": "+40% vs a year ago",
     "context": "Weekly U.S. regular all-formulations retail average.",
     "why": "The most visible price in America, posted on every corner. Gas spikes track closely with presidential approval and are the clearest way a war abroad lands in voters' budgets.",
     "sources": [
@@ -2443,7 +2443,7 @@
       "url": "https://fred.stlouisfed.org/series/GASREGW"
      }
     ],
-    "value": 4.331
+    "value": 4.284
    },
    {
     "id": "oil_wti",
@@ -2621,11 +2621,11 @@
    {
     "id": "approval",
     "label": "Trump job approval",
-    "value_net": -24.3,
-    "approve": 36.6,
-    "disapprove": 60.9,
-    "display": "37% / 61%",
-    "as_of": "2026-10-19",
+    "value_net": -24.7,
+    "approve": 36.3,
+    "disapprove": 61.0,
+    "display": "36% / 61%",
+    "as_of": "2026-10-20",
     "context": "Average of 9 public approval aggregators as collated on Wikipedia.",
     "why": "The single strongest predictor of midterm losses. Since WWII the president's party has lost House seats in all but two midterms (1998, 2002), and presidents under 50% approval have lost about 37 seats on average (Gallup).",
     "sources": [
@@ -2671,9 +2671,9 @@
  },
  "change": {
   "from": "2026-10-20T00:39:50.046554+00:00",
-  "to": "2026-10-20T09:09:09.504393+00:00",
+  "to": "2026-10-20T19:54:11.248765+00:00",
   "total": {
-   "senate": -0.7,
+   "senate": -0.66,
    "house": 0.11
   },
   "drivers": [
@@ -2681,7 +2681,7 @@
     "id": "senate_polls",
     "label": "Senate state polling",
     "points": {
-     "senate": -0.725,
+     "senate": -0.69,
      "house": 0.0
     }
    },
@@ -2689,19 +2689,19 @@
     "id": "approval",
     "label": "Presidential approval",
     "points": {
-     "senate": 0.025,
+     "senate": 0.03,
      "house": 0.11
     }
    }
   ],
   "residual": {
-   "senate": -0.0,
+   "senate": 0.0,
    "house": -0.0
   },
   "facts": [
    {
     "kind": "poll",
-    "text": "Presidential approval went from net -24.0 to -24.3"
+    "text": "Presidential approval went from net -24.0 to -24.7"
    },
    {
     "kind": "poll",

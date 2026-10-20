@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-20T09:08:08+00:00",
+ "as_of": "2026-10-20T19:53:07+00:00",
  "source": "Wikipedia per-race election articles",
  "half_life_days": 21,
  "max_age_days": 120,
@@ -164,13 +164,13 @@
    "state": "NC",
    "dem_candidate": "Roy Cooper",
    "rep_candidate": "Michael Whatley",
-   "dem_margin": 9.7,
+   "dem_margin": 9.9,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 9.2
+     "margin": 10.0
     },
     {
      "label": "Decision Desk HQ",
@@ -178,11 +178,11 @@
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 10.4
+     "margin": 10.1
     },
     {
      "label": "RealClearPolitics",
-     "margin": 9.5
+     "margin": 9.9
     },
     {
      "label": "Silver Bulletin",
