@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-20T19:53:07+00:00",
+ "as_of": "2026-10-21T19:57:37+00:00",
  "source": "Wikipedia per-race election articles",
  "half_life_days": 21,
  "max_age_days": 120,
@@ -42,23 +42,23 @@
    "detail": [
     {
      "label": "270toWin",
-     "margin": 7.6
+     "margin": 8.4
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 8.8
+     "margin": 7.8
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 9.2
+     "margin": 8.6
     },
     {
      "label": "RealClearPolitics",
-     "margin": 8.1
+     "margin": 8.6
     },
     {
      "label": "Silver Bulletin",
-     "margin": 9.0
+     "margin": 8.9
     }
    ],
    "rating": "lean",
@@ -68,13 +68,13 @@
    "state": "IA",
    "dem_candidate": "Josh Turek",
    "rep_candidate": "Ashley Hinson",
-   "dem_margin": 0.5,
+   "dem_margin": 0.1,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 1.6
+     "margin": -0.8
     },
     {
      "label": "Decision Desk HQ",
@@ -90,7 +90,7 @@
     },
     {
      "label": "Silver Bulletin",
-     "margin": 1.0
+     "margin": 1.2
     }
    ],
    "rating": "tossup",
@@ -132,13 +132,13 @@
    "state": "MI",
    "dem_candidate": "Abdul El-Sayed",
    "rep_candidate": "Mike Rogers",
-   "dem_margin": 3.1,
+   "dem_margin": 2.8,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 4.0
+     "margin": 3.5
     },
     {
      "label": "Decision Desk HQ",
@@ -146,15 +146,15 @@
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 3.3
+     "margin": 3.2
     },
     {
      "label": "RealClearPolitics",
-     "margin": 2.6
+     "margin": 2.0
     },
     {
      "label": "Silver Bulletin",
-     "margin": 3.4
+     "margin": 3.0
     }
    ],
    "rating": "tossup",
@@ -164,21 +164,21 @@
    "state": "NC",
    "dem_candidate": "Roy Cooper",
    "rep_candidate": "Michael Whatley",
-   "dem_margin": 9.9,
+   "dem_margin": 10.8,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 10.0
+     "margin": 11.4
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 10.2
+     "margin": 12.1
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 10.1
+     "margin": 10.6
     },
     {
      "label": "RealClearPolitics",
@@ -186,7 +186,7 @@
     },
     {
      "label": "Silver Bulletin",
-     "margin": 9.2
+     "margin": 9.9
     }
    ],
    "rating": "lean",
@@ -228,7 +228,7 @@
    "state": "OH",
    "dem_candidate": "Sherrod Brown",
    "rep_candidate": "Jon Husted",
-   "dem_margin": 3.0,
+   "dem_margin": 3.2,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
@@ -238,19 +238,19 @@
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 1.5
-    },
-    {
-     "label": "FiftyPlusOne",
-     "margin": 3.8
-    },
-    {
-     "label": "RealClearPolitics",
      "margin": 2.8
     },
     {
+     "label": "FiftyPlusOne",
+     "margin": 4.0
+    },
+    {
+     "label": "RealClearPolitics",
+     "margin": 2.4
+    },
+    {
      "label": "Silver Bulletin",
-     "margin": 4.1
+     "margin": 3.7
     }
    ],
    "rating": "tossup",
@@ -260,21 +260,21 @@
    "state": "TX",
    "dem_candidate": "James Talarico",
    "rep_candidate": "Ken Paxton",
-   "dem_margin": 2.7,
+   "dem_margin": 2.3,
    "method": "mean of 6 aggregators",
    "n_used": 6,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 3.6
+     "margin": 1.8
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 2.1
+     "margin": 2.2
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 2.8
+     "margin": 2.7
     },
     {
      "label": "RealClearPolitics",
@@ -282,7 +282,7 @@
     },
     {
      "label": "The Texas Tribune",
-     "margin": 2.7
+     "margin": 2.3
     },
     {
      "label": "Silver Bulletin",
