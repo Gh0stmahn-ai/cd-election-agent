@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-21T19:57:37+00:00",
+ "as_of": "2026-10-22T19:48:06+00:00",
  "source": "Wikipedia per-race election articles",
  "half_life_days": 21,
  "max_age_days": 120,
@@ -74,19 +74,19 @@
    "detail": [
     {
      "label": "270toWin",
-     "margin": -0.8
+     "margin": -0.3
     },
     {
      "label": "Decision Desk HQ",
-     "margin": -0.4
+     "margin": -0.3
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 0.4
+     "margin": 0.5
     },
     {
      "label": "RealClearPolitics",
-     "margin": -0.1
+     "margin": -0.4
     },
     {
      "label": "Silver Bulletin",
@@ -228,25 +228,25 @@
    "state": "OH",
    "dem_candidate": "Sherrod Brown",
    "rep_candidate": "Jon Husted",
-   "dem_margin": 3.2,
+   "dem_margin": 3.9,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 3.0
+     "margin": 4.2
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 2.8
+     "margin": 4.4
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 4.0
+     "margin": 4.2
     },
     {
      "label": "RealClearPolitics",
-     "margin": 2.4
+     "margin": 2.9
     },
     {
      "label": "Silver Bulletin",
@@ -270,19 +270,19 @@
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 2.2
+     "margin": 2.6
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 2.7
+     "margin": 2.6
     },
     {
      "label": "RealClearPolitics",
-     "margin": 2.2
+     "margin": 1.8
     },
     {
      "label": "The Texas Tribune",
-     "margin": 2.3
+     "margin": 2.2
     },
     {
      "label": "Silver Bulletin",
