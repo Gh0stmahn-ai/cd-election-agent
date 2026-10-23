@@ -21,6 +21,8 @@ python3 fetch_ratings.py    # final Cook ratings, competitive seats -> house_rat
 python3 fetch_senate.py     # Senate ratings + results            -> senate_history.json
 python3 races.py            # what the two tiers add up to, per cycle
 python3 report.py           # grade the model -> backtest_summary.json, ../data/backtest_2018_2022.json
+python3 fetch_governors.py  # governor ratings + results, 2010-2024 -> governor_history.json
+python3 governors.py        # governor buckets against the Senate's -> governor_fit.json
 ```
 
 `report.py` is the one that matters: it writes the summary the methodology
@@ -33,3 +35,10 @@ seven, so the national error is a floor rather than a precise estimate. And the
 ratings articles list only seats that some rater called competitive, so in the
 three full cycles every unlisted seat is entered as Solid for the party that
 held it -- true in almost every case, and wrong in about fifteen.
+
+Governors are calibrated the same way from eight cycles (2010 to 2024, 177
+rated races). `governors.py` measures where each Cook bucket lands for
+governors against where it lands for the Senate, the spread around that once
+each cycle's average miss is removed, and how far the cycle's average governor
+miss follows the Senate's. Those three numbers set the governor constants in
+`model.py`.
