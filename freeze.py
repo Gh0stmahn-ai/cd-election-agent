@@ -181,6 +181,8 @@ def seal():
         "baselines": {
             "senate_rating_probs": {s["seat_id"]: s.get("rating_prob") for s in snap["senate"]["seats"]},
             "house_rating_probs": _house_rating_probs(snap),
+            "governor_rating_probs": {g["race_id"]: g.get("rating_prob")
+                                      for g in (snap.get("governors") or {}).get("races", [])},
         },
         "inputs": _fingerprints(),
     }

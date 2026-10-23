@@ -59,6 +59,7 @@ NAV = [
     ("results.html", "Results"),
     ("senate.html", "Senate"),
     ("house.html", "House"),
+    ("governors.html", "Governors"),
     ("scenarios.html", "Scenarios"),
     ("economy.html", "Economy"),
     ("trend.html", "Trend"),
@@ -309,6 +310,7 @@ def build_index(snap, meta, markets=None):
   </div>
   <div class="joint" id="joint"></div>
   <p class="note" id="what-moved"></p>
+  <p class="note" id="gov-line"></p>
 </section>
 
 <section>
@@ -343,6 +345,9 @@ def build_index(snap, meta, markets=None):
             "joint": j, "meta": meta}
     if market_rows:
         data["marketStrip"] = market_rows
+    g = snap.get("governors")
+    if g:
+        data["gov"] = {"p": g["dem_majority_prob"], "mean": g["mean_dem"], "held": g["held_before"]}
     if change:
         data["change"] = {"total": change["total"], "from": change["from"],
                           "drivers": change["drivers"][:1]}
@@ -375,6 +380,12 @@ FC.onRender(function () {
       "decider, <b>" + name + "</b>, delivers the " + PAGE_DATA.house.majority + "th seat in " + p +
       " of simulations.";
   }, true);
+  if (PAGE_DATA.gov) {
+    var g = PAGE_DATA.gov, gp = g.p >= 0.5 ? g.p : 1 - g.p;
+    FC.$("gov-line").innerHTML = "<b>Governors:</b> " + (g.p >= 0.5 ? "Democrats " : "Republicans ") + FC.pct(gp) +
+      " to hold a majority of the 50 governorships, with D " + Math.round(g.mean) + " · R " + Math.round(50 - g.mean) +
+      " the average outcome (today D " + g.held.D + " · R " + g.held.R + '). <a href="governors.html">All 36 governor races &#8594;</a>';
+  }
   FC.renderEnvironment("environment", PAGE_DATA.environment);
   if (PAGE_DATA.marketStrip) { FC.renderMarketStrip("market-strip", PAGE_DATA.marketStrip); }
   if (PAGE_DATA.change) {
@@ -1409,6 +1420,85 @@ def backtest_section(bt):
 """
 
 
+def build_governors(snap):
+    """The 36 governor races: a map, the odds of a majority of governorships,
+    the close races, and every race in a table."""
+    gov = snap.get("governors")
+    if not gov:
+        return None
+    n_polled = sum(1 for r in gov["races"] if r.get("polling"))
+    body = f"""
+<section>
+  <div class="grid2">
+    <div class="card" id="hero-gov"></div>
+    <div class="card">
+      <div class="chamber-label">How many governorships Democrats end up with</div>
+      <svg id="hist-gov" viewBox="0 0 520 170" role="img" aria-label="Distribution of Democratic governorships"></svg>
+      <p class="note">Counts all 50 governors: the 36 elected this year plus the 14 not on the ballot
+        ({gov['not_up']['D']} Democratic, {gov['not_up']['R']} Republican). Hover any bar for the chance of at
+        least that many.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="card">
+    <svg id="map-gov" viewBox="0 0 980 600" role="img" aria-label="Map of 2026 governor races"></svg>
+    <div class="legend" id="legend-gov-map"></div>
+  </div>
+</section>
+
+<section>
+  <h2>Races to watch</h2>
+  <p class="lede">Every governor's race the model gives both sides a real chance in, closest first.</p>
+  <div class="watch-grid" id="watch-gov"></div>
+</section>
+
+<section>
+  <h2>All 36 races</h2>
+  <p class="lede">{n_polled} of the competitive races have enough state polling to move the forecast off
+    the rating; the rest are the rating alone, moved by the national environment.</p>
+  <div class="card tbl-scroll"><table id="tbl-gov"></table></div>
+</section>
+
+<section>
+  <h2>How governors are forecast</h2>
+  <div class="card prose">
+    <p>The same way as the Senate. Each race starts from its Cook rating, read as an expected margin, and
+      moves with the national environment; where there is enough state polling, the polling average is
+      blended in, more heavily as Election Day nears. All 36 races are simulated together with the Senate
+      and House races, 100,000 times, so a state that breaks late breaks for its governor, its Senate race
+      and its House seats at once.</p>
+    <p>What a governor's rating is worth was measured on 177 races from 2010 to 2024. The favourite in a
+      Toss-up won by 2.2 points on average, in a Lean race by 11.6 (no Lean race flipped in those eight
+      cycles), in a Likely race by 13.2 and in a Solid one by 27.7, much as for the Senate. Governor races
+      follow the national mood less than Congress does: about 0.55 of a national swing reaches them, against
+      0.8 for the Senate, which is why a Republican can hold Vermont in a Democratic year.</p>
+  </div>
+</section>
+"""
+    data = {"site": site_meta(snap), "gov": gov, "geo": {"states": {
+        k: {"d": v["d"], "cx": v["cx"], "cy": v["cy"]}
+        for k, v in json.loads((GEO_DIR / "states.json").read_text())["states"].items()}}}
+    scripts = """
+FC.onRender(function () {
+  var g = PAGE_DATA.gov;
+  FC.renderGovHero("hero-gov", g);
+  FC.renderHistogram("hist-gov", g.histogram, g.majority, "Democratic governorships", "Governors");
+  FC.renderGovMap("map-gov", g, PAGE_DATA.geo, "legend-gov-map");
+  FC.renderGovWatch("watch-gov", g, 12);
+  FC.renderGovTable("tbl-gov", g);
+});
+"""
+    return page("governors.html", "Governors · 2026 Midterm Forecast",
+                "All 36 governor races in 2026 on one map, with each race's chance of going Democratic and "
+                "the odds of a majority of governorships.",
+                ("Governors",
+                 f"36 states elect a governor this year. Democrats hold {gov['held_before']['D']} governorships "
+                 f"going in, Republicans {gov['held_before']['R']}."),
+                body, js(data), scripts)
+
+
 RESULTS_RAW = ("https://raw.githubusercontent.com/Gh0stmahn-ai/cd-election-agent/main/"
                "data/results_2026.json")
 
@@ -1432,13 +1522,16 @@ def build_results(snap):
         nojs = (f"<p class=\"note\">As of the last site rebuild: Senate D {t['senate']['D']}, R {t['senate']['R']}, "
                 f"{t['senate']['uncalled']} uncalled; House D {t['house']['D']}, R {t['house']['R']}, "
                 f"{t['house']['uncalled']} uncalled.</p>")
+    tally_grid = "grid3" if snap.get("governors") else "grid2"
+    gov_card = '<div class="card" id="res-gov"></div>' if snap.get("governors") else ""
     body = f"""
 <div class="res-status" id="res-status"></div>
 
 <section>
-  <div class="grid2">
+  <div class="{tally_grid}">
     <div class="card" id="res-senate"></div>
     <div class="card" id="res-house"></div>
+    {gov_card}
   </div>
   <noscript>{nojs}</noscript>
 </section>
@@ -1480,7 +1573,7 @@ def build_results(snap):
   <h2>Where these numbers come from</h2>
   <div class="card prose">
     <p>{sealed}</p>
-    <p><b>Calls</b> come from Wikipedia's 2026 Senate and House articles, where editors mark a winner
+    <p><b>Calls</b> come from Wikipedia's 2026 Senate, House and governor articles, where editors mark a winner
       as the networks call each race. A call is taken here only after it has stood for four minutes and
       only once every poll in that state has closed, and a call that is taken down there is withdrawn
       here too. Nothing on this page projects a winner from a partial count.</p>
@@ -1506,12 +1599,18 @@ def build_results(snap):
                       "seats": 435, "needed": h.get("majority", 218)},
         },
     }
+    g = snap.get("governors")
+    if g:
+        config["forecast"]["governor"] = {
+            "p": g["dem_majority_prob"], "median": g["percentiles"].get("50"),
+            "p10": g["percentiles"].get("10"), "p90": g["percentiles"].get("90"),
+            "not_up": g.get("not_up"), "seats": 50, "needed": g.get("majority", 26)}
     data = {"site": site_meta(snap), "results_config": config}
     scripts = """
 FC.renderResults(PAGE_DATA.results_config);
 """
     return page("results.html", "Results · 2026 Midterm Forecast",
-                "Live results for every Senate and House race, graded against the final forecast.",
+                "Live results for every Senate, House and governor's race, graded against the final forecast.",
                 ("Results",
                  "Every race's call and count as they come in, set against the forecast that was sealed "
                  "before the polls opened."),
@@ -1878,6 +1977,9 @@ def main():
         pages["markets.html"] = build_markets(latest, markets)
     else:
         print("  (no data/markets_2026.json yet - skipping the markets page)")
+    gov_page = build_governors(latest)
+    if gov_page:
+        pages["governors.html"] = gov_page
     pages["results.html"] = build_results(latest)
     for name, html in pages.items():
         (OUT / name).write_text(html, encoding="utf-8")

@@ -132,7 +132,22 @@ def clean_name(name):
     return name
 
 
+# A governor's contest in a general-election file: "Governor", "GOVERNOR",
+# "Governor / Lieutenant Governor", "For Governor and Lt. Governor". Not
+# "Lieutenant Governor" on its own, not a primary's "Governor - Rep", and not
+# Massachusetts's "Governor's Council".
+GOV_RE = re.compile(r"^(?:for\s+)?governor\b(?!['\u2019]s)(?!\s*-\s*(?:rep|dem))", re.I)
+
+
+def gov_id(state):
+    return f"{state}-GOV"
+
+
 def contest(race_id, chamber, state, candidates, reporting, label, as_of, source):
+    if chamber == "governor":
+        # Tickets are listed as "Jim Pillen and Joe Kelly" or "Name / Running mate".
+        for c in candidates:
+            c["name"] = re.split(r"\s+and\s+|\s*/\s*", c["name"])[0].strip()
     return {"race_id": race_id, "chamber": chamber, "state": state,
             "candidates": [c for c in candidates if c["name"] and "write" not in c["name"].lower()
                            or c["votes"]],
@@ -179,6 +194,8 @@ def parse_ga(data, senate_seat):
         name = item["name"][0]["text"].strip()
         if name == "US Senate":
             rid, chamber = senate_seat, "senate"
+        elif GOV_RE.match(name):
+            rid, chamber = gov_id("GA"), "governor"
         else:
             m = re.fullmatch(r"US House of Representatives - District (\d+)", name)
             if not m:
@@ -289,6 +306,7 @@ def fetch_tx(cache, senate_seat):
 def parse_tx(bundle, senate_seat):
     home = _b64json(bundle.get("Home")) or {}
     fed = _b64json(bundle.get("Federal")) or {}
+    statewide = _b64json(bundle.get("StateWide")) or {}
     plr = (home.get("PollingReporting") or {})
     done, total = plr.get("PLR"), plr.get("PLT")
     as_of = None
@@ -300,10 +318,12 @@ def parse_tx(bundle, senate_seat):
         except ValueError:
             pass
     out = []
-    for race in fed.get("Races", []):
+    for race in fed.get("Races", []) + statewide.get("Races", []):
         name = " ".join(str(race.get("N", "")).split())
         if name == "U. S. SENATOR":
             rid, chamber = senate_seat, "senate"
+        elif GOV_RE.match(name):
+            rid, chamber = gov_id("TX"), "governor"
         else:
             m = re.fullmatch(r"U\. S\. REPRESENTATIVE DISTRICT (\d+)", name)
             if not m:
@@ -352,6 +372,8 @@ def parse_ia(summary, senate_seat, as_of=None):
         name = str(c.get("C", "")).strip()
         if name == "United States Senator":
             rid, chamber = senate_seat, "senate"
+        elif GOV_RE.match(name):
+            rid, chamber = gov_id("IA"), "governor"
         else:
             m = re.fullmatch(r"United States Representative District (\d+)", name)
             if not m:
@@ -389,6 +411,8 @@ def parse_ne(sw, cg, senate_seat, as_of=None):
             name = " ".join(str(row.get("RaceName", "")).split())
             if name.startswith("For United States Senator"):
                 rid, chamber = senate_seat, "senate"
+            elif GOV_RE.match(name):
+                rid, chamber = gov_id("NE"), "governor"
             elif name.startswith("For Representative in Congress"):
                 rid, chamber = house_id("NE", row.get("AreaNum", "")), "house"
             else:
@@ -458,6 +482,8 @@ def parse_ak(data, senate_seat):
         name = names[t["n"]] if t["n"] < len(names) else ""
         if name == "U.S. Senator":
             rid, chamber = senate_seat, "senate"
+        elif GOV_RE.match(name):
+            rid, chamber = gov_id("AK"), "governor"
         elif name == "U.S. Representative":
             rid, chamber = "AK-AL", "house"
         else:
@@ -505,6 +531,8 @@ def parse_fl(text, senate_seat, as_of=None):
         code = (row.get("RaceCode") or "").strip()
         if code == "USS":
             rid, chamber = senate_seat, "senate"
+        elif code == "GOV":
+            rid, chamber = gov_id("FL"), "governor"
         elif code == "USR":
             rid, chamber = house_id("FL", row.get("Juris1num", "")), "house"
         else:
@@ -561,6 +589,7 @@ WIKI_API = "https://en.wikipedia.org/w/api.php"
 WIKI_PAGES = {
     "senate": "2026 United States Senate elections",
     "house": "2026 United States House of Representatives elections",
+    "governor": "2026 United States gubernatorial elections",
 }
 STATE_CODES = {
     "Alabama": "AL", "Alaska": "AK", "Arizona": "AZ", "Arkansas": "AR", "California": "CA",
@@ -610,7 +639,7 @@ def wiki_content(title):
 
 # A parse this much smaller than the last good one is a vandalised, blanked or
 # reorganised page, not a change in the election: the last good parse is kept.
-MIN_ROWS = {"senate": 30, "house": 400}
+MIN_ROWS = {"senate": 30, "house": 400, "governor": 30}
 
 
 def acceptable_parse(chamber, new_count, last_good):
@@ -682,6 +711,18 @@ def parse_wiki_senate(text):
     return out
 
 
+def parse_wiki_governor(text):
+    """{state code: [candidate rows]} from the race summary's States table.
+
+    Only that table: the predictions table repeats every state (without
+    candidates), and the territories table follows it."""
+    m = re.search(r"^=+\s*States\s*=+\s*$", text, re.M)
+    if m:
+        end = re.search(r"^=+\s*(?:Territories|[A-Z][a-z]+)[^=\n]*=+\s*$", text[m.end():], re.M)
+        text = text[m.end(): m.end() + end.start() if end else len(text)]
+    return parse_wiki_senate(text)
+
+
 def parse_wiki_house(text):
     """{district id: candidate rows} from the per-state tables.
 
@@ -711,7 +752,8 @@ def fetch_wikipedia(cache):
         if revs.get(title) and revs[title] == cache.get(f"rev_{chamber}") and cache.get(chamber):
             continue
         text, revid, stamp = wiki_content(title)
-        parsed = parse_wiki_senate(text) if chamber == "senate" else parse_wiki_house(text)
+        parsed = {"senate": parse_wiki_senate, "house": parse_wiki_house,
+                  "governor": parse_wiki_governor}[chamber](text)
         last_good = len((cache.get(chamber) or {}).get("rows") or {})
         if not acceptable_parse(chamber, len(parsed), last_good):
             cache[f"rev_{chamber}"] = revid     # do not re-read the same bad revision every minute

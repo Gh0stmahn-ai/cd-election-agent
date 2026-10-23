@@ -159,6 +159,18 @@ def registry(snap, markets, baselines):
             "forecast": {"p": p, "margin": margins.get(rid), "rating_p": house_rating.get(rid),
                          "market_p": None},
         }
+    gov = snap.get("governors") or {}
+    gov_rating = baselines.get("governor_rating_probs", {})
+    for g in gov.get("races", []):
+        races[g["race_id"]] = {
+            "id": g["race_id"], "chamber": "governor", "state": g["state"],
+            "label": F.STATE_NAMES_LONG.get(g["state"], g["state"]) + " governor",
+            "held_by": g.get("held_by"), "rating": g.get("rating"),
+            "dem_candidate": g.get("dem_candidate"), "rep_candidate": g.get("rep_candidate"),
+            "independent_side": False,
+            "forecast": {"p": g["dem_win_prob"], "margin": g.get("expected_margin"),
+                         "rating_p": gov_rating.get(g["race_id"], g.get("rating_prob")), "market_p": None},
+        }
     for r in races.values():
         r["polls_close"] = iso(polls_close(r["state"]))
     return races
@@ -220,7 +232,7 @@ def count_from_wiki(race, rows):
 def wiki_rows_for(race, wiki):
     if race["chamber"] == "house":
         return (wiki.get("house") or {}).get("rows", {}).get(race["id"])
-    options = (wiki.get("senate") or {}).get("rows", {}).get(race["state"]) or []
+    options = (wiki.get(race["chamber"]) or {}).get("rows", {}).get(race["state"]) or []
     if len(options) <= 1:
         return options[0] if options else None
     # More than one row for the state: the one naming this race's candidates.
@@ -300,9 +312,12 @@ def tallies(races, snap):
     not_up = snap["senate"].get("not_up", {"D": 0, "R": 0})
     sen = {"D": not_up.get("D", 0), "R": not_up.get("R", 0), "I": 0, "uncalled": 0, "expected_D": 0.0}
     hou = {"D": 0, "R": 0, "O": 0, "uncalled": 0, "expected_D": 0.0}
+    gov_block = snap.get("governors") or {}
+    g_not_up = gov_block.get("not_up", {"D": 0, "R": 0})
+    gov = {"D": g_not_up.get("D", 0), "R": g_not_up.get("R", 0), "O": 0, "uncalled": 0, "expected_D": 0.0}
     for r in races.values():
         call = r.get("call")
-        t = sen if r["chamber"] == "senate" else hou
+        t = sen if r["chamber"] == "senate" else gov if r["chamber"] == "governor" else hou
         if call is None:
             t["uncalled"] += 1
             if not (r["chamber"] == "senate" and r.get("independent_side")):
@@ -316,14 +331,21 @@ def tallies(races, snap):
             else:
                 sen["I"] += 1
         else:
-            hou[call["party"] if call["party"] in ("D", "R") else "O"] += 1
+            t[call["party"] if call["party"] in ("D", "R") else "O"] += 1
     sen["expected_D"] = round(sen["D"] + sen["expected_D"], 1)
     hou["expected_D"] = round(hou["D"] + hou["expected_D"], 1)
+    gov["expected_D"] = round(gov["D"] + gov["expected_D"], 1)
+    g_major = gov_block.get("majority", 26)
+    gov["control"] = "D" if gov["D"] >= g_major else "R" if gov["R"] >= g_major else None
+    gov["majority"] = g_major
     majority = snap["house"].get("majority", 218)
     sen["control"] = "D" if sen["D"] >= 51 else "R" if sen["R"] >= 50 else None
     hou["control"] = "D" if hou["D"] >= majority else "R" if hou["R"] >= majority else None
     hou["majority"] = majority
-    return {"senate": sen, "house": hou}
+    out = {"senate": sen, "house": hou}
+    if gov_block:
+        out["governor"] = gov
+    return out
 
 
 # ================================================================ scorecard
@@ -350,10 +372,10 @@ def _percentile(hist, value):
 def scorecard(races, tally, snap, markets):
     called = [r for r in races.values() if r.get("call")]
     pairs = {"model": [], "rating": [], "market": [], "model_on_market": []}
-    by_chamber = {"senate": [], "house": []}
+    by_chamber = {"senate": [], "house": [], "governor": []}
     bins = [(0, .1), (.1, .3), (.3, .5), (.5, .7), (.7, .9), (.9, 1.0001)]
     cal = [{"lo": lo, "hi": min(hi, 1), "n": 0, "p_sum": 0.0, "wins": 0} for lo, hi in bins]
-    misses, margin_err = [], {"senate": [], "house": []}
+    misses, margin_err = [], {"senate": [], "house": [], "governor": []}
     for r in called:
         y = 1 if r["call"]["dem_side"] else 0
         f = r["forecast"]
@@ -403,6 +425,12 @@ def scorecard(races, tally, snap, markets):
             y = 1 if t["control"] == "D" else 0
             entry["p_outcome"] = round(p if y else 1 - p, 4)
         control[chamber] = entry
+    if "governor" in tally and snap.get("governors"):
+        t, p = tally["governor"], snap["governors"]["dem_majority_prob"]
+        entry = {"forecast_p": p, "outcome": t["control"], "market_p": {}}
+        if t["control"]:
+            entry["p_outcome"] = round(p if t["control"] == "D" else 1 - p, 4)
+        control["governor"] = entry
 
     seats = {}
     sen_hist = snap["senate"].get("histogram", {})
@@ -420,11 +448,20 @@ def scorecard(races, tally, snap, markets):
         seats["house"] = {"actual_D": actual, "forecast_median": pc.get("50"), "below": lo, "at_or_below": hi,
                           "in_80": int(pc["10"]) <= actual <= int(pc["90"])}
 
+    if "governor" in tally and tally["governor"]["uncalled"] == 0 and snap.get("governors"):
+        g = snap["governors"]
+        actual = tally["governor"]["D"]
+        lo, hi = _percentile(g.get("histogram", {}), actual)
+        pc = g["percentiles"]
+        seats["governor"] = {"actual_D": actual, "forecast_median": pc.get("50"), "below": lo,
+                             "at_or_below": hi, "in_80": int(pc["10"]) <= actual <= int(pc["90"])}
+
     return {
         "races_called": len(called),
         "brier": {"model": _brier(pairs["model"]), "rating": _brier(pairs["rating"]),
                   "coin_flip": 0.25 if pairs["model"] else None,
                   "senate": _brier(by_chamber["senate"]), "house": _brier(by_chamber["house"]),
+                  "governor": _brier(by_chamber["governor"]),
                   "market": _brier(pairs["market"]), "model_on_market_races": _brier(pairs["model_on_market"]),
                   "n_market": len(pairs["market"])},
         "log_loss": {"model": _logloss(pairs["model"]), "rating": _logloss(pairs["rating"])},
@@ -441,7 +478,7 @@ def scorecard(races, tally, snap, markets):
 def phase(now, tally):
     if now < FIRST_CLOSE:
         return "before"
-    if tally["senate"]["uncalled"] == 0 and tally["house"]["uncalled"] == 0:
+    if all(t["uncalled"] == 0 for t in tally.values()):
         return "complete"
     return "counting"
 
@@ -479,10 +516,10 @@ def build(state, now, snap, markets, baselines, frozen, sources_status, previous
             r["status"] = "waiting"
     t = tallies(races, snap)
     prev_control = state.get("control", {})
-    for chamber in ("senate", "house"):
+    for chamber in t:
         if t[chamber]["control"] and prev_control.get(chamber) != t[chamber]["control"]:
             log.append({"t": iso(now), "type": "control", "chamber": chamber, "winner": t[chamber]["control"]})
-    state["control"] = {c: t[c]["control"] for c in ("senate", "house")}
+    state["control"] = {c: t[c]["control"] for c in t}
 
     events = state.setdefault("events", [])
     for line in log:
@@ -494,7 +531,9 @@ def build(state, now, snap, markets, baselines, frozen, sources_status, previous
     history = state.setdefault("history", [])
     point = {"t": iso(now), "s": [t["senate"]["D"], t["senate"]["R"], t["senate"]["I"]],
              "h": [t["house"]["D"], t["house"]["R"]]}
-    if not history or history[-1]["s"] != point["s"] or history[-1]["h"] != point["h"]:
+    if "governor" in t:
+        point["g"] = [t["governor"]["D"], t["governor"]["R"]]
+    if not history or any(history[-1].get(k) != point[k] for k in ("s", "h", "g") if k in point):
         history.append(point)
 
     payload = {
@@ -688,8 +727,12 @@ def rebuild_site():
 def summary_line(payload):
     t = payload["tally"]
     s, h = t["senate"], t["house"]
-    return (f"Senate D{s['D']} R{s['R']}" + (f" I{s['I']}" if s["I"] else "") + f" ({s['uncalled']} uncalled), "
+    line = (f"Senate D{s['D']} R{s['R']}" + (f" I{s['I']}" if s["I"] else "") + f" ({s['uncalled']} uncalled), "
             f"House D{h['D']} R{h['R']} ({h['uncalled']} uncalled)")
+    g = t.get("governor")
+    if g:
+        line += f", Governors D{g['D']} R{g['R']} ({g['uncalled']} uncalled)"
+    return line
 
 
 def run_once(push_changes=False, rebuild=True):

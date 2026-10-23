@@ -87,6 +87,13 @@ N_SIMS = 100_000
 RATING_MARGIN = {
     "house": {"tossup": 0.8, "lean": 7.0, "likely": 11.0, "solid": 33.0},
     "senate": {"tossup": 1.5, "lean": 8.5, "likely": 12.5, "solid": 26.0},
+    # Governors, from 177 races in eight cycles (2010-2024; backtest/governors.py).
+    # Cook's governor buckets land where its Senate buckets do -- the favourite
+    # wins a toss-up by 2.2, a Lean race by 11.6, a Likely race by 13.2, a Solid
+    # one by 27.7, against 2.1 / 10.2 / 14.6 / 27.5 for the Senate on the same
+    # measure -- so the fitted Senate values are carried over scaled by those
+    # ratios rather than refitted from a sample half the size.
+    "governor": {"tossup": 1.6, "lean": 9.7, "likely": 11.3, "solid": 26.2},
 }
 
 # How a polling miss is shaped.
@@ -146,6 +153,12 @@ STATE_SD = 2.4               # fitted: one state's races share this much of a mi
 TOTAL_SD = {
     "house": {"tossup": 4.8, "lean": 4.8, "likely": 4.8, "solid": 6.5},
     "senate": {"tossup": 5.4, "lean": 5.4, "likely": 5.4, "solid": 8.5},
+    # Governors, measured the same way once each cycle's average miss is taken
+    # out: 5.4 / 4.3 / 5.7 for the competitive buckets (pooled, as for the
+    # other two chambers) and 10.8 for Solid, where candidates matter more
+    # than anywhere in Congress -- Vermont and Maryland elect Republican
+    # governors and Kansas and Kentucky Democratic ones.
+    "governor": {"tossup": 5.3, "lean": 5.3, "likely": 5.3, "solid": 10.8},
 }
 
 
@@ -183,6 +196,13 @@ STATE_DIVISION = {
 }
 DIVISIONS = sorted(set(STATE_DIVISION.values()))
 SENATE_ENV_SENSITIVITY = 0.8  # Senate races track the national mood a bit less
+# Governor races track it less again. Across the seven cycles with both, the
+# average governor miss moves 0.67 points for each point the average Senate
+# miss moves (correlation 0.6), so 0.67 x 0.8 of the national swing reaches a
+# governor's race. Same-state governor and Senate misses are correlated (0.35
+# beyond the national layer), which the shared state error already carries.
+GOVERNOR_ENV_SENSITIVITY = 0.55
+GOVERNOR_MAJORITY = 26        # of 50 governorships
 ATMOSPHERICS_CAP = 0.08
 ATMOSPHERICS_PTS_PER_PROB = 15.0  # near 50%, 0.08 win prob ~= 1.2 pts of margin
 
@@ -329,6 +349,21 @@ def national_error_sd(days):
 def _baseline(chamber, rating, lean):
     m = RATING_MARGIN[chamber][rating]
     return m if lean == "D" else -m
+
+
+def load_governor_races():
+    """The 36 governor races, or None if the file has never been built."""
+    try:
+        return _load("governor_races_2026.json")
+    except (FileNotFoundError, ValueError):
+        return None
+
+
+def load_governor_polls():
+    try:
+        return _load("governor_polls_2026.json")["races"]
+    except (FileNotFoundError, KeyError, ValueError):
+        return {}
 
 
 def load_senate_polls():
@@ -485,7 +520,7 @@ def scenario_grid(lo=SCENARIO_LO, hi=SCENARIO_HI, step=SCENARIO_STEP,
 # How much of the national miss reaches a race, by chamber. A statewide race
 # is less exposed to a national polling error than a district is, which is why
 # the simulation scales the Senate's share of it.
-ENV_SENSITIVITY = {"house": 1.0, "senate": SENATE_ENV_SENSITIVITY}
+ENV_SENSITIVITY = {"house": 1.0, "senate": SENATE_ENV_SENSITIVITY, "governor": GOVERNOR_ENV_SENSITIVITY}
 
 
 def _implied_prob(dem_margin, chamber, rating, days=None):
@@ -528,6 +563,70 @@ def tipping_point(margins, needed, chunk=20_000):
         block = margins[i:i + chunk]
         out[i:i + chunk] = np.argpartition(-block, needed - 1, axis=1)[:, needed - 1]
     return np.bincount(out, minlength=races) / n
+
+
+def simulate_governors(rng, E, env, nat, shared_for, n_sims):
+    """The 36 governor races, the same way as the Senate: a rating moved by the
+    national environment, blended with state polling where there is enough of
+    it, with the national, state and race misses drawn on top."""
+    gov = load_governor_races()
+    if not gov or not gov.get("races"):
+        return None
+    races = gov["races"]
+    ref = gov.get("ratings_environment_dem_margin")
+    ref = E if ref is None else ref
+    polls = load_governor_polls()
+    base, used = [], []
+    for r in races:
+        from_rating = _baseline("governor", r["rating"], r["lean"]) + GOVERNOR_ENV_SENSITIVITY * (E - ref)
+        entry = polls.get(r["race_id"])
+        w = poll_weight(entry, env["days_to_election"]) if entry else 0.0
+        b = w * entry["dem_margin"] + (1 - w) * from_rating if w > 0 else from_rating
+        used.append({"weight": round(w, 3), "poll_margin": entry["dem_margin"] if entry else None,
+                     "n_used": entry.get("n_used") if entry else None,
+                     "rating_margin": round(from_rating, 2)})
+        base.append(b)
+    base = np.array(base)
+    margin = (base[None, :]
+              + GOVERNOR_ENV_SENSITIVITY * nat[:, None]
+              + shared_for([r["state"] for r in races])
+              + rng.normal(0, 1, (n_sims, len(races)))
+              * np.array([race_sd("governor", r["rating"]) for r in races]))
+    win = margin > 0
+    not_up = gov.get("not_up", {"D": 0, "R": 0})
+    dem_total = not_up.get("D", 0) + win.sum(axis=1)
+    vals, freq = np.unique(dem_total, return_counts=True)
+    hist = {int(v): round(f / n_sims, 5) for v, f in zip(vals, freq)}
+    pct = {str(p): int(np.percentile(dem_total, p)) for p in (5, 10, 25, 50, 75, 90, 95)}
+    held_d = not_up.get("D", 0) + sum(1 for r in races if r.get("held_by") == "D")
+    out_races = []
+    for i, r in enumerate(races):
+        u = used[i]
+        out_races.append({
+            "race_id": r["race_id"], "state": r["state"], "held_by": r.get("held_by"),
+            "rating": r["rating"], "lean": r["lean"], "pvi": r.get("pvi"),
+            "incumbent": r.get("incumbent"), "open_seat": r.get("open_seat"),
+            "dem_candidate": r.get("dem_candidate"), "rep_candidate": r.get("rep_candidate"),
+            "notes": r.get("notes", ""), "polling": u if u["poll_margin"] is not None else None,
+            "expected_margin": round(float(base[i]), 2),
+            "dem_win_prob": round(float(win[:, i].mean()), 4),
+            "rating_prob": _implied_prob(u["rating_margin"], "governor", r["rating"]),
+            "poll_prob": (_implied_prob(u["poll_margin"], "governor", r["rating"])
+                          if u["poll_margin"] is not None else None),
+        })
+    return {
+        "races": out_races,
+        "not_up": not_up,
+        "held_before": {"D": held_d, "R": 50 - held_d},
+        "mean_dem": round(float(dem_total.mean()), 2),
+        "dem_majority_prob": round(float((dem_total >= GOVERNOR_MAJORITY).mean()), 4),
+        "dem_gain_prob": round(float((dem_total > held_d).mean()), 4),
+        "percentiles": pct,
+        "histogram": hist,
+        "majority": GOVERNOR_MAJORITY,
+        "ratings_as_of": gov.get("as_of"),
+        "ratings_source": gov.get("ratings_source"),
+    }
 
 
 def run_simulation(n_sims=N_SIMS, seed=SEED, env_margin=None):
@@ -640,6 +739,13 @@ def run_simulation(n_sims=N_SIMS, seed=SEED, env_margin=None):
     d_sen_ctrl = dem_senate >= 51
     d_house_ctrl = dem_house >= majority
 
+    # ---- Governors
+    # Drawn after everything above, so adding them leaves every Senate and
+    # House number exactly where it was. They share the national miss (at
+    # their own, weaker sensitivity) and each state's miss with that state's
+    # Senate race and House seats.
+    governors = simulate_governors(rng, E, env, nat, shared_for, n_sims)
+
     def dist_summary(counts, lo, hi):
         vals, freq = np.unique(counts, return_counts=True)
         hist = {int(v): round(f / n_sims, 5) for v, f in zip(vals, freq) if lo <= v <= hi}
@@ -716,6 +822,7 @@ def run_simulation(n_sims=N_SIMS, seed=SEED, env_margin=None):
             "ratings_as_of": hou.get("as_of"),
             "ratings_source": hou.get("ratings_source"),
         },
+        "governors": governors,
         "joint": {
             "dem_both": round(float((d_sen_ctrl & d_house_ctrl).mean()), 4),
             "dem_house_rep_senate": round(float((~d_sen_ctrl & d_house_ctrl).mean()), 4),
