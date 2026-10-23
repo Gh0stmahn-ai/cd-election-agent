@@ -153,6 +153,19 @@ jobs:
         continue-on-error: true
         run: python3 refresh_senate_polls.py
 
+      # Governor races: Cook's ratings and the nominees from Wikipedia's 2026
+      # gubernatorial article, then state polling for the competitive ones,
+      # the same way as the Senate. Both soft-fail: yesterday's file is kept.
+      - name: Refresh governor ratings and nominees (free)
+        id: governors
+        continue-on-error: true
+        run: python3 tools/fetch_governors.py
+
+      - name: Refresh governor state polls (free)
+        id: governor_polls
+        continue-on-error: true
+        run: python3 refresh_governor_polls.py
+
       # Free. Wikipedia readership per candidate, which says who people are
       # looking up, not who they support, so it is displayed and never fed
       # into the forecast. Slow (the API throttles), hence the soft fail.
