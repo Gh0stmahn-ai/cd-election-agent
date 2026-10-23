@@ -1,6 +1,6 @@
 {
  "as_of": "2026-10-23",
- "generated_at": "2026-10-22T21:20:31.151030",
+ "generated_at": "2026-10-23T10:35:06.822053",
  "n": 43,
  "median_swing": 10.4,
  "mean_swing": 10.1,
@@ -8,8 +8,8 @@
  "dem_ahead": 36,
  "flips_to_d": 6,
  "flips_to_r": 0,
- "total_races": 85,
- "upcoming": 29,
+ "total_races": 86,
+ "upcoming": 30,
  "by_quarter": [
   {
    "period": "2026 Q1",
@@ -62,17 +62,6 @@
    "prev_party": "R"
   },
   {
-   "seat": "VA HoD 77",
-   "state": "VA",
-   "date": "2026-01-06",
-   "votes": 7792,
-   "pres_margin": 50.1,
-   "margin": 60.0,
-   "swing": 9.9,
-   "flip": false,
-   "prev_party": "D"
-  },
-  {
    "seat": "VA Senate 15",
    "state": "VA",
    "date": "2026-01-06",
@@ -80,6 +69,17 @@
    "pres_margin": 28.7,
    "margin": 41.6,
    "swing": 12.9,
+   "flip": false,
+   "prev_party": "D"
+  },
+  {
+   "seat": "VA HoD 77",
+   "state": "VA",
+   "date": "2026-01-06",
+   "votes": 7792,
+   "pres_margin": 50.1,
+   "margin": 60.0,
+   "swing": 9.9,
    "flip": false,
    "prev_party": "D"
   },
@@ -106,17 +106,6 @@
    "prev_party": "D"
   },
   {
-   "seat": "VA HoD 11",
-   "state": "VA",
-   "date": "2026-01-13",
-   "votes": 8604,
-   "pres_margin": 35.2,
-   "margin": 39.8,
-   "swing": 4.6,
-   "flip": false,
-   "prev_party": "D"
-  },
-  {
    "seat": "VA HoD 23",
    "state": "VA",
    "date": "2026-01-13",
@@ -124,6 +113,17 @@
    "pres_margin": 34.4,
    "margin": 56.8,
    "swing": 22.4,
+   "flip": false,
+   "prev_party": "D"
+  },
+  {
+   "seat": "VA HoD 11",
+   "state": "VA",
+   "date": "2026-01-13",
+   "votes": 8604,
+   "pres_margin": 35.2,
+   "margin": 39.8,
+   "swing": 4.6,
    "flip": false,
    "prev_party": "D"
   },
@@ -172,17 +172,6 @@
    "prev_party": "R"
   },
   {
-   "seat": "NY Assembly 74",
-   "state": "NY",
-   "date": "2026-02-03",
-   "votes": 4806,
-   "pres_margin": 64.2,
-   "margin": 65.6,
-   "swing": 1.4,
-   "flip": false,
-   "prev_party": "D"
-  },
-  {
    "seat": "NY Senate 47",
    "state": "NY",
    "date": "2026-02-03",
@@ -190,6 +179,17 @@
    "pres_margin": 71.2,
    "margin": 84.1,
    "swing": 12.9,
+   "flip": false,
+   "prev_party": "D"
+  },
+  {
+   "seat": "NY Assembly 74",
+   "state": "NY",
+   "date": "2026-02-03",
+   "votes": 4806,
+   "pres_margin": 64.2,
+   "margin": 65.6,
+   "swing": 1.4,
    "flip": false,
    "prev_party": "D"
   },
@@ -227,17 +227,6 @@
    "prev_party": "R"
   },
   {
-   "seat": "VA Senate 39",
-   "state": "VA",
-   "date": "2026-02-10",
-   "votes": 14107,
-   "pres_margin": 55.1,
-   "margin": 65.5,
-   "swing": 10.4,
-   "flip": false,
-   "prev_party": "D"
-  },
-  {
    "seat": "VA HoD 5",
    "state": "VA",
    "date": "2026-02-10",
@@ -245,6 +234,17 @@
    "pres_margin": 58.8,
    "margin": 63.6,
    "swing": 4.8,
+   "flip": false,
+   "prev_party": "D"
+  },
+  {
+   "seat": "VA Senate 39",
+   "state": "VA",
+   "date": "2026-02-10",
+   "votes": 14107,
+   "pres_margin": 55.1,
+   "margin": 65.5,
+   "swing": 10.4,
    "flip": false,
    "prev_party": "D"
   },
@@ -381,17 +381,6 @@
    "prev_party": "R"
   },
   {
-   "seat": "FL Senate 14",
-   "state": "FL",
-   "date": "2026-03-24",
-   "votes": 80069,
-   "pres_margin": -7.4,
-   "margin": 0.6,
-   "swing": 8.0,
-   "flip": true,
-   "prev_party": "R"
-  },
-  {
    "seat": "FL House 51",
    "state": "FL",
    "date": "2026-03-24",
@@ -400,6 +389,17 @@
    "margin": -8.4,
    "swing": 5.3,
    "flip": false,
+   "prev_party": "R"
+  },
+  {
+   "seat": "FL Senate 14",
+   "state": "FL",
+   "date": "2026-03-24",
+   "votes": 80069,
+   "pres_margin": -7.4,
+   "margin": 0.6,
+   "swing": 8.0,
+   "flip": true,
    "prev_party": "R"
   },
   {
@@ -414,17 +414,6 @@
    "prev_party": "D"
   },
   {
-   "seat": "GA Senate 53",
-   "state": "GA",
-   "date": "2026-04-07",
-   "votes": 0,
-   "pres_margin": -58.1,
-   "margin": -37.3,
-   "swing": 20.8,
-   "flip": false,
-   "prev_party": "R"
-  },
-  {
    "seat": "GA House 130",
    "state": "GA",
    "date": "2026-04-07",
@@ -434,6 +423,17 @@
    "swing": 5.5,
    "flip": false,
    "prev_party": "D"
+  },
+  {
+   "seat": "GA Senate 53",
+   "state": "GA",
+   "date": "2026-04-07",
+   "votes": 0,
+   "pres_margin": -58.1,
+   "margin": -37.3,
+   "swing": 20.8,
+   "flip": false,
+   "prev_party": "R"
   },
   {
    "seat": "TX Senate 4",

@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-23T11:19:17+00:00",
+ "as_of": "2026-10-23T19:51:08+00:00",
  "source": "Wikipedia per-race election articles",
  "half_life_days": 21,
  "max_age_days": 120,
@@ -8,29 +8,29 @@
    "state": "AZ",
    "dem_candidate": "Katie Hobbs",
    "rep_candidate": "Andy Biggs",
-   "dem_margin": 8.1,
+   "dem_margin": 9.2,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 8.2
+     "margin": 10.5
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 5.1
+     "margin": 6.8
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 7.1
+     "margin": 7.7
     },
     {
      "label": "RealClearPolitics",
-     "margin": 11.2
+     "margin": 11.4
     },
     {
      "label": "Silver Bulletin",
-     "margin": 8.8
+     "margin": 9.8
     }
    ],
    "rating": "lean",
@@ -136,13 +136,21 @@
    "state": "KS",
    "dem_candidate": "Cindy Holscher",
    "rep_candidate": "Ty Masterson",
-   "dem_margin": -5.3,
-   "method": "mean of 3 aggregators",
-   "n_used": 3,
+   "dem_margin": -4.3,
+   "method": "mean of 5 aggregators",
+   "n_used": 5,
    "detail": [
     {
      "label": "270toWin",
      "margin": -5.7
+    },
+    {
+     "label": "Decision Desk HQ",
+     "margin": -2.2
+    },
+    {
+     "label": "FiftyPlusOne",
+     "margin": -3.8
     },
     {
      "label": "RealClearPolitics",
@@ -150,7 +158,7 @@
     },
     {
      "label": "Silver Bulletin",
-     "margin": -4.6
+     "margin": -4.3
     }
    ],
    "rating": "lean",

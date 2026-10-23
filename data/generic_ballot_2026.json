@@ -1,19 +1,19 @@
 {
  "as_of": "2026-10-23",
  "dem_margin_points": 9.36,
- "note": "Our own average of 79 individual polls from 43 pollsters, 2026-08-24 to 2026-10-21, plus or minus 0.5. Published aggregators say D+8.7",
+ "note": "Our own average of 78 individual polls from 43 pollsters, 2026-08-24 to 2026-10-21, plus or minus 0.6. Published aggregators say D+8.7",
  "sources": [
   "https://en.wikipedia.org/wiki/2026_United_States_elections",
   "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections"
  ],
  "detail": {
-  "stderr": 0.53,
-  "spread": 2.07,
-  "flat": 8.59,
+  "stderr": 0.55,
+  "spread": 2.1,
+  "flat": 8.57,
   "trend_per_week": 0.24,
-  "mean_age_days": 22.3,
-  "n_polls": 79,
-  "n_effective": 53.9,
+  "mean_age_days": 22.8,
+  "n_polls": 78,
+  "n_effective": 52.9,
   "n_pollsters": 43,
   "newest": "2026-10-21",
   "oldest": "2026-08-24",
@@ -64,7 +64,7 @@
     "pollster": "ActiVote",
     "polls": 8,
     "in_average": 6,
-    "effect": -1.68
+    "effect": -1.67
    }
   ],
   "method": "Weighted by recency (21-day half-life), sample size and population, with each pollster's standing lean removed and no pollster allowed more than a fifth of the total weight. The average is then read off a line fitted through the polls at today's date rather than taken flat, because a weighted mean sits at the middle of its window and lags whenever the race is moving.",
@@ -75,17 +75,8 @@
     "n": 1000,
     "population": "LV",
     "margin": 6.0,
-    "adjusted": 7.68,
+    "adjusted": 7.67,
     "weight": 1.047
-   },
-   {
-    "source": "The Economist / YouGov",
-    "date": "2026-10-20",
-    "n": 1179,
-    "population": "LV",
-    "margin": 9.0,
-    "adjusted": 9.18,
-    "weight": 1.1
    },
    {
     "source": "Reuters / Ipsos",
@@ -138,7 +129,7 @@
     "n": 1000,
     "population": "LV",
     "margin": 6.0,
-    "adjusted": 7.68,
+    "adjusted": 7.67,
     "weight": 0.831
    },
    {
@@ -156,7 +147,7 @@
     "n": 1403,
     "population": "RV",
     "margin": 7.0,
-    "adjusted": 7.18,
+    "adjusted": 7.2,
     "weight": 0.829
    },
    {
@@ -176,6 +167,15 @@
     "margin": 10.0,
     "adjusted": 9.7,
     "weight": 1.878
+   },
+   {
+    "source": "Morning Consult",
+    "date": "2026-10-11",
+    "n": 17654,
+    "population": "LV",
+    "margin": 7.0,
+    "adjusted": 8.77,
+    "weight": 2.019
    }
   ],
   "aggregators": {

@@ -1,6 +1,6 @@
 {
  "schema_version": 2,
- "timestamp": "2026-10-23T11:20:18.464745+00:00",
+ "timestamp": "2026-10-23T19:52:09.684027+00:00",
  "status": {
   "state": "success",
   "issues": []
@@ -2477,14 +2477,14 @@
     "notes": "",
     "polling": {
      "weight": 0.818,
-     "poll_margin": 8.1,
+     "poll_margin": 9.2,
      "n_used": 5,
      "rating_margin": 9.64
     },
-    "expected_margin": 8.38,
-    "dem_win_prob": 0.9347,
+    "expected_margin": 9.28,
+    "dem_win_prob": 0.9527,
     "rating_prob": 0.9586,
-    "poll_prob": 0.9275
+    "poll_prob": 0.951
    },
    {
     "race_id": "CA-GOV",
@@ -2676,15 +2676,15 @@
     "rep_candidate": "Ty Masterson",
     "notes": "",
     "polling": {
-     "weight": 0.613,
-     "poll_margin": -5.3,
-     "n_used": 3,
+     "weight": 0.818,
+     "poll_margin": -4.3,
+     "n_used": 5,
      "rating_margin": -9.75
     },
-    "expected_margin": -7.02,
-    "dem_win_prob": 0.1046,
+    "expected_margin": -5.29,
+    "dem_win_prob": 0.1704,
     "rating_prob": 0.0397,
-    "poll_prob": 0.1702
+    "poll_prob": 0.2196
    },
    {
     "race_id": "MA-GOV",
@@ -3157,9 +3157,9 @@
    "D": 24,
    "R": 26
   },
-  "mean_dem": 26.78,
-  "dem_majority_prob": 0.7667,
-  "dem_gain_prob": 0.9028,
+  "mean_dem": 26.87,
+  "dem_majority_prob": 0.7787,
+  "dem_gain_prob": 0.909,
   "percentiles": {
    "5": 24,
    "10": 25,
@@ -3174,24 +3174,24 @@
    "16": 2e-05,
    "17": 4e-05,
    "18": 5e-05,
-   "19": 0.00018,
-   "20": 0.00072,
-   "21": 0.00207,
-   "22": 0.00685,
-   "23": 0.0231,
-   "24": 0.06414,
-   "25": 0.13608,
-   "26": 0.20619,
-   "27": 0.22394,
-   "28": 0.17192,
-   "29": 0.09906,
-   "30": 0.04257,
-   "31": 0.01568,
-   "32": 0.00507,
-   "33": 0.00159,
-   "34": 0.00045,
-   "35": 0.00016,
-   "36": 5e-05,
+   "19": 0.00016,
+   "20": 0.00067,
+   "21": 0.00195,
+   "22": 0.00628,
+   "23": 0.02142,
+   "24": 0.06037,
+   "25": 0.13032,
+   "26": 0.20147,
+   "27": 0.22225,
+   "28": 0.17658,
+   "29": 0.10439,
+   "30": 0.04746,
+   "31": 0.01805,
+   "32": 0.00589,
+   "33": 0.00183,
+   "34": 0.00048,
+   "35": 0.00018,
+   "36": 7e-05,
    "37": 6e-05
   },
   "majority": 26,
@@ -3269,11 +3269,11 @@
     "id": "consumer_sentiment",
     "label": "Consumer sentiment",
     "category": "economy",
-    "display": "51.7",
-    "as_of": "2026-08",
-    "compare_display": "58.2",
+    "display": "48.1",
+    "as_of": "2026-09",
+    "compare_display": "55.1",
     "compare_label": "a year ago",
-    "change_display": "-11% vs a year ago",
+    "change_display": "-13% vs a year ago",
     "context": "University of Michigan Index of Consumer Sentiment, 1966 = 100.",
     "why": "How people feel about their own finances, not what GDP says. Sentiment moves with approval and is a leading read on turnout mood.",
     "sources": [
@@ -3282,7 +3282,7 @@
       "url": "https://fred.stlouisfed.org/series/UMCSENT"
      }
     ],
-    "value": 51.7
+    "value": 48.1
    },
    {
     "id": "real_wages",
@@ -3453,7 +3453,7 @@
  },
  "change": {
   "from": "2026-10-22T19:49:09.104636+00:00",
-  "to": "2026-10-23T11:20:18.464745+00:00",
+  "to": "2026-10-23T19:52:09.684027+00:00",
   "total": {
    "senate": -0.46,
    "house": -0.8
