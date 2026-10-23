@@ -230,6 +230,43 @@ check("this year's special-election table is never read as November", "GA-14" no
 check("a parse that shrinks sharply is refused", not F.acceptable_parse("house", 300, 435)
       and F.acceptable_parse("house", 433, 435) and not F.acceptable_parse("senate", 3, 0))
 
+# -------------------------------------------------------------- governors
+for name, want in [("Governor", True), ("GOVERNOR", True), ("Governor / Lieutenant Governor", True),
+                   ("For Governor and Lt. Governor", True), ("Lieutenant Governor", False),
+                   ("Governor - Rep", False), ("Governor - Dem.", False), ("Governor's Council", False)]:
+    check(f"governor contest name: {name!r} -> {want}", bool(F.GOV_RE.match(name)) == want)
+sw_tx = {"Races": [{"N": "GOVERNOR", "Candidates": [{"N": "GREG ABBOTT (I)", "P": "REP", "V": 7},
+                                                    {"N": "GINA HINOJOSA", "P": "DEM", "V": 6}]},
+                   {"N": "LIEUTENANT GOVERNOR", "Candidates": [{"N": "DAN PATRICK", "P": "REP", "V": 1}]}]}
+bundle["StateWide"] = base64.b64encode(json.dumps(sw_tx).encode()).decode()
+out = {c["race_id"]: c for c in F.parse_tx(bundle, "TX-2026")}
+check("TX: governor read from the statewide races, lieutenant governor ignored",
+      "TX-GOV" in out and out["TX-GOV"]["chamber"] == "governor" and len(out) == 3, set(out))
+fl_gov = fl + ("11/3/2026\tREP\tRepublican\tGOV\tGovernor and Lieutenant Governor\tALA\tAlachua\t\t\t63\t30\t"
+               "Donalds\tByron\t\t90\n")
+out = {c["race_id"]: c for c in F.parse_fl(fl_gov, "FL-2026-special")}
+check("FL: governor ticket mapped by race code", out.get("FL-GOV", {}).get("chamber") == "governor", set(out))
+gov_wiki = ("==Predictions==\n{|\n|-\n! [[2026 Georgia gubernatorial election|Georgia]]\n| {{USRaceRating|Tossup}}\n|}\n"
+            "==Race summary==\n===States===\n{|\n|-\n! [[2026 Georgia gubernatorial election|Georgia]]\n"
+            "| [[Brian Kemp]] || Republican || 2018 || Incumbent term-limited.\n| nowrap | {{Plainlist|\n"
+            "*{{Party stripe|Democratic Party (US)}}{{Aye}} [[Keisha Lance Bottoms]] (Democratic) 51.0%\n"
+            "*{{Party stripe|Republican Party (US)}}[[Burt Jones]] (Republican) 48.0%}}\n"
+            "|-\n! [[2026 Minnesota gubernatorial election|Minnesota]]\n| nowrap | {{Plainlist|\n"
+            "*{{Party stripe|Minnesota Democratic–Farmer–Labor Party}}[[A B]] (DFL)\n"
+            "*{{Party stripe|Republican Party (US)}}[[C D]] (Republican)}}\n|}\n"
+            "===Territories===\n{|\n|-\n! [[2026 Guam gubernatorial election|Guam]]\n| nowrap | "
+            "*{{Party stripe|Democratic Party (US)}}[[E F]] (Democratic)\n|}\n")
+g = F.parse_wiki_governor(gov_wiki)
+check("governors: only the States table is read (no predictions row, no territory)",
+      set(g) == {"GA", "MN"}, set(g))
+ga_rows = g.get("GA", [[]])[0]
+check("governors: the called winner and shares are read",
+      any(c["winner"] and c["party"] == "D" and c["pct"] == 51.0 for c in ga_rows), ga_rows)
+check("governors: a Minnesota DFL nominee counts as the Democrat",
+      [c["party"] for c in g.get("MN", [[]])[0]] == ["D", "R"], g.get("MN"))
+check("governors: a governor article needs most states before it replaces a good read",
+      not F.acceptable_parse("governor", 10, 36) and F.acceptable_parse("governor", 36, 36))
+
 import os
 import freeze
 os.environ["FREEZE_NOW"] = "2026-11-03T10:30:00Z"
