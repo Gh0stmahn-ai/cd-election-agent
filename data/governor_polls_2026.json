@@ -1,0 +1,401 @@
+{
+ "as_of": "2026-10-23T11:01:14+00:00",
+ "source": "Wikipedia per-race election articles",
+ "half_life_days": 21,
+ "max_age_days": 120,
+ "races": {
+  "AZ-GOV": {
+   "state": "AZ",
+   "dem_candidate": "Katie Hobbs",
+   "rep_candidate": "Andy Biggs",
+   "dem_margin": 8.1,
+   "method": "mean of 5 aggregators",
+   "n_used": 5,
+   "detail": [
+    {
+     "label": "270toWin",
+     "margin": 8.2
+    },
+    {
+     "label": "Decision Desk HQ",
+     "margin": 5.1
+    },
+    {
+     "label": "FiftyPlusOne",
+     "margin": 7.1
+    },
+    {
+     "label": "RealClearPolitics",
+     "margin": 11.2
+    },
+    {
+     "label": "Silver Bulletin",
+     "margin": 8.8
+    }
+   ],
+   "rating": "lean",
+   "rating_lean": "D"
+  },
+  "FL-GOV": {
+   "state": "FL",
+   "dem_candidate": "David Jolly",
+   "rep_candidate": "Byron Donalds",
+   "dem_margin": -4.7,
+   "method": "mean of 5 aggregators",
+   "n_used": 5,
+   "detail": [
+    {
+     "label": "270toWin",
+     "margin": -5.0
+    },
+    {
+     "label": "Decision Desk HQ",
+     "margin": -5.6
+    },
+    {
+     "label": "FiftyPlusOne",
+     "margin": -4.0
+    },
+    {
+     "label": "RealClearPolitics",
+     "margin": -5.0
+    },
+    {
+     "label": "Silver Bulletin",
+     "margin": -3.9
+    }
+   ],
+   "rating": "lean",
+   "rating_lean": "R"
+  },
+  "GA-GOV": {
+   "state": "GA",
+   "dem_candidate": "Keisha Lance Bottoms",
+   "rep_candidate": "Rick Jackson",
+   "dem_margin": -1.5,
+   "method": "mean of 5 aggregators",
+   "n_used": 5,
+   "detail": [
+    {
+     "label": "270toWin",
+     "margin": -1.8
+    },
+    {
+     "label": "Decision Desk HQ",
+     "margin": -2.1
+    },
+    {
+     "label": "FiftyPlusOne",
+     "margin": -1.5
+    },
+    {
+     "label": "RealClearPolitics",
+     "margin": -1.5
+    },
+    {
+     "label": "Silver Bulletin",
+     "margin": -0.8
+    }
+   ],
+   "rating": "tossup",
+   "rating_lean": "R"
+  },
+  "IA-GOV": {
+   "state": "IA",
+   "dem_candidate": "Rob Sand",
+   "rep_candidate": "Zach Lahn",
+   "dem_margin": 7.3,
+   "method": "mean of 5 aggregators",
+   "n_used": 5,
+   "detail": [
+    {
+     "label": "270toWin",
+     "margin": 6.6
+    },
+    {
+     "label": "Decision Desk HQ",
+     "margin": 7.6
+    },
+    {
+     "label": "FiftyPlusOne",
+     "margin": 7.8
+    },
+    {
+     "label": "RealClearPolitics",
+     "margin": 6.7
+    },
+    {
+     "label": "Silver Bulletin",
+     "margin": 7.6
+    }
+   ],
+   "rating": "lean",
+   "rating_lean": "D"
+  },
+  "KS-GOV": {
+   "state": "KS",
+   "dem_candidate": "Cindy Holscher",
+   "rep_candidate": "Ty Masterson",
+   "dem_margin": -5.3,
+   "method": "mean of 3 aggregators",
+   "n_used": 3,
+   "detail": [
+    {
+     "label": "270toWin",
+     "margin": -5.7
+    },
+    {
+     "label": "RealClearPolitics",
+     "margin": -5.7
+    },
+    {
+     "label": "Silver Bulletin",
+     "margin": -4.6
+    }
+   ],
+   "rating": "lean",
+   "rating_lean": "R"
+  },
+  "MI-GOV": {
+   "state": "MI",
+   "dem_candidate": "Jocelyn Benson",
+   "rep_candidate": "John James",
+   "dem_margin": 7.0,
+   "method": "mean of 5 aggregators",
+   "n_used": 5,
+   "detail": [
+    {
+     "label": "270toWin",
+     "margin": 7.8
+    },
+    {
+     "label": "Decision Desk HQ",
+     "margin": 7.3
+    },
+    {
+     "label": "FiftyPlusOne",
+     "margin": 7.0
+    },
+    {
+     "label": "RealClearPolitics",
+     "margin": 5.8
+    },
+    {
+     "label": "Silver Bulletin",
+     "margin": 7.2
+    }
+   ],
+   "rating": "lean",
+   "rating_lean": "D"
+  },
+  "NE-GOV": {
+   "state": "NE",
+   "dem_candidate": "Lynne Walz",
+   "rep_candidate": "Jim Pillen",
+   "dem_margin": -3.2,
+   "method": "mean of 4 aggregators",
+   "n_used": 4,
+   "detail": [
+    {
+     "label": "270toWin",
+     "margin": -3.4
+    },
+    {
+     "label": "Decision Desk HQ",
+     "margin": -3.8
+    },
+    {
+     "label": "FiftyPlusOne",
+     "margin": -2.7
+    },
+    {
+     "label": "Silver Bulletin",
+     "margin": -2.8
+    }
+   ],
+   "rating": "likely",
+   "rating_lean": "R"
+  },
+  "NV-GOV": {
+   "state": "NV",
+   "dem_candidate": "Aaron Ford",
+   "rep_candidate": "Joe Lombardo",
+   "dem_margin": -0.8,
+   "method": "mean of 5 aggregators",
+   "n_used": 5,
+   "detail": [
+    {
+     "label": "270toWin",
+     "margin": 0.0
+    },
+    {
+     "label": "Decision Desk HQ",
+     "margin": -2.2
+    },
+    {
+     "label": "FiftyPlusOne",
+     "margin": -1.4
+    },
+    {
+     "label": "RealClearPolitics",
+     "margin": 0.0
+    },
+    {
+     "label": "Silver Bulletin",
+     "margin": -0.5
+    }
+   ],
+   "rating": "tossup",
+   "rating_lean": "R"
+  },
+  "OH-GOV": {
+   "state": "OH",
+   "dem_candidate": "Amy Acton",
+   "rep_candidate": "Vivek Ramaswamy",
+   "dem_margin": 3.7,
+   "method": "mean of 5 aggregators",
+   "n_used": 5,
+   "detail": [
+    {
+     "label": "270toWin",
+     "margin": 3.2
+    },
+    {
+     "label": "Decision Desk HQ",
+     "margin": 3.6
+    },
+    {
+     "label": "FiftyPlusOne",
+     "margin": 4.1
+    },
+    {
+     "label": "RealClearPolitics",
+     "margin": 3.6
+    },
+    {
+     "label": "Silver Bulletin",
+     "margin": 3.9
+    }
+   ],
+   "rating": "tossup",
+   "rating_lean": "R"
+  },
+  "OK-GOV": {
+   "state": "OK",
+   "dem_candidate": "Cyndi Munson",
+   "rep_candidate": "Mike Mazzei",
+   "dem_margin": -4.9,
+   "method": "2 polls, recency and sample weighted",
+   "n_used": 2,
+   "detail": [
+    {
+     "label": "Cross Timbers Poll",
+     "dem": 36.0,
+     "rep": 39.0,
+     "date": "2026-10-17",
+     "n": null,
+     "weight": 0.82,
+     "margin": -3.0
+    },
+    {
+     "label": "Cross Timbers Poll",
+     "dem": 36.0,
+     "rep": 46.0,
+     "date": "2026-09-18",
+     "n": null,
+     "weight": 0.315,
+     "margin": -10.0
+    }
+   ],
+   "rating": "likely",
+   "rating_lean": "R"
+  },
+  "OR-GOV": {
+   "state": "OR",
+   "dem_candidate": "Tina Kotek",
+   "rep_candidate": "Christine Drazan",
+   "dem_margin": 2.0,
+   "method": "mean of 1 aggregators",
+   "n_used": 1,
+   "detail": [
+    {
+     "label": "Silver Bulletin",
+     "margin": 2.0
+    }
+   ],
+   "rating": "lean",
+   "rating_lean": "D"
+  },
+  "TX-GOV": {
+   "state": "TX",
+   "dem_candidate": "Gina Hinojosa",
+   "rep_candidate": "Greg Abbott",
+   "dem_margin": -2.7,
+   "method": "mean of 5 aggregators",
+   "n_used": 5,
+   "detail": [
+    {
+     "label": "270toWin",
+     "margin": -3.8
+    },
+    {
+     "label": "Decision Desk HQ",
+     "margin": -2.4
+    },
+    {
+     "label": "FiftyPlusOne",
+     "margin": -2.5
+    },
+    {
+     "label": "RealClearPolitics",
+     "margin": -2.2
+    },
+    {
+     "label": "Silver Bulletin",
+     "margin": -2.8
+    }
+   ],
+   "rating": "lean",
+   "rating_lean": "R"
+  },
+  "WI-GOV": {
+   "state": "WI",
+   "dem_candidate": "David Crowley",
+   "rep_candidate": "Tom Tiffany",
+   "dem_margin": 3.7,
+   "method": "mean of 5 aggregators",
+   "n_used": 5,
+   "detail": [
+    {
+     "label": "270toWin",
+     "margin": 4.0
+    },
+    {
+     "label": "Decision Desk HQ",
+     "margin": 3.6
+    },
+    {
+     "label": "FiftyPlusOne",
+     "margin": 3.7
+    },
+    {
+     "label": "RealClearPolitics",
+     "margin": 3.5
+    },
+    {
+     "label": "Silver Bulletin",
+     "margin": 3.6
+    }
+   ],
+   "rating": "tossup",
+   "rating_lean": "D"
+  }
+ },
+ "issues": [
+  "AK-GOV: no single Democrat-against-Republican pairing to poll",
+  "NH-GOV: HTTP Error 429: Too Many Requests",
+  "NH-GOV: no article found",
+  "VT-GOV: HTTP Error 429: Too Many Requests",
+  "VT-GOV: no article found"
+ ]
+}
