@@ -92,7 +92,7 @@ def official_contests(races, truth, now):
 
 
 def wiki_state(races, truth, now, injected):
-    senate, house = {}, {}
+    senate, house, gov = {}, {}, {}
     for r in races.values():
         t = truth[r["id"]]
         d_name = (r.get("dem_candidate") or "Dem Candidate").replace(" (I)", "")
@@ -108,9 +108,12 @@ def wiki_state(races, truth, now, injected):
                 rows[1 if wrong["dem_wins"] else 0]["winner"] = True
         if r["chamber"] == "senate":
             senate[r["state"]] = [rows]
+        elif r["chamber"] == "governor":
+            gov[r["state"]] = [rows]
         else:
             house[r["id"]] = rows
-    return {"senate": {"rows": senate, "revid": 1}, "house": {"rows": house, "revid": 1}}
+    return {"senate": {"rows": senate, "revid": 1}, "house": {"rows": house, "revid": 1},
+            "governor": {"rows": gov, "revid": 1}}
 
 
 def play(until=None, check=False, seed=2026, step_minutes=5):
