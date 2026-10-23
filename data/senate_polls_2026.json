@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-22T19:48:06+00:00",
+ "as_of": "2026-10-23T11:18:45+00:00",
  "source": "Wikipedia per-race election articles",
  "half_life_days": 21,
  "max_age_days": 120,
@@ -260,25 +260,25 @@
    "state": "TX",
    "dem_candidate": "James Talarico",
    "rep_candidate": "Ken Paxton",
-   "dem_margin": 2.3,
+   "dem_margin": 2.1,
    "method": "mean of 6 aggregators",
    "n_used": 6,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 1.8
+     "margin": 1.6
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 2.6
+     "margin": 2.5
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 2.6
+     "margin": 2.5
     },
     {
      "label": "RealClearPolitics",
-     "margin": 1.8
+     "margin": 1.5
     },
     {
      "label": "The Texas Tribune",
@@ -286,7 +286,7 @@
     },
     {
      "label": "Silver Bulletin",
-     "margin": 2.6
+     "margin": 2.5
     }
    ],
    "rating": "tossup",

@@ -4,25 +4,25 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Results · 2026 Midterm Forecast</title>
-<meta name="description" content="Live results for every Senate and House race, graded against the final forecast.">
+<meta name="description" content="Live results for every Senate, House and governor's race, graded against the final forecast.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Results · 2026 Midterm Forecast">
-<meta property="og:description" content="Live results for every Senate and House race, graded against the final forecast.">
+<meta property="og:description" content="Live results for every Senate, House and governor's race, graded against the final forecast.">
 <meta property="og:url" content="https://gh0stmahn-ai.github.io/results.html">
 <meta property="og:image" content="https://gh0stmahn-ai.github.io/assets/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Results · 2026 Midterm Forecast">
-<meta name="twitter:description" content="Live results for every Senate and House race, graded against the final forecast.">
+<meta name="twitter:description" content="Live results for every Senate, House and governor's race, graded against the final forecast.">
 <meta name="twitter:image" content="https://gh0stmahn-ai.github.io/assets/og.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23f6f5f1'/%3E%3Crect x='5' y='8' width='10' height='18' rx='2' fill='%232a78d6'/%3E%3Crect x='17' y='8' width='10' height='18' rx='2' fill='%23c74845'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="assets/style.css?v=af14fe11">
+<link rel="stylesheet" href="assets/style.css?v=f0ba8dc7">
 </head>
 <body>
 <header class="site-head"><div class="bar">
   <a class="brand plain" href="index.html"><span class="mark"><i></i><i></i></span>2026 Midterm Forecast</a>
-  <nav class="main" aria-label="Sections"><a href="index.html">Overview</a><a href="results.html" aria-current="page">Results</a><a href="senate.html">Senate</a><a href="house.html">House</a><a href="scenarios.html">Scenarios</a><a href="economy.html">Economy</a><a href="trend.html">Trend</a><a href="markets.html">Markets</a><a href="methodology.html">Methodology</a></nav>
+  <nav class="main" aria-label="Sections"><a href="index.html">Overview</a><a href="results.html" aria-current="page">Results</a><a href="senate.html">Senate</a><a href="house.html">House</a><a href="governors.html">Governors</a><a href="scenarios.html">Scenarios</a><a href="economy.html">Economy</a><a href="trend.html">Trend</a><a href="markets.html">Markets</a><a href="methodology.html">Methodology</a></nav>
   <a class="refresh" href="https://github.com/Gh0stmahn-ai/cd-election-agent/actions/workflows/daily-forecast.yml" target="_blank" rel="noopener"
      title="Re-run the forecast now on the latest public data (opens GitHub Actions)">
     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7"
@@ -41,9 +41,10 @@
 <div class="res-status" id="res-status"></div>
 
 <section>
-  <div class="grid2">
+  <div class="grid3">
     <div class="card" id="res-senate"></div>
     <div class="card" id="res-house"></div>
+    <div class="card" id="res-gov"></div>
   </div>
   <noscript></noscript>
 </section>
@@ -85,7 +86,7 @@
   <h2>Where these numbers come from</h2>
   <div class="card prose">
     <p>The forecast is sealed at 5 am Eastern on Election Day, before any poll opens; that sealed version is what every result is graded against.</p>
-    <p><b>Calls</b> come from Wikipedia's 2026 Senate and House articles, where editors mark a winner
+    <p><b>Calls</b> come from Wikipedia's 2026 Senate, House and governor articles, where editors mark a winner
       as the networks call each race. A call is taken here only after it has stood for four minutes and
       only once every poll in that state has closed, and a call that is taken down there is withdrawn
       here too. Nothing on this page projects a winner from a partial count.</p>
@@ -111,9 +112,9 @@
     Forecast, not a prediction: read the <a href="methodology.html">methodology</a> first.</div>
 </div></footer>
 
-<script src="assets/app.js?v=af14fe11"></script>
+<script src="assets/app.js?v=f0ba8dc7"></script>
 <script>
-const PAGE_DATA = {"site":{"timestamp":"2026-10-22T19:49:09.104636+00:00","status":"success"},"results_config":{"raw":"https://raw.githubusercontent.com/Gh0stmahn-ai/cd-election-agent/main/data/results_2026.json","local":"data/results_2026.json","forecast":{"senate":{"p":0.6226,"median":51,"p10":49,"p90":53,"not_up":{"D":34,"R":31,"note":"65 seats not up in 2026: 34 in the Democratic caucus (incl. King and Sanders), 31 Republican."},"seats":100,"needed":51},"house":{"p":0.8209,"median":224,"p10":214,"p90":234,"seats":435,"needed":218}}}};
+const PAGE_DATA = {"site":{"timestamp":"2026-10-23T11:20:18.464745+00:00","status":"success"},"results_config":{"raw":"https://raw.githubusercontent.com/Gh0stmahn-ai/cd-election-agent/main/data/results_2026.json","local":"data/results_2026.json","forecast":{"senate":{"p":0.618,"median":51,"p10":49,"p90":53,"not_up":{"D":34,"R":31,"note":"65 seats not up in 2026: 34 in the Democratic caucus (incl. King and Sanders), 31 Republican."},"seats":100,"needed":51},"house":{"p":0.8129,"median":224,"p10":214,"p90":234,"seats":435,"needed":218},"governor":{"p":0.7667,"median":27,"p10":25,"p90":29,"not_up":{"D":6,"R":8,"states":{"DE":"D","KY":"D","NJ":"D","NC":"D","VA":"D","WA":"D","IN":"R","LA":"R","MS":"R","MO":"R","MT":"R","ND":"R","UT":"R","WV":"R"}},"seats":50,"needed":26}}}};
 FC.init();
 (function () {
   var s = PAGE_DATA.site;

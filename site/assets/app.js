@@ -190,14 +190,14 @@ function renderHistogram(svgId, hist, majority, xlabel, chamberName) {
     bindTip(r, function () {
       return "<b>" + k + " Democratic seats</b><br>At least " + k + ": <b>" +
         pct1(atLeast[k]) + "</b> of simulations<br>Exactly " + k + ": " + pct1(v) + "<br>" +
-        (k >= majority ? "Democratic" : "Republican") + " " + chamberName + " majority";
+        (k >= majority ? "Democratic" : "Republican") + " " + (chamberName === "Governors" ? "majority of governors" : chamberName + " majority");
     });
   });
 
   var mx = x(majority);
   el("line", {x1: mx, x2: mx, y1: m.t - 8, y2: H - m.b, stroke: css("--ink"), "stroke-width": 1.2}, svg);
   el("text", {x: mx + 4, y: m.t - 2, style: "fill:var(--ink);font-size:11px"}, svg).textContent =
-    majority + "+ = Democratic control";
+    majority + "+ = " + (chamberName === "Governors" ? "Democratic majority of governors" : "Democratic control");
   var step = n > 60 ? 10 : n > 25 ? 5 : 2;
   for (var k = Math.ceil(x0 / step) * step; k <= x1; k += step) {
     el("text", {x: x(k) + bw / 2, y: H - m.b + 14, "text-anchor": "middle"}, svg).textContent = k;
@@ -1696,6 +1696,133 @@ function houseTipping(house, meta, limit) {
     });
 }
 
+/* ------------------------------------------------------------ governors */
+function govTip(r) {
+  var cands = [];
+  if (r.dem_candidate) cands.push(swatch(css("--dem")) + esc(r.dem_candidate) + " (D)");
+  if (r.rep_candidate) cands.push(swatch(css("--rep")) + esc(r.rep_candidate) + " (R)");
+  var poll = "";
+  if (r.polling && r.polling.poll_margin != null) {
+    poll = "<br>Polls " + margin(r.polling.poll_margin) + " · rating implies " + margin(r.polling.rating_margin) +
+      "<br><span style='opacity:.8'>" + Math.round(r.polling.weight * 100) + "% of the baseline is the polling average</span>";
+  }
+  return "<b>" + STATE_NAMES[r.state] + "</b>" + (r.open_seat ? " · open seat" : r.incumbent ? " · " + esc(r.incumbent) + " running" : "") +
+    "<br>" + (cands.join("<br>") || "Nominees to be decided") +
+    "<br>Cook: " + RATING_NAME[r.rating] + (r.rating === "tossup" ? "" : " " + r.lean) + " · held by " + (r.held_by || "?") +
+    "<br><b>Democrats: " + pct(r.dem_win_prob) + "</b> · Republicans: " + pct(1 - r.dem_win_prob) +
+    " · expected " + margin(r.expected_margin) + poll + (r.notes ? "<br><span style='opacity:.8'>" + esc(r.notes) + "</span>" : "");
+}
+
+function renderGovMap(svgId, gov, geo, legendId) {
+  var svg = $(svgId); if (!svg) return;
+  clear(svg);
+  var byState = {};
+  gov.races.forEach(function (r) { byState[r.state] = r; });
+  var notUp = (gov.not_up && gov.not_up.states) || {};
+  /* A state with no race this year keeps a pale wash of the party that holds
+     it, so the map still reads as the whole country's governors. */
+  function fillFor(code) {
+    var race = byState[code];
+    if (race) return binColor(race.dem_win_prob);
+    return notUp[code] === "D" ? css("--dem-wash") : notUp[code] === "R" ? css("--rep-wash") : css("--notup");
+  }
+  function tipFor(code) {
+    var race = byState[code];
+    if (race) return govTip(race);
+    var who = notUp[code] === "D" ? "a Democrat" : notUp[code] === "R" ? "a Republican" : "no one recorded";
+    return "<b>" + STATE_NAMES[code] + "</b><br>No governor's race in 2026; held by " + who;
+  }
+  Object.keys(geo.states).forEach(function (code) {
+    var g = geo.states[code], race = byState[code];
+    var p = el("path", {d: g.d, "class": "state", fill: fillFor(code)}, svg);
+    p.setAttribute("aria-label", STATE_NAMES[code] + (race ? ": Democrats " + pct(race.dem_win_prob) : ": no race in 2026"));
+    bindTip(p, function () { return tipFor(code); }, !!race);
+  });
+  var SMALL = {NH: 1, MA: 1, RI: 1, CT: 1, NJ: 1, DE: 1, MD: 1, VT: 1};
+  Object.keys(geo.states).forEach(function (code) {
+    if (SMALL[code]) return;
+    var g = geo.states[code], race = byState[code];
+    el("text", {x: g.cx, y: g.cy + 4, "text-anchor": "middle", "class": "maplabel",
+      style: race ? "" : "fill:var(--muted)"}, svg).textContent = code;
+  });
+  var chips = ["VT", "NH", "MA", "RI", "CT", "NJ", "DE", "MD"].map(function (c) {
+    return {c: c, g: geo.states[c]};
+  }).sort(function (a, b) { return a.g.cy - b.g.cy; });
+  var yy = 150;
+  chips.forEach(function (item) {
+    var race = byState[item.c], fill = fillFor(item.c);
+    var cy = Math.max(yy, item.g.cy - 20); yy = cy + 30;
+    el("line", {x1: item.g.cx, y1: item.g.cy, x2: 928, y2: cy, stroke: css("--axis"), "stroke-width": 1}, svg);
+    var rect = el("rect", {x: 930, y: cy - 11, width: 44, height: 22, rx: 4, fill: fill,
+      stroke: race ? "none" : css("--axis"), "class": "state"}, svg);
+    bindTip(rect, function () { return tipFor(item.c); }, !!race);
+    el("text", {x: 952, y: cy + 4, "text-anchor": "middle",
+      style: "font-size:11px;font-weight:600;pointer-events:none;fill:" + (race ? inkOn(fill) : css("--muted"))},
+      svg).textContent = item.c;
+  });
+  if (legendId) legendBins(legendId,
+    '<i class="sw" style="background:' + css("--dem-wash") + ";border:1px solid " + css("--axis") + '"></i>Not up, held by D ' +
+    '<i class="sw" style="background:' + css("--rep-wash") + ";border:1px solid " + css("--axis") + ';margin-left:8px"></i>Not up, held by R');
+}
+
+function renderGovHero(id, gov) {
+  var box = $(id); if (!box) return;
+  var pD = gov.dem_majority_prob, mean = gov.mean_dem, held = gov.held_before;
+  var p = Math.max(pD, 1 - pD), dFav = pD >= 0.5;
+  var head = p < 0.55 ? "A majority of governorships is a toss-up, " + (dFav ? "Democrats" : "Republicans") + " by a nose"
+    : (dFav ? "Democrats" : "Republicans") + " " + (p < 0.65 ? "slightly favored" : p < 0.8 ? "favored" : "clearly favored") +
+      " to hold most governorships";
+  box.innerHTML = '<div class="chamber-label">Governors · 36 races</div>' +
+    '<div class="headline">' + esc(head) + "</div>" +
+    '<div class="odds"><div><div class="big">' + pct(pD) + '</div><div class="side">Democrats</div></div>' +
+    '<div style="text-align:right"><div class="big">' + pct(1 - pD) + '</div><div class="side r">Republicans</div></div></div>' +
+    '<div class="splitbar" role="img" aria-label="Democrats ' + pct(pD) + ", Republicans " + pct(1 - pD) + '">' +
+    '<div style="width:' + (pD * 100) + '%;background:var(--dem)"></div><div style="flex:1;background:var(--rep)"></div></div>' +
+    '<div class="facts"><span>Average outcome <b>D ' + Math.round(mean) + " · R " + Math.round(50 - mean) +
+    "</b></span><span>Today <b>D " + held.D + " · R " + held.R + "</b></span><span>A majority is <b>" + gov.majority +
+    "</b> of 50</span><span>80% of simulations: <b>" + gov.percentiles["10"] + " to " + gov.percentiles["90"] +
+    "</b> D governors</span><span>Democrats gain ground: <b>" + pct(gov.dem_gain_prob) + "</b></span></div>";
+}
+
+function renderGovWatch(containerId, gov, limit) {
+  var box = $(containerId); if (!box) return;
+  var watch = gov.races.filter(function (r) { return r.dem_win_prob > 0.03 && r.dem_win_prob < 0.97; })
+    .sort(function (a, b) { return Math.abs(a.dem_win_prob - 0.5) - Math.abs(b.dem_win_prob - 0.5); });
+  var shown = limit ? watch.slice(0, limit) : watch;
+  if (!shown.length) { box.innerHTML = '<p class="note">No governor race is closer than 97 to 3.</p>'; return; }
+  box.innerHTML = shown.map(function (r) {
+    var d = r.dem_candidate ? esc(r.dem_candidate) + " (D)" : "Democratic nominee";
+    var rr = r.rep_candidate ? esc(r.rep_candidate) + " (R)" : "Republican nominee";
+    var fav = r.dem_win_prob >= 0.5 ? "D" : "R";
+    return '<div class="wcard"><div class="top"><span class="st">' + STATE_NAMES[r.state] + '</span><span class="p">' +
+      pct(Math.max(r.dem_win_prob, 1 - r.dem_win_prob)) + " " + fav + '</span></div>' +
+      '<span class="pbar" role="img" aria-label="Democratic chance ' + pct(r.dem_win_prob) + '"><i style="width:' +
+      (r.dem_win_prob * 100) + '%"></i></span><div class="who"><b>' + d + "</b> vs <b>" + rr + "</b><br>Cook: " +
+      RATING_NAME[r.rating] + (r.rating === "tossup" ? "" : " " + r.lean) + " · held by " + (r.held_by || "?") +
+      (r.open_seat ? " · open seat" : "") + "</div>" + raceRuler(r) + "</div>";
+  }).join("");
+  [].forEach.call(box.querySelectorAll(".wcard"), function (node, i) { bindRulers(node, shown[i]); });
+}
+
+function renderGovTable(tableId, gov) {
+  var table = $(tableId); if (!table) return;
+  var rows = gov.races.slice().sort(function (a, b) {
+    return Math.abs(a.dem_win_prob - 0.5) - Math.abs(b.dem_win_prob - 0.5) || a.state.localeCompare(b.state);
+  });
+  table.innerHTML = "<thead><tr><th>State</th><th>Democrat</th><th>Republican</th><th>Cook rating</th><th>Held by</th>" +
+    "<th class='num'>Polls</th><th class='num'>D win</th><th></th></tr></thead><tbody>" + rows.map(function (r) {
+      return "<tr><td>" + STATE_NAMES[r.state] + (r.open_seat ? ' <span class="muted" title="No incumbent running">open</span>' : "") +
+        "</td><td>" + esc(r.dem_candidate || "") + "</td><td>" + esc(r.rep_candidate || "") + "</td><td>" +
+        RATING_NAME[r.rating] + (r.rating === "tossup" ? "" : " " + r.lean) + "</td><td>" + (r.held_by || "") +
+        "</td><td class='num'>" + (r.polling ? margin(r.polling.poll_margin) : '<span class="muted">-</span>') +
+        "</td><td class='num'>" + pct(r.dem_win_prob) + '</td><td><span class="pbar"><i style="width:' +
+        (r.dem_win_prob * 100) + '%"></i></span></td></tr>';
+    }).join("") + "</tbody>";
+  [].forEach.call(table.querySelectorAll("tbody tr"), function (tr, i) {
+    bindTip(tr, function () { return govTip(rows[i]); });
+  });
+}
+
 /* -------------------------------------------------------------- results */
 /* Election night. The results file is re-read straight from the repository
    every minute while votes are being counted (the page's own copy is only as
@@ -1787,6 +1914,7 @@ function renderResultsAll(d, failed) {
   resStatus("res-status", d, failed);
   resTally("res-senate", "senate", d, cfg.forecast.senate);
   resTally("res-house", "house", d, cfg.forecast.house);
+  if (cfg.forecast.governor) resTally("res-gov", "governor", d, cfg.forecast.governor);
   var started = d && d.phase !== "before";
   var hasCalls = d && d.scorecard && d.scorecard.races_called > 0;
   var ew = $("res-events-wrap"), sw = $("res-score-wrap");
@@ -1830,16 +1958,21 @@ function resTally(id, chamber, d, fc) {
   var box = $(id); if (!box || !fc) return;
   var t = d && d.tally ? d.tally[chamber] : null;
   var total = fc.seats, need = fc.needed;
-  var D = t ? t.D : (chamber === "senate" && fc.not_up ? fc.not_up.D : 0);
-  var R = t ? t.R : (chamber === "senate" && fc.not_up ? fc.not_up.R : 0);
+  var withNotUp = chamber !== "house" && fc.not_up;
+  var D = t ? t.D : (withNotUp ? fc.not_up.D : 0);
+  var R = t ? t.R : (withNotUp ? fc.not_up.R : 0);
   var I = t ? (t.I || t.O || 0) : 0;
   var open = total - D - R - I;
-  var name = chamber === "senate" ? "Senate" : "House";
+  var isGov = chamber === "governor";
+  var name = chamber === "senate" ? "Senate" : isGov ? "Governors" : "House";
+  var unit = isGov ? "race" : "seat";
   var control = t && t.control;
   var started = d && d.phase && d.phase !== "before";
   var head = control
-    ? (control === "D" ? "Democrats win the " : "Republicans win the ") + name
-    : (!started ? name + ": " + open + " seats on the ballot" : name + ": " + open + " seat" + (open === 1 ? "" : "s") + " to call");
+    ? (isGov ? (control === "D" ? "Democrats hold most governorships" : "Republicans hold most governorships")
+             : (control === "D" ? "Democrats win the " : "Republicans win the ") + name)
+    : (!started ? name + ": " + open + " " + unit + "s on the ballot"
+                : name + ": " + open + " " + unit + (open === 1 ? "" : "s") + " to call");
   function seg(n, color, label) {
     return n > 0 ? '<i style="width:' + (100 * n / total) + '%;background:' + color + '" title="' + label + '"></i>' : "";
   }
@@ -1851,6 +1984,9 @@ function resTally(id, chamber, d, fc) {
   if (chamber === "senate") {
     note = "Includes the " + (fc.not_up ? fc.not_up.D + " Democratic and " + fc.not_up.R + " Republican" : "") +
       " seats not on the ballot. Democrats need " + need + "; the Vice President breaks a 50-50 tie for Republicans.";
+  } else if (isGov) {
+    note = "All 50 governors, including the " + (fc.not_up ? fc.not_up.D + " Democratic and " + fc.not_up.R +
+      " Republican" : "") + " not on the ballot. " + need + " is a majority.";
   } else {
     note = need + " for a majority.";
   }
@@ -1858,8 +1994,9 @@ function resTally(id, chamber, d, fc) {
     ? "<div class=\"res-proj\">Called seats plus the final forecast's odds in the races left: about <b>D " +
       t.expected_D.toFixed(0) + "</b></div>" : "";
   var fcLine = (d && d.frozen_forecast ? "Final forecast" : "Current forecast") + ": Democrats " + pct(fc.p) +
-    " to win the " + name + ", most likely " +
-    fc.median + " Democratic seats (80% between " + fc.p10 + " and " + fc.p90 + ").";
+    (isGov ? " to hold a majority of governorships, most likely " + fc.median + " Democratic governors"
+           : " to win the " + name + ", most likely " + fc.median + " Democratic seats") +
+    " (80% between " + fc.p10 + " and " + fc.p90 + ").";
   box.innerHTML = '<div class="chamber-label">' + name + "</div>" +
     '<div class="res-head">' + esc(head) + "</div>" +
     '<div class="res-nums"><span style="color:' + css("--dem") + '"><b>' + D + "</b> D</span>" +
@@ -1874,8 +2011,9 @@ function resEvents(id, events) {
   box.innerHTML = events.slice(0, 12).map(function (e) {
     var when = '<span class="t">' + esc(fmtTime(e.t)) + "</span>";
     if (e.type === "control") {
-      return "<li>" + when + "<span><b>" + (e.winner === "D" ? "Democrats" : "Republicans") + " win the " +
-        (e.chamber === "senate" ? "Senate" : "House") + "</b></span></li>";
+      return "<li>" + when + "<span><b>" + (e.winner === "D" ? "Democrats" : "Republicans") +
+        (e.chamber === "governor" ? " hold most governorships" : " win the " + (e.chamber === "senate" ? "Senate" : "House")) +
+        "</b></span></li>";
     }
     if (e.type === "retraction") {
       return "<li>" + when + "<span>Call withdrawn in <b>" + esc(e.label || e.race) + "</b></span></li>";
@@ -1898,10 +2036,11 @@ function resScore(id, sc) {
     return '<div class="j"><div class="k">' + k + '</div><div class="v">' + v + "</div>" +
       (sub ? '<div class="s">' + sub + "</div>" : "") + "</div>";
   }
-  var ctl = ["senate", "house"].map(function (c) {
+  var CH = {senate: "Senate", house: "House", governor: "Governors"};
+  var ctl = ["senate", "house", "governor"].map(function (c) {
     var x = sc.control[c];
     if (!x || !x.outcome) return null;
-    return (c === "senate" ? "Senate" : "House") + ": " + (x.outcome === "D" ? "Democrats" : "Republicans") +
+    return CH[c] + ": " + (x.outcome === "D" ? "Democrats" : "Republicans") +
       ", which the forecast gave " + pct(x.p_outcome);
   }).filter(Boolean).join("<br>");
   var m = sc.margins || {};
@@ -1911,11 +2050,13 @@ function resScore(id, sc) {
     return name + ": " + who + " ran " + Math.abs(x.bias).toFixed(1) + " pts ahead of the forecast margin on average (" +
       x.n + " races; typical miss " + x.mae.toFixed(1) + " pts)";
   }
-  var margins = [mline(m.senate, "Senate"), mline(m.house, "House")].filter(Boolean).join("<br>");
-  var seats = ["senate", "house"].map(function (c) {
+  var margins = [mline(m.senate, "Senate"), mline(m.house, "House"), mline(m.governor, "Governors")]
+    .filter(Boolean).join("<br>");
+  var seats = ["senate", "house", "governor"].map(function (c) {
     var x = (sc.seats || {})[c];
     if (!x) return null;
-    return (c === "senate" ? "Senate" : "House") + ": " + x.actual_D + " Democratic seats against a forecast median of " +
+    return CH[c] + ": " + x.actual_D + (c === "governor" ? " Democratic governors" : " Democratic seats") +
+      " against a forecast median of " +
       x.forecast_median + (x.in_80 ? ", inside" : ", outside") + " the forecast's 80% range";
   }).filter(Boolean).join("<br>");
   if (seats) ctl = (ctl ? ctl + "<br>" : "") + seats;
@@ -1974,6 +2115,7 @@ function resTable(tabsId, tableId, d, started) {
   var groups = {
     senate: ["Senate", function (r) { return r.chamber === "senate"; }],
     competitive: ["Competitive House", function (r) { return r.chamber === "house" && r.forecast.p >= 0.05 && r.forecast.p <= 0.95; }],
+    governor: ["Governors", function (r) { return r.chamber === "governor"; }],
     upsets: ["Upsets", function (r) { return r.call && ((r.call.dem_side ? r.forecast.p : 1 - r.forecast.p) < 0.5); }],
     house: ["All House", function (r) { return r.chamber === "house"; }]
   };
@@ -2055,7 +2197,8 @@ function renderResultsBand(host) {
     }
     var band = host.querySelector(".rb") || document.createElement("div");
     band.className = "rb";
-    band.innerHTML = part("Senate", s, 100) + part("House", h, 435) +
+    var g = d.tally.governor;
+    band.innerHTML = part("Senate", s, 100) + part("House", h, 435) + (g ? part("Governors", g, 50) : "") +
       '<a class="rb-go" href="results.html">Live results &#8594;</a>';
     if (!band.parentNode) host.appendChild(band);
   }, false);
@@ -2181,6 +2324,7 @@ function init() {
 
 global.FC = {
   init: init, onRender: onRender, renderCountdown: renderCountdown, renderResults: renderResults,
+  renderGovMap: renderGovMap, renderGovHero: renderGovHero, renderGovWatch: renderGovWatch, renderGovTable: renderGovTable,
   fmtTime: fmtTime, countdownParts: countdownParts,
   POLLS_FIRST_CLOSE: POLLS_FIRST_CLOSE, POLLS_LAST_CLOSE: POLLS_LAST_CLOSE, $: $, esc: esc, pct: pct, pct1: pct1, signed: signed, margin: margin,
   fmtDate: fmtDate, titleCase: titleCase, css: css, binColor: binColor, legendBins: legendBins, headlineFor: headlineFor,

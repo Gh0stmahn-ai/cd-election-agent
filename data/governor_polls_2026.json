@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-23T11:01:14+00:00",
+ "as_of": "2026-10-23T11:19:17+00:00",
  "source": "Wikipedia per-race election articles",
  "half_life_days": 21,
  "max_age_days": 120,
@@ -216,6 +216,38 @@
    "rating": "likely",
    "rating_lean": "R"
   },
+  "NH-GOV": {
+   "state": "NH",
+   "dem_candidate": "Cinde Warmington",
+   "rep_candidate": "Kelly Ayotte",
+   "dem_margin": -10.5,
+   "method": "mean of 5 aggregators",
+   "n_used": 5,
+   "detail": [
+    {
+     "label": "270toWin",
+     "margin": -12.0
+    },
+    {
+     "label": "Decision Desk HQ",
+     "margin": -11.2
+    },
+    {
+     "label": "FiftyPlusOne",
+     "margin": -10.3
+    },
+    {
+     "label": "RealClearPolitics",
+     "margin": -9.0
+    },
+    {
+     "label": "Silver Bulletin",
+     "margin": -10.2
+    }
+   ],
+   "rating": "likely",
+   "rating_lean": "R"
+  },
   "NV-GOV": {
    "state": "NV",
    "dem_candidate": "Aaron Ford",
@@ -358,6 +390,63 @@
    "rating": "lean",
    "rating_lean": "R"
   },
+  "VT-GOV": {
+   "state": "VT",
+   "dem_candidate": "Amanda Janoo",
+   "rep_candidate": "Phil Scott",
+   "dem_margin": -3.8,
+   "method": "5 polls, recency and sample weighted",
+   "n_used": 5,
+   "detail": [
+    {
+     "label": "State Navigate",
+     "dem": 43.0,
+     "rep": 46.0,
+     "date": "2026-10-08",
+     "n": 948,
+     "weight": 0.663,
+     "margin": -3.0
+    },
+    {
+     "label": "Braun Research/ Vermont Public",
+     "dem": 32.0,
+     "rep": 42.0,
+     "date": "2026-09-20",
+     "n": 817,
+     "weight": 0.34,
+     "margin": -10.0
+    },
+    {
+     "label": "University of New Hampshire",
+     "dem": 49.0,
+     "rep": 43.0,
+     "date": "2026-09-06",
+     "n": 829,
+     "weight": 0.216,
+     "margin": 6.0
+    },
+    {
+     "label": "University of New Hampshire",
+     "dem": 33.0,
+     "rep": 44.0,
+     "date": "2026-07-17",
+     "n": 954,
+     "weight": 0.043,
+     "margin": -11.0
+    },
+    {
+     "label": "University of New Hampshire",
+     "dem": 27.0,
+     "rep": 42.0,
+     "date": "2026-06-26",
+     "n": 887,
+     "weight": 0.021,
+     "margin": -15.0
+    }
+   ],
+   "rating": "likely",
+   "rating_lean": "R"
+  },
   "WI-GOV": {
    "state": "WI",
    "dem_candidate": "David Crowley",
@@ -392,10 +481,6 @@
   }
  },
  "issues": [
-  "AK-GOV: no single Democrat-against-Republican pairing to poll",
-  "NH-GOV: HTTP Error 429: Too Many Requests",
-  "NH-GOV: no article found",
-  "VT-GOV: HTTP Error 429: Too Many Requests",
-  "VT-GOV: no article found"
+  "AK-GOV: no single Democrat-against-Republican pairing to poll"
  ]
 }
