@@ -1,6 +1,6 @@
 {
  "schema_version": 2,
- "timestamp": "2026-10-24T01:16:18.149020+00:00",
+ "timestamp": "2026-10-24T18:41:38.340741+00:00",
  "status": {
   "state": "success",
   "issues": []
@@ -87,10 +87,10 @@
   "national_error_sd": 3.03
  },
  "senate": {
-  "dem_control_prob": 0.616,
-  "tie_prob": 0.1816,
-  "mean_dem_seats": 50.9,
-  "mean_rep_seats": 49.05,
+  "dem_control_prob": 0.6204,
+  "tie_prob": 0.1806,
+  "mean_dem_seats": 50.91,
+  "mean_rep_seats": 49.03,
   "not_up": {
    "D": 34,
    "R": 31,
@@ -108,19 +108,19 @@
   "histogram": {
    "41": 5e-05,
    "42": 8e-05,
-   "43": 0.00019,
-   "44": 0.00076,
-   "45": 0.00236,
-   "46": 0.00784,
-   "47": 0.02273,
-   "48": 0.05531,
-   "49": 0.11313,
-   "50": 0.18157,
-   "51": 0.22804,
-   "52": 0.21132,
-   "53": 0.12862,
-   "54": 0.04033,
-   "55": 0.006,
+   "43": 0.0002,
+   "44": 0.00073,
+   "45": 0.00235,
+   "46": 0.00753,
+   "47": 0.02205,
+   "48": 0.05423,
+   "49": 0.11177,
+   "50": 0.18063,
+   "51": 0.22898,
+   "52": 0.21257,
+   "53": 0.13035,
+   "54": 0.04079,
+   "55": 0.00602,
    "56": 0.0012,
    "57": 0.00024,
    "58": 0.0001,
@@ -152,7 +152,7 @@
     },
     "expected_margin": 2.43,
     "dem_win_prob": 0.6609,
-    "tipping_prob": 0.1331,
+    "tipping_prob": 0.1342,
     "rating_prob": 0.6091,
     "poll_prob": 0.6697
    },
@@ -271,7 +271,7 @@
     },
     "expected_margin": 9.66,
     "dem_win_prob": 0.9501,
-    "tipping_prob": 0.0339,
+    "tipping_prob": 0.0346,
     "rating_prob": 0.9754,
     "poll_prob": 0.9245
    },
@@ -295,7 +295,7 @@
     },
     "expected_margin": -0.09,
     "dem_win_prob": 0.4927,
-    "tipping_prob": 0.1347,
+    "tipping_prob": 0.1345,
     "rating_prob": 0.6091,
     "poll_prob": 0.4933
    },
@@ -352,7 +352,7 @@
     "polling": null,
     "expected_margin": -5.51,
     "dem_win_prob": 0.1716,
-    "tipping_prob": 0.0614,
+    "tipping_prob": 0.0612,
     "rating_prob": 0.1828,
     "poll_prob": null
    },
@@ -433,7 +433,7 @@
     },
     "expected_margin": 1.94,
     "dem_win_prob": 0.6287,
-    "tipping_prob": 0.1366,
+    "tipping_prob": 0.137,
     "rating_prob": 0.6091,
     "poll_prob": 0.6323
    },
@@ -457,7 +457,7 @@
     },
     "expected_margin": 2.98,
     "dem_win_prob": 0.694,
-    "tipping_prob": 0.1249,
+    "tipping_prob": 0.1258,
     "rating_prob": 0.7834,
     "poll_prob": 0.6819
    },
@@ -476,7 +476,7 @@
     "polling": null,
     "expected_margin": 15.64,
     "dem_win_prob": 0.9957,
-    "tipping_prob": 0.0032,
+    "tipping_prob": 0.0033,
     "rating_prob": 0.9959,
     "poll_prob": null
    },
@@ -532,15 +532,15 @@
     "atmospherics_adj": 0.06,
     "polling": {
      "weight": 0.821,
-     "poll_margin": 10.8,
+     "poll_margin": 10.7,
      "n_used": 5,
      "rating_margin": 11.64
     },
-    "expected_margin": 11.85,
-    "dem_win_prob": 0.9765,
-    "tipping_prob": 0.0176,
+    "expected_margin": 11.77,
+    "dem_win_prob": 0.9757,
+    "tipping_prob": 0.0186,
     "rating_prob": 0.9754,
-    "poll_prob": 0.9659
+    "poll_prob": 0.9646
    },
    {
     "seat_id": "NE-2026",
@@ -575,15 +575,15 @@
     "atmospherics_adj": -0.03,
     "polling": {
      "weight": 0.821,
-     "poll_margin": 6.6,
+     "poll_margin": 7.0,
      "n_used": 5,
      "rating_margin": 4.64
     },
-    "expected_margin": 5.8,
-    "dem_win_prob": 0.8375,
-    "tipping_prob": 0.0884,
+    "expected_margin": 6.13,
+    "dem_win_prob": 0.8508,
+    "tipping_prob": 0.0839,
     "rating_prob": 0.7834,
-    "poll_prob": 0.8675
+    "poll_prob": 0.8815
    },
    {
     "seat_id": "NJ-2026",
@@ -643,7 +643,7 @@
     },
     "expected_margin": 4.25,
     "dem_win_prob": 0.7647,
-    "tipping_prob": 0.1079,
+    "tipping_prob": 0.1086,
     "rating_prob": 0.6091,
     "poll_prob": 0.745
    },
@@ -775,15 +775,15 @@
     "atmospherics_adj": 0.02,
     "polling": {
      "weight": 0.821,
-     "poll_margin": 2.2,
+     "poll_margin": 2.3,
      "n_used": 6,
      "rating_margin": 1.64
     },
-    "expected_margin": 2.4,
-    "dem_win_prob": 0.6597,
-    "tipping_prob": 0.1322,
+    "expected_margin": 2.48,
+    "dem_win_prob": 0.6647,
+    "tipping_prob": 0.1324,
     "rating_prob": 0.6091,
-    "poll_prob": 0.6449
+    "poll_prob": 0.6512
    },
    {
     "seat_id": "VA-2026",
@@ -819,7 +819,7 @@
     "polling": null,
     "expected_margin": -22.86,
     "dem_win_prob": 0.0049,
-    "tipping_prob": 0.0017,
+    "tipping_prob": 0.0016,
     "rating_prob": 0.0049,
     "poll_prob": null
    },
@@ -3415,7 +3415,7 @@
     "notes": "",
     "polling": {
      "weight": 0.821,
-     "poll_margin": -2.7,
+     "poll_margin": -2.8,
      "n_used": 5,
      "rating_margin": -9.69,
      "adjustment": 0.0
@@ -3442,10 +3442,10 @@
      "adjustment_applied": 0.0
     },
     "adjustment": 0.0,
-    "expected_margin": -3.95,
-    "dem_win_prob": 0.2368,
+    "expected_margin": -4.03,
+    "dem_win_prob": 0.2324,
     "rating_prob": 0.0406,
-    "poll_prob": 0.3135
+    "poll_prob": 0.3072
    },
    {
     "race_id": "VT-GOV",
@@ -3588,9 +3588,9 @@
    "D": 24,
    "R": 26
   },
-  "mean_dem": 26.91,
-  "dem_majority_prob": 0.7862,
-  "dem_gain_prob": 0.9111,
+  "mean_dem": 26.9,
+  "dem_majority_prob": 0.7857,
+  "dem_gain_prob": 0.9109,
   "percentiles": {
    "5": 24,
    "10": 25,
@@ -3608,18 +3608,18 @@
    "19": 0.00024,
    "20": 0.00073,
    "21": 0.00191,
-   "22": 0.00661,
-   "23": 0.02152,
-   "24": 0.05772,
-   "25": 0.12491,
-   "26": 0.19756,
-   "27": 0.22282,
+   "22": 0.00662,
+   "23": 0.02157,
+   "24": 0.05794,
+   "25": 0.12515,
+   "26": 0.19804,
+   "27": 0.22271,
    "28": 0.18082,
-   "29": 0.1078,
-   "30": 0.04923,
-   "31": 0.01922,
-   "32": 0.0061,
-   "33": 0.00186,
+   "29": 0.10742,
+   "30": 0.04889,
+   "31": 0.01914,
+   "32": 0.00602,
+   "33": 0.00185,
    "34": 0.00051,
    "35": 0.00017,
    "36": 7e-05,
@@ -3637,10 +3637,10 @@
   }
  },
  "joint": {
-  "dem_both": 0.5778,
-  "dem_house_rep_senate": 0.2382,
-  "rep_house_dem_senate": 0.0382,
-  "rep_both": 0.1458
+  "dem_both": 0.5814,
+  "dem_house_rep_senate": 0.2346,
+  "rep_house_dem_senate": 0.039,
+  "rep_both": 0.145
  },
  "n_sims": 100000,
  "fundamentals_display": {
@@ -3890,62 +3890,30 @@
   ]
  },
  "change": {
-  "from": "2026-10-22T19:49:09.104636+00:00",
-  "to": "2026-10-24T01:16:18.149020+00:00",
+  "from": "2026-10-24T01:16:18.149020+00:00",
+  "to": "2026-10-24T18:41:38.340741+00:00",
   "total": {
-   "senate": -0.66,
-   "house": -0.49
+   "senate": 0.44,
+   "house": 0.0
   },
   "drivers": [
-   {
-    "id": "generic_ballot",
-    "label": "Generic ballot",
-    "points": {
-     "senate": -0.19,
-     "house": -0.62
-    }
-   },
    {
     "id": "senate_polls",
     "label": "Senate state polling",
     "points": {
-     "senate": -0.515,
+     "senate": 0.44,
      "house": 0.0
-    }
-   },
-   {
-    "id": "clock",
-    "label": "Election Day getting closer",
-    "points": {
-     "senate": 0.065,
-     "house": 0.17
-    }
-   },
-   {
-    "id": "approval",
-    "label": "Presidential approval",
-    "points": {
-     "senate": -0.015,
-     "house": -0.045
     }
    }
   ],
   "residual": {
-   "senate": -0.005,
-   "house": 0.005
+   "senate": -0.0,
+   "house": 0.0
   },
   "facts": [
    {
     "kind": "poll",
-    "text": "Generic ballot moved D+9.5 to D+9.4"
-   },
-   {
-    "kind": "poll",
-    "text": "Presidential approval went from net -25.3 to -25.1"
-   },
-   {
-    "kind": "economy",
-    "text": "10-yr Treasury yield scored better for the president's party (-0.75 to -0.64)"
+    "text": "NH Senate polling average moved D+6.6 to D+7.0"
    }
   ],
   "races": [],

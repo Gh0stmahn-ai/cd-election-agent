@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-24T01:15:17+00:00",
+ "as_of": "2026-10-24T18:40:36+00:00",
  "source": "Wikipedia per-race election articles",
  "half_life_days": 21,
  "max_age_days": 120,
@@ -370,29 +370,29 @@
    "state": "TX",
    "dem_candidate": "Gina Hinojosa",
    "rep_candidate": "Greg Abbott",
-   "dem_margin": -2.7,
+   "dem_margin": -2.8,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
     {
      "label": "270toWin",
-     "margin": -3.8
+     "margin": -3.5
     },
     {
      "label": "Decision Desk HQ",
-     "margin": -2.4
+     "margin": -2.9
     },
     {
      "label": "FiftyPlusOne",
-     "margin": -2.5
+     "margin": -2.6
     },
     {
      "label": "RealClearPolitics",
-     "margin": -2.2
+     "margin": -2.4
     },
     {
      "label": "Silver Bulletin",
-     "margin": -2.8
+     "margin": -2.7
     }
    ],
    "rating": "lean",

@@ -1,248 +1,248 @@
 {
- "as_of": "2026-10-24T01:12:20+00:00",
+ "as_of": "2026-10-24T18:37:30+00:00",
  "note": "Shown alongside the model, never blended into it.",
  "venues": {
   "kalshi": {
    "senate_dem": {
-    "prob": 0.665,
-    "volume": 17891265
+    "prob": 0.645,
+    "volume": 18234202
    },
    "joint": [
     {
      "label": "R-House, D-Senate",
-     "prob": 0.0055,
-     "volume": 16909893,
-     "prob_normalized": 0.0055
-    },
-    {
-     "label": "D-House, D-Senate",
-     "prob": 0.665,
-     "volume": 7286788,
-     "prob_normalized": 0.6597
-    },
-    {
-     "label": "D-House, R-Senate",
-     "prob": 0.245,
-     "volume": 5746336,
-     "prob_normalized": 0.2431
+     "prob": 0.005,
+     "volume": 17250719,
+     "prob_normalized": 0.0049
     },
     {
      "label": "R-House, R-Senate",
      "prob": 0.0925,
-     "volume": 23298960,
-     "prob_normalized": 0.0918
+     "volume": 23495563,
+     "prob_normalized": 0.0909
+    },
+    {
+     "label": "D-House, D-Senate",
+     "prob": 0.665,
+     "volume": 7324592,
+     "prob_normalized": 0.6536
+    },
+    {
+     "label": "D-House, R-Senate",
+     "prob": 0.255,
+     "volume": 5801113,
+     "prob_normalized": 0.2506
     }
    ],
-   "joint_volume": 53241977,
+   "joint_volume": 53871987,
    "house_dem": {
-    "prob": 0.9028,
-    "volume": 53241977
+    "prob": 0.9042,
+    "volume": 53871987
    },
    "generic_ballot": {
-    "implied_dem_margin": 9.0,
-    "volume": 3199876,
+    "implied_dem_margin": 8.9,
+    "volume": 3237786,
     "bins": [
-     {
-      "label": "Democrats, 6 to 8%",
-      "prob": 0.155,
-      "volume": 220916,
-      "prob_normalized": 0.1502
-     },
-     {
-      "label": "Democrats, 8 to 10%",
-      "prob": 0.265,
-      "volume": 205774,
-      "prob_normalized": 0.2568
-     },
-     {
-      "label": "Democrats, 10 to 12%",
-      "prob": 0.245,
-      "volume": 207628,
-      "prob_normalized": 0.2374
-     },
-     {
-      "label": "Democrats, 0 to 2%",
-      "prob": 0.0235,
-      "volume": 365256,
-      "prob_normalized": 0.0228
-     },
      {
       "label": "Democrats, 16% and above",
       "prob": 0.0355,
-      "volume": 216522,
-      "prob_normalized": 0.0344
+      "volume": 220508,
+      "prob_normalized": 0.0354
      },
      {
-      "label": "Democrats, 2 to 4%",
-      "prob": 0.0235,
-      "volume": 285580,
-      "prob_normalized": 0.0228
-     },
-     {
-      "label": "Democrats, 4 to 6%",
-      "prob": 0.0645,
-      "volume": 185526,
-      "prob_normalized": 0.0625
-     },
-     {
-      "label": "Republicans win",
-      "prob": 0.0535,
-      "volume": 1047124,
-      "prob_normalized": 0.0518
+      "label": "Democrats, 8 to 10%",
+      "prob": 0.255,
+      "volume": 205875,
+      "prob_normalized": 0.2546
      },
      {
       "label": "Democrats, 14 to 16%",
-      "prob": 0.0415,
-      "volume": 222639,
-      "prob_normalized": 0.0402
+      "prob": 0.042,
+      "volume": 222914,
+      "prob_normalized": 0.0419
+     },
+     {
+      "label": "Democrats, 10 to 12%",
+      "prob": 0.235,
+      "volume": 207767,
+      "prob_normalized": 0.2346
      },
      {
       "label": "Democrats, 12 to 14%",
-      "prob": 0.125,
-      "volume": 242911,
-      "prob_normalized": 0.1211
+      "prob": 0.115,
+      "volume": 243477,
+      "prob_normalized": 0.1148
+     },
+     {
+      "label": "Democrats, 4 to 6%",
+      "prob": 0.069,
+      "volume": 193176,
+      "prob_normalized": 0.0689
+     },
+     {
+      "label": "Democrats, 0 to 2%",
+      "prob": 0.0215,
+      "volume": 365256,
+      "prob_normalized": 0.0215
+     },
+     {
+      "label": "Democrats, 6 to 8%",
+      "prob": 0.145,
+      "volume": 221659,
+      "prob_normalized": 0.1448
+     },
+     {
+      "label": "Democrats, 2 to 4%",
+      "prob": 0.027,
+      "volume": 292512,
+      "prob_normalized": 0.027
+     },
+     {
+      "label": "Republicans win",
+      "prob": 0.0565,
+      "volume": 1064642,
+      "prob_normalized": 0.0564
      }
     ]
    },
    "house_seats": {
-    "volume": 3833769,
+    "volume": 3916480,
     "bins": [
      {
-      "label": "226-229",
-      "prob": 0.0625,
-      "volume": 217630,
-      "prob_normalized": 0.0613
+      "label": "Above 249",
+      "prob": 0.165,
+      "volume": 757201,
+      "prob_normalized": 0.1628
      },
      {
       "label": "214-217",
       "prob": 0.0285,
-      "volume": 336155,
-      "prob_normalized": 0.0279
+      "volume": 339565,
+      "prob_normalized": 0.0281
      },
      {
-      "label": "242-245",
-      "prob": 0.105,
-      "volume": 249555,
-      "prob_normalized": 0.1029
-     },
-     {
-      "label": "230-233",
-      "prob": 0.135,
-      "volume": 237097,
-      "prob_normalized": 0.1324
-     },
-     {
-      "label": "238-241",
-      "prob": 0.135,
-      "volume": 237237,
-      "prob_normalized": 0.1324
-     },
-     {
-      "label": "Above 249",
-      "prob": 0.165,
-      "volume": 741110,
-      "prob_normalized": 0.1618
-     },
-     {
-      "label": "218-221",
-      "prob": 0.027,
-      "volume": 268891,
-      "prob_normalized": 0.0265
-     },
-     {
-      "label": "210-213",
-      "prob": 0.0235,
-      "volume": 298135,
-      "prob_normalized": 0.023
-     },
-     {
-      "label": "Below 210",
-      "prob": 0.036,
-      "volume": 510277,
-      "prob_normalized": 0.0353
-     },
-     {
-      "label": "234-237",
-      "prob": 0.165,
-      "volume": 234278,
-      "prob_normalized": 0.1618
-     },
-     {
-      "label": "246-249",
-      "prob": 0.083,
-      "volume": 278059,
-      "prob_normalized": 0.0814
+      "label": "226-229",
+      "prob": 0.0645,
+      "volume": 231051,
+      "prob_normalized": 0.0636
      },
      {
       "label": "222-225",
       "prob": 0.0545,
-      "volume": 225345,
-      "prob_normalized": 0.0534
+      "volume": 226033,
+      "prob_normalized": 0.0538
+     },
+     {
+      "label": "234-237",
+      "prob": 0.155,
+      "volume": 236213,
+      "prob_normalized": 0.1529
+     },
+     {
+      "label": "Below 210",
+      "prob": 0.0375,
+      "volume": 521371,
+      "prob_normalized": 0.037
+     },
+     {
+      "label": "218-221",
+      "prob": 0.0285,
+      "volume": 277256,
+      "prob_normalized": 0.0281
+     },
+     {
+      "label": "246-249",
+      "prob": 0.084,
+      "volume": 279657,
+      "prob_normalized": 0.0829
+     },
+     {
+      "label": "210-213",
+      "prob": 0.031,
+      "volume": 320820,
+      "prob_normalized": 0.0306
+     },
+     {
+      "label": "238-241",
+      "prob": 0.135,
+      "volume": 237836,
+      "prob_normalized": 0.1332
+     },
+     {
+      "label": "242-245",
+      "prob": 0.105,
+      "volume": 250317,
+      "prob_normalized": 0.1036
+     },
+     {
+      "label": "230-233",
+      "prob": 0.125,
+      "volume": 239160,
+      "prob_normalized": 0.1233
      }
     ]
    },
    "senate_seats": {
-    "volume": 6770217,
+    "volume": 6888627,
     "bins": [
      {
-      "label": "48",
-      "prob": 0.057,
-      "volume": 433956,
-      "prob_normalized": 0.0532
-     },
-     {
-      "label": "49",
-      "prob": 0.0645,
-      "volume": 446360,
-      "prob_normalized": 0.0602
-     },
-     {
       "label": "46",
-      "prob": 0.0165,
-      "volume": 451200,
-      "prob_normalized": 0.0154
+      "prob": 0.017,
+      "volume": 455184,
+      "prob_normalized": 0.0164
      },
      {
-      "label": "51",
-      "prob": 0.105,
-      "volume": 442511,
-      "prob_normalized": 0.098
+      "label": "45",
+      "prob": 0.0155,
+      "volume": 443300,
+      "prob_normalized": 0.015
+     },
+     {
+      "label": "47",
+      "prob": 0.055,
+      "volume": 531222,
+      "prob_normalized": 0.0531
+     },
+     {
+      "label": "Below 45",
+      "prob": 0.0165,
+      "volume": 708505,
+      "prob_normalized": 0.0159
+     },
+     {
+      "label": "Above 52",
+      "prob": 0.365,
+      "volume": 1770918,
+      "prob_normalized": 0.3523
      },
      {
       "label": "52",
       "prob": 0.225,
-      "volume": 1147218,
-      "prob_normalized": 0.21
+      "volume": 1158351,
+      "prob_normalized": 0.2172
+     },
+     {
+      "label": "51",
+      "prob": 0.105,
+      "volume": 455350,
+      "prob_normalized": 0.1014
      },
      {
       "label": "50",
-      "prob": 0.115,
-      "volume": 434306,
-      "prob_normalized": 0.1073
+      "prob": 0.105,
+      "volume": 438432,
+      "prob_normalized": 0.1014
      },
      {
-      "label": "45",
-      "prob": 0.0165,
-      "volume": 432483,
-      "prob_normalized": 0.0154
+      "label": "48",
+      "prob": 0.06,
+      "volume": 459323,
+      "prob_normalized": 0.0579
      },
      {
-      "label": "47",
-      "prob": 0.0595,
-      "volume": 529473,
-      "prob_normalized": 0.0555
-     },
-     {
-      "label": "Above 52",
-      "prob": 0.395,
-      "volume": 1750287,
-      "prob_normalized": 0.3686
-     },
-     {
-      "label": "Below 45",
-      "prob": 0.0175,
-      "volume": 702423,
-      "prob_normalized": 0.0163
+      "label": "49",
+      "prob": 0.072,
+      "volume": 468042,
+      "prob_normalized": 0.0695
      }
     ]
    },
@@ -250,317 +250,317 @@
     "AL-GOV": {
      "ticker": "GOVPARTYAL-26",
      "dem": 0.0574,
-     "volume": 184552,
+     "volume": 186207,
      "dem_label": "Doug Jones",
      "rep_label": "Tommy Tuberville",
      "url": "https://kalshi.com/markets/govpartyal",
-     "as_of": "2026-10-24T01:12:20+00:00"
+     "as_of": "2026-10-24T18:37:30+00:00"
     },
     "AR-GOV": {
      "ticker": "GOVPARTYAR-26",
-     "dem": 0.0364,
-     "volume": 19535,
+     "dem": 0.041,
+     "volume": 22982,
      "dem_label": "Fred Love",
      "rep_label": "Sarah Huckabee Sanders",
      "url": "https://kalshi.com/markets/govpartyar",
-     "as_of": "2026-10-24T01:12:20+00:00"
+     "as_of": "2026-10-24T18:37:30+00:00"
     },
     "AZ-GOV": {
      "ticker": "GOVPARTYAZ-26",
-     "dem": 0.8961,
-     "volume": 1024115,
+     "dem": 0.9005,
+     "volume": 1088929,
      "dem_label": "Katie Hobbs",
      "rep_label": "Andy Biggs",
      "url": "https://kalshi.com/markets/govpartyaz",
-     "as_of": "2026-10-24T01:12:20+00:00"
+     "as_of": "2026-10-24T18:37:30+00:00"
     },
     "CA-GOV": {
      "ticker": "GOVPARTYCA-26",
-     "dem": 0.9636,
-     "volume": 2355628,
+     "dem": 0.9655,
+     "volume": 2394610,
      "dem_label": "Xavier Becerra",
      "rep_label": "Steve Hilton",
      "url": "https://kalshi.com/markets/govpartyca",
-     "as_of": "2026-10-24T01:12:20+00:00"
+     "as_of": "2026-10-24T18:37:30+00:00"
     },
     "CO-GOV": {
      "ticker": "GOVPARTYCO-26",
-     "dem": 0.963,
-     "volume": 262064,
+     "dem": 0.9645,
+     "volume": 263907,
      "dem_label": "Phil Weiser",
      "rep_label": "Victor Marx",
      "url": "https://kalshi.com/markets/govpartyco",
-     "as_of": "2026-10-24T01:12:20+00:00"
+     "as_of": "2026-10-24T18:37:30+00:00"
     },
     "CT-GOV": {
      "ticker": "GOVPARTYCT-26",
-     "dem": 0.9636,
-     "volume": 83892,
+     "dem": 0.9646,
+     "volume": 87952,
      "dem_label": "Ned Lamont",
      "rep_label": "Ryan Fazio",
      "url": "https://kalshi.com/markets/govpartyct",
-     "as_of": "2026-10-24T01:12:20+00:00"
+     "as_of": "2026-10-24T18:37:30+00:00"
     },
     "FL-GOV": {
      "ticker": "GOVPARTYFL-26",
      "dem": 0.1912,
-     "volume": 4178170,
+     "volume": 4230858,
      "dem_label": "David Jolly",
      "rep_label": "Byron Donalds",
      "url": "https://kalshi.com/markets/govpartyfl",
-     "as_of": "2026-10-24T01:12:20+00:00"
+     "as_of": "2026-10-24T18:37:30+00:00"
     },
     "GA-GOV": {
      "ticker": "GOVPARTYGA-26",
-     "dem": 0.5891,
-     "volume": 2430325,
+     "dem": 0.585,
+     "volume": 2456824,
      "dem_label": "Keisha Lance Bottoms",
      "rep_label": "Rick Jackson",
      "url": "https://kalshi.com/markets/govpartyga",
-     "as_of": "2026-10-24T01:12:20+00:00"
+     "as_of": "2026-10-24T18:37:30+00:00"
     },
     "HI-GOV": {
      "ticker": "GOVPARTYHI-26",
-     "dem": 0.98,
-     "volume": 17826,
+     "dem": 0.9794,
+     "volume": 18475,
      "dem_label": "Josh Green",
      "rep_label": "Gary Cordery",
      "url": "https://kalshi.com/markets/govpartyhi",
-     "as_of": "2026-10-24T01:12:20+00:00"
+     "as_of": "2026-10-24T18:37:30+00:00"
     },
     "IA-GOV": {
      "ticker": "GOVPARTYIA-26",
      "dem": 0.8564,
-     "volume": 2113076,
+     "volume": 2124757,
      "dem_label": "Rob Sand",
      "rep_label": "Zach Lahn",
      "url": "https://kalshi.com/markets/govpartyia",
-     "as_of": "2026-10-24T01:12:20+00:00"
+     "as_of": "2026-10-24T18:37:30+00:00"
     },
     "ID-GOV": {
      "ticker": "GOVPARTYID-26",
-     "dem": 0.0305,
-     "volume": 8903,
+     "dem": 0.0329,
+     "volume": 8909,
      "dem_label": "Terri Pickens",
      "rep_label": "Brad Little",
      "url": "https://kalshi.com/markets/govpartyid",
-     "as_of": "2026-10-24T01:12:20+00:00"
+     "as_of": "2026-10-24T18:37:30+00:00"
     },
     "IL-GOV": {
      "ticker": "GOVPARTYIL-26",
-     "dem": 0.9622,
-     "volume": 248228,
+     "dem": 0.9661,
+     "volume": 252858,
      "dem_label": "JB Pritzker",
      "rep_label": "Darren Bailey",
      "url": "https://kalshi.com/markets/govpartyil",
-     "as_of": "2026-10-24T01:12:20+00:00"
+     "as_of": "2026-10-24T18:37:30+00:00"
     },
     "KS-GOV": {
      "ticker": "GOVPARTYKS-27",
-     "dem": 0.2513,
-     "volume": 217277,
+     "dem": 0.255,
+     "volume": 217679,
      "dem_label": "Cindy Holscher",
      "rep_label": "Ty Masterson",
      "url": "https://kalshi.com/markets/govpartyks",
-     "as_of": "2026-10-24T01:12:20+00:00"
+     "as_of": "2026-10-24T18:37:30+00:00"
     },
     "MA-GOV": {
      "ticker": "GOVPARTYMA-26",
-     "dem": 0.9566,
-     "volume": 1899461,
+     "dem": 0.9542,
+     "volume": 1980067,
      "dem_label": "Maura Healey",
      "rep_label": "Mike Minogue",
      "url": "https://kalshi.com/markets/govpartyma",
-     "as_of": "2026-10-24T01:12:20+00:00"
+     "as_of": "2026-10-24T18:37:30+00:00"
     },
     "MD-GOV": {
      "ticker": "GOVPARTYMD-26",
-     "dem": 0.972,
-     "volume": 86373,
+     "dem": 0.9715,
+     "volume": 86730,
      "dem_label": "Wes Moore",
      "rep_label": "Dan Cox",
      "url": "https://kalshi.com/markets/govpartymd",
-     "as_of": "2026-10-24T01:12:20+00:00"
+     "as_of": "2026-10-24T18:37:30+00:00"
     },
     "ME-GOV": {
      "ticker": "GOVPARTYME-26",
-     "dem": 0.9479,
-     "volume": 106444,
+     "dem": 0.9491,
+     "volume": 114467,
      "dem_label": "Hannah Pingree",
      "rep_label": "Robert Charles",
      "url": "https://kalshi.com/markets/govpartyme",
-     "as_of": "2026-10-24T01:12:20+00:00"
+     "as_of": "2026-10-24T18:37:30+00:00"
     },
     "MI-GOV": {
      "ticker": "GOVPARTYMI-26",
-     "dem": 0.9241,
-     "volume": 364688,
+     "dem": 0.9276,
+     "volume": 371964,
      "dem_label": "Jocelyn Benson",
      "rep_label": "John James",
      "url": "https://kalshi.com/markets/govpartymi",
-     "as_of": "2026-10-24T01:12:20+00:00"
+     "as_of": "2026-10-24T18:37:30+00:00"
     },
     "MN-GOV": {
      "ticker": "GOVPARTYMN-26",
-     "dem": 0.9521,
-     "volume": 573273,
+     "dem": 0.952,
+     "volume": 580708,
      "dem_label": "Amy Klobuchar",
      "rep_label": "Lisa Demuth",
      "url": "https://kalshi.com/markets/govpartymn",
-     "as_of": "2026-10-24T01:12:20+00:00"
+     "as_of": "2026-10-24T18:37:30+00:00"
     },
     "NE-GOV": {
      "ticker": "GOVPARTYNE-26",
-     "dem": 0.1393,
-     "volume": 70981,
+     "dem": 0.1364,
+     "volume": 72168,
      "dem_label": "Lynne Walz",
      "rep_label": "Jim Pillen",
      "url": "https://kalshi.com/markets/govpartyne",
-     "as_of": "2026-10-24T01:12:20+00:00"
+     "as_of": "2026-10-24T18:37:30+00:00"
     },
     "NH-GOV": {
      "ticker": "GOVPARTYNH-28",
-     "dem": 0.0573,
-     "volume": 266968,
+     "dem": 0.0574,
+     "volume": 266992,
      "dem_label": "Cinde Warmington",
      "rep_label": "Kelly Ayotte",
      "url": "https://kalshi.com/markets/govpartynh",
-     "as_of": "2026-10-24T01:12:20+00:00"
+     "as_of": "2026-10-24T18:37:30+00:00"
     },
     "NM-GOV": {
      "ticker": "GOVPARTYNM-26",
-     "dem": 0.9442,
-     "volume": 187695,
+     "dem": 0.947,
+     "volume": 188065,
      "dem_label": "Deb Haaland",
      "rep_label": "Greggory D. Hull",
      "url": "https://kalshi.com/markets/govpartynm",
-     "as_of": "2026-10-24T01:12:20+00:00"
+     "as_of": "2026-10-24T18:37:30+00:00"
     },
     "NV-GOV": {
      "ticker": "GOVPARTYNV-26",
      "dem": 0.6616,
-     "volume": 1808966,
+     "volume": 1814113,
      "dem_label": "Aaron Ford",
      "rep_label": "Joe Lombardo",
      "url": "https://kalshi.com/markets/govpartynv",
-     "as_of": "2026-10-24T01:12:20+00:00"
+     "as_of": "2026-10-24T18:37:30+00:00"
     },
     "NY-GOV": {
      "ticker": "GOVPARTYNY-26",
-     "dem": 0.9448,
-     "volume": 4483312,
+     "dem": 0.951,
+     "volume": 4549897,
      "dem_label": "Kathy Hochul",
      "rep_label": "Bruce Blakeman",
      "url": "https://kalshi.com/markets/govpartyny",
-     "as_of": "2026-10-24T01:12:20+00:00"
+     "as_of": "2026-10-24T18:37:30+00:00"
     },
     "OH-GOV": {
      "ticker": "GOVPARTYOH-26",
-     "dem": 0.815,
-     "volume": 4237130,
+     "dem": 0.8069,
+     "volume": 4410624,
      "dem_label": "Amy Acton",
      "rep_label": "Vivek Ramaswamy",
      "url": "https://kalshi.com/markets/govpartyoh",
-     "as_of": "2026-10-24T01:12:20+00:00"
+     "as_of": "2026-10-24T18:37:30+00:00"
     },
     "OK-GOV": {
      "ticker": "GOVPARTYOK-26",
-     "dem": 0.098,
-     "volume": 290166,
+     "dem": 0.0936,
+     "volume": 292294,
      "dem_label": "Cyndi Munson",
      "rep_label": "Mike Mazzei",
      "url": "https://kalshi.com/markets/govpartyok",
-     "as_of": "2026-10-24T01:12:20+00:00"
+     "as_of": "2026-10-24T18:37:30+00:00"
     },
     "OR-GOV": {
      "ticker": "GOVPARTYOR-26",
-     "dem": 0.815,
-     "volume": 419343,
+     "dem": 0.8069,
+     "volume": 439683,
      "dem_label": "Tina Kotek",
      "rep_label": "Christine Drazan",
      "url": "https://kalshi.com/markets/govpartyor",
-     "as_of": "2026-10-24T01:12:20+00:00"
+     "as_of": "2026-10-24T18:37:30+00:00"
     },
     "PA-GOV": {
      "ticker": "GOVPARTYPA-26",
      "dem": 0.973,
-     "volume": 981059,
+     "volume": 984626,
      "dem_label": "Josh Shapiro",
      "rep_label": "Stacy Garrity",
      "url": "https://kalshi.com/markets/govpartypa",
-     "as_of": "2026-10-24T01:12:20+00:00"
+     "as_of": "2026-10-24T18:37:30+00:00"
     },
     "RI-GOV": {
      "ticker": "GOVPARTYRI-26",
-     "dem": 0.9953,
-     "volume": 52860,
+     "dem": 0.9963,
+     "volume": 52964,
      "dem_label": "Helena Foulkes",
      "rep_label": "Aaron Guckian",
      "url": "https://kalshi.com/markets/govpartyri",
-     "as_of": "2026-10-24T01:12:20+00:00"
+     "as_of": "2026-10-24T18:37:30+00:00"
     },
     "SC-GOV": {
      "ticker": "GOVPARTYSC-26",
-     "dem": 0.0664,
-     "volume": 50821,
+     "dem": 0.0654,
+     "volume": 51670,
      "dem_label": "Jermaine Johnson",
      "rep_label": "Alan Wilson",
      "url": "https://kalshi.com/markets/govpartysc",
-     "as_of": "2026-10-24T01:12:20+00:00"
+     "as_of": "2026-10-24T18:37:30+00:00"
     },
     "SD-GOV": {
      "ticker": "GOVPARTYSD-26",
-     "dem": 0.027,
+     "dem": 0.0246,
      "volume": 10363,
      "dem_label": "Dan Ahlers",
      "rep_label": "Larry Rhoden",
      "url": "https://kalshi.com/markets/govpartysd",
-     "as_of": "2026-10-24T01:12:20+00:00"
+     "as_of": "2026-10-24T18:37:30+00:00"
     },
     "TN-GOV": {
      "ticker": "GOVPARTYTN-26",
-     "dem": 0.0447,
-     "volume": 191542,
+     "dem": 0.0444,
+     "volume": 195377,
      "dem_label": "Jerri Green",
      "rep_label": "Marsha Blackburn",
      "url": "https://kalshi.com/markets/govpartytn",
-     "as_of": "2026-10-24T01:12:20+00:00"
+     "as_of": "2026-10-24T18:37:30+00:00"
     },
     "TX-GOV": {
      "ticker": "GOVPARTYTX-26",
-     "dem": 0.285,
-     "volume": 4570444,
+     "dem": 0.3119,
+     "volume": 4839504,
      "dem_label": "Gina Hinojosa",
      "rep_label": "Greg Abbott",
      "url": "https://kalshi.com/markets/govpartytx",
-     "as_of": "2026-10-24T01:12:20+00:00"
+     "as_of": "2026-10-24T18:37:30+00:00"
     },
     "VT-GOV": {
      "ticker": "GOVPARTYVT-26",
      "dem": 0.255,
-     "volume": 613915,
+     "volume": 614869,
      "dem_label": "Amanda Janoo",
      "rep_label": "Phil Scott",
      "url": "https://kalshi.com/markets/govpartyvt",
-     "as_of": "2026-10-24T01:12:20+00:00"
+     "as_of": "2026-10-24T18:37:30+00:00"
     },
     "WI-GOV": {
      "ticker": "GOVPARTYWI-26",
-     "dem": 0.797,
-     "volume": 1467518,
+     "dem": 0.795,
+     "volume": 1479082,
      "dem_label": "David Crowley",
      "rep_label": "Tom Tiffany",
      "url": "https://kalshi.com/markets/govpartywi",
-     "as_of": "2026-10-24T01:12:20+00:00"
+     "as_of": "2026-10-24T18:37:30+00:00"
     },
     "WY-GOV": {
      "ticker": "GOVPARTYWY-26",
-     "dem": 0.0176,
-     "volume": 9526,
+     "dem": 0.0201,
+     "volume": 9899,
      "dem_label": "Kenneth Casner",
      "rep_label": "Eric Barlow",
      "url": "https://kalshi.com/markets/govpartywy",
-     "as_of": "2026-10-24T01:12:20+00:00"
+     "as_of": "2026-10-24T18:37:30+00:00"
     }
    },
    "name": "Kalshi",
@@ -569,61 +569,61 @@
   "polymarket": {
    "house_dem": {
     "prob": 0.915,
-    "volume": 21107356
+    "volume": 21306081
    },
    "senate_dem": {
-    "prob": 0.675,
-    "volume": 8817478
+    "prob": 0.665,
+    "volume": 8931250
    },
    "races": {
     "ME-2026": {
      "title": "Maine Senate Election Winner",
-     "volume": 2473533,
+     "volume": 2503357,
      "slug": "maine-senate-election-winner",
      "parties": {
       "D": {
-       "prob": 0.66,
+       "prob": 0.6468,
        "label": "Troy Jackson (D)"
       },
       "R": {
-       "prob": 0.34,
+       "prob": 0.3532,
        "label": "Susan Collins (R)"
       }
      }
     },
     "TX-2026": {
      "title": "Texas Senate Election Winner",
-     "volume": 5865183,
+     "volume": 5997628,
      "slug": "texas-senate-election-winner",
      "parties": {
       "D": {
-       "prob": 0.6418,
+       "prob": 0.6313,
        "label": "James Talarico (D)"
       },
       "R": {
-       "prob": 0.3582,
+       "prob": 0.3687,
        "label": "Ken Paxton (R)"
       }
      }
     },
     "MI-2026": {
      "title": "Michigan Senate Election Winner",
-     "volume": 2317809,
+     "volume": 2376025,
      "slug": "michigan-senate-election-winner",
      "parties": {
       "D": {
-       "prob": 0.7114,
+       "prob": 0.705,
        "label": "Abdul El-Sayed (D)"
       },
       "R": {
-       "prob": 0.2886,
+       "prob": 0.295,
        "label": "Mike Rogers (R)"
       }
      }
     },
     "AK-2026": {
      "title": "Alaska Senate Election Winner",
-     "volume": 1601745,
+     "volume": 1609525,
      "slug": "alaska-senate-election-winner",
      "parties": {
       "R": {
@@ -638,22 +638,22 @@
     },
     "OH-2026-special": {
      "title": "Ohio Senate Election Winner",
-     "volume": 1583962,
+     "volume": 1599681,
      "slug": "ohio-senate-election-winner",
      "parties": {
       "D": {
-       "prob": 0.695,
+       "prob": 0.685,
        "label": "Sherrod Brown (D)"
       },
       "R": {
-       "prob": 0.305,
+       "prob": 0.315,
        "label": "Jon Husted (R)"
       }
      }
     },
     "IA-2026": {
      "title": "Iowa Senate Election Winner",
-     "volume": 1063483,
+     "volume": 1067101,
      "slug": "iowa-senate-election-winner",
      "parties": {
       "D": {
@@ -668,7 +668,7 @@
     },
     "NE-2026": {
      "title": "Nebraska Senate Election Winner  ",
-     "volume": 936709,
+     "volume": 938860,
      "slug": "nebraska-senate-election-winner",
      "parties": {
       "D": {
@@ -676,11 +676,11 @@
        "label": "Democrat"
       },
       "R": {
-       "prob": 0.7346,
+       "prob": 0.736,
        "label": "Pete Ricketts (R)"
       },
       "I": {
-       "prob": 0.2649,
+       "prob": 0.2636,
        "label": "Independent"
       }
      }
