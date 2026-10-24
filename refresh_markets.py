@@ -8,6 +8,8 @@ over public endpoints:
   Kalshi      api.elections.kalshi.com  (CFTC-regulated US exchange)
   Polymarket  gamma-api.polymarket.com  (crypto-settled)
 
+Kalshi also lists each governor's race; those are read the same way.
+
 These prices are NOT an input to the model. They are collected so the site
 can show model and market side by side, which is useful precisely when the
 two disagree. Blending them would double count: a prediction market is
@@ -23,6 +25,7 @@ Run it directly:  python3 refresh_markets.py
 """
 import json
 import sys
+import time
 import urllib.error
 import urllib.request
 from datetime import datetime, timezone
@@ -66,10 +69,18 @@ def canonical_balance_label(label):
             return "R-House, R-Senate"
     return text
 
-def get(url):
-    req = urllib.request.Request(url, headers=UA)
-    with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
-        return json.loads(resp.read().decode("utf-8"))
+def get(url, tries=5):
+    """One JSON read. Kalshi answers a burst of reads with 429 Too Many
+    Requests, so back off and try again rather than lose the market."""
+    for attempt in range(tries):
+        req = urllib.request.Request(url, headers=UA)
+        try:
+            with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
+                return json.loads(resp.read().decode("utf-8"))
+        except urllib.error.HTTPError as e:
+            if e.code != 429 or attempt == tries - 1:
+                raise
+            time.sleep(5 * (attempt + 1))
 
 
 def num(x):
@@ -192,6 +203,89 @@ def nominees():
     return table
 
 
+# Kalshi lists each governor's race as "GOVPARTY<state>-26" (a few as -27,
+# Kansas among them); where the -26 event is empty the series is searched.
+K_GOV_SERIES = "GOVPARTY{state}"
+GOV_PAUSE = 1.5     # seconds between governor reads, to stay under Kalshi's rate limit
+
+
+def governor_nominees():
+    """Race id -> {surname: party} from the governor race file."""
+    races = json.loads((DATA / "governor_races_2026.json").read_text())["races"]
+    table = {}
+    for race in races:
+        full, by_surname = {}, {}
+        for party, key in (("D", "dem_candidate"), ("R", "rep_candidate")):
+            for name in (race.get(key) or "").split(","):
+                name = name.strip()
+                if name:
+                    full[name.lower()] = party
+                    by_surname[name.split()[-1].lower()] = party
+        # Full names first: Nevada has an Aaron Ford (D) and a Danielle Ford (I).
+        table[race["race_id"]] = {"state": race["state"], "surnames": [full, by_surname]}
+    return table
+
+
+def _gov_split(rows, names):
+    """D and R prices from one book, matching full names before surnames."""
+    for table in names:
+        got = _gov_split_one(rows, table)
+        if got:
+            return got
+    return None
+
+
+def _gov_split_one(rows, surnames):
+    by_party = {}
+    for r in rows:
+        party = party_of(r["label"], surnames)
+        if party in ("D", "R"):
+            by_party.setdefault(party, {"prob": 0.0, "label": r["label"], "volume": 0})
+            by_party[party]["prob"] += r["prob"]
+            by_party[party]["volume"] += r["volume"]
+    if "D" not in by_party or "R" not in by_party:
+        return None
+    if not (by_party["D"]["prob"] + by_party["R"]["prob"]):
+        return None
+    return by_party
+
+
+def kalshi_governor(state, surnames):
+    """One state's governor market, as the Democratic share of the D and R
+    prices. None when Kalshi lists no market for this year's nominees.
+
+    Kalshi's tickers do not follow the election year reliably (New
+    Hampshire's 2026 race is GOVPARTYNH-28, Kansas's GOVPARTYKS-27), so the
+    test of the right market is that its outcomes name both of this year's
+    nominees, not its ticker."""
+    series = K_GOV_SERIES.format(state=state)
+    tickers = [f"{series}-26"]
+    found = None
+    for attempt_no in range(2):
+        for ticker in tickers:
+            split = _gov_split(kalshi_event(ticker), surnames)
+            time.sleep(GOV_PAUSE)
+            if split:
+                found = (ticker, split)
+                break
+        if found or attempt_no:
+            break
+        events = get(f"{KALSHI}/events?series_ticker={series}&limit=20").get("events", [])
+        time.sleep(GOV_PAUSE)
+        tickers = [e["event_ticker"] for e in events
+                   if "governor" in (e.get("title") or "").lower()
+                   and e["event_ticker"] != f"{series}-26"
+                   and not any(y in (e.get("sub_title") or "") for y in ("2018", "2020", "2022", "2024"))]
+    if not found:
+        return None
+    ticker, by_party = found
+    total = by_party["D"]["prob"] + by_party["R"]["prob"]
+    return {"ticker": ticker, "dem": round(by_party["D"]["prob"] / total, 4),
+            "volume": by_party["D"]["volume"] + by_party["R"]["volume"],
+            "dem_label": by_party["D"]["label"], "rep_label": by_party["R"]["label"],
+            "url": f"https://kalshi.com/markets/{series.lower()}"}
+
+
 def party_of(label, surnames=None):
     """D / R / I for one market outcome, by party tag or by candidate name."""
     text = (label or "").lower()
@@ -264,6 +358,33 @@ def collect():
         if rows:
             kalshi[key] = {"volume": sum(r["volume"] for r in rows),
                            "bins": normalized(rows)}
+    # Governors, race by race. Slow on purpose (one read a second), and a
+    # race whose market cannot be read is simply left out.
+    gov_table = attempt("governor nominees", governor_nominees) or {}
+    gov_markets = {}
+    for rid, info in gov_table.items():
+        m = attempt(f"kalshi {rid}", lambda i=info: kalshi_governor(i["state"], i["surnames"]))
+        if m:
+            gov_markets[rid] = m
+        time.sleep(GOV_PAUSE)
+    # A race whose read failed this time keeps its last price, marked with
+    # when it was read, rather than vanishing from the page for a day.
+    try:
+        prev = json.loads((DATA / "markets_2026.json").read_text())
+        prev_gov = prev["venues"]["kalshi"].get("governors") or {}
+        for rid, m in prev_gov.items():
+            seen = datetime.fromisoformat(m.get("as_of") or prev["as_of"])
+            if (datetime.now(timezone.utc) - seen).days > 3:
+                continue        # three days without a read: drop it
+            if rid in gov_table and rid not in gov_markets:
+                gov_markets[rid] = dict(m, as_of=m.get("as_of") or prev.get("as_of"), carried=True)
+    except (OSError, ValueError, KeyError):
+        pass
+    for m in gov_markets.values():
+        m.setdefault("as_of", out["as_of"])
+    if gov_markets:
+        kalshi["governors"] = gov_markets
+
     if kalshi:
         kalshi["name"] = "Kalshi"
         kalshi["url"] = "https://kalshi.com"
@@ -339,6 +460,8 @@ def main():
             bits.append(f"implied ballot D{v['generic_ballot']['implied_dem_margin']:+.1f}")
         if "races" in v:
             bits.append(f"{len(v['races'])} races")
+        if "governors" in v:
+            bits.append(f"{len(v['governors'])} governor races")
         print(f"  {v.get('name', key)}: " + ", ".join(bits))
     if payload["issues"]:
         print(f"  ({len(payload['issues'])} endpoint(s) unavailable, kept what came back)")

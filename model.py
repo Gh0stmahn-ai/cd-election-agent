@@ -366,6 +366,36 @@ def load_governor_polls():
         return {}
 
 
+def load_governor_research(today=None):
+    """Hand-researched notes on the competitive governor races, and the small
+    adjustments that come with them (data/governor_research_2026.json).
+
+    An adjustment is capped at the file's cap (2 points of margin) and is
+    dropped once the research is older than its stale_after_days: reporting
+    three weeks old is not evidence about the race any more, and the rating
+    and polls have had time to catch up with it. The notes themselves are
+    always returned, with their date, so the page can say how old they are."""
+    try:
+        doc = _load("governor_research_2026.json")
+    except (FileNotFoundError, ValueError):
+        return {}, None
+    cap = float(doc.get("cap_points", 2.0))
+    today = today or datetime.now(timezone.utc).date()
+    try:
+        age = (today - date.fromisoformat(doc["as_of"])).days
+    except (KeyError, ValueError):
+        age = None
+    live = age is not None and age <= int(doc.get("stale_after_days", 21))
+    out = {}
+    for rid, r in (doc.get("races") or {}).items():
+        adj = float(r.get("adjustment") or 0.0)
+        adj = max(-cap, min(cap, adj)) if live else 0.0
+        out[rid] = dict(r, adjustment_applied=round(adj, 2))
+    meta = {"as_of": doc.get("as_of"), "cap_points": cap, "live": live, "age_days": age,
+            "method": doc.get("method")}
+    return out, meta
+
+
 def load_senate_polls():
     """State polling averages per Senate race, or an empty map if never fetched."""
     try:
@@ -576,16 +606,20 @@ def simulate_governors(rng, E, env, nat, shared_for, n_sims):
     ref = gov.get("ratings_environment_dem_margin")
     ref = E if ref is None else ref
     polls = load_governor_polls()
+    research, research_meta = load_governor_research()
     base, used = [], []
     for r in races:
         from_rating = _baseline("governor", r["rating"], r["lean"]) + GOVERNOR_ENV_SENSITIVITY * (E - ref)
         entry = polls.get(r["race_id"])
         w = poll_weight(entry, env["days_to_election"]) if entry else 0.0
         b = w * entry["dem_margin"] + (1 - w) * from_rating if w > 0 else from_rating
+        # The researched adjustment goes on last, on top of rating and polls,
+        # so it is visibly separate from both (see load_governor_research).
+        adj = (research.get(r["race_id"]) or {}).get("adjustment_applied", 0.0)
         used.append({"weight": round(w, 3), "poll_margin": entry["dem_margin"] if entry else None,
                      "n_used": entry.get("n_used") if entry else None,
-                     "rating_margin": round(from_rating, 2)})
-        base.append(b)
+                     "rating_margin": round(from_rating, 2), "adjustment": adj})
+        base.append(b + adj)
     base = np.array(base)
     margin = (base[None, :]
               + GOVERNOR_ENV_SENSITIVITY * nat[:, None]
@@ -608,6 +642,8 @@ def simulate_governors(rng, E, env, nat, shared_for, n_sims):
             "incumbent": r.get("incumbent"), "open_seat": r.get("open_seat"),
             "dem_candidate": r.get("dem_candidate"), "rep_candidate": r.get("rep_candidate"),
             "notes": r.get("notes", ""), "polling": u if u["poll_margin"] is not None else None,
+            "research": research.get(r["race_id"]),
+            "adjustment": u["adjustment"],
             "expected_margin": round(float(base[i]), 2),
             "dem_win_prob": round(float(win[:, i].mean()), 4),
             "rating_prob": _implied_prob(u["rating_margin"], "governor", r["rating"]),
@@ -626,6 +662,7 @@ def simulate_governors(rng, E, env, nat, shared_for, n_sims):
         "majority": GOVERNOR_MAJORITY,
         "ratings_as_of": gov.get("as_of"),
         "ratings_source": gov.get("ratings_source"),
+        "research": research_meta,
     }
 
 

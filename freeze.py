@@ -137,6 +137,8 @@ def _market_record(snap):
         "senate_dem": {"kalshi": prob(kalshi, "senate_dem"), "polymarket": prob(poly, "senate_dem")},
         "house_dem": {"kalshi": prob(kalshi, "house_dem"), "polymarket": prob(poly, "house_dem")},
         "senate_races": races,
+        "governor_races": {rid: m["dem"] for rid, m in (kalshi.get("governors") or {}).items()
+                           if m.get("dem") is not None},
     }
 
 

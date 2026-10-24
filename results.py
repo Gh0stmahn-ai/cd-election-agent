@@ -161,6 +161,7 @@ def registry(snap, markets, baselines):
         }
     gov = snap.get("governors") or {}
     gov_rating = baselines.get("governor_rating_probs", {})
+    gov_market = (markets or {}).get("governor_races", {})
     for g in gov.get("races", []):
         races[g["race_id"]] = {
             "id": g["race_id"], "chamber": "governor", "state": g["state"],
@@ -169,7 +170,8 @@ def registry(snap, markets, baselines):
             "dem_candidate": g.get("dem_candidate"), "rep_candidate": g.get("rep_candidate"),
             "independent_side": False,
             "forecast": {"p": g["dem_win_prob"], "margin": g.get("expected_margin"),
-                         "rating_p": gov_rating.get(g["race_id"], g.get("rating_prob")), "market_p": None},
+                         "rating_p": gov_rating.get(g["race_id"], g.get("rating_prob")),
+                         "market_p": gov_market.get(g["race_id"])},
         }
     for r in races.values():
         r["polls_close"] = iso(polls_close(r["state"]))

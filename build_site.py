@@ -1420,13 +1420,46 @@ def backtest_section(bt):
 """
 
 
-def build_governors(snap):
+def fmt_iso_date(iso):
+    """'2026-10-24' or a full timestamp -> 'October 24'."""
+    try:
+        d = date.fromisoformat(str(iso)[:10])
+    except ValueError:
+        return ""
+    return f"{d.strftime('%B')} {d.day}"
+
+
+def build_governors(snap, markets=None):
     """The 36 governor races: a map, the odds of a majority of governorships,
-    the close races, and every race in a table."""
+    the close races, what is happening in each of them, and every race in a
+    table, with Kalshi's price beside the model's wherever there is one."""
     gov = snap.get("governors")
     if not gov:
         return None
     n_polled = sum(1 for r in gov["races"] if r.get("polling"))
+    gov_markets = ((markets or {}).get("venues", {}).get("kalshi", {}) or {}).get("governors") or {}
+    research = gov.get("research") or {}
+    adjusted = [r for r in gov["races"] if r.get("adjustment")]
+    n_notes = sum(1 for r in gov["races"] if r.get("research"))
+    adj_text = "; ".join(f"{STATE_NAMES.get(r['state'], r['state'])}, {abs(r['adjustment']):.1f} points toward the "
+                         f"{'Republicans' if r['adjustment'] < 0 else 'Democrats'}" for r in adjusted) or "none"
+    research_date = fmt_iso_date(research.get("as_of")) if research.get("as_of") else ""
+    research_section = ""
+    if n_notes:
+        research_section = f"""
+<section>
+  <h2>What is happening in each race</h2>
+  <p class="lede">The {n_notes} competitive races, researched from local and national reporting
+    ({research_date}). Open a race for the polls, the issues, the money and the sources. The notes describe
+    the race and do not move the forecast; only a separate, capped adjustment does, and right now that is
+    {adj_text}.</p>
+  <div class="gnotes" id="notes-gov"></div>
+</section>
+"""
+    market_note = ""
+    if gov_markets:
+        market_note = (f"<p class=\"note\">Kalshi prices for {len(gov_markets)} of the 36 races, read "
+                       f"{fmt_iso_date((markets or {}).get('as_of'))}. Shown beside the model, never blended into it.</p>")
     body = f"""
 <section>
   <div class="grid2">
@@ -1454,11 +1487,13 @@ def build_governors(snap):
   <div class="watch-grid" id="watch-gov"></div>
 </section>
 
+{research_section}
 <section>
   <h2>All 36 races</h2>
   <p class="lede">{n_polled} of the competitive races have enough state polling to move the forecast off
     the rating; the rest are the rating alone, moved by the national environment.</p>
   <div class="card tbl-scroll"><table id="tbl-gov"></table></div>
+  {market_note}
 </section>
 
 <section>
@@ -1474,19 +1509,28 @@ def build_governors(snap):
       cycles), in a Likely race by 13.2 and in a Solid one by 27.7, much as for the Senate. Governor races
       follow the national mood less than Congress does: about 0.55 of a national swing reaches them, against
       0.8 for the Senate, which is why a Republican can hold Vermont in a Democratic year.</p>
+    <p><b>Research.</b> Each competitive race is also read by hand: the latest polls, the issues, the money,
+      scandals and anything else in the reporting. That mostly confirms what the rating and the polls already
+      say. Where it shows something neither has caught up with yet, the race gets an adjustment of at most
+      2 points of margin, stated with its reason on the race's note. Adjustments lapse on their own if the
+      research is not redone within three weeks, so an old judgment never lingers in the numbers.</p>
+    <p><b>Betting markets.</b> Kalshi's price for each race is shown next to the model's and is not used in
+      it. Where the two differ by 15 points or more the race card says so. A market is mostly a digest of the
+      same polls and ratings, so blending it in would count them twice.</p>
   </div>
 </section>
 """
-    data = {"site": site_meta(snap), "gov": gov, "geo": {"states": {
+    data = {"site": site_meta(snap), "gov": gov, "govMarkets": gov_markets, "geo": {"states": {
         k: {"d": v["d"], "cx": v["cx"], "cy": v["cy"]}
         for k, v in json.loads((GEO_DIR / "states.json").read_text())["states"].items()}}}
     scripts = """
 FC.onRender(function () {
-  var g = PAGE_DATA.gov;
+  var g = FC.attachGovMarkets(PAGE_DATA.gov, PAGE_DATA.govMarkets);
   FC.renderGovHero("hero-gov", g);
   FC.renderHistogram("hist-gov", g.histogram, g.majority, "Democratic governorships", "Governors");
   FC.renderGovMap("map-gov", g, PAGE_DATA.geo, "legend-gov-map");
   FC.renderGovWatch("watch-gov", g, 12);
+  FC.renderGovResearch("notes-gov", g);
   FC.renderGovTable("tbl-gov", g);
 });
 """
@@ -1977,7 +2021,7 @@ def main():
         pages["markets.html"] = build_markets(latest, markets)
     else:
         print("  (no data/markets_2026.json yet - skipping the markets page)")
-    gov_page = build_governors(latest)
+    gov_page = build_governors(latest, markets)
     if gov_page:
         pages["governors.html"] = gov_page
     pages["results.html"] = build_results(latest)
