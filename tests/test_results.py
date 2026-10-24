@@ -267,6 +267,24 @@ check("governors: a Minnesota DFL nominee counts as the Democrat",
 check("governors: a governor article needs most states before it replaces a good read",
       not F.acceptable_parse("governor", 10, 36) and F.acceptable_parse("governor", 36, 36))
 
+# ------------------------------------------------ governor research, markets
+from datetime import date as _date
+import model as M
+notes, meta = M.load_governor_research(today=_date(2026, 10, 25))
+check("research: adjustments never exceed the cap",
+      all(abs(r["adjustment_applied"]) <= meta["cap_points"] for r in notes.values()), meta)
+stale, meta_stale = M.load_governor_research(today=_date(2027, 1, 1))
+check("research: adjustments lapse when the notes go stale, the notes stay",
+      not meta_stale["live"] and all(r["adjustment_applied"] == 0 for r in stale.values()) and len(stale) == len(notes))
+import refresh_markets as K
+rows = [{"label": "Aaron Ford", "prob": 0.6, "volume": 10}, {"label": "Joe Lombardo", "prob": 0.3, "volume": 5},
+        {"label": "Danielle Ford", "prob": 0.1, "volume": 1}]
+split = K._gov_split(rows, [{"aaron ford": "D", "joe lombardo": "R"}, {"ford": "D", "lombardo": "R"}])
+check("markets: a namesake independent is not counted for the Democrat",
+      split and abs(split["D"]["prob"] - 0.6) < 1e-9, split)
+check("markets: a book without both nominees is not used",
+      K._gov_split(rows[:1], [{"aaron ford": "D", "joe lombardo": "R"}]) is None)
+
 import os
 import freeze
 os.environ["FREEZE_NOW"] = "2026-11-03T10:30:00Z"
