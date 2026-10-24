@@ -1,0 +1,350 @@
+{
+ "as_of": "2026-10-24",
+ "cap_points": 2.0,
+ "stale_after_days": 21,
+ "method": "Read by hand from local and national reporting on each competitive race. Notes describe the race; they do not move the forecast. An adjustment is made only where the reporting shows something the Cook rating and the polling on file do not yet carry, it is never more than 2 points of margin, and it is dropped automatically if this file is not re-researched within three weeks.",
+ "races": {
+  "AK-GOV": {
+   "summary": "Ranked-choice general with one Democrat and three Republicans. Kreiss-Tomkins leads every poll on first choices, but in two of the three the Republicans together have more first choices than he does.",
+   "points": [
+    "First choices: Alaska Survey Research (Oct 1 to 3) Kreiss-Tomkins 48, Wilson 27, Bronson 15, Taylor 10; NYT/Siena (Sep 24 to Oct 1) 40, 20, 15, 11; Cygnal (R, Sep 24 to 27) 44, 24, 8, 9.",
+    "Cook moved the race to Lean D on Oct 13. Hours later Trump endorsed Wilson at a Wasilla rally and called Bronson and Taylor lesser candidates, a push to consolidate Republican rankings.",
+    "At the Oct 8 debate Bronson and Taylor said they would rank each other second and Wilson third.",
+    "Main issues: the Permanent Fund dividend and a roughly $2 billion structural deficit, education funding, data centers. Ballot Measure 2 would repeal ranked-choice voting."
+   ],
+   "ballot": "Jonathan Kreiss-Tomkins (D), Bernadette Wilson (R), Dave Bronson (R), Treg Taylor (R); ranked-choice. Tom Begich (D) withdrew and endorsed Kreiss-Tomkins.",
+   "adjustment": -1.5,
+   "adjustment_reason": "Every poll is first choice only, so none shows the final round, and Trump's push to consolidate the Republican vote came after Cook's move to Lean D. Moved 1.5 points toward the Republicans.",
+   "sources": [
+    {
+     "title": "Alaska Beacon: Trump endorses Wilson at Alaska rally (Oct 14)",
+     "url": "https://alaskabeacon.com/2026/10/14/at-alaska-rally-trump-endorses-wilson-and-seeks-to-boost-sullivan-and-begich/"
+    },
+    {
+     "title": "Alaska Public Media: 3 takeaways from the Debate for the State (Oct 9)",
+     "url": "https://alaskapublic.org/news/politics/alaska-legislature/2026-10-09/3-takeaways-from-alaskas-gubernatorial-debate-for-the-state"
+    },
+    {
+     "title": "Wikipedia: 2026 Alaska gubernatorial election",
+     "url": "https://en.wikipedia.org/wiki/2026_Alaska_gubernatorial_election"
+    }
+   ]
+  },
+  "AZ-GOV": {
+   "summary": "Hobbs has led every public poll, by as much as 17 points, against a Biggs campaign closely tied to Trump.",
+   "points": [
+    "HighGround (released Oct 13): Hobbs +17. The Biggs campaign disputes it because the pollster's firm works for a group funding pro-Hobbs ads.",
+    "Noble Predictive Insights (Aug 10 to 13): Hobbs +13 with 12% undecided; Noble expects the race to tighten to single digits.",
+    "Hobbs won in 2022 by 17,117 votes. Early voting began Oct 7."
+   ],
+   "ballot": "Katie Hobbs (D, incumbent), Andy Biggs (R).",
+   "adjustment": 0,
+   "sources": [
+    {
+     "title": "Cronkite News: Biggs trails Hobbs in polls and Kalshi odds (Oct 1)",
+     "url": "https://cronkitenews.azpbs.org/2026/10/01/andy-biggs-katie-hobbs-arizona-polls-kalshi/"
+    },
+    {
+     "title": "azfamily: New Arizona poll shows Democrats leading (Oct 14)",
+     "url": "https://www.azfamily.com/2026/10/14/new-arizona-poll-shows-democrats-leading-several-key-races/"
+    }
+   ]
+  },
+  "FL-GOV": {
+   "summary": "Donalds leads, with a seven to one money advantage, but the latest poll has the race inside the margin of error.",
+   "points": [
+    "UNF (Oct 12 to 19, 1,471 likely voters): Donalds 49, Jolly 47, narrowed from Donalds +5 in July. Mason-Dixon (Sep 28 to Oct 1): Donalds 48, Jolly 41.",
+    "Donalds has raised more than $140 million against about $20 million for Jolly. Jolly declined all debates.",
+    "Main issues: property insurance and property taxes, Amendment 3 on the homestead exemption, data centers."
+   ],
+   "ballot": "Byron Donalds (R), David Jolly (D), Scott Eckhard Jewett (L), five independents.",
+   "adjustment": 0,
+   "sources": [
+    {
+     "title": "MultiState: Florida governor race 2026",
+     "url": "https://www.multistate.us/elections/governor-race/florida-2026"
+    },
+    {
+     "title": "NBC Miami: Donalds leads Jolly, new poll finds",
+     "url": "https://www.nbcmiami.com/elections/donalds-leads-jolly-in-2026-florida-governors-race-new-poll-finds/3869116/"
+    },
+    {
+     "title": "MundoNow: Donalds and Jolly nearly tied in new poll",
+     "url": "https://www.mundonow.com/en/florida-governor-race-2026/"
+    }
+   ]
+  },
+  "GA-GOV": {
+   "summary": "A dead heat. Jackson has far more money and Kemp's backing; Democrats are markedly more enthusiastic.",
+   "points": [
+    "AJC/UGA (Oct 7 to 15, 1,000 likely voters): Jackson 46, Bottoms 45, 8% undecided. Independents lean Bottoms 43 to 38.",
+    "68% of Democrats say they are very enthusiastic to vote, against 48% of Republicans.",
+    "Jackson spent at least $108 million of his own money in the primary and dominates TV. Kemp, at about 70% approval, backs him; Jackson skipped Trump's Macon rally."
+   ],
+   "ballot": "Rick Jackson (R), Keisha Lance Bottoms (D).",
+   "adjustment": 0,
+   "sources": [
+    {
+     "title": "AJC: Jackson has outspent Bottoms, but Democratic enthusiasm has the race knotted",
+     "url": "https://www.ajc.com/politics/2026/10/rick-jackson-has-outspent-keisha-lance-bottoms-but-democratic-enthusiasm-has-the-race-knotted/"
+    },
+    {
+     "title": "WSB-TV: AJC/UGA poll shows a dead heat",
+     "url": "https://www.wsbtv.com/news/local/ajcuga-poll-bottoms-jackson-dead-heat-georgia-governor-race/76TN3NROXRG4HDILVYDUMJS4RQ/"
+    }
+   ]
+  },
+  "IA-GOV": {
+   "summary": "Open seat. Sand leads in every October poll and has far more cash for the final weeks.",
+   "points": [
+    "Emerson (Oct 5 to 6): Sand 49, Lahn 45. Marist (Oct 8 to 11): Sand 52, Lahn 45.",
+    "Through Oct 14 Sand had $5.35 million on hand to Lahn's $403,000; about 70% of Lahn's money came from an RGA-affiliated PAC.",
+    "Lahn's residency history was a line of attack at the first debate. Sand pulled out of the Oct 21 debate after a death in his family; a new date is being sought."
+   ],
+   "ballot": "Rob Sand (D), Zach Lahn (R). Gov. Kim Reynolds is not running.",
+   "adjustment": 0,
+   "sources": [
+    {
+     "title": "Iowa Public Radio: Lahn and Sand spend a combined $46 million (Oct 20)",
+     "url": "https://www.iowapublicradio.org/political-news/2026-10-20/zach-lahn-rob-sand-fundraising-iowa-governors-race-midterm-elections"
+    },
+    {
+     "title": "Emerson College Polling: Iowa October poll",
+     "url": "https://emersoncollegepolling.com/iowa-2026-poll-u-s-senate-race-tightens-sand-maintains-edge-for-governor/"
+    }
+   ]
+  },
+  "KS-GOV": {
+   "summary": "An open Democratic seat in a Republican state. The one public poll has Masterson up 5.",
+   "points": [
+    "NYT/Siena (Sep 22 to 30): Masterson 49, Holscher 44.",
+    "Trump reaffirmed his endorsement of Masterson at an Oct 19 rally. Gov. Laura Kelly endorsed Holscher.",
+    "Holscher runs on cost of living and ties Masterson to the 2012 Brownback tax cuts; Masterson runs on taxes and casts Democrats as socialists."
+   ],
+   "ballot": "Ty Masterson (R), Cindy Holscher (D).",
+   "adjustment": 0,
+   "sources": [
+    {
+     "title": "Kansas Reflector: Trump affirms endorsement of Masterson (Oct 20)",
+     "url": "https://kansasreflector.com/2026/10/20/trump-affirms-endorsement-of-ty-masterson-in-kansas-governors-race-belittles-cindy-holscher/"
+    },
+    {
+     "title": "Sunflower State Journal: NYT poll shows Masterson up five",
+     "url": "https://sunflowerstatejournal.com/new-york-times-poll-shows-masterson-up-five-points-in-governors-race/"
+    }
+   ]
+  },
+  "MI-GOV": {
+   "summary": "Benson leads by 6 to 7. Mike Duggan's independent run, the race's big wildcard, ended in May.",
+   "points": [
+    "Marist (Oct 15 to 18): Benson +6 among likely voters. Mitchell (Oct 1): Benson 46, James 39, with three minor-party candidates at 2% each.",
+    "Among voters certain to vote, Mitchell has it much closer: Benson 45, James 44.",
+    "Duggan ended his independent campaign on May 21. As of late August Benson had raised about twice what James had."
+   ],
+   "ballot": "Jocelyn Benson (D), John James (R), Donna Brandenburg (US Taxpayers), Douglas Campbell (Green), Anthony Hudson (L).",
+   "adjustment": 0,
+   "sources": [
+    {
+     "title": "Marist Poll: Michigan, October 2026",
+     "url": "https://maristpoll.marist.edu/polls/midterm-elections-in-michigan-october-2026/"
+    },
+    {
+     "title": "UpNorthLive: Benson with 7-point advantage (Mitchell poll)",
+     "url": "https://upnorthlive.com/news/local/michigan-governor-poll-jocelyn-benson-john-james-election-2026-mitchell-research-el-sayed-rogers"
+    },
+    {
+     "title": "Michigan Public: Duggan ends campaign for governor (May 21)",
+     "url": "https://www.michiganpublic.org/politics-government/2026-05-21/duggan-ends-campaign-for-michigan-governor"
+    }
+   ]
+  },
+  "NE-GOV": {
+   "summary": "A Likely R race where the latest public poll shows a one-point contest.",
+   "points": [
+    "Public Policy Polling (posted Oct 16): Pillen 44, Walz 43. The polling averages on file put Pillen ahead by about 3.",
+    "Little independent reporting on the race could be read; the Omaha World-Herald and Nebraska Public Media pages were closed to automated reading."
+   ],
+   "ballot": "Jim Pillen (R, incumbent), Lynne Walz (D), and two other candidates.",
+   "adjustment": 0,
+   "sources": [
+    {
+     "title": "Political Wire: Pillen barely leads (Oct 16)",
+     "url": "https://politicalwire.com/2026/10/16/jim-pillen-barely-leads-in-nebraska-governors-race/"
+    },
+    {
+     "title": "Wikipedia: 2026 Nebraska gubernatorial election",
+     "url": "https://en.wikipedia.org/wiki/2026_Nebraska_gubernatorial_election"
+    }
+   ]
+  },
+  "NH-GOV": {
+   "summary": "Ayotte is a first-term incumbent with a double-digit lead.",
+   "points": [
+    "National Public Affairs (Oct 16): Ayotte 54, Warmington 38.",
+    "Debates turned on taxes (Ayotte presses Warmington to rule out an income or sales tax), housing, school funding and data centers, where both back a moratorium."
+   ],
+   "ballot": "Kelly Ayotte (R, incumbent), Cinde Warmington (D).",
+   "adjustment": 0,
+   "sources": [
+    {
+     "title": "NHPR: Ayotte and Warmington spar over taxes, data centers and affordability (Oct 22)",
+     "url": "https://www.nhpr.org/politics/2026-10-22/newhampshire-governor-republican-democrat-kelly-cinde-election-voting"
+    },
+    {
+     "title": "Cabinet: Warmington fighting to stay in governor's race (Oct 21)",
+     "url": "https://www.cabinet.com/news/cabinet-news/2026/10/21/warmington-fighting-to-stay-in-governors-race/"
+    }
+   ]
+  },
+  "NV-GOV": {
+   "summary": "Within two points either way, with an independent named Ford also on the ballot.",
+   "points": [
+    "Noble Predictive (Sep 22 to 26): Lombardo 42, Aaron Ford 40, Danielle Ford (I) 7. Emerson (Sep 5 to 8): Aaron Ford 44, Lombardo 42.",
+    "Trump's approval in Nevada is 38 to 61 in the Noble poll, and Lombardo has been distancing himself from him; Noble calls the gap between the two a key reason the race is close.",
+    "Lombardo leads on public safety, Ford on housing affordability; 59% oppose a data center near them."
+   ],
+   "ballot": "Joe Lombardo (R, incumbent), Aaron Ford (D), Danielle Ford (I).",
+   "adjustment": 0,
+   "sources": [
+    {
+     "title": "Noble Predictive Insights: Lombardo up 2 over Ford",
+     "url": "https://www.noblepredictiveinsights.com/post/lombardo-tries-to-escape-trump-s-orbit-up-2-over-ford"
+    },
+    {
+     "title": "Emerson College Polling: Nevada",
+     "url": "https://emersoncollegepolling.com/nevada-2026-poll-ford-and-lombardo/"
+    }
+   ]
+  },
+  "OH-GOV": {
+   "summary": "Acton leads most polls by 4 to 8 points; Ramaswamy leads two, and he and his allies are outspending Democrats three to one.",
+   "points": [
+    "Marist (Oct 15 to 18): Acton 50, Ramaswamy 43. CNN/SSRS (Sep 29 to Oct 5): Acton 50, Ramaswamy 42. coEfficient (Oct 5 to 6): Ramaswamy 45, Acton 43.",
+    "Ramaswamy and allied groups have spent or reserved more than $97 million on TV and radio. Acton has declined to debate.",
+    "Oct 19: a Ramaswamy ad features a woman identified as Acton's estranged mother; the same day Acton questioned Ramaswamy's voting address and New York bar registration."
+   ],
+   "ballot": "Amy Acton (D), Vivek Ramaswamy (R), Don Kissick (L).",
+   "adjustment": 0,
+   "sources": [
+    {
+     "title": "Axios Cleveland: Acton and Ramaswamy battle for Ohio governor (Oct 20)",
+     "url": "https://www.axios.com/local/cleveland/2026/10/20/amy-acton-vivek-ramaswamy-ohio-governor-election-preview"
+    },
+    {
+     "title": "Marist Poll: Ohio, October 2026",
+     "url": "https://maristpoll.marist.edu/polls/midterm-elections-in-ohio-october-2026/"
+    },
+    {
+     "title": "WORLD: Conflicting polls and attack ads",
+     "url": "https://wng.org/sift/ohio-governors-race-heats-up-with-conflicting-polls-attack-ads-1792501013"
+    }
+   ]
+  },
+  "OK-GOV": {
+   "summary": "Mazzei is favored, but Republicans have not fully united behind him after a runoff he won by about 2,000 votes.",
+   "points": [
+    "The only public poll, Cross Timbers (Oct 7 to 12), is an opt-in panel of 91 likely voters with a 15-point margin of error: Mazzei 39, Munson 36, independent Jerry Griffin 7.",
+    "Only 55% of registered Republicans back Mazzei in that poll, against 87% of Democrats for Munson. Gov. Stitt's approval is 32 to 55.",
+    "Mazzei would eliminate the state income tax; Munson runs on public schools and costs."
+   ],
+   "ballot": "Mike Mazzei (R), Cyndi Munson (D), independents Jerry Griffin, Robert E. Brooks Sr. and Orlando Lynn Bush.",
+   "adjustment": 0,
+   "adjustment_note": "Considered and not made: the signs of a close race all come from one very small poll the model already counts.",
+   "sources": [
+    {
+     "title": "News On 6: What the latest Oklahoma governor poll shows",
+     "url": "https://www.newson6.com/oklahoma-politics/oklahoma-governor-poll-mazzei-munson"
+    },
+    {
+     "title": "Hoodline: 32% of voters remain undecided",
+     "url": "https://hoodline.com/2026/10/oklahoma-governor-s-race-tightens-as-32-of-voters-remain-undecided/"
+    }
+   ]
+  },
+  "OR-GOV": {
+   "summary": "Rated Lean D, but every independent poll since mid-September has it within 2 points.",
+   "points": [
+    "DHM for OPB (Sep 17 to 27): Drazan 46, Kotek 44. DHM for The Oregonian (Sep 24 to Oct 1): Kotek 46, Drazan 44. Kotek's own pollster (Oct 1 to 4): Kotek 46, Drazan 42.",
+    "52% name cost of living, housing, taxes or jobs as the state's top problem; fewer than 30% say Oregon is on the right track.",
+    "Kotek has more than $8 million on hand to Drazan's under $1 million. Drazan led most polls in 2022 too, and Kotek won by 3.5."
+   ],
+   "ballot": "Tina Kotek (D, incumbent), Christine Drazan (R), Brett Smith (Pacific Green).",
+   "adjustment": -2.0,
+   "adjustment_reason": "Only one polling average reached the poll file, so the model gives Oregon's polls about a quarter of the weight other states' polls get and, left alone, would sit near Kotek +8, while the independent polls average a tie. Moved 2 points toward the Republicans, the cap.",
+   "sources": [
+    {
+     "title": "OPB: 2 new polls suggest Kotek may lead (Oct 8)",
+     "url": "https://www.opb.org/article/2026/10/08/new-polls-kotek-may-lead/"
+    },
+    {
+     "title": "OPB: poll shows the race virtually deadlocked (Sep 30)",
+     "url": "https://www.opb.org/article/2026/09/30/opb-poll-shows-oregon-governors-race-virtually-deadlocked/"
+    }
+   ]
+  },
+  "TX-GOV": {
+   "summary": "Abbott leads by about 3 in the two largest October polls, down from 7 in August.",
+   "points": [
+    "University of Houston Hobby School (Oct 10 to 14, 2,000 likely voters): Abbott 49, Hinojosa 46. Texas Public Opinion Research (Oct 15 to 18): Abbott 51, Hinojosa 48 with undecideds pushed.",
+    "13% of voters still don't know enough about Hinojosa to rate her. She leads among women, 52 to 47.",
+    "Affordability is the top issue; voters split almost evenly on who would handle cost of living better."
+   ],
+   "ballot": "Greg Abbott (R, incumbent), Gina Hinojosa (D), Pat Dixon (L).",
+   "adjustment": 0,
+   "sources": [
+    {
+     "title": "Texas Public Opinion Research: October poll",
+     "url": "https://texaspublicopinionresearch.substack.com/p/october-poll-in-texas-general-election"
+    },
+    {
+     "title": "FOX 26: Abbott holds narrow lead (Hobby School poll)",
+     "url": "https://www.fox26houston.com/news/texas-governors-race-abbott-holds-narrow-lead-over-hinojosa-latest-poll"
+    }
+   ]
+  },
+  "VT-GOV": {
+   "summary": "Possibly Scott's toughest race: mixed polls, a challenger outraising him, and the largest Republican outside spending in Vermont since 2018.",
+   "points": [
+    "Polls range from Scott +10 (Vermont Public) and Scott +3 to +5 (State Navigate) to Janoo +6 (UNH).",
+    "Janoo has outraised Scott, about $890,000 to $590,000, and turned down Democratic Governors Association money.",
+    "The RGA put $400,000 into a pro-Scott PAC on Oct 8. Healthcare, school consolidation and taxes divided them in the Oct 21 debate."
+   ],
+   "ballot": "Phil Scott (R, incumbent), Amanda Janoo (Democratic and Progressive).",
+   "adjustment": 0,
+   "sources": [
+    {
+     "title": "VTDigger: Pro-Scott super PAC ad buy signals a close race (Oct 16)",
+     "url": "https://vtdigger.org/2026/10/16/pro-phil-scott-super-pac-launches-ad-buy-another-signal-vermont-governors-race-could-be-close/"
+    },
+    {
+     "title": "WCAX: Fundraising totals mirror tight polls",
+     "url": "https://www.wcax.com/2026/10/02/fundraising-totals-mirror-tight-polls-vermont-governors-race/"
+    },
+    {
+     "title": "Vermont Public: Scott and Janoo differ on healthcare, schools and taxes (Oct 21)",
+     "url": "https://www.vermontpublic.org/local-news/2026-10-21/phil-scott-amanda-janoo-vermont-governor-debate"
+    }
+   ]
+  },
+  "WI-GOV": {
+   "summary": "Open seat. Crowley leads narrowly, and his lead slipped between Marquette's August and September polls.",
+   "points": [
+    "Marquette (Sep 16 to 23): Crowley 49, Tiffany 46 among likely voters, down from Crowley +5 in August; 46 to 45 among registered voters.",
+    "Crowley's unfavorable rating rose from 29% to 44% in a month as he became better known.",
+    "The Oct 21 debate turned on the surplus and tax relief, data centers, school vouchers and road funding. Early voting began Oct 20."
+   ],
+   "ballot": "David Crowley (D), Tom Tiffany (R).",
+   "adjustment": 0,
+   "sources": [
+    {
+     "title": "WISN: Governor's race tightens (Marquette)",
+     "url": "https://www.wisn.com/article/wisconsin-governor-election-poll-marquette-tiffany-crowley/73960441"
+    },
+    {
+     "title": "FOX6: Crowley and Tiffany debate",
+     "url": "https://www.fox6now.com/news/wisconsin-governor-debate-crowley-tiffany-072826"
+    }
+   ]
+  }
+ }
+}
