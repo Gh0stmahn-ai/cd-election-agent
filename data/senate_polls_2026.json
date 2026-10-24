@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-23T19:50:32+00:00",
+ "as_of": "2026-10-24T01:14:44+00:00",
  "source": "Wikipedia per-race election articles",
  "half_life_days": 21,
  "max_age_days": 120,
@@ -68,7 +68,7 @@
    "state": "IA",
    "dem_candidate": "Josh Turek",
    "rep_candidate": "Ashley Hinson",
-   "dem_margin": 0.1,
+   "dem_margin": -0.1,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
@@ -78,15 +78,15 @@
     },
     {
      "label": "Decision Desk HQ",
-     "margin": -0.3
+     "margin": -0.8
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 0.5
+     "margin": 0.2
     },
     {
      "label": "RealClearPolitics",
-     "margin": -0.4
+     "margin": -0.6
     },
     {
      "label": "Silver Bulletin",
@@ -100,29 +100,29 @@
    "state": "ME",
    "dem_candidate": "Troy Jackson",
    "rep_candidate": "Susan Collins",
-   "dem_margin": 2.1,
+   "dem_margin": 2.0,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 2.0
+     "margin": 2.8
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 2.3
+     "margin": 1.9
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 2.2
+     "margin": 1.7
     },
     {
      "label": "RealClearPolitics",
-     "margin": 1.5
+     "margin": 1.4
     },
     {
      "label": "Silver Bulletin",
-     "margin": 2.7
+     "margin": 2.3
     }
    ],
    "rating": "tossup",
@@ -260,7 +260,7 @@
    "state": "TX",
    "dem_candidate": "James Talarico",
    "rep_candidate": "Ken Paxton",
-   "dem_margin": 2.1,
+   "dem_margin": 2.2,
    "method": "mean of 6 aggregators",
    "n_used": 6,
    "detail": [
@@ -270,15 +270,15 @@
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 2.5
+     "margin": 2.8
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 2.5
+     "margin": 2.6
     },
     {
      "label": "RealClearPolitics",
-     "margin": 1.5
+     "margin": 1.8
     },
     {
      "label": "The Texas Tribune",
@@ -286,7 +286,7 @@
     },
     {
      "label": "Silver Bulletin",
-     "margin": 2.5
+     "margin": 2.4
     }
    ],
    "rating": "tossup",

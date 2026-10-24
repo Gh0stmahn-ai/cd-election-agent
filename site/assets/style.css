@@ -507,3 +507,27 @@ span.refresh { cursor: default; }
 .countdown .rb-win { font-size: 13px; font-weight: 600; }
 .countdown .rb-go { margin-left: auto; font-weight: 600; white-space: nowrap; }
 @media (max-width: 760px) { .countdown .rb-go { margin-left: 0; } }
+
+/* Governors: market line on the race cards, and the researched race notes. */
+.wcard .mkt { font-size: 12px; color: var(--ink-2); }
+.wcard .mkt .gap, .gnote .gap { color: var(--ink); font-weight: 600; }
+.gnotes { display: flex; flex-direction: column; gap: 8px; }
+.gnote { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 0; }
+.gnote summary { cursor: pointer; list-style: none; display: grid; grid-template-columns: 140px 190px 1fr; gap: 4px 14px;
+  align-items: baseline; padding: 12px 16px; }
+.gnote summary::-webkit-details-marker { display: none; }
+.gnote summary .st::before { content: "\25B8"; display: inline-block; width: 14px; color: var(--ink-2); }
+.gnote[open] summary .st::before { content: "\25BE"; }
+.gnote summary .st { font-weight: 650; }
+.gnote summary .nums { font-size: 13px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.gnote summary .line { font-size: 14px; color: var(--ink); }
+.gnote ul { margin: 0 16px 8px 34px; padding: 0; }
+.gnote li { font-size: 13.5px; color: var(--ink-2); margin-bottom: 5px; line-height: 1.45; }
+.gnote p { margin: 0 16px 8px 16px; font-size: 13px; color: var(--ink-2); line-height: 1.45; }
+.gnote p.adj b { color: var(--ink); }
+.gnote p.src { padding-bottom: 6px; }
+.gnote p.src a { color: var(--ink-2); }
+@media (max-width: 760px) {
+  .gnote summary { grid-template-columns: 1fr auto; }
+  .gnote summary .line { grid-column: 1 / -1; }
+}

@@ -1706,11 +1706,57 @@ function govTip(r) {
     poll = "<br>Polls " + margin(r.polling.poll_margin) + " · rating implies " + margin(r.polling.rating_margin) +
       "<br><span style='opacity:.8'>" + Math.round(r.polling.weight * 100) + "% of the baseline is the polling average</span>";
   }
+  var extra = "";
+  if (r.adjustment) extra += "<br>Research adjustment: " + shiftText(r.adjustment);
+  if (r.market && r.market.dem != null) extra += "<br>Kalshi: Democrats " + pct(r.market.dem);
   return "<b>" + STATE_NAMES[r.state] + "</b>" + (r.open_seat ? " · open seat" : r.incumbent ? " · " + esc(r.incumbent) + " running" : "") +
     "<br>" + (cands.join("<br>") || "Nominees to be decided") +
     "<br>Cook: " + RATING_NAME[r.rating] + (r.rating === "tossup" ? "" : " " + r.lean) + " · held by " + (r.held_by || "?") +
     "<br><b>Democrats: " + pct(r.dem_win_prob) + "</b> · Republicans: " + pct(1 - r.dem_win_prob) +
-    " · expected " + margin(r.expected_margin) + poll + (r.notes ? "<br><span style='opacity:.8'>" + esc(r.notes) + "</span>" : "");
+    " · expected " + margin(r.expected_margin) + poll + extra +
+    (r.notes ? "<br><span style='opacity:.8'>" + esc(r.notes) + "</span>" : "");
+}
+
+/* Kalshi's price for each governor's race, attached to the race so every
+   renderer can show it beside the model. Shown, never blended in. */
+function attachGovMarkets(gov, markets) {
+  (gov.races || []).forEach(function (r) { r.market = (markets || {})[r.race_id] || null; });
+  return gov;
+}
+
+function shiftText(x) { return Math.abs(x).toFixed(1) + " pts toward the " + (x < 0 ? "Republicans" : "Democrats"); }
+
+function marketLine(r) {
+  if (!r.market || r.market.dem == null) return "";
+  var gap = r.market.dem - r.dem_win_prob;
+  var note = Math.abs(gap) >= 0.15 ? ' <span class="gap">' + (gap > 0 ? "market more Democratic" : "market more Republican") + "</span>" : "";
+  return '<div class="mkt">Kalshi: Democrats ' + pct(r.market.dem) + note + "</div>";
+}
+
+/* What is going on in each competitive race, researched by hand: a line on
+   the race, the details, the ballot, any adjustment and why, and the
+   reporting it came from. */
+function renderGovResearch(containerId, gov) {
+  var box = $(containerId); if (!box) return;
+  var rows = gov.races.filter(function (r) { return r.research; })
+    .sort(function (a, b) { return Math.abs(a.dem_win_prob - 0.5) - Math.abs(b.dem_win_prob - 0.5); });
+  if (!rows.length) { box.innerHTML = '<p class="note">No race notes on file.</p>'; return; }
+  box.innerHTML = rows.map(function (r) {
+    var n = r.research;
+    var adj = r.adjustment
+      ? '<p class="adj"><b>Adjustment: ' + shiftText(r.adjustment) + ".</b> " + esc(n.adjustment_reason || "") + "</p>"
+      : (n.adjustment && !r.adjustment
+        ? '<p class="adj muted">The adjustment for this race has lapsed: the notes are more than three weeks old.</p>'
+        : '<p class="adj muted">No adjustment. ' + esc(n.adjustment_note || "The rating and the polls on file already reflect what the reporting shows.") + "</p>");
+    var mk = r.market && r.market.dem != null ? " · Kalshi " + pct(r.market.dem) + " D" : "";
+    return '<details class="gnote"><summary><span class="st">' + STATE_NAMES[r.state] + '</span><span class="nums">Model ' +
+      pct(r.dem_win_prob) + " D" + mk + "</span><span class=\"line\">" + esc(n.summary) + "</span></summary>" +
+      "<ul>" + (n.points || []).map(function (p) { return "<li>" + esc(p) + "</li>"; }).join("") + "</ul>" +
+      '<p class="ballot"><b>On the ballot:</b> ' + esc(n.ballot || "") + "</p>" + adj +
+      '<p class="src">Sources: ' + (n.sources || []).map(function (x) {
+        return '<a href="' + esc(x.url) + '" rel="noopener" target="_blank">' + esc(x.title) + "</a>";
+      }).join(" · ") + "</p></details>";
+  }).join("");
 }
 
 function renderGovMap(svgId, gov, geo, legendId) {
@@ -1799,7 +1845,8 @@ function renderGovWatch(containerId, gov, limit) {
       '<span class="pbar" role="img" aria-label="Democratic chance ' + pct(r.dem_win_prob) + '"><i style="width:' +
       (r.dem_win_prob * 100) + '%"></i></span><div class="who"><b>' + d + "</b> vs <b>" + rr + "</b><br>Cook: " +
       RATING_NAME[r.rating] + (r.rating === "tossup" ? "" : " " + r.lean) + " · held by " + (r.held_by || "?") +
-      (r.open_seat ? " · open seat" : "") + "</div>" + raceRuler(r) + "</div>";
+      (r.open_seat ? " · open seat" : "") + (r.adjustment ? "<br>Research: " + shiftText(r.adjustment) : "") + "</div>" +
+      marketLine(r) + raceRuler(r) + "</div>";
   }).join("");
   [].forEach.call(box.querySelectorAll(".wcard"), function (node, i) { bindRulers(node, shown[i]); });
 }
@@ -1810,13 +1857,14 @@ function renderGovTable(tableId, gov) {
     return Math.abs(a.dem_win_prob - 0.5) - Math.abs(b.dem_win_prob - 0.5) || a.state.localeCompare(b.state);
   });
   table.innerHTML = "<thead><tr><th>State</th><th>Democrat</th><th>Republican</th><th>Cook rating</th><th>Held by</th>" +
-    "<th class='num'>Polls</th><th class='num'>D win</th><th></th></tr></thead><tbody>" + rows.map(function (r) {
+    "<th class='num'>Polls</th><th class='num'>D win</th><th></th><th class='num'>Kalshi</th></tr></thead><tbody>" + rows.map(function (r) {
       return "<tr><td>" + STATE_NAMES[r.state] + (r.open_seat ? ' <span class="muted" title="No incumbent running">open</span>' : "") +
         "</td><td>" + esc(r.dem_candidate || "") + "</td><td>" + esc(r.rep_candidate || "") + "</td><td>" +
         RATING_NAME[r.rating] + (r.rating === "tossup" ? "" : " " + r.lean) + "</td><td>" + (r.held_by || "") +
         "</td><td class='num'>" + (r.polling ? margin(r.polling.poll_margin) : '<span class="muted">-</span>') +
         "</td><td class='num'>" + pct(r.dem_win_prob) + '</td><td><span class="pbar"><i style="width:' +
-        (r.dem_win_prob * 100) + '%"></i></span></td></tr>';
+        (r.dem_win_prob * 100) + '%"></i></span></td><td class="num">' +
+        (r.market && r.market.dem != null ? pct(r.market.dem) : '<span class="muted">-</span>') + "</td></tr>";
     }).join("") + "</tbody>";
   [].forEach.call(table.querySelectorAll("tbody tr"), function (tr, i) {
     bindTip(tr, function () { return govTip(rows[i]); });
@@ -2063,7 +2111,10 @@ function resScore(id, sc) {
   box.innerHTML =
     tile("Races called", sc.races_called, sc.n_misses + " went to the side the forecast had as the underdog") +
     tile("Brier score, forecast", b.model == null ? "-" : b.model.toFixed(3),
-         "Ratings alone: " + (b.rating == null ? "-" : b.rating.toFixed(3)) + " · always 50%: 0.250 · lower is better") +
+         "Ratings alone: " + (b.rating == null ? "-" : b.rating.toFixed(3)) + " · always 50%: 0.250 · lower is better" +
+         (b.n_market && b.market != null && b.model_on_market_races != null
+           ? "<br>On the " + b.n_market + " called races with a betting market: forecast " +
+             b.model_on_market_races.toFixed(3) + ", market " + b.market.toFixed(3) : "")) +
     tile("Margins against the forecast", margins ? "" : "-", margins || "Appears once counts are close to complete") +
     tile("Control", ctl ? "" : "Not decided", ctl || "Shown once a party reaches a majority");
 }
@@ -2325,6 +2376,7 @@ function init() {
 global.FC = {
   init: init, onRender: onRender, renderCountdown: renderCountdown, renderResults: renderResults,
   renderGovMap: renderGovMap, renderGovHero: renderGovHero, renderGovWatch: renderGovWatch, renderGovTable: renderGovTable,
+  renderGovResearch: renderGovResearch, attachGovMarkets: attachGovMarkets,
   fmtTime: fmtTime, countdownParts: countdownParts,
   POLLS_FIRST_CLOSE: POLLS_FIRST_CLOSE, POLLS_LAST_CLOSE: POLLS_LAST_CLOSE, $: $, esc: esc, pct: pct, pct1: pct1, signed: signed, margin: margin,
   fmtDate: fmtDate, titleCase: titleCase, css: css, binColor: binColor, legendBins: legendBins, headlineFor: headlineFor,

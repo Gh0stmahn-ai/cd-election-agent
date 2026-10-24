@@ -1,20 +1,20 @@
 {
  "schema_version": 2,
- "timestamp": "2026-10-23T19:52:09.684027+00:00",
+ "timestamp": "2026-10-24T01:16:18.149020+00:00",
  "status": {
   "state": "success",
   "issues": []
  },
  "environment": {
-  "generic_ballot": 9.36,
-  "generic_ballot_as_of": "2026-10-23",
+  "generic_ballot": 9.38,
+  "generic_ballot_as_of": "2026-10-24",
   "poll_weight": 0.95,
   "fundamentals": {
    "midterm_baseline_pts": 3.5,
    "approval_net": -25.1,
    "approval_pts": 5.02,
-   "economic_index": -0.643,
-   "economic_pts": 1.93,
+   "economic_index": -0.639,
+   "economic_pts": 1.92,
    "economic_components": [
     {
      "id": "gas_price",
@@ -68,9 +68,9 @@
     {
      "id": "treasury_10y",
      "label": "10-yr Treasury yield",
-     "score": -0.753,
+     "score": -0.64,
      "weight": 0.03,
-     "contribution": -0.023
+     "contribution": -0.02
     },
     {
      "id": "sp500",
@@ -80,17 +80,17 @@
      "contribution": 0.029
     }
    ],
-   "prior_dem_margin": 10.45
+   "prior_dem_margin": 10.44
   },
-  "dem_margin": 9.41,
-  "days_to_election": 11,
-  "national_error_sd": 3.05
+  "dem_margin": 9.43,
+  "days_to_election": 10,
+  "national_error_sd": 3.03
  },
  "senate": {
-  "dem_control_prob": 0.618,
-  "tie_prob": 0.1801,
+  "dem_control_prob": 0.616,
+  "tie_prob": 0.1816,
   "mean_dem_seats": 50.9,
-  "mean_rep_seats": 49.04,
+  "mean_rep_seats": 49.05,
   "not_up": {
    "D": 34,
    "R": 31,
@@ -108,21 +108,21 @@
   "histogram": {
    "41": 5e-05,
    "42": 8e-05,
-   "43": 0.00023,
-   "44": 0.00075,
-   "45": 0.00245,
-   "46": 0.00787,
-   "47": 0.02279,
-   "48": 0.05542,
-   "49": 0.11228,
-   "50": 0.18008,
-   "51": 0.22719,
-   "52": 0.21199,
-   "53": 0.13003,
-   "54": 0.04105,
-   "55": 0.00602,
-   "56": 0.00124,
-   "57": 0.00025,
+   "43": 0.00019,
+   "44": 0.00076,
+   "45": 0.00236,
+   "46": 0.00784,
+   "47": 0.02273,
+   "48": 0.05531,
+   "49": 0.11313,
+   "50": 0.18157,
+   "51": 0.22804,
+   "52": 0.21132,
+   "53": 0.12862,
+   "54": 0.04033,
+   "55": 0.006,
+   "56": 0.0012,
+   "57": 0.00024,
    "58": 0.0001,
    "59": 3e-05,
    "60": 3e-05,
@@ -145,16 +145,16 @@
     "challenger_caucus": null,
     "atmospherics_adj": 0.0,
     "polling": {
-     "weight": 0.818,
+     "weight": 0.821,
      "poll_margin": 2.6,
      "n_used": 4,
-     "rating_margin": 1.63
+     "rating_margin": 1.64
     },
-    "expected_margin": 2.42,
-    "dem_win_prob": 0.6604,
-    "tipping_prob": 0.1332,
-    "rating_prob": 0.6084,
-    "poll_prob": 0.6696
+    "expected_margin": 2.43,
+    "dem_win_prob": 0.6609,
+    "tipping_prob": 0.1331,
+    "rating_prob": 0.6091,
+    "poll_prob": 0.6697
    },
    {
     "seat_id": "AL-2026",
@@ -169,10 +169,10 @@
     "challenger_caucus": null,
     "atmospherics_adj": 0.0,
     "polling": null,
-    "expected_margin": -22.87,
+    "expected_margin": -22.86,
     "dem_win_prob": 0.005,
     "tipping_prob": 0.0016,
-    "rating_prob": 0.0048,
+    "rating_prob": 0.0049,
     "poll_prob": null
    },
    {
@@ -188,10 +188,10 @@
     "challenger_caucus": null,
     "atmospherics_adj": 0.0,
     "polling": null,
-    "expected_margin": -22.87,
+    "expected_margin": -22.86,
     "dem_win_prob": 0.005,
-    "tipping_prob": 0.0016,
-    "rating_prob": 0.0048,
+    "tipping_prob": 0.0017,
+    "rating_prob": 0.0049,
     "poll_prob": null
    },
    {
@@ -207,7 +207,7 @@
     "challenger_caucus": null,
     "atmospherics_adj": 0.0,
     "polling": null,
-    "expected_margin": 29.13,
+    "expected_margin": 29.14,
     "dem_win_prob": 0.9995,
     "tipping_prob": 0.0003,
     "rating_prob": 0.9995,
@@ -226,7 +226,7 @@
     "challenger_caucus": null,
     "atmospherics_adj": 0.0,
     "polling": null,
-    "expected_margin": 29.13,
+    "expected_margin": 29.14,
     "dem_win_prob": 0.9995,
     "tipping_prob": 0.0004,
     "rating_prob": 0.9995,
@@ -245,10 +245,10 @@
     "challenger_caucus": null,
     "atmospherics_adj": 0.0,
     "polling": null,
-    "expected_margin": -22.87,
+    "expected_margin": -22.86,
     "dem_win_prob": 0.0054,
     "tipping_prob": 0.0017,
-    "rating_prob": 0.0048,
+    "rating_prob": 0.0049,
     "poll_prob": null
    },
    {
@@ -264,16 +264,16 @@
     "challenger_caucus": null,
     "atmospherics_adj": 0.04,
     "polling": {
-     "weight": 0.818,
+     "weight": 0.821,
      "poll_margin": 8.5,
      "n_used": 5,
-     "rating_margin": 11.63
+     "rating_margin": 11.64
     },
-    "expected_margin": 9.67,
+    "expected_margin": 9.66,
     "dem_win_prob": 0.9501,
-    "tipping_prob": 0.0341,
-    "rating_prob": 0.9752,
-    "poll_prob": 0.9243
+    "tipping_prob": 0.0339,
+    "rating_prob": 0.9754,
+    "poll_prob": 0.9245
    },
    {
     "seat_id": "IA-2026",
@@ -288,16 +288,16 @@
     "challenger_caucus": null,
     "atmospherics_adj": -0.02,
     "polling": {
-     "weight": 0.818,
-     "poll_margin": 0.1,
+     "weight": 0.821,
+     "poll_margin": -0.1,
      "n_used": 5,
-     "rating_margin": 1.63
+     "rating_margin": 1.64
     },
-    "expected_margin": 0.08,
-    "dem_win_prob": 0.5041,
-    "tipping_prob": 0.1348,
-    "rating_prob": 0.6084,
-    "poll_prob": 0.5067
+    "expected_margin": -0.09,
+    "dem_win_prob": 0.4927,
+    "tipping_prob": 0.1347,
+    "rating_prob": 0.6091,
+    "poll_prob": 0.4933
    },
    {
     "seat_id": "ID-2026",
@@ -312,10 +312,10 @@
     "challenger_caucus": null,
     "atmospherics_adj": 0.0,
     "polling": null,
-    "expected_margin": -22.87,
+    "expected_margin": -22.86,
     "dem_win_prob": 0.005,
     "tipping_prob": 0.0016,
-    "rating_prob": 0.0048,
+    "rating_prob": 0.0049,
     "poll_prob": null
    },
    {
@@ -331,7 +331,7 @@
     "challenger_caucus": null,
     "atmospherics_adj": 0.0,
     "polling": null,
-    "expected_margin": 29.13,
+    "expected_margin": 29.14,
     "dem_win_prob": 0.9995,
     "tipping_prob": 0.0003,
     "rating_prob": 0.9995,
@@ -350,10 +350,10 @@
     "challenger_caucus": null,
     "atmospherics_adj": -0.01,
     "polling": null,
-    "expected_margin": -5.52,
-    "dem_win_prob": 0.1712,
-    "tipping_prob": 0.0611,
-    "rating_prob": 0.1823,
+    "expected_margin": -5.51,
+    "dem_win_prob": 0.1716,
+    "tipping_prob": 0.0614,
+    "rating_prob": 0.1828,
     "poll_prob": null
    },
    {
@@ -369,10 +369,10 @@
     "challenger_caucus": null,
     "atmospherics_adj": 0.0,
     "polling": null,
-    "expected_margin": -22.87,
+    "expected_margin": -22.86,
     "dem_win_prob": 0.0049,
     "tipping_prob": 0.0015,
-    "rating_prob": 0.0048,
+    "rating_prob": 0.0049,
     "poll_prob": null
    },
    {
@@ -388,10 +388,10 @@
     "challenger_caucus": null,
     "atmospherics_adj": 0.0,
     "polling": null,
-    "expected_margin": -22.87,
+    "expected_margin": -22.86,
     "dem_win_prob": 0.0046,
-    "tipping_prob": 0.0016,
-    "rating_prob": 0.0048,
+    "tipping_prob": 0.0017,
+    "rating_prob": 0.0049,
     "poll_prob": null
    },
    {
@@ -407,7 +407,7 @@
     "challenger_caucus": null,
     "atmospherics_adj": 0.0,
     "polling": null,
-    "expected_margin": 29.13,
+    "expected_margin": 29.14,
     "dem_win_prob": 0.9995,
     "tipping_prob": 0.0004,
     "rating_prob": 0.9995,
@@ -426,16 +426,16 @@
     "challenger_caucus": null,
     "atmospherics_adj": 0.0,
     "polling": {
-     "weight": 0.818,
-     "poll_margin": 2.1,
+     "weight": 0.821,
+     "poll_margin": 2.0,
      "n_used": 5,
-     "rating_margin": 1.63
+     "rating_margin": 1.64
     },
-    "expected_margin": 2.01,
-    "dem_win_prob": 0.6336,
-    "tipping_prob": 0.1357,
-    "rating_prob": 0.6084,
-    "poll_prob": 0.6385
+    "expected_margin": 1.94,
+    "dem_win_prob": 0.6287,
+    "tipping_prob": 0.1366,
+    "rating_prob": 0.6091,
+    "poll_prob": 0.6323
    },
    {
     "seat_id": "MI-2026",
@@ -450,16 +450,16 @@
     "challenger_caucus": null,
     "atmospherics_adj": -0.01,
     "polling": {
-     "weight": 0.818,
+     "weight": 0.821,
      "poll_margin": 2.8,
      "n_used": 5,
-     "rating_margin": 4.63
+     "rating_margin": 4.64
     },
     "expected_margin": 2.98,
-    "dem_win_prob": 0.6938,
-    "tipping_prob": 0.1248,
-    "rating_prob": 0.7827,
-    "poll_prob": 0.6818
+    "dem_win_prob": 0.694,
+    "tipping_prob": 0.1249,
+    "rating_prob": 0.7834,
+    "poll_prob": 0.6819
    },
    {
     "seat_id": "MN-2026",
@@ -474,10 +474,10 @@
     "challenger_caucus": null,
     "atmospherics_adj": 0.0,
     "polling": null,
-    "expected_margin": 15.63,
-    "dem_win_prob": 0.9956,
-    "tipping_prob": 0.0033,
-    "rating_prob": 0.9958,
+    "expected_margin": 15.64,
+    "dem_win_prob": 0.9957,
+    "tipping_prob": 0.0032,
+    "rating_prob": 0.9959,
     "poll_prob": null
    },
    {
@@ -493,10 +493,10 @@
     "challenger_caucus": null,
     "atmospherics_adj": 0.0,
     "polling": null,
-    "expected_margin": -22.87,
+    "expected_margin": -22.86,
     "dem_win_prob": 0.0049,
     "tipping_prob": 0.0016,
-    "rating_prob": 0.0048,
+    "rating_prob": 0.0049,
     "poll_prob": null
    },
    {
@@ -512,10 +512,10 @@
     "challenger_caucus": null,
     "atmospherics_adj": 0.0,
     "polling": null,
-    "expected_margin": -22.87,
+    "expected_margin": -22.86,
     "dem_win_prob": 0.005,
-    "tipping_prob": 0.0016,
-    "rating_prob": 0.0048,
+    "tipping_prob": 0.0017,
+    "rating_prob": 0.0049,
     "poll_prob": null
    },
    {
@@ -531,16 +531,16 @@
     "challenger_caucus": null,
     "atmospherics_adj": 0.06,
     "polling": {
-     "weight": 0.818,
+     "weight": 0.821,
      "poll_margin": 10.8,
      "n_used": 5,
-     "rating_margin": 11.63
+     "rating_margin": 11.64
     },
     "expected_margin": 11.85,
-    "dem_win_prob": 0.9763,
-    "tipping_prob": 0.0178,
-    "rating_prob": 0.9752,
-    "poll_prob": 0.9658
+    "dem_win_prob": 0.9765,
+    "tipping_prob": 0.0176,
+    "rating_prob": 0.9754,
+    "poll_prob": 0.9659
    },
    {
     "seat_id": "NE-2026",
@@ -555,10 +555,10 @@
     "challenger_caucus": "independent",
     "atmospherics_adj": 0.0,
     "polling": null,
-    "expected_margin": -9.37,
-    "dem_win_prob": 0.0567,
+    "expected_margin": -9.36,
+    "dem_win_prob": 0.0568,
     "tipping_prob": 0.0,
-    "rating_prob": 0.0568,
+    "rating_prob": 0.057,
     "poll_prob": null
    },
    {
@@ -574,16 +574,16 @@
     "challenger_caucus": null,
     "atmospherics_adj": -0.03,
     "polling": {
-     "weight": 0.818,
+     "weight": 0.821,
      "poll_margin": 6.6,
      "n_used": 5,
-     "rating_margin": 4.63
+     "rating_margin": 4.64
     },
-    "expected_margin": 5.79,
-    "dem_win_prob": 0.8369,
-    "tipping_prob": 0.0888,
-    "rating_prob": 0.7827,
-    "poll_prob": 0.8674
+    "expected_margin": 5.8,
+    "dem_win_prob": 0.8375,
+    "tipping_prob": 0.0884,
+    "rating_prob": 0.7834,
+    "poll_prob": 0.8675
    },
    {
     "seat_id": "NJ-2026",
@@ -598,7 +598,7 @@
     "challenger_caucus": null,
     "atmospherics_adj": 0.0,
     "polling": null,
-    "expected_margin": 29.13,
+    "expected_margin": 29.14,
     "dem_win_prob": 0.9995,
     "tipping_prob": 0.0004,
     "rating_prob": 0.9995,
@@ -617,9 +617,9 @@
     "challenger_caucus": null,
     "atmospherics_adj": 0.0,
     "polling": null,
-    "expected_margin": 29.13,
+    "expected_margin": 29.14,
     "dem_win_prob": 0.9994,
-    "tipping_prob": 0.0003,
+    "tipping_prob": 0.0004,
     "rating_prob": 0.9995,
     "poll_prob": null
    },
@@ -636,16 +636,16 @@
     "challenger_caucus": null,
     "atmospherics_adj": 0.05,
     "polling": {
-     "weight": 0.818,
+     "weight": 0.821,
      "poll_margin": 3.9,
      "n_used": 5,
-     "rating_margin": 1.63
+     "rating_margin": 1.64
     },
-    "expected_margin": 4.24,
-    "dem_win_prob": 0.7639,
-    "tipping_prob": 0.1083,
-    "rating_prob": 0.6084,
-    "poll_prob": 0.7448
+    "expected_margin": 4.25,
+    "dem_win_prob": 0.7647,
+    "tipping_prob": 0.1079,
+    "rating_prob": 0.6091,
+    "poll_prob": 0.745
    },
    {
     "seat_id": "OK-2026",
@@ -660,10 +660,10 @@
     "challenger_caucus": null,
     "atmospherics_adj": 0.0,
     "polling": null,
-    "expected_margin": -22.87,
+    "expected_margin": -22.86,
     "dem_win_prob": 0.0048,
     "tipping_prob": 0.0014,
-    "rating_prob": 0.0048,
+    "rating_prob": 0.0049,
     "poll_prob": null
    },
    {
@@ -679,7 +679,7 @@
     "challenger_caucus": null,
     "atmospherics_adj": 0.0,
     "polling": null,
-    "expected_margin": 29.13,
+    "expected_margin": 29.14,
     "dem_win_prob": 0.9994,
     "tipping_prob": 0.0004,
     "rating_prob": 0.9995,
@@ -698,7 +698,7 @@
     "challenger_caucus": null,
     "atmospherics_adj": 0.0,
     "polling": null,
-    "expected_margin": 29.13,
+    "expected_margin": 29.14,
     "dem_win_prob": 0.9993,
     "tipping_prob": 0.0003,
     "rating_prob": 0.9995,
@@ -717,10 +717,10 @@
     "challenger_caucus": null,
     "atmospherics_adj": 0.0,
     "polling": null,
-    "expected_margin": -22.87,
-    "dem_win_prob": 0.0049,
-    "tipping_prob": 0.0017,
-    "rating_prob": 0.0048,
+    "expected_margin": -22.86,
+    "dem_win_prob": 0.005,
+    "tipping_prob": 0.0016,
+    "rating_prob": 0.0049,
     "poll_prob": null
    },
    {
@@ -736,10 +736,10 @@
     "challenger_caucus": null,
     "atmospherics_adj": 0.0,
     "polling": null,
-    "expected_margin": -22.87,
-    "dem_win_prob": 0.005,
+    "expected_margin": -22.86,
+    "dem_win_prob": 0.0051,
     "tipping_prob": 0.0016,
-    "rating_prob": 0.0048,
+    "rating_prob": 0.0049,
     "poll_prob": null
    },
    {
@@ -755,10 +755,10 @@
     "challenger_caucus": null,
     "atmospherics_adj": 0.0,
     "polling": null,
-    "expected_margin": -22.87,
+    "expected_margin": -22.86,
     "dem_win_prob": 0.005,
     "tipping_prob": 0.0015,
-    "rating_prob": 0.0048,
+    "rating_prob": 0.0049,
     "poll_prob": null
    },
    {
@@ -774,16 +774,16 @@
     "challenger_caucus": null,
     "atmospherics_adj": 0.02,
     "polling": {
-     "weight": 0.818,
-     "poll_margin": 2.1,
+     "weight": 0.821,
+     "poll_margin": 2.2,
      "n_used": 6,
-     "rating_margin": 1.63
+     "rating_margin": 1.64
     },
-    "expected_margin": 2.31,
-    "dem_win_prob": 0.6541,
-    "tipping_prob": 0.1325,
-    "rating_prob": 0.6084,
-    "poll_prob": 0.6385
+    "expected_margin": 2.4,
+    "dem_win_prob": 0.6597,
+    "tipping_prob": 0.1322,
+    "rating_prob": 0.6091,
+    "poll_prob": 0.6449
    },
    {
     "seat_id": "VA-2026",
@@ -798,7 +798,7 @@
     "challenger_caucus": null,
     "atmospherics_adj": 0.0,
     "polling": null,
-    "expected_margin": 29.13,
+    "expected_margin": 29.14,
     "dem_win_prob": 0.9995,
     "tipping_prob": 0.0004,
     "rating_prob": 0.9995,
@@ -817,10 +817,10 @@
     "challenger_caucus": null,
     "atmospherics_adj": 0.0,
     "polling": null,
-    "expected_margin": -22.87,
-    "dem_win_prob": 0.0048,
+    "expected_margin": -22.86,
+    "dem_win_prob": 0.0049,
     "tipping_prob": 0.0017,
-    "rating_prob": 0.0048,
+    "rating_prob": 0.0049,
     "poll_prob": null
    },
    {
@@ -836,10 +836,10 @@
     "challenger_caucus": null,
     "atmospherics_adj": 0.0,
     "polling": null,
-    "expected_margin": -22.87,
+    "expected_margin": -22.86,
     "dem_win_prob": 0.0052,
     "tipping_prob": 0.0017,
-    "rating_prob": 0.0048,
+    "rating_prob": 0.0049,
     "poll_prob": null
    }
   ],
@@ -847,8 +847,8 @@
   "ratings_source": "Cook Political Report Senate race ratings (Aug 20, 2026)"
  },
  "house": {
-  "dem_control_prob": 0.8129,
-  "mean_dem_seats": 224.14,
+  "dem_control_prob": 0.816,
+  "mean_dem_seats": 224.19,
   "majority": 218,
   "percentiles": {
    "5": 211,
@@ -860,152 +860,154 @@
    "95": 238
   },
   "histogram": {
-   "152": 1e-05,
    "153": 1e-05,
-   "154": 1e-05,
-   "155": 2e-05,
-   "156": 2e-05,
+   "154": 2e-05,
+   "155": 1e-05,
+   "156": 3e-05,
    "157": 1e-05,
-   "158": 2e-05,
-   "161": 3e-05,
-   "162": 3e-05,
-   "163": 4e-05,
-   "165": 2e-05,
-   "166": 1e-05,
-   "167": 1e-05,
-   "168": 5e-05,
-   "169": 2e-05,
+   "158": 1e-05,
+   "159": 1e-05,
+   "161": 1e-05,
+   "162": 4e-05,
+   "163": 3e-05,
+   "164": 1e-05,
+   "165": 3e-05,
+   "167": 2e-05,
+   "168": 4e-05,
+   "169": 3e-05,
    "170": 2e-05,
    "171": 1e-05,
-   "173": 4e-05,
-   "174": 6e-05,
-   "175": 9e-05,
-   "176": 2e-05,
+   "173": 2e-05,
+   "174": 5e-05,
+   "175": 8e-05,
+   "176": 4e-05,
    "177": 8e-05,
-   "178": 2e-05,
-   "179": 4e-05,
-   "180": 0.00012,
-   "181": 6e-05,
-   "182": 0.00012,
-   "183": 8e-05,
-   "184": 0.00011,
+   "178": 4e-05,
+   "179": 3e-05,
+   "180": 5e-05,
+   "181": 0.00012,
+   "182": 6e-05,
+   "183": 0.00011,
+   "184": 0.00012,
    "185": 0.00014,
-   "186": 0.00012,
-   "187": 0.00016,
+   "186": 0.00011,
+   "187": 0.00011,
    "188": 0.00018,
-   "189": 0.00017,
-   "190": 0.00027,
-   "191": 0.00026,
-   "192": 0.00035,
-   "193": 0.00041,
-   "194": 0.0003,
-   "195": 0.00055,
-   "196": 0.0006,
-   "197": 0.00081,
-   "198": 0.00088,
-   "199": 0.00095,
-   "200": 0.00116,
-   "201": 0.00133,
-   "202": 0.00183,
-   "203": 0.00215,
-   "204": 0.00231,
-   "205": 0.00318,
-   "206": 0.00381,
-   "207": 0.00445,
-   "208": 0.00568,
-   "209": 0.00672,
-   "210": 0.00824,
-   "211": 0.01009,
-   "212": 0.01274,
-   "213": 0.01574,
-   "214": 0.01966,
-   "215": 0.02291,
-   "216": 0.02676,
-   "217": 0.03087,
-   "218": 0.03549,
-   "219": 0.04115,
-   "220": 0.04418,
-   "221": 0.05007,
-   "222": 0.05165,
-   "223": 0.05459,
-   "224": 0.05481,
-   "225": 0.0559,
-   "226": 0.05401,
-   "227": 0.04995,
-   "228": 0.04836,
-   "229": 0.04237,
-   "230": 0.03697,
-   "231": 0.03227,
-   "232": 0.02677,
-   "233": 0.02416,
-   "234": 0.01874,
-   "235": 0.01601,
-   "236": 0.01293,
-   "237": 0.01049,
-   "238": 0.00893,
-   "239": 0.00681,
-   "240": 0.00602,
-   "241": 0.00494,
-   "242": 0.00376,
-   "243": 0.00346,
-   "244": 0.00273,
-   "245": 0.00197,
-   "246": 0.00201,
-   "247": 0.00194,
-   "248": 0.00139,
+   "189": 0.00021,
+   "190": 0.00025,
+   "191": 0.00023,
+   "192": 0.00032,
+   "193": 0.00042,
+   "194": 0.00034,
+   "195": 0.00052,
+   "196": 0.00051,
+   "197": 0.00079,
+   "198": 0.00083,
+   "199": 0.00092,
+   "200": 0.00119,
+   "201": 0.0013,
+   "202": 0.00174,
+   "203": 0.00211,
+   "204": 0.00237,
+   "205": 0.00297,
+   "206": 0.00363,
+   "207": 0.00448,
+   "208": 0.00553,
+   "209": 0.00653,
+   "210": 0.008,
+   "211": 0.00992,
+   "212": 0.01255,
+   "213": 0.01542,
+   "214": 0.01925,
+   "215": 0.02305,
+   "216": 0.02619,
+   "217": 0.03061,
+   "218": 0.03536,
+   "219": 0.04097,
+   "220": 0.04465,
+   "221": 0.04964,
+   "222": 0.05178,
+   "223": 0.05465,
+   "224": 0.05537,
+   "225": 0.05606,
+   "226": 0.05426,
+   "227": 0.0503,
+   "228": 0.04902,
+   "229": 0.04269,
+   "230": 0.03733,
+   "231": 0.03243,
+   "232": 0.02698,
+   "233": 0.02432,
+   "234": 0.01882,
+   "235": 0.0161,
+   "236": 0.01295,
+   "237": 0.01054,
+   "238": 0.00896,
+   "239": 0.00673,
+   "240": 0.0062,
+   "241": 0.00486,
+   "242": 0.00366,
+   "243": 0.00345,
+   "244": 0.00275,
+   "245": 0.00199,
+   "246": 0.00198,
+   "247": 0.00187,
+   "248": 0.00142,
    "249": 0.00116,
-   "250": 0.00079,
-   "251": 0.00084,
-   "252": 0.00074,
+   "250": 0.00073,
+   "251": 0.00079,
+   "252": 0.00077,
    "253": 0.00053,
-   "254": 0.00044,
-   "255": 0.00032,
-   "256": 0.00039,
-   "257": 0.00029,
-   "258": 0.00023,
-   "259": 0.00023,
-   "260": 0.00017,
-   "261": 0.00017,
-   "262": 0.0002,
-   "263": 0.0002,
+   "254": 0.00038,
+   "255": 0.00035,
+   "256": 0.00037,
+   "257": 0.00033,
+   "258": 0.00021,
+   "259": 0.00024,
+   "260": 0.00015,
+   "261": 0.00015,
+   "262": 0.00022,
+   "263": 0.00019,
    "264": 0.00011,
-   "265": 0.00016,
-   "266": 5e-05,
-   "267": 9e-05,
-   "268": 0.0001,
-   "269": 8e-05,
-   "270": 7e-05,
+   "265": 0.00014,
+   "266": 8e-05,
+   "267": 8e-05,
+   "268": 9e-05,
+   "269": 6e-05,
+   "270": 8e-05,
    "271": 4e-05,
    "272": 2e-05,
    "273": 3e-05,
-   "274": 4e-05,
-   "275": 5e-05,
-   "277": 4e-05,
-   "278": 5e-05,
-   "279": 5e-05,
-   "281": 3e-05,
+   "274": 6e-05,
+   "275": 2e-05,
+   "276": 1e-05,
+   "277": 3e-05,
+   "278": 6e-05,
+   "279": 4e-05,
+   "281": 4e-05,
    "282": 3e-05,
-   "284": 1e-05,
+   "285": 1e-05,
    "286": 2e-05,
+   "287": 2e-05,
    "288": 5e-05,
-   "289": 3e-05,
-   "290": 1e-05
+   "289": 1e-05,
+   "290": 2e-05
   },
   "district_probs": {
    "AL-1": 0.0,
-   "AL-2": 0.0883,
+   "AL-2": 0.0884,
    "AL-3": 0.0,
    "AL-4": 0.0,
    "AL-5": 0.0001,
-   "AL-6": 0.0001,
+   "AL-6": 0.0,
    "AL-7": 0.9999,
-   "AK-AL": 0.096,
-   "AZ-1": 0.7194,
-   "AZ-2": 0.0906,
+   "AK-AL": 0.0962,
+   "AZ-1": 0.721,
+   "AZ-2": 0.0908,
    "AZ-3": 1.0,
-   "AZ-4": 0.9913,
+   "AZ-4": 0.9915,
    "AZ-5": 0.001,
-   "AZ-6": 0.7334,
+   "AZ-6": 0.7347,
    "AZ-7": 1.0,
    "AZ-8": 0.0035,
    "AZ-9": 0.0001,
@@ -1013,19 +1015,19 @@
    "AR-2": 0.0036,
    "AR-3": 0.0001,
    "AR-4": 0.0,
-   "CA-1": 0.9988,
+   "CA-1": 0.9989,
    "CA-2": 1.0,
-   "CA-3": 0.9978,
+   "CA-3": 0.9979,
    "CA-4": 0.9995,
    "CA-5": 0.0008,
-   "CA-6": 0.9961,
+   "CA-6": 0.9962,
    "CA-7": 0.9989,
    "CA-8": 1.0,
    "CA-9": 0.9996,
    "CA-10": 1.0,
    "CA-11": 1.0,
    "CA-12": 1.0,
-   "CA-13": 0.9752,
+   "CA-13": 0.9756,
    "CA-14": 1.0,
    "CA-15": 1.0,
    "CA-16": 1.0,
@@ -1033,51 +1035,51 @@
    "CA-18": 1.0,
    "CA-19": 1.0,
    "CA-20": 0.0,
-   "CA-21": 0.9962,
-   "CA-22": 0.7487,
+   "CA-21": 0.9963,
+   "CA-22": 0.7502,
    "CA-23": 0.002,
    "CA-24": 1.0,
-   "CA-25": 0.9919,
+   "CA-25": 0.992,
    "CA-26": 0.9997,
-   "CA-27": 0.9978,
+   "CA-27": 0.9979,
    "CA-28": 1.0,
    "CA-29": 1.0,
    "CA-30": 1.0,
    "CA-31": 0.9994,
    "CA-32": 1.0,
-   "CA-33": 0.9989,
+   "CA-33": 0.999,
    "CA-34": 1.0,
-   "CA-35": 0.9976,
+   "CA-35": 0.9977,
    "CA-36": 1.0,
    "CA-37": 1.0,
    "CA-38": 0.9996,
-   "CA-39": 0.9991,
+   "CA-39": 0.9992,
    "CA-40": 0.0129,
    "CA-41": 0.9997,
    "CA-42": 0.9995,
    "CA-43": 1.0,
    "CA-44": 1.0,
-   "CA-45": 0.9954,
-   "CA-46": 0.9998,
+   "CA-45": 0.9955,
+   "CA-46": 0.9999,
    "CA-47": 0.9977,
-   "CA-48": 0.9753,
+   "CA-48": 0.9758,
    "CA-49": 0.9988,
    "CA-50": 0.9999,
    "CA-51": 0.9999,
    "CA-52": 0.9999,
    "CO-1": 1.0,
    "CO-2": 1.0,
-   "CO-3": 0.1045,
+   "CO-3": 0.1046,
    "CO-4": 0.0019,
-   "CO-5": 0.1047,
+   "CO-5": 0.1051,
    "CO-6": 0.9999,
    "CO-7": 0.9996,
-   "CO-8": 0.7347,
+   "CO-8": 0.7362,
    "CT-1": 1.0,
-   "CT-2": 0.9917,
+   "CT-2": 0.9919,
    "CT-3": 0.9994,
    "CT-4": 1.0,
-   "CT-5": 0.984,
+   "CT-5": 0.9842,
    "DE-AL": 0.9995,
    "FL-1": 0.0,
    "FL-2": 0.0038,
@@ -1085,14 +1087,14 @@
    "FL-4": 0.0221,
    "FL-5": 0.0008,
    "FL-6": 0.0001,
-   "FL-7": 0.1033,
+   "FL-7": 0.1035,
    "FL-8": 0.0034,
    "FL-9": 0.0829,
    "FL-10": 1.0,
    "FL-11": 0.007,
-   "FL-12": 0.0069,
-   "FL-13": 0.0969,
-   "FL-14": 0.7919,
+   "FL-12": 0.007,
+   "FL-13": 0.0971,
+   "FL-14": 0.7933,
    "FL-15": 0.0019,
    "FL-16": 0.0127,
    "FL-17": 0.001,
@@ -1100,12 +1102,12 @@
    "FL-19": 0.0001,
    "FL-20": 1.0,
    "FL-21": 0.0068,
-   "FL-22": 0.2937,
+   "FL-22": 0.2946,
    "FL-23": 0.9997,
    "FL-24": 1.0,
-   "FL-25": 0.8057,
+   "FL-25": 0.8069,
    "FL-26": 0.0071,
-   "FL-27": 0.0954,
+   "FL-27": 0.0958,
    "FL-28": 0.001,
    "GA-1": 0.0034,
    "GA-2": 0.9915,
@@ -1118,7 +1120,7 @@
    "GA-9": 0.0,
    "GA-10": 0.0006,
    "GA-11": 0.0002,
-   "GA-12": 0.0068,
+   "GA-12": 0.0067,
    "GA-13": 1.0,
    "GA-14": 0.0,
    "HI-1": 1.0,
@@ -1130,41 +1132,41 @@
    "IL-3": 1.0,
    "IL-4": 1.0,
    "IL-5": 1.0,
-   "IL-6": 0.9851,
+   "IL-6": 0.9853,
    "IL-7": 1.0,
-   "IL-8": 0.9957,
+   "IL-8": 0.9958,
    "IL-9": 1.0,
    "IL-10": 1.0,
    "IL-11": 0.9977,
    "IL-12": 0.0,
-   "IL-13": 0.9953,
-   "IL-14": 0.9847,
+   "IL-13": 0.9955,
+   "IL-14": 0.9849,
    "IL-15": 0.0,
-   "IL-16": 0.0005,
-   "IL-17": 0.9847,
-   "IN-1": 0.9939,
+   "IL-16": 0.0004,
+   "IL-17": 0.9848,
+   "IN-1": 0.994,
    "IN-2": 0.0002,
    "IN-3": 0.0,
    "IN-4": 0.0001,
-   "IN-5": 0.0033,
+   "IN-5": 0.0032,
    "IN-6": 0.0,
    "IN-7": 1.0,
    "IN-8": 0.0,
    "IN-9": 0.0,
-   "IA-1": 0.6737,
-   "IA-2": 0.2955,
-   "IA-3": 0.7035,
+   "IA-1": 0.6753,
+   "IA-2": 0.2966,
+   "IA-3": 0.7051,
    "IA-4": 0.0,
    "KS-1": 0.0,
    "KS-2": 0.0011,
-   "KS-3": 0.9741,
+   "KS-3": 0.9744,
    "KS-4": 0.0003,
    "KY-1": 0.0,
    "KY-2": 0.0,
    "KY-3": 0.9999,
    "KY-4": 0.0,
    "KY-5": 0.0,
-   "KY-6": 0.0895,
+   "KY-6": 0.0896,
    "LA-1": 0.0,
    "LA-2": 1.0,
    "LA-3": 0.0,
@@ -1172,13 +1174,13 @@
    "LA-5": 0.0,
    "LA-6": 0.0001,
    "ME-1": 1.0,
-   "ME-2": 0.1133,
+   "ME-2": 0.1135,
    "MD-1": 0.0036,
    "MD-2": 0.9999,
-   "MD-3": 0.9999,
+   "MD-3": 1.0,
    "MD-4": 1.0,
    "MD-5": 1.0,
-   "MD-6": 0.9844,
+   "MD-6": 0.9846,
    "MD-7": 1.0,
    "MD-8": 1.0,
    "MA-1": 0.9995,
@@ -1192,19 +1194,19 @@
    "MA-9": 0.9977,
    "MI-1": 0.0005,
    "MI-2": 0.0001,
-   "MI-3": 0.9919,
-   "MI-4": 0.3112,
+   "MI-3": 0.992,
+   "MI-4": 0.3124,
    "MI-5": 0.0001,
    "MI-6": 1.0,
-   "MI-7": 0.7333,
-   "MI-8": 0.993,
+   "MI-7": 0.7349,
+   "MI-8": 0.9932,
    "MI-9": 0.0001,
-   "MI-10": 0.686,
+   "MI-10": 0.6876,
    "MI-11": 0.9997,
    "MI-12": 1.0,
    "MI-13": 1.0,
-   "MN-1": 0.0974,
-   "MN-2": 0.996,
+   "MN-1": 0.0977,
+   "MN-2": 0.9961,
    "MN-3": 0.9999,
    "MN-4": 1.0,
    "MN-5": 1.0,
@@ -1223,38 +1225,38 @@
    "MO-6": 0.0001,
    "MO-7": 0.0001,
    "MO-8": 0.0001,
-   "MT-1": 0.1034,
+   "MT-1": 0.1035,
    "MT-2": 0.0001,
    "NE-1": 0.0129,
-   "NE-2": 0.9773,
+   "NE-2": 0.9777,
    "NE-3": 0.0,
-   "NV-1": 0.9948,
+   "NV-1": 0.995,
    "NV-2": 0.0068,
-   "NV-3": 0.9722,
-   "NV-4": 0.9945,
+   "NV-3": 0.9726,
+   "NV-4": 0.9946,
    "NH-1": 0.9948,
-   "NH-2": 0.9729,
+   "NH-2": 0.9733,
    "NJ-1": 0.9998,
-   "NJ-2": 0.0226,
+   "NJ-2": 0.0225,
    "NJ-3": 0.9954,
    "NJ-4": 0.0001,
-   "NJ-5": 0.9731,
-   "NJ-6": 0.9957,
-   "NJ-7": 0.734,
+   "NJ-5": 0.9734,
+   "NJ-6": 0.9958,
+   "NJ-7": 0.7356,
    "NJ-8": 1.0,
-   "NJ-9": 0.9948,
+   "NJ-9": 0.9949,
    "NJ-10": 1.0,
-   "NJ-11": 0.9953,
+   "NJ-11": 0.9954,
    "NJ-12": 1.0,
    "NM-1": 0.9989,
-   "NM-2": 0.9702,
-   "NM-3": 0.9849,
-   "NY-1": 0.0397,
+   "NM-2": 0.9707,
+   "NM-3": 0.985,
+   "NY-1": 0.0398,
    "NY-2": 0.0124,
-   "NY-3": 0.9704,
-   "NY-4": 0.9755,
+   "NY-3": 0.9709,
+   "NY-4": 0.9759,
    "NY-5": 1.0,
-   "NY-6": 0.9975,
+   "NY-6": 0.9976,
    "NY-7": 1.0,
    "NY-8": 1.0,
    "NY-9": 1.0,
@@ -1265,17 +1267,17 @@
    "NY-14": 1.0,
    "NY-15": 1.0,
    "NY-16": 1.0,
-   "NY-17": 0.7497,
-   "NY-18": 0.9727,
-   "NY-19": 0.9939,
+   "NY-17": 0.7513,
+   "NY-18": 0.9729,
+   "NY-19": 0.994,
    "NY-20": 0.9994,
    "NY-21": 0.0009,
-   "NY-22": 0.9914,
+   "NY-22": 0.9915,
    "NY-23": 0.001,
    "NY-24": 0.0004,
    "NY-25": 0.9999,
    "NY-26": 0.9999,
-   "NC-1": 0.2813,
+   "NC-1": 0.2821,
    "NC-2": 1.0,
    "NC-3": 0.0129,
    "NC-4": 1.0,
@@ -1285,26 +1287,26 @@
    "NC-8": 0.001,
    "NC-9": 0.0039,
    "NC-10": 0.0019,
-   "NC-11": 0.2812,
+   "NC-11": 0.282,
    "NC-12": 1.0,
    "NC-13": 0.004,
    "NC-14": 0.0039,
    "ND-AL": 0.0,
-   "OH-1": 0.9672,
+   "OH-1": 0.9677,
    "OH-2": 0.0,
    "OH-3": 1.0,
    "OH-4": 0.0,
    "OH-5": 0.0003,
    "OH-6": 0.0,
-   "OH-7": 0.6539,
+   "OH-7": 0.6555,
    "OH-8": 0.0033,
-   "OH-9": 0.7788,
-   "OH-10": 0.1129,
+   "OH-9": 0.7802,
+   "OH-10": 0.1131,
    "OH-11": 1.0,
    "OH-12": 0.0001,
-   "OH-13": 0.9947,
+   "OH-13": 0.9949,
    "OH-14": 0.0008,
-   "OH-15": 0.1042,
+   "OH-15": 0.1044,
    "OK-1": 0.0004,
    "OK-2": 0.0,
    "OK-3": 0.0,
@@ -1313,29 +1315,29 @@
    "OR-1": 1.0,
    "OR-2": 0.0001,
    "OR-3": 1.0,
-   "OR-4": 0.9977,
-   "OR-5": 0.9915,
-   "OR-6": 0.9978,
-   "PA-1": 0.1621,
+   "OR-4": 0.9978,
+   "OR-5": 0.9916,
+   "OR-6": 0.9979,
+   "PA-1": 0.1625,
    "PA-2": 1.0,
    "PA-3": 1.0,
    "PA-4": 0.9995,
    "PA-5": 1.0,
-   "PA-6": 0.9977,
-   "PA-7": 0.7183,
-   "PA-8": 0.6725,
+   "PA-6": 0.9978,
+   "PA-7": 0.7201,
+   "PA-8": 0.6739,
    "PA-9": 0.0,
-   "PA-10": 0.6883,
+   "PA-10": 0.6898,
    "PA-11": 0.0005,
    "PA-12": 0.9999,
    "PA-13": 0.0,
    "PA-14": 0.0,
    "PA-15": 0.0,
    "PA-16": 0.0005,
-   "PA-17": 0.9842,
+   "PA-17": 0.9844,
    "RI-1": 1.0,
-   "RI-2": 0.9917,
-   "SC-1": 0.0967,
+   "RI-2": 0.9918,
+   "SC-1": 0.0969,
    "SC-2": 0.0068,
    "SC-3": 0.0,
    "SC-4": 0.0004,
@@ -1356,7 +1358,7 @@
    "TX-2": 0.0005,
    "TX-3": 0.0006,
    "TX-4": 0.0003,
-   "TX-5": 0.0009,
+   "TX-5": 0.0008,
    "TX-6": 0.0005,
    "TX-7": 1.0,
    "TX-8": 0.0002,
@@ -1366,27 +1368,27 @@
    "TX-12": 0.0006,
    "TX-13": 0.0,
    "TX-14": 0.0003,
-   "TX-15": 0.2496,
+   "TX-15": 0.2504,
    "TX-16": 0.9999,
    "TX-17": 0.0009,
    "TX-18": 1.0,
    "TX-19": 0.0,
    "TX-20": 1.0,
-   "TX-21": 0.0011,
+   "TX-21": 0.001,
    "TX-22": 0.0005,
-   "TX-23": 0.0899,
+   "TX-23": 0.0901,
    "TX-24": 0.0035,
    "TX-25": 0.0005,
    "TX-26": 0.0005,
-   "TX-27": 0.001,
-   "TX-28": 0.9612,
+   "TX-27": 0.0009,
+   "TX-28": 0.9617,
    "TX-29": 1.0,
    "TX-30": 1.0,
    "TX-31": 0.0004,
    "TX-32": 0.0036,
    "TX-33": 1.0,
-   "TX-34": 0.8076,
-   "TX-35": 0.113,
+   "TX-34": 0.8091,
+   "TX-35": 0.1134,
    "TX-36": 0.0003,
    "TX-37": 1.0,
    "TX-38": 0.0009,
@@ -1395,11 +1397,11 @@
    "UT-3": 0.0,
    "UT-4": 0.0,
    "VT-AL": 1.0,
-   "VA-1": 0.3116,
-   "VA-2": 0.7324,
+   "VA-1": 0.3126,
+   "VA-2": 0.7338,
    "VA-3": 1.0,
    "VA-4": 1.0,
-   "VA-5": 0.0135,
+   "VA-5": 0.0136,
    "VA-6": 0.0003,
    "VA-7": 0.9948,
    "VA-8": 1.0,
@@ -1408,19 +1410,19 @@
    "VA-11": 1.0,
    "WA-1": 1.0,
    "WA-2": 1.0,
-   "WA-3": 0.8161,
+   "WA-3": 0.8175,
    "WA-4": 0.0009,
-   "WA-5": 0.0222,
+   "WA-5": 0.0223,
    "WA-6": 0.9999,
    "WA-7": 1.0,
-   "WA-8": 0.9844,
+   "WA-8": 0.9846,
    "WA-9": 1.0,
    "WA-10": 0.9998,
    "WV-1": 0.0,
    "WV-2": 0.0,
-   "WI-1": 0.1302,
+   "WI-1": 0.1307,
    "WI-2": 1.0,
-   "WI-3": 0.6866,
+   "WI-3": 0.6881,
    "WI-4": 1.0,
    "WI-5": 0.0005,
    "WI-6": 0.0035,
@@ -1976,7 +1978,7 @@
    "AL-6": -35.3,
    "AL-7": 27.8,
    "AK-AL": -7.3,
-   "AZ-1": 3.2,
+   "AZ-1": 3.3,
    "AZ-2": -7.5,
    "AZ-3": 48.8,
    "AZ-4": 17.3,
@@ -2001,7 +2003,7 @@
    "CA-10": 41.8,
    "CA-11": 73.3,
    "CA-12": 78.6,
-   "CA-13": 11.2,
+   "CA-13": 11.3,
    "CA-14": 43.6,
    "CA-15": 55.8,
    "CA-16": 54.1,
@@ -2010,7 +2012,7 @@
    "CA-19": 41.8,
    "CA-20": -33.6,
    "CA-21": 15.7,
-   "CA-22": 3.7,
+   "CA-22": 3.8,
    "CA-23": -21.3,
    "CA-24": 33.1,
    "CA-25": 17.3,
@@ -2036,7 +2038,7 @@
    "CA-45": 15.2,
    "CA-46": 27.8,
    "CA-47": 20.8,
-   "CA-48": 11.2,
+   "CA-48": 11.3,
    "CA-49": 22.6,
    "CA-50": 27.8,
    "CA-51": 27.8,
@@ -2175,7 +2177,7 @@
    "MI-7": 3.5,
    "MI-8": 14.2,
    "MI-9": -33.6,
-   "MI-10": 2.7,
+   "MI-10": 2.8,
    "MI-11": 26.1,
    "MI-12": 47.1,
    "MI-13": 48.8,
@@ -2223,12 +2225,12 @@
    "NJ-11": 19.1,
    "NJ-12": 33.1,
    "NM-1": 22.6,
-   "NM-2": 10.7,
+   "NM-2": 10.8,
    "NM-3": 15.6,
    "NY-1": -12.6,
    "NY-2": -16.1,
-   "NY-3": 10.7,
-   "NY-4": 11.2,
+   "NY-3": 10.8,
+   "NY-4": 11.3,
    "NY-5": 52.3,
    "NY-6": 20.8,
    "NY-7": 54.1,
@@ -2241,7 +2243,7 @@
    "NY-14": 43.6,
    "NY-15": 57.6,
    "NY-16": 41.8,
-   "NY-17": 3.7,
+   "NY-17": 3.8,
    "NY-18": 13.8,
    "NY-19": 14.7,
    "NY-20": 24.3,
@@ -2272,7 +2274,7 @@
    "OH-4": -42.3,
    "OH-5": -26.6,
    "OH-6": -35.3,
-   "OH-7": 2.2,
+   "OH-7": 2.3,
    "OH-8": -19.6,
    "OH-9": 4.3,
    "OH-10": -6.8,
@@ -2298,10 +2300,10 @@
    "PA-4": 24.3,
    "PA-5": 36.6,
    "PA-6": 20.8,
-   "PA-7": 3.2,
+   "PA-7": 3.3,
    "PA-8": 2.5,
    "PA-9": -38.8,
-   "PA-10": 2.7,
+   "PA-10": 2.8,
    "PA-11": -24.8,
    "PA-12": 27.8,
    "PA-13": -45.8,
@@ -2396,7 +2398,7 @@
    "WV-2": -40.6,
    "WI-1": -6.3,
    "WI-2": 47.1,
-   "WI-3": 2.7,
+   "WI-3": 2.8,
    "WI-4": 55.8,
    "WI-5": -24.8,
    "WI-6": -19.6,
@@ -2422,9 +2424,37 @@
     "rep_candidate": "Dave Bronson, Treg Taylor, Bernadette Wilson",
     "notes": "3 Republicans on the ballot (top-four general)",
     "polling": null,
-    "expected_margin": 9.64,
-    "dem_win_prob": 0.9589,
-    "rating_prob": 0.9586,
+    "research": {
+     "summary": "Ranked-choice general with one Democrat and three Republicans. Kreiss-Tomkins leads every poll on first choices, but in two of the three the Republicans together have more first choices than he does.",
+     "points": [
+      "First choices: Alaska Survey Research (Oct 1 to 3) Kreiss-Tomkins 48, Wilson 27, Bronson 15, Taylor 10; NYT/Siena (Sep 24 to Oct 1) 40, 20, 15, 11; Cygnal (R, Sep 24 to 27) 44, 24, 8, 9.",
+      "Cook moved the race to Lean D on Oct 13. Hours later Trump endorsed Wilson at a Wasilla rally and called Bronson and Taylor lesser candidates, a push to consolidate Republican rankings.",
+      "At the Oct 8 debate Bronson and Taylor said they would rank each other second and Wilson third.",
+      "Main issues: the Permanent Fund dividend and a roughly $2 billion structural deficit, education funding, data centers. Ballot Measure 2 would repeal ranked-choice voting."
+     ],
+     "ballot": "Jonathan Kreiss-Tomkins (D), Bernadette Wilson (R), Dave Bronson (R), Treg Taylor (R); ranked-choice. Tom Begich (D) withdrew and endorsed Kreiss-Tomkins.",
+     "adjustment": -1.5,
+     "adjustment_reason": "Every poll is first choice only, so none shows the final round, and Trump's push to consolidate the Republican vote came after Cook's move to Lean D. Moved 1.5 points toward the Republicans.",
+     "sources": [
+      {
+       "title": "Alaska Beacon: Trump endorses Wilson at Alaska rally (Oct 14)",
+       "url": "https://alaskabeacon.com/2026/10/14/at-alaska-rally-trump-endorses-wilson-and-seeks-to-boost-sullivan-and-begich/"
+      },
+      {
+       "title": "Alaska Public Media: 3 takeaways from the Debate for the State (Oct 9)",
+       "url": "https://alaskapublic.org/news/politics/alaska-legislature/2026-10-09/3-takeaways-from-alaskas-gubernatorial-debate-for-the-state"
+      },
+      {
+       "title": "Wikipedia: 2026 Alaska gubernatorial election",
+       "url": "https://en.wikipedia.org/wiki/2026_Alaska_gubernatorial_election"
+      }
+     ],
+     "adjustment_applied": -1.5
+    },
+    "adjustment": -1.5,
+    "expected_margin": 8.21,
+    "dem_win_prob": 0.93,
+    "rating_prob": 0.9597,
     "poll_prob": null
    },
    {
@@ -2440,9 +2470,11 @@
     "rep_candidate": "Tommy Tuberville",
     "notes": "",
     "polling": null,
-    "expected_margin": -26.25,
-    "dem_win_prob": 0.0076,
-    "rating_prob": 0.0082,
+    "research": null,
+    "adjustment": 0.0,
+    "expected_margin": -26.19,
+    "dem_win_prob": 0.0077,
+    "rating_prob": 0.0083,
     "poll_prob": null
    },
    {
@@ -2458,9 +2490,11 @@
     "rep_candidate": "Sarah Huckabee Sanders",
     "notes": "",
     "polling": null,
-    "expected_margin": -26.25,
-    "dem_win_prob": 0.0083,
-    "rating_prob": 0.0082,
+    "research": null,
+    "adjustment": 0.0,
+    "expected_margin": -26.19,
+    "dem_win_prob": 0.0084,
+    "rating_prob": 0.0083,
     "poll_prob": null
    },
    {
@@ -2476,15 +2510,38 @@
     "rep_candidate": "Andy Biggs",
     "notes": "",
     "polling": {
-     "weight": 0.818,
+     "weight": 0.821,
      "poll_margin": 9.2,
      "n_used": 5,
-     "rating_margin": 9.64
+     "rating_margin": 9.71,
+     "adjustment": 0.0
     },
-    "expected_margin": 9.28,
-    "dem_win_prob": 0.9527,
-    "rating_prob": 0.9586,
-    "poll_prob": 0.951
+    "research": {
+     "summary": "Hobbs has led every public poll, by as much as 17 points, against a Biggs campaign closely tied to Trump.",
+     "points": [
+      "HighGround (released Oct 13): Hobbs +17. The Biggs campaign disputes it because the pollster's firm works for a group funding pro-Hobbs ads.",
+      "Noble Predictive Insights (Aug 10 to 13): Hobbs +13 with 12% undecided; Noble expects the race to tighten to single digits.",
+      "Hobbs won in 2022 by 17,117 votes. Early voting began Oct 7."
+     ],
+     "ballot": "Katie Hobbs (D, incumbent), Andy Biggs (R).",
+     "adjustment": 0,
+     "sources": [
+      {
+       "title": "Cronkite News: Biggs trails Hobbs in polls and Kalshi odds (Oct 1)",
+       "url": "https://cronkitenews.azpbs.org/2026/10/01/andy-biggs-katie-hobbs-arizona-polls-kalshi/"
+      },
+      {
+       "title": "azfamily: New Arizona poll shows Democrats leading (Oct 14)",
+       "url": "https://www.azfamily.com/2026/10/14/new-arizona-poll-shows-democrats-leading-several-key-races/"
+      }
+     ],
+     "adjustment_applied": 0.0
+    },
+    "adjustment": 0.0,
+    "expected_margin": 9.29,
+    "dem_win_prob": 0.9531,
+    "rating_prob": 0.9597,
+    "poll_prob": 0.9511
    },
    {
     "race_id": "CA-GOV",
@@ -2499,9 +2556,11 @@
     "rep_candidate": "Steve Hilton",
     "notes": "",
     "polling": null,
-    "expected_margin": 26.14,
-    "dem_win_prob": 0.9913,
-    "rating_prob": 0.9916,
+    "research": null,
+    "adjustment": 0.0,
+    "expected_margin": 26.21,
+    "dem_win_prob": 0.9915,
+    "rating_prob": 0.9918,
     "poll_prob": null
    },
    {
@@ -2517,9 +2576,11 @@
     "rep_candidate": "Victor Marx",
     "notes": "",
     "polling": null,
-    "expected_margin": 26.14,
-    "dem_win_prob": 0.9912,
-    "rating_prob": 0.9916,
+    "research": null,
+    "adjustment": 0.0,
+    "expected_margin": 26.21,
+    "dem_win_prob": 0.9914,
+    "rating_prob": 0.9918,
     "poll_prob": null
    },
    {
@@ -2535,9 +2596,11 @@
     "rep_candidate": "Ryan Fazio",
     "notes": "",
     "polling": null,
-    "expected_margin": 26.14,
-    "dem_win_prob": 0.9918,
-    "rating_prob": 0.9916,
+    "research": null,
+    "adjustment": 0.0,
+    "expected_margin": 26.21,
+    "dem_win_prob": 0.992,
+    "rating_prob": 0.9918,
     "poll_prob": null
    },
    {
@@ -2553,15 +2616,42 @@
     "rep_candidate": "Byron Donalds",
     "notes": "",
     "polling": {
-     "weight": 0.818,
+     "weight": 0.821,
      "poll_margin": -4.7,
      "n_used": 5,
-     "rating_margin": -9.75
+     "rating_margin": -9.69,
+     "adjustment": 0.0
     },
-    "expected_margin": -5.62,
-    "dem_win_prob": 0.1551,
-    "rating_prob": 0.0397,
-    "poll_prob": 0.1989
+    "research": {
+     "summary": "Donalds leads, with a seven to one money advantage, but the latest poll has the race inside the margin of error.",
+     "points": [
+      "UNF (Oct 12 to 19, 1,471 likely voters): Donalds 49, Jolly 47, narrowed from Donalds +5 in July. Mason-Dixon (Sep 28 to Oct 1): Donalds 48, Jolly 41.",
+      "Donalds has raised more than $140 million against about $20 million for Jolly. Jolly declined all debates.",
+      "Main issues: property insurance and property taxes, Amendment 3 on the homestead exemption, data centers."
+     ],
+     "ballot": "Byron Donalds (R), David Jolly (D), Scott Eckhard Jewett (L), five independents.",
+     "adjustment": 0,
+     "sources": [
+      {
+       "title": "MultiState: Florida governor race 2026",
+       "url": "https://www.multistate.us/elections/governor-race/florida-2026"
+      },
+      {
+       "title": "NBC Miami: Donalds leads Jolly, new poll finds",
+       "url": "https://www.nbcmiami.com/elections/donalds-leads-jolly-in-2026-florida-governors-race-new-poll-finds/3869116/"
+      },
+      {
+       "title": "MundoNow: Donalds and Jolly nearly tied in new poll",
+       "url": "https://www.mundonow.com/en/florida-governor-race-2026/"
+      }
+     ],
+     "adjustment_applied": 0.0
+    },
+    "adjustment": 0.0,
+    "expected_margin": -5.59,
+    "dem_win_prob": 0.156,
+    "rating_prob": 0.0406,
+    "poll_prob": 0.1988
    },
    {
     "race_id": "GA-GOV",
@@ -2576,14 +2666,37 @@
     "rep_candidate": "Rick Jackson",
     "notes": "",
     "polling": {
-     "weight": 0.818,
+     "weight": 0.821,
      "poll_margin": -1.5,
      "n_used": 5,
-     "rating_margin": -1.65
+     "rating_margin": -1.59,
+     "adjustment": 0.0
     },
-    "expected_margin": -1.53,
-    "dem_win_prob": 0.3882,
-    "rating_prob": 0.3833,
+    "research": {
+     "summary": "A dead heat. Jackson has far more money and Kemp's backing; Democrats are markedly more enthusiastic.",
+     "points": [
+      "AJC/UGA (Oct 7 to 15, 1,000 likely voters): Jackson 46, Bottoms 45, 8% undecided. Independents lean Bottoms 43 to 38.",
+      "68% of Democrats say they are very enthusiastic to vote, against 48% of Republicans.",
+      "Jackson spent at least $108 million of his own money in the primary and dominates TV. Kemp, at about 70% approval, backs him; Jackson skipped Trump's Macon rally."
+     ],
+     "ballot": "Rick Jackson (R), Keisha Lance Bottoms (D).",
+     "adjustment": 0,
+     "sources": [
+      {
+       "title": "AJC: Jackson has outspent Bottoms, but Democratic enthusiasm has the race knotted",
+       "url": "https://www.ajc.com/politics/2026/10/rick-jackson-has-outspent-keisha-lance-bottoms-but-democratic-enthusiasm-has-the-race-knotted/"
+      },
+      {
+       "title": "WSB-TV: AJC/UGA poll shows a dead heat",
+       "url": "https://www.wsbtv.com/news/local/ajcuga-poll-bottoms-jackson-dead-heat-georgia-governor-race/76TN3NROXRG4HDILVYDUMJS4RQ/"
+      }
+     ],
+     "adjustment_applied": 0.0
+    },
+    "adjustment": 0.0,
+    "expected_margin": -1.52,
+    "dem_win_prob": 0.389,
+    "rating_prob": 0.3874,
     "poll_prob": 0.3936
    },
    {
@@ -2599,9 +2712,11 @@
     "rep_candidate": "Gary Cordery",
     "notes": "",
     "polling": null,
-    "expected_margin": 26.14,
-    "dem_win_prob": 0.9918,
-    "rating_prob": 0.9916,
+    "research": null,
+    "adjustment": 0.0,
+    "expected_margin": 26.21,
+    "dem_win_prob": 0.9919,
+    "rating_prob": 0.9918,
     "poll_prob": null
    },
    {
@@ -2617,14 +2732,37 @@
     "rep_candidate": "Zach Lahn",
     "notes": "",
     "polling": {
-     "weight": 0.818,
+     "weight": 0.821,
      "poll_margin": 7.3,
      "n_used": 5,
-     "rating_margin": 9.64
+     "rating_margin": 9.71,
+     "adjustment": 0.0
     },
+    "research": {
+     "summary": "Open seat. Sand leads in every October poll and has far more cash for the final weeks.",
+     "points": [
+      "Emerson (Oct 5 to 6): Sand 49, Lahn 45. Marist (Oct 8 to 11): Sand 52, Lahn 45.",
+      "Through Oct 14 Sand had $5.35 million on hand to Lahn's $403,000; about 70% of Lahn's money came from an RGA-affiliated PAC.",
+      "Lahn's residency history was a line of attack at the first debate. Sand pulled out of the Oct 21 debate after a death in his family; a new date is being sought."
+     ],
+     "ballot": "Rob Sand (D), Zach Lahn (R). Gov. Kim Reynolds is not running.",
+     "adjustment": 0,
+     "sources": [
+      {
+       "title": "Iowa Public Radio: Lahn and Sand spend a combined $46 million (Oct 20)",
+       "url": "https://www.iowapublicradio.org/political-news/2026-10-20/zach-lahn-rob-sand-fundraising-iowa-governors-race-midterm-elections"
+      },
+      {
+       "title": "Emerson College Polling: Iowa October poll",
+       "url": "https://emersoncollegepolling.com/iowa-2026-poll-u-s-senate-race-tightens-sand-maintains-edge-for-governor/"
+      }
+     ],
+     "adjustment_applied": 0.0
+    },
+    "adjustment": 0.0,
     "expected_margin": 7.73,
-    "dem_win_prob": 0.9183,
-    "rating_prob": 0.9586,
+    "dem_win_prob": 0.9185,
+    "rating_prob": 0.9597,
     "poll_prob": 0.9055
    },
    {
@@ -2640,9 +2778,11 @@
     "rep_candidate": "Brad Little",
     "notes": "",
     "polling": null,
-    "expected_margin": -26.25,
-    "dem_win_prob": 0.0083,
-    "rating_prob": 0.0082,
+    "research": null,
+    "adjustment": 0.0,
+    "expected_margin": -26.19,
+    "dem_win_prob": 0.0084,
+    "rating_prob": 0.0083,
     "poll_prob": null
    },
    {
@@ -2658,9 +2798,11 @@
     "rep_candidate": "Darren Bailey",
     "notes": "",
     "polling": null,
-    "expected_margin": 26.14,
-    "dem_win_prob": 0.9915,
-    "rating_prob": 0.9916,
+    "research": null,
+    "adjustment": 0.0,
+    "expected_margin": 26.21,
+    "dem_win_prob": 0.9917,
+    "rating_prob": 0.9918,
     "poll_prob": null
    },
    {
@@ -2676,15 +2818,38 @@
     "rep_candidate": "Ty Masterson",
     "notes": "",
     "polling": {
-     "weight": 0.818,
+     "weight": 0.821,
      "poll_margin": -4.3,
      "n_used": 5,
-     "rating_margin": -9.75
+     "rating_margin": -9.69,
+     "adjustment": 0.0
     },
-    "expected_margin": -5.29,
-    "dem_win_prob": 0.1704,
-    "rating_prob": 0.0397,
-    "poll_prob": 0.2196
+    "research": {
+     "summary": "An open Democratic seat in a Republican state. The one public poll has Masterson up 5.",
+     "points": [
+      "NYT/Siena (Sep 22 to 30): Masterson 49, Holscher 44.",
+      "Trump reaffirmed his endorsement of Masterson at an Oct 19 rally. Gov. Laura Kelly endorsed Holscher.",
+      "Holscher runs on cost of living and ties Masterson to the 2012 Brownback tax cuts; Masterson runs on taxes and casts Democrats as socialists."
+     ],
+     "ballot": "Ty Masterson (R), Cindy Holscher (D).",
+     "adjustment": 0,
+     "sources": [
+      {
+       "title": "Kansas Reflector: Trump affirms endorsement of Masterson (Oct 20)",
+       "url": "https://kansasreflector.com/2026/10/20/trump-affirms-endorsement-of-ty-masterson-in-kansas-governors-race-belittles-cindy-holscher/"
+      },
+      {
+       "title": "Sunflower State Journal: NYT poll shows Masterson up five",
+       "url": "https://sunflowerstatejournal.com/new-york-times-poll-shows-masterson-up-five-points-in-governors-race/"
+      }
+     ],
+     "adjustment_applied": 0.0
+    },
+    "adjustment": 0.0,
+    "expected_margin": -5.27,
+    "dem_win_prob": 0.1714,
+    "rating_prob": 0.0406,
+    "poll_prob": 0.2195
    },
    {
     "race_id": "MA-GOV",
@@ -2699,9 +2864,11 @@
     "rep_candidate": "Mike Minogue",
     "notes": "",
     "polling": null,
-    "expected_margin": 26.14,
-    "dem_win_prob": 0.9916,
-    "rating_prob": 0.9916,
+    "research": null,
+    "adjustment": 0.0,
+    "expected_margin": 26.21,
+    "dem_win_prob": 0.9918,
+    "rating_prob": 0.9918,
     "poll_prob": null
    },
    {
@@ -2717,9 +2884,11 @@
     "rep_candidate": "Dan Cox",
     "notes": "",
     "polling": null,
-    "expected_margin": 26.14,
-    "dem_win_prob": 0.9917,
-    "rating_prob": 0.9916,
+    "research": null,
+    "adjustment": 0.0,
+    "expected_margin": 26.21,
+    "dem_win_prob": 0.9919,
+    "rating_prob": 0.9918,
     "poll_prob": null
    },
    {
@@ -2735,9 +2904,11 @@
     "rep_candidate": "Robert B. Charles",
     "notes": "",
     "polling": null,
-    "expected_margin": 26.14,
-    "dem_win_prob": 0.9919,
-    "rating_prob": 0.9916,
+    "research": null,
+    "adjustment": 0.0,
+    "expected_margin": 26.21,
+    "dem_win_prob": 0.992,
+    "rating_prob": 0.9918,
     "poll_prob": null
    },
    {
@@ -2753,15 +2924,42 @@
     "rep_candidate": "John James",
     "notes": "",
     "polling": {
-     "weight": 0.818,
+     "weight": 0.821,
      "poll_margin": 7.0,
      "n_used": 5,
-     "rating_margin": 9.64
+     "rating_margin": 9.71,
+     "adjustment": 0.0
     },
-    "expected_margin": 7.48,
-    "dem_win_prob": 0.9103,
-    "rating_prob": 0.9586,
-    "poll_prob": 0.896
+    "research": {
+     "summary": "Benson leads by 6 to 7. Mike Duggan's independent run, the race's big wildcard, ended in May.",
+     "points": [
+      "Marist (Oct 15 to 18): Benson +6 among likely voters. Mitchell (Oct 1): Benson 46, James 39, with three minor-party candidates at 2% each.",
+      "Among voters certain to vote, Mitchell has it much closer: Benson 45, James 44.",
+      "Duggan ended his independent campaign on May 21. As of late August Benson had raised about twice what James had."
+     ],
+     "ballot": "Jocelyn Benson (D), John James (R), Donna Brandenburg (US Taxpayers), Douglas Campbell (Green), Anthony Hudson (L).",
+     "adjustment": 0,
+     "sources": [
+      {
+       "title": "Marist Poll: Michigan, October 2026",
+       "url": "https://maristpoll.marist.edu/polls/midterm-elections-in-michigan-october-2026/"
+      },
+      {
+       "title": "UpNorthLive: Benson with 7-point advantage (Mitchell poll)",
+       "url": "https://upnorthlive.com/news/local/michigan-governor-poll-jocelyn-benson-john-james-election-2026-mitchell-research-el-sayed-rogers"
+      },
+      {
+       "title": "Michigan Public: Duggan ends campaign for governor (May 21)",
+       "url": "https://www.michiganpublic.org/politics-government/2026-05-21/duggan-ends-campaign-for-michigan-governor"
+      }
+     ],
+     "adjustment_applied": 0.0
+    },
+    "adjustment": 0.0,
+    "expected_margin": 7.49,
+    "dem_win_prob": 0.9106,
+    "rating_prob": 0.9597,
+    "poll_prob": 0.8961
    },
    {
     "race_id": "MN-GOV",
@@ -2776,9 +2974,11 @@
     "rep_candidate": "Lisa Demuth",
     "notes": "",
     "polling": null,
-    "expected_margin": 26.14,
-    "dem_win_prob": 0.9916,
-    "rating_prob": 0.9916,
+    "research": null,
+    "adjustment": 0.0,
+    "expected_margin": 26.21,
+    "dem_win_prob": 0.9917,
+    "rating_prob": 0.9918,
     "poll_prob": null
    },
    {
@@ -2794,15 +2994,37 @@
     "rep_candidate": "Jim Pillen",
     "notes": "",
     "polling": {
-     "weight": 0.818,
+     "weight": 0.821,
      "poll_margin": -3.2,
      "n_used": 4,
-     "rating_margin": -11.36
+     "rating_margin": -11.29,
+     "adjustment": 0.0
     },
-    "expected_margin": -4.68,
-    "dem_win_prob": 0.2018,
-    "rating_prob": 0.0205,
-    "poll_prob": 0.2824
+    "research": {
+     "summary": "A Likely R race where the latest public poll shows a one-point contest.",
+     "points": [
+      "Public Policy Polling (posted Oct 16): Pillen 44, Walz 43. The polling averages on file put Pillen ahead by about 3.",
+      "Little independent reporting on the race could be read; the Omaha World-Herald and Nebraska Public Media pages were closed to automated reading."
+     ],
+     "ballot": "Jim Pillen (R, incumbent), Lynne Walz (D), and two other candidates.",
+     "adjustment": 0,
+     "sources": [
+      {
+       "title": "Political Wire: Pillen barely leads (Oct 16)",
+       "url": "https://politicalwire.com/2026/10/16/jim-pillen-barely-leads-in-nebraska-governors-race/"
+      },
+      {
+       "title": "Wikipedia: 2026 Nebraska gubernatorial election",
+       "url": "https://en.wikipedia.org/wiki/2026_Nebraska_gubernatorial_election"
+      }
+     ],
+     "adjustment_applied": 0.0
+    },
+    "adjustment": 0.0,
+    "expected_margin": -4.65,
+    "dem_win_prob": 0.2034,
+    "rating_prob": 0.0211,
+    "poll_prob": 0.2823
    },
    {
     "race_id": "NH-GOV",
@@ -2817,14 +3039,36 @@
     "rep_candidate": "Kelly Ayotte",
     "notes": "",
     "polling": {
-     "weight": 0.818,
+     "weight": 0.821,
      "poll_margin": -10.5,
      "n_used": 5,
-     "rating_margin": -11.36
+     "rating_margin": -11.29,
+     "adjustment": 0.0
     },
-    "expected_margin": -10.66,
-    "dem_win_prob": 0.0282,
-    "rating_prob": 0.0205,
+    "research": {
+     "summary": "Ayotte is a first-term incumbent with a double-digit lead.",
+     "points": [
+      "National Public Affairs (Oct 16): Ayotte 54, Warmington 38.",
+      "Debates turned on taxes (Ayotte presses Warmington to rule out an income or sales tax), housing, school funding and data centers, where both back a moratorium."
+     ],
+     "ballot": "Kelly Ayotte (R, incumbent), Cinde Warmington (D).",
+     "adjustment": 0,
+     "sources": [
+      {
+       "title": "NHPR: Ayotte and Warmington spar over taxes, data centers and affordability (Oct 22)",
+       "url": "https://www.nhpr.org/politics/2026-10-22/newhampshire-governor-republican-democrat-kelly-cinde-election-voting"
+      },
+      {
+       "title": "Cabinet: Warmington fighting to stay in governor's race (Oct 21)",
+       "url": "https://www.cabinet.com/news/cabinet-news/2026/10/21/warmington-fighting-to-stay-in-governors-race/"
+      }
+     ],
+     "adjustment_applied": 0.0
+    },
+    "adjustment": 0.0,
+    "expected_margin": -10.64,
+    "dem_win_prob": 0.0283,
+    "rating_prob": 0.0211,
     "poll_prob": 0.0294
    },
    {
@@ -2840,9 +3084,11 @@
     "rep_candidate": "Gregg Hull",
     "notes": "",
     "polling": null,
-    "expected_margin": 26.14,
-    "dem_win_prob": 0.9916,
-    "rating_prob": 0.9916,
+    "research": null,
+    "adjustment": 0.0,
+    "expected_margin": 26.21,
+    "dem_win_prob": 0.9917,
+    "rating_prob": 0.9918,
     "poll_prob": null
    },
    {
@@ -2858,14 +3104,37 @@
     "rep_candidate": "Joe Lombardo",
     "notes": "",
     "polling": {
-     "weight": 0.818,
+     "weight": 0.821,
      "poll_margin": -0.8,
      "n_used": 5,
-     "rating_margin": -1.65
+     "rating_margin": -1.59,
+     "adjustment": 0.0
     },
-    "expected_margin": -0.96,
-    "dem_win_prob": 0.4308,
-    "rating_prob": 0.3833,
+    "research": {
+     "summary": "Within two points either way, with an independent named Ford also on the ballot.",
+     "points": [
+      "Noble Predictive (Sep 22 to 26): Lombardo 42, Aaron Ford 40, Danielle Ford (I) 7. Emerson (Sep 5 to 8): Aaron Ford 44, Lombardo 42.",
+      "Trump's approval in Nevada is 38 to 61 in the Noble poll, and Lombardo has been distancing himself from him; Noble calls the gap between the two a key reason the race is close.",
+      "Lombardo leads on public safety, Ford on housing affordability; 59% oppose a data center near them."
+     ],
+     "ballot": "Joe Lombardo (R, incumbent), Aaron Ford (D), Danielle Ford (I).",
+     "adjustment": 0,
+     "sources": [
+      {
+       "title": "Noble Predictive Insights: Lombardo up 2 over Ford",
+       "url": "https://www.noblepredictiveinsights.com/post/lombardo-tries-to-escape-trump-s-orbit-up-2-over-ford"
+      },
+      {
+       "title": "Emerson College Polling: Nevada",
+       "url": "https://emersoncollegepolling.com/nevada-2026-poll-ford-and-lombardo/"
+      }
+     ],
+     "adjustment_applied": 0.0
+    },
+    "adjustment": 0.0,
+    "expected_margin": -0.94,
+    "dem_win_prob": 0.4317,
+    "rating_prob": 0.3874,
     "poll_prob": 0.4428
    },
    {
@@ -2881,17 +3150,19 @@
     "rep_candidate": "Bruce Blakeman",
     "notes": "",
     "polling": null,
-    "expected_margin": 26.14,
-    "dem_win_prob": 0.9916,
-    "rating_prob": 0.9916,
+    "research": null,
+    "adjustment": 0.0,
+    "expected_margin": 26.21,
+    "dem_win_prob": 0.9917,
+    "rating_prob": 0.9918,
     "poll_prob": null
    },
    {
     "race_id": "OH-GOV",
     "state": "OH",
     "held_by": "R",
-    "rating": "tossup",
-    "lean": "R",
+    "rating": "lean",
+    "lean": "D",
     "pvi": -5.0,
     "incumbent": "Mike DeWine",
     "open_seat": true,
@@ -2899,15 +3170,42 @@
     "rep_candidate": "Vivek Ramaswamy",
     "notes": "",
     "polling": {
-     "weight": 0.818,
+     "weight": 0.821,
      "poll_margin": 3.7,
      "n_used": 5,
-     "rating_margin": -1.65
+     "rating_margin": 9.71,
+     "adjustment": 0.0
     },
-    "expected_margin": 2.72,
-    "dem_win_prob": 0.6849,
-    "rating_prob": 0.3833,
-    "poll_prob": 0.7472
+    "research": {
+     "summary": "Acton leads most polls by 4 to 8 points; Ramaswamy leads two, and he and his allies are outspending Democrats three to one.",
+     "points": [
+      "Marist (Oct 15 to 18): Acton 50, Ramaswamy 43. CNN/SSRS (Sep 29 to Oct 5): Acton 50, Ramaswamy 42. coEfficient (Oct 5 to 6): Ramaswamy 45, Acton 43.",
+      "Ramaswamy and allied groups have spent or reserved more than $97 million on TV and radio. Acton has declined to debate.",
+      "Oct 19: a Ramaswamy ad features a woman identified as Acton's estranged mother; the same day Acton questioned Ramaswamy's voting address and New York bar registration."
+     ],
+     "ballot": "Amy Acton (D), Vivek Ramaswamy (R), Don Kissick (L).",
+     "adjustment": 0,
+     "sources": [
+      {
+       "title": "Axios Cleveland: Acton and Ramaswamy battle for Ohio governor (Oct 20)",
+       "url": "https://www.axios.com/local/cleveland/2026/10/20/amy-acton-vivek-ramaswamy-ohio-governor-election-preview"
+      },
+      {
+       "title": "Marist Poll: Ohio, October 2026",
+       "url": "https://maristpoll.marist.edu/polls/midterm-elections-in-ohio-october-2026/"
+      },
+      {
+       "title": "WORLD: Conflicting polls and attack ads",
+       "url": "https://wng.org/sift/ohio-governors-race-heats-up-with-conflicting-polls-attack-ads-1792501013"
+      }
+     ],
+     "adjustment_applied": 0.0
+    },
+    "adjustment": 0.0,
+    "expected_margin": 4.78,
+    "dem_win_prob": 0.8035,
+    "rating_prob": 0.9597,
+    "poll_prob": 0.7473
    },
    {
     "race_id": "OK-GOV",
@@ -2922,15 +3220,39 @@
     "rep_candidate": "Mike Mazzei",
     "notes": "",
     "polling": {
-     "weight": 0.409,
+     "weight": 0.41,
      "poll_margin": -4.9,
      "n_used": 2,
-     "rating_margin": -11.36
+     "rating_margin": -11.29,
+     "adjustment": 0.0
     },
-    "expected_margin": -8.72,
-    "dem_win_prob": 0.0579,
-    "rating_prob": 0.0205,
-    "poll_prob": 0.189
+    "research": {
+     "summary": "Mazzei is favored, but Republicans have not fully united behind him after a runoff he won by about 2,000 votes.",
+     "points": [
+      "The only public poll, Cross Timbers (Oct 7 to 12), is an opt-in panel of 91 likely voters with a 15-point margin of error: Mazzei 39, Munson 36, independent Jerry Griffin 7.",
+      "Only 55% of registered Republicans back Mazzei in that poll, against 87% of Democrats for Munson. Gov. Stitt's approval is 32 to 55.",
+      "Mazzei would eliminate the state income tax; Munson runs on public schools and costs."
+     ],
+     "ballot": "Mike Mazzei (R), Cyndi Munson (D), independents Jerry Griffin, Robert E. Brooks Sr. and Orlando Lynn Bush.",
+     "adjustment": 0,
+     "adjustment_note": "Considered and not made: the signs of a close race all come from one very small poll the model already counts.",
+     "sources": [
+      {
+       "title": "News On 6: What the latest Oklahoma governor poll shows",
+       "url": "https://www.newson6.com/oklahoma-politics/oklahoma-governor-poll-mazzei-munson"
+      },
+      {
+       "title": "Hoodline: 32% of voters remain undecided",
+       "url": "https://hoodline.com/2026/10/oklahoma-governor-s-race-tightens-as-32-of-voters-remain-undecided/"
+      }
+     ],
+     "adjustment_applied": 0.0
+    },
+    "adjustment": 0.0,
+    "expected_margin": -8.67,
+    "dem_win_prob": 0.0587,
+    "rating_prob": 0.0211,
+    "poll_prob": 0.1889
    },
    {
     "race_id": "OR-GOV",
@@ -2945,15 +3267,39 @@
     "rep_candidate": "Christine Drazan",
     "notes": "",
     "polling": {
-     "weight": 0.204,
+     "weight": 0.205,
      "poll_margin": 2.0,
      "n_used": 1,
-     "rating_margin": 9.64
+     "rating_margin": 9.71,
+     "adjustment": -2.0
     },
-    "expected_margin": 8.08,
-    "dem_win_prob": 0.9268,
-    "rating_prob": 0.9586,
-    "poll_prob": 0.6405
+    "research": {
+     "summary": "Rated Lean D, but every independent poll since mid-September has it within 2 points.",
+     "points": [
+      "DHM for OPB (Sep 17 to 27): Drazan 46, Kotek 44. DHM for The Oregonian (Sep 24 to Oct 1): Kotek 46, Drazan 44. Kotek's own pollster (Oct 1 to 4): Kotek 46, Drazan 42.",
+      "52% name cost of living, housing, taxes or jobs as the state's top problem; fewer than 30% say Oregon is on the right track.",
+      "Kotek has more than $8 million on hand to Drazan's under $1 million. Drazan led most polls in 2022 too, and Kotek won by 3.5."
+     ],
+     "ballot": "Tina Kotek (D, incumbent), Christine Drazan (R), Brett Smith (Pacific Green).",
+     "adjustment": -2.0,
+     "adjustment_reason": "Only one polling average reached the poll file, so the model gives Oregon's polls about a quarter of the weight other states' polls get and, left alone, would sit near Kotek +8, while the independent polls average a tie. Moved 2 points toward the Republicans, the cap.",
+     "sources": [
+      {
+       "title": "OPB: 2 new polls suggest Kotek may lead (Oct 8)",
+       "url": "https://www.opb.org/article/2026/10/08/new-polls-kotek-may-lead/"
+      },
+      {
+       "title": "OPB: poll shows the race virtually deadlocked (Sep 30)",
+       "url": "https://www.opb.org/article/2026/09/30/opb-poll-shows-oregon-governors-race-virtually-deadlocked/"
+      }
+     ],
+     "adjustment_applied": -2.0
+    },
+    "adjustment": -2.0,
+    "expected_margin": 6.13,
+    "dem_win_prob": 0.865,
+    "rating_prob": 0.9597,
+    "poll_prob": 0.6406
    },
    {
     "race_id": "PA-GOV",
@@ -2968,9 +3314,11 @@
     "rep_candidate": "Stacy Garrity",
     "notes": "",
     "polling": null,
-    "expected_margin": 26.14,
-    "dem_win_prob": 0.9912,
-    "rating_prob": 0.9916,
+    "research": null,
+    "adjustment": 0.0,
+    "expected_margin": 26.21,
+    "dem_win_prob": 0.9914,
+    "rating_prob": 0.9918,
     "poll_prob": null
    },
    {
@@ -2986,9 +3334,11 @@
     "rep_candidate": "Aaron Guckian",
     "notes": "",
     "polling": null,
-    "expected_margin": 26.14,
-    "dem_win_prob": 0.9915,
-    "rating_prob": 0.9916,
+    "research": null,
+    "adjustment": 0.0,
+    "expected_margin": 26.21,
+    "dem_win_prob": 0.9917,
+    "rating_prob": 0.9918,
     "poll_prob": null
    },
    {
@@ -3004,9 +3354,11 @@
     "rep_candidate": "Alan Wilson",
     "notes": "",
     "polling": null,
-    "expected_margin": -26.25,
-    "dem_win_prob": 0.0081,
-    "rating_prob": 0.0082,
+    "research": null,
+    "adjustment": 0.0,
+    "expected_margin": -26.19,
+    "dem_win_prob": 0.0082,
+    "rating_prob": 0.0083,
     "poll_prob": null
    },
    {
@@ -3022,9 +3374,11 @@
     "rep_candidate": "Larry Rhoden",
     "notes": "",
     "polling": null,
-    "expected_margin": -26.25,
-    "dem_win_prob": 0.0083,
-    "rating_prob": 0.0082,
+    "research": null,
+    "adjustment": 0.0,
+    "expected_margin": -26.19,
+    "dem_win_prob": 0.0084,
+    "rating_prob": 0.0083,
     "poll_prob": null
    },
    {
@@ -3040,9 +3394,11 @@
     "rep_candidate": "Marsha Blackburn",
     "notes": "",
     "polling": null,
-    "expected_margin": -26.25,
-    "dem_win_prob": 0.0085,
-    "rating_prob": 0.0082,
+    "research": null,
+    "adjustment": 0.0,
+    "expected_margin": -26.19,
+    "dem_win_prob": 0.0086,
+    "rating_prob": 0.0083,
     "poll_prob": null
    },
    {
@@ -3058,15 +3414,38 @@
     "rep_candidate": "Greg Abbott",
     "notes": "",
     "polling": {
-     "weight": 0.818,
+     "weight": 0.821,
      "poll_margin": -2.7,
      "n_used": 5,
-     "rating_margin": -9.75
+     "rating_margin": -9.69,
+     "adjustment": 0.0
     },
-    "expected_margin": -3.98,
-    "dem_win_prob": 0.2353,
-    "rating_prob": 0.0397,
-    "poll_prob": 0.3136
+    "research": {
+     "summary": "Abbott leads by about 3 in the two largest October polls, down from 7 in August.",
+     "points": [
+      "University of Houston Hobby School (Oct 10 to 14, 2,000 likely voters): Abbott 49, Hinojosa 46. Texas Public Opinion Research (Oct 15 to 18): Abbott 51, Hinojosa 48 with undecideds pushed.",
+      "13% of voters still don't know enough about Hinojosa to rate her. She leads among women, 52 to 47.",
+      "Affordability is the top issue; voters split almost evenly on who would handle cost of living better."
+     ],
+     "ballot": "Greg Abbott (R, incumbent), Gina Hinojosa (D), Pat Dixon (L).",
+     "adjustment": 0,
+     "sources": [
+      {
+       "title": "Texas Public Opinion Research: October poll",
+       "url": "https://texaspublicopinionresearch.substack.com/p/october-poll-in-texas-general-election"
+      },
+      {
+       "title": "FOX 26: Abbott holds narrow lead (Hobby School poll)",
+       "url": "https://www.fox26houston.com/news/texas-governors-race-abbott-holds-narrow-lead-over-hinojosa-latest-poll"
+      }
+     ],
+     "adjustment_applied": 0.0
+    },
+    "adjustment": 0.0,
+    "expected_margin": -3.95,
+    "dem_win_prob": 0.2368,
+    "rating_prob": 0.0406,
+    "poll_prob": 0.3135
    },
    {
     "race_id": "VT-GOV",
@@ -3081,15 +3460,42 @@
     "rep_candidate": "Phil Scott",
     "notes": "",
     "polling": {
-     "weight": 0.818,
+     "weight": 0.821,
      "poll_margin": -3.8,
      "n_used": 5,
-     "rating_margin": -11.36
+     "rating_margin": -11.29,
+     "adjustment": 0.0
     },
-    "expected_margin": -5.18,
-    "dem_win_prob": 0.1753,
-    "rating_prob": 0.0205,
-    "poll_prob": 0.2471
+    "research": {
+     "summary": "Possibly Scott's toughest race: mixed polls, a challenger outraising him, and the largest Republican outside spending in Vermont since 2018.",
+     "points": [
+      "Polls range from Scott +10 (Vermont Public) and Scott +3 to +5 (State Navigate) to Janoo +6 (UNH).",
+      "Janoo has outraised Scott, about $890,000 to $590,000, and turned down Democratic Governors Association money.",
+      "The RGA put $400,000 into a pro-Scott PAC on Oct 8. Healthcare, school consolidation and taxes divided them in the Oct 21 debate."
+     ],
+     "ballot": "Phil Scott (R, incumbent), Amanda Janoo (Democratic and Progressive).",
+     "adjustment": 0,
+     "sources": [
+      {
+       "title": "VTDigger: Pro-Scott super PAC ad buy signals a close race (Oct 16)",
+       "url": "https://vtdigger.org/2026/10/16/pro-phil-scott-super-pac-launches-ad-buy-another-signal-vermont-governors-race-could-be-close/"
+      },
+      {
+       "title": "WCAX: Fundraising totals mirror tight polls",
+       "url": "https://www.wcax.com/2026/10/02/fundraising-totals-mirror-tight-polls-vermont-governors-race/"
+      },
+      {
+       "title": "Vermont Public: Scott and Janoo differ on healthcare, schools and taxes (Oct 21)",
+       "url": "https://www.vermontpublic.org/local-news/2026-10-21/phil-scott-amanda-janoo-vermont-governor-debate"
+      }
+     ],
+     "adjustment_applied": 0.0
+    },
+    "adjustment": 0.0,
+    "expected_margin": -5.14,
+    "dem_win_prob": 0.1768,
+    "rating_prob": 0.0211,
+    "poll_prob": 0.247
    },
    {
     "race_id": "WI-GOV",
@@ -3104,15 +3510,38 @@
     "rep_candidate": "Tom Tiffany",
     "notes": "",
     "polling": {
-     "weight": 0.818,
+     "weight": 0.821,
      "poll_margin": 3.7,
      "n_used": 5,
-     "rating_margin": 1.55
+     "rating_margin": 1.61,
+     "adjustment": 0.0
     },
-    "expected_margin": 3.31,
-    "dem_win_prob": 0.7247,
-    "rating_prob": 0.6098,
-    "poll_prob": 0.7472
+    "research": {
+     "summary": "Open seat. Crowley leads narrowly, and his lead slipped between Marquette's August and September polls.",
+     "points": [
+      "Marquette (Sep 16 to 23): Crowley 49, Tiffany 46 among likely voters, down from Crowley +5 in August; 46 to 45 among registered voters.",
+      "Crowley's unfavorable rating rose from 29% to 44% in a month as he became better known.",
+      "The Oct 21 debate turned on the surplus and tax relief, data centers, school vouchers and road funding. Early voting began Oct 20."
+     ],
+     "ballot": "David Crowley (D), Tom Tiffany (R).",
+     "adjustment": 0,
+     "sources": [
+      {
+       "title": "WISN: Governor's race tightens (Marquette)",
+       "url": "https://www.wisn.com/article/wisconsin-governor-election-poll-marquette-tiffany-crowley/73960441"
+      },
+      {
+       "title": "FOX6: Crowley and Tiffany debate",
+       "url": "https://www.fox6now.com/news/wisconsin-governor-debate-crowley-tiffany-072826"
+      }
+     ],
+     "adjustment_applied": 0.0
+    },
+    "adjustment": 0.0,
+    "expected_margin": 3.33,
+    "dem_win_prob": 0.7259,
+    "rating_prob": 0.614,
+    "poll_prob": 0.7473
    },
    {
     "race_id": "WY-GOV",
@@ -3127,9 +3556,11 @@
     "rep_candidate": "Eric Barlow",
     "notes": "",
     "polling": null,
-    "expected_margin": -26.25,
+    "research": null,
+    "adjustment": 0.0,
+    "expected_margin": -26.19,
     "dem_win_prob": 0.0083,
-    "rating_prob": 0.0082,
+    "rating_prob": 0.0083,
     "poll_prob": null
    }
   ],
@@ -3157,9 +3588,9 @@
    "D": 24,
    "R": 26
   },
-  "mean_dem": 26.87,
-  "dem_majority_prob": 0.7787,
-  "dem_gain_prob": 0.909,
+  "mean_dem": 26.91,
+  "dem_majority_prob": 0.7862,
+  "dem_gain_prob": 0.9111,
   "percentiles": {
    "5": 24,
    "10": 25,
@@ -3173,40 +3604,47 @@
    "14": 1e-05,
    "16": 2e-05,
    "17": 4e-05,
-   "18": 5e-05,
-   "19": 0.00016,
-   "20": 0.00067,
-   "21": 0.00195,
-   "22": 0.00628,
-   "23": 0.02142,
-   "24": 0.06037,
-   "25": 0.13032,
-   "26": 0.20147,
-   "27": 0.22225,
-   "28": 0.17658,
-   "29": 0.10439,
-   "30": 0.04746,
-   "31": 0.01805,
-   "32": 0.00589,
-   "33": 0.00183,
-   "34": 0.00048,
-   "35": 0.00018,
+   "18": 7e-05,
+   "19": 0.00024,
+   "20": 0.00073,
+   "21": 0.00191,
+   "22": 0.00661,
+   "23": 0.02152,
+   "24": 0.05772,
+   "25": 0.12491,
+   "26": 0.19756,
+   "27": 0.22282,
+   "28": 0.18082,
+   "29": 0.1078,
+   "30": 0.04923,
+   "31": 0.01922,
+   "32": 0.0061,
+   "33": 0.00186,
+   "34": 0.00051,
+   "35": 0.00017,
    "36": 7e-05,
    "37": 6e-05
   },
   "majority": 26,
-  "ratings_as_of": "2026-10-23",
-  "ratings_source": "Cook Political Report governor ratings, via Wikipedia (revision 1381483515, 2026-10-22)"
+  "ratings_as_of": "2026-10-24",
+  "ratings_source": "Cook Political Report governor ratings, via Wikipedia (revision 1381665113, 2026-10-24)",
+  "research": {
+   "as_of": "2026-10-24",
+   "cap_points": 2.0,
+   "live": true,
+   "age_days": 0,
+   "method": "Read by hand from local and national reporting on each competitive race. Notes describe the race; they do not move the forecast. An adjustment is made only where the reporting shows something the Cook rating and the polling on file do not yet carry, it is never more than 2 points of margin, and it is dropped automatically if this file is not re-researched within three weeks."
+  }
  },
  "joint": {
-  "dem_both": 0.5787,
-  "dem_house_rep_senate": 0.2342,
-  "rep_house_dem_senate": 0.0393,
-  "rep_both": 0.1478
+  "dem_both": 0.5778,
+  "dem_house_rep_senate": 0.2382,
+  "rep_house_dem_senate": 0.0382,
+  "rep_both": 0.1458
  },
  "n_sims": 100000,
  "fundamentals_display": {
-  "as_of": "2026-10-23",
+  "as_of": "2026-10-24",
   "indicators": [
    {
     "id": "gas_price",
@@ -3364,11 +3802,11 @@
     "id": "treasury_10y",
     "label": "10-yr Treasury yield",
     "category": "markets",
-    "display": "5.13%",
-    "as_of": "2026-10-21",
-    "compare_display": "4.81% 2-yr",
+    "display": "4.96%",
+    "as_of": "2026-10-22",
+    "compare_display": "4.65% 2-yr",
     "compare_label": "2-yr",
-    "change_display": "10s-2s spread +0.32 pt (steep)",
+    "change_display": "10s-2s spread +0.31 pt (steep)",
     "context": "Constant-maturity Treasury yields; the 2-year tracks Fed expectations.",
     "why": "Voters don't watch bond yields, but yields set mortgage, auto and card rates, and a Fed hike eight weeks before an election is a headline risk.",
     "sources": [
@@ -3377,7 +3815,7 @@
       "url": "https://fred.stlouisfed.org/series/DGS10"
      }
     ],
-    "value": 5.13
+    "value": 4.96
    },
    {
     "id": "sp500",
@@ -3453,25 +3891,25 @@
  },
  "change": {
   "from": "2026-10-22T19:49:09.104636+00:00",
-  "to": "2026-10-23T19:52:09.684027+00:00",
+  "to": "2026-10-24T01:16:18.149020+00:00",
   "total": {
-   "senate": -0.46,
-   "house": -0.8
+   "senate": -0.66,
+   "house": -0.49
   },
   "drivers": [
    {
     "id": "generic_ballot",
     "label": "Generic ballot",
     "points": {
-     "senate": -0.225,
-     "house": -0.81
+     "senate": -0.19,
+     "house": -0.62
     }
    },
    {
     "id": "senate_polls",
     "label": "Senate state polling",
     "points": {
-     "senate": -0.24,
+     "senate": -0.515,
      "house": 0.0
     }
    },
@@ -3479,21 +3917,21 @@
     "id": "clock",
     "label": "Election Day getting closer",
     "points": {
-     "senate": 0.015,
-     "house": 0.055
+     "senate": 0.065,
+     "house": 0.17
     }
    },
    {
     "id": "approval",
     "label": "Presidential approval",
     "points": {
-     "senate": -0.01,
-     "house": -0.05
+     "senate": -0.015,
+     "house": -0.045
     }
    }
   ],
   "residual": {
-   "senate": -0.0,
+   "senate": -0.005,
    "house": 0.005
   },
   "facts": [
@@ -3504,6 +3942,10 @@
    {
     "kind": "poll",
     "text": "Presidential approval went from net -25.3 to -25.1"
+   },
+   {
+    "kind": "economy",
+    "text": "10-yr Treasury yield scored better for the president's party (-0.75 to -0.64)"
    }
   ],
   "races": [],

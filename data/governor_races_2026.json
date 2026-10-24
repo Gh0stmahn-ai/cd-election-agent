@@ -1,7 +1,7 @@
 {
- "as_of": "2026-10-23",
- "ratings_environment_dem_margin": 9.51,
- "ratings_source": "Cook Political Report governor ratings, via Wikipedia (revision 1381483515, 2026-10-22)",
+ "as_of": "2026-10-24",
+ "ratings_environment_dem_margin": 9.41,
+ "ratings_source": "Cook Political Report governor ratings, via Wikipedia (revision 1381665113, 2026-10-24)",
  "not_up": {
   "D": 6,
   "R": 8,
@@ -363,8 +363,8 @@
    "race_id": "OH-GOV",
    "state": "OH",
    "held_by": "R",
-   "rating": "tossup",
-   "lean": "R",
+   "rating": "lean",
+   "lean": "D",
    "pvi": -5.0,
    "incumbent": "Mike DeWine",
    "open_seat": true,
