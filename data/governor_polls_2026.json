@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-24T18:40:36+00:00",
+ "as_of": "2026-10-25T18:49:03+00:00",
  "source": "Wikipedia per-race election articles",
  "half_life_days": 21,
  "max_age_days": 120,
@@ -334,7 +334,7 @@
      "rep": 39.0,
      "date": "2026-10-17",
      "n": null,
-     "weight": 0.794,
+     "weight": 0.768,
      "margin": -3.0
     },
     {
@@ -343,7 +343,7 @@
      "rep": 46.0,
      "date": "2026-09-18",
      "n": null,
-     "weight": 0.305,
+     "weight": 0.295,
      "margin": -10.0
     }
    ],
@@ -402,9 +402,9 @@
    "state": "VT",
    "dem_candidate": "Amanda Janoo",
    "rep_candidate": "Phil Scott",
-   "dem_margin": -3.8,
-   "method": "5 polls, recency and sample weighted",
-   "n_used": 5,
+   "dem_margin": -3.6,
+   "method": "4 polls, recency and sample weighted",
+   "n_used": 4,
    "detail": [
     {
      "label": "State Navigate",
@@ -412,7 +412,7 @@
      "rep": 46.0,
      "date": "2026-10-08",
      "n": 948,
-     "weight": 0.642,
+     "weight": 0.621,
      "margin": -3.0
     },
     {
@@ -421,7 +421,7 @@
      "rep": 42.0,
      "date": "2026-09-20",
      "n": 817,
-     "weight": 0.329,
+     "weight": 0.318,
      "margin": -10.0
     },
     {
@@ -430,7 +430,7 @@
      "rep": 43.0,
      "date": "2026-09-06",
      "n": 829,
-     "weight": 0.209,
+     "weight": 0.202,
      "margin": 6.0
     },
     {
@@ -439,17 +439,8 @@
      "rep": 44.0,
      "date": "2026-07-17",
      "n": 954,
-     "weight": 0.042,
+     "weight": 0.04,
      "margin": -11.0
-    },
-    {
-     "label": "University of New Hampshire",
-     "dem": 27.0,
-     "rep": 42.0,
-     "date": "2026-06-26",
-     "n": 887,
-     "weight": 0.02,
-     "margin": -15.0
     }
    ],
    "rating": "likely",

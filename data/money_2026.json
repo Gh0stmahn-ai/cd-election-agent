@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-24",
+ "as_of": "2026-10-25",
  "latest_report": "2026-10-14",
  "n_races": 470,
  "note": "Best-funded Democrat and Republican in each race, from the FEC's bulk candidate summaries. Cash on hand is as of each campaign's last filed report, so races differ by a few weeks. Shown on this site and not fed into the forecast.",
@@ -3817,8 +3817,8 @@
    "rep": {
     "name": "Koppie, Chad",
     "incumbent": false,
-    "receipts": 58290,
-    "spent": 58248,
+    "receipts": 60409,
+    "spent": 60367,
     "cash": 42,
     "debts": 0,
     "as_of": "2026-10-14",
@@ -6478,11 +6478,11 @@
    "dem": {
     "name": "Stille, Becky Lynn",
     "incumbent": false,
-    "receipts": 95021,
-    "spent": 92662,
-    "cash": 2359,
+    "receipts": 97390,
+    "spent": 97440,
+    "cash": -50,
     "debts": 54753,
-    "as_of": "2026-09-30",
+    "as_of": "2026-10-14",
     "named": false
    },
    "rep": {
@@ -6495,8 +6495,8 @@
     "as_of": "2026-10-14",
     "named": false
    },
-   "dem_cash_share": 0.0021,
-   "cash_gap": -1099208
+   "dem_cash_share": 0.0,
+   "cash_gap": -1101567
   },
   "NH-1": {
    "chamber": "house",

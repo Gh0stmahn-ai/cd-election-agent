@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-24T18:40:02+00:00",
+ "as_of": "2026-10-25T18:48:27+00:00",
  "source": "Wikipedia per-race election articles",
  "half_life_days": 21,
  "max_age_days": 120,
@@ -164,7 +164,7 @@
    "state": "NC",
    "dem_candidate": "Roy Cooper",
    "rep_candidate": "Michael Whatley",
-   "dem_margin": 10.7,
+   "dem_margin": 10.8,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
@@ -182,7 +182,7 @@
     },
     {
      "label": "RealClearPolitics",
-     "margin": 9.9
+     "margin": 10.6
     },
     {
      "label": "Silver Bulletin",
@@ -228,17 +228,17 @@
    "state": "OH",
    "dem_candidate": "Sherrod Brown",
    "rep_candidate": "Jon Husted",
-   "dem_margin": 3.9,
+   "dem_margin": 3.8,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 4.2
+     "margin": 4.0
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 4.4
+     "margin": 4.2
     },
     {
      "label": "FiftyPlusOne",
@@ -246,11 +246,11 @@
     },
     {
      "label": "RealClearPolitics",
-     "margin": 2.9
+     "margin": 3.3
     },
     {
      "label": "Silver Bulletin",
-     "margin": 3.7
+     "margin": 3.4
     }
    ],
    "rating": "tossup",
