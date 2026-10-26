@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-25T18:49:03+00:00",
+ "as_of": "2026-10-26T20:58:08+00:00",
  "source": "Wikipedia per-race election articles",
  "half_life_days": 21,
  "max_age_days": 120,
@@ -40,7 +40,7 @@
    "state": "FL",
    "dem_candidate": "David Jolly",
    "rep_candidate": "Byron Donalds",
-   "dem_margin": -4.7,
+   "dem_margin": -5.4,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
@@ -50,19 +50,19 @@
     },
     {
      "label": "Decision Desk HQ",
-     "margin": -5.6
+     "margin": -6.5
     },
     {
      "label": "FiftyPlusOne",
-     "margin": -4.0
+     "margin": -5.2
     },
     {
      "label": "RealClearPolitics",
-     "margin": -5.0
+     "margin": -5.6
     },
     {
      "label": "Silver Bulletin",
-     "margin": -3.9
+     "margin": -4.5
     }
    ],
    "rating": "lean",
@@ -200,7 +200,7 @@
    "state": "NE",
    "dem_candidate": "Lynne Walz",
    "rep_candidate": "Jim Pillen",
-   "dem_margin": -3.2,
+   "dem_margin": -3.0,
    "method": "mean of 4 aggregators",
    "n_used": 4,
    "detail": [
@@ -210,15 +210,15 @@
     },
     {
      "label": "Decision Desk HQ",
-     "margin": -3.8
+     "margin": -2.9
     },
     {
      "label": "FiftyPlusOne",
-     "margin": -2.7
+     "margin": -2.5
     },
     {
      "label": "Silver Bulletin",
-     "margin": -2.8
+     "margin": -3.1
     }
    ],
    "rating": "likely",
@@ -260,7 +260,7 @@
    "state": "NV",
    "dem_candidate": "Aaron Ford",
    "rep_candidate": "Joe Lombardo",
-   "dem_margin": -0.8,
+   "dem_margin": -0.5,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
@@ -270,11 +270,11 @@
     },
     {
      "label": "Decision Desk HQ",
-     "margin": -2.2
+     "margin": -1.8
     },
     {
      "label": "FiftyPlusOne",
-     "margin": -1.4
+     "margin": -0.2
     },
     {
      "label": "RealClearPolitics",
@@ -282,7 +282,7 @@
     },
     {
      "label": "Silver Bulletin",
-     "margin": -0.5
+     "margin": -0.4
     }
    ],
    "rating": "tossup",
@@ -292,7 +292,7 @@
    "state": "OH",
    "dem_candidate": "Amy Acton",
    "rep_candidate": "Vivek Ramaswamy",
-   "dem_margin": 3.7,
+   "dem_margin": 3.8,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
@@ -306,11 +306,11 @@
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 4.1
+     "margin": 3.8
     },
     {
      "label": "RealClearPolitics",
-     "margin": 3.6
+     "margin": 4.4
     },
     {
      "label": "Silver Bulletin",
@@ -334,7 +334,7 @@
      "rep": 39.0,
      "date": "2026-10-17",
      "n": null,
-     "weight": 0.768,
+     "weight": 0.743,
      "margin": -3.0
     },
     {
@@ -343,7 +343,7 @@
      "rep": 46.0,
      "date": "2026-09-18",
      "n": null,
-     "weight": 0.295,
+     "weight": 0.285,
      "margin": -10.0
     }
    ],
@@ -370,7 +370,7 @@
    "state": "TX",
    "dem_candidate": "Gina Hinojosa",
    "rep_candidate": "Greg Abbott",
-   "dem_margin": -2.8,
+   "dem_margin": -3.0,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
@@ -388,7 +388,7 @@
     },
     {
      "label": "RealClearPolitics",
-     "margin": -2.4
+     "margin": -3.3
     },
     {
      "label": "Silver Bulletin",
@@ -412,7 +412,7 @@
      "rep": 46.0,
      "date": "2026-10-08",
      "n": 948,
-     "weight": 0.621,
+     "weight": 0.601,
      "margin": -3.0
     },
     {
@@ -421,7 +421,7 @@
      "rep": 42.0,
      "date": "2026-09-20",
      "n": 817,
-     "weight": 0.318,
+     "weight": 0.308,
      "margin": -10.0
     },
     {
@@ -430,7 +430,7 @@
      "rep": 43.0,
      "date": "2026-09-06",
      "n": 829,
-     "weight": 0.202,
+     "weight": 0.195,
      "margin": 6.0
     },
     {
@@ -439,7 +439,7 @@
      "rep": 44.0,
      "date": "2026-07-17",
      "n": 954,
-     "weight": 0.04,
+     "weight": 0.039,
      "margin": -11.0
     }
    ],

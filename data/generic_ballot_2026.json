@@ -1,22 +1,22 @@
 {
- "as_of": "2026-10-25",
- "dem_margin_points": 9.42,
- "note": "Our own average of 78 individual polls from 44 pollsters, 2026-08-26 to 2026-10-21, plus or minus 0.6. Published aggregators say D+8.7",
+ "as_of": "2026-10-26",
+ "dem_margin_points": 9.24,
+ "note": "Our own average of 79 individual polls from 44 pollsters, 2026-08-30 to 2026-10-23, plus or minus 0.5. Published aggregators say D+8.7",
  "sources": [
   "https://en.wikipedia.org/wiki/2026_United_States_elections",
   "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections"
  ],
  "detail": {
-  "stderr": 0.57,
-  "spread": 2.07,
-  "flat": 8.59,
-  "trend_per_week": 0.24,
-  "mean_age_days": 24.2,
-  "n_polls": 78,
-  "n_effective": 53.8,
+  "stderr": 0.53,
+  "spread": 2.02,
+  "flat": 8.58,
+  "trend_per_week": 0.19,
+  "mean_age_days": 24.0,
+  "n_polls": 79,
+  "n_effective": 54.9,
   "n_pollsters": 44,
-  "newest": "2026-10-21",
-  "oldest": "2026-08-26",
+  "newest": "2026-10-23",
+  "oldest": "2026-08-30",
   "house_effects": [
    {
     "pollster": "Harvard",
@@ -28,13 +28,13 @@
     "pollster": "RMG Research",
     "polls": 15,
     "in_average": 2,
-    "effect": -2.99
+    "effect": -2.98
    },
    {
     "pollster": "McLaughlin & Associates",
     "polls": 15,
     "in_average": 1,
-    "effect": -2.76
+    "effect": -2.77
    },
    {
     "pollster": "Marist University",
@@ -50,9 +50,9 @@
    },
    {
     "pollster": "Strength In Numbers",
-    "polls": 12,
+    "polls": 11,
     "in_average": 1,
-    "effect": 2.14
+    "effect": 1.81
    },
    {
     "pollster": "Morning Consult",
@@ -70,13 +70,22 @@
   "method": "Weighted by recency (21-day half-life), sample size and population, with each pollster's standing lean removed and no pollster allowed more than a fifth of the total weight. The average is then read off a line fitted through the polls at today's date rather than taken flat, because a weighted mean sits at the middle of its window and lags whenever the race is moving.",
   "recent": [
    {
+    "source": "CBS / YouGov",
+    "date": "2026-10-23",
+    "n": 1749,
+    "population": "LV",
+    "margin": 8.0,
+    "adjusted": 8.12,
+    "weight": 1.339
+   },
+   {
     "source": "ActiVote",
     "date": "2026-10-21",
     "n": 1000,
     "population": "LV",
     "margin": 6.0,
     "adjusted": 7.67,
-    "weight": 0.98
+    "weight": 0.948
    },
    {
     "source": "The Economist / YouGov",
@@ -84,8 +93,17 @@
     "n": 1179,
     "population": "LV",
     "margin": 9.0,
-    "adjusted": 9.18,
-    "weight": 1.029
+    "adjusted": 9.19,
+    "weight": 0.996
+   },
+   {
+    "source": "Focaldata/ Financial Times",
+    "date": "2026-10-20",
+    "n": 1594,
+    "population": "LV",
+    "margin": 9.0,
+    "adjusted": 8.54,
+    "weight": 1.158
    },
    {
     "source": "Reuters / Ipsos",
@@ -93,8 +111,8 @@
     "n": 1279,
     "population": "RV",
     "margin": 12.0,
-    "adjusted": 13.62,
-    "weight": 0.934
+    "adjusted": 13.63,
+    "weight": 0.903
    },
    {
     "source": "The New York Times / Siena University",
@@ -103,7 +121,7 @@
     "population": "LV",
     "margin": 11.0,
     "adjusted": 10.52,
-    "weight": 1.714
+    "weight": 1.659
    },
    {
     "source": "CNN /SSRS",
@@ -111,8 +129,8 @@
     "n": 1206,
     "population": "RV",
     "margin": 10.0,
-    "adjusted": 9.88,
-    "weight": 0.877
+    "adjusted": 9.89,
+    "weight": 0.849
    },
    {
     "source": "Hart Research Associates (D)/Public Opinion Strategies (R)",
@@ -120,8 +138,8 @@
     "n": 1000,
     "population": "RV",
     "margin": 7.0,
-    "adjusted": 7.25,
-    "weight": 0.799
+    "adjusted": 7.26,
+    "weight": 0.773
    },
    {
     "source": "RMG Research",
@@ -129,8 +147,8 @@
     "n": 2000,
     "population": "RV",
     "margin": 8.0,
-    "adjusted": 10.99,
-    "weight": 0.99
+    "adjusted": 10.98,
+    "weight": 0.958
    },
    {
     "source": "ActiVote",
@@ -139,7 +157,7 @@
     "population": "LV",
     "margin": 6.0,
     "adjusted": 7.67,
-    "weight": 0.778
+    "weight": 0.752
    },
    {
     "source": "The Washington Post / ABC News / Ipsos",
@@ -147,8 +165,8 @@
     "n": 2032,
     "population": "LV",
     "margin": 8.0,
-    "adjusted": 7.98,
-    "weight": 1.073
+    "adjusted": 7.99,
+    "weight": 1.038
    },
    {
     "source": "The Economist / YouGov",
@@ -156,26 +174,8 @@
     "n": 1403,
     "population": "RV",
     "margin": 7.0,
-    "adjusted": 7.18,
-    "weight": 0.776
-   },
-   {
-    "source": "Beacon Research (D)/ Shaw & Co. Research (R)",
-    "date": "2026-10-12",
-    "n": 1202,
-    "population": "RV",
-    "margin": 9.0,
-    "adjusted": 8.93,
-    "weight": 0.718
-   },
-   {
-    "source": "SurveyMonkey",
-    "date": "2026-10-12",
-    "n": 17649,
-    "population": "RV",
-    "margin": 10.0,
-    "adjusted": 9.7,
-    "weight": 1.758
+    "adjusted": 7.19,
+    "weight": 0.751
    }
   ],
   "aggregators": {
