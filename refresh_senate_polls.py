@@ -198,6 +198,23 @@ def average(entries, today):
     return total_m / total_w, used
 
 
+def carry_forward(seat, dem, rep, path=None, max_days=3):
+    """Yesterday's average for a race whose article could not be read today
+    (Wikipedia rate-limits bursts), so one failed read does not drop a race's
+    polls from the forecast. Only for the same two nominees, and only for a
+    few days; marked as carried."""
+    path = path or (DATA / "senate_polls_2026.json")
+    try:
+        prev = json.loads(Path(path).read_text())
+        entry = prev["races"][seat]
+        age = (datetime.now().astimezone() - datetime.fromisoformat(entry.get("read_at") or prev["as_of"])).days
+    except (OSError, ValueError, KeyError):
+        return None
+    if age > max_days or entry.get("dem_candidate") != dem or entry.get("rep_candidate") != rep:
+        return None
+    return dict(entry, carried=True, read_at=entry.get("read_at") or prev["as_of"])
+
+
 def article_titles(seat_id, state):
     name = STATE_NAMES.get(state, state)
     if "special" in seat_id:
@@ -208,7 +225,9 @@ def article_titles(seat_id, state):
 
 def main():
     races = json.loads((DATA / "senate_races_2026.json").read_text())["races"]
-    competitive = [r for r in races if r["rating"] in ("tossup", "lean")]
+    # Likely races too, as for governors: a race Cook moves from Lean to
+    # Likely (Georgia and North Carolina this October) should keep its polls.
+    competitive = [r for r in races if r["rating"] in ("tossup", "lean", "likely")]
     today = date.today()
     out, issues = {}, []
 
@@ -232,7 +251,12 @@ def main():
                 break
         if not page:
             issues.append(f"{seat}: no article found")
-            print(f"  {seat}: no article")
+            kept = carry_forward(seat, dem, rep)
+            if kept:
+                out[seat] = kept
+                print(f"  {seat}: no article read; kept the last average")
+            else:
+                print(f"  {seat}: no article")
             continue
 
         tables = find_tables(page, dem.split()[-1], rep.split()[-1])
@@ -268,7 +292,8 @@ def main():
         out[seat] = {"state": race["state"], "dem_candidate": dem, "rep_candidate": rep,
                      "dem_margin": round(margin, 1), "method": method,
                      "n_used": len(used), "detail": used[:12],
-                     "rating": race["rating"], "rating_lean": race["lean"]}
+                     "rating": race["rating"], "rating_lean": race["lean"],
+                     "read_at": datetime.now().astimezone().isoformat(timespec="seconds")}
         side = "D" if margin >= 0 else "R"
         print(f"  {seat}: {side}+{abs(margin):.1f} ({method})")
 

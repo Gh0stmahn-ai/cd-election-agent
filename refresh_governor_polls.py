@@ -45,7 +45,12 @@ def main():
         time.sleep(S.PAUSE)
         if not page:
             issues.append(f"{rid}: no article found")
-            print(f"  {rid}: no article")
+            kept = S.carry_forward(rid, dem, rep, path=DATA / "governor_polls_2026.json")
+            if kept:
+                out[rid] = kept
+                print(f"  {rid}: no article read; kept the last average")
+            else:
+                print(f"  {rid}: no article")
             continue
         tables = S.find_tables(page, dem.split()[-1], rep.split()[-1])
         agg = [t for t in tables if t["aggregation"]]
@@ -73,7 +78,8 @@ def main():
             continue
         out[rid] = {"state": race["state"], "dem_candidate": dem, "rep_candidate": rep,
                     "dem_margin": round(margin, 1), "method": method, "n_used": len(used),
-                    "detail": used[:12], "rating": race["rating"], "rating_lean": race["lean"]}
+                    "detail": used[:12], "rating": race["rating"], "rating_lean": race["lean"],
+                    "read_at": datetime.now().astimezone().isoformat(timespec="seconds")}
         print(f"  {rid}: {'D' if margin >= 0 else 'R'}+{abs(margin):.1f} ({method})")
     if not out:
         print("No governor polling could be read; leaving any previous file alone.", file=sys.stderr)

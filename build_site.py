@@ -140,7 +140,8 @@ def load_snapshots():
 def house_meta():
     data = json.loads((DATA_DIR / "house_districts_2026.json").read_text())
     return {d["id"]: {"state": d["state"], "held_by": d["held_by"], "incumbent": d.get("incumbent"),
-                      "redrawn": d.get("redrawn_2026", False)} for d in data["districts"]}
+                      "redrawn": d.get("redrawn_2026", False), "dem": d.get("dem_candidate"),
+                      "rep": d.get("rep_candidate")} for d in data["districts"]}
 
 
 def js(obj):
