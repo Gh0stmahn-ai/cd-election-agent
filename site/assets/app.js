@@ -717,8 +717,13 @@ function ratingText(code) {
 }
 function houseTip(id, p, meta, ratings) {
   var m = meta[id] || {}, code = ratings[id];
+  var cands = [];
+  if (m.dem) cands.push(swatch(css("--dem")) + esc(m.dem) + " (D)");
+  if (m.rep) cands.push(swatch(css("--rep")) + esc(m.rep) + " (R)");
   return "<b>" + id + "</b> · " + (STATE_NAMES[m.state] || "") + (m.redrawn ? " · new 2026 map" : "") + "<br>" +
-    (m.incumbent ? esc(m.incumbent) + "<br>" : "") + "Cook: " + (ratingText(code) || "n/a") +
+    (cands.length ? cands.join("<br>") + "<br>" : "") +
+    (m.incumbent ? "Incumbent: " + esc(m.incumbent) + "<br>" : (m.held_by ? "Open seat<br>" : "")) +
+    "Cook: " + (ratingText(code) || "n/a") +
     (m.held_by ? " · held by " + m.held_by : "") +
     "<br><b>Democrats " + pct(p) + "</b> · Republicans " + pct(1 - p);
 }

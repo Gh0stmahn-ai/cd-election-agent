@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-27T20:31:14+00:00",
+ "as_of": "2026-10-27T22:19:36+00:00",
  "source": "Wikipedia per-race election articles",
  "half_life_days": 21,
  "max_age_days": 120,
@@ -7,7 +7,7 @@
   "AK-2026": {
    "state": "AK",
    "dem_candidate": "Mary Peltola",
-   "rep_candidate": "Dan Sullivan",
+   "rep_candidate": "Dan S. Sullivan",
    "dem_margin": 2.6,
    "method": "mean of 4 aggregators",
    "n_used": 4,
@@ -30,7 +30,8 @@
     }
    ],
    "rating": "tossup",
-   "rating_lean": "R"
+   "rating_lean": "R",
+   "read_at": "2026-10-27T22:19:06+00:00"
   },
   "GA-2026": {
    "state": "GA",
@@ -61,8 +62,9 @@
      "margin": 8.9
     }
    ],
-   "rating": "lean",
-   "rating_lean": "D"
+   "rating": "likely",
+   "rating_lean": "D",
+   "read_at": "2026-10-27T22:19:08+00:00"
   },
   "IA-2026": {
    "state": "IA",
@@ -94,7 +96,41 @@
     }
    ],
    "rating": "tossup",
-   "rating_lean": "R"
+   "rating_lean": "R",
+   "read_at": "2026-10-27T22:19:11+00:00"
+  },
+  "KS-2026": {
+   "state": "KS",
+   "dem_candidate": "Adam Hamilton",
+   "rep_candidate": "Roger Marshall",
+   "dem_margin": 0.5,
+   "method": "mean of 5 aggregators",
+   "n_used": 5,
+   "detail": [
+    {
+     "label": "270toWin",
+     "margin": 1.0
+    },
+    {
+     "label": "Decision Desk HQ",
+     "margin": 0.4
+    },
+    {
+     "label": "FiftyPlusOne",
+     "margin": 0.3
+    },
+    {
+     "label": "RealClearPolitics",
+     "margin": -0.3
+    },
+    {
+     "label": "Silver Bulletin",
+     "margin": 1.0
+    }
+   ],
+   "rating": "tossup",
+   "rating_lean": "R",
+   "read_at": "2026-10-27T22:19:13+00:00"
   },
   "ME-2026": {
    "state": "ME",
@@ -126,7 +162,8 @@
     }
    ],
    "rating": "tossup",
-   "rating_lean": "R"
+   "rating_lean": "R",
+   "read_at": "2026-10-27T22:19:15+00:00"
   },
   "MI-2026": {
    "state": "MI",
@@ -158,7 +195,72 @@
     }
    ],
    "rating": "tossup",
-   "rating_lean": "D"
+   "rating_lean": "D",
+   "read_at": "2026-10-27T22:19:18+00:00"
+  },
+  "MN-2026": {
+   "state": "MN",
+   "dem_candidate": "Peggy Flanagan",
+   "rep_candidate": "Michele Tafoya",
+   "dem_margin": 3.3,
+   "method": "mean of 5 aggregators",
+   "n_used": 5,
+   "detail": [
+    {
+     "label": "270toWin",
+     "margin": 1.5
+    },
+    {
+     "label": "Decision Desk HQ",
+     "margin": 3.7
+    },
+    {
+     "label": "FiftyPlusOne",
+     "margin": 3.8
+    },
+    {
+     "label": "RealClearPolitics",
+     "margin": 2.8
+    },
+    {
+     "label": "Silver Bulletin",
+     "margin": 4.6
+    }
+   ],
+   "rating": "lean",
+   "rating_lean": "D",
+   "read_at": "2026-10-27T22:19:20+00:00"
+  },
+  "MS-2026": {
+   "state": "MS",
+   "dem_candidate": "Scott Colom",
+   "rep_candidate": "Cindy Hyde-Smith",
+   "dem_margin": -3.4,
+   "method": "2 polls, recency and sample weighted",
+   "n_used": 2,
+   "detail": [
+    {
+     "label": "Change Research (D)",
+     "dem": 40.0,
+     "rep": 43.0,
+     "date": "2026-10-09",
+     "n": 842,
+     "weight": 0.566,
+     "margin": -3.0
+    },
+    {
+     "label": "Data for Progress (D)",
+     "dem": 38.0,
+     "rep": 44.0,
+     "date": "2026-08-11",
+     "n": 1018,
+     "weight": 0.089,
+     "margin": -6.0
+    }
+   ],
+   "rating": "likely",
+   "rating_lean": "R",
+   "read_at": "2026-10-27T22:19:22+00:00"
   },
   "NC-2026": {
    "state": "NC",
@@ -189,8 +291,38 @@
      "margin": 9.7
     }
    ],
-   "rating": "lean",
-   "rating_lean": "D"
+   "rating": "likely",
+   "rating_lean": "D",
+   "read_at": "2026-10-27T22:19:25+00:00"
+  },
+  "NE-2026": {
+   "state": "NE",
+   "dem_candidate": "Dan Osborn",
+   "rep_candidate": "Pete Ricketts",
+   "dem_margin": -0.6,
+   "method": "mean of 4 aggregators",
+   "n_used": 4,
+   "detail": [
+    {
+     "label": "270toWin",
+     "margin": -2.3
+    },
+    {
+     "label": "Decision Desk HQ",
+     "margin": -0.6
+    },
+    {
+     "label": "FiftyPlusOne",
+     "margin": -0.1
+    },
+    {
+     "label": "Silver Bulletin",
+     "margin": 0.5
+    }
+   ],
+   "rating": "likely",
+   "rating_lean": "R",
+   "read_at": "2026-10-27T22:19:27+00:00"
   },
   "NH-2026": {
    "state": "NH",
@@ -221,8 +353,9 @@
      "margin": 7.3
     }
    ],
-   "rating": "tossup",
-   "rating_lean": "D"
+   "rating": "lean",
+   "rating_lean": "D",
+   "read_at": "2026-10-27T22:19:29+00:00"
   },
   "OH-2026-special": {
    "state": "OH",
@@ -254,7 +387,41 @@
     }
    ],
    "rating": "tossup",
-   "rating_lean": "R"
+   "rating_lean": "R",
+   "read_at": "2026-10-27T22:19:31+00:00"
+  },
+  "SC-2026": {
+   "state": "SC",
+   "dem_candidate": "Annie Andrews",
+   "rep_candidate": "Darline Graham",
+   "dem_margin": -1.8,
+   "method": "mean of 5 aggregators",
+   "n_used": 5,
+   "detail": [
+    {
+     "label": "270toWin",
+     "margin": -1.8
+    },
+    {
+     "label": "Decision Desk HQ",
+     "margin": -1.6
+    },
+    {
+     "label": "FiftyPlusOne",
+     "margin": -1.0
+    },
+    {
+     "label": "RealClearPolitics",
+     "margin": -2.7
+    },
+    {
+     "label": "Silver Bulletin",
+     "margin": -1.7
+    }
+   ],
+   "rating": "lean",
+   "rating_lean": "R",
+   "read_at": "2026-10-27T22:19:34+00:00"
   },
   "TX-2026": {
    "state": "TX",
@@ -290,10 +457,9 @@
     }
    ],
    "rating": "tossup",
-   "rating_lean": "R"
+   "rating_lean": "R",
+   "read_at": "2026-10-27T22:19:36+00:00"
   }
  },
- "issues": [
-  "KS-2026: both nominees are not settled yet"
- ]
+ "issues": []
 }

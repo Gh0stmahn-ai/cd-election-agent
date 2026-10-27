@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-27T20:32:48+00:00",
+ "as_of": "2026-10-27T22:21:14+00:00",
  "window": {
   "start": "2026-09-11",
   "end": "2026-10-26",
@@ -23,7 +23,7 @@
      "days": 46
     },
     "R": {
-     "candidate": "Dan Sullivan",
+     "candidate": "Dan S. Sullivan",
      "article": "Dan Sullivan (U.S. senator)",
      "url": "https://en.wikipedia.org/wiki/Dan_Sullivan_%28U.S._senator%29",
      "recent_daily": 3083,
@@ -34,31 +34,6 @@
    },
    "dem_share": 0.6302,
    "total_daily": 8337
-  },
-  "GA-2026": {
-   "state": "GA",
-   "sides": {
-    "D": {
-     "candidate": "Jon Ossoff",
-     "article": "Jon Ossoff",
-     "url": "https://en.wikipedia.org/wiki/Jon_Ossoff",
-     "recent_daily": 17664,
-     "baseline_daily": 13912,
-     "surge": 1.27,
-     "days": 46
-    },
-    "R": {
-     "candidate": "Mike Collins",
-     "article": "Mike Collins (politician)",
-     "url": "https://en.wikipedia.org/wiki/Mike_Collins_%28politician%29",
-     "recent_daily": 2089,
-     "baseline_daily": 2242,
-     "surge": 0.93,
-     "days": 46
-    }
-   },
-   "dem_share": 0.8942,
-   "total_daily": 19753
   },
   "IA-2026": {
    "state": "IA",
@@ -88,6 +63,15 @@
   "KS-2026": {
    "state": "KS",
    "sides": {
+    "D": {
+     "candidate": "Adam Hamilton",
+     "article": "Roger Marshall",
+     "url": "https://en.wikipedia.org/wiki/Roger_Marshall",
+     "recent_daily": 3310,
+     "baseline_daily": 2255,
+     "surge": 1.47,
+     "days": 46
+    },
     "R": {
      "candidate": "Roger Marshall",
      "article": "Roger Marshall",
@@ -97,7 +81,9 @@
      "surge": 1.47,
      "days": 46
     }
-   }
+   },
+   "dem_share": 0.5,
+   "total_daily": 6620
   },
   "ME-2026": {
    "state": "ME",
@@ -149,30 +135,30 @@
    "dem_share": 0.8309,
    "total_daily": 89615
   },
-  "NC-2026": {
-   "state": "NC",
+  "MN-2026": {
+   "state": "MN",
    "sides": {
     "D": {
-     "candidate": "Roy Cooper",
-     "article": "Roy Cooper",
-     "url": "https://en.wikipedia.org/wiki/Roy_Cooper",
-     "recent_daily": 3165,
-     "baseline_daily": 2073,
-     "surge": 1.53,
+     "candidate": "Peggy Flanagan",
+     "article": "Peggy Flanagan",
+     "url": "https://en.wikipedia.org/wiki/Peggy_Flanagan",
+     "recent_daily": 3094,
+     "baseline_daily": 1769,
+     "surge": 1.75,
      "days": 46
     },
     "R": {
-     "candidate": "Michael Whatley",
-     "article": "Michael Whatley",
-     "url": "https://en.wikipedia.org/wiki/Michael_Whatley",
-     "recent_daily": 1674,
-     "baseline_daily": 1451,
-     "surge": 1.15,
+     "candidate": "Michele Tafoya",
+     "article": "Peggy Flanagan",
+     "url": "https://en.wikipedia.org/wiki/Peggy_Flanagan",
+     "recent_daily": 3094,
+     "baseline_daily": 1769,
+     "surge": 1.75,
      "days": 46
     }
    },
-   "dem_share": 0.6541,
-   "total_daily": 4839
+   "dem_share": 0.5,
+   "total_daily": 6188
   },
   "NH-2026": {
    "state": "NH",
@@ -223,6 +209,31 @@
    },
    "dem_share": 0.3362,
    "total_daily": 20294
+  },
+  "SC-2026": {
+   "state": "SC",
+   "sides": {
+    "D": {
+     "candidate": "Annie Andrews",
+     "article": "Annie Andrews (pediatrician)",
+     "url": "https://en.wikipedia.org/wiki/Annie_Andrews_%28pediatrician%29",
+     "recent_daily": 5712,
+     "baseline_daily": 4337,
+     "surge": 1.32,
+     "days": 39
+    },
+    "R": {
+     "candidate": "Darline Graham",
+     "article": "Darline Graham",
+     "url": "https://en.wikipedia.org/wiki/Darline_Graham",
+     "recent_daily": 4662,
+     "baseline_daily": 2750,
+     "surge": 1.7,
+     "days": 46
+    }
+   },
+   "dem_share": 0.5506,
+   "total_daily": 10374
   },
   "TX-2026": {
    "state": "TX",

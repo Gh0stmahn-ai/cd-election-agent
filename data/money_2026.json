@@ -110,14 +110,14 @@
    "chamber": "senate",
    "state": "AL",
    "dem": {
-    "name": "Sweetser, Kyle",
+    "name": "Wess, Everett W",
     "incumbent": false,
-    "receipts": 166364,
-    "spent": 166003,
-    "cash": 361,
-    "debts": 19422,
-    "as_of": "2026-09-30",
-    "named": false
+    "receipts": 128570,
+    "spent": 118027,
+    "cash": 10543,
+    "debts": 70643,
+    "as_of": "2026-10-14",
+    "named": true
    },
    "rep": {
     "name": "Moore, Felix Barry",
@@ -127,10 +127,10 @@
     "cash": 467199,
     "debts": 534459,
     "as_of": "2026-10-14",
-    "named": false
+    "named": true
    },
-   "dem_cash_share": 0.0008,
-   "cash_gap": -466838
+   "dem_cash_share": 0.0221,
+   "cash_gap": -456656
   },
   "AL-3": {
    "chamber": "house",
@@ -316,7 +316,7 @@
     "cash": 756932,
     "debts": 0,
     "as_of": "2026-10-14",
-    "named": false
+    "named": true
    },
    "rep": {
     "name": "Cotton, Thomas",
@@ -1801,17 +1801,17 @@
     "named": true
    },
    "rep": {
-    "name": "Joshi, Janak",
+    "name": "Baisley, Mark",
     "incumbent": false,
-    "receipts": 485987,
-    "spent": 485987,
-    "cash": 0,
-    "debts": 125130,
-    "as_of": "2026-07-17",
-    "named": false
+    "receipts": 138210,
+    "spent": 110837,
+    "cash": 27710,
+    "debts": 0,
+    "as_of": "2026-10-14",
+    "named": true
    },
-   "dem_cash_share": 1.0,
-   "cash_gap": 1558828
+   "dem_cash_share": 0.9825,
+   "cash_gap": 1531118
   },
   "CO-3": {
    "chamber": "house",
@@ -2102,7 +2102,7 @@
     "cash": 16085,
     "debts": 129250,
     "as_of": "2026-10-14",
-    "named": false
+    "named": true
    },
    "dem_cash_share": 0.9968,
    "cash_gap": 5015626
@@ -2448,14 +2448,14 @@
    "chamber": "senate",
    "state": "FL",
    "dem": {
-    "name": "Vindman, Alexander",
+    "name": "Nixon, Angela",
     "incumbent": false,
-    "receipts": 20487916,
-    "spent": 16370307,
-    "cash": 4117609,
+    "receipts": 11319380,
+    "spent": 8052586,
+    "cash": 3266795,
     "debts": 0,
-    "as_of": "2026-09-30",
-    "named": false
+    "as_of": "2026-10-14",
+    "named": true
    },
    "rep": {
     "name": "Moody, Ashley",
@@ -2467,8 +2467,8 @@
     "as_of": "2026-10-14",
     "named": true
    },
-   "dem_cash_share": 0.8345,
-   "cash_gap": 3301254
+   "dem_cash_share": 0.8001,
+   "cash_gap": 2450440
   },
   "FL-21": {
    "chamber": "house",
@@ -3702,14 +3702,14 @@
    "chamber": "senate",
    "state": "IL",
    "dem": {
-    "name": "Krishnamoorthi, S",
+    "name": "Stratton, Juliana",
     "incumbent": false,
-    "receipts": 31560943,
-    "spent": 31528045,
-    "cash": 32898,
-    "debts": 7821,
-    "as_of": "2026-09-30",
-    "named": false
+    "receipts": 7230577,
+    "spent": 5688992,
+    "cash": 1541585,
+    "debts": 0,
+    "as_of": "2026-10-14",
+    "named": true
    },
    "rep": {
     "name": "Tracy, Don",
@@ -3719,10 +3719,10 @@
     "cash": 483017,
     "debts": 4250000,
     "as_of": "2026-10-14",
-    "named": false
+    "named": true
    },
-   "dem_cash_share": 0.0638,
-   "cash_gap": -450119
+   "dem_cash_share": 0.7614,
+   "cash_gap": 1058568
   },
   "IL-3": {
    "chamber": "house",
@@ -4158,7 +4158,7 @@
     "cash": 2874364,
     "debts": 50000,
     "as_of": "2026-10-14",
-    "named": false
+    "named": true
    },
    "rep": {
     "name": "Marshall, Roger W",
@@ -4281,14 +4281,14 @@
    "chamber": "senate",
    "state": "KY",
    "dem": {
-    "name": "McGrath, Amy",
+    "name": "Booker, Charles",
     "incumbent": false,
-    "receipts": 2384956,
-    "spent": 2381440,
-    "cash": 3516,
-    "debts": 0,
-    "as_of": "2026-09-30",
-    "named": false
+    "receipts": 1936324,
+    "spent": 1632725,
+    "cash": 303599,
+    "debts": 130577,
+    "as_of": "2026-10-14",
+    "named": true
    },
    "rep": {
     "name": "Barr, Garland Andy",
@@ -4298,10 +4298,10 @@
     "cash": 1553857,
     "debts": 0,
     "as_of": "2026-10-14",
-    "named": false
+    "named": true
    },
-   "dem_cash_share": 0.0023,
-   "cash_gap": -1550341
+   "dem_cash_share": 0.1634,
+   "cash_gap": -1250258
   },
   "KY-3": {
    "chamber": "house",
@@ -4452,20 +4452,20 @@
     "cash": 1254929,
     "debts": 54000,
     "as_of": "2026-10-14",
-    "named": false
+    "named": true
    },
    "rep": {
-    "name": "Fleming, John C. Jr.",
+    "name": "Letlow, Julia",
     "incumbent": false,
-    "receipts": 12336653,
-    "spent": 12350191,
-    "cash": 5359,
-    "debts": 4597909,
+    "receipts": 7062069,
+    "spent": 6618899,
+    "cash": 443170,
+    "debts": 0,
     "as_of": "2026-10-14",
-    "named": false
+    "named": true
    },
-   "dem_cash_share": 0.9957,
-   "cash_gap": 1249570
+   "dem_cash_share": 0.739,
+   "cash_gap": 811759
   },
   "LA-3": {
    "chamber": "house",
@@ -4626,7 +4626,7 @@
     "cash": 488156,
     "debts": 1005000,
     "as_of": "2026-10-14",
-    "named": false
+    "named": true
    },
    "dem_cash_share": 0.621,
    "cash_gap": 311757
@@ -5437,7 +5437,7 @@
     "cash": 2819387,
     "debts": 442060,
     "as_of": "2026-10-14",
-    "named": false
+    "named": true
    },
    "dem_cash_share": 0.2605,
    "cash_gap": -1826173
@@ -5860,7 +5860,7 @@
     "cash": 1018717,
     "debts": 175988,
     "as_of": "2026-10-14",
-    "named": false
+    "named": true
    },
    "rep": {
     "name": "Hyde-Smith, Cindy",
@@ -5993,17 +5993,17 @@
     "named": false
    },
    "rep": {
-    "name": "Daines, Steve",
-    "incumbent": true,
-    "receipts": 4779230,
-    "spent": 3958204,
-    "cash": 2579268,
-    "debts": 44813,
-    "as_of": "2026-09-30",
-    "named": false
+    "name": "Alme, Kurt",
+    "incumbent": false,
+    "receipts": 3013681,
+    "spent": 2410943,
+    "cash": 602738,
+    "debts": 0,
+    "as_of": "2026-10-14",
+    "named": true
    },
-   "dem_cash_share": 0.0001,
-   "cash_gap": -2578955
+   "dem_cash_share": 0.0005,
+   "cash_gap": -602425
   },
   "NC-1": {
    "chamber": "house",
@@ -6702,17 +6702,17 @@
     "named": true
    },
    "rep": {
-    "name": "Lebovics, Robert",
+    "name": "Murphy, Justin Michael Ll.M.",
     "incumbent": false,
-    "receipts": 178219,
-    "spent": 178219,
-    "cash": 0,
-    "debts": 140000,
-    "as_of": "2026-09-30",
-    "named": false
+    "receipts": 68189,
+    "spent": 57102,
+    "cash": 10191,
+    "debts": 8782,
+    "as_of": "2026-10-14",
+    "named": true
    },
-   "dem_cash_share": 1.0,
-   "cash_gap": 22899411
+   "dem_cash_share": 0.9996,
+   "cash_gap": 22889220
   },
   "NJ-3": {
    "chamber": "house",
@@ -6951,7 +6951,7 @@
     "cash": 88,
     "debts": 0,
     "as_of": "2026-10-14",
-    "named": false
+    "named": true
    },
    "dem_cash_share": 1.0,
    "cash_gap": 2843188
@@ -8099,14 +8099,14 @@
    "chamber": "senate",
    "state": "OK",
    "dem": {
-    "name": "Priest, Jim",
+    "name": "Thomas, N'Kiyla Jasmine - Ann",
     "incumbent": false,
-    "receipts": 427162,
-    "spent": 427162,
-    "cash": 0,
-    "debts": 65000,
+    "receipts": 115954,
+    "spent": 92789,
+    "cash": 24102,
+    "debts": 0,
     "as_of": "2026-10-14",
-    "named": false
+    "named": true
    },
    "rep": {
     "name": "Hern, Kevin",
@@ -8116,10 +8116,10 @@
     "cash": 2811987,
     "debts": 0,
     "as_of": "2026-10-14",
-    "named": false
+    "named": true
    },
-   "dem_cash_share": 0.0,
-   "cash_gap": -2811987
+   "dem_cash_share": 0.0085,
+   "cash_gap": -2787885
   },
   "OK-3": {
    "chamber": "house",
@@ -8254,7 +8254,7 @@
     "cash": 44198,
     "debts": 0,
     "as_of": "2026-10-14",
-    "named": false
+    "named": true
    },
    "dem_cash_share": 0.9934,
    "cash_gap": 6577052
@@ -8815,7 +8815,7 @@
     "cash": 8357,
     "debts": 690,
     "as_of": "2026-10-14",
-    "named": false
+    "named": true
    },
    "dem_cash_share": 0.9956,
    "cash_gap": 1875175
@@ -8883,7 +8883,7 @@
     "cash": 1709466,
     "debts": 0,
     "as_of": "2026-10-14",
-    "named": false
+    "named": true
    },
    "rep": {
     "name": "Graham, Lindsey O.",
@@ -9143,7 +9143,7 @@
     "cash": 8252,
     "debts": 0,
     "as_of": "2026-10-14",
-    "named": false
+    "named": true
    },
    "rep": {
     "name": "Hagerty, Bill",
@@ -10529,7 +10529,7 @@
     "cash": 154034,
     "debts": 45783,
     "as_of": "2026-10-14",
-    "named": false
+    "named": true
    },
    "dem_cash_share": 0.9758,
    "cash_gap": 6063643
@@ -11185,14 +11185,14 @@
    "chamber": "senate",
    "state": "WV",
    "dem": {
-    "name": "Shrewsbury, Zachary C",
+    "name": "Fetty Anderson, Rachel Lee",
     "incumbent": false,
-    "receipts": 511969,
-    "spent": 511961,
-    "cash": 8,
-    "debts": 19459,
+    "receipts": 164558,
+    "spent": 135873,
+    "cash": 35681,
+    "debts": 25000,
     "as_of": "2026-10-14",
-    "named": false
+    "named": true
    },
    "rep": {
     "name": "Capito, Shelley Moore",
@@ -11204,8 +11204,8 @@
     "as_of": "2026-10-14",
     "named": true
    },
-   "dem_cash_share": 0.0,
-   "cash_gap": -3071068
+   "dem_cash_share": 0.0115,
+   "cash_gap": -3035395
   },
   "WY-2026": {
    "chamber": "senate",
@@ -11218,7 +11218,7 @@
     "cash": 7927,
     "debts": 0,
     "as_of": "2026-10-14",
-    "named": false
+    "named": true
    },
    "rep": {
     "name": "Hageman, Harriet",
@@ -11228,7 +11228,7 @@
     "cash": 439422,
     "debts": 0,
     "as_of": "2026-10-14",
-    "named": false
+    "named": true
    },
    "dem_cash_share": 0.0177,
    "cash_gap": -431495
