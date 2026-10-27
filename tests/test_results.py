@@ -285,6 +285,21 @@ check("markets: a namesake independent is not counted for the Democrat",
 check("markets: a book without both nominees is not used",
       K._gov_split(rows[:1], [{"aaron ford": "D", "joe lombardo": "R"}]) is None)
 
+# --------------------------------------------- Senate and House race lists
+from tools import fetch_senate as FS, fetch_house as FH
+from tools.ratings_env import rating_date
+check("senate: a special election maps to its own seat",
+      FS.seat_of("! [[2026 United States Senate special election in Florida|Florida (special)]]") == ("FL", "FL-2026-special")
+      and FS.seat_of("! [[2026 United States Senate election in South Carolina|South Carolina]]") == ("SC", "SC-2026"))
+check("ratings: Cook's date is read from the column header",
+      rating_date("''[[The Cook Political Report|Cook]]''<br />{{small|Oct 20,<br />2026}}") == _date(2026, 10, 20)
+      and rating_date("[[Cook Political Report|Cook]]<br>{{small|Oct. 23,<br>2026}}") == _date(2026, 10, 23))
+rat, day = FH.cook_ratings("[[Cook Political Report|Cook]]<br>{{small|Oct. 23,<br>2026}}\n|-\n!{{ushr|AL|2|X}}\n"
+                           "|{{shading PVI|R|7}}\n|{{USRaceRating|Lean|R|Flip}}\n|{{USRaceRating|Tossup}}\n|-\n"
+                           "!{{ushr|AK|AL|X}}\n|{{USRaceRating|Tossup}}\n|{{USRaceRating|Likely|R}}\n")
+check("house: Cook's is the first rating in a row, at-large seats keep their id",
+      rat == {"AL-2": ("lean", "R"), "AK-AL": ("tossup", None)} and day == _date(2026, 10, 23), rat)
+
 import os
 import freeze
 os.environ["FREEZE_NOW"] = "2026-11-03T10:30:00Z"
