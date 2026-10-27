@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-26",
+ "as_of": "2026-10-27",
  "latest_report": "2026-10-14",
  "n_races": 470,
  "note": "Best-funded Democrat and Republican in each race, from the FEC's bulk candidate summaries. Cash on hand is as of each campaign's last filed report, so races differ by a few weeks. Shown on this site and not fed into the forecast.",
@@ -7937,11 +7937,11 @@
    "dem": {
     "name": "Shaver, Brian Alan Mr.",
     "incumbent": false,
-    "receipts": 52830,
-    "spent": 27121,
-    "cash": 37973,
-    "debts": 28696,
-    "as_of": "2026-09-30",
+    "receipts": 59140,
+    "spent": 32081,
+    "cash": 39323,
+    "debts": 28827,
+    "as_of": "2026-10-14",
     "named": false
    },
    "rep": {
@@ -7954,8 +7954,8 @@
     "as_of": "2026-10-14",
     "named": false
    },
-   "dem_cash_share": 0.0454,
-   "cash_gap": -761161
+   "dem_cash_share": 0.0469,
+   "cash_gap": -759811
   },
   "OH-6": {
    "chamber": "house",
@@ -10358,11 +10358,11 @@
    "dem": {
     "name": "Udell, Kent Dr.",
     "incumbent": false,
-    "receipts": 91625,
-    "spent": 84787,
-    "cash": 6838,
+    "receipts": 99541,
+    "spent": 93825,
+    "cash": 5716,
     "debts": 1577,
-    "as_of": "2026-09-30",
+    "as_of": "2026-10-14",
     "named": false
    },
    "rep": {
@@ -10375,8 +10375,8 @@
     "as_of": "2026-10-14",
     "named": false
    },
-   "dem_cash_share": 0.0187,
-   "cash_gap": -352723
+   "dem_cash_share": 0.0156,
+   "cash_gap": -353845
   },
   "UT-4": {
    "chamber": "house",

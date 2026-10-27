@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-26T20:57:30+00:00",
+ "as_of": "2026-10-27T20:31:14+00:00",
  "source": "Wikipedia per-race election articles",
  "half_life_days": 21,
  "max_age_days": 120,
@@ -100,29 +100,29 @@
    "state": "ME",
    "dem_candidate": "Troy Jackson",
    "rep_candidate": "Susan Collins",
-   "dem_margin": 1.6,
+   "dem_margin": 1.9,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 1.6
+     "margin": 1.2
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 1.1
+     "margin": 2.3
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 1.7
+     "margin": 3.0
     },
     {
      "label": "RealClearPolitics",
-     "margin": 1.4
+     "margin": 1.2
     },
     {
      "label": "Silver Bulletin",
-     "margin": 2.3
+     "margin": 1.9
     }
    ],
    "rating": "tossup",
