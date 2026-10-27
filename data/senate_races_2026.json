@@ -1,7 +1,7 @@
 {
- "as_of": "2026-09-11",
- "ratings_source": "Cook Political Report Senate race ratings (Aug 20, 2026)",
- "ratings_environment_dem_margin": 5.5,
+ "as_of": "2026-10-27",
+ "ratings_source": "Cook Political Report Senate ratings of Oct 20, 2026, via Wikipedia (revision 1382269801, 2026-10-27)",
+ "ratings_environment_dem_margin": 8.87,
  "not_up": {
   "D": 34,
   "R": 31,
@@ -15,10 +15,10 @@
    "held_by": "R",
    "rating": "tossup",
    "lean": "R",
-   "incumbent": "Dan Sullivan",
+   "incumbent": "Dan S. Sullivan",
    "dem_candidate": "Mary Peltola",
-   "rep_candidate": "Dan Sullivan",
-   "notes": ""
+   "rep_candidate": "Dan S. Sullivan",
+   "notes": "Top-four ballot: 3 Republicans advanced; Dan S. Sullivan is the incumbent"
   },
   {
    "state": "AL",
@@ -27,9 +27,9 @@
    "rating": "solid",
    "lean": "R",
    "incumbent": null,
-   "dem_candidate": null,
-   "rep_candidate": null,
-   "notes": "Open: Tuberville running for governor"
+   "dem_candidate": "Everett Wess",
+   "rep_candidate": "Barry Moore",
+   "notes": "Open: Tommy Tuberville not on the ballot"
   },
   {
    "state": "AR",
@@ -38,7 +38,7 @@
    "rating": "solid",
    "lean": "R",
    "incumbent": "Tom Cotton",
-   "dem_candidate": null,
+   "dem_candidate": "Hallie Shoffner",
    "rep_candidate": "Tom Cotton",
    "notes": ""
   },
@@ -50,7 +50,7 @@
    "lean": "D",
    "incumbent": "John Hickenlooper",
    "dem_candidate": "John Hickenlooper",
-   "rep_candidate": null,
+   "rep_candidate": "Mark Baisley",
    "notes": ""
   },
   {
@@ -61,7 +61,7 @@
    "lean": "D",
    "incumbent": "Chris Coons",
    "dem_candidate": "Chris Coons",
-   "rep_candidate": null,
+   "rep_candidate": "Michael Katz",
    "notes": ""
   },
   {
@@ -71,15 +71,15 @@
    "rating": "solid",
    "lean": "R",
    "incumbent": "Ashley Moody",
-   "dem_candidate": null,
+   "dem_candidate": "Angie Nixon",
    "rep_candidate": "Ashley Moody",
-   "notes": "Special election for the rest of Rubio's term"
+   "notes": "Special election"
   },
   {
    "state": "GA",
    "seat_id": "GA-2026",
    "held_by": "D",
-   "rating": "lean",
+   "rating": "likely",
    "lean": "D",
    "incumbent": "Jon Ossoff",
    "dem_candidate": "Jon Ossoff",
@@ -95,7 +95,7 @@
    "incumbent": null,
    "dem_candidate": "Josh Turek",
    "rep_candidate": "Ashley Hinson",
-   "notes": "Cook Political Report moved Iowa Senate race (Hinson R vs Turek D) from Lean R to Toss Up on Aug 20, 2026"
+   "notes": "Open: Joni Ernst not on the ballot"
   },
   {
    "state": "ID",
@@ -104,9 +104,10 @@
    "rating": "solid",
    "lean": "R",
    "incumbent": "Jim Risch",
-   "dem_candidate": null,
+   "dem_candidate": "Todd Achilles (I)",
    "rep_candidate": "Jim Risch",
-   "notes": ""
+   "notes": "The Democratic nominee withdrew; the challenger is independent Todd Achilles",
+   "challenger_caucus": "independent"
   },
   {
    "state": "IL",
@@ -115,18 +116,18 @@
    "rating": "solid",
    "lean": "D",
    "incumbent": null,
-   "dem_candidate": null,
-   "rep_candidate": null,
-   "notes": "Open: Durbin retiring"
+   "dem_candidate": "Juliana Stratton",
+   "rep_candidate": "Don Tracy",
+   "notes": "Open: Dick Durbin not on the ballot"
   },
   {
    "state": "KS",
    "seat_id": "KS-2026",
    "held_by": "R",
-   "rating": "lean",
+   "rating": "tossup",
    "lean": "R",
    "incumbent": "Roger Marshall",
-   "dem_candidate": null,
+   "dem_candidate": "Adam Hamilton",
    "rep_candidate": "Roger Marshall",
    "notes": ""
   },
@@ -137,9 +138,9 @@
    "rating": "solid",
    "lean": "R",
    "incumbent": null,
-   "dem_candidate": null,
-   "rep_candidate": null,
-   "notes": "Open: McConnell retiring"
+   "dem_candidate": "Charles Booker",
+   "rep_candidate": "Andy Barr",
+   "notes": "Open: Mitch McConnell not on the ballot"
   },
   {
    "state": "LA",
@@ -148,9 +149,9 @@
    "rating": "solid",
    "lean": "R",
    "incumbent": null,
-   "dem_candidate": null,
-   "rep_candidate": null,
-   "notes": "Open: Cassidy lost the primary"
+   "dem_candidate": "Jamie Davis",
+   "rep_candidate": "Julia Letlow",
+   "notes": "Open: Bill Cassidy not on the ballot"
   },
   {
    "state": "MA",
@@ -160,7 +161,7 @@
    "lean": "D",
    "incumbent": "Ed Markey",
    "dem_candidate": "Ed Markey",
-   "rep_candidate": null,
+   "rep_candidate": "John Deaton",
    "notes": ""
   },
   {
@@ -183,27 +184,27 @@
    "incumbent": null,
    "dem_candidate": "Abdul El-Sayed",
    "rep_candidate": "Mike Rogers",
-   "notes": "Open: Peters retiring"
+   "notes": "Open: Gary Peters not on the ballot"
   },
   {
    "state": "MN",
    "seat_id": "MN-2026",
    "held_by": "D",
-   "rating": "likely",
+   "rating": "lean",
    "lean": "D",
    "incumbent": null,
    "dem_candidate": "Peggy Flanagan",
-   "rep_candidate": null,
-   "notes": "Open: Smith retiring"
+   "rep_candidate": "Michele Tafoya",
+   "notes": "Open: Tina Smith not on the ballot"
   },
   {
    "state": "MS",
    "seat_id": "MS-2026",
    "held_by": "R",
-   "rating": "solid",
+   "rating": "likely",
    "lean": "R",
    "incumbent": "Cindy Hyde-Smith",
-   "dem_candidate": null,
+   "dem_candidate": "Scott Colom",
    "rep_candidate": "Cindy Hyde-Smith",
    "notes": ""
   },
@@ -214,20 +215,21 @@
    "rating": "solid",
    "lean": "R",
    "incumbent": null,
-   "dem_candidate": null,
-   "rep_candidate": null,
-   "notes": "Open seat"
+   "dem_candidate": "Seth Bodnar (I)",
+   "rep_candidate": "Kurt Alme",
+   "notes": "The main challenger is independent Seth Bodnar; Democrat Alani Bankhead is also on the ballot; Open: Steve Daines not on the ballot",
+   "challenger_caucus": "independent"
   },
   {
    "state": "NC",
    "seat_id": "NC-2026",
    "held_by": "R",
-   "rating": "lean",
+   "rating": "likely",
    "lean": "D",
    "incumbent": null,
    "dem_candidate": "Roy Cooper",
    "rep_candidate": "Michael Whatley",
-   "notes": "Open: Tillis retiring"
+   "notes": "Open: Thom Tillis not on the ballot"
   },
   {
    "state": "NE",
@@ -245,12 +247,12 @@
    "state": "NH",
    "seat_id": "NH-2026",
    "held_by": "D",
-   "rating": "tossup",
+   "rating": "lean",
    "lean": "D",
    "incumbent": null,
    "dem_candidate": "Chris Pappas",
    "rep_candidate": "John E. Sununu",
-   "notes": "Open: Shaheen retiring"
+   "notes": "Open: Jeanne Shaheen not on the ballot"
   },
   {
    "state": "NJ",
@@ -260,7 +262,7 @@
    "lean": "D",
    "incumbent": "Cory Booker",
    "dem_candidate": "Cory Booker",
-   "rep_candidate": null,
+   "rep_candidate": "Justin Murphy",
    "notes": ""
   },
   {
@@ -269,9 +271,9 @@
    "held_by": "D",
    "rating": "solid",
    "lean": "D",
-   "incumbent": "Ben Ray Lujan",
-   "dem_candidate": "Ben Ray Lujan",
-   "rep_candidate": null,
+   "incumbent": "Ben Ray Luján",
+   "dem_candidate": "Ben Ray Luján",
+   "rep_candidate": "Larry Marker",
    "notes": ""
   },
   {
@@ -280,10 +282,10 @@
    "held_by": "R",
    "rating": "tossup",
    "lean": "R",
-   "incumbent": "Jon Husted",
+   "incumbent": null,
    "dem_candidate": "Sherrod Brown",
    "rep_candidate": "Jon Husted",
-   "notes": "Special election for the rest of Vance's term"
+   "notes": "Special election"
   },
   {
    "state": "OK",
@@ -292,9 +294,9 @@
    "rating": "solid",
    "lean": "R",
    "incumbent": null,
-   "dem_candidate": null,
-   "rep_candidate": null,
-   "notes": "Open seat"
+   "dem_candidate": "N'Kiyla Jasmine Thomas",
+   "rep_candidate": "Kevin Hern",
+   "notes": "Open: Alan Armstrong not on the ballot"
   },
   {
    "state": "OR",
@@ -304,7 +306,7 @@
    "lean": "D",
    "incumbent": "Jeff Merkley",
    "dem_candidate": "Jeff Merkley",
-   "rep_candidate": null,
+   "rep_candidate": "David Brock Smith",
    "notes": ""
   },
   {
@@ -315,18 +317,18 @@
    "lean": "D",
    "incumbent": "Jack Reed",
    "dem_candidate": "Jack Reed",
-   "rep_candidate": null,
+   "rep_candidate": "Raymond McKay",
    "notes": ""
   },
   {
    "state": "SC",
    "seat_id": "SC-2026",
    "held_by": "R",
-   "rating": "solid",
+   "rating": "lean",
    "lean": "R",
-   "incumbent": "Lindsey Graham",
-   "dem_candidate": null,
-   "rep_candidate": "Lindsey Graham",
+   "incumbent": "Darline Graham",
+   "dem_candidate": "Annie Andrews",
+   "rep_candidate": "Darline Graham",
    "notes": ""
   },
   {
@@ -336,9 +338,10 @@
    "rating": "solid",
    "lean": "R",
    "incumbent": "Mike Rounds",
-   "dem_candidate": null,
+   "dem_candidate": "Brian Bengs (I)",
    "rep_candidate": "Mike Rounds",
-   "notes": ""
+   "notes": "The Democratic nominee withdrew; the challenger is independent Brian Bengs",
+   "challenger_caucus": "independent"
   },
   {
    "state": "TN",
@@ -347,7 +350,7 @@
    "rating": "solid",
    "lean": "R",
    "incumbent": "Bill Hagerty",
-   "dem_candidate": null,
+   "dem_candidate": "Marquita Bradshaw",
    "rep_candidate": "Bill Hagerty",
    "notes": ""
   },
@@ -360,7 +363,7 @@
    "incumbent": null,
    "dem_candidate": "James Talarico",
    "rep_candidate": "Ken Paxton",
-   "notes": "Cook Political Report moved Texas Senate race (Paxton R vs Talarico D) from Lean R to Toss Up on Aug 20, 2026"
+   "notes": "Open: John Cornyn not on the ballot"
   },
   {
    "state": "VA",
@@ -370,7 +373,7 @@
    "lean": "D",
    "incumbent": "Mark Warner",
    "dem_candidate": "Mark Warner",
-   "rep_candidate": null,
+   "rep_candidate": "Bert Mizusawa",
    "notes": ""
   },
   {
@@ -380,7 +383,7 @@
    "rating": "solid",
    "lean": "R",
    "incumbent": "Shelley Moore Capito",
-   "dem_candidate": null,
+   "dem_candidate": "Rachel Fetty Anderson",
    "rep_candidate": "Shelley Moore Capito",
    "notes": ""
   },
@@ -391,9 +394,10 @@
    "rating": "solid",
    "lean": "R",
    "incumbent": null,
-   "dem_candidate": null,
-   "rep_candidate": null,
-   "notes": "Open: Lummis retiring"
+   "dem_candidate": "James W. Byrd",
+   "rep_candidate": "Harriet Hageman",
+   "notes": "Open: Cynthia Lummis not on the ballot"
   }
- ]
+ ],
+ "ratings_date": "2026-10-20"
 }

@@ -1,10 +1,24 @@
 {
- "as_of": "2026-09-11",
- "ratings_source": "Cook Political Report House race ratings (Aug 25, 2026); unlisted seats Solid for the favored party",
- "ratings_environment_dem_margin": 5.5,
- "ratings_environment_note": "Generic-ballot average when these ratings were set; the model shifts every seat by how far the current national environment has moved from this reference.",
+ "as_of": "2026-10-27",
+ "ratings_source": "Cook Political Report House ratings of Oct 23, 2026, via Wikipedia (revision 1382280048); unlisted seats Solid for the party the 2026 PVI favours",
+ "ratings_environment_dem_margin": 9.41,
+ "ratings_environment_note": "The national environment on the day these ratings were published; the model shifts every seat by how far it has moved since.",
  "majority": 218,
  "districts": [
+  {
+   "id": "AK-AL",
+   "state": "AK",
+   "district": "AL",
+   "rating": "lean",
+   "lean": "R",
+   "held_by": "R",
+   "incumbent": null,
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Eric Hafner",
+   "rep_candidate": "Nick Begich III",
+   "pvi_2026": -6.0
+  },
   {
    "id": "AL-1",
    "state": "AL",
@@ -14,18 +28,24 @@
    "held_by": "R",
    "incumbent": null,
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Clyde Jones Jr.",
+   "rep_candidate": "Jerry Carl",
+   "pvi_2026": -17.0
   },
   {
    "id": "AL-2",
    "state": "AL",
    "district": "2",
-   "rating": "likely",
+   "rating": "lean",
    "lean": "R",
    "held_by": "D",
-   "incumbent": "Figures",
+   "incumbent": "Shomari Figures",
    "redrawn_2026": true,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Shomari Figures",
+   "rep_candidate": "Rhett Marques",
+   "pvi_2026": -7.0
   },
   {
    "id": "AL-3",
@@ -34,9 +54,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Mike Rogers",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Lee McInnis",
+   "rep_candidate": "Mike Rogers",
+   "pvi_2026": -23.0
   },
   {
    "id": "AL-4",
@@ -45,9 +68,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Robert Aderholt",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Amanda Pusczek",
+   "rep_candidate": "Robert Aderholt",
+   "pvi_2026": -33.0
   },
   {
    "id": "AL-5",
@@ -56,9 +82,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Dale Strong",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Andrew Sneed",
+   "rep_candidate": "Dale Strong",
+   "pvi_2026": -15.0
   },
   {
    "id": "AL-6",
@@ -67,9 +96,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Gary Palmer",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Maurice Mercer",
+   "rep_candidate": "Gary Palmer",
+   "pvi_2026": -17.0
   },
   {
    "id": "AL-7",
@@ -78,42 +110,96 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Terri Sewell",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Terri Sewell",
+   "rep_candidate": "Ammie Akin",
+   "pvi_2026": 10.0
   },
   {
-   "id": "AK-AL",
-   "state": "AK",
-   "district": "AL",
+   "id": "AR-1",
+   "state": "AR",
+   "district": "1",
+   "rating": "solid",
+   "lean": "R",
+   "held_by": "R",
+   "incumbent": "Rick Crawford",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Terri Green",
+   "rep_candidate": "Rick Crawford",
+   "pvi_2026": -23.0
+  },
+  {
+   "id": "AR-2",
+   "state": "AR",
+   "district": "2",
    "rating": "likely",
    "lean": "R",
    "held_by": "R",
-   "incumbent": "Begich III",
+   "incumbent": "French Hill",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Chris Jones",
+   "rep_candidate": "French Hill",
+   "pvi_2026": -8.0
+  },
+  {
+   "id": "AR-3",
+   "state": "AR",
+   "district": "3",
+   "rating": "solid",
+   "lean": "R",
+   "held_by": "R",
+   "incumbent": "Steve Womack",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Robb Ryerse",
+   "rep_candidate": "Steve Womack",
+   "pvi_2026": -13.0
+  },
+  {
+   "id": "AR-4",
+   "state": "AR",
+   "district": "4",
+   "rating": "solid",
+   "lean": "R",
+   "held_by": "R",
+   "incumbent": "Bruce Westerman",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "James Russell",
+   "rep_candidate": "Bruce Westerman",
+   "pvi_2026": -20.0
   },
   {
    "id": "AZ-1",
    "state": "AZ",
    "district": "1",
-   "rating": "tossup",
-   "lean": "R",
+   "rating": "lean",
+   "lean": "D",
    "held_by": "R",
-   "incumbent": "OPEN (Schweikert)",
+   "incumbent": null,
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Amish Shah",
+   "rep_candidate": "Jay Feely",
+   "pvi_2026": -1.0
   },
   {
    "id": "AZ-2",
    "state": "AZ",
    "district": "2",
-   "rating": "likely",
+   "rating": "lean",
    "lean": "R",
    "held_by": "R",
-   "incumbent": "Crane",
+   "incumbent": "Eli Crane",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Jonathan Nez",
+   "rep_candidate": "Eli Crane",
+   "pvi_2026": -7.0
   },
   {
    "id": "AZ-3",
@@ -122,9 +208,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Yassamin Ansari",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Yassamin Ansari",
+   "rep_candidate": null,
+   "pvi_2026": 22.0
   },
   {
    "id": "AZ-4",
@@ -133,9 +222,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Greg Stanton",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Greg Stanton",
+   "rep_candidate": "Zuhdi Jasser",
+   "pvi_2026": 4.0
   },
   {
    "id": "AZ-5",
@@ -146,18 +238,24 @@
    "held_by": "R",
    "incumbent": null,
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Elizabeth Lee",
+   "rep_candidate": "Mark Lamb",
+   "pvi_2026": -10.0
   },
   {
    "id": "AZ-6",
    "state": "AZ",
    "district": "6",
-   "rating": "tossup",
-   "lean": "R",
+   "rating": "lean",
+   "lean": "D",
    "held_by": "R",
-   "incumbent": "Ciscomani",
+   "incumbent": "Juan Ciscomani",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "JoAnna Mendoza",
+   "rep_candidate": "Juan Ciscomani",
+   "pvi_2026": 0.0
   },
   {
    "id": "AZ-7",
@@ -166,9 +264,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Adelita Grijalva",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Adelita Grijalva",
+   "rep_candidate": "Daniel Butierez",
+   "pvi_2026": 13.0
   },
   {
    "id": "AZ-8",
@@ -177,9 +278,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Abraham Hamadeh",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Bernadette Greene-Placentia",
+   "rep_candidate": "Abraham Hamadeh",
+   "pvi_2026": -8.0
   },
   {
    "id": "AZ-9",
@@ -188,53 +292,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Paul Gosar",
    "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "AR-1",
-   "state": "AR",
-   "district": "1",
-   "rating": "solid",
-   "lean": "R",
-   "held_by": "R",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "AR-2",
-   "state": "AR",
-   "district": "2",
-   "rating": "solid",
-   "lean": "R",
-   "held_by": "R",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "AR-3",
-   "state": "AR",
-   "district": "3",
-   "rating": "solid",
-   "lean": "R",
-   "held_by": "R",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "AR-4",
-   "state": "AR",
-   "district": "4",
-   "rating": "solid",
-   "lean": "R",
-   "held_by": "R",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Dani Sterbinsky",
+   "rep_candidate": "Paul Gosar",
+   "pvi_2026": -15.0
   },
   {
    "id": "CA-1",
@@ -242,10 +305,13 @@
    "district": "1",
    "rating": "solid",
    "lean": "D",
-   "held_by": "D",
-   "incumbent": null,
+   "held_by": "R",
+   "incumbent": "James Gallagher",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Mike McGuire",
+   "rep_candidate": "James Gallagher",
+   "pvi_2026": 7.0
   },
   {
    "id": "CA-2",
@@ -254,9 +320,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Jared Huffman",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Jared Huffman",
+   "rep_candidate": "Robin Littau",
+   "pvi_2026": 13.0
   },
   {
    "id": "CA-3",
@@ -265,9 +334,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Ami Bera",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Ami Bera",
+   "rep_candidate": "Robb Tucker",
+   "pvi_2026": 6.0
   },
   {
    "id": "CA-4",
@@ -276,9 +348,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Mike Thompson",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Eric Jones, Mike Thompson",
+   "rep_candidate": null,
+   "pvi_2026": 8.0
   },
   {
    "id": "CA-5",
@@ -287,9 +362,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Tom McClintock",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Michael Masuda",
+   "rep_candidate": "Tom McClintock",
+   "pvi_2026": -10.0
   },
   {
    "id": "CA-6",
@@ -298,9 +376,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Kevin Kiley",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Richard Pan",
+   "rep_candidate": null,
+   "pvi_2026": 5.0
   },
   {
    "id": "CA-7",
@@ -309,9 +390,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Doris Matsui",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Doris Matsui, Mai Vang",
+   "rep_candidate": null,
+   "pvi_2026": 7.0
   },
   {
    "id": "CA-8",
@@ -320,9 +404,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "John Garamendi",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "John Garamendi",
+   "rep_candidate": "Rudy Recile",
+   "pvi_2026": 19.0
   },
   {
    "id": "CA-9",
@@ -331,9 +418,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Josh Harder",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Josh Harder",
+   "rep_candidate": "John McBride",
+   "pvi_2026": 8.0
   },
   {
    "id": "CA-10",
@@ -342,9 +432,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Mark DeSaulnier",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Mark DeSaulnier",
+   "rep_candidate": "Jeff Frese",
+   "pvi_2026": 18.0
   },
   {
    "id": "CA-11",
@@ -355,7 +448,10 @@
    "held_by": "D",
    "incumbent": null,
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Connie Chan, Scott Wiener",
+   "rep_candidate": null,
+   "pvi_2026": 36.0
   },
   {
    "id": "CA-12",
@@ -364,20 +460,26 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Lateefah Simon",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Jamie Joyce, Lateefah Simon",
+   "rep_candidate": null,
+   "pvi_2026": 39.0
   },
   {
    "id": "CA-13",
    "state": "CA",
    "district": "13",
-   "rating": "lean",
+   "rating": "likely",
    "lean": "D",
    "held_by": "D",
-   "incumbent": "Gray",
+   "incumbent": "Adam Gray",
    "redrawn_2026": true,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Adam Gray",
+   "rep_candidate": "Kevin Lincoln",
+   "pvi_2026": 2.0
   },
   {
    "id": "CA-14",
@@ -386,9 +488,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Aisha Wahab",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Melissa Hernandez, Aisha Wahab",
+   "rep_candidate": null,
+   "pvi_2026": 19.0
   },
   {
    "id": "CA-15",
@@ -397,9 +502,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Kevin Mullin",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Kevin Mullin",
+   "rep_candidate": "Charles Hoelter",
+   "pvi_2026": 26.0
   },
   {
    "id": "CA-16",
@@ -408,9 +516,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Sam Liccardo",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Sam Liccardo",
+   "rep_candidate": "Peter Soulé",
+   "pvi_2026": 25.0
   },
   {
    "id": "CA-17",
@@ -419,9 +530,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Ro Khanna",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Ro Khanna",
+   "rep_candidate": "Ritesh Tandon",
+   "pvi_2026": 21.0
   },
   {
    "id": "CA-18",
@@ -430,9 +544,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Zoe Lofgren",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Zoe Lofgren",
+   "rep_candidate": "Shane Lewis",
+   "pvi_2026": 16.0
   },
   {
    "id": "CA-19",
@@ -441,9 +558,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Jimmy Panetta",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Jimmy Panetta",
+   "rep_candidate": "Peter Coe Verbica",
+   "pvi_2026": 18.0
   },
   {
    "id": "CA-20",
@@ -452,20 +572,26 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Vince Fong",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Sandra Van Scotter",
+   "rep_candidate": "Vince Fong",
+   "pvi_2026": -16.0
   },
   {
    "id": "CA-21",
    "state": "CA",
    "district": "21",
-   "rating": "likely",
+   "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": "Costa",
+   "incumbent": "Jim Costa",
    "redrawn_2026": true,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Jim Costa",
+   "rep_candidate": "Kyle Kirkland",
+   "pvi_2026": 5.0
   },
   {
    "id": "CA-22",
@@ -474,9 +600,12 @@
    "rating": "tossup",
    "lean": "R",
    "held_by": "R",
-   "incumbent": "Valadao",
+   "incumbent": "David Valadao",
    "redrawn_2026": true,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Randy Villegas",
+   "rep_candidate": "David Valadao",
+   "pvi_2026": 1.0
   },
   {
    "id": "CA-23",
@@ -485,9 +614,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Jay Obernolte",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Tessa Lynn Hodge",
+   "rep_candidate": "Jay Obernolte",
+   "pvi_2026": -9.0
   },
   {
    "id": "CA-24",
@@ -496,9 +628,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Salud Carbajal",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Salud Carbajal",
+   "rep_candidate": "Bob Smith",
+   "pvi_2026": 13.0
   },
   {
    "id": "CA-25",
@@ -507,9 +642,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Raul Ruiz",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Raul Ruiz",
+   "rep_candidate": "Joe Males",
+   "pvi_2026": 4.0
   },
   {
    "id": "CA-26",
@@ -520,7 +658,10 @@
    "held_by": "D",
    "incumbent": null,
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Jacqui Irwin",
+   "rep_candidate": "Sam Gallucci",
+   "pvi_2026": 9.0
   },
   {
    "id": "CA-27",
@@ -529,9 +670,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "George T. Whitesides",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "George Whitesides",
+   "rep_candidate": "Jason Gibbs",
+   "pvi_2026": 6.0
   },
   {
    "id": "CA-28",
@@ -540,9 +684,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Judy Chu",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Judy Chu",
+   "rep_candidate": "April Verlato",
+   "pvi_2026": 14.0
   },
   {
    "id": "CA-29",
@@ -551,9 +698,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Luz Rivas",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Angelica Dueñas, Luz Rivas",
+   "rep_candidate": null,
+   "pvi_2026": 19.0
   },
   {
    "id": "CA-30",
@@ -562,9 +712,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Laura Friedman",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Laura Friedman",
+   "rep_candidate": "Scott Meyers",
+   "pvi_2026": 21.0
   },
   {
    "id": "CA-31",
@@ -573,9 +726,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Gil Cisneros",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Gil Cisneros",
+   "rep_candidate": "Eric Ching",
+   "pvi_2026": 8.0
   },
   {
    "id": "CA-32",
@@ -584,9 +740,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Brad Sherman",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Brad Sherman",
+   "rep_candidate": "Larry Thompson",
+   "pvi_2026": 14.0
   },
   {
    "id": "CA-33",
@@ -595,9 +754,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Pete Aguilar",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Pete Aguilar",
+   "rep_candidate": "Stephanie Vargas",
+   "pvi_2026": 7.0
   },
   {
    "id": "CA-34",
@@ -606,9 +768,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Jimmy Gomez",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Jimmy Gomez, Angela Gonzales-Torres",
+   "rep_candidate": null,
+   "pvi_2026": 28.0
   },
   {
    "id": "CA-35",
@@ -617,9 +782,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Norma Torres",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Norma Torres",
+   "rep_candidate": "Mike Cargile",
+   "pvi_2026": 6.0
   },
   {
    "id": "CA-36",
@@ -628,9 +796,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Ted Lieu",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Ted Lieu",
+   "rep_candidate": "Houston Brignano",
+   "pvi_2026": 21.0
   },
   {
    "id": "CA-37",
@@ -639,9 +810,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Sydney Kamlager-Dove",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Sydney Kamlager-Dove, Samantha Mota",
+   "rep_candidate": null,
+   "pvi_2026": 33.0
   },
   {
    "id": "CA-38",
@@ -652,7 +826,10 @@
    "held_by": "D",
    "incumbent": null,
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Hilda Solis",
+   "rep_candidate": "Pedro Casas",
+   "pvi_2026": 8.0
   },
   {
    "id": "CA-39",
@@ -661,9 +838,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Mark Takano",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Mark Takano",
+   "rep_candidate": "Steve Manos",
+   "pvi_2026": 7.0
   },
   {
    "id": "CA-40",
@@ -672,9 +852,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Young Kim",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": null,
+   "rep_candidate": "Ken Calvert, Young Kim",
+   "pvi_2026": -6.0
   },
   {
    "id": "CA-41",
@@ -683,9 +866,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Linda Sánchez",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Linda Sánchez",
+   "rep_candidate": "Mitch Clemmons",
+   "pvi_2026": 9.0
   },
   {
    "id": "CA-42",
@@ -694,9 +880,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Robert Garcia",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Robert Garcia",
+   "rep_candidate": "Brian Burley",
+   "pvi_2026": 8.0
   },
   {
    "id": "CA-43",
@@ -705,9 +894,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Maxine Waters",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Maxine Waters",
+   "rep_candidate": "Cristian Morales",
+   "pvi_2026": 27.0
   },
   {
    "id": "CA-44",
@@ -716,9 +908,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Nanette Barragán",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Nanette Barragán",
+   "rep_candidate": "Genevieve Angel",
+   "pvi_2026": 20.0
   },
   {
    "id": "CA-45",
@@ -727,9 +922,12 @@
    "rating": "likely",
    "lean": "D",
    "held_by": "D",
-   "incumbent": "Tran",
+   "incumbent": "Derek Tran",
    "redrawn_2026": true,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Derek Tran",
+   "rep_candidate": "Chuong Vo",
+   "pvi_2026": 3.0
   },
   {
    "id": "CA-46",
@@ -738,9 +936,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Lou Correa",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Lou Correa",
+   "rep_candidate": "David Pan",
+   "pvi_2026": 10.0
   },
   {
    "id": "CA-47",
@@ -749,9 +950,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Dave Min",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Dave Min",
+   "rep_candidate": "Jenny Le Roux",
+   "pvi_2026": 6.0
   },
   {
    "id": "CA-48",
@@ -760,9 +964,12 @@
    "rating": "lean",
    "lean": "D",
    "held_by": "R",
-   "incumbent": "OPEN (Issa)",
+   "incumbent": null,
    "redrawn_2026": true,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Marni von Wilpert",
+   "rep_candidate": "Jim Desmond",
+   "pvi_2026": 2.0
   },
   {
    "id": "CA-49",
@@ -771,9 +978,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Mike Levin",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Mike Levin",
+   "rep_candidate": "Armen Kurdian",
+   "pvi_2026": 7.0
   },
   {
    "id": "CA-50",
@@ -782,9 +992,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Scott Peters",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Scott Peters",
+   "rep_candidate": "Steve Cohen",
+   "pvi_2026": 10.0
   },
   {
    "id": "CA-51",
@@ -793,9 +1006,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Sara Jacobs",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Sara Jacobs",
+   "rep_candidate": "Ricardo Cabrera",
+   "pvi_2026": 10.0
   },
   {
    "id": "CA-52",
@@ -804,9 +1020,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Juan Vargas",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Juan Vargas",
+   "rep_candidate": "Jeff Belle",
+   "pvi_2026": 11.0
   },
   {
    "id": "CO-1",
@@ -817,7 +1036,10 @@
    "held_by": "D",
    "incumbent": null,
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Melat Kiros",
+   "rep_candidate": "Christy Peterson",
+   "pvi_2026": 29.0
   },
   {
    "id": "CO-2",
@@ -826,9 +1048,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Joe Neguse",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Joe Neguse",
+   "rep_candidate": "Kelley Dennison",
+   "pvi_2026": 20.0
   },
   {
    "id": "CO-3",
@@ -837,32 +1062,40 @@
    "rating": "likely",
    "lean": "R",
    "held_by": "R",
-   "incumbent": "Hurd",
+   "incumbent": "Jeff Hurd",
    "redrawn_2026": false,
    "number_confidence": "high",
-   "note": "Cook Political Report moved CO-03 (Hurd R) from Solid R to Likely R on Sept 10, 2026"
+   "dem_candidate": "Dwayne Romero",
+   "rep_candidate": "Jeff Hurd",
+   "pvi_2026": -5.0
   },
   {
    "id": "CO-4",
    "state": "CO",
    "district": "4",
-   "rating": "solid",
+   "rating": "lean",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Lauren Boebert",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Eileen Laubacher",
+   "rep_candidate": "Lauren Boebert",
+   "pvi_2026": -9.0
   },
   {
    "id": "CO-5",
    "state": "CO",
    "district": "5",
-   "rating": "likely",
+   "rating": "lean",
    "lean": "R",
    "held_by": "R",
-   "incumbent": "Crank",
+   "incumbent": "Jeff Crank",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Jessica Killin",
+   "rep_candidate": "Jeff Crank",
+   "pvi_2026": -5.0
   },
   {
    "id": "CO-6",
@@ -871,9 +1104,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Jason Crow",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Jason Crow",
+   "rep_candidate": "Jason Clark",
+   "pvi_2026": 11.0
   },
   {
    "id": "CO-7",
@@ -882,20 +1118,26 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Brittany Pettersen",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Brittany Pettersen",
+   "rep_candidate": "Tim Bennett",
+   "pvi_2026": 8.0
   },
   {
    "id": "CO-8",
    "state": "CO",
    "district": "8",
-   "rating": "tossup",
-   "lean": "R",
+   "rating": "lean",
+   "lean": "D",
    "held_by": "R",
-   "incumbent": "Evans",
+   "incumbent": "Gabe Evans",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Manny Rutinel",
+   "rep_candidate": "Gabe Evans",
+   "pvi_2026": 0.0
   },
   {
    "id": "CT-1",
@@ -906,7 +1148,10 @@
    "held_by": "D",
    "incumbent": null,
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Luke Bronin",
+   "rep_candidate": "Amy Chai",
+   "pvi_2026": 12.0
   },
   {
    "id": "CT-2",
@@ -915,9 +1160,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Joe Courtney",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Joe Courtney",
+   "rep_candidate": "George Austin",
+   "pvi_2026": 4.0
   },
   {
    "id": "CT-3",
@@ -926,9 +1174,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Rosa DeLauro",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Rosa DeLauro",
+   "rep_candidate": "Chris Lancia",
+   "pvi_2026": 8.0
   },
   {
    "id": "CT-4",
@@ -937,9 +1188,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Jim Himes",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Jim Himes",
+   "rep_candidate": "Michael Goldstein",
+   "pvi_2026": 13.0
   },
   {
    "id": "CT-5",
@@ -948,9 +1202,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Jahana Hayes",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Jahana Hayes",
+   "rep_candidate": "Chris Shea",
+   "pvi_2026": 3.0
   },
   {
    "id": "DE-AL",
@@ -959,9 +1216,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Sarah McBride",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Sarah McBride",
+   "rep_candidate": "Joseph Arminio",
+   "pvi_2026": 8.0
   },
   {
    "id": "FL-1",
@@ -970,9 +1230,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Jimmy Patronis",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Gay Valimont",
+   "rep_candidate": "Jimmy Patronis",
+   "pvi_2026": -18.0
   },
   {
    "id": "FL-2",
@@ -983,7 +1246,10 @@
    "held_by": "R",
    "incumbent": null,
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Amanda Green",
+   "rep_candidate": "Austin Rogers",
+   "pvi_2026": -8.0
   },
   {
    "id": "FL-3",
@@ -992,9 +1258,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Kat Cammack",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Seth Harp",
+   "rep_candidate": "Kat Cammack",
+   "pvi_2026": -10.0
   },
   {
    "id": "FL-4",
@@ -1003,9 +1272,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Aaron Bean",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "LaShonda Holloway",
+   "rep_candidate": "Aaron Bean",
+   "pvi_2026": -5.0
   },
   {
    "id": "FL-5",
@@ -1014,9 +1286,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "John Rutherford",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Rachel Grage",
+   "rep_candidate": "John Rutherford",
+   "pvi_2026": -10.0
   },
   {
    "id": "FL-6",
@@ -1025,9 +1300,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Randy Fine",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Eric Yonce",
+   "rep_candidate": "Randy Fine",
+   "pvi_2026": -14.0
   },
   {
    "id": "FL-7",
@@ -1036,9 +1314,12 @@
    "rating": "likely",
    "lean": "R",
    "held_by": "R",
-   "incumbent": "OPEN (Mills)",
+   "incumbent": null,
    "redrawn_2026": true,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Bale Dalton",
+   "rep_candidate": "Ryan Elijah",
+   "pvi_2026": -5.0
   },
   {
    "id": "FL-8",
@@ -1047,9 +1328,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Mike Haridopolos",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Jennifer Jenkins",
+   "rep_candidate": "Mike Haridopolos",
+   "pvi_2026": -8.0
   },
   {
    "id": "FL-9",
@@ -1058,9 +1342,12 @@
    "rating": "likely",
    "lean": "R",
    "held_by": "D",
-   "incumbent": "Soto",
+   "incumbent": "Darren Soto",
    "redrawn_2026": true,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Darren Soto",
+   "rep_candidate": "Dan Green",
+   "pvi_2026": -8.0
   },
   {
    "id": "FL-10",
@@ -1069,9 +1356,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Maxwell Frost",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Maxwell Frost",
+   "rep_candidate": null,
+   "pvi_2026": 13.0
   },
   {
    "id": "FL-11",
@@ -1082,7 +1372,10 @@
    "held_by": "R",
    "incumbent": null,
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "James Pericola",
+   "rep_candidate": "Joe Strada",
+   "pvi_2026": -7.0
   },
   {
    "id": "FL-12",
@@ -1091,20 +1384,26 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Gus Bilirakis",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Kimberly Overman",
+   "rep_candidate": "Gus Bilirakis",
+   "pvi_2026": -7.0
   },
   {
    "id": "FL-13",
    "state": "FL",
    "district": "13",
-   "rating": "likely",
+   "rating": "lean",
    "lean": "R",
    "held_by": "R",
-   "incumbent": "Luna",
+   "incumbent": "Anna Paulina Luna",
    "redrawn_2026": true,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Leela Gray",
+   "rep_candidate": "Anna Paulina Luna",
+   "pvi_2026": -6.0
   },
   {
    "id": "FL-14",
@@ -1113,10 +1412,12 @@
    "rating": "tossup",
    "lean": "D",
    "held_by": "D",
-   "incumbent": "Castor",
+   "incumbent": "Kathy Castor",
    "redrawn_2026": true,
    "number_confidence": "high",
-   "note": "Cook Political Report moved FL-14 (Castor D) from Lean R to Toss Up on Sept 10, 2026"
+   "dem_candidate": "Kathy Castor",
+   "rep_candidate": "Mike Beltran",
+   "pvi_2026": -4.0
   },
   {
    "id": "FL-15",
@@ -1125,20 +1426,26 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Laurel Lee",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Robert People",
+   "rep_candidate": "Laurel Lee",
+   "pvi_2026": -9.0
   },
   {
    "id": "FL-16",
    "state": "FL",
    "district": "16",
-   "rating": "solid",
+   "rating": "likely",
    "lean": "R",
    "held_by": "R",
    "incumbent": null,
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Kelly Kirschner",
+   "rep_candidate": "Sydney Gruters",
+   "pvi_2026": -6.0
   },
   {
    "id": "FL-17",
@@ -1147,9 +1454,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Greg Steube",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Matthew Montavon",
+   "rep_candidate": "Greg Steube",
+   "pvi_2026": -10.0
   },
   {
    "id": "FL-18",
@@ -1158,9 +1468,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Scott Franklin",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Curtis Gibson",
+   "rep_candidate": "Scott Franklin",
+   "pvi_2026": -8.0
   },
   {
    "id": "FL-19",
@@ -1171,7 +1484,10 @@
    "held_by": "R",
    "incumbent": null,
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Victor Arias",
+   "rep_candidate": "Jim Schwartzel",
+   "pvi_2026": -14.0
   },
   {
    "id": "FL-20",
@@ -1182,7 +1498,10 @@
    "held_by": "D",
    "incumbent": null,
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Debbie Wasserman Schultz",
+   "rep_candidate": "Brent Andersen",
+   "pvi_2026": 20.0
   },
   {
    "id": "FL-21",
@@ -1191,20 +1510,26 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Brian Mast",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "James Martin",
+   "rep_candidate": "Brian Mast",
+   "pvi_2026": -7.0
   },
   {
    "id": "FL-22",
    "state": "FL",
    "district": "22",
-   "rating": "lean",
-   "lean": "R",
+   "rating": "tossup",
+   "lean": "D",
    "held_by": "D",
-   "incumbent": "OPEN (Frankel)",
+   "incumbent": null,
    "redrawn_2026": true,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Pia Dandiya",
+   "rep_candidate": "Casey Askar",
+   "pvi_2026": -4.0
   },
   {
    "id": "FL-23",
@@ -1213,9 +1538,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Lois Frankel",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Lois Frankel",
+   "rep_candidate": "Deborah Adeimy",
+   "pvi_2026": 9.0
   },
   {
    "id": "FL-24",
@@ -1226,18 +1554,24 @@
    "held_by": "D",
    "incumbent": null,
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Oliver Gilbert",
+   "rep_candidate": "Te Mayonna Brown",
+   "pvi_2026": 22.0
   },
   {
    "id": "FL-25",
    "state": "FL",
    "district": "25",
-   "rating": "tossup",
+   "rating": "lean",
    "lean": "D",
    "held_by": "D",
-   "incumbent": "Moskowitz",
+   "incumbent": "Jared Moskowitz",
    "redrawn_2026": true,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Jared Moskowitz",
+   "rep_candidate": "Scott Singer",
+   "pvi_2026": -3.0
   },
   {
    "id": "FL-26",
@@ -1246,20 +1580,26 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Mario Díaz-Balart",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Nicole Locklin",
+   "rep_candidate": "Mario Díaz-Balart",
+   "pvi_2026": -7.0
   },
   {
    "id": "FL-27",
    "state": "FL",
    "district": "27",
-   "rating": "likely",
+   "rating": "lean",
    "lean": "R",
    "held_by": "R",
-   "incumbent": "Salazar",
+   "incumbent": "María Elvira Salazar",
    "redrawn_2026": true,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Eliott Rodriguez",
+   "rep_candidate": "María Elvira Salazar",
+   "pvi_2026": -6.0
   },
   {
    "id": "FL-28",
@@ -1268,9 +1608,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Carlos A. Giménez",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Phil Ehr",
+   "rep_candidate": "Carlos Giménez",
+   "pvi_2026": -10.0
   },
   {
    "id": "GA-1",
@@ -1281,7 +1624,10 @@
    "held_by": "R",
    "incumbent": null,
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Amanda Hollowell",
+   "rep_candidate": "Jim Kingston",
+   "pvi_2026": -8.0
   },
   {
    "id": "GA-2",
@@ -1290,9 +1636,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Sanford Bishop",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Sanford Bishop",
+   "rep_candidate": "Matt Day",
+   "pvi_2026": 4.0
   },
   {
    "id": "GA-3",
@@ -1301,9 +1650,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Brian Jack",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Maura Keller",
+   "rep_candidate": "Brian Jack",
+   "pvi_2026": -15.0
   },
   {
    "id": "GA-4",
@@ -1312,9 +1664,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Hank Johnson",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Hank Johnson",
+   "rep_candidate": "James Duffie",
+   "pvi_2026": 27.0
   },
   {
    "id": "GA-5",
@@ -1323,9 +1678,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Nikema Williams",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Nikema Williams",
+   "rep_candidate": "John Oscar Salvesen",
+   "pvi_2026": 36.0
   },
   {
    "id": "GA-6",
@@ -1334,9 +1692,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Lucy McBath",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Lucy McBath",
+   "rep_candidate": "Kevin Martin",
+   "pvi_2026": 25.0
   },
   {
    "id": "GA-7",
@@ -1345,9 +1706,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Rich McCormick",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Tony Kozycki",
+   "rep_candidate": "Rich McCormick",
+   "pvi_2026": -11.0
   },
   {
    "id": "GA-8",
@@ -1356,9 +1720,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Austin Scott",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Kelly Esti",
+   "rep_candidate": "Austin Scott",
+   "pvi_2026": -15.0
   },
   {
    "id": "GA-9",
@@ -1367,9 +1734,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Andrew Clyde",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Caitlyn Gegen",
+   "rep_candidate": "Andrew Clyde",
+   "pvi_2026": -17.0
   },
   {
    "id": "GA-10",
@@ -1380,7 +1750,10 @@
    "held_by": "R",
    "incumbent": null,
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Pam Delancy",
+   "rep_candidate": "Houston Gaines",
+   "pvi_2026": -11.0
   },
   {
    "id": "GA-11",
@@ -1391,7 +1764,10 @@
    "held_by": "R",
    "incumbent": null,
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Chris Harden",
+   "rep_candidate": "John Cowan",
+   "pvi_2026": -12.0
   },
   {
    "id": "GA-12",
@@ -1400,9 +1776,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Rick Allen",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Ceretta Smith",
+   "rep_candidate": "Rick Allen",
+   "pvi_2026": -7.0
   },
   {
    "id": "GA-13",
@@ -1411,9 +1790,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Everton Blair",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Jasmine Clark",
+   "rep_candidate": "Jonathan Chavez",
+   "pvi_2026": 21.0
   },
   {
    "id": "GA-14",
@@ -1422,9 +1804,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Clay Fuller",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Shawn Harris",
+   "rep_candidate": "Clay Fuller",
+   "pvi_2026": -19.0
   },
   {
    "id": "HI-1",
@@ -1433,9 +1818,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Ed Case",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Ed Case",
+   "rep_candidate": "Adriel Lam",
+   "pvi_2026": 13.0
   },
   {
    "id": "HI-2",
@@ -1444,350 +1832,54 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Jill Tokuda",
    "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "ID-1",
-   "state": "ID",
-   "district": "1",
-   "rating": "solid",
-   "lean": "R",
-   "held_by": "R",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "ID-2",
-   "state": "ID",
-   "district": "2",
-   "rating": "solid",
-   "lean": "R",
-   "held_by": "R",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "IL-1",
-   "state": "IL",
-   "district": "1",
-   "rating": "solid",
-   "lean": "D",
-   "held_by": "D",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "IL-2",
-   "state": "IL",
-   "district": "2",
-   "rating": "solid",
-   "lean": "D",
-   "held_by": "D",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "IL-3",
-   "state": "IL",
-   "district": "3",
-   "rating": "solid",
-   "lean": "D",
-   "held_by": "D",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "IL-4",
-   "state": "IL",
-   "district": "4",
-   "rating": "solid",
-   "lean": "D",
-   "held_by": "D",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "IL-5",
-   "state": "IL",
-   "district": "5",
-   "rating": "solid",
-   "lean": "D",
-   "held_by": "D",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "IL-6",
-   "state": "IL",
-   "district": "6",
-   "rating": "solid",
-   "lean": "D",
-   "held_by": "D",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "IL-7",
-   "state": "IL",
-   "district": "7",
-   "rating": "solid",
-   "lean": "D",
-   "held_by": "D",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "IL-8",
-   "state": "IL",
-   "district": "8",
-   "rating": "solid",
-   "lean": "D",
-   "held_by": "D",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "IL-9",
-   "state": "IL",
-   "district": "9",
-   "rating": "solid",
-   "lean": "D",
-   "held_by": "D",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "IL-10",
-   "state": "IL",
-   "district": "10",
-   "rating": "solid",
-   "lean": "D",
-   "held_by": "D",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "IL-11",
-   "state": "IL",
-   "district": "11",
-   "rating": "solid",
-   "lean": "D",
-   "held_by": "D",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "IL-12",
-   "state": "IL",
-   "district": "12",
-   "rating": "solid",
-   "lean": "R",
-   "held_by": "R",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "IL-13",
-   "state": "IL",
-   "district": "13",
-   "rating": "solid",
-   "lean": "D",
-   "held_by": "D",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "IL-14",
-   "state": "IL",
-   "district": "14",
-   "rating": "solid",
-   "lean": "D",
-   "held_by": "D",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "IL-15",
-   "state": "IL",
-   "district": "15",
-   "rating": "solid",
-   "lean": "R",
-   "held_by": "R",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "IL-16",
-   "state": "IL",
-   "district": "16",
-   "rating": "solid",
-   "lean": "R",
-   "held_by": "R",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "IL-17",
-   "state": "IL",
-   "district": "17",
-   "rating": "solid",
-   "lean": "D",
-   "held_by": "D",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "IN-1",
-   "state": "IN",
-   "district": "1",
-   "rating": "likely",
-   "lean": "D",
-   "held_by": "D",
-   "incumbent": "Mrvan",
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "IN-2",
-   "state": "IN",
-   "district": "2",
-   "rating": "solid",
-   "lean": "R",
-   "held_by": "R",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "IN-3",
-   "state": "IN",
-   "district": "3",
-   "rating": "solid",
-   "lean": "R",
-   "held_by": "R",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "IN-4",
-   "state": "IN",
-   "district": "4",
-   "rating": "solid",
-   "lean": "R",
-   "held_by": "R",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "IN-5",
-   "state": "IN",
-   "district": "5",
-   "rating": "solid",
-   "lean": "R",
-   "held_by": "R",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "IN-6",
-   "state": "IN",
-   "district": "6",
-   "rating": "solid",
-   "lean": "R",
-   "held_by": "R",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "IN-7",
-   "state": "IN",
-   "district": "7",
-   "rating": "solid",
-   "lean": "D",
-   "held_by": "D",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "IN-8",
-   "state": "IN",
-   "district": "8",
-   "rating": "solid",
-   "lean": "R",
-   "held_by": "R",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "IN-9",
-   "state": "IN",
-   "district": "9",
-   "rating": "solid",
-   "lean": "R",
-   "held_by": "R",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Jill Tokuda",
+   "rep_candidate": "Brenton Awa",
+   "pvi_2026": 12.0
   },
   {
    "id": "IA-1",
    "state": "IA",
    "district": "1",
-   "rating": "tossup",
-   "lean": "R",
+   "rating": "lean",
+   "lean": "D",
    "held_by": "R",
-   "incumbent": "Miller-Meeks",
+   "incumbent": "Mariannette Miller-Meeks",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Christina Bohannan",
+   "rep_candidate": "Mariannette Miller-Meeks",
+   "pvi_2026": -4.0
   },
   {
    "id": "IA-2",
    "state": "IA",
    "district": "2",
-   "rating": "lean",
+   "rating": "tossup",
    "lean": "R",
    "held_by": "R",
-   "incumbent": "OPEN (Hinson)",
+   "incumbent": null,
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Lindsay James",
+   "rep_candidate": "Joe Mitchell",
+   "pvi_2026": -4.0
   },
   {
    "id": "IA-3",
    "state": "IA",
    "district": "3",
-   "rating": "tossup",
-   "lean": "R",
+   "rating": "lean",
+   "lean": "D",
    "held_by": "R",
-   "incumbent": "Nunn",
+   "incumbent": "Zach Nunn",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Sarah Trone Garriott",
+   "rep_candidate": "Zach Nunn",
+   "pvi_2026": -2.0
   },
   {
    "id": "IA-4",
@@ -1798,7 +1890,402 @@
    "held_by": "R",
    "incumbent": null,
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "David Dawson",
+   "rep_candidate": "Chris McGowan",
+   "pvi_2026": -15.0
+  },
+  {
+   "id": "ID-1",
+   "state": "ID",
+   "district": "1",
+   "rating": "solid",
+   "lean": "R",
+   "held_by": "R",
+   "incumbent": "Russ Fulcher",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Kaylee Peterson",
+   "rep_candidate": "Russ Fulcher",
+   "pvi_2026": -22.0
+  },
+  {
+   "id": "ID-2",
+   "state": "ID",
+   "district": "2",
+   "rating": "solid",
+   "lean": "R",
+   "held_by": "R",
+   "incumbent": "Mike Simpson",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Ellie Gilbreath",
+   "rep_candidate": "Mike Simpson",
+   "pvi_2026": -13.0
+  },
+  {
+   "id": "IL-1",
+   "state": "IL",
+   "district": "1",
+   "rating": "solid",
+   "lean": "D",
+   "held_by": "D",
+   "incumbent": "Jonathan Jackson",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Jonathan Jackson",
+   "rep_candidate": "Christian Maxwell",
+   "pvi_2026": 18.0
+  },
+  {
+   "id": "IL-2",
+   "state": "IL",
+   "district": "2",
+   "rating": "solid",
+   "lean": "D",
+   "held_by": "D",
+   "incumbent": null,
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Donna Miller",
+   "rep_candidate": "Michael Noack",
+   "pvi_2026": 18.0
+  },
+  {
+   "id": "IL-3",
+   "state": "IL",
+   "district": "3",
+   "rating": "solid",
+   "lean": "D",
+   "held_by": "D",
+   "incumbent": "Delia Ramirez",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Delia Ramirez",
+   "rep_candidate": "Angel Oakley",
+   "pvi_2026": 17.0
+  },
+  {
+   "id": "IL-4",
+   "state": "IL",
+   "district": "4",
+   "rating": "solid",
+   "lean": "D",
+   "held_by": "D",
+   "incumbent": null,
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Patty Garcia",
+   "rep_candidate": "Lupe Castillo",
+   "pvi_2026": 17.0
+  },
+  {
+   "id": "IL-5",
+   "state": "IL",
+   "district": "5",
+   "rating": "solid",
+   "lean": "D",
+   "held_by": "D",
+   "incumbent": "Mike Quigley",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Mike Quigley",
+   "rep_candidate": "Tommy Hanson",
+   "pvi_2026": 19.0
+  },
+  {
+   "id": "IL-6",
+   "state": "IL",
+   "district": "6",
+   "rating": "solid",
+   "lean": "D",
+   "held_by": "D",
+   "incumbent": "Sean Casten",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Sean Casten",
+   "rep_candidate": "Niki Conforti",
+   "pvi_2026": 3.0
+  },
+  {
+   "id": "IL-7",
+   "state": "IL",
+   "district": "7",
+   "rating": "solid",
+   "lean": "D",
+   "held_by": "D",
+   "incumbent": null,
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "La Shawn Ford",
+   "rep_candidate": "Chad Koppie",
+   "pvi_2026": 34.0
+  },
+  {
+   "id": "IL-8",
+   "state": "IL",
+   "district": "8",
+   "rating": "solid",
+   "lean": "D",
+   "held_by": "D",
+   "incumbent": null,
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Melissa Bean",
+   "rep_candidate": "Jennifer Davis",
+   "pvi_2026": 5.0
+  },
+  {
+   "id": "IL-9",
+   "state": "IL",
+   "district": "9",
+   "rating": "solid",
+   "lean": "D",
+   "held_by": "D",
+   "incumbent": null,
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Daniel Biss",
+   "rep_candidate": "John Elleson",
+   "pvi_2026": 19.0
+  },
+  {
+   "id": "IL-10",
+   "state": "IL",
+   "district": "10",
+   "rating": "solid",
+   "lean": "D",
+   "held_by": "D",
+   "incumbent": "Brad Schneider",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Brad Schneider",
+   "rep_candidate": "Carl Lambrecht",
+   "pvi_2026": 12.0
+  },
+  {
+   "id": "IL-11",
+   "state": "IL",
+   "district": "11",
+   "rating": "solid",
+   "lean": "D",
+   "held_by": "D",
+   "incumbent": "Bill Foster",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Bill Foster",
+   "rep_candidate": "Jeff Walter",
+   "pvi_2026": 6.0
+  },
+  {
+   "id": "IL-12",
+   "state": "IL",
+   "district": "12",
+   "rating": "solid",
+   "lean": "R",
+   "held_by": "R",
+   "incumbent": "Mike Bost",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Julie Fortier",
+   "rep_candidate": "Mike Bost",
+   "pvi_2026": -22.0
+  },
+  {
+   "id": "IL-13",
+   "state": "IL",
+   "district": "13",
+   "rating": "solid",
+   "lean": "D",
+   "held_by": "D",
+   "incumbent": "Nikki Budzinski",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Nikki Budzinski",
+   "rep_candidate": "Jeff Wilson",
+   "pvi_2026": 5.0
+  },
+  {
+   "id": "IL-14",
+   "state": "IL",
+   "district": "14",
+   "rating": "solid",
+   "lean": "D",
+   "held_by": "D",
+   "incumbent": "Lauren Underwood",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Lauren Underwood",
+   "rep_candidate": "James Marter",
+   "pvi_2026": 3.0
+  },
+  {
+   "id": "IL-15",
+   "state": "IL",
+   "district": "15",
+   "rating": "solid",
+   "lean": "R",
+   "held_by": "R",
+   "incumbent": "Mary Miller",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Jennifer Todd",
+   "rep_candidate": "Mary Miller",
+   "pvi_2026": -20.0
+  },
+  {
+   "id": "IL-16",
+   "state": "IL",
+   "district": "16",
+   "rating": "solid",
+   "lean": "R",
+   "held_by": "R",
+   "incumbent": "Darin LaHood",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Paul Nolley",
+   "rep_candidate": "Darin LaHood",
+   "pvi_2026": -11.0
+  },
+  {
+   "id": "IL-17",
+   "state": "IL",
+   "district": "17",
+   "rating": "solid",
+   "lean": "D",
+   "held_by": "D",
+   "incumbent": "Eric Sorensen",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Eric Sorensen",
+   "rep_candidate": "Dillan Vancil",
+   "pvi_2026": 3.0
+  },
+  {
+   "id": "IN-1",
+   "state": "IN",
+   "district": "1",
+   "rating": "likely",
+   "lean": "D",
+   "held_by": "D",
+   "incumbent": "Frank J. Mrvan",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Frank Mrvan",
+   "rep_candidate": "Barb Regnitz",
+   "pvi_2026": 1.0
+  },
+  {
+   "id": "IN-2",
+   "state": "IN",
+   "district": "2",
+   "rating": "solid",
+   "lean": "R",
+   "held_by": "R",
+   "incumbent": "Rudy Yakym",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Jamee Decio",
+   "rep_candidate": "Rudy Yakym",
+   "pvi_2026": -13.0
+  },
+  {
+   "id": "IN-3",
+   "state": "IN",
+   "district": "3",
+   "rating": "solid",
+   "lean": "R",
+   "held_by": "R",
+   "incumbent": "Marlin Stutzman",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Kelly Thompson",
+   "rep_candidate": "Marlin Stutzman",
+   "pvi_2026": -16.0
+  },
+  {
+   "id": "IN-4",
+   "state": "IN",
+   "district": "4",
+   "rating": "solid",
+   "lean": "R",
+   "held_by": "R",
+   "incumbent": "Jim Baird",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Drew Cox",
+   "rep_candidate": "Jim Baird",
+   "pvi_2026": -15.0
+  },
+  {
+   "id": "IN-5",
+   "state": "IN",
+   "district": "5",
+   "rating": "likely",
+   "lean": "R",
+   "held_by": "R",
+   "incumbent": "Victoria Spartz",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "J. D. Ford",
+   "rep_candidate": "Victoria Spartz",
+   "pvi_2026": -8.0
+  },
+  {
+   "id": "IN-6",
+   "state": "IN",
+   "district": "6",
+   "rating": "solid",
+   "lean": "R",
+   "held_by": "R",
+   "incumbent": "Jefferson Shreve",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Cinde Wirth",
+   "rep_candidate": "Jefferson Shreve",
+   "pvi_2026": -16.0
+  },
+  {
+   "id": "IN-7",
+   "state": "IN",
+   "district": "7",
+   "rating": "solid",
+   "lean": "D",
+   "held_by": "D",
+   "incumbent": "André Carson",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "André Carson",
+   "rep_candidate": "Patrick McAuley",
+   "pvi_2026": 21.0
+  },
+  {
+   "id": "IN-8",
+   "state": "IN",
+   "district": "8",
+   "rating": "solid",
+   "lean": "R",
+   "held_by": "R",
+   "incumbent": "Mark Messmer",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Mary Allen",
+   "rep_candidate": "Mark Messmer",
+   "pvi_2026": -18.0
+  },
+  {
+   "id": "IN-9",
+   "state": "IN",
+   "district": "9",
+   "rating": "solid",
+   "lean": "R",
+   "held_by": "R",
+   "incumbent": "Erin Houchin",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Brad Meyer",
+   "rep_candidate": "Erin Houchin",
+   "pvi_2026": -15.0
   },
   {
    "id": "KS-1",
@@ -1807,20 +2294,26 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Tracey Mann",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Lauren Reinhold",
+   "rep_candidate": "Tracey Mann",
+   "pvi_2026": -16.0
   },
   {
    "id": "KS-2",
    "state": "KS",
    "district": "2",
-   "rating": "solid",
+   "rating": "likely",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Derek Schmidt",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Don Coover",
+   "rep_candidate": "Derek Schmidt",
+   "pvi_2026": -10.0
   },
   {
    "id": "KS-3",
@@ -1829,9 +2322,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Sharice Davids",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Sharice Davids",
+   "rep_candidate": "Eric Jenkins",
+   "pvi_2026": 2.0
   },
   {
    "id": "KS-4",
@@ -1840,9 +2336,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Ron Estes",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Katy Tyndell",
+   "rep_candidate": "Ron Estes",
+   "pvi_2026": -12.0
   },
   {
    "id": "KY-1",
@@ -1851,9 +2350,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "James Comer",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Drew Williams",
+   "rep_candidate": "James Comer",
+   "pvi_2026": -23.0
   },
   {
    "id": "KY-2",
@@ -1862,9 +2364,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Brett Guthrie",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Megan Wingfield",
+   "rep_candidate": "Brett Guthrie",
+   "pvi_2026": -20.0
   },
   {
    "id": "KY-3",
@@ -1873,9 +2378,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Morgan McGarvey",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Morgan McGarvey",
+   "rep_candidate": "Maria Rodriquez",
+   "pvi_2026": 10.0
   },
   {
    "id": "KY-4",
@@ -1886,7 +2394,10 @@
    "held_by": "R",
    "incumbent": null,
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Melissa Strange",
+   "rep_candidate": "Ed Gallrein",
+   "pvi_2026": -18.0
   },
   {
    "id": "KY-5",
@@ -1895,20 +2406,26 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Hal Rogers",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Ned Pillersdorf",
+   "rep_candidate": "Hal Rogers",
+   "pvi_2026": -32.0
   },
   {
    "id": "KY-6",
    "state": "KY",
    "district": "6",
-   "rating": "likely",
+   "rating": "tossup",
    "lean": "R",
    "held_by": "R",
-   "incumbent": "OPEN (Barr)",
+   "incumbent": null,
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Zach Dembo",
+   "rep_candidate": "Ralph Alvarado",
+   "pvi_2026": -7.0
   },
   {
    "id": "LA-1",
@@ -1917,9 +2434,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Steve Scalise",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Lauren Jewett",
+   "rep_candidate": "Randall Arrington, Steve Scalise",
+   "pvi_2026": -20.0
   },
   {
    "id": "LA-2",
@@ -1928,9 +2448,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Troy Carter",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Troy Carter, Renada Collins",
+   "rep_candidate": "Peter Williams",
+   "pvi_2026": 25.0
   },
   {
    "id": "LA-3",
@@ -1939,9 +2462,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Clay Higgins",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "John Day, Priscilla Gonzalez, Tia LeBrun, Caleb Walker",
+   "rep_candidate": "Kate Cotten, Clay Higgins",
+   "pvi_2026": -18.0
   },
   {
    "id": "LA-4",
@@ -1950,9 +2476,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Mike Johnson",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Conrad Cable, Matt Gromlich",
+   "rep_candidate": "Gordon Heslop, Mike Johnson, Mike Nichols",
+   "pvi_2026": -17.0
   },
   {
    "id": "LA-5",
@@ -1963,7 +2492,10 @@
    "held_by": "R",
    "incumbent": null,
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Dan McKay, Patricia Moore, Antonio Wilson",
+   "rep_candidate": "Stewart Cathey Jr., Misti Cordell, Omar Dantzler, Michael Echols, Gabe Firment, Austin Magee",
+   "pvi_2026": -17.0
   },
   {
    "id": "LA-6",
@@ -1971,120 +2503,13 @@
    "district": "6",
    "rating": "solid",
    "lean": "R",
-   "held_by": "R",
+   "held_by": "D",
    "incumbent": null,
    "redrawn_2026": true,
-   "number_confidence": "low"
-  },
-  {
-   "id": "ME-1",
-   "state": "ME",
-   "district": "1",
-   "rating": "solid",
-   "lean": "D",
-   "held_by": "D",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "ME-2",
-   "state": "ME",
-   "district": "2",
-   "rating": "likely",
-   "lean": "R",
-   "held_by": "D",
-   "incumbent": "OPEN (Golden)",
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "MD-1",
-   "state": "MD",
-   "district": "1",
-   "rating": "solid",
-   "lean": "R",
-   "held_by": "R",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "MD-2",
-   "state": "MD",
-   "district": "2",
-   "rating": "solid",
-   "lean": "D",
-   "held_by": "D",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "MD-3",
-   "state": "MD",
-   "district": "3",
-   "rating": "solid",
-   "lean": "D",
-   "held_by": "D",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "MD-4",
-   "state": "MD",
-   "district": "4",
-   "rating": "solid",
-   "lean": "D",
-   "held_by": "D",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "MD-5",
-   "state": "MD",
-   "district": "5",
-   "rating": "solid",
-   "lean": "D",
-   "held_by": "D",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "MD-6",
-   "state": "MD",
-   "district": "6",
-   "rating": "solid",
-   "lean": "D",
-   "held_by": "D",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "MD-7",
-   "state": "MD",
-   "district": "7",
-   "rating": "solid",
-   "lean": "D",
-   "held_by": "D",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "MD-8",
-   "state": "MD",
-   "district": "8",
-   "rating": "solid",
-   "lean": "D",
-   "held_by": "D",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Pat Forbes, Lindsay Garcia",
+   "rep_candidate": "Monique Appeaning, Larry Davis, Rick Edmonds, Chris Johnson, Michael Mebruer, Blake Miguez, Stephen Wagley",
+   "pvi_2026": -16.0
   },
   {
    "id": "MA-1",
@@ -2093,9 +2518,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Richard Neal",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Richard Neal",
+   "rep_candidate": null,
+   "pvi_2026": 8.0
   },
   {
    "id": "MA-2",
@@ -2104,9 +2532,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Jim McGovern",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Jim McGovern",
+   "rep_candidate": null,
+   "pvi_2026": 13.0
   },
   {
    "id": "MA-3",
@@ -2115,9 +2546,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Lori Trahan",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Lori Trahan",
+   "rep_candidate": "Gary Grossi",
+   "pvi_2026": 11.0
   },
   {
    "id": "MA-4",
@@ -2126,9 +2560,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Jake Auchincloss",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Jake Auchincloss",
+   "rep_candidate": "Thomas Stalcup",
+   "pvi_2026": 11.0
   },
   {
    "id": "MA-5",
@@ -2137,9 +2574,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Katherine Clark",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Katherine Clark",
+   "rep_candidate": null,
+   "pvi_2026": 24.0
   },
   {
    "id": "MA-6",
@@ -2150,7 +2590,10 @@
    "held_by": "D",
    "incumbent": null,
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Dan Koh",
+   "rep_candidate": "Micah Jones",
+   "pvi_2026": 11.0
   },
   {
    "id": "MA-7",
@@ -2159,9 +2602,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Ayanna Pressley",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Ayanna Pressley",
+   "rep_candidate": null,
+   "pvi_2026": 34.0
   },
   {
    "id": "MA-8",
@@ -2170,9 +2616,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Stephen Lynch",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Stephen Lynch",
+   "rep_candidate": "Robert Burke",
+   "pvi_2026": 15.0
   },
   {
    "id": "MA-9",
@@ -2181,9 +2630,152 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
+   "incumbent": "Bill Keating",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Bill Keating",
+   "rep_candidate": "Tyler MacAllister",
+   "pvi_2026": 6.0
+  },
+  {
+   "id": "MD-1",
+   "state": "MD",
+   "district": "1",
+   "rating": "solid",
+   "lean": "R",
+   "held_by": "R",
+   "incumbent": "Andy Harris",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Dan Schwartz",
+   "rep_candidate": "Andy Harris",
+   "pvi_2026": -8.0
+  },
+  {
+   "id": "MD-2",
+   "state": "MD",
+   "district": "2",
+   "rating": "solid",
+   "lean": "D",
+   "held_by": "D",
+   "incumbent": "Johnny Olszewski",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Johnny Olszewski",
+   "rep_candidate": "Dave Wallace",
+   "pvi_2026": 10.0
+  },
+  {
+   "id": "MD-3",
+   "state": "MD",
+   "district": "3",
+   "rating": "solid",
+   "lean": "D",
+   "held_by": "D",
+   "incumbent": "Sarah Elfreth",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Sarah Elfreth",
+   "rep_candidate": "Berney Flowers",
+   "pvi_2026": 12.0
+  },
+  {
+   "id": "MD-4",
+   "state": "MD",
+   "district": "4",
+   "rating": "solid",
+   "lean": "D",
+   "held_by": "D",
+   "incumbent": "Glenn Ivey",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Glenn Ivey",
+   "rep_candidate": "George McDermott",
+   "pvi_2026": 39.0
+  },
+  {
+   "id": "MD-5",
+   "state": "MD",
+   "district": "5",
+   "rating": "solid",
+   "lean": "D",
+   "held_by": "D",
    "incumbent": null,
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Adrian Boafo",
+   "rep_candidate": "Chris Chaffee",
+   "pvi_2026": 17.0
+  },
+  {
+   "id": "MD-6",
+   "state": "MD",
+   "district": "6",
+   "rating": "solid",
+   "lean": "D",
+   "held_by": "D",
+   "incumbent": "April McClain Delaney",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "April McClain Delaney",
+   "rep_candidate": "Robin Ficker",
+   "pvi_2026": 3.0
+  },
+  {
+   "id": "MD-7",
+   "state": "MD",
+   "district": "7",
+   "rating": "solid",
+   "lean": "D",
+   "held_by": "D",
+   "incumbent": null,
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Kweisi Mfume",
+   "rep_candidate": "Scott Collier",
+   "pvi_2026": 31.0
+  },
+  {
+   "id": "MD-8",
+   "state": "MD",
+   "district": "8",
+   "rating": "solid",
+   "lean": "D",
+   "held_by": "D",
+   "incumbent": "Jamie Raskin",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Jamie Raskin",
+   "rep_candidate": "Cheryl Riley",
+   "pvi_2026": 30.0
+  },
+  {
+   "id": "ME-1",
+   "state": "ME",
+   "district": "1",
+   "rating": "solid",
+   "lean": "D",
+   "held_by": "D",
+   "incumbent": "Chellie Pingree",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Chellie Pingree",
+   "rep_candidate": "Ronald Russell",
+   "pvi_2026": 11.0
+  },
+  {
+   "id": "ME-2",
+   "state": "ME",
+   "district": "2",
+   "rating": "lean",
+   "lean": "R",
+   "held_by": "D",
+   "incumbent": null,
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Matthew Dunlap",
+   "rep_candidate": "Paul LePage",
+   "pvi_2026": -4.0
   },
   {
    "id": "MI-1",
@@ -2192,9 +2784,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Jack Bergman",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Callie Barr",
+   "rep_candidate": "Jack Bergman",
+   "pvi_2026": -11.0
   },
   {
    "id": "MI-2",
@@ -2203,9 +2798,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "John Moolenaar",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Ben Ambrose",
+   "rep_candidate": "John Moolenaar",
+   "pvi_2026": -15.0
   },
   {
    "id": "MI-3",
@@ -2214,20 +2812,26 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Hillary Scholten",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Hillary Scholten",
+   "rep_candidate": "Terri DeBoer",
+   "pvi_2026": 4.0
   },
   {
    "id": "MI-4",
    "state": "MI",
    "district": "4",
-   "rating": "lean",
+   "rating": "tossup",
    "lean": "R",
    "held_by": "R",
-   "incumbent": "Huizenga",
+   "incumbent": "Bill Huizenga",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Sean McCann",
+   "rep_candidate": "Bill Huizenga",
+   "pvi_2026": -3.0
   },
   {
    "id": "MI-5",
@@ -2236,9 +2840,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Tim Walberg",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Christian Vukasovich",
+   "rep_candidate": "Tim Walberg",
+   "pvi_2026": -13.0
   },
   {
    "id": "MI-6",
@@ -2247,9 +2854,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Debbie Dingell",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Debbie Dingell",
+   "rep_candidate": "Heather Smiley",
+   "pvi_2026": 12.0
   },
   {
    "id": "MI-7",
@@ -2258,9 +2868,12 @@
    "rating": "tossup",
    "lean": "R",
    "held_by": "R",
-   "incumbent": "Barrett",
+   "incumbent": "Tom Barrett",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "William Lawrence",
+   "rep_candidate": "Tom Barrett",
+   "pvi_2026": 0.0
   },
   {
    "id": "MI-8",
@@ -2269,10 +2882,12 @@
    "rating": "likely",
    "lean": "D",
    "held_by": "D",
-   "incumbent": "McDonald Rivet",
+   "incumbent": "Kristen McDonald Rivet",
    "redrawn_2026": false,
    "number_confidence": "high",
-   "note": "Cook Political Report moved MI-08 (McDonald Rivet D) from Lean D to Likely D on Sept 10, 2026"
+   "dem_candidate": "Kristen McDonald Rivet",
+   "rep_candidate": "Thomas Smith",
+   "pvi_2026": -1.0
   },
   {
    "id": "MI-9",
@@ -2281,9 +2896,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Lisa McClain",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Ray Pooley",
+   "rep_candidate": "Lisa McClain",
+   "pvi_2026": -16.0
   },
   {
    "id": "MI-10",
@@ -2292,10 +2910,12 @@
    "rating": "tossup",
    "lean": "R",
    "held_by": "R",
-   "incumbent": "OPEN (James)",
+   "incumbent": null,
    "redrawn_2026": false,
    "number_confidence": "high",
-   "note": "Cook Political Report moved MI-10 (James R) from Lean R to Toss Up on Sept 10, 2026"
+   "dem_candidate": "Christina Hines",
+   "rep_candidate": "Mike Bouchard Jr.",
+   "pvi_2026": -3.0
   },
   {
    "id": "MI-11",
@@ -2306,7 +2926,10 @@
    "held_by": "D",
    "incumbent": null,
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Jeremy Moss",
+   "rep_candidate": "Ethan Baker",
+   "pvi_2026": 9.0
   },
   {
    "id": "MI-12",
@@ -2315,9 +2938,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Rashida Tlaib",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Rashida Tlaib",
+   "rep_candidate": "James Hooper",
+   "pvi_2026": 21.0
   },
   {
    "id": "MI-13",
@@ -2328,18 +2954,24 @@
    "held_by": "D",
    "incumbent": null,
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Donavan McKinney",
+   "rep_candidate": "T.&nbsp;P. Nykoriak",
+   "pvi_2026": 22.0
   },
   {
    "id": "MN-1",
    "state": "MN",
    "district": "1",
-   "rating": "likely",
+   "rating": "lean",
    "lean": "R",
    "held_by": "R",
-   "incumbent": "Finstad",
+   "incumbent": "Brad Finstad",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Jake Johnson",
+   "rep_candidate": "Brad Finstad",
+   "pvi_2026": -6.0
   },
   {
    "id": "MN-2",
@@ -2348,9 +2980,12 @@
    "rating": "likely",
    "lean": "D",
    "held_by": "D",
-   "incumbent": "OPEN (Craig)",
+   "incumbent": null,
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Matt Little",
+   "rep_candidate": "Eric Pratt",
+   "pvi_2026": 3.0
   },
   {
    "id": "MN-3",
@@ -2359,9 +2994,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Kelly Morrison",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Kelly Morrison",
+   "rep_candidate": "Tyler Bass",
+   "pvi_2026": 11.0
   },
   {
    "id": "MN-4",
@@ -2370,9 +3008,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Betty McCollum",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Betty McCollum",
+   "rep_candidate": "Paul Wikstrom",
+   "pvi_2026": 18.0
   },
   {
    "id": "MN-5",
@@ -2381,9 +3022,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Ilhan Omar",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Ilhan Omar",
+   "rep_candidate": "John Nagel",
+   "pvi_2026": 32.0
   },
   {
    "id": "MN-6",
@@ -2392,9 +3036,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Tom Emmer",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Doug Chapin",
+   "rep_candidate": "Tom Emmer",
+   "pvi_2026": -10.0
   },
   {
    "id": "MN-7",
@@ -2403,9 +3050,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Michelle Fischbach",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Erik Osberg",
+   "rep_candidate": "Michelle Fischbach",
+   "pvi_2026": -18.0
   },
   {
    "id": "MN-8",
@@ -2414,53 +3064,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Pete Stauber",
    "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "MS-1",
-   "state": "MS",
-   "district": "1",
-   "rating": "solid",
-   "lean": "R",
-   "held_by": "R",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "MS-2",
-   "state": "MS",
-   "district": "2",
-   "rating": "solid",
-   "lean": "D",
-   "held_by": "D",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "MS-3",
-   "state": "MS",
-   "district": "3",
-   "rating": "solid",
-   "lean": "R",
-   "held_by": "R",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "MS-4",
-   "state": "MS",
-   "district": "4",
-   "rating": "solid",
-   "lean": "R",
-   "held_by": "R",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Trina Swanson",
+   "rep_candidate": "Pete Stauber",
+   "pvi_2026": -7.0
   },
   {
    "id": "MO-1",
@@ -2469,20 +3078,26 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Wesley Bell",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Wesley Bell",
+   "rep_candidate": "Paul Berry",
+   "pvi_2026": 29.0
   },
   {
    "id": "MO-2",
    "state": "MO",
    "district": "2",
-   "rating": "solid",
+   "rating": "likely",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Ann Wagner",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Fred Wellman",
+   "rep_candidate": "Ann Wagner",
+   "pvi_2026": -4.0
   },
   {
    "id": "MO-3",
@@ -2491,9 +3106,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Bob Onder",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Bethany Mann",
+   "rep_candidate": "Bob Onder",
+   "pvi_2026": -13.0
   },
   {
    "id": "MO-4",
@@ -2502,20 +3120,26 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Mark Alford",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Jordan Herrera",
+   "rep_candidate": "Mark Alford",
+   "pvi_2026": -21.0
   },
   {
    "id": "MO-5",
    "state": "MO",
    "district": "5",
    "rating": "solid",
-   "lean": "R",
-   "held_by": "R",
-   "incumbent": null,
+   "lean": "D",
+   "held_by": "D",
+   "incumbent": "Emanuel Cleaver",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Emanuel Cleaver",
+   "rep_candidate": "Rick Brattin",
+   "pvi_2026": 12.0
   },
   {
    "id": "MO-6",
@@ -2526,7 +3150,10 @@
    "held_by": "R",
    "incumbent": null,
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Josh Smead",
+   "rep_candidate": "Chris Stigall",
+   "pvi_2026": -19.0
   },
   {
    "id": "MO-7",
@@ -2535,9 +3162,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Eric Burlison",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Missi Hesketh",
+   "rep_candidate": "Eric Burlison",
+   "pvi_2026": -21.0
   },
   {
    "id": "MO-8",
@@ -2546,20 +3176,82 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Jason Smith",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Chris Reichard",
+   "rep_candidate": "Jason Smith",
+   "pvi_2026": -27.0
+  },
+  {
+   "id": "MS-1",
+   "state": "MS",
+   "district": "1",
+   "rating": "solid",
+   "lean": "R",
+   "held_by": "R",
+   "incumbent": "Trent Kelly",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Cliff Johnson",
+   "rep_candidate": "Trent Kelly",
+   "pvi_2026": -18.0
+  },
+  {
+   "id": "MS-2",
+   "state": "MS",
+   "district": "2",
+   "rating": "solid",
+   "lean": "D",
+   "held_by": "D",
+   "incumbent": "Bennie Thompson",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Bennie Thompson",
+   "rep_candidate": "Ron Eller",
+   "pvi_2026": 11.0
+  },
+  {
+   "id": "MS-3",
+   "state": "MS",
+   "district": "3",
+   "rating": "solid",
+   "lean": "R",
+   "held_by": "R",
+   "incumbent": "Michael Guest",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Michael Chiaradio",
+   "rep_candidate": "Michael Guest",
+   "pvi_2026": -14.0
+  },
+  {
+   "id": "MS-4",
+   "state": "MS",
+   "district": "4",
+   "rating": "solid",
+   "lean": "R",
+   "held_by": "R",
+   "incumbent": "Mike Ezell",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Jeffrey Hulum III",
+   "rep_candidate": "Mike Ezell",
+   "pvi_2026": -21.0
   },
   {
    "id": "MT-1",
    "state": "MT",
    "district": "1",
-   "rating": "likely",
+   "rating": "tossup",
    "lean": "R",
    "held_by": "R",
-   "incumbent": "OPEN (Zinke)",
+   "incumbent": null,
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Sam Forstag",
+   "rep_candidate": "Aaron Flint",
+   "pvi_2026": -5.0
   },
   {
    "id": "MT-2",
@@ -2568,31 +3260,250 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Troy Downing",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Brian Miller",
+   "rep_candidate": "Troy Downing",
+   "pvi_2026": -15.0
+  },
+  {
+   "id": "NC-1",
+   "state": "NC",
+   "district": "1",
+   "rating": "tossup",
+   "lean": "D",
+   "held_by": "D",
+   "incumbent": "Don Davis",
+   "redrawn_2026": true,
+   "number_confidence": "high",
+   "dem_candidate": "Don Davis",
+   "rep_candidate": "Laurie Buckhout",
+   "pvi_2026": -5.0
+  },
+  {
+   "id": "NC-2",
+   "state": "NC",
+   "district": "2",
+   "rating": "solid",
+   "lean": "D",
+   "held_by": "D",
+   "incumbent": "Deborah Ross",
+   "redrawn_2026": true,
+   "number_confidence": "high",
+   "dem_candidate": "Deborah Ross",
+   "rep_candidate": "Eugene Douglass",
+   "pvi_2026": 17.0
+  },
+  {
+   "id": "NC-3",
+   "state": "NC",
+   "district": "3",
+   "rating": "likely",
+   "lean": "R",
+   "held_by": "R",
+   "incumbent": "Greg Murphy",
+   "redrawn_2026": true,
+   "number_confidence": "high",
+   "dem_candidate": "Raymond Smith Jr.",
+   "rep_candidate": "Greg Murphy",
+   "pvi_2026": -6.0
+  },
+  {
+   "id": "NC-4",
+   "state": "NC",
+   "district": "4",
+   "rating": "solid",
+   "lean": "D",
+   "held_by": "D",
+   "incumbent": "Valerie Foushee",
+   "redrawn_2026": true,
+   "number_confidence": "high",
+   "dem_candidate": "Valerie Foushee",
+   "rep_candidate": "Max Ganorkar",
+   "pvi_2026": 23.0
+  },
+  {
+   "id": "NC-5",
+   "state": "NC",
+   "district": "5",
+   "rating": "solid",
+   "lean": "R",
+   "held_by": "R",
+   "incumbent": "Virginia Foxx",
+   "redrawn_2026": true,
+   "number_confidence": "high",
+   "dem_candidate": "Chuck Hubbard",
+   "rep_candidate": "Virginia Foxx",
+   "pvi_2026": -9.0
+  },
+  {
+   "id": "NC-6",
+   "state": "NC",
+   "district": "6",
+   "rating": "solid",
+   "lean": "R",
+   "held_by": "R",
+   "incumbent": "Addison McDowell",
+   "redrawn_2026": true,
+   "number_confidence": "high",
+   "dem_candidate": "Cyril Jefferson",
+   "rep_candidate": "Addison McDowell",
+   "pvi_2026": -9.0
+  },
+  {
+   "id": "NC-7",
+   "state": "NC",
+   "district": "7",
+   "rating": "solid",
+   "lean": "R",
+   "held_by": "R",
+   "incumbent": "David Rouzer",
+   "redrawn_2026": true,
+   "number_confidence": "high",
+   "dem_candidate": "Kimberly Hardy",
+   "rep_candidate": "David Rouzer",
+   "pvi_2026": -7.0
+  },
+  {
+   "id": "NC-8",
+   "state": "NC",
+   "district": "8",
+   "rating": "solid",
+   "lean": "R",
+   "held_by": "R",
+   "incumbent": "Mark Harris",
+   "redrawn_2026": true,
+   "number_confidence": "high",
+   "dem_candidate": "Colby Watson",
+   "rep_candidate": "Mark Harris",
+   "pvi_2026": -10.0
+  },
+  {
+   "id": "NC-9",
+   "state": "NC",
+   "district": "9",
+   "rating": "solid",
+   "lean": "R",
+   "held_by": "R",
+   "incumbent": "Richard Hudson",
+   "redrawn_2026": true,
+   "number_confidence": "high",
+   "dem_candidate": "Richard Ojeda",
+   "rep_candidate": "Richard Hudson",
+   "pvi_2026": -8.0
+  },
+  {
+   "id": "NC-10",
+   "state": "NC",
+   "district": "10",
+   "rating": "solid",
+   "lean": "R",
+   "held_by": "R",
+   "incumbent": "Pat Harrigan",
+   "redrawn_2026": true,
+   "number_confidence": "high",
+   "dem_candidate": "Ashley Bell",
+   "rep_candidate": "Pat Harrigan",
+   "pvi_2026": -9.0
+  },
+  {
+   "id": "NC-11",
+   "state": "NC",
+   "district": "11",
+   "rating": "lean",
+   "lean": "D",
+   "held_by": "R",
+   "incumbent": "Chuck Edwards",
+   "redrawn_2026": true,
+   "number_confidence": "high",
+   "dem_candidate": "Jamie Ager",
+   "rep_candidate": "Jennifer Balkcom",
+   "pvi_2026": -5.0
+  },
+  {
+   "id": "NC-12",
+   "state": "NC",
+   "district": "12",
+   "rating": "solid",
+   "lean": "D",
+   "held_by": "D",
+   "incumbent": "Alma Adams",
+   "redrawn_2026": true,
+   "number_confidence": "high",
+   "dem_candidate": "Alma Adams",
+   "rep_candidate": "Jack Codiga",
+   "pvi_2026": 24.0
+  },
+  {
+   "id": "NC-13",
+   "state": "NC",
+   "district": "13",
+   "rating": "likely",
+   "lean": "R",
+   "held_by": "R",
+   "incumbent": "Brad Knott",
+   "redrawn_2026": true,
+   "number_confidence": "high",
+   "dem_candidate": "Paul Barringer",
+   "rep_candidate": "Brad Knott",
+   "pvi_2026": -8.0
+  },
+  {
+   "id": "NC-14",
+   "state": "NC",
+   "district": "14",
+   "rating": "solid",
+   "lean": "R",
+   "held_by": "R",
+   "incumbent": "Tim Moore",
+   "redrawn_2026": true,
+   "number_confidence": "high",
+   "dem_candidate": "Lakesha Womack",
+   "rep_candidate": "Tim Moore",
+   "pvi_2026": -8.0
+  },
+  {
+   "id": "ND-AL",
+   "state": "ND",
+   "district": "AL",
+   "rating": "solid",
+   "lean": "R",
+   "held_by": "R",
+   "incumbent": "Julie Fedorchak",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Trygve Hammer",
+   "rep_candidate": "Julie Fedorchak",
+   "pvi_2026": -18.0
   },
   {
    "id": "NE-1",
    "state": "NE",
    "district": "1",
-   "rating": "solid",
+   "rating": "likely",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Mike Flood",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Chris Backemeyer",
+   "rep_candidate": "Mike Flood",
+   "pvi_2026": -6.0
   },
   {
    "id": "NE-2",
    "state": "NE",
    "district": "2",
-   "rating": "lean",
+   "rating": "likely",
    "lean": "D",
    "held_by": "R",
-   "incumbent": "OPEN (Bacon)",
+   "incumbent": null,
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Denise Powell",
+   "rep_candidate": "Brinker Harding",
+   "pvi_2026": 3.0
   },
   {
    "id": "NE-3",
@@ -2601,53 +3512,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Adrian Smith",
    "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "NV-1",
-   "state": "NV",
-   "district": "1",
-   "rating": "likely",
-   "lean": "D",
-   "held_by": "D",
-   "incumbent": "Titus",
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "NV-2",
-   "state": "NV",
-   "district": "2",
-   "rating": "solid",
-   "lean": "R",
-   "held_by": "R",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "NV-3",
-   "state": "NV",
-   "district": "3",
-   "rating": "lean",
-   "lean": "D",
-   "held_by": "D",
-   "incumbent": "Lee",
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "NV-4",
-   "state": "NV",
-   "district": "4",
-   "rating": "likely",
-   "lean": "D",
-   "held_by": "D",
-   "incumbent": "Horsford",
-   "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Becky Stille",
+   "rep_candidate": "Adrian Smith",
+   "pvi_2026": -27.0
   },
   {
    "id": "NH-1",
@@ -2656,9 +3526,12 @@
    "rating": "likely",
    "lean": "D",
    "held_by": "D",
-   "incumbent": "OPEN (Pappas)",
+   "incumbent": null,
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Stefany Shaheen",
+   "rep_candidate": "Anthony DiLorenzo",
+   "pvi_2026": 2.0
   },
   {
    "id": "NH-2",
@@ -2667,9 +3540,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Maggie Goodlander",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Maggie Goodlander",
+   "rep_candidate": "Lily Tang Williams",
+   "pvi_2026": 2.0
   },
   {
    "id": "NJ-1",
@@ -2678,9 +3554,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Donald Norcross",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Donald Norcross",
+   "rep_candidate": "Damon Galdo",
+   "pvi_2026": 10.0
   },
   {
    "id": "NJ-2",
@@ -2689,9 +3568,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Jeff Van Drew",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Zack Mullock",
+   "rep_candidate": "Jeff Van Drew",
+   "pvi_2026": -5.0
   },
   {
    "id": "NJ-3",
@@ -2700,9 +3582,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Herb Conaway",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Herb Conaway",
+   "rep_candidate": "Michael McGuire",
+   "pvi_2026": 5.0
   },
   {
    "id": "NJ-4",
@@ -2711,9 +3596,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Chris Smith",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Rachel Peace",
+   "rep_candidate": "Chris Smith",
+   "pvi_2026": -14.0
   },
   {
    "id": "NJ-5",
@@ -2722,9 +3610,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Josh Gottheimer",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Josh Gottheimer",
+   "rep_candidate": "Sean Kirrane",
+   "pvi_2026": 2.0
   },
   {
    "id": "NJ-6",
@@ -2733,20 +3624,26 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Frank Pallone",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Frank Pallone",
+   "rep_candidate": "Hillary Herzig",
+   "pvi_2026": 5.0
   },
   {
    "id": "NJ-7",
    "state": "NJ",
    "district": "7",
-   "rating": "tossup",
-   "lean": "R",
+   "rating": "lean",
+   "lean": "D",
    "held_by": "R",
-   "incumbent": "Kean Jr.",
+   "incumbent": "Thomas Kean Jr.",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Rebecca Bennett",
+   "rep_candidate": "Thomas Kean Jr.",
+   "pvi_2026": 0.0
   },
   {
    "id": "NJ-8",
@@ -2755,9 +3652,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Rob Menendez",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Rob Menendez",
+   "rep_candidate": null,
+   "pvi_2026": 15.0
   },
   {
    "id": "NJ-9",
@@ -2766,9 +3666,12 @@
    "rating": "likely",
    "lean": "D",
    "held_by": "D",
-   "incumbent": "Pou",
+   "incumbent": "Nellie Pou",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Nellie Pou",
+   "rep_candidate": "Rosie Pino",
+   "pvi_2026": 2.0
   },
   {
    "id": "NJ-10",
@@ -2777,9 +3680,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "LaMonica McIver",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "LaMonica McIver",
+   "rep_candidate": "Carmen Bucco",
+   "pvi_2026": 27.0
   },
   {
    "id": "NJ-11",
@@ -2788,9 +3694,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Analilia Mejia",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Analilia Mejia",
+   "rep_candidate": "Joe Hathaway",
+   "pvi_2026": 5.0
   },
   {
    "id": "NJ-12",
@@ -2801,7 +3710,10 @@
    "held_by": "D",
    "incumbent": null,
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Adam Hamawy",
+   "rep_candidate": "Gregg Mele",
+   "pvi_2026": 13.0
   },
   {
    "id": "NM-1",
@@ -2810,9 +3722,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Melanie Stansbury",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Melanie Stansbury",
+   "rep_candidate": "Didi Okpareke",
+   "pvi_2026": 7.0
   },
   {
    "id": "NM-2",
@@ -2821,9 +3736,12 @@
    "rating": "lean",
    "lean": "D",
    "held_by": "D",
-   "incumbent": "Vasquez",
+   "incumbent": "Gabe Vasquez",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Gabe Vasquez",
+   "rep_candidate": "Greg Cunningham",
+   "pvi_2026": 0.0
   },
   {
    "id": "NM-3",
@@ -2832,9 +3750,68 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
+   "incumbent": "Teresa Leger Fernandez",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Teresa Leger Fernández",
+   "rep_candidate": "Martin Zamora",
+   "pvi_2026": 3.0
+  },
+  {
+   "id": "NV-1",
+   "state": "NV",
+   "district": "1",
+   "rating": "likely",
+   "lean": "D",
+   "held_by": "D",
+   "incumbent": "Dina Titus",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Dina Titus",
+   "rep_candidate": "Carrie Buck",
+   "pvi_2026": 2.0
+  },
+  {
+   "id": "NV-2",
+   "state": "NV",
+   "district": "2",
+   "rating": "lean",
+   "lean": "R",
+   "held_by": "R",
    "incumbent": null,
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Teresa Benitez-Thompson",
+   "rep_candidate": "David Flippo",
+   "pvi_2026": -7.0
+  },
+  {
+   "id": "NV-3",
+   "state": "NV",
+   "district": "3",
+   "rating": "likely",
+   "lean": "D",
+   "held_by": "D",
+   "incumbent": "Susie Lee",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Susie Lee",
+   "rep_candidate": "Martin O'Donnell",
+   "pvi_2026": 1.0
+  },
+  {
+   "id": "NV-4",
+   "state": "NV",
+   "district": "4",
+   "rating": "likely",
+   "lean": "D",
+   "held_by": "D",
+   "incumbent": "Steven Horsford",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Steven Horsford",
+   "rep_candidate": "Cody Whipple",
+   "pvi_2026": 2.0
   },
   {
    "id": "NY-1",
@@ -2843,9 +3820,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Nick LaLota",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Chris Gallant",
+   "rep_candidate": "Nick LaLota",
+   "pvi_2026": -4.0
   },
   {
    "id": "NY-2",
@@ -2854,31 +3834,40 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Andrew Garbarino",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Patrick Halpin",
+   "rep_candidate": "Andrew Garbarino",
+   "pvi_2026": -6.0
   },
   {
    "id": "NY-3",
    "state": "NY",
    "district": "3",
-   "rating": "lean",
+   "rating": "likely",
    "lean": "D",
    "held_by": "D",
-   "incumbent": "Suozzi",
+   "incumbent": "Tom Suozzi",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Tom Suozzi",
+   "rep_candidate": "Mike LiPetri",
+   "pvi_2026": 0.0
   },
   {
    "id": "NY-4",
    "state": "NY",
    "district": "4",
-   "rating": "lean",
+   "rating": "likely",
    "lean": "D",
    "held_by": "D",
-   "incumbent": "Gillen",
+   "incumbent": "Laura Gillen",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Laura Gillen",
+   "rep_candidate": "Jeanine Driscoll",
+   "pvi_2026": 2.0
   },
   {
    "id": "NY-5",
@@ -2887,9 +3876,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Gregory Meeks",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Gregory Meeks",
+   "rep_candidate": "George Marsh",
+   "pvi_2026": 24.0
   },
   {
    "id": "NY-6",
@@ -2898,9 +3890,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Grace Meng",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Grace Meng",
+   "rep_candidate": "Joseph Chou",
+   "pvi_2026": 6.0
   },
   {
    "id": "NY-7",
@@ -2911,7 +3906,10 @@
    "held_by": "D",
    "incumbent": null,
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Claire Valdez",
+   "rep_candidate": "Melvin Rivera",
+   "pvi_2026": 25.0
   },
   {
    "id": "NY-8",
@@ -2920,9 +3918,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Hakeem Jeffries",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Hakeem Jeffries",
+   "rep_candidate": "Lewis Mizrahi",
+   "pvi_2026": 24.0
   },
   {
    "id": "NY-9",
@@ -2931,9 +3932,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Yvette Clarke",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Yvette Clarke",
+   "rep_candidate": "Joel Azumah",
+   "pvi_2026": 22.0
   },
   {
    "id": "NY-10",
@@ -2944,7 +3948,10 @@
    "held_by": "D",
    "incumbent": null,
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Brad Lander",
+   "rep_candidate": "Jennifer Moore",
+   "pvi_2026": 32.0
   },
   {
    "id": "NY-11",
@@ -2953,9 +3960,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Nicole Malliotakis",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Michael DeCillis",
+   "rep_candidate": "Nicole Malliotakis",
+   "pvi_2026": -10.0
   },
   {
    "id": "NY-12",
@@ -2966,7 +3976,10 @@
    "held_by": "D",
    "incumbent": null,
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Micah Lasher",
+   "rep_candidate": "Caroline Shinkle",
+   "pvi_2026": 33.0
   },
   {
    "id": "NY-13",
@@ -2977,7 +3990,10 @@
    "held_by": "D",
    "incumbent": null,
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Darializa Avila Chevalier",
+   "rep_candidate": "Jomo Williams",
+   "pvi_2026": 32.0
   },
   {
    "id": "NY-14",
@@ -2986,9 +4002,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Alexandria Ocasio-Cortez",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Alexandria Ocasio-Cortez",
+   "rep_candidate": "Diamant Hysenaj",
+   "pvi_2026": 19.0
   },
   {
    "id": "NY-15",
@@ -2997,9 +4016,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Ritchie Torres",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Ritchie Torres",
+   "rep_candidate": "Stylo Sapaskis",
+   "pvi_2026": 27.0
   },
   {
    "id": "NY-16",
@@ -3008,9 +4030,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "George Latimer",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "George Latimer",
+   "rep_candidate": "Joseph Cinquemani",
+   "pvi_2026": 18.0
   },
   {
    "id": "NY-17",
@@ -3019,9 +4044,12 @@
    "rating": "tossup",
    "lean": "R",
    "held_by": "R",
-   "incumbent": "Lawler",
+   "incumbent": "Mike Lawler",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Cait Conley",
+   "rep_candidate": "Mike Lawler",
+   "pvi_2026": 1.0
   },
   {
    "id": "NY-18",
@@ -3030,9 +4058,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Pat Ryan",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Pat Ryan",
+   "rep_candidate": "Jacqueline Auringer",
+   "pvi_2026": 2.0
   },
   {
    "id": "NY-19",
@@ -3041,9 +4072,12 @@
    "rating": "likely",
    "lean": "D",
    "held_by": "D",
-   "incumbent": "Riley",
+   "incumbent": "Josh Riley",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Josh Riley",
+   "rep_candidate": "Peter Oberacker",
+   "pvi_2026": 1.0
   },
   {
    "id": "NY-20",
@@ -3052,20 +4086,26 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Paul Tonko",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Paul Tonko",
+   "rep_candidate": "Ralph Ambrosio",
+   "pvi_2026": 8.0
   },
   {
    "id": "NY-21",
    "state": "NY",
    "district": "21",
-   "rating": "solid",
+   "rating": "lean",
    "lean": "R",
    "held_by": "R",
    "incumbent": null,
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Blake Gendebien",
+   "rep_candidate": "Anthony Constantino",
+   "pvi_2026": -10.0
   },
   {
    "id": "NY-22",
@@ -3074,9 +4114,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "John Mannion",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "John Mannion",
+   "rep_candidate": "Kailee Buller",
+   "pvi_2026": 4.0
   },
   {
    "id": "NY-23",
@@ -3085,9 +4128,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Nick Langworthy",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Aaron Gies",
+   "rep_candidate": "Nick Langworthy",
+   "pvi_2026": -10.0
   },
   {
    "id": "NY-24",
@@ -3096,9 +4142,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Claudia Tenney",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Alissa Ellman",
+   "rep_candidate": "Claudia Tenney",
+   "pvi_2026": -11.0
   },
   {
    "id": "NY-25",
@@ -3107,9 +4156,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Joseph Morelle",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Joseph Morelle",
+   "rep_candidate": "Virginia McIntyre",
+   "pvi_2026": 10.0
   },
   {
    "id": "NY-26",
@@ -3118,185 +4170,26 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Tim Kennedy",
    "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "NC-1",
-   "state": "NC",
-   "district": "1",
-   "rating": "lean",
-   "lean": "R",
-   "held_by": "D",
-   "incumbent": "Davis",
-   "redrawn_2026": true,
-   "number_confidence": "high"
-  },
-  {
-   "id": "NC-2",
-   "state": "NC",
-   "district": "2",
-   "rating": "solid",
-   "lean": "D",
-   "held_by": "D",
-   "incumbent": null,
-   "redrawn_2026": true,
-   "number_confidence": "low"
-  },
-  {
-   "id": "NC-3",
-   "state": "NC",
-   "district": "3",
-   "rating": "solid",
-   "lean": "R",
-   "held_by": "R",
-   "incumbent": null,
-   "redrawn_2026": true,
-   "number_confidence": "low"
-  },
-  {
-   "id": "NC-4",
-   "state": "NC",
-   "district": "4",
-   "rating": "solid",
-   "lean": "D",
-   "held_by": "D",
-   "incumbent": null,
-   "redrawn_2026": true,
-   "number_confidence": "low"
-  },
-  {
-   "id": "NC-5",
-   "state": "NC",
-   "district": "5",
-   "rating": "solid",
-   "lean": "R",
-   "held_by": "R",
-   "incumbent": null,
-   "redrawn_2026": true,
-   "number_confidence": "low"
-  },
-  {
-   "id": "NC-6",
-   "state": "NC",
-   "district": "6",
-   "rating": "solid",
-   "lean": "R",
-   "held_by": "R",
-   "incumbent": null,
-   "redrawn_2026": true,
-   "number_confidence": "low"
-  },
-  {
-   "id": "NC-7",
-   "state": "NC",
-   "district": "7",
-   "rating": "solid",
-   "lean": "R",
-   "held_by": "R",
-   "incumbent": null,
-   "redrawn_2026": true,
-   "number_confidence": "low"
-  },
-  {
-   "id": "NC-8",
-   "state": "NC",
-   "district": "8",
-   "rating": "solid",
-   "lean": "R",
-   "held_by": "R",
-   "incumbent": null,
-   "redrawn_2026": true,
-   "number_confidence": "low"
-  },
-  {
-   "id": "NC-9",
-   "state": "NC",
-   "district": "9",
-   "rating": "solid",
-   "lean": "R",
-   "held_by": "R",
-   "incumbent": null,
-   "redrawn_2026": true,
-   "number_confidence": "low"
-  },
-  {
-   "id": "NC-10",
-   "state": "NC",
-   "district": "10",
-   "rating": "solid",
-   "lean": "R",
-   "held_by": "R",
-   "incumbent": null,
-   "redrawn_2026": true,
-   "number_confidence": "low"
-  },
-  {
-   "id": "NC-11",
-   "state": "NC",
-   "district": "11",
-   "rating": "lean",
-   "lean": "R",
-   "held_by": "R",
-   "incumbent": "OPEN (Edwards)",
-   "redrawn_2026": true,
-   "number_confidence": "high"
-  },
-  {
-   "id": "NC-12",
-   "state": "NC",
-   "district": "12",
-   "rating": "solid",
-   "lean": "D",
-   "held_by": "D",
-   "incumbent": null,
-   "redrawn_2026": true,
-   "number_confidence": "low"
-  },
-  {
-   "id": "NC-13",
-   "state": "NC",
-   "district": "13",
-   "rating": "solid",
-   "lean": "R",
-   "held_by": "R",
-   "incumbent": null,
-   "redrawn_2026": true,
-   "number_confidence": "low"
-  },
-  {
-   "id": "NC-14",
-   "state": "NC",
-   "district": "14",
-   "rating": "solid",
-   "lean": "R",
-   "held_by": "R",
-   "incumbent": null,
-   "redrawn_2026": true,
-   "number_confidence": "low"
-  },
-  {
-   "id": "ND-AL",
-   "state": "ND",
-   "district": "AL",
-   "rating": "solid",
-   "lean": "R",
-   "held_by": "R",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Tim Kennedy",
+   "rep_candidate": "Dennis Hannon",
+   "pvi_2026": 11.0
   },
   {
    "id": "OH-1",
    "state": "OH",
    "district": "1",
-   "rating": "lean",
+   "rating": "likely",
    "lean": "D",
    "held_by": "D",
-   "incumbent": "Landsman",
+   "incumbent": "Greg Landsman",
    "redrawn_2026": true,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Greg Landsman",
+   "rep_candidate": "Eric Conroy",
+   "pvi_2026": -1.0
   },
   {
    "id": "OH-2",
@@ -3305,9 +4198,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "David Taylor",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Jennifer Mazzuckelli",
+   "rep_candidate": "David Taylor",
+   "pvi_2026": -21.0
   },
   {
    "id": "OH-3",
@@ -3316,9 +4212,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Joyce Beatty",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Joyce Beatty",
+   "rep_candidate": "Cleophus Dulaney",
+   "pvi_2026": 21.0
   },
   {
    "id": "OH-4",
@@ -3327,9 +4226,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Jim Jordan",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Joshua Kolasinski",
+   "rep_candidate": "Jim Jordan",
+   "pvi_2026": -21.0
   },
   {
    "id": "OH-5",
@@ -3338,9 +4240,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Bob Latta",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Brian Shaver",
+   "rep_candidate": "Bob Latta",
+   "pvi_2026": -12.0
   },
   {
    "id": "OH-6",
@@ -3349,9 +4254,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Michael Rulli",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Elizabeth Kirtley",
+   "rep_candidate": "Michael Rulli",
+   "pvi_2026": -17.0
   },
   {
    "id": "OH-7",
@@ -3360,9 +4268,12 @@
    "rating": "tossup",
    "lean": "R",
    "held_by": "R",
-   "incumbent": "Miller",
+   "incumbent": "Max Miller",
    "redrawn_2026": true,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Brian Poindexter",
+   "rep_candidate": "Max Miller",
+   "pvi_2026": -5.0
   },
   {
    "id": "OH-8",
@@ -3371,9 +4282,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Warren Davidson",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Vanessa Enoch",
+   "rep_candidate": "Warren Davidson",
+   "pvi_2026": -8.0
   },
   {
    "id": "OH-9",
@@ -3382,21 +4296,26 @@
    "rating": "tossup",
    "lean": "D",
    "held_by": "D",
-   "incumbent": "Kaptur",
+   "incumbent": "Marcy Kaptur",
    "redrawn_2026": true,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Marcy Kaptur",
+   "rep_candidate": "Derek Merrin",
+   "pvi_2026": -5.0
   },
   {
    "id": "OH-10",
    "state": "OH",
    "district": "10",
-   "rating": "likely",
+   "rating": "lean",
    "lean": "R",
    "held_by": "R",
-   "incumbent": "Turner",
+   "incumbent": "Mike Turner",
    "redrawn_2026": true,
    "number_confidence": "high",
-   "note": "Cook Political Report moved OH-10 (Turner R) from Solid R to Likely R on Sept 10, 2026"
+   "dem_candidate": "Kristina Knickerbocker",
+   "rep_candidate": "Mike Turner",
+   "pvi_2026": -4.0
   },
   {
    "id": "OH-11",
@@ -3405,9 +4324,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Shontel Brown",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Shontel Brown",
+   "rep_candidate": "Mike Kirchner",
+   "pvi_2026": 28.0
   },
   {
    "id": "OH-12",
@@ -3416,9 +4338,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Troy Balderson",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Jerrad Christian",
+   "rep_candidate": "Troy Balderson",
+   "pvi_2026": -15.0
   },
   {
    "id": "OH-13",
@@ -3427,9 +4352,12 @@
    "rating": "likely",
    "lean": "D",
    "held_by": "D",
-   "incumbent": "Sykes",
+   "incumbent": "Emilia Sykes",
    "redrawn_2026": true,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Emilia Sykes",
+   "rep_candidate": "Carey Coleman",
+   "pvi_2026": 2.0
   },
   {
    "id": "OH-14",
@@ -3438,21 +4366,26 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "David Joyce",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Maria Jukic",
+   "rep_candidate": "David Joyce",
+   "pvi_2026": -10.0
   },
   {
    "id": "OH-15",
    "state": "OH",
    "district": "15",
-   "rating": "likely",
+   "rating": "lean",
    "lean": "R",
    "held_by": "R",
-   "incumbent": "Carey",
+   "incumbent": "Mike Carey",
    "redrawn_2026": true,
    "number_confidence": "high",
-   "note": "Cook Political Report moved OH-15 (Carey R) from Solid R to Likely R on Sept 10, 2026"
+   "dem_candidate": "Don Leonard",
+   "rep_candidate": "Mike Carey",
+   "pvi_2026": -5.0
   },
   {
    "id": "OK-1",
@@ -3463,7 +4396,10 @@
    "held_by": "R",
    "incumbent": null,
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "John Croisant",
+   "rep_candidate": "Mark Tedford",
+   "pvi_2026": -11.0
   },
   {
    "id": "OK-2",
@@ -3472,9 +4408,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Josh Brecheen",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Brandon Wade",
+   "rep_candidate": "Josh Brecheen",
+   "pvi_2026": -28.0
   },
   {
    "id": "OK-3",
@@ -3483,9 +4422,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Frank Lucas",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Suzie Byrd",
+   "rep_candidate": "Frank Lucas",
+   "pvi_2026": -23.0
   },
   {
    "id": "OK-4",
@@ -3494,9 +4436,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Tom Cole",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Mitchell Jacob",
+   "rep_candidate": "Tom Cole",
+   "pvi_2026": -17.0
   },
   {
    "id": "OK-5",
@@ -3505,9 +4450,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Stephanie Bice",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Jena Nelson",
+   "rep_candidate": "Stephanie Bice",
+   "pvi_2026": -9.0
   },
   {
    "id": "OR-1",
@@ -3516,9 +4464,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Suzanne Bonamici",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Suzanne Bonamici",
+   "rep_candidate": "Barbara Kahl",
+   "pvi_2026": 20.0
   },
   {
    "id": "OR-2",
@@ -3527,9 +4478,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Cliff Bentz",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Chris Beck",
+   "rep_candidate": "Cliff Bentz",
+   "pvi_2026": -14.0
   },
   {
    "id": "OR-3",
@@ -3538,9 +4492,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Maxine Dexter",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Maxine Dexter",
+   "rep_candidate": "Loran Ayles",
+   "pvi_2026": 24.0
   },
   {
    "id": "OR-4",
@@ -3549,9 +4506,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Val Hoyle",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Val Hoyle",
+   "rep_candidate": "Monique DeSpain",
+   "pvi_2026": 6.0
   },
   {
    "id": "OR-5",
@@ -3560,9 +4520,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Janelle Bynum",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Janelle Bynum",
+   "rep_candidate": "Patti Adair",
+   "pvi_2026": 4.0
   },
   {
    "id": "OR-6",
@@ -3571,20 +4534,26 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Andrea Salinas",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Andrea Salinas",
+   "rep_candidate": "David Russ",
+   "pvi_2026": 6.0
   },
   {
    "id": "PA-1",
    "state": "PA",
    "district": "1",
-   "rating": "likely",
+   "rating": "lean",
    "lean": "R",
    "held_by": "R",
-   "incumbent": "Fitzpatrick",
+   "incumbent": "Brian Fitzpatrick",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Bob Harvie",
+   "rep_candidate": "Brian Fitzpatrick",
+   "pvi_2026": 1.0
   },
   {
    "id": "PA-2",
@@ -3593,9 +4562,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Brendan Boyle",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Brendan Boyle",
+   "rep_candidate": "Jessica Arriaga",
+   "pvi_2026": 19.0
   },
   {
    "id": "PA-3",
@@ -3606,7 +4578,10 @@
    "held_by": "D",
    "incumbent": null,
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Chris Rabb",
+   "rep_candidate": null,
+   "pvi_2026": 40.0
   },
   {
    "id": "PA-4",
@@ -3615,9 +4590,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Madeleine Dean",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Madeleine Dean",
+   "rep_candidate": "Aurora Stuski",
+   "pvi_2026": 8.0
   },
   {
    "id": "PA-5",
@@ -3626,9 +4604,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Mary Gay Scanlon",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Mary Gay Scanlon",
+   "rep_candidate": "Nicholas Manganaro",
+   "pvi_2026": 15.0
   },
   {
    "id": "PA-6",
@@ -3637,20 +4618,26 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Chrissy Houlahan",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Chrissy Houlahan",
+   "rep_candidate": "Marty Young",
+   "pvi_2026": 6.0
   },
   {
    "id": "PA-7",
    "state": "PA",
    "district": "7",
-   "rating": "tossup",
-   "lean": "R",
+   "rating": "lean",
+   "lean": "D",
    "held_by": "R",
-   "incumbent": "Mackenzie",
+   "incumbent": "Ryan Mackenzie",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Bob Brooks",
+   "rep_candidate": "Ryan Mackenzie",
+   "pvi_2026": -1.0
   },
   {
    "id": "PA-8",
@@ -3659,9 +4646,12 @@
    "rating": "tossup",
    "lean": "R",
    "held_by": "R",
-   "incumbent": "Bresnahan",
+   "incumbent": "Rob Bresnahan",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Paige Cognetti",
+   "rep_candidate": "Rob Bresnahan",
+   "pvi_2026": -4.0
   },
   {
    "id": "PA-9",
@@ -3670,20 +4660,26 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Dan Meuser",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Rachel Wallace",
+   "rep_candidate": "Dan Meuser",
+   "pvi_2026": -19.0
   },
   {
    "id": "PA-10",
    "state": "PA",
    "district": "10",
-   "rating": "tossup",
-   "lean": "R",
+   "rating": "lean",
+   "lean": "D",
    "held_by": "R",
-   "incumbent": "Perry",
+   "incumbent": "Scott Perry",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Janelle Stelson",
+   "rep_candidate": "Scott Perry",
+   "pvi_2026": -3.0
   },
   {
    "id": "PA-11",
@@ -3692,9 +4688,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Lloyd Smucker",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Nancy Mannion",
+   "rep_candidate": "Lloyd Smucker",
+   "pvi_2026": -11.0
   },
   {
    "id": "PA-12",
@@ -3703,9 +4702,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Summer Lee",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Summer Lee",
+   "rep_candidate": "James Hayes",
+   "pvi_2026": 10.0
   },
   {
    "id": "PA-13",
@@ -3714,9 +4716,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "John Joyce",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Beth Farnham",
+   "rep_candidate": "John Joyce",
+   "pvi_2026": -23.0
   },
   {
    "id": "PA-14",
@@ -3725,9 +4730,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Guy Reschenthaler",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Alan Bradstock",
+   "rep_candidate": "Guy Reschenthaler",
+   "pvi_2026": -17.0
   },
   {
    "id": "PA-15",
@@ -3736,9 +4744,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Glenn Thompson",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Ray Bilger",
+   "rep_candidate": "Glenn Thompson",
+   "pvi_2026": -19.0
   },
   {
    "id": "PA-16",
@@ -3747,9 +4758,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Mike Kelly",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Justin Wagner",
+   "rep_candidate": "Mike Kelly",
+   "pvi_2026": -11.0
   },
   {
    "id": "PA-17",
@@ -3758,9 +4772,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Chris Deluzio",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Chris Deluzio",
+   "rep_candidate": "Tony Guy",
+   "pvi_2026": 3.0
   },
   {
    "id": "RI-1",
@@ -3769,9 +4786,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Gabe Amo",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Gabe Amo",
+   "rep_candidate": "Kellie Keenan",
+   "pvi_2026": 12.0
   },
   {
    "id": "RI-2",
@@ -3780,20 +4800,26 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Seth Magaziner",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Seth Magaziner",
+   "rep_candidate": "Vic Mellor",
+   "pvi_2026": 4.0
   },
   {
    "id": "SC-1",
    "state": "SC",
    "district": "1",
-   "rating": "likely",
+   "rating": "lean",
    "lean": "R",
    "held_by": "R",
-   "incumbent": "OPEN (Mace)",
+   "incumbent": null,
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Nancy Lacore",
+   "rep_candidate": "Jenny Costa Honeycutt",
+   "pvi_2026": -6.0
   },
   {
    "id": "SC-2",
@@ -3802,9 +4828,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Joe Wilson",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Zyon Khalifa",
+   "rep_candidate": "Joe Wilson",
+   "pvi_2026": -7.0
   },
   {
    "id": "SC-3",
@@ -3813,9 +4842,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Sheri Biggs",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Eunice Lehmacher",
+   "rep_candidate": "Sheri Biggs",
+   "pvi_2026": -21.0
   },
   {
    "id": "SC-4",
@@ -3824,9 +4856,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "William Timmons",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Courtney McClain",
+   "rep_candidate": "William Timmons",
+   "pvi_2026": -11.0
   },
   {
    "id": "SC-5",
@@ -3837,7 +4872,10 @@
    "held_by": "R",
    "incumbent": null,
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Mallory Dittmer",
+   "rep_candidate": "Wes Climer",
+   "pvi_2026": -11.0
   },
   {
    "id": "SC-6",
@@ -3846,9 +4884,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Jim Clyburn",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Jim Clyburn",
+   "rep_candidate": "John Peterson",
+   "pvi_2026": 13.0
   },
   {
    "id": "SC-7",
@@ -3857,9 +4898,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Russell Fry",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "John Vincent",
+   "rep_candidate": "Russell Fry",
+   "pvi_2026": -12.0
   },
   {
    "id": "SD-AL",
@@ -3870,7 +4914,10 @@
    "held_by": "R",
    "incumbent": null,
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Nikki Gronli",
+   "rep_candidate": "Marty Jackley",
+   "pvi_2026": -15.0
   },
   {
    "id": "TN-1",
@@ -3879,9 +4926,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Diana Harshbarger",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Kristi Burke",
+   "rep_candidate": "Diana Harshbarger",
+   "pvi_2026": -29.0
   },
   {
    "id": "TN-2",
@@ -3890,9 +4940,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Tim Burchett",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Michaela Barnett",
+   "rep_candidate": "Tim Burchett",
+   "pvi_2026": -17.0
   },
   {
    "id": "TN-3",
@@ -3901,9 +4954,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Chuck Fleischmann",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Anna Golladay",
+   "rep_candidate": "Chuck Fleischmann",
+   "pvi_2026": -18.0
   },
   {
    "id": "TN-4",
@@ -3912,9 +4968,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Scott DesJarlais",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Victoria Broderick",
+   "rep_candidate": "Scott DesJarlais",
+   "pvi_2026": -11.0
   },
   {
    "id": "TN-5",
@@ -3925,7 +4984,10 @@
    "held_by": "R",
    "incumbent": null,
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Chaz Molder",
+   "rep_candidate": "Charlie Hatcher",
+   "pvi_2026": -10.0
   },
   {
    "id": "TN-6",
@@ -3936,7 +4998,10 @@
    "held_by": "R",
    "incumbent": null,
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Mike Croley",
+   "rep_candidate": "Johnny Garrett",
+   "pvi_2026": -13.0
   },
   {
    "id": "TN-7",
@@ -3945,9 +5010,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Matt Van Epps",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Darden Copeland",
+   "rep_candidate": "Matt Van Epps",
+   "pvi_2026": -11.0
   },
   {
    "id": "TN-8",
@@ -3956,9 +5024,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "David Kustoff",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Heidi Kuhn",
+   "rep_candidate": "David Kustoff",
+   "pvi_2026": -10.0
   },
   {
    "id": "TN-9",
@@ -3966,10 +5037,13 @@
    "district": "9",
    "rating": "solid",
    "lean": "R",
-   "held_by": "R",
+   "held_by": "D",
    "incumbent": null,
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Justin Pearson",
+   "rep_candidate": "Brent Taylor",
+   "pvi_2026": -9.0
   },
   {
    "id": "TX-1",
@@ -3978,9 +5052,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Nathaniel Moran",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Yolanda Prince",
+   "rep_candidate": "Nathaniel Moran",
+   "pvi_2026": -24.0
   },
   {
    "id": "TX-2",
@@ -3991,7 +5068,10 @@
    "held_by": "R",
    "incumbent": null,
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Shaun Finnie",
+   "rep_candidate": "Steve Toth",
+   "pvi_2026": -11.0
   },
   {
    "id": "TX-3",
@@ -4000,9 +5080,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Keith Self",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Evan Hunt",
+   "rep_candidate": "Keith Self",
+   "pvi_2026": -11.0
   },
   {
    "id": "TX-4",
@@ -4011,9 +5094,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Pat Fallon",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Jason Pearce",
+   "rep_candidate": "Pat Fallon",
+   "pvi_2026": -12.0
   },
   {
    "id": "TX-5",
@@ -4022,9 +5108,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Lance Gooden",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Chelsey Hockett",
+   "rep_candidate": "Lance Gooden",
+   "pvi_2026": -10.0
   },
   {
    "id": "TX-6",
@@ -4033,9 +5122,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Jake Ellzey",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Danny Minton",
+   "rep_candidate": "Jake Ellzey",
+   "pvi_2026": -11.0
   },
   {
    "id": "TX-7",
@@ -4044,9 +5136,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Lizzie Fletcher",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Lizzie Fletcher",
+   "rep_candidate": "Alexander Hale",
+   "pvi_2026": 13.0
   },
   {
    "id": "TX-8",
@@ -4057,18 +5152,24 @@
    "held_by": "R",
    "incumbent": null,
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Laura Jones",
+   "rep_candidate": "Jessica Hart Steinmann",
+   "pvi_2026": -13.0
   },
   {
    "id": "TX-9",
    "state": "TX",
    "district": "9",
-   "rating": "solid",
+   "rating": "likely",
    "lean": "R",
    "held_by": "R",
    "incumbent": null,
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Leticia Gutierrez",
+   "rep_candidate": "Alex Mealer",
+   "pvi_2026": -9.0
   },
   {
    "id": "TX-10",
@@ -4079,7 +5180,10 @@
    "held_by": "R",
    "incumbent": null,
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Caitlin Rourk",
+   "rep_candidate": "Chris Gober",
+   "pvi_2026": -10.0
   },
   {
    "id": "TX-11",
@@ -4088,9 +5192,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "August Pfluger",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Claire Reynolds",
+   "rep_candidate": "August Pfluger",
+   "pvi_2026": -17.0
   },
   {
    "id": "TX-12",
@@ -4099,9 +5206,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Craig Goldman",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Angela Rodriguez Prilliman",
+   "rep_candidate": "Craig Goldman",
+   "pvi_2026": -11.0
   },
   {
    "id": "TX-13",
@@ -4110,9 +5220,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Ronny Jackson",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Mark Nair",
+   "rep_candidate": "Ronny Jackson",
+   "pvi_2026": -23.0
   },
   {
    "id": "TX-14",
@@ -4121,20 +5234,26 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Randy Weber",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Thurman Bartie",
+   "rep_candidate": "Randy Weber",
+   "pvi_2026": -12.0
   },
   {
    "id": "TX-15",
    "state": "TX",
    "district": "15",
-   "rating": "lean",
+   "rating": "tossup",
    "lean": "R",
    "held_by": "R",
-   "incumbent": "De La Cruz",
+   "incumbent": "Monica De La Cruz",
    "redrawn_2026": true,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Bobby Pulido",
+   "rep_candidate": "Monica De La Cruz",
+   "pvi_2026": -7.0
   },
   {
    "id": "TX-16",
@@ -4143,9 +5262,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Veronica Escobar",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Veronica Escobar",
+   "rep_candidate": "Adam Bauman",
+   "pvi_2026": 11.0
   },
   {
    "id": "TX-17",
@@ -4154,9 +5276,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Pete Sessions",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Casey Shepard",
+   "rep_candidate": "Pete Sessions",
+   "pvi_2026": -10.0
   },
   {
    "id": "TX-18",
@@ -4165,9 +5290,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Christian Menefee",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Christian Menefee",
+   "rep_candidate": "Ronald Whitfield",
+   "pvi_2026": 29.0
   },
   {
    "id": "TX-19",
@@ -4178,7 +5306,10 @@
    "held_by": "R",
    "incumbent": null,
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Kyle Rable",
+   "rep_candidate": "Tom Sell",
+   "pvi_2026": -25.0
   },
   {
    "id": "TX-20",
@@ -4187,9 +5318,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Joaquin Castro",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Joaquin Castro",
+   "rep_candidate": "Edgardo Rafael Baez",
+   "pvi_2026": 16.0
   },
   {
    "id": "TX-21",
@@ -4200,7 +5334,10 @@
    "held_by": "R",
    "incumbent": null,
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Kristin Hook",
+   "rep_candidate": "Mark Teixeira",
+   "pvi_2026": -10.0
   },
   {
    "id": "TX-22",
@@ -4211,18 +5348,24 @@
    "held_by": "R",
    "incumbent": null,
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Marquette Greene-Scott",
+   "rep_candidate": "Trever Nehls",
+   "pvi_2026": -11.0
   },
   {
    "id": "TX-23",
    "state": "TX",
    "district": "23",
-   "rating": "likely",
+   "rating": "lean",
    "lean": "R",
    "held_by": "R",
-   "incumbent": "VACANT",
+   "incumbent": null,
    "redrawn_2026": true,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Katy Padilla Stout",
+   "rep_candidate": "Brandon Herrera",
+   "pvi_2026": -7.0
   },
   {
    "id": "TX-24",
@@ -4231,9 +5374,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Beth Van Duyne",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Kevin Burge",
+   "rep_candidate": "Beth Van Duyne",
+   "pvi_2026": -8.0
   },
   {
    "id": "TX-25",
@@ -4242,9 +5388,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Roger Williams",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Dione Sims",
+   "rep_candidate": "Roger Williams",
+   "pvi_2026": -11.0
   },
   {
    "id": "TX-26",
@@ -4253,9 +5402,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Brandon Gill",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Steven Shook",
+   "rep_candidate": "Brandon Gill",
+   "pvi_2026": -11.0
   },
   {
    "id": "TX-27",
@@ -4264,20 +5416,26 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Michael Cloud",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Tanya Lloyd",
+   "rep_candidate": "Michael Cloud",
+   "pvi_2026": -10.0
   },
   {
    "id": "TX-28",
    "state": "TX",
    "district": "28",
-   "rating": "lean",
+   "rating": "likely",
    "lean": "D",
    "held_by": "D",
-   "incumbent": "Cuellar",
+   "incumbent": "Henry Cuellar",
    "redrawn_2026": true,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Henry Cuellar",
+   "rep_candidate": "Tano Tijerina",
+   "pvi_2026": -3.0
   },
   {
    "id": "TX-29",
@@ -4286,9 +5444,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Sylvia Garcia",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Sylvia Garcia",
+   "rep_candidate": "Martha Fierro",
+   "pvi_2026": 17.0
   },
   {
    "id": "TX-30",
@@ -4299,7 +5460,10 @@
    "held_by": "D",
    "incumbent": null,
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Frederick Haynes III",
+   "rep_candidate": "Everett Jackson",
+   "pvi_2026": 25.0
   },
   {
    "id": "TX-31",
@@ -4308,9 +5472,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "John Carter",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Justin Early",
+   "rep_candidate": "John Carter",
+   "pvi_2026": -11.0
   },
   {
    "id": "TX-32",
@@ -4321,7 +5488,10 @@
    "held_by": "R",
    "incumbent": null,
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Dan Barrios",
+   "rep_candidate": "Jace Yarbrough",
+   "pvi_2026": -8.0
   },
   {
    "id": "TX-33",
@@ -4332,29 +5502,38 @@
    "held_by": "D",
    "incumbent": null,
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Colin Allred",
+   "rep_candidate": "Patrick Gillespie",
+   "pvi_2026": 18.0
   },
   {
    "id": "TX-34",
    "state": "TX",
    "district": "34",
-   "rating": "tossup",
+   "rating": "lean",
    "lean": "D",
    "held_by": "D",
-   "incumbent": "Gonzalez",
+   "incumbent": "Vicente Gonzalez",
    "redrawn_2026": true,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Vicente Gonzalez",
+   "rep_candidate": "Eric Flores",
+   "pvi_2026": -3.0
   },
   {
    "id": "TX-35",
    "state": "TX",
    "district": "35",
-   "rating": "likely",
-   "lean": "R",
+   "rating": "tossup",
+   "lean": "D",
    "held_by": "D",
-   "incumbent": "OPEN (Casar)",
+   "incumbent": null,
    "redrawn_2026": true,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Johnny Garcia",
+   "rep_candidate": "Carlos De La Cruz",
+   "pvi_2026": -4.0
   },
   {
    "id": "TX-36",
@@ -4363,9 +5542,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Brian Babin",
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Rhonda Hart",
+   "rep_candidate": "Brian Babin",
+   "pvi_2026": -12.0
   },
   {
    "id": "TX-37",
@@ -4376,7 +5558,10 @@
    "held_by": "D",
    "incumbent": null,
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Greg Casar",
+   "rep_candidate": "Lauren Peña",
+   "pvi_2026": 30.0
   },
   {
    "id": "TX-38",
@@ -4387,7 +5572,10 @@
    "held_by": "R",
    "incumbent": null,
    "redrawn_2026": true,
-   "number_confidence": "low"
+   "number_confidence": "high",
+   "dem_candidate": "Melissa McDonough",
+   "rep_candidate": "Jon Bonck",
+   "pvi_2026": -10.0
   },
   {
    "id": "UT-1",
@@ -4398,7 +5586,10 @@
    "held_by": "D",
    "incumbent": null,
    "redrawn_2026": true,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Ben McAdams",
+   "rep_candidate": "Riley Owen",
+   "pvi_2026": 12.0
   },
   {
    "id": "UT-2",
@@ -4407,9 +5598,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Blake Moore",
    "redrawn_2026": true,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Peter Crosby",
+   "rep_candidate": "Blake Moore",
+   "pvi_2026": -15.0
   },
   {
    "id": "UT-3",
@@ -4418,9 +5612,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Celeste Maloy",
    "redrawn_2026": true,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Kent Udell",
+   "rep_candidate": "Celeste Maloy",
+   "pvi_2026": -21.0
   },
   {
    "id": "UT-4",
@@ -4431,40 +5628,38 @@
    "held_by": "R",
    "incumbent": null,
    "redrawn_2026": true,
-   "number_confidence": "high"
-  },
-  {
-   "id": "VT-AL",
-   "state": "VT",
-   "district": "AL",
-   "rating": "solid",
-   "lean": "D",
-   "held_by": "D",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Jonny Larsen",
+   "rep_candidate": "Mike Kennedy",
+   "pvi_2026": -17.0
   },
   {
    "id": "VA-1",
    "state": "VA",
    "district": "1",
-   "rating": "lean",
+   "rating": "tossup",
    "lean": "R",
    "held_by": "R",
-   "incumbent": "Wittman",
+   "incumbent": "Rob Wittman",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Shannon Taylor",
+   "rep_candidate": "Rob Wittman",
+   "pvi_2026": -3.0
   },
   {
    "id": "VA-2",
    "state": "VA",
    "district": "2",
-   "rating": "tossup",
-   "lean": "R",
+   "rating": "lean",
+   "lean": "D",
    "held_by": "R",
-   "incumbent": "Kiggans",
+   "incumbent": "Jen Kiggans",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Elaine Luria",
+   "rep_candidate": "Jen Kiggans",
+   "pvi_2026": 0.0
   },
   {
    "id": "VA-3",
@@ -4473,9 +5668,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Bobby Scott",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Bobby Scott",
+   "rep_candidate": "Edwin Rivera",
+   "pvi_2026": 18.0
   },
   {
    "id": "VA-4",
@@ -4484,20 +5682,26 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Jennifer McClellan",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Jennifer McClellan",
+   "rep_candidate": "Robert Murray",
+   "pvi_2026": 17.0
   },
   {
    "id": "VA-5",
    "state": "VA",
    "district": "5",
-   "rating": "solid",
+   "rating": "likely",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "John McGuire",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Tom Perriello",
+   "rep_candidate": "John McGuire",
+   "pvi_2026": -6.0
   },
   {
    "id": "VA-6",
@@ -4506,9 +5710,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Ben Cline",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Beth Macy",
+   "rep_candidate": "Ben Cline",
+   "pvi_2026": -12.0
   },
   {
    "id": "VA-7",
@@ -4517,9 +5724,12 @@
    "rating": "likely",
    "lean": "D",
    "held_by": "D",
-   "incumbent": "Vindman",
+   "incumbent": "Eugene Vindman",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Eugene Vindman",
+   "rep_candidate": "Doug Ollivant",
+   "pvi_2026": 2.0
   },
   {
    "id": "VA-8",
@@ -4528,9 +5738,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Don Beyer",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Don Beyer",
+   "rep_candidate": "Tony Sabio",
+   "pvi_2026": 26.0
   },
   {
    "id": "VA-9",
@@ -4539,9 +5752,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Morgan Griffith",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Joy Powers",
+   "rep_candidate": "Morgan Griffith",
+   "pvi_2026": -22.0
   },
   {
    "id": "VA-10",
@@ -4550,9 +5766,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Suhas Subramanyam",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Suhas Subramanyam",
+   "rep_candidate": "Dave Beckwith",
+   "pvi_2026": 6.0
   },
   {
    "id": "VA-11",
@@ -4561,9 +5780,26 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "James Walkinshaw",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "James Walkinshaw",
+   "rep_candidate": "Arthur Purves",
+   "pvi_2026": 18.0
+  },
+  {
+   "id": "VT-AL",
+   "state": "VT",
+   "district": "AL",
+   "rating": "solid",
+   "lean": "D",
+   "held_by": "D",
+   "incumbent": "Becca Balint",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Becca Balint",
+   "rep_candidate": "Gerald Malloy",
+   "pvi_2026": 17.0
   },
   {
    "id": "WA-1",
@@ -4572,9 +5808,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Suzan DelBene",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Suzan DelBene",
+   "rep_candidate": "Mary Silva",
+   "pvi_2026": 15.0
   },
   {
    "id": "WA-2",
@@ -4583,20 +5822,26 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Rick Larsen",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Rick Larsen",
+   "rep_candidate": "Edwin Feller",
+   "pvi_2026": 12.0
   },
   {
    "id": "WA-3",
    "state": "WA",
    "district": "3",
-   "rating": "tossup",
+   "rating": "lean",
    "lean": "D",
    "held_by": "D",
-   "incumbent": "Perez",
+   "incumbent": "Marie Gluesenkamp Perez",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Marie Gluesenkamp Perez",
+   "rep_candidate": "John Braun",
+   "pvi_2026": -2.0
   },
   {
    "id": "WA-4",
@@ -4607,7 +5852,10 @@
    "held_by": "R",
    "incumbent": null,
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "John Duresky",
+   "rep_candidate": "Amanda McKinney",
+   "pvi_2026": -10.0
   },
   {
    "id": "WA-5",
@@ -4616,9 +5864,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Michael Baumgartner",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Carmela Conroy",
+   "rep_candidate": "Michael Baumgartner",
+   "pvi_2026": -5.0
   },
   {
    "id": "WA-6",
@@ -4627,9 +5878,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Emily Randall",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Emily Randall",
+   "rep_candidate": "Teresa Fox",
+   "pvi_2026": 10.0
   },
   {
    "id": "WA-7",
@@ -4638,9 +5892,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Pramila Jayapal",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Pramila Jayapal",
+   "rep_candidate": "Nirav Sheth",
+   "pvi_2026": 39.0
   },
   {
    "id": "WA-8",
@@ -4649,9 +5906,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Kim Schrier",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Kim Schrier",
+   "rep_candidate": "Spencer Meline",
+   "pvi_2026": 3.0
   },
   {
    "id": "WA-9",
@@ -4660,9 +5920,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Adam Smith",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Adam Smith",
+   "rep_candidate": "Doug Basler",
+   "pvi_2026": 22.0
   },
   {
    "id": "WA-10",
@@ -4671,42 +5934,26 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Marilyn Strickland",
    "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "WV-1",
-   "state": "WV",
-   "district": "1",
-   "rating": "solid",
-   "lean": "R",
-   "held_by": "R",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
-  },
-  {
-   "id": "WV-2",
-   "state": "WV",
-   "district": "2",
-   "rating": "solid",
-   "lean": "R",
-   "held_by": "R",
-   "incumbent": null,
-   "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Marilyn Strickland",
+   "rep_candidate": "Chris Chung",
+   "pvi_2026": 9.0
   },
   {
    "id": "WI-1",
    "state": "WI",
    "district": "1",
-   "rating": "likely",
+   "rating": "lean",
    "lean": "R",
    "held_by": "R",
-   "incumbent": "Steil",
+   "incumbent": "Bryan Steil",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Mitchell Berman",
+   "rep_candidate": "Bryan Steil",
+   "pvi_2026": -2.0
   },
   {
    "id": "WI-2",
@@ -4715,20 +5962,26 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Mark Pocan",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Mark Pocan",
+   "rep_candidate": null,
+   "pvi_2026": 21.0
   },
   {
    "id": "WI-3",
    "state": "WI",
    "district": "3",
-   "rating": "tossup",
-   "lean": "R",
+   "rating": "lean",
+   "lean": "D",
    "held_by": "R",
-   "incumbent": "Van Orden",
+   "incumbent": "Derrick Van&nbsp;Orden",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Rebecca Cooke",
+   "rep_candidate": "Derrick Van Orden",
+   "pvi_2026": -3.0
   },
   {
    "id": "WI-4",
@@ -4737,9 +5990,12 @@
    "rating": "solid",
    "lean": "D",
    "held_by": "D",
-   "incumbent": null,
+   "incumbent": "Gwen Moore",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Gwen Moore",
+   "rep_candidate": "Tim Rogers",
+   "pvi_2026": 26.0
   },
   {
    "id": "WI-5",
@@ -4748,9 +6004,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Scott Fitzgerald",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Andrew Beck",
+   "rep_candidate": "Scott Fitzgerald",
+   "pvi_2026": -11.0
   },
   {
    "id": "WI-6",
@@ -4759,9 +6018,12 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Glenn Grothman",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Brad Smith",
+   "rep_candidate": "Glenn Grothman",
+   "pvi_2026": -8.0
   },
   {
    "id": "WI-7",
@@ -4772,7 +6034,10 @@
    "held_by": "R",
    "incumbent": null,
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Fred Clark",
+   "rep_candidate": "Michael Alfonso",
+   "pvi_2026": -11.0
   },
   {
    "id": "WI-8",
@@ -4781,9 +6046,40 @@
    "rating": "solid",
    "lean": "R",
    "held_by": "R",
-   "incumbent": null,
+   "incumbent": "Tony Wied",
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Rick Crosson",
+   "rep_candidate": "Tony Wied",
+   "pvi_2026": -8.0
+  },
+  {
+   "id": "WV-1",
+   "state": "WV",
+   "district": "1",
+   "rating": "solid",
+   "lean": "R",
+   "held_by": "R",
+   "incumbent": "Carol Miller",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Vince George",
+   "rep_candidate": "Carol Miller",
+   "pvi_2026": -22.0
+  },
+  {
+   "id": "WV-2",
+   "state": "WV",
+   "district": "2",
+   "rating": "solid",
+   "lean": "R",
+   "held_by": "R",
+   "incumbent": "Riley Moore",
+   "redrawn_2026": false,
+   "number_confidence": "high",
+   "dem_candidate": "Ace Parsi",
+   "rep_candidate": "Riley Moore",
+   "pvi_2026": -20.0
   },
   {
    "id": "WY-AL",
@@ -4794,7 +6090,12 @@
    "held_by": "R",
    "incumbent": null,
    "redrawn_2026": false,
-   "number_confidence": "high"
+   "number_confidence": "high",
+   "dem_candidate": "Lisa Kinney",
+   "rep_candidate": "Chuck Gray",
+   "pvi_2026": -23.0
   }
- ]
+ ],
+ "ratings_date": "2026-10-23",
+ "candidates_source": "Wikipedia, 2026 United States House of Representatives elections (revision 1382261921, 2026-10-27)"
 }
