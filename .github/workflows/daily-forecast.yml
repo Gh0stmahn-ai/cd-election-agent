@@ -145,6 +145,20 @@ jobs:
         continue-on-error: true
         run: python3 refresh_polls.py
 
+      # Cook's current Senate and House ratings and every race's candidates,
+      # from Wikipedia. These files were once edited by hand and went six weeks
+      # stale; now they are re-read every run. Both refuse to write a read that
+      # looks incomplete, and soft-fail, keeping yesterday's file.
+      - name: Refresh Senate ratings and candidates (free)
+        id: senate_races
+        continue-on-error: true
+        run: python3 tools/fetch_senate.py
+
+      - name: Refresh House ratings and candidates (free)
+        id: house_races
+        continue-on-error: true
+        run: python3 tools/fetch_house.py
+
       # State polling for the races that decide Senate control. This is the
       # difference between a forecast that can tell Iowa from Maine and one
       # that cannot.
