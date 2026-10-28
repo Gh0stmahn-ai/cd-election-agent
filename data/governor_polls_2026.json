@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-27T22:20:09+00:00",
+ "as_of": "2026-10-28T20:53:27+00:00",
  "source": "Wikipedia per-race election articles",
  "half_life_days": 21,
  "max_age_days": 120,
@@ -35,40 +35,40 @@
    ],
    "rating": "lean",
    "rating_lean": "D",
-   "read_at": "2026-10-27T22:19:39+00:00"
+   "read_at": "2026-10-28T20:52:54+00:00"
   },
   "FL-GOV": {
    "state": "FL",
    "dem_candidate": "David Jolly",
    "rep_candidate": "Byron Donalds",
-   "dem_margin": -5.4,
+   "dem_margin": -5.1,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
     {
      "label": "270toWin",
-     "margin": -5.0
+     "margin": -5.5
     },
     {
      "label": "Decision Desk HQ",
-     "margin": -6.5
-    },
-    {
-     "label": "FiftyPlusOne",
      "margin": -5.2
     },
     {
+     "label": "FiftyPlusOne",
+     "margin": -4.9
+    },
+    {
      "label": "RealClearPolitics",
-     "margin": -5.6
+     "margin": -5.0
     },
     {
      "label": "Silver Bulletin",
-     "margin": -4.5
+     "margin": -4.7
     }
    ],
    "rating": "lean",
    "rating_lean": "R",
-   "read_at": "2026-10-27T22:19:41+00:00"
+   "read_at": "2026-10-28T20:52:56+00:00"
   },
   "GA-GOV": {
    "state": "GA",
@@ -101,40 +101,40 @@
    ],
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-10-27T22:19:43+00:00"
+   "read_at": "2026-10-28T20:52:59+00:00"
   },
   "IA-GOV": {
    "state": "IA",
    "dem_candidate": "Rob Sand",
    "rep_candidate": "Zach Lahn",
-   "dem_margin": 7.3,
+   "dem_margin": 6.7,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 6.6
+     "margin": 6.2
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 7.6
+     "margin": 6.4
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 7.8
+     "margin": 7.1
     },
     {
      "label": "RealClearPolitics",
-     "margin": 6.7
+     "margin": 6.6
     },
     {
      "label": "Silver Bulletin",
-     "margin": 7.6
+     "margin": 7.2
     }
    ],
    "rating": "lean",
    "rating_lean": "D",
-   "read_at": "2026-10-27T22:19:45+00:00"
+   "read_at": "2026-10-28T20:53:01+00:00"
   },
   "KS-GOV": {
    "state": "KS",
@@ -167,13 +167,13 @@
    ],
    "rating": "tossup",
    "rating_lean": "D",
-   "read_at": "2026-10-27T22:19:47+00:00"
+   "read_at": "2026-10-28T20:53:03+00:00"
   },
   "MI-GOV": {
    "state": "MI",
    "dem_candidate": "Jocelyn Benson",
    "rep_candidate": "John James",
-   "dem_margin": 7.0,
+   "dem_margin": 7.3,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
@@ -183,53 +183,53 @@
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 7.3
-    },
-    {
-     "label": "FiftyPlusOne",
      "margin": 7.0
     },
     {
+     "label": "FiftyPlusOne",
+     "margin": 7.2
+    },
+    {
      "label": "RealClearPolitics",
-     "margin": 5.8
+     "margin": 7.2
     },
     {
      "label": "Silver Bulletin",
-     "margin": 7.2
+     "margin": 7.5
     }
    ],
    "rating": "lean",
    "rating_lean": "D",
-   "read_at": "2026-10-27T22:19:50+00:00"
+   "read_at": "2026-10-28T20:53:06+00:00"
   },
   "NE-GOV": {
    "state": "NE",
    "dem_candidate": "Lynne Walz",
    "rep_candidate": "Jim Pillen",
-   "dem_margin": -3.0,
+   "dem_margin": -3.7,
    "method": "mean of 4 aggregators",
    "n_used": 4,
    "detail": [
     {
      "label": "270toWin",
-     "margin": -3.4
+     "margin": -4.2
     },
     {
      "label": "Decision Desk HQ",
-     "margin": -2.9
+     "margin": -3.7
     },
     {
      "label": "FiftyPlusOne",
-     "margin": -2.5
+     "margin": -3.5
     },
     {
      "label": "Silver Bulletin",
-     "margin": -3.1
+     "margin": -3.4
     }
    ],
    "rating": "lean",
    "rating_lean": "R",
-   "read_at": "2026-10-27T22:19:52+00:00"
+   "read_at": "2026-10-28T20:53:08+00:00"
   },
   "NH-GOV": {
    "state": "NH",
@@ -262,7 +262,7 @@
    ],
    "rating": "likely",
    "rating_lean": "R",
-   "read_at": "2026-10-27T22:19:54+00:00"
+   "read_at": "2026-10-28T20:53:10+00:00"
   },
   "NV-GOV": {
    "state": "NV",
@@ -295,40 +295,40 @@
    ],
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-10-27T22:19:56+00:00"
+   "read_at": "2026-10-28T20:53:13+00:00"
   },
   "OH-GOV": {
    "state": "OH",
    "dem_candidate": "Amy Acton",
    "rep_candidate": "Vivek Ramaswamy",
-   "dem_margin": 3.5,
+   "dem_margin": 3.1,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 3.2
+     "margin": 2.0
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 2.9
+     "margin": 3.0
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 2.9
+     "margin": 3.0
     },
     {
      "label": "RealClearPolitics",
-     "margin": 4.4
+     "margin": 4.3
     },
     {
      "label": "Silver Bulletin",
-     "margin": 3.9
+     "margin": 3.2
     }
    ],
    "rating": "lean",
    "rating_lean": "D",
-   "read_at": "2026-10-27T22:19:58+00:00"
+   "read_at": "2026-10-28T20:53:15+00:00"
   },
   "OK-GOV": {
    "state": "OK",
@@ -344,7 +344,7 @@
      "rep": 39.0,
      "date": "2026-10-17",
      "n": null,
-     "weight": 0.719,
+     "weight": 0.696,
      "margin": -3.0
     },
     {
@@ -353,13 +353,13 @@
      "rep": 46.0,
      "date": "2026-09-18",
      "n": null,
-     "weight": 0.276,
+     "weight": 0.267,
      "margin": -10.0
     }
    ],
    "rating": "likely",
    "rating_lean": "R",
-   "read_at": "2026-10-27T22:20:01+00:00"
+   "read_at": "2026-10-28T20:53:17+00:00"
   },
   "OR-GOV": {
    "state": "OR",
@@ -376,31 +376,31 @@
    ],
    "rating": "lean",
    "rating_lean": "D",
-   "read_at": "2026-10-27T22:20:03+00:00"
+   "read_at": "2026-10-28T20:53:20+00:00"
   },
   "TX-GOV": {
    "state": "TX",
    "dem_candidate": "Gina Hinojosa",
    "rep_candidate": "Greg Abbott",
-   "dem_margin": -3.0,
+   "dem_margin": -2.9,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
     {
      "label": "270toWin",
-     "margin": -3.5
+     "margin": -3.2
     },
     {
      "label": "Decision Desk HQ",
-     "margin": -2.9
-    },
-    {
-     "label": "FiftyPlusOne",
      "margin": -2.6
     },
     {
+     "label": "FiftyPlusOne",
+     "margin": -2.7
+    },
+    {
      "label": "RealClearPolitics",
-     "margin": -3.3
+     "margin": -3.2
     },
     {
      "label": "Silver Bulletin",
@@ -409,7 +409,7 @@
    ],
    "rating": "lean",
    "rating_lean": "R",
-   "read_at": "2026-10-27T22:20:05+00:00"
+   "read_at": "2026-10-28T20:53:22+00:00"
   },
   "VT-GOV": {
    "state": "VT",
@@ -425,7 +425,7 @@
      "rep": 46.0,
      "date": "2026-10-08",
      "n": 948,
-     "weight": 0.581,
+     "weight": 0.563,
      "margin": -3.0
     },
     {
@@ -434,7 +434,7 @@
      "rep": 49.0,
      "date": "2026-10-03",
      "n": 1752,
-     "weight": 0.67,
+     "weight": 0.648,
      "margin": -3.0
     },
     {
@@ -443,7 +443,7 @@
      "rep": 42.0,
      "date": "2026-09-20",
      "n": 817,
-     "weight": 0.298,
+     "weight": 0.288,
      "margin": -10.0
     },
     {
@@ -452,7 +452,7 @@
      "rep": 43.0,
      "date": "2026-09-06",
      "n": 829,
-     "weight": 0.189,
+     "weight": 0.183,
      "margin": 6.0
     },
     {
@@ -461,13 +461,13 @@
      "rep": 44.0,
      "date": "2026-07-17",
      "n": 954,
-     "weight": 0.038,
+     "weight": 0.036,
      "margin": -11.0
     }
    ],
    "rating": "likely",
    "rating_lean": "R",
-   "read_at": "2026-10-27T22:20:07+00:00"
+   "read_at": "2026-10-28T20:53:25+00:00"
   },
   "WI-GOV": {
    "state": "WI",
@@ -500,7 +500,7 @@
    ],
    "rating": "tossup",
    "rating_lean": "D",
-   "read_at": "2026-10-27T22:20:09+00:00"
+   "read_at": "2026-10-28T20:53:27+00:00"
   }
  },
  "issues": [

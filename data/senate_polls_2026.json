@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-27T22:19:36+00:00",
+ "as_of": "2026-10-28T20:52:51+00:00",
  "source": "Wikipedia per-race election articles",
  "half_life_days": 21,
  "max_age_days": 120,
@@ -31,7 +31,7 @@
    ],
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-10-27T22:19:06+00:00"
+   "read_at": "2026-10-28T20:52:19+00:00"
   },
   "GA-2026": {
    "state": "GA",
@@ -64,27 +64,27 @@
    ],
    "rating": "likely",
    "rating_lean": "D",
-   "read_at": "2026-10-27T22:19:08+00:00"
+   "read_at": "2026-10-28T20:52:21+00:00"
   },
   "IA-2026": {
    "state": "IA",
    "dem_candidate": "Josh Turek",
    "rep_candidate": "Ashley Hinson",
-   "dem_margin": -0.1,
+   "dem_margin": -0.0,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
     {
      "label": "270toWin",
-     "margin": -0.3
-    },
-    {
-     "label": "Decision Desk HQ",
      "margin": -0.8
     },
     {
+     "label": "Decision Desk HQ",
+     "margin": -0.2
+    },
+    {
      "label": "FiftyPlusOne",
-     "margin": 0.2
+     "margin": 0.6
     },
     {
      "label": "RealClearPolitics",
@@ -92,18 +92,18 @@
     },
     {
      "label": "Silver Bulletin",
-     "margin": 1.2
+     "margin": 0.9
     }
    ],
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-10-27T22:19:11+00:00"
+   "read_at": "2026-10-28T20:52:24+00:00"
   },
   "KS-2026": {
    "state": "KS",
    "dem_candidate": "Adam Hamilton",
    "rep_candidate": "Roger Marshall",
-   "dem_margin": 0.5,
+   "dem_margin": 0.4,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
@@ -113,7 +113,7 @@
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 0.4
+     "margin": 0.0
     },
     {
      "label": "FiftyPlusOne",
@@ -125,28 +125,28 @@
     },
     {
      "label": "Silver Bulletin",
-     "margin": 1.0
+     "margin": 0.9
     }
    ],
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-10-27T22:19:13+00:00"
+   "read_at": "2026-10-28T20:52:26+00:00"
   },
   "ME-2026": {
    "state": "ME",
    "dem_candidate": "Troy Jackson",
    "rep_candidate": "Susan Collins",
-   "dem_margin": 1.9,
+   "dem_margin": 2.4,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 1.2
+     "margin": 2.2
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 2.3
+     "margin": 3.3
     },
     {
      "label": "FiftyPlusOne",
@@ -158,28 +158,28 @@
     },
     {
      "label": "Silver Bulletin",
-     "margin": 1.9
+     "margin": 2.4
     }
    ],
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-10-27T22:19:15+00:00"
+   "read_at": "2026-10-28T20:52:29+00:00"
   },
   "MI-2026": {
    "state": "MI",
    "dem_candidate": "Abdul El-Sayed",
    "rep_candidate": "Mike Rogers",
-   "dem_margin": 2.8,
+   "dem_margin": 3.1,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 3.5
+     "margin": 3.6
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 2.2
+     "margin": 3.1
     },
     {
      "label": "FiftyPlusOne",
@@ -187,49 +187,49 @@
     },
     {
      "label": "RealClearPolitics",
-     "margin": 2.0
+     "margin": 2.5
     },
     {
      "label": "Silver Bulletin",
-     "margin": 3.0
+     "margin": 3.3
     }
    ],
    "rating": "tossup",
    "rating_lean": "D",
-   "read_at": "2026-10-27T22:19:18+00:00"
+   "read_at": "2026-10-28T20:52:31+00:00"
   },
   "MN-2026": {
    "state": "MN",
    "dem_candidate": "Peggy Flanagan",
    "rep_candidate": "Michele Tafoya",
-   "dem_margin": 3.3,
+   "dem_margin": 6.4,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 1.5
+     "margin": 6.0
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 3.7
+     "margin": 6.8
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 3.8
+     "margin": 7.8
     },
     {
      "label": "RealClearPolitics",
-     "margin": 2.8
+     "margin": 5.1
     },
     {
      "label": "Silver Bulletin",
-     "margin": 4.6
+     "margin": 6.4
     }
    ],
    "rating": "lean",
    "rating_lean": "D",
-   "read_at": "2026-10-27T22:19:20+00:00"
+   "read_at": "2026-10-28T20:52:34+00:00"
   },
   "MS-2026": {
    "state": "MS",
@@ -245,7 +245,7 @@
      "rep": 43.0,
      "date": "2026-10-09",
      "n": 842,
-     "weight": 0.566,
+     "weight": 0.548,
      "margin": -3.0
     },
     {
@@ -254,75 +254,75 @@
      "rep": 44.0,
      "date": "2026-08-11",
      "n": 1018,
-     "weight": 0.089,
+     "weight": 0.086,
      "margin": -6.0
     }
    ],
    "rating": "likely",
    "rating_lean": "R",
-   "read_at": "2026-10-27T22:19:22+00:00"
+   "read_at": "2026-10-28T20:52:36+00:00"
   },
   "NC-2026": {
    "state": "NC",
    "dem_candidate": "Roy Cooper",
    "rep_candidate": "Michael Whatley",
-   "dem_margin": 10.8,
+   "dem_margin": 10.1,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 11.8
+     "margin": 11.4
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 11.3
+     "margin": 9.5
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 10.6
+     "margin": 9.7
     },
     {
      "label": "RealClearPolitics",
-     "margin": 10.6
+     "margin": 10.3
     },
     {
      "label": "Silver Bulletin",
-     "margin": 9.7
+     "margin": 9.8
     }
    ],
    "rating": "likely",
    "rating_lean": "D",
-   "read_at": "2026-10-27T22:19:25+00:00"
+   "read_at": "2026-10-28T20:52:39+00:00"
   },
   "NE-2026": {
    "state": "NE",
    "dem_candidate": "Dan Osborn",
    "rep_candidate": "Pete Ricketts",
-   "dem_margin": -0.6,
+   "dem_margin": -0.7,
    "method": "mean of 4 aggregators",
    "n_used": 4,
    "detail": [
     {
      "label": "270toWin",
-     "margin": -2.3
+     "margin": -2.0
     },
     {
      "label": "Decision Desk HQ",
-     "margin": -0.6
+     "margin": -0.7
     },
     {
      "label": "FiftyPlusOne",
-     "margin": -0.1
+     "margin": -0.3
     },
     {
      "label": "Silver Bulletin",
-     "margin": 0.5
+     "margin": 0.2
     }
    ],
    "rating": "likely",
    "rating_lean": "R",
-   "read_at": "2026-10-27T22:19:27+00:00"
+   "read_at": "2026-10-28T20:52:41+00:00"
   },
   "NH-2026": {
    "state": "NH",
@@ -355,27 +355,27 @@
    ],
    "rating": "lean",
    "rating_lean": "D",
-   "read_at": "2026-10-27T22:19:29+00:00"
+   "read_at": "2026-10-28T20:52:43+00:00"
   },
   "OH-2026-special": {
    "state": "OH",
    "dem_candidate": "Sherrod Brown",
    "rep_candidate": "Jon Husted",
-   "dem_margin": 3.8,
+   "dem_margin": 3.3,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 4.0
+     "margin": 3.5
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 4.2
+     "margin": 3.4
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 4.2
+     "margin": 3.3
     },
     {
      "label": "RealClearPolitics",
@@ -383,18 +383,18 @@
     },
     {
      "label": "Silver Bulletin",
-     "margin": 3.4
+     "margin": 3.1
     }
    ],
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-10-27T22:19:31+00:00"
+   "read_at": "2026-10-28T20:52:46+00:00"
   },
   "SC-2026": {
    "state": "SC",
    "dem_candidate": "Annie Andrews",
    "rep_candidate": "Darline Graham",
-   "dem_margin": -1.8,
+   "dem_margin": -1.6,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
@@ -404,44 +404,44 @@
     },
     {
      "label": "Decision Desk HQ",
-     "margin": -1.6
+     "margin": -1.4
     },
     {
      "label": "FiftyPlusOne",
-     "margin": -1.0
+     "margin": -0.8
     },
     {
      "label": "RealClearPolitics",
-     "margin": -2.7
+     "margin": -2.4
     },
     {
      "label": "Silver Bulletin",
-     "margin": -1.7
+     "margin": -1.5
     }
    ],
    "rating": "lean",
    "rating_lean": "R",
-   "read_at": "2026-10-27T22:19:34+00:00"
+   "read_at": "2026-10-28T20:52:48+00:00"
   },
   "TX-2026": {
    "state": "TX",
    "dem_candidate": "James Talarico",
    "rep_candidate": "Ken Paxton",
-   "dem_margin": 2.3,
+   "dem_margin": 2.6,
    "method": "mean of 6 aggregators",
    "n_used": 6,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 2.0
+     "margin": 2.9
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 2.8
+     "margin": 3.1
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 2.6
+     "margin": 2.8
     },
     {
      "label": "RealClearPolitics",
@@ -449,16 +449,16 @@
     },
     {
      "label": "The Texas Tribune",
-     "margin": 2.2
+     "margin": 2.3
     },
     {
      "label": "Silver Bulletin",
-     "margin": 2.4
+     "margin": 2.6
     }
    ],
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-10-27T22:19:36+00:00"
+   "read_at": "2026-10-28T20:52:51+00:00"
   }
  },
  "issues": []
