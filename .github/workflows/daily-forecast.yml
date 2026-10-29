@@ -1,6 +1,6 @@
 name: Daily election forecast update
 
-# Runs the full pipeline once a day, then publishes the site:
+# Runs the full pipeline twice a day, then publishes the site:
 #   1. refresh_economy.py - pulls all 10 economic readings from public data
 #                           series. FREE: no API key, no cost, no LLM.
 #   2. refresh_markets.py - Kalshi and Polymarket prices, also free. Shown
@@ -27,9 +27,13 @@ name: Daily election forecast update
 
 on:
   schedule:
-    # 16:00 UTC = noon Eastern during EDT (Mar-Nov). GitHub Actions cron
-    # doesn't observe DST, so this drifts to 11:00 AM ET during EST.
-    - cron: '0 16 * * *'
+    # Twice a day: 11:07 and 23:07 UTC are 7:07 am and 7:07 pm Eastern during
+    # EDT (6:07 during EST; GitHub's cron doesn't observe DST). The morning
+    # run picks up overnight polls and stories, the evening run the day's.
+    # Minute 7 rather than 0: the top of the hour is when GitHub's scheduler
+    # is busiest and most likely to start a job late.
+    - cron: '7 11 * * *'
+    - cron: '7 23 * * *'
     # The final forecast: 10:05 UTC on November 3 is 5:05 am Eastern, before
     # any poll opens. The first run at or after 10:00 UTC that day seals its
     # result into data/final_forecast.json (see freeze.py). No run that starts
@@ -180,6 +184,14 @@ jobs:
         continue-on-error: true
         run: python3 refresh_governor_polls.py
 
+      # Free. Trending midterm headlines from 20 outlets' own RSS feeds,
+      # balanced by rule: equal stories about each party, equal headlines from
+      # left- and right-leaning outlets. Display only, never fed into the model.
+      - name: Refresh trending headlines (free, display only)
+        id: headlines
+        continue-on-error: true
+        run: python3 refresh_headlines.py
+
       # Free. Wikipedia readership per candidate, which says who people are
       # looking up, not who they support, so it is displayed and never fed
       # into the forecast. Slow (the API throttles), hence the soft fail.
@@ -267,7 +279,7 @@ jobs:
           if [ "${{ steps.seal.outputs.sealed }}" = "true" ]; then
             git commit -m "Final forecast, sealed before the polls open: $(date -u +%Y-%m-%dT%H:%MZ)"
           else
-            git commit -m "Daily forecast update: $(date -u +%Y-%m-%d)"
+            git commit -m "Forecast update: $(date -u +"%Y-%m-%d %H:%M") UTC"
           fi
 
           # Rebase onto the latest main and retry the push a few times in
