@@ -300,6 +300,21 @@ rat, day = FH.cook_ratings("[[Cook Political Report|Cook]]<br>{{small|Oct. 23,<b
 check("house: Cook's is the first rating in a row, at-large seats keep their id",
       rat == {"AL-2": ("lean", "R"), "AK-AL": ("tossup", None)} and day == _date(2026, 10, 23), rat)
 
+# ------------------------------------------------------------- headlines
+import refresh_headlines as HL
+names = {"annie andrews": "D", "darline graham": "R", "talarico": "D", "paxton": "R"}
+check("headlines: party read from party words and nominee names",
+      HL.party_focus("Talarico surges as Democrats pour money into Texas", names)[0] == "D"
+      and HL.party_focus("GOP rallies behind Darline Graham", names)[0] == "R"
+      and HL.party_focus("Paxton and Talarico meet in final debate", names)[0] == "both"
+      and HL.party_focus("Stocks fall on rate worries", names)[0] is None)
+mk = lambda lean, k: ({"items": [], "focus": "D", "k": k}, {"lean": lean})
+ranked = [mk("L", 1), mk("L", 2), mk("L", 3), mk("C", 4), mk("R", 5), mk("C", 6), mk("R", 7), mk("L", 8)]
+top = HL._top(ranked, 6)
+leans = [e[1]["lean"] for e in top]
+check("headlines: a list keeps left- and right-leaning outlets level",
+      len(top) <= 6 and leans.count("L") == leans.count("R") and leans.count("L") >= 1, leans)
+
 import os
 import freeze
 os.environ["FREEZE_NOW"] = "2026-11-03T10:30:00Z"
