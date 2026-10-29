@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-29T10:17:38+00:00",
+ "as_of": "2026-10-29T17:26:38+00:00",
  "window_hours": 48,
  "rules": "Equal numbers of stories about each party, and equal numbers of headlines from left-leaning and right-leaning outlets within each party's list; center outlets count toward neither. Ranked by how many outlets are carrying the story, newer first.",
  "outlets": [
@@ -95,7 +95,7 @@
    "outlet": "The New York Times",
    "lean": "L",
    "ok": true,
-   "items": 24
+   "items": 23
   },
   {
    "outlet": "CNN",
@@ -197,7 +197,7 @@
    "outlet": "BBC News",
    "lean": "C",
    "ok": true,
-   "items": 26
+   "items": 24
   },
   {
    "outlet": "Deseret News",
@@ -211,32 +211,54 @@
   "R": 7,
   "C": 6
  },
- "candidates_considered": 90,
+ "candidates_considered": 84,
  "stories": [
   {
-   "title": "Obama and Trump hold dueling rallies as midterm campaigns make final pitch",
-   "link": "https://www.cbsnews.com/live-updates/2026-elections-midtems-house-senate-trump/",
-   "outlet": "CBS News",
+   "title": "Alaska governor orders investigation into Peltola camp after report they recruited second Dan Sullivan",
+   "link": "https://www.nbcnews.com/politics/2020-election/mike-dunleavy-orders-investigation-mary-peltola-campaign-dan-sullivan-rcna606316",
+   "outlet": "NBC News",
    "lean": "L",
-   "published": "2026-10-29T05:09:45+00:00",
+   "published": "2026-10-29T14:50:39+00:00",
    "focus": "both",
    "also": [
+    "CBS News",
     "Daily Caller",
-    "New York Post"
+    "Fox News",
+    "New York Post",
+    "The New York Times"
    ],
-   "n_outlets": 3,
+   "n_outlets": 6,
    "coverage": {
-    "L": 1,
+    "L": 4,
     "C": 0,
-    "R": 2
+    "R": 3
    }
   },
   {
-   "title": "California judge denies Trump DOJ request to segregate alleged noncitizen ballots",
-   "link": "https://www.nbcnews.com/politics/justice-department/judge-rules-california-ballots-alleged-non-citizen-voters-trump-doj-rcna606100",
-   "outlet": "NBC News",
+   "title": "Alaska Governor Mike Dunleavy, a Republican, orders probe over same-name Senate race controversy",
+   "link": "https://www.wsj.com/politics/elections/trump-calls-for-alaska-democratic-senate-candidate-to-be-prosecuted-aec2c451?mod=rss_socialpoliticsfeed",
+   "outlet": "The Wall Street Journal",
+   "lean": "C",
+   "published": "2026-10-29T16:44:00+00:00",
+   "focus": "D",
+   "also": [
+    "BBC News",
+    "NewsNation",
+    "The Hill"
+   ],
+   "n_outlets": 4,
+   "coverage": {
+    "L": 0,
+    "C": 4,
+    "R": 0
+   }
+  },
+  {
+   "title": "Live Updates: Trump campaigns in South Carolina and more",
+   "link": "https://www.cbsnews.com/live-updates/2026-elections-midtems-house-senate-trump/",
+   "outlet": "CBS News",
    "lean": "L",
-   "published": "2026-10-29T00:52:44+00:00",
+   "published": "2026-10-29T17:21:05+00:00",
    "focus": "R",
    "also": [
     "NewsNation"
@@ -249,37 +271,161 @@
    }
   },
   {
-   "title": "El-Sayed responds to Stevens's fiancée endorsing Rogers",
-   "link": "https://thehill.com/homenews/campaign/6180036-el-sayed-responds-stevens-fiance/",
+   "title": "Abdul El-Sayed’s dad sits on board of Islamic charity accused of funneling cash to Saddam Hussein",
+   "link": "https://nypost.com/2026/10/29/us-news/el-sayeds-father-linked-to-charity-accused-of-giving-cash-to-saddam-hussein/",
+   "outlet": "New York Post",
+   "lean": "R",
+   "published": "2026-10-29T14:55:38+00:00",
+   "focus": "D",
+   "also": [
+    "Washington Free Beacon"
+   ],
+   "n_outlets": 2,
+   "coverage": {
+    "L": 0,
+    "C": 0,
+    "R": 2
+   }
+  },
+  {
+   "title": "Democrats leading in Texas, Michigan Senate races: Polling",
+   "link": "https://thehill.com/homenews/campaign/6180606-democrats-lead-texas-michigan-polls/",
    "outlet": "The Hill",
    "lean": "C",
-   "published": "2026-10-29T01:53:43+00:00",
+   "published": "2026-10-29T13:28:58+00:00",
    "focus": "D",
+   "also": [
+    "Fox News"
+   ],
+   "n_outlets": 2,
+   "coverage": {
+    "L": 0,
+    "C": 1,
+    "R": 1
+   }
+  },
+  {
+   "title": "Haley Stevens' fiance hammers El-Sayed, says he'll vote for Rogers",
+   "link": "https://www.foxnews.com/politics/haley-stevens-fiancee-hammers-el-sayed-says-hell-vote-rogers",
+   "outlet": "Fox News",
+   "lean": "R",
+   "published": "2026-10-29T13:23:15+00:00",
+   "focus": "both",
    "also": [
     "New York Post"
    ],
    "n_outlets": 2,
    "coverage": {
     "L": 0,
-    "C": 2,
-    "R": 1
+    "C": 0,
+    "R": 2
    }
   },
   {
-   "title": "Murkowski snubs Trump-backed Alaska candidate, endorses Democrat for governor",
-   "link": "https://www.foxnews.com/politics/murkowski-snubs-trump-backed-alaska-candidate-endorses-democrat-governor",
-   "outlet": "Fox News",
-   "lean": "R",
-   "published": "2026-10-28T15:59:56+00:00",
-   "focus": "both",
+   "title": "Judge refuses Trump administration’s request to separate 20K California mail ballots",
+   "link": "https://www.newsnationnow.com/politics/trump-administration-california-mail-ballots/",
+   "outlet": "NewsNation",
+   "lean": "C",
+   "published": "2026-10-29T03:47:20+00:00",
+   "focus": "R",
    "also": [
     "NBC News"
    ],
    "n_outlets": 2,
    "coverage": {
     "L": 1,
+    "C": 1,
+    "R": 0
+   }
+  },
+  {
+   "title": "'Decoy Dan' Sullivan case leads top senator to break four-year X silence: 'Pattern of Lies'",
+   "link": "https://www.foxnews.com/politics/decoy-dan-sullivan-case-leads-top-senator-break-four-year-x-silence-pattern-lies",
+   "outlet": "Fox News",
+   "lean": "R",
+   "published": "2026-10-29T17:19:14+00:00",
+   "focus": "R",
+   "also": [],
+   "n_outlets": 1,
+   "coverage": {
+    "L": 0,
     "C": 0,
     "R": 1
+   }
+  },
+  {
+   "title": "Trump DOJ's fight over 20K suspected noncitizen voters takes sharp turn as California ballots pour in",
+   "link": "https://www.foxnews.com/politics/trump-dojs-fight-over-20k-suspected-noncitizen-voters-takes-sharp-turn-california-ballots-pour",
+   "outlet": "Fox News",
+   "lean": "R",
+   "published": "2026-10-29T16:18:50+00:00",
+   "focus": "R",
+   "also": [],
+   "n_outlets": 1,
+   "coverage": {
+    "L": 0,
+    "C": 0,
+    "R": 1
+   }
+  },
+  {
+   "title": "El-Sayed's faith, family under scrutiny in campaign. Here's what we know.",
+   "link": "https://www.cbsnews.com/news/abdul-el-sayed-faith-family-michigan-senate-campaign/",
+   "outlet": "CBS News",
+   "lean": "L",
+   "published": "2026-10-29T14:42:48+00:00",
+   "focus": "D",
+   "also": [],
+   "n_outlets": 1,
+   "coverage": {
+    "L": 1,
+    "C": 0,
+    "R": 0
+   }
+  },
+  {
+   "title": "Scalise stresses voter turnout: 'We can hold the House'",
+   "link": "https://thehill.com/homenews/campaign/6180417-steve-scalise-voter-turnout-boost-midterms-house-control/",
+   "outlet": "The Hill",
+   "lean": "C",
+   "published": "2026-10-29T13:25:19+00:00",
+   "focus": "R",
+   "also": [],
+   "n_outlets": 1,
+   "coverage": {
+    "L": 0,
+    "C": 1,
+    "R": 0
+   }
+  },
+  {
+   "title": "EXCLUSIVE: Low-Income Texas Towns Shelled Tens Of Thousands For Dem Candidate’s Concerts",
+   "link": "https://dailycaller.com/2026/10/29/texas-bobby-pulido-concerts-alamo-victoria-monica-de-la-cruz",
+   "outlet": "Daily Caller",
+   "lean": "R",
+   "published": "2026-10-29T13:23:18+00:00",
+   "focus": "D",
+   "also": [],
+   "n_outlets": 1,
+   "coverage": {
+    "L": 0,
+    "C": 0,
+    "R": 1
+   }
+  },
+  {
+   "title": "As Trump Faces Down the Midterms, a Grim Mood Takes Over the White House",
+   "link": "https://www.nytimes.com/2026/10/28/us/politics/trump-midterms-white-house-mood.html",
+   "outlet": "The New York Times",
+   "lean": "L",
+   "published": "2026-10-29T12:18:23+00:00",
+   "focus": "R",
+   "also": [],
+   "n_outlets": 1,
+   "coverage": {
+    "L": 1,
+    "C": 0,
+    "R": 0
    }
   },
   {
@@ -287,7 +433,7 @@
    "link": "https://www.nytimes.com/2026/10/29/podcasts/the-daily/democrats-alaska-senate-midterms-dan-sullivan.html",
    "outlet": "The New York Times",
    "lean": "L",
-   "published": "2026-10-29T10:00:05+00:00",
+   "published": "2026-10-29T10:00:06+00:00",
    "focus": "D",
    "also": [],
    "n_outlets": 1,
@@ -296,149 +442,14 @@
     "C": 0,
     "R": 0
    }
-  },
-  {
-   "title": "Democrats see battleground map expand to South Carolina, Florida, Mississippi",
-   "link": "https://thehill.com/homenews/senate/6179707-senate-democrats-south-carolina-mississippi-florida/",
-   "outlet": "The Hill",
-   "lean": "C",
-   "published": "2026-10-29T10:00:00+00:00",
-   "focus": "D",
-   "also": [],
-   "n_outlets": 1,
-   "coverage": {
-    "L": 0,
-    "C": 1,
-    "R": 0
-   }
-  },
-  {
-   "title": "South Carolina Senate race tightens ahead of Trump visit",
-   "link": "https://www.newsnationnow.com/politics/2026-midterm-elections/south-carolina-senate-race-trump-visit/",
-   "outlet": "NewsNation",
-   "lean": "C",
-   "published": "2026-10-29T09:50:26+00:00",
-   "focus": "R",
-   "also": [],
-   "n_outlets": 1,
-   "coverage": {
-    "L": 0,
-    "C": 1,
-    "R": 0
-   }
-  },
-  {
-   "title": "Alaska man says Democratic operative recruited him to run in Senate race",
-   "link": "https://www.newsnationnow.com/politics/2026-midterm-elections/alaska-senate-race-candidate-matthew-salisbury/",
-   "outlet": "NewsNation",
-   "lean": "C",
-   "published": "2026-10-29T09:23:46+00:00",
-   "focus": "D",
-   "also": [],
-   "n_outlets": 1,
-   "coverage": {
-    "L": 0,
-    "C": 1,
-    "R": 0
-   }
-  },
-  {
-   "title": "In a comeback attempt, Democrat Keisha Lance Bottoms is seeking to become the first Black woman governor in U.S. history and the first Democrat elected governor in Georgia in decades",
-   "link": "https://www.wsj.com/politics/elections/the-ex-mayor-vs-the-billionaire-the-fiercest-governors-race-in-the-south-f34c6a7e?mod=rss_socialpoliticsfeed",
-   "outlet": "The Wall Street Journal",
-   "lean": "C",
-   "published": "2026-10-29T04:44:00+00:00",
-   "focus": "D",
-   "also": [],
-   "n_outlets": 1,
-   "coverage": {
-    "L": 0,
-    "C": 1,
-    "R": 0
-   }
-  },
-  {
-   "title": "California governor hopeful Xavier Becerra wants to tax drivers every mile they travel: ‘Everything should be on the table’",
-   "link": "https://nypost.com/2026/10/28/us-news/xavier-becerra-considers-added-mileage-tax-for-california-roads/",
-   "outlet": "New York Post",
-   "lean": "R",
-   "published": "2026-10-29T03:12:10+00:00",
-   "focus": "D",
-   "also": [],
-   "n_outlets": 1,
-   "coverage": {
-    "L": 0,
-    "C": 0,
-    "R": 1
-   }
-  },
-  {
-   "title": "Trump calls alleged Alaska Senate spoiler scheme 'voter fraud at the highest level'",
-   "link": "https://thehill.com/homenews/administration/6180002-trump-alaska-senate-voter-fraud/",
-   "outlet": "The Hill",
-   "lean": "C",
-   "published": "2026-10-29T01:30:50+00:00",
-   "focus": "R",
-   "also": [],
-   "n_outlets": 1,
-   "coverage": {
-    "L": 0,
-    "C": 1,
-    "R": 0
-   }
-  },
-  {
-   "title": "Watch live: Trump seeks to boost GOP in Ohio amid final sprint to midterms",
-   "link": "https://thehill.com/video-clips/6178675-watch-live-donald-trump-ohio-campaign-rally-midterms/",
-   "outlet": "The Hill",
-   "lean": "C",
-   "published": "2026-10-28T22:00:00+00:00",
-   "focus": "R",
-   "also": [],
-   "n_outlets": 1,
-   "coverage": {
-    "L": 0,
-    "C": 1,
-    "R": 0
-   }
-  },
-  {
-   "title": "John Sununu says brother 'totally wrong' about election hypothetical",
-   "link": "https://thehill.com/homenews/campaign/6179613-sununu-family-politics-granite-state/",
-   "outlet": "The Hill",
-   "lean": "C",
-   "published": "2026-10-28T21:58:15+00:00",
-   "focus": "R",
-   "also": [],
-   "n_outlets": 1,
-   "coverage": {
-    "L": 0,
-    "C": 1,
-    "R": 0
-   }
-  },
-  {
-   "title": "GOP Senate majority faces fresh uncertainty as 2 key races tighten days before midterms",
-   "link": "https://www.foxnews.com/politics/gop-senate-majority-faces-fresh-uncertainty-2-key-races-tighten-days-before-midterms",
-   "outlet": "Fox News",
-   "lean": "R",
-   "published": "2026-10-28T15:59:16+00:00",
-   "focus": "R",
-   "also": [],
-   "n_outlets": 1,
-   "coverage": {
-    "L": 0,
-    "C": 0,
-    "R": 1
-   }
   }
  ],
  "balance": {
   "D": 6,
   "R": 6,
   "both": 2,
-  "left_outlets": 3,
-  "right_outlets": 3,
-  "center_outlets": 8
+  "left_outlets": 5,
+  "right_outlets": 5,
+  "center_outlets": 4
  }
 }
