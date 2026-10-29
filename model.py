@@ -169,6 +169,38 @@ def race_sd(chamber, rating):
         raise ValueError(f"state error exceeds the total for {chamber}/{rating}")
     return (total ** 2 - STATE_SD ** 2) ** 0.5
 
+# Two things make one race less predictable than its rating bucket says.
+#
+# Undecided voters. A final poll with 12% outside the two major candidates
+# leaves more to be decided than one with 4%, and that share decides close
+# races. Above the typical final-poll share (7.5 points, the median across
+# the 22 Senate and governor races polled in late October 2026), each further
+# point adds 0.3 of a point of spread,
+# roughly the swing if those voters broke 65-35 rather than evenly.
+#
+# Ranked-choice ballots with a crowded field. Alaska's top-four general
+# counts later preferences, and its polls report first choices or a two-way
+# question; how the eliminated candidates' voters rank (and how many rank no
+# one) is a further unknown, worth 2 points of spread there.
+UNDECIDED_TYPICAL = 7.5
+UNDECIDED_SD_PER_PT = 0.3
+RCV_STATES = {"AK"}
+RCV_EXTRA_SD = 2.0
+
+
+def race_spread(chamber, race, poll_entry=None):
+    """race_sd widened for a large undecided share and for Alaska's ranked ballot."""
+    base = race_sd(chamber, race["rating"])
+    u = (poll_entry or {}).get("undecided")
+    extra_u = UNDECIDED_SD_PER_PT * max(0.0, float(u) - UNDECIDED_TYPICAL) if u is not None else 0.0
+    extra_rcv = RCV_EXTRA_SD if race.get("state") in RCV_STATES else 0.0
+    return (base ** 2 + extra_u ** 2 + extra_rcv ** 2) ** 0.5
+
+
+# A correlated miss along state partisanship was tested the same way
+# (backtest/README.md): an implied 0.08 points per PVI point in competitive
+# races, too small and too uncertain to carry.
+#
 # Census divisions. The simulation no longer draws a division-level error: the
 # backtest measured that layer at zero across seven cycles, so every point of
 # regional correlation that exists turns out to live at the state line. The map
@@ -625,7 +657,7 @@ def simulate_governors(rng, E, env, nat, shared_for, n_sims):
               + GOVERNOR_ENV_SENSITIVITY * nat[:, None]
               + shared_for([r["state"] for r in races])
               + rng.normal(0, 1, (n_sims, len(races)))
-              * np.array([race_sd("governor", r["rating"]) for r in races]))
+              * np.array([race_spread("governor", r, polls.get(r["race_id"])) for r in races]))
     win = margin > 0
     not_up = gov.get("not_up", {"D": 0, "R": 0})
     dem_total = not_up.get("D", 0) + win.sum(axis=1)
@@ -742,7 +774,7 @@ def run_simulation(n_sims=N_SIMS, seed=SEED, env_margin=None):
                 + SENATE_ENV_SENSITIVITY * nat[:, None]
                 + shared_for(s_states)
                 + rng.normal(0, 1, (n_sims, len(races)))
-                * np.array([race_sd("senate", r["rating"]) for r in races]))
+                * np.array([race_spread("senate", r, polls.get(r["seat_id"])) for r in races]))
     s_win = s_margin > 0
     caucus_mask = np.array([r.get("challenger_caucus") != "independent" for r in races])
     dem_senate = sen["not_up"]["D"] + (s_win & caucus_mask[None, :]).sum(axis=1)

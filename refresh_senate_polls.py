@@ -45,7 +45,15 @@ TIMEOUT = 60
 RETRIES = 4
 PAUSE = 2.0
 
-HALF_LIFE_DAYS = 21      # a three-week-old poll counts half as much
+HALF_LIFE_DAYS = 21      # a three-week-old poll counts half as much...
+HALF_LIFE_FINAL = 10     # ...falling to ten days over the last month, when races move late
+ELECTION_DAY = date(2026, 11, 3)
+# A poll a party or campaign paid for (Wikipedia tags the sponsor "(R)" or
+# "(D)") leans toward its sponsor: released internal polls have run several
+# points friendlier to their side than independent ones. Each is moved this
+# far toward the other party and counts half as much.
+PARTISAN_SHIFT = 2.5
+PARTISAN_WEIGHT = 0.5
 MAX_AGE_DAYS = 120       # older than this and it is history, not news
 MIN_POLLS = 2            # below this, report but let the model lean on the rating
 
@@ -176,26 +184,107 @@ def read_rows(table):
     return out
 
 
+def half_life(today):
+    """Days for a poll's weight to halve: 21 until a month out, 10 in the last two weeks."""
+    left = (ELECTION_DAY - today).days
+    if left >= 30:
+        return HALF_LIFE_DAYS
+    if left <= 14:
+        return HALF_LIFE_FINAL
+    return HALF_LIFE_FINAL + (HALF_LIFE_DAYS - HALF_LIFE_FINAL) * (left - 14) / 16
+
+
+def sponsor(label):
+    """'R' or 'D' when the poll was paid for by a party or campaign."""
+    m = re.search(r"\((R|D)\)", label or "")
+    return m.group(1) if m else None
+
+
 def average(entries, today):
-    """Recency and sample-size weighted Democratic margin."""
-    total_w, total_m, used = 0.0, 0.0, []
+    """Recency and sample-size weighted Democratic margin, with sponsored polls
+    moved toward the other party and counted half, and each poll counted once
+    (a pollster's table often repeats one survey with and without minor
+    candidates)."""
+    total_w, total_m, total_u, used, seen = 0.0, 0.0, 0.0, [], set()
+    hl = half_life(today)
     for e in entries:
         if e["date"] is None:
             continue
+        key = (e["label"], e["date"])
+        if key in seen:
+            continue
+        seen.add(key)
         age = (today - e["date"]).days
         if age < 0 or age > MAX_AGE_DAYS:
             continue
-        recency = 0.5 ** (age / HALF_LIFE_DAYS)
+        recency = 0.5 ** (age / hl)
         size = math.sqrt(e["n"]) / math.sqrt(800) if e["n"] else 1.0
         w = recency * min(size, 1.6)
+        margin = e["dem"] - e["rep"]
+        side = sponsor(e["label"])
+        if side:
+            w *= PARTISAN_WEIGHT
+            margin += PARTISAN_SHIFT if side == "R" else -PARTISAN_SHIFT
         total_w += w
-        total_m += w * (e["dem"] - e["rep"])
+        total_m += w * margin
+        total_u += w * max(0.0, 100 - e["dem"] - e["rep"])
         used.append({**e, "date": e["date"].isoformat(), "weight": round(w, 3),
-                     "margin": round(e["dem"] - e["rep"], 1)})
+                     "margin": round(margin, 1), "sponsor": side})
     if not total_w:
         return None, []
     used.sort(key=lambda e: e["date"], reverse=True)
+    average.undecided = total_u / total_w
     return total_m / total_w, used
+
+
+def race_average(page, dem, rep, today):
+    """One race's polling average from its Wikipedia article.
+
+    Where the article has both an aggregator table and the individual polls,
+    the two are averaged: the aggregators treat sponsored polls differently
+    (some include them as published), so our own adjusted average of the
+    polls is half of the answer. Returns None or
+    {margin, method, n_used, detail, undecided}."""
+    tables = find_tables(page, dem.split()[-1], rep.split()[-1])
+    agg = [t for t in tables if t["aggregation"]]
+    polls = [t for t in tables if not t["aggregation"]]
+    agg_margin, agg_used, agg_method, agg_u = None, [], None, None
+    if agg:
+        entries = read_rows(agg[0])
+        named = [e for e in entries if not e["label"].lower().startswith("average")]
+        avg_row = next((e for e in entries if e["label"].lower().startswith("average")), None)
+        pick = [avg_row] if avg_row else named
+        if pick:
+            agg_margin = sum(e["dem"] - e["rep"] for e in pick) / len(pick)
+            agg_u = sum(max(0.0, 100 - e["dem"] - e["rep"]) for e in pick) / len(pick)
+            agg_method = "aggregator average" if avg_row else f"mean of {len(named)} aggregators"
+            agg_used = [{"label": e["label"], "margin": round(e["dem"] - e["rep"], 1)} for e in named]
+    poll_margin, poll_used = None, []
+    if polls:
+        entries = []
+        for t in polls:
+            entries.extend(read_rows(t))
+        average.undecided = None
+        poll_margin, poll_used = average(entries, today)
+    poll_u = getattr(average, "undecided", None) if poll_used else None
+    recent = [e for e in poll_used if (today - date.fromisoformat(e["date"])).days <= 30]
+    if agg_margin is not None and poll_margin is not None and len(recent) >= 3:
+        return {"margin": (agg_margin + poll_margin) / 2,
+                "method": f"{agg_method}, averaged with {len(poll_used)} polls adjusted for sponsors",
+                "n_used": max(len(agg_used), len(poll_used)),
+                "aggregator_margin": round(agg_margin, 1), "poll_margin": round(poll_margin, 1),
+                "detail": agg_used + poll_used[:8],
+                "undecided": round(poll_u if poll_u is not None else agg_u, 1)}
+    if agg_margin is not None:
+        return {"margin": agg_margin, "method": agg_method, "n_used": len(agg_used),
+                "aggregator_margin": round(agg_margin, 1), "detail": agg_used,
+                "undecided": round(agg_u, 1) if agg_u is not None else None}
+    if poll_margin is not None:
+        return {"margin": poll_margin, "method": f"{len(poll_used)} polls, recency and sample weighted, "
+                                                 "adjusted for sponsors",
+                "n_used": len(poll_used), "poll_margin": round(poll_margin, 1), "detail": poll_used[:12],
+                "undecided": round(poll_u, 1) if poll_u is not None else None}
+    return None
 
 
 def carry_forward(seat, dem, rep, path=None, max_days=3):
@@ -259,39 +348,18 @@ def main():
                 print(f"  {seat}: no article")
             continue
 
-        tables = find_tables(page, dem.split()[-1], rep.split()[-1])
-        agg = [t for t in tables if t["aggregation"]]
-        polls = [t for t in tables if not t["aggregation"]]
-
-        margin, used, method = None, [], None
-        if agg:
-            entries = read_rows(agg[0])
-            named = [e for e in entries if not e["label"].lower().startswith("average")]
-            avg_row = next((e for e in entries if e["label"].lower().startswith("average")), None)
-            if avg_row:
-                margin, method = avg_row["dem"] - avg_row["rep"], "aggregator average"
-                used = [{"label": e["label"], "margin": round(e["dem"] - e["rep"], 1)}
-                        for e in named]
-            elif named:
-                margin = sum(e["dem"] - e["rep"] for e in named) / len(named)
-                method = f"mean of {len(named)} aggregators"
-                used = [{"label": e["label"], "margin": round(e["dem"] - e["rep"], 1)}
-                        for e in named]
-        if margin is None and polls:
-            entries = []
-            for t in polls:
-                entries.extend(read_rows(t))
-            margin, used = average(entries, today)
-            method = f"{len(used)} polls, recency and sample weighted" if used else None
-
-        if margin is None:
+        got = race_average(page, dem, rep, today)
+        if got is None:
             issues.append(f"{seat}: no usable head-to-head polling")
             print(f"  {seat}: no usable polling")
             continue
+        margin, method, used = got["margin"], got["method"], got["detail"]
 
         out[seat] = {"state": race["state"], "dem_candidate": dem, "rep_candidate": rep,
                      "dem_margin": round(margin, 1), "method": method,
-                     "n_used": len(used), "detail": used[:12],
+                     "n_used": got["n_used"], "detail": used[:16],
+                     "aggregator_margin": got.get("aggregator_margin"), "poll_margin": got.get("poll_margin"),
+                     "undecided": got.get("undecided"),
                      "rating": race["rating"], "rating_lean": race["lean"],
                      "read_at": datetime.now().astimezone().isoformat(timespec="seconds")}
         side = "D" if margin >= 0 else "R"
@@ -302,7 +370,8 @@ def main():
         return 1
     payload = {"as_of": datetime.now().astimezone().isoformat(timespec="seconds"),
                "source": "Wikipedia per-race election articles",
-               "half_life_days": HALF_LIFE_DAYS, "max_age_days": MAX_AGE_DAYS,
+               "half_life_days": round(half_life(today), 1), "max_age_days": MAX_AGE_DAYS,
+               "partisan_shift": PARTISAN_SHIFT, "partisan_weight": PARTISAN_WEIGHT,
                "races": out, "issues": issues}
     (DATA / "senate_polls_2026.json").write_text(json.dumps(payload, indent=1))
     print(f"\n{len(out)} of {len(competitive)} races have a polling average.")

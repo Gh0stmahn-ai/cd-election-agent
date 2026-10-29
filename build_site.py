@@ -1854,6 +1854,18 @@ def build_methodology(snap):
     Before this existed, every toss-up carried the identical D+1.3 baseline and the forecast literally
     could not tell Iowa from Maine.</p>
 
+    <p><b>Where the article lists the individual polls as well, our own average of them is half the
+    number.</b> Aggregators treat partisan polls differently, so the polls are also averaged here: a poll
+    Wikipedia tags as from a Republican or Democratic sponsor or pollster is moved 2.5 points toward the
+    other party and counts half, each survey counts once, and in the last month a poll's weight halves in
+    ten days rather than three weeks, because close races move late. The same applies to governors.</p>
+
+    <p><b>Close races get a wider range where more is undecided.</b> Above the typical final-poll share of
+    about seven and a half points outside the two major candidates, each further point widens that race's spread by 0.3
+    of a point, and Alaska's ranked-choice ballot, where the polls cannot show how later preferences will
+    transfer, adds 2 points of spread to its races. Neither moves who is favored; both make the odds in the
+    closest races more honest about what is not yet known.</p>
+
     <p><b>House seats are separated by partisan lean.</b> A rating puts a seat in a class; Cook's Partisan
     Voting Index says where inside that class it sits. Each district's baseline is nudged by how far its
     index is from the typical index of seats with the same rating, centred so a rating's average is left

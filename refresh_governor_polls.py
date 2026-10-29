@@ -52,33 +52,17 @@ def main():
             else:
                 print(f"  {rid}: no article")
             continue
-        tables = S.find_tables(page, dem.split()[-1], rep.split()[-1])
-        agg = [t for t in tables if t["aggregation"]]
-        polls = [t for t in tables if not t["aggregation"]]
-        margin, used, method = None, [], None
-        if agg:
-            entries = S.read_rows(agg[0])
-            named = [e for e in entries if not e["label"].lower().startswith("average")]
-            avg_row = next((e for e in entries if e["label"].lower().startswith("average")), None)
-            if avg_row:
-                margin, method = avg_row["dem"] - avg_row["rep"], "aggregator average"
-            elif named:
-                margin = sum(e["dem"] - e["rep"] for e in named) / len(named)
-                method = f"mean of {len(named)} aggregators"
-            used = [{"label": e["label"], "margin": round(e["dem"] - e["rep"], 1)} for e in named]
-        if margin is None and polls:
-            entries = []
-            for t in polls:
-                entries.extend(S.read_rows(t))
-            margin, used = S.average(entries, today)
-            method = f"{len(used)} polls, recency and sample weighted" if used else None
-        if margin is None:
+        got = S.race_average(page, dem, rep, today)
+        if got is None:
             issues.append(f"{rid}: no usable head-to-head polling")
             print(f"  {rid}: no usable polling")
             continue
+        margin, method, used = got["margin"], got["method"], got["detail"]
         out[rid] = {"state": race["state"], "dem_candidate": dem, "rep_candidate": rep,
-                    "dem_margin": round(margin, 1), "method": method, "n_used": len(used),
-                    "detail": used[:12], "rating": race["rating"], "rating_lean": race["lean"],
+                    "dem_margin": round(margin, 1), "method": method, "n_used": got["n_used"],
+                    "detail": used[:16], "aggregator_margin": got.get("aggregator_margin"),
+                    "poll_margin": got.get("poll_margin"), "undecided": got.get("undecided"),
+                    "rating": race["rating"], "rating_lean": race["lean"],
                     "read_at": datetime.now().astimezone().isoformat(timespec="seconds")}
         print(f"  {rid}: {'D' if margin >= 0 else 'R'}+{abs(margin):.1f} ({method})")
     if not out:
@@ -86,7 +70,8 @@ def main():
         return 1
     payload = {"as_of": datetime.now().astimezone().isoformat(timespec="seconds"),
                "source": "Wikipedia per-race election articles",
-               "half_life_days": S.HALF_LIFE_DAYS, "max_age_days": S.MAX_AGE_DAYS,
+               "half_life_days": round(S.half_life(today), 1), "max_age_days": S.MAX_AGE_DAYS,
+               "partisan_shift": S.PARTISAN_SHIFT, "partisan_weight": S.PARTISAN_WEIGHT,
                "races": out, "issues": issues}
     (DATA / "governor_polls_2026.json").write_text(json.dumps(payload, indent=1))
     print(f"\n{len(out)} of {len(races)} races have a polling average.")
