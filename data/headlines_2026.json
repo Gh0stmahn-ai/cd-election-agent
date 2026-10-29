@@ -1,7 +1,7 @@
 {
- "as_of": "2026-10-29T09:27:07+00:00",
+ "as_of": "2026-10-29T09:34:52+00:00",
  "window_hours": 48,
- "rules": "Equal numbers of stories about each party, and equal numbers of headlines from left-leaning and right-leaning outlets; center outlets count toward neither. Ranked by how many outlets are carrying the story, newest first among equals.",
+ "rules": "Equal numbers of stories about each party, and equal numbers of headlines from left-leaning and right-leaning outlets within each party's list; center outlets count toward neither. Ranked by how many outlets are carrying the story, newer first.",
  "outlets": [
   {
    "outlet": "NBC News",

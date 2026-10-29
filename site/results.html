@@ -17,7 +17,7 @@
 <meta name="twitter:description" content="Live results for every Senate, House and governor's race, graded against the final forecast.">
 <meta name="twitter:image" content="https://gh0stmahn-ai.github.io/assets/og.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23f6f5f1'/%3E%3Crect x='5' y='8' width='10' height='18' rx='2' fill='%232a78d6'/%3E%3Crect x='17' y='8' width='10' height='18' rx='2' fill='%23c74845'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="assets/style.css?v=cf626f15">
+<link rel="stylesheet" href="assets/style.css?v=6482eff1">
 </head>
 <body>
 <header class="site-head"><div class="bar">
@@ -106,15 +106,15 @@
 
 <footer class="site"><div class="wrap" style="padding-bottom:0">
   <div id="foot-updated"></div>
-  <div style="margin-top:6px">Rebuilt every day at noon Eastern, and any time someone
+  <div style="margin-top:6px">Rebuilt twice a day, at about 7 am and 7 pm Eastern, and any time someone
     presses <a href="https://github.com/Gh0stmahn-ai/cd-election-agent/actions/workflows/daily-forecast.yml">Refresh</a>.
     <a href="https://github.com/Gh0stmahn-ai/cd-election-agent">Source code and data on GitHub</a>.
     Forecast, not a prediction: read the <a href="methodology.html">methodology</a> first.</div>
 </div></footer>
 
-<script src="assets/app.js?v=cf626f15"></script>
+<script src="assets/app.js?v=6482eff1"></script>
 <script>
-const PAGE_DATA = {"site":{"timestamp":"2026-10-28T20:54:37.471677+00:00","status":"success"},"results_config":{"raw":"https://raw.githubusercontent.com/Gh0stmahn-ai/cd-election-agent/main/data/results_2026.json","local":"data/results_2026.json","forecast":{"senate":{"p":0.6705,"median":51,"p10":49,"p90":54,"not_up":{"D":34,"R":31,"note":"65 seats not up in 2026: 34 in the Democratic caucus (incl. King and Sanders), 31 Republican."},"seats":100,"needed":51},"house":{"p":0.8515,"median":226,"p10":215,"p90":237,"seats":435,"needed":218},"governor":{"p":0.7944,"median":27,"p10":25,"p90":29,"not_up":{"D":6,"R":8,"states":{"DE":"D","KY":"D","NJ":"D","NC":"D","VA":"D","WA":"D","IN":"R","LA":"R","MS":"R","MO":"R","MT":"R","ND":"R","UT":"R","WV":"R"}},"seats":50,"needed":26}}}};
+const PAGE_DATA = {"site":{"timestamp":"2026-10-29T09:36:17.005120+00:00","status":"success"},"results_config":{"raw":"https://raw.githubusercontent.com/Gh0stmahn-ai/cd-election-agent/main/data/results_2026.json","local":"data/results_2026.json","forecast":{"senate":{"p":0.6706,"median":51,"p10":49,"p90":54,"not_up":{"D":34,"R":31,"note":"65 seats not up in 2026: 34 in the Democratic caucus (incl. King and Sanders), 31 Republican."},"seats":100,"needed":51},"house":{"p":0.8433,"median":226,"p10":215,"p90":236,"seats":435,"needed":218},"governor":{"p":0.8079,"median":27,"p10":25,"p90":29,"not_up":{"D":6,"R":8,"states":{"DE":"D","KY":"D","NJ":"D","NC":"D","VA":"D","WA":"D","IN":"R","LA":"R","MS":"R","MO":"R","MT":"R","ND":"R","UT":"R","WV":"R"}},"seats":50,"needed":26}}}};
 FC.init();
 (function () {
   var s = PAGE_DATA.site;

@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-28T20:53:27+00:00",
+ "as_of": "2026-10-29T09:34:52+00:00",
  "source": "Wikipedia per-race election articles",
  "half_life_days": 21,
  "max_age_days": 120,
@@ -35,7 +35,7 @@
    ],
    "rating": "lean",
    "rating_lean": "D",
-   "read_at": "2026-10-28T20:52:54+00:00"
+   "read_at": "2026-10-29T09:34:19+00:00"
   },
   "FL-GOV": {
    "state": "FL",
@@ -68,27 +68,27 @@
    ],
    "rating": "lean",
    "rating_lean": "R",
-   "read_at": "2026-10-28T20:52:56+00:00"
+   "read_at": "2026-10-29T09:34:21+00:00"
   },
   "GA-GOV": {
    "state": "GA",
    "dem_candidate": "Keisha Lance Bottoms",
    "rep_candidate": "Rick Jackson",
-   "dem_margin": -1.5,
+   "dem_margin": -0.5,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
     {
      "label": "270toWin",
-     "margin": -1.8
+     "margin": -1.2
     },
     {
      "label": "Decision Desk HQ",
-     "margin": -2.1
+     "margin": 0.0
     },
     {
      "label": "FiftyPlusOne",
-     "margin": -1.5
+     "margin": 0.0
     },
     {
      "label": "RealClearPolitics",
@@ -96,18 +96,18 @@
     },
     {
      "label": "Silver Bulletin",
-     "margin": -0.8
+     "margin": 0.0
     }
    ],
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-10-28T20:52:59+00:00"
+   "read_at": "2026-10-29T09:34:24+00:00"
   },
   "IA-GOV": {
    "state": "IA",
    "dem_candidate": "Rob Sand",
    "rep_candidate": "Zach Lahn",
-   "dem_margin": 6.7,
+   "dem_margin": 6.6,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
@@ -125,7 +125,7 @@
     },
     {
      "label": "RealClearPolitics",
-     "margin": 6.6
+     "margin": 6.2
     },
     {
      "label": "Silver Bulletin",
@@ -134,7 +134,7 @@
    ],
    "rating": "lean",
    "rating_lean": "D",
-   "read_at": "2026-10-28T20:53:01+00:00"
+   "read_at": "2026-10-29T09:34:26+00:00"
   },
   "KS-GOV": {
    "state": "KS",
@@ -167,7 +167,7 @@
    ],
    "rating": "tossup",
    "rating_lean": "D",
-   "read_at": "2026-10-28T20:53:03+00:00"
+   "read_at": "2026-10-29T09:34:28+00:00"
   },
   "MI-GOV": {
    "state": "MI",
@@ -200,7 +200,7 @@
    ],
    "rating": "lean",
    "rating_lean": "D",
-   "read_at": "2026-10-28T20:53:06+00:00"
+   "read_at": "2026-10-29T09:34:31+00:00"
   },
   "NE-GOV": {
    "state": "NE",
@@ -229,7 +229,7 @@
    ],
    "rating": "lean",
    "rating_lean": "R",
-   "read_at": "2026-10-28T20:53:08+00:00"
+   "read_at": "2026-10-29T09:34:33+00:00"
   },
   "NH-GOV": {
    "state": "NH",
@@ -262,7 +262,7 @@
    ],
    "rating": "likely",
    "rating_lean": "R",
-   "read_at": "2026-10-28T20:53:10+00:00"
+   "read_at": "2026-10-29T09:34:36+00:00"
   },
   "NV-GOV": {
    "state": "NV",
@@ -295,13 +295,13 @@
    ],
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-10-28T20:53:13+00:00"
+   "read_at": "2026-10-29T09:34:38+00:00"
   },
   "OH-GOV": {
    "state": "OH",
    "dem_candidate": "Amy Acton",
    "rep_candidate": "Vivek Ramaswamy",
-   "dem_margin": 3.1,
+   "dem_margin": 3.0,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
@@ -311,7 +311,7 @@
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 3.0
+     "margin": 2.7
     },
     {
      "label": "FiftyPlusOne",
@@ -328,7 +328,7 @@
    ],
    "rating": "lean",
    "rating_lean": "D",
-   "read_at": "2026-10-28T20:53:15+00:00"
+   "read_at": "2026-10-29T09:34:40+00:00"
   },
   "OK-GOV": {
    "state": "OK",
@@ -344,7 +344,7 @@
      "rep": 39.0,
      "date": "2026-10-17",
      "n": null,
-     "weight": 0.696,
+     "weight": 0.673,
      "margin": -3.0
     },
     {
@@ -353,13 +353,13 @@
      "rep": 46.0,
      "date": "2026-09-18",
      "n": null,
-     "weight": 0.267,
+     "weight": 0.258,
      "margin": -10.0
     }
    ],
    "rating": "likely",
    "rating_lean": "R",
-   "read_at": "2026-10-28T20:53:17+00:00"
+   "read_at": "2026-10-29T09:34:43+00:00"
   },
   "OR-GOV": {
    "state": "OR",
@@ -376,7 +376,7 @@
    ],
    "rating": "lean",
    "rating_lean": "D",
-   "read_at": "2026-10-28T20:53:20+00:00"
+   "read_at": "2026-10-29T09:34:45+00:00"
   },
   "TX-GOV": {
    "state": "TX",
@@ -409,7 +409,7 @@
    ],
    "rating": "lean",
    "rating_lean": "R",
-   "read_at": "2026-10-28T20:53:22+00:00"
+   "read_at": "2026-10-29T09:34:47+00:00"
   },
   "VT-GOV": {
    "state": "VT",
@@ -425,7 +425,7 @@
      "rep": 46.0,
      "date": "2026-10-08",
      "n": 948,
-     "weight": 0.563,
+     "weight": 0.544,
      "margin": -3.0
     },
     {
@@ -434,7 +434,7 @@
      "rep": 49.0,
      "date": "2026-10-03",
      "n": 1752,
-     "weight": 0.648,
+     "weight": 0.627,
      "margin": -3.0
     },
     {
@@ -443,7 +443,7 @@
      "rep": 42.0,
      "date": "2026-09-20",
      "n": 817,
-     "weight": 0.288,
+     "weight": 0.279,
      "margin": -10.0
     },
     {
@@ -452,7 +452,7 @@
      "rep": 43.0,
      "date": "2026-09-06",
      "n": 829,
-     "weight": 0.183,
+     "weight": 0.177,
      "margin": 6.0
     },
     {
@@ -461,46 +461,46 @@
      "rep": 44.0,
      "date": "2026-07-17",
      "n": 954,
-     "weight": 0.036,
+     "weight": 0.035,
      "margin": -11.0
     }
    ],
    "rating": "likely",
    "rating_lean": "R",
-   "read_at": "2026-10-28T20:53:25+00:00"
+   "read_at": "2026-10-29T09:34:50+00:00"
   },
   "WI-GOV": {
    "state": "WI",
    "dem_candidate": "David Crowley",
    "rep_candidate": "Tom Tiffany",
-   "dem_margin": 3.7,
+   "dem_margin": 4.6,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 4.0
+     "margin": 5.4
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 3.6
-    },
-    {
-     "label": "FiftyPlusOne",
      "margin": 3.7
     },
     {
+     "label": "FiftyPlusOne",
+     "margin": 4.5
+    },
+    {
      "label": "RealClearPolitics",
-     "margin": 3.5
+     "margin": 5.0
     },
     {
      "label": "Silver Bulletin",
-     "margin": 3.6
+     "margin": 4.4
     }
    ],
    "rating": "tossup",
    "rating_lean": "D",
-   "read_at": "2026-10-28T20:53:27+00:00"
+   "read_at": "2026-10-29T09:34:52+00:00"
   }
  },
  "issues": [

@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-28T20:52:51+00:00",
+ "as_of": "2026-10-29T09:34:16+00:00",
  "source": "Wikipedia per-race election articles",
  "half_life_days": 21,
  "max_age_days": 120,
@@ -8,17 +8,17 @@
    "state": "AK",
    "dem_candidate": "Mary Peltola",
    "rep_candidate": "Dan S. Sullivan",
-   "dem_margin": 2.6,
+   "dem_margin": 2.4,
    "method": "mean of 4 aggregators",
    "n_used": 4,
    "detail": [
     {
      "label": "Decision Desk HQ",
-     "margin": 2.4
+     "margin": 1.6
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 2.8
+     "margin": 2.0
     },
     {
      "label": "RealClearPolitics",
@@ -26,12 +26,12 @@
     },
     {
      "label": "Silver Bulletin",
-     "margin": 2.8
+     "margin": 3.6
     }
    ],
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-10-28T20:52:19+00:00"
+   "read_at": "2026-10-29T09:33:45+00:00"
   },
   "GA-2026": {
    "state": "GA",
@@ -64,7 +64,7 @@
    ],
    "rating": "likely",
    "rating_lean": "D",
-   "read_at": "2026-10-28T20:52:21+00:00"
+   "read_at": "2026-10-29T09:33:48+00:00"
   },
   "IA-2026": {
    "state": "IA",
@@ -97,7 +97,7 @@
    ],
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-10-28T20:52:24+00:00"
+   "read_at": "2026-10-29T09:33:50+00:00"
   },
   "KS-2026": {
    "state": "KS",
@@ -130,7 +130,7 @@
    ],
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-10-28T20:52:26+00:00"
+   "read_at": "2026-10-29T09:33:52+00:00"
   },
   "ME-2026": {
    "state": "ME",
@@ -163,13 +163,13 @@
    ],
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-10-28T20:52:29+00:00"
+   "read_at": "2026-10-29T09:33:55+00:00"
   },
   "MI-2026": {
    "state": "MI",
    "dem_candidate": "Abdul El-Sayed",
    "rep_candidate": "Mike Rogers",
-   "dem_margin": 3.1,
+   "dem_margin": 3.4,
    "method": "mean of 5 aggregators",
    "n_used": 5,
    "detail": [
@@ -183,11 +183,11 @@
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 3.2
+     "margin": 4.0
     },
     {
      "label": "RealClearPolitics",
-     "margin": 2.5
+     "margin": 2.8
     },
     {
      "label": "Silver Bulletin",
@@ -196,7 +196,7 @@
    ],
    "rating": "tossup",
    "rating_lean": "D",
-   "read_at": "2026-10-28T20:52:31+00:00"
+   "read_at": "2026-10-29T09:33:57+00:00"
   },
   "MN-2026": {
    "state": "MN",
@@ -229,7 +229,7 @@
    ],
    "rating": "lean",
    "rating_lean": "D",
-   "read_at": "2026-10-28T20:52:34+00:00"
+   "read_at": "2026-10-29T09:34:00+00:00"
   },
   "MS-2026": {
    "state": "MS",
@@ -245,7 +245,7 @@
      "rep": 43.0,
      "date": "2026-10-09",
      "n": 842,
-     "weight": 0.548,
+     "weight": 0.53,
      "margin": -3.0
     },
     {
@@ -254,13 +254,13 @@
      "rep": 44.0,
      "date": "2026-08-11",
      "n": 1018,
-     "weight": 0.086,
+     "weight": 0.083,
      "margin": -6.0
     }
    ],
    "rating": "likely",
    "rating_lean": "R",
-   "read_at": "2026-10-28T20:52:36+00:00"
+   "read_at": "2026-10-29T09:34:02+00:00"
   },
   "NC-2026": {
    "state": "NC",
@@ -293,7 +293,7 @@
    ],
    "rating": "likely",
    "rating_lean": "D",
-   "read_at": "2026-10-28T20:52:39+00:00"
+   "read_at": "2026-10-29T09:34:04+00:00"
   },
   "NE-2026": {
    "state": "NE",
@@ -322,7 +322,7 @@
    ],
    "rating": "likely",
    "rating_lean": "R",
-   "read_at": "2026-10-28T20:52:41+00:00"
+   "read_at": "2026-10-29T09:34:07+00:00"
   },
   "NH-2026": {
    "state": "NH",
@@ -355,7 +355,7 @@
    ],
    "rating": "lean",
    "rating_lean": "D",
-   "read_at": "2026-10-28T20:52:43+00:00"
+   "read_at": "2026-10-29T09:34:09+00:00"
   },
   "OH-2026-special": {
    "state": "OH",
@@ -371,7 +371,7 @@
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 3.4
+     "margin": 3.2
     },
     {
      "label": "FiftyPlusOne",
@@ -388,7 +388,7 @@
    ],
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-10-28T20:52:46+00:00"
+   "read_at": "2026-10-29T09:34:11+00:00"
   },
   "SC-2026": {
    "state": "SC",
@@ -421,7 +421,7 @@
    ],
    "rating": "lean",
    "rating_lean": "R",
-   "read_at": "2026-10-28T20:52:48+00:00"
+   "read_at": "2026-10-29T09:34:14+00:00"
   },
   "TX-2026": {
    "state": "TX",
@@ -458,7 +458,7 @@
    ],
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-10-28T20:52:51+00:00"
+   "read_at": "2026-10-29T09:34:16+00:00"
   }
  },
  "issues": []

@@ -531,3 +531,20 @@ span.refresh { cursor: default; }
   .gnote summary { grid-template-columns: 1fr auto; }
   .gnote summary .line { grid-column: 1 / -1; }
 }
+
+/* Trending headlines on the overview. */
+.hl-col { padding: 14px 16px; }
+.hl-head { font-weight: 650; font-size: 14px; display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.hl-head .muted { font-weight: 500; }
+.hl-bar { width: 4px; height: 16px; border-radius: 2px; display: inline-block; }
+.hl-bar-both { background: linear-gradient(var(--dem) 50%, var(--rep) 50%); }
+.hl-both { margin-top: 12px; }
+.hl-list { list-style: none; margin: 0; padding: 0; }
+.hl-list li { padding: 9px 0; border-top: 1px solid var(--border); }
+.hl-list li:first-child { border-top: 0; }
+.hl-list a { color: var(--ink); text-decoration: none; font-size: 14.5px; line-height: 1.35; font-weight: 550; }
+.hl-list a:hover { text-decoration: underline; }
+.hl-meta { font-size: 12px; color: var(--ink-2); margin-top: 3px; }
+.hl-lean { border: 1px solid var(--border); border-radius: 999px; padding: 0 6px; font-size: 11px; }
+.hl-outlets { margin-top: 6px; }
+.hl-outlets summary { cursor: pointer; color: var(--ink-2); }
