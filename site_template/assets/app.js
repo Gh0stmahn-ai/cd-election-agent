@@ -1876,6 +1876,52 @@ function renderGovTable(tableId, gov) {
   });
 }
 
+/* ------------------------------------------------------------ headlines */
+/* Trending midterm headlines, balanced by rule (refresh_headlines.py): the
+   same number of stories about each party, the same number of headlines from
+   left-leaning and right-leaning outlets. Party hue marks only which party a
+   column is about; an outlet's lean is written out, never coloured. */
+function agoText(iso, now) {
+  var mins = Math.max(0, Math.round(((now || Date.now()) - new Date(iso).getTime()) / 60000));
+  if (mins < 60) return mins + " min ago";
+  var h = Math.round(mins / 60);
+  return h < 48 ? h + " hr ago" : Math.round(h / 24) + " days ago";
+}
+function renderHeadlines(containerId, data) {
+  var box = $(containerId); if (!box || !data || !data.stories) return;
+  var LEAN = {L: "left-leaning", C: "center", R: "right-leaning"};
+  function item(st) {
+    var more = st.n_outlets > 1 ? ' · <span title="' + esc(st.also.join(", ")) + '">' + (st.n_outlets - 1) +
+      " other outlet" + (st.n_outlets > 2 ? "s" : "") + " carrying it</span>" : "";
+    return '<li><a href="' + esc(st.link) + '" target="_blank" rel="noopener">' + esc(st.title) + "</a>" +
+      '<div class="hl-meta">' + esc(st.outlet) + ' <span class="hl-lean">' + LEAN[st.lean] + "</span> · " +
+      agoText(st.published) + more + "</div></li>";
+  }
+  function column(focus, title, color) {
+    var rows = data.stories.filter(function (s) { return s.focus === focus; });
+    return '<div class="card hl-col"><div class="hl-head"><span class="hl-bar" style="background:' + color +
+      '"></span>' + title + ' <span class="muted">' + rows.length + "</span></div><ol class=\"hl-list\">" +
+      rows.map(item).join("") + "</ol></div>";
+  }
+  var both = data.stories.filter(function (s) { return s.focus === "both"; });
+  var b = data.balance || {};
+  box.innerHTML = '<div class="grid2">' + column("D", "About Democrats", css("--dem")) +
+    column("R", "About Republicans", css("--rep")) + "</div>" +
+    (both.length ? '<div class="card hl-col hl-both"><div class="hl-head"><span class="hl-bar hl-bar-both"></span>About both parties</div>' +
+      '<ol class="hl-list">' + both.map(item).join("") + "</ol></div>" : "") +
+    '<div class="note">Balanced by rule, not by judgment: ' + b.D + " stories about each party, with " +
+       b.left_outlets + " headlines each from left-leaning and right-leaning outlets overall and the two sides level " +
+    "within each party's list (" + b.center_outlets + " from center outlets, which count toward neither). Read from " + data.feeds_read.L + " left-leaning, " +
+    data.feeds_read.R + " right-leaning and " + data.feeds_read.C + " center outlets at " +
+    fmtDate(data.as_of, true) + ", ranked by how many outlets are carrying each story in the last " +
+    data.window_hours + " hours. Headlines link to the outlets; none of this feeds the forecast. " +
+    '<details class="hl-outlets"><summary>Outlets read</summary>' +
+    ["L", "R", "C"].map(function (k) {
+      return "<b>" + LEAN[k].charAt(0).toUpperCase() + LEAN[k].slice(1) + ":</b> " +
+        data.outlets.filter(function (o) { return o.lean === k; }).map(function (o) { return esc(o.outlet); }).join(", ");
+    }).join("<br>") + "</details></div>";
+}
+
 /* -------------------------------------------------------------- results */
 /* Election night. The results file is re-read straight from the repository
    every minute while votes are being counted (the page's own copy is only as
@@ -2390,7 +2436,7 @@ global.FC = {
   renderHouseMap: renderHouseMap, renderHouseTable: renderHouseTable, renderEnvironment: renderEnvironment,
   renderIndicators: renderIndicators, renderTrend: renderTrend,
   renderMarketCompare: renderMarketCompare, renderPairedBars: renderPairedBars,
-  renderMarketRaces: renderMarketRaces, renderAttention: renderAttention, renderStory: renderStory, renderMarketStrip: renderMarketStrip, renderMarginBins: renderMarginBins,
+  renderMarketRaces: renderMarketRaces, renderAttention: renderAttention, renderStory: renderStory, renderMarketStrip: renderMarketStrip, renderHeadlines: renderHeadlines, renderMarginBins: renderMarginBins,
   renderMoney: renderMoney, renderPollAverage: renderPollAverage, renderSpecials: renderSpecials, raceRuler: raceRuler, bindRulers: bindRulers, renderRibbon: renderRibbon, sparkline: sparkline,
   renderCalibration: renderCalibration, renderScenarios: renderScenarios,
   scnCrossing: scnCrossing, scnLookup: scnLookup, renderTipping: renderTipping, senateTipping: senateTipping, houseTipping: houseTipping,
