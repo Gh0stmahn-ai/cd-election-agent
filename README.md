@@ -93,8 +93,8 @@ approval. Settings live at the top of `model.py` and in
 
 **Press Refresh in the site header.** It opens this repo's
 `Daily election forecast update` workflow; click **Run workflow** and the
-whole chain runs in about two minutes. The same chain runs on its own every
-day at 16:00 UTC (noon Eastern in daylight time).
+whole chain runs in about two minutes. The same chain runs on its own twice a
+day, at 11:07 and 23:07 UTC (7:07 am and 7:07 pm Eastern in daylight time).
 
 The run form has three optional boxes:
 
@@ -220,7 +220,7 @@ moment, the rating-only probability for every race, and a fingerprint of every
 input file. From then on the daily workflow stops at its gate and
 `run_pipeline.py` refuses to model again, and every page says the forecast is
 final. A dedicated 5:05 am run makes the seal; if it is late or fails, the
-noon run does it instead. `python3 freeze.py check` says which state it is in.
+7 am run does it instead. `python3 freeze.py check` says which state it is in.
 
 **Results.** `results.yml` starts at 5:07 pm Eastern on November 3 and keeps a
 collector running through the night, about one read a minute

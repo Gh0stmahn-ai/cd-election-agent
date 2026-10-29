@@ -167,7 +167,7 @@ def footer_cadence():
     if FINAL:
         return ("The forecast was sealed on the morning of Election Day and no longer changes. "
                 "Results update every few minutes from official state feeds and Wikipedia.")
-    return f"""Rebuilt every day at noon Eastern, and any time someone
+    return f"""Rebuilt twice a day, at about 7 am and 7 pm Eastern, and any time someone
     presses <a href="{RUN_URL}">Refresh</a>."""
 
 
@@ -341,11 +341,15 @@ def build_index(snap, meta, markets=None):
   <div class="card" id="environment"></div>
   <p class="note">Full detail on the readings behind this: <a href="economy.html">what voters are feeling &#8594;</a></p>
 </section>
-""" + market_html
+""" + HEADLINES_SECTION + market_html
     data = {"site": site_meta(snap), "senate": s, "house": house_for_page(h), "environment": e,
             "joint": j, "meta": meta}
     if market_rows:
         data["marketStrip"] = market_rows
+    headlines = load_json("headlines_2026.json")
+    if headlines and headlines.get("stories") and not FINAL:
+        data["headlines"] = {k: headlines[k] for k in ("as_of", "window_hours", "outlets", "feeds_read",
+                                                       "stories", "balance")}
     g = snap.get("governors")
     if g:
         data["gov"] = {"p": g["dem_majority_prob"], "mean": g["mean_dem"], "held": g["held_before"]}
@@ -389,6 +393,8 @@ FC.onRender(function () {
   }
   FC.renderEnvironment("environment", PAGE_DATA.environment);
   if (PAGE_DATA.marketStrip) { FC.renderMarketStrip("market-strip", PAGE_DATA.marketStrip); }
+  if (PAGE_DATA.headlines) { FC.renderHeadlines("headlines", PAGE_DATA.headlines); }
+  else { var hs = FC.$("headlines-wrap"); if (hs) hs.hidden = true; }
   if (PAGE_DATA.change) {
     var c = PAGE_DATA.change, top = c.drivers[0];
     var say = function (k, name) {
@@ -405,11 +411,21 @@ FC.onRender(function () {
 """
     return page("index.html", "2026 Midterm Forecast",
                 "Who controls the House and Senate after November 3, 2026. Every Senate race and all 435 House "
-                "districts, simulated 100,000 times a day.",
+                "districts, simulated 100,000 times, twice a day.",
                 ("Who controls Congress after November 3",
-                 "Every Senate race and all 435 House districts, simulated 100,000 times a day with polling, "
+                 "Every Senate race and all 435 House districts, simulated 100,000 times, twice a day with polling, "
                  "race ratings, and the economy voters are living through."),
                 body, js(data), scripts)
+
+
+HEADLINES_SECTION = """
+<section id="headlines-wrap">
+  <h2>Trending in the midterms</h2>
+  <p class="lede">The stories the most outlets are running right now, with equal space for each party and
+    for each side of the press.</p>
+  <div id="headlines"></div>
+</section>
+"""
 
 
 ATTENTION_SECTION = """
@@ -1756,7 +1772,7 @@ def build_methodology(snap):
     body = f"""
 <section class="prose">
   <h2>Where the numbers come from</h2>
-  <p>A scheduled job runs at noon Eastern, collects current numbers from public sources, passes every value
+  <p>A scheduled job runs twice a day, at about 7 am and 7 pm Eastern, collects current numbers from public sources, passes every value
   through a validation layer, re-runs the model, and rebuilds and republishes this site. Pressing
   <a href="{RUN_URL}">Refresh</a> runs the same chain on demand. The steps below are the whole of it.</p>
 
