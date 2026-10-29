@@ -1,8 +1,10 @@
 {
- "as_of": "2026-10-29T09:34:16+00:00",
+ "as_of": "2026-10-29T10:17:03+00:00",
  "source": "Wikipedia per-race election articles",
- "half_life_days": 21,
+ "half_life_days": 10,
  "max_age_days": 120,
+ "partisan_shift": 2.5,
+ "partisan_weight": 0.5,
  "races": {
   "AK-2026": {
    "state": "AK",
@@ -29,17 +31,20 @@
      "margin": 3.6
     }
    ],
+   "aggregator_margin": 2.4,
+   "poll_margin": null,
+   "undecided": 4.3,
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-10-29T09:33:45+00:00"
+   "read_at": "2026-10-29T10:16:33+00:00"
   },
   "GA-2026": {
    "state": "GA",
    "dem_candidate": "Jon Ossoff",
    "rep_candidate": "Mike Collins",
-   "dem_margin": 8.5,
-   "method": "mean of 5 aggregators",
-   "n_used": 5,
+   "dem_margin": 8.7,
+   "method": "mean of 5 aggregators, averaged with 13 polls adjusted for sponsors",
+   "n_used": 13,
    "detail": [
     {
      "label": "270toWin",
@@ -60,19 +65,102 @@
     {
      "label": "Silver Bulletin",
      "margin": 8.9
+    },
+    {
+     "label": "ActiVote",
+     "dem": 54.0,
+     "rep": 46.0,
+     "date": "2026-10-28",
+     "n": 400,
+     "weight": 0.66,
+     "margin": 8.0,
+     "sponsor": null
+    },
+    {
+     "label": "University of Georgia School of Public and International Affairs",
+     "dem": 48.0,
+     "rep": 40.0,
+     "date": "2026-10-12",
+     "n": 1000,
+     "weight": 0.344,
+     "margin": 8.0,
+     "sponsor": null
+    },
+    {
+     "label": "Trafalgar Group (R)",
+     "dem": 51.0,
+     "rep": 43.0,
+     "date": "2026-10-06",
+     "n": 1101,
+     "weight": 0.119,
+     "margin": 10.5,
+     "sponsor": "R"
+    },
+    {
+     "label": "Quantus Insights (R)",
+     "dem": 52.0,
+     "rep": 45.0,
+     "date": "2026-10-03",
+     "n": 755,
+     "weight": 0.08,
+     "margin": 9.5,
+     "sponsor": "R"
+    },
+    {
+     "label": "Echelon Insights (R)",
+     "dem": 55.0,
+     "rep": 40.0,
+     "date": "2026-10-02",
+     "n": 508,
+     "weight": 0.061,
+     "margin": 17.5,
+     "sponsor": "R"
+    },
+    {
+     "label": "Big Data Poll (R)",
+     "dem": 51.0,
+     "rep": 40.0,
+     "date": "2026-09-09",
+     "n": 721,
+     "weight": 0.015,
+     "margin": 13.5,
+     "sponsor": "R"
+    },
+    {
+     "label": "InsiderAdvantage (R)",
+     "dem": 50.0,
+     "rep": 42.0,
+     "date": "2026-09-08",
+     "n": 1200,
+     "weight": 0.018,
+     "margin": 10.5,
+     "sponsor": "R"
+    },
+    {
+     "label": "Quantus Insights (R)",
+     "dem": 48.0,
+     "rep": 44.0,
+     "date": "2026-09-07",
+     "n": 645,
+     "weight": 0.012,
+     "margin": 6.5,
+     "sponsor": "R"
     }
    ],
+   "aggregator_margin": 8.5,
+   "poll_margin": 8.9,
+   "undecided": 4.6,
    "rating": "likely",
    "rating_lean": "D",
-   "read_at": "2026-10-29T09:33:48+00:00"
+   "read_at": "2026-10-29T10:16:36+00:00"
   },
   "IA-2026": {
    "state": "IA",
    "dem_candidate": "Josh Turek",
    "rep_candidate": "Ashley Hinson",
-   "dem_margin": -0.0,
-   "method": "mean of 5 aggregators",
-   "n_used": 5,
+   "dem_margin": 0.2,
+   "method": "mean of 5 aggregators, averaged with 27 polls adjusted for sponsors",
+   "n_used": 27,
    "detail": [
     {
      "label": "270toWin",
@@ -93,19 +181,102 @@
     {
      "label": "Silver Bulletin",
      "margin": 0.9
+    },
+    {
+     "label": "SSRS",
+     "dem": 43.0,
+     "rep": 45.0,
+     "date": "2026-10-11",
+     "n": 801,
+     "weight": 0.287,
+     "margin": -2.0,
+     "sponsor": null
+    },
+    {
+     "label": "InsiderAdvantage (R)",
+     "dem": 45.0,
+     "rep": 47.0,
+     "date": "2026-10-08",
+     "n": 1200,
+     "weight": 0.143,
+     "margin": 0.5,
+     "sponsor": "R"
+    },
+    {
+     "label": "Emerson College",
+     "dem": 45.0,
+     "rep": 47.0,
+     "date": "2026-10-07",
+     "n": 650,
+     "weight": 0.196,
+     "margin": -2.0,
+     "sponsor": null
+    },
+    {
+     "label": "co/efficient (R)",
+     "dem": 45.0,
+     "rep": 48.0,
+     "date": "2026-10-06",
+     "n": 863,
+     "weight": 0.105,
+     "margin": -0.5,
+     "sponsor": "R"
+    },
+    {
+     "label": "Trafalgar Group (R)",
+     "dem": 44.0,
+     "rep": 46.0,
+     "date": "2026-10-06",
+     "n": 1094,
+     "weight": 0.119,
+     "margin": 0.5,
+     "sponsor": "R"
+    },
+    {
+     "label": "Suffolk University",
+     "dem": 48.0,
+     "rep": 44.0,
+     "date": "2026-10-06",
+     "n": 500,
+     "weight": 0.161,
+     "margin": 4.0,
+     "sponsor": null
+    },
+    {
+     "label": "NPA Polling",
+     "dem": 44.0,
+     "rep": 47.0,
+     "date": "2026-10-05",
+     "n": 678,
+     "weight": 0.174,
+     "margin": -3.0,
+     "sponsor": null
+    },
+    {
+     "label": "New York Times / Siena University",
+     "dem": 47.0,
+     "rep": 48.0,
+     "date": "2026-10-05",
+     "n": 606,
+     "weight": 0.165,
+     "margin": -1.0,
+     "sponsor": null
     }
    ],
+   "aggregator_margin": -0.0,
+   "poll_margin": 0.4,
+   "undecided": 8.7,
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-10-29T09:33:50+00:00"
+   "read_at": "2026-10-29T10:16:38+00:00"
   },
   "KS-2026": {
    "state": "KS",
    "dem_candidate": "Adam Hamilton",
    "rep_candidate": "Roger Marshall",
-   "dem_margin": 0.4,
-   "method": "mean of 5 aggregators",
-   "n_used": 5,
+   "dem_margin": 0.9,
+   "method": "mean of 5 aggregators, averaged with 12 polls adjusted for sponsors",
+   "n_used": 12,
    "detail": [
     {
      "label": "270toWin",
@@ -126,19 +297,102 @@
     {
      "label": "Silver Bulletin",
      "margin": 0.9
+    },
+    {
+     "label": "Trafalgar Group (R)",
+     "dem": 44.0,
+     "rep": 44.0,
+     "date": "2026-10-10",
+     "n": 1095,
+     "weight": 0.157,
+     "margin": 2.5,
+     "sponsor": "R"
+    },
+    {
+     "label": "GBAO (D)",
+     "dem": 46.0,
+     "rep": 41.0,
+     "date": "2026-10-07",
+     "n": 600,
+     "weight": 0.094,
+     "margin": 2.5,
+     "sponsor": "D"
+    },
+    {
+     "label": "YouGov",
+     "dem": 48.0,
+     "rep": 45.0,
+     "date": "2026-10-05",
+     "n": 2255,
+     "weight": 0.303,
+     "margin": 3.0,
+     "sponsor": null
+    },
+    {
+     "label": "RedBox Research (D)",
+     "dem": 45.0,
+     "rep": 46.0,
+     "date": "2026-10-04",
+     "n": 1301,
+     "weight": 0.113,
+     "margin": -3.5,
+     "sponsor": "D"
+    },
+    {
+     "label": "InsiderAdvantage (R)",
+     "dem": 47.0,
+     "rep": 48.0,
+     "date": "2026-10-02",
+     "n": 1200,
+     "weight": 0.094,
+     "margin": 1.5,
+     "sponsor": "R"
+    },
+    {
+     "label": "Global Strategy Group (D)",
+     "dem": 49.0,
+     "rep": 47.0,
+     "date": "2026-09-28",
+     "n": 800,
+     "weight": 0.058,
+     "margin": -0.5,
+     "sponsor": "D"
+    },
+    {
+     "label": "Emerson College",
+     "dem": 45.0,
+     "rep": 43.0,
+     "date": "2026-09-08",
+     "n": 750,
+     "weight": 0.028,
+     "margin": 2.0,
+     "sponsor": null
+    },
+    {
+     "label": "New York Times / Siena University",
+     "dem": 45.0,
+     "rep": 45.0,
+     "date": "2026-09-06",
+     "n": 605,
+     "weight": 0.022,
+     "margin": 0.0,
+     "sponsor": null
     }
    ],
+   "aggregator_margin": 0.4,
+   "poll_margin": 1.4,
+   "undecided": 8.6,
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-10-29T09:33:52+00:00"
+   "read_at": "2026-10-29T10:16:40+00:00"
   },
   "ME-2026": {
    "state": "ME",
    "dem_candidate": "Troy Jackson",
    "rep_candidate": "Susan Collins",
-   "dem_margin": 2.4,
-   "method": "mean of 5 aggregators",
-   "n_used": 5,
+   "dem_margin": 2.1,
+   "method": "mean of 5 aggregators, averaged with 28 polls adjusted for sponsors",
+   "n_used": 28,
    "detail": [
     {
      "label": "270toWin",
@@ -159,19 +413,102 @@
     {
      "label": "Silver Bulletin",
      "margin": 2.4
+    },
+    {
+     "label": "CBS News / YouGov",
+     "dem": 50.0,
+     "rep": 50.0,
+     "date": "2026-10-28",
+     "n": 1136,
+     "weight": 1.112,
+     "margin": 0.0,
+     "sponsor": null
+    },
+    {
+     "label": "Trafalgar Group (R)",
+     "dem": 46.0,
+     "rep": 46.0,
+     "date": "2026-10-08",
+     "n": 1091,
+     "weight": 0.136,
+     "margin": 2.5,
+     "sponsor": "R"
+    },
+    {
+     "label": "Trafalgar Group (R)",
+     "dem": 47.0,
+     "rep": 47.0,
+     "date": "2026-10-07",
+     "n": 1077,
+     "weight": 0.126,
+     "margin": 2.5,
+     "sponsor": "R"
+    },
+    {
+     "label": "Echelon Insights (R)",
+     "dem": 51.0,
+     "rep": 44.0,
+     "date": "2026-10-04",
+     "n": 413,
+     "weight": 0.064,
+     "margin": 9.5,
+     "sponsor": "R"
+    },
+    {
+     "label": "InsiderAdvantage (R)",
+     "dem": 49.0,
+     "rep": 47.0,
+     "date": "2026-10-04",
+     "n": 1200,
+     "weight": 0.108,
+     "margin": 4.5,
+     "sponsor": "R"
+    },
+    {
+     "label": "Suffolk University",
+     "dem": 49.0,
+     "rep": 47.0,
+     "date": "2026-10-04",
+     "n": 500,
+     "weight": 0.14,
+     "margin": 2.0,
+     "sponsor": null
+    },
+    {
+     "label": "Rasmussen Reports (R)",
+     "dem": 49.0,
+     "rep": 47.0,
+     "date": "2026-10-04",
+     "n": 804,
+     "weight": 0.089,
+     "margin": 4.5,
+     "sponsor": "R"
+    },
+    {
+     "label": "Marist University",
+     "dem": 49.0,
+     "rep": 47.0,
+     "date": "2026-10-03",
+     "n": null,
+     "weight": 0.165,
+     "margin": 2.0,
+     "sponsor": null
     }
    ],
+   "aggregator_margin": 2.4,
+   "poll_margin": 1.7,
+   "undecided": 2.6,
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-10-29T09:33:55+00:00"
+   "read_at": "2026-10-29T10:16:43+00:00"
   },
   "MI-2026": {
    "state": "MI",
    "dem_candidate": "Abdul El-Sayed",
    "rep_candidate": "Mike Rogers",
-   "dem_margin": 3.4,
-   "method": "mean of 5 aggregators",
-   "n_used": 5,
+   "dem_margin": 3.3,
+   "method": "mean of 5 aggregators, averaged with 42 polls adjusted for sponsors",
+   "n_used": 42,
    "detail": [
     {
      "label": "270toWin",
@@ -192,19 +529,102 @@
     {
      "label": "Silver Bulletin",
      "margin": 3.3
+    },
+    {
+     "label": "The Tyson Group (R)",
+     "dem": 44.0,
+     "rep": 46.0,
+     "date": "2026-10-28",
+     "n": 600,
+     "weight": 0.404,
+     "margin": 0.5,
+     "sponsor": "R"
+    },
+    {
+     "label": "Mitchell Research & Communications",
+     "dem": 46.0,
+     "rep": 41.0,
+     "date": "2026-10-06",
+     "n": 682,
+     "weight": 0.187,
+     "margin": 5.0,
+     "sponsor": null
+    },
+    {
+     "label": "Rasmussen Reports (R)",
+     "dem": 46.0,
+     "rep": 44.0,
+     "date": "2026-10-05",
+     "n": 798,
+     "weight": 0.095,
+     "margin": 4.5,
+     "sponsor": "R"
+    },
+    {
+     "label": "InsiderAdvantage (R)",
+     "dem": 48.0,
+     "rep": 46.0,
+     "date": "2026-10-05",
+     "n": 1200,
+     "weight": 0.116,
+     "margin": 4.5,
+     "sponsor": "R"
+    },
+    {
+     "label": "Glengariff Group",
+     "dem": 51.0,
+     "rep": 45.0,
+     "date": "2026-10-04",
+     "n": 600,
+     "weight": 0.153,
+     "margin": 6.0,
+     "sponsor": null
+    },
+    {
+     "label": "Quantus Insights (R)",
+     "dem": 48.0,
+     "rep": 47.0,
+     "date": "2026-10-04",
+     "n": 762,
+     "weight": 0.086,
+     "margin": 3.5,
+     "sponsor": "R"
+    },
+    {
+     "label": "Mitchell Research & Communications",
+     "dem": 51.0,
+     "rep": 44.0,
+     "date": "2026-10-03",
+     "n": 636,
+     "weight": 0.147,
+     "margin": 7.0,
+     "sponsor": null
+    },
+    {
+     "label": "RedBox Research (D)",
+     "dem": 49.0,
+     "rep": 44.0,
+     "date": "2026-10-03",
+     "n": 2696,
+     "weight": 0.132,
+     "margin": 2.5,
+     "sponsor": "D"
     }
    ],
+   "aggregator_margin": 3.4,
+   "poll_margin": 3.2,
+   "undecided": 7.4,
    "rating": "tossup",
    "rating_lean": "D",
-   "read_at": "2026-10-29T09:33:57+00:00"
+   "read_at": "2026-10-29T10:16:45+00:00"
   },
   "MN-2026": {
    "state": "MN",
    "dem_candidate": "Peggy Flanagan",
    "rep_candidate": "Michele Tafoya",
-   "dem_margin": 6.4,
-   "method": "mean of 5 aggregators",
-   "n_used": 5,
+   "dem_margin": 6.0,
+   "method": "mean of 5 aggregators, averaged with 16 polls adjusted for sponsors",
+   "n_used": 16,
    "detail": [
     {
      "label": "270toWin",
@@ -225,18 +645,101 @@
     {
      "label": "Silver Bulletin",
      "margin": 6.4
+    },
+    {
+     "label": "Morning Consult",
+     "dem": 45.0,
+     "rep": 41.0,
+     "date": "2026-10-12",
+     "n": 1000,
+     "weight": 0.344,
+     "margin": 4.0,
+     "sponsor": null
+    },
+    {
+     "label": "KSTP / SurveyUSA",
+     "dem": 45.0,
+     "rep": 42.0,
+     "date": "2026-10-09",
+     "n": 718,
+     "weight": 0.237,
+     "margin": 3.0,
+     "sponsor": null
+    },
+    {
+     "label": "Mason-Dixon Polling & Strategy",
+     "dem": 47.0,
+     "rep": 43.0,
+     "date": "2026-10-09",
+     "n": 800,
+     "weight": 0.25,
+     "margin": 4.0,
+     "sponsor": null
+    },
+    {
+     "label": "Rasmussen Reports (R)",
+     "dem": 48.0,
+     "rep": 45.0,
+     "date": "2026-10-07",
+     "n": 1182,
+     "weight": 0.132,
+     "margin": 5.5,
+     "sponsor": "R"
+    },
+    {
+     "label": "Victory Insights (R)",
+     "dem": 48.0,
+     "rep": 44.0,
+     "date": "2026-10-06",
+     "n": 1194,
+     "weight": 0.124,
+     "margin": 6.5,
+     "sponsor": "R"
+    },
+    {
+     "label": "New York Times / Siena University",
+     "dem": 54.0,
+     "rep": 40.0,
+     "date": "2026-10-05",
+     "n": 752,
+     "weight": 0.184,
+     "margin": 14.0,
+     "sponsor": null
+    },
+    {
+     "label": "Trafalgar Group (R)",
+     "dem": 48.0,
+     "rep": 45.0,
+     "date": "2026-10-05",
+     "n": 1079,
+     "weight": 0.11,
+     "margin": 5.5,
+     "sponsor": "R"
+    },
+    {
+     "label": "GQR (D)",
+     "dem": 53.0,
+     "rep": 44.0,
+     "date": "2026-10-03",
+     "n": 800,
+     "weight": 0.082,
+     "margin": 6.5,
+     "sponsor": "D"
     }
    ],
+   "aggregator_margin": 6.4,
+   "poll_margin": 5.5,
+   "undecided": 10.4,
    "rating": "lean",
    "rating_lean": "D",
-   "read_at": "2026-10-29T09:34:00+00:00"
+   "read_at": "2026-10-29T10:16:47+00:00"
   },
   "MS-2026": {
    "state": "MS",
    "dem_candidate": "Scott Colom",
    "rep_candidate": "Cindy Hyde-Smith",
-   "dem_margin": -3.4,
-   "method": "2 polls, recency and sample weighted",
+   "dem_margin": -5.6,
+   "method": "2 polls, recency and sample weighted, adjusted for sponsors",
    "n_used": 2,
    "detail": [
     {
@@ -245,8 +748,9 @@
      "rep": 43.0,
      "date": "2026-10-09",
      "n": 842,
-     "weight": 0.53,
-     "margin": -3.0
+     "weight": 0.128,
+     "margin": -5.5,
+     "sponsor": "D"
     },
     {
      "label": "Data for Progress (D)",
@@ -254,21 +758,25 @@
      "rep": 44.0,
      "date": "2026-08-11",
      "n": 1018,
-     "weight": 0.083,
-     "margin": -6.0
+     "weight": 0.002,
+     "margin": -8.5,
+     "sponsor": "D"
     }
    ],
+   "aggregator_margin": null,
+   "poll_margin": -5.6,
+   "undecided": 17.0,
    "rating": "likely",
    "rating_lean": "R",
-   "read_at": "2026-10-29T09:34:02+00:00"
+   "read_at": "2026-10-29T10:16:49+00:00"
   },
   "NC-2026": {
    "state": "NC",
    "dem_candidate": "Roy Cooper",
    "rep_candidate": "Michael Whatley",
-   "dem_margin": 10.1,
-   "method": "mean of 5 aggregators",
-   "n_used": 5,
+   "dem_margin": 11.0,
+   "method": "mean of 5 aggregators, averaged with 28 polls adjusted for sponsors",
+   "n_used": 28,
    "detail": [
     {
      "label": "270toWin",
@@ -289,19 +797,102 @@
     {
      "label": "Silver Bulletin",
      "margin": 9.8
+    },
+    {
+     "label": "ActiVote",
+     "dem": 57.0,
+     "rep": 43.0,
+     "date": "2026-10-28",
+     "n": 400,
+     "weight": 0.66,
+     "margin": 14.0,
+     "sponsor": null
+    },
+    {
+     "label": "Change Research (D)",
+     "dem": 50.0,
+     "rep": 40.0,
+     "date": "2026-10-10",
+     "n": 829,
+     "weight": 0.136,
+     "margin": 7.5,
+     "sponsor": "D"
+    },
+    {
+     "label": "Harper Polling (R)",
+     "dem": 49.0,
+     "rep": 39.0,
+     "date": "2026-10-07",
+     "n": 600,
+     "weight": 0.094,
+     "margin": 12.5,
+     "sponsor": "R"
+    },
+    {
+     "label": "Trafalgar Group (R)",
+     "dem": 49.0,
+     "rep": 41.0,
+     "date": "2026-10-07",
+     "n": 1091,
+     "weight": 0.127,
+     "margin": 10.5,
+     "sponsor": "R"
+    },
+    {
+     "label": "High Point University / YouGov",
+     "dem": 54.0,
+     "rep": 40.0,
+     "date": "2026-10-06",
+     "n": 620,
+     "weight": 0.179,
+     "margin": 14.0,
+     "sponsor": null
+    },
+    {
+     "label": "Elon University / YouGov",
+     "dem": 52.0,
+     "rep": 39.0,
+     "date": "2026-10-06",
+     "n": 561,
+     "weight": 0.17,
+     "margin": 13.0,
+     "sponsor": null
+    },
+    {
+     "label": "East Carolina University",
+     "dem": 50.0,
+     "rep": 43.0,
+     "date": "2026-10-06",
+     "n": 810,
+     "weight": 0.204,
+     "margin": 7.0,
+     "sponsor": null
+    },
+    {
+     "label": "SurveyUSA",
+     "dem": 54.0,
+     "rep": 40.0,
+     "date": "2026-10-05",
+     "n": 643,
+     "weight": 0.17,
+     "margin": 14.0,
+     "sponsor": null
     }
    ],
+   "aggregator_margin": 10.1,
+   "poll_margin": 11.9,
+   "undecided": 6.1,
    "rating": "likely",
    "rating_lean": "D",
-   "read_at": "2026-10-29T09:34:04+00:00"
+   "read_at": "2026-10-29T10:16:52+00:00"
   },
   "NE-2026": {
    "state": "NE",
    "dem_candidate": "Dan Osborn",
    "rep_candidate": "Pete Ricketts",
-   "dem_margin": -0.7,
-   "method": "mean of 4 aggregators",
-   "n_used": 4,
+   "dem_margin": -0.2,
+   "method": "mean of 4 aggregators, averaged with 11 polls adjusted for sponsors",
+   "n_used": 11,
    "detail": [
     {
      "label": "270toWin",
@@ -318,19 +909,102 @@
     {
      "label": "Silver Bulletin",
      "margin": 0.2
+    },
+    {
+     "label": "GBAO (D)",
+     "dem": 46.0,
+     "rep": 45.0,
+     "date": "2026-10-07",
+     "n": 800,
+     "weight": 0.109,
+     "margin": -1.5,
+     "sponsor": "D"
+    },
+    {
+     "label": "Concord Public Opinion Partners (D)",
+     "dem": 48.0,
+     "rep": 41.0,
+     "date": "2026-10-05",
+     "n": 500,
+     "weight": 0.075,
+     "margin": 4.5,
+     "sponsor": "D"
+    },
+    {
+     "label": "National Public Affairs (R)",
+     "dem": 43.0,
+     "rep": 46.0,
+     "date": "2026-10-05",
+     "n": 598,
+     "weight": 0.082,
+     "margin": -0.5,
+     "sponsor": "R"
+    },
+    {
+     "label": "Echelon Insights (R)",
+     "dem": 46.0,
+     "rep": 47.0,
+     "date": "2026-10-03",
+     "n": 407,
+     "weight": 0.059,
+     "margin": 1.5,
+     "sponsor": "R"
+    },
+    {
+     "label": "YouGov",
+     "dem": 48.0,
+     "rep": 47.0,
+     "date": "2026-10-03",
+     "n": 1809,
+     "weight": 0.248,
+     "margin": 1.0,
+     "sponsor": null
+    },
+    {
+     "label": "Impact Research (D)",
+     "dem": 47.0,
+     "rep": 49.0,
+     "date": "2026-10-01",
+     "n": 600,
+     "weight": 0.062,
+     "margin": -4.5,
+     "sponsor": "D"
+    },
+    {
+     "label": "co/efficient (R)",
+     "dem": 40.0,
+     "rep": 45.0,
+     "date": "2026-09-11",
+     "n": 1113,
+     "weight": 0.021,
+     "margin": -2.5,
+     "sponsor": "R"
+    },
+    {
+     "label": "SurveyUSA",
+     "dem": 46.0,
+     "rep": 42.0,
+     "date": "2026-09-07",
+     "n": 503,
+     "weight": 0.022,
+     "margin": 4.0,
+     "sponsor": null
     }
    ],
+   "aggregator_margin": -0.7,
+   "poll_margin": 0.3,
+   "undecided": 7.6,
    "rating": "likely",
    "rating_lean": "R",
-   "read_at": "2026-10-29T09:34:07+00:00"
+   "read_at": "2026-10-29T10:16:54+00:00"
   },
   "NH-2026": {
    "state": "NH",
    "dem_candidate": "Chris Pappas",
    "rep_candidate": "John E. Sununu",
-   "dem_margin": 7.0,
-   "method": "mean of 5 aggregators",
-   "n_used": 5,
+   "dem_margin": 7.3,
+   "method": "mean of 5 aggregators, averaged with 15 polls adjusted for sponsors",
+   "n_used": 15,
    "detail": [
     {
      "label": "270toWin",
@@ -351,19 +1025,102 @@
     {
      "label": "Silver Bulletin",
      "margin": 7.3
+    },
+    {
+     "label": "National Public Affairs (R)",
+     "dem": 50.0,
+     "rep": 45.0,
+     "date": "2026-10-05",
+     "n": 600,
+     "weight": 0.082,
+     "margin": 7.5,
+     "sponsor": "R"
+    },
+    {
+     "label": "YouGov",
+     "dem": 51.0,
+     "rep": 43.0,
+     "date": "2026-10-04",
+     "n": 1520,
+     "weight": 0.244,
+     "margin": 8.0,
+     "sponsor": null
+    },
+    {
+     "label": "Rasmussen Reports (R)",
+     "dem": 49.0,
+     "rep": 44.0,
+     "date": "2026-10-04",
+     "n": 979,
+     "weight": 0.098,
+     "margin": 7.5,
+     "sponsor": "R"
+    },
+    {
+     "label": "Rasmussen Reports (R)",
+     "dem": 50.0,
+     "rep": 44.0,
+     "date": "2026-10-02",
+     "n": 970,
+     "weight": 0.085,
+     "margin": 8.5,
+     "sponsor": "R"
+    },
+    {
+     "label": "Saint Anselm College",
+     "dem": 50.0,
+     "rep": 43.0,
+     "date": "2026-10-02",
+     "n": 1672,
+     "weight": 0.222,
+     "margin": 7.0,
+     "sponsor": null
+    },
+    {
+     "label": "Trafalgar Group (R)",
+     "dem": 47.0,
+     "rep": 41.0,
+     "date": "2026-09-11",
+     "n": 1082,
+     "weight": 0.021,
+     "margin": 8.5,
+     "sponsor": "R"
+    },
+    {
+     "label": "InsiderAdvantage (R)",
+     "dem": 48.0,
+     "rep": 40.0,
+     "date": "2026-09-09",
+     "n": 1200,
+     "weight": 0.019,
+     "margin": 10.5,
+     "sponsor": "R"
+    },
+    {
+     "label": "co/efficient (R)",
+     "dem": 46.0,
+     "rep": 46.0,
+     "date": "2026-09-09",
+     "n": 958,
+     "weight": 0.017,
+     "margin": 2.5,
+     "sponsor": "R"
     }
    ],
+   "aggregator_margin": 7.0,
+   "poll_margin": 7.6,
+   "undecided": 7.1,
    "rating": "lean",
    "rating_lean": "D",
-   "read_at": "2026-10-29T09:34:09+00:00"
+   "read_at": "2026-10-29T10:16:56+00:00"
   },
   "OH-2026-special": {
    "state": "OH",
    "dem_candidate": "Sherrod Brown",
    "rep_candidate": "Jon Husted",
-   "dem_margin": 3.3,
-   "method": "mean of 5 aggregators",
-   "n_used": 5,
+   "dem_margin": 3.2,
+   "method": "mean of 5 aggregators, averaged with 28 polls adjusted for sponsors",
+   "n_used": 28,
    "detail": [
     {
      "label": "270toWin",
@@ -384,19 +1141,102 @@
     {
      "label": "Silver Bulletin",
      "margin": 3.1
+    },
+    {
+     "label": "ActiVote",
+     "dem": 50.0,
+     "rep": 50.0,
+     "date": "2026-10-28",
+     "n": 400,
+     "weight": 0.66,
+     "margin": 0.0,
+     "sponsor": null
+    },
+    {
+     "label": "Bowling Green State University / YouGov",
+     "dem": 48.0,
+     "rep": 42.0,
+     "date": "2026-10-10",
+     "n": 1000,
+     "weight": 0.3,
+     "margin": 6.0,
+     "sponsor": null
+    },
+    {
+     "label": "co/efficient (R)",
+     "dem": 45.0,
+     "rep": 46.0,
+     "date": "2026-10-09",
+     "n": 925,
+     "weight": 0.134,
+     "margin": 1.5,
+     "sponsor": "R"
+    },
+    {
+     "label": "InsiderAdvantage (R)",
+     "dem": 47.0,
+     "rep": 44.0,
+     "date": "2026-10-06",
+     "n": 1200,
+     "weight": 0.124,
+     "margin": 5.5,
+     "sponsor": "R"
+    },
+    {
+     "label": "Verasight/VoteHub",
+     "dem": 48.0,
+     "rep": 44.0,
+     "date": "2026-10-06",
+     "n": 531,
+     "weight": 0.165,
+     "margin": 4.0,
+     "sponsor": null
+    },
+    {
+     "label": "New York Times / Siena University",
+     "dem": 49.0,
+     "rep": 46.0,
+     "date": "2026-10-05",
+     "n": 616,
+     "weight": 0.166,
+     "margin": 3.0,
+     "sponsor": null
+    },
+    {
+     "label": "Suffolk University",
+     "dem": 47.0,
+     "rep": 44.0,
+     "date": "2026-10-04",
+     "n": 500,
+     "weight": 0.14,
+     "margin": 3.0,
+     "sponsor": null
+    },
+    {
+     "label": "RedBox Research (D)",
+     "dem": 47.0,
+     "rep": 44.0,
+     "date": "2026-10-04",
+     "n": 2998,
+     "weight": 0.141,
+     "margin": 0.5,
+     "sponsor": "D"
     }
    ],
+   "aggregator_margin": 3.3,
+   "poll_margin": 3.1,
+   "undecided": 5.9,
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-10-29T09:34:11+00:00"
+   "read_at": "2026-10-29T10:16:58+00:00"
   },
   "SC-2026": {
    "state": "SC",
    "dem_candidate": "Annie Andrews",
    "rep_candidate": "Darline Graham",
-   "dem_margin": -1.6,
-   "method": "mean of 5 aggregators",
-   "n_used": 5,
+   "dem_margin": -1.8,
+   "method": "mean of 5 aggregators, averaged with 12 polls adjusted for sponsors",
+   "n_used": 12,
    "detail": [
     {
      "label": "270toWin",
@@ -417,19 +1257,102 @@
     {
      "label": "Silver Bulletin",
      "margin": -1.5
+    },
+    {
+     "label": "The Citadel",
+     "dem": 39.0,
+     "rep": 43.0,
+     "date": "2026-10-15",
+     "n": 890,
+     "weight": 0.4,
+     "margin": -4.0,
+     "sponsor": null
+    },
+    {
+     "label": "Rasmussen Reports (R)",
+     "dem": 45.0,
+     "rep": 49.0,
+     "date": "2026-10-06",
+     "n": 837,
+     "weight": 0.104,
+     "margin": -1.5,
+     "sponsor": "R"
+    },
+    {
+     "label": "Impact Research (D)",
+     "dem": 45.0,
+     "rep": 44.0,
+     "date": "2026-10-05",
+     "n": 800,
+     "weight": 0.095,
+     "margin": -1.5,
+     "sponsor": "D"
+    },
+    {
+     "label": "Targoz Media Research",
+     "dem": 46.0,
+     "rep": 47.0,
+     "date": "2026-10-04",
+     "n": 895,
+     "weight": 0.187,
+     "margin": -1.0,
+     "sponsor": null
+    },
+    {
+     "label": "New York Times / Siena University",
+     "dem": 48.0,
+     "rep": 48.0,
+     "date": "2026-10-03",
+     "n": 707,
+     "weight": 0.155,
+     "margin": 0.0,
+     "sponsor": null
+    },
+    {
+     "label": "Trafalgar Group (R)",
+     "dem": 46.0,
+     "rep": 49.0,
+     "date": "2026-10-01",
+     "n": 1095,
+     "weight": 0.084,
+     "margin": -0.5,
+     "sponsor": "R"
+    },
+    {
+     "label": "Trafalgar Group (R)",
+     "dem": 42.0,
+     "rep": 43.0,
+     "date": "2026-09-09",
+     "n": 1087,
+     "weight": 0.018,
+     "margin": 1.5,
+     "sponsor": "R"
+    },
+    {
+     "label": "Rasmussen Reports (R)",
+     "dem": 43.0,
+     "rep": 48.0,
+     "date": "2026-09-09",
+     "n": 1006,
+     "weight": 0.018,
+     "margin": -2.5,
+     "sponsor": "R"
     }
    ],
+   "aggregator_margin": -1.6,
+   "poll_margin": -1.9,
+   "undecided": 11.0,
    "rating": "lean",
    "rating_lean": "R",
-   "read_at": "2026-10-29T09:34:14+00:00"
+   "read_at": "2026-10-29T10:17:01+00:00"
   },
   "TX-2026": {
    "state": "TX",
    "dem_candidate": "James Talarico",
    "rep_candidate": "Ken Paxton",
-   "dem_margin": 2.6,
-   "method": "mean of 6 aggregators",
-   "n_used": 6,
+   "dem_margin": 2.5,
+   "method": "mean of 6 aggregators, averaged with 47 polls adjusted for sponsors",
+   "n_used": 47,
    "detail": [
     {
      "label": "270toWin",
@@ -454,11 +1377,94 @@
     {
      "label": "Silver Bulletin",
      "margin": 2.6
+    },
+    {
+     "label": "ActiVote",
+     "dem": 51.0,
+     "rep": 49.0,
+     "date": "2026-10-28",
+     "n": 400,
+     "weight": 0.66,
+     "margin": 2.0,
+     "sponsor": null
+    },
+    {
+     "label": "CBS News / YouGov",
+     "dem": 51.0,
+     "rep": 49.0,
+     "date": "2026-10-28",
+     "n": 1492,
+     "weight": 1.274,
+     "margin": 2.0,
+     "sponsor": null
+    },
+    {
+     "label": "Trafalgar Group (R)",
+     "dem": 47.0,
+     "rep": 44.0,
+     "date": "2026-10-08",
+     "n": 1086,
+     "weight": 0.136,
+     "margin": 5.5,
+     "sponsor": "R"
+    },
+    {
+     "label": "YouGov Blue (D)",
+     "dem": 51.0,
+     "rep": 43.0,
+     "date": "2026-10-05",
+     "n": 1000,
+     "weight": 0.106,
+     "margin": 5.5,
+     "sponsor": "D"
+    },
+    {
+     "label": "Rasmussen Reports",
+     "dem": 45.0,
+     "rep": 45.0,
+     "date": "2026-10-05",
+     "n": 965,
+     "weight": 0.208,
+     "margin": 0.0,
+     "sponsor": null
+    },
+    {
+     "label": "Univision / YouGov",
+     "dem": 50.0,
+     "rep": 45.0,
+     "date": "2026-10-05",
+     "n": 1000,
+     "weight": 0.212,
+     "margin": 5.0,
+     "sponsor": null
+    },
+    {
+     "label": "Verasight /VoteHub",
+     "dem": 48.0,
+     "rep": 45.0,
+     "date": "2026-10-05",
+     "n": 509,
+     "weight": 0.151,
+     "margin": 3.0,
+     "sponsor": null
+    },
+    {
+     "label": "Pollfinity Research",
+     "dem": 48.0,
+     "rep": 43.0,
+     "date": "2026-10-05",
+     "n": 278,
+     "weight": 0.112,
+     "margin": 5.0,
+     "sponsor": null
     }
    ],
+   "aggregator_margin": 2.6,
+   "poll_margin": 2.5,
+   "undecided": 3.9,
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-10-29T09:34:16+00:00"
+   "read_at": "2026-10-29T10:17:03+00:00"
   }
  },
  "issues": []

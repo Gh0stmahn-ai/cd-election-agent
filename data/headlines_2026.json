@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-29T09:34:52+00:00",
+ "as_of": "2026-10-29T10:17:38+00:00",
  "window_hours": 48,
  "rules": "Equal numbers of stories about each party, and equal numbers of headlines from left-leaning and right-leaning outlets within each party's list; center outlets count toward neither. Ranked by how many outlets are carrying the story, newer first.",
  "outlets": [
@@ -197,7 +197,7 @@
    "outlet": "BBC News",
    "lean": "C",
    "ok": true,
-   "items": 25
+   "items": 26
   },
   {
    "outlet": "Deseret News",
@@ -211,7 +211,7 @@
   "R": 7,
   "C": 6
  },
- "candidates_considered": 91,
+ "candidates_considered": 90,
  "stories": [
   {
    "title": "Obama and Trump hold dueling rallies as midterm campaigns make final pitch",
@@ -283,6 +283,51 @@
    }
   },
   {
+   "title": "A Plan for Two Dans: How Democrats Manipulated Alaska’s Ballot",
+   "link": "https://www.nytimes.com/2026/10/29/podcasts/the-daily/democrats-alaska-senate-midterms-dan-sullivan.html",
+   "outlet": "The New York Times",
+   "lean": "L",
+   "published": "2026-10-29T10:00:05+00:00",
+   "focus": "D",
+   "also": [],
+   "n_outlets": 1,
+   "coverage": {
+    "L": 1,
+    "C": 0,
+    "R": 0
+   }
+  },
+  {
+   "title": "Democrats see battleground map expand to South Carolina, Florida, Mississippi",
+   "link": "https://thehill.com/homenews/senate/6179707-senate-democrats-south-carolina-mississippi-florida/",
+   "outlet": "The Hill",
+   "lean": "C",
+   "published": "2026-10-29T10:00:00+00:00",
+   "focus": "D",
+   "also": [],
+   "n_outlets": 1,
+   "coverage": {
+    "L": 0,
+    "C": 1,
+    "R": 0
+   }
+  },
+  {
+   "title": "South Carolina Senate race tightens ahead of Trump visit",
+   "link": "https://www.newsnationnow.com/politics/2026-midterm-elections/south-carolina-senate-race-trump-visit/",
+   "outlet": "NewsNation",
+   "lean": "C",
+   "published": "2026-10-29T09:50:26+00:00",
+   "focus": "R",
+   "also": [],
+   "n_outlets": 1,
+   "coverage": {
+    "L": 0,
+    "C": 1,
+    "R": 0
+   }
+  },
+  {
    "title": "Alaska man says Democratic operative recruited him to run in Senate race",
    "link": "https://www.newsnationnow.com/politics/2026-midterm-elections/alaska-senate-race-candidate-matthew-salisbury/",
    "outlet": "NewsNation",
@@ -298,17 +343,17 @@
    }
   },
   {
-   "title": "Alaska Governor Orders Criminal Investigation Into Peltola Campaign",
-   "link": "https://www.nytimes.com/2026/10/28/us/politics/trump-peltola-sullivan-alaska-senate.html",
-   "outlet": "The New York Times",
-   "lean": "L",
-   "published": "2026-10-29T07:22:59+00:00",
+   "title": "In a comeback attempt, Democrat Keisha Lance Bottoms is seeking to become the first Black woman governor in U.S. history and the first Democrat elected governor in Georgia in decades",
+   "link": "https://www.wsj.com/politics/elections/the-ex-mayor-vs-the-billionaire-the-fiercest-governors-race-in-the-south-f34c6a7e?mod=rss_socialpoliticsfeed",
+   "outlet": "The Wall Street Journal",
+   "lean": "C",
+   "published": "2026-10-29T04:44:00+00:00",
    "focus": "D",
    "also": [],
    "n_outlets": 1,
    "coverage": {
-    "L": 1,
-    "C": 0,
+    "L": 0,
+    "C": 1,
     "R": 0
    }
   },
@@ -343,36 +388,6 @@
    }
   },
   {
-   "title": "Democrats Eyeing 2028 Presidential Campaigns Begin Courting Donors and Operatives",
-   "link": "https://www.nytimes.com/2026/10/28/us/politics/2028-democrats.html",
-   "outlet": "The New York Times",
-   "lean": "L",
-   "published": "2026-10-29T00:32:04+00:00",
-   "focus": "D",
-   "also": [],
-   "n_outlets": 1,
-   "coverage": {
-    "L": 1,
-    "C": 0,
-    "R": 0
-   }
-  },
-  {
-   "title": "Troy Jackson's 'Logging' Company Is Actually a Consulting Firm, Records Show",
-   "link": "https://freebeacon.com/democrats/troy-jacksons-logging-company-is-actually-a-consulting-firm-records-show/",
-   "outlet": "Washington Free Beacon",
-   "lean": "R",
-   "published": "2026-10-28T23:00:53+00:00",
-   "focus": "D",
-   "also": [],
-   "n_outlets": 1,
-   "coverage": {
-    "L": 0,
-    "C": 0,
-    "R": 1
-   }
-  },
-  {
    "title": "Watch live: Trump seeks to boost GOP in Ohio amid final sprint to midterms",
    "link": "https://thehill.com/video-clips/6178675-watch-live-donald-trump-ohio-campaign-rally-midterms/",
    "outlet": "The Hill",
@@ -403,21 +418,6 @@
    }
   },
   {
-   "title": "Trump to campaign in Ohio for third time this month",
-   "link": "https://www.newsnationnow.com/politics/trump-campaign-ohio-third-time-october/",
-   "outlet": "NewsNation",
-   "lean": "C",
-   "published": "2026-10-28T17:44:16+00:00",
-   "focus": "R",
-   "also": [],
-   "n_outlets": 1,
-   "coverage": {
-    "L": 0,
-    "C": 1,
-    "R": 0
-   }
-  },
-  {
    "title": "GOP Senate majority faces fresh uncertainty as 2 key races tighten days before midterms",
    "link": "https://www.foxnews.com/politics/gop-senate-majority-faces-fresh-uncertainty-2-key-races-tighten-days-before-midterms",
    "outlet": "Fox News",
@@ -437,8 +437,8 @@
   "D": 6,
   "R": 6,
   "both": 2,
-  "left_outlets": 4,
-  "right_outlets": 4,
-  "center_outlets": 6
+  "left_outlets": 3,
+  "right_outlets": 3,
+  "center_outlets": 8
  }
 }
