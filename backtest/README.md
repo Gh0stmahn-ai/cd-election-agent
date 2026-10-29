@@ -42,3 +42,13 @@ governors against where it lands for the Senate, the spread around that once
 each cycle's average miss is removed, and how far the cycle's average governor
 miss follows the Senate's. Those three numbers set the governor constants in
 `model.py`.
+
+A correlated miss along state partisanship (polls or ratings missing the same
+way in every red state, or every blue one, in a given year) was tested on the
+2014-2024 Senate and governor races. Across six cycles the slope of the
+cycle-adjusted miss on Cook PVI in competitive races varied by 0.17 per PVI
+point against a sampling error of 0.16, an implied factor of 0.08 per point:
+under a point of extra correlated error even in a state at PVI 10. Too small
+and too uncertain to add, so the model does not carry it. The education
+version of the same test (non-college white share) needs Census data that now
+requires an API key, and was not run.
