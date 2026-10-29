@@ -315,6 +315,23 @@ leans = [e[1]["lean"] for e in top]
 check("headlines: a list keeps left- and right-leaning outlets level",
       len(top) <= 6 and leans.count("L") == leans.count("R") and leans.count("L") >= 1, leans)
 
+# --------------------------------------------------- poll averaging, spread
+import refresh_senate_polls as SP
+import model as MD
+check("polls: half-life is 21 days a month out and 10 in the last two weeks",
+      SP.half_life(_date(2026, 9, 1)) == 21 and SP.half_life(_date(2026, 10, 30)) == 10)
+polls = [{"label": "Indie Poll", "dem": 48, "rep": 46, "date": _date(2026, 10, 25), "n": 800},
+         {"label": "Red Firm (R)", "dem": 44, "rep": 50, "date": _date(2026, 10, 25), "n": 800},
+         {"label": "Red Firm (R)", "dem": 44, "rep": 50, "date": _date(2026, 10, 25), "n": 800}]
+m, used = SP.average(polls, _date(2026, 10, 26))
+check("polls: a sponsored poll is moved toward the other party, counted half, and counted once",
+      len(used) == 2 and abs(m - ((2.0 * 1) + (-6 + 2.5) * 0.5) / 1.5) < 1e-6, (m, used))
+base = MD.race_sd("senate", "tossup")
+check("spread: widens only past the typical undecided share, and for Alaska",
+      MD.race_spread("senate", {"rating": "tossup", "state": "IA"}, {"undecided": 5}) == base
+      and MD.race_spread("senate", {"rating": "tossup", "state": "IA"}, {"undecided": 10}) > base
+      and MD.race_spread("senate", {"rating": "tossup", "state": "AK"}, None) > base)
+
 import os
 import freeze
 os.environ["FREEZE_NOW"] = "2026-11-03T10:30:00Z"
