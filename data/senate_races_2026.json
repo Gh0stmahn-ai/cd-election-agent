@@ -1,7 +1,7 @@
 {
  "as_of": "2026-10-30",
- "ratings_source": "Cook Political Report Senate ratings of Oct 20, 2026, via Wikipedia (revision 1382746932, 2026-10-30)",
- "ratings_environment_dem_margin": 8.87,
+ "ratings_source": "Cook Political Report Senate ratings of Oct 30, 2026, via Wikipedia (revision 1382848236, 2026-10-30)",
+ "ratings_environment_dem_margin": 8.97,
  "not_up": {
   "D": 34,
   "R": 31,
@@ -68,7 +68,7 @@
    "state": "FL",
    "seat_id": "FL-2026-special",
    "held_by": "R",
-   "rating": "solid",
+   "rating": "likely",
    "lean": "R",
    "incumbent": "Ashley Moody",
    "dem_candidate": "Angie Nixon",
@@ -235,7 +235,7 @@
    "state": "NE",
    "seat_id": "NE-2026",
    "held_by": "R",
-   "rating": "likely",
+   "rating": "lean",
    "lean": "R",
    "incumbent": "Pete Ricketts",
    "dem_candidate": "Dan Osborn (I)",
@@ -399,5 +399,5 @@
    "notes": "Open: Cynthia Lummis not on the ballot"
   }
  ],
- "ratings_date": "2026-10-20"
+ "ratings_date": "2026-10-30"
 }

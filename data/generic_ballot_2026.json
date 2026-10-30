@@ -1,7 +1,7 @@
 {
  "as_of": "2026-10-30",
  "dem_margin_points": 8.91,
- "note": "Our own average of 89 individual polls from 48 pollsters, 2026-08-31 to 2026-10-27, plus or minus 0.4. Published aggregators say D+8.5",
+ "note": "Our own average of 89 individual polls from 48 pollsters, 2026-08-31 to 2026-10-27, plus or minus 0.4. Published aggregators say D+8.9",
  "sources": [
   "https://en.wikipedia.org/wiki/2026_United_States_elections",
   "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections"
@@ -179,11 +179,11 @@
    }
   ],
   "aggregators": {
-   "margin": 8.5,
-   "rep": 43.0,
-   "dem": 51.5,
+   "margin": 8.9,
+   "rep": 42.7,
+   "dem": 51.6,
    "n_aggregators": 5,
-   "as_of": "2026-10-27"
+   "as_of": "2026-10-29"
   }
  }
 }

@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-30T02:34:37+00:00",
+ "as_of": "2026-10-30T17:02:31+00:00",
  "window_hours": 48,
  "rules": "Equal numbers of stories about each party, and equal numbers of headlines from left-leaning and right-leaning outlets within each party's list; center outlets count toward neither. Ranked by how many outlets are carrying the story, newer first.",
  "outlets": [
@@ -95,7 +95,7 @@
    "outlet": "The New York Times",
    "lean": "L",
    "ok": true,
-   "items": 24
+   "items": 20
   },
   {
    "outlet": "CNN",
@@ -197,7 +197,7 @@
    "outlet": "BBC News",
    "lean": "C",
    "ok": true,
-   "items": 24
+   "items": 25
   },
   {
    "outlet": "Deseret News",
@@ -211,69 +211,55 @@
   "R": 7,
   "C": 6
  },
- "candidates_considered": 80,
+ "candidates_considered": 84,
  "stories": [
   {
-   "title": "Live Updates: Trump campaigns in South Carolina and more",
-   "link": "https://www.cbsnews.com/live-updates/2026-elections-midtems-house-senate-trump/",
-   "outlet": "CBS News",
+   "title": "Peltola denies knowing about Alaska spoiler candidate as Justice Department escalates investigation",
+   "link": "https://abcnews.com/Politics/wireStory/peltola-denies-knowing-alaska-spoiler-candidate-justice-department-137669571",
+   "outlet": "ABC News",
    "lean": "L",
-   "published": "2026-10-30T01:34:16+00:00",
-   "focus": "R",
+   "published": "2026-10-30T06:38:19+00:00",
+   "focus": "D",
    "also": [
-    "NPR",
-    "NewsNation"
+    "CBS News",
+    "Deseret News",
+    "NewsNation",
+    "The Hill",
+    "The Wall Street Journal"
    ],
-   "n_outlets": 3,
+   "n_outlets": 6,
    "coverage": {
-    "L": 3,
-    "C": 1,
+    "L": 2,
+    "C": 6,
     "R": 0
    }
   },
   {
-   "title": "Fallout in Alaska Senate Race Over Peltola’s Ballot Stacking Plot",
-   "link": "https://www.nytimes.com/2026/10/29/us/politics/alaska-senate-ballots-peltola-trump.html",
-   "outlet": "The New York Times",
+   "title": "Peltola says she \"knew nothing about\" the other Dan Sullivan",
+   "link": "https://www.cbsnews.com/news/peltola-she-knew-nothing-dan-sullivan-ballot-controversy-alaska-senate-race/",
+   "outlet": "CBS News",
    "lean": "L",
-   "published": "2026-10-29T22:55:34+00:00",
+   "published": "2026-10-30T05:03:00+00:00",
    "focus": "both",
    "also": [
-    "The Wall Street Journal"
+    "Fox News"
    ],
    "n_outlets": 2,
    "coverage": {
     "L": 1,
-    "C": 1,
-    "R": 0
+    "C": 0,
+    "R": 1
    }
   },
   {
-   "title": "Alaska governor orders investigation after reports say Democratic candidate recruited a second Dan Sullivan to run",
-   "link": "https://www.deseret.com/politics/2026/10/29/alaska-senate-race-confusion-dan-sullivan-mary-peltola/",
-   "outlet": "Deseret News",
-   "lean": "C",
-   "published": "2026-10-29T19:15:47+00:00",
-   "focus": "D",
-   "also": [
-    "NewsNation"
-   ],
-   "n_outlets": 2,
-   "coverage": {
-    "L": 0,
-    "C": 3,
-    "R": 0
-   }
-  },
-  {
-   "title": "Abdul El-Sayed’s dad sits on board of Islamic charity accused of funneling cash to Saddam Hussein",
-   "link": "https://nypost.com/2026/10/29/us-news/el-sayeds-father-linked-to-charity-accused-of-giving-cash-to-saddam-hussein/",
+   "title": "Report on alleged ‘second Dan Sullivan’ effort emerges after nearly 1 in 10 Alaskans voted",
+   "link": "https://nypost.com/2026/10/30/us-news/report-on-alleged-second-dan-sullivan-effort-emerges-after-nearly-1-in-10-alaskans-voted/",
    "outlet": "New York Post",
    "lean": "R",
-   "published": "2026-10-29T14:55:38+00:00",
-   "focus": "D",
+   "published": "2026-10-30T10:58:00+00:00",
+   "focus": "R",
    "also": [
-    "Washington Free Beacon"
+    "Fox News"
    ],
    "n_outlets": 2,
    "coverage": {
@@ -283,14 +269,14 @@
    }
   },
   {
-   "title": "Judge refuses Trump administration’s request to separate 20K California mail ballots",
-   "link": "https://www.newsnationnow.com/politics/trump-administration-california-mail-ballots/",
-   "outlet": "NewsNation",
-   "lean": "C",
-   "published": "2026-10-29T03:47:20+00:00",
+   "title": "Trump campaigns in South Carolina as Senate race is surprisingly close",
+   "link": "https://www.cbsnews.com/video/trump-campaigns-south-carolina-senate-race-surprisingly-close/",
+   "outlet": "CBS News",
+   "lean": "L",
+   "published": "2026-10-29T23:43:09+00:00",
    "focus": "R",
    "also": [
-    "NBC News"
+    "NewsNation"
    ],
    "n_outlets": 2,
    "coverage": {
@@ -300,57 +286,12 @@
    }
   },
   {
-   "title": "Trump to join tele-rallies 19 states after midterm event cancellations",
-   "link": "https://thehill.com/homenews/campaign/6183027-trump-scheduled-virtual-rally-blitz/",
-   "outlet": "The Hill",
-   "lean": "C",
-   "published": "2026-10-30T01:02:57+00:00",
-   "focus": "R",
-   "also": [],
-   "n_outlets": 1,
-   "coverage": {
-    "L": 0,
-    "C": 2,
-    "R": 0
-   }
-  },
-  {
-   "title": "In Alaska, high prices for diesel and home heating oil are driving voter anger at President Trump and incumbent Republican Sen. Dan S. Sullivan, making the Senate race in this red state one of the most competitive in the country",
-   "link": "https://www.wsj.com/politics/elections/how-alaska-became-the-most-chaotic-senate-battleground-in-america-86453d89?mod=rss_socialpoliticsfeed",
-   "outlet": "The Wall Street Journal",
-   "lean": "C",
-   "published": "2026-10-30T01:01:00+00:00",
-   "focus": "R",
-   "also": [],
-   "n_outlets": 1,
-   "coverage": {
-    "L": 0,
-    "C": 1,
-    "R": 0
-   }
-  },
-  {
-   "title": "Alaska governor: Election certification 'could be stopped' due to Peltola probe",
-   "link": "https://thehill.com/homenews/campaign/6182999-alaska-election-verification-stopped-peltola-probe/",
-   "outlet": "The Hill",
-   "lean": "C",
-   "published": "2026-10-30T00:44:51+00:00",
-   "focus": "D",
-   "also": [],
-   "n_outlets": 1,
-   "coverage": {
-    "L": 0,
-    "C": 1,
-    "R": 0
-   }
-  },
-  {
-   "title": "Criminal investigation into Alaska Democrat’s Senate campaign",
-   "link": "https://www.nbcnews.com/nightly-news/video/criminal-investigation-into-alaska-democrat-s-senate-campaign-272502341775",
-   "outlet": "NBC News",
+   "title": "Midterm Updates: Trump reverses course on canceling rallies",
+   "link": "https://www.cbsnews.com/live-updates/2026-midterm-elections-campaigns-weekend-before/",
+   "outlet": "CBS News",
    "lean": "L",
-   "published": "2026-10-29T23:06:11+00:00",
-   "focus": "D",
+   "published": "2026-10-30T16:51:02+00:00",
+   "focus": "R",
    "also": [],
    "n_outlets": 1,
    "coverage": {
@@ -360,11 +301,86 @@
    }
   },
   {
-   "title": "Dem Mary Peltola doesn’t fully deny involvement in ‘Decoy Dan’ scheme to confuse Alaska voters",
-   "link": "https://nypost.com/2026/10/29/us-news/dem-mary-peltola-doesnt-fully-deny-involvement-in-decoy-dan-scheme-to-confuse-alaska-voters/",
+   "title": "Governor probing 'Decoy Dan' Sullivan election scandal warns system flaw hiding in plain sight",
+   "link": "https://www.foxnews.com/politics/governor-probing-decoy-dan-sullivan-election-scandal-warns-system-flaw-hiding-plain-sight",
+   "outlet": "Fox News",
+   "lean": "R",
+   "published": "2026-10-30T16:46:21+00:00",
+   "focus": "R",
+   "also": [],
+   "n_outlets": 1,
+   "coverage": {
+    "L": 0,
+    "C": 0,
+    "R": 1
+   }
+  },
+  {
+   "title": "El-Sayed to campaign with Rep. Stevens for first time days before midterms",
+   "link": "https://www.newsnationnow.com/politics/2026-midterm-elections/rep-haley-stevens-campaign-el-sayed/",
+   "outlet": "NewsNation",
+   "lean": "C",
+   "published": "2026-10-30T16:17:57+00:00",
+   "focus": "D",
+   "also": [],
+   "n_outlets": 1,
+   "coverage": {
+    "L": 0,
+    "C": 1,
+    "R": 0
+   }
+  },
+  {
+   "title": "Stevens to appear alongside El-Sayed for first time in months, but expects apology",
+   "link": "https://thehill.com/homenews/campaign/6184254-stevens-el-sayed-detroit-appearance/",
+   "outlet": "The Hill",
+   "lean": "C",
+   "published": "2026-10-30T16:12:17+00:00",
+   "focus": "D",
+   "also": [],
+   "n_outlets": 1,
+   "coverage": {
+    "L": 0,
+    "C": 1,
+    "R": 0
+   }
+  },
+  {
+   "title": "DOJ accuses Peltola, Democrats of misleading a federal court",
+   "link": "https://thehill.com/homenews/campaign/6183999-doj-accuses-peltola-misleading-court/",
+   "outlet": "The Hill",
+   "lean": "C",
+   "published": "2026-10-30T15:39:33+00:00",
+   "focus": "D",
+   "also": [],
+   "n_outlets": 1,
+   "coverage": {
+    "L": 0,
+    "C": 1,
+    "R": 0
+   }
+  },
+  {
+   "title": "Trump’s Kansas, Iowa rallies back on after being scrapped from pre-midterm schedule",
+   "link": "https://nypost.com/2026/10/30/us-news/trumps-kansas-iowa-rallies-back-on-after-being-scrapped-from-pre-midterm-schedule/",
    "outlet": "New York Post",
    "lean": "R",
-   "published": "2026-10-29T21:59:32+00:00",
+   "published": "2026-10-30T14:31:01+00:00",
+   "focus": "R",
+   "also": [],
+   "n_outlets": 1,
+   "coverage": {
+    "L": 0,
+    "C": 0,
+    "R": 1
+   }
+  },
+  {
+   "title": "DOJ Issues Dozens Of Subpoenas In Probe Investigating Mary Peltola’s Ballot Scheme",
+   "link": "https://dailycaller.com/2026/10/30/doj-subpoenas-in-alaska-senate-investigation",
+   "outlet": "Daily Caller",
+   "lean": "R",
+   "published": "2026-10-30T13:43:47+00:00",
    "focus": "D",
    "also": [],
    "n_outlets": 1,
@@ -375,12 +391,27 @@
    }
   },
   {
-   "title": "Rep. Ralph Norman won't campaign for Sen. Darline Graham",
-   "link": "https://www.newsnationnow.com/politics/2026-midterm-elections/ralph-norman-wont-campaign-darline-graham/",
-   "outlet": "NewsNation",
-   "lean": "C",
-   "published": "2026-10-29T20:50:42+00:00",
+   "title": "Are Trump Voters Refusing to Take Polls? And Other Polling Risks.",
+   "link": "https://www.nytimes.com/2026/10/30/upshot/times-siena-poll-midterms-questions.html",
+   "outlet": "The New York Times",
+   "lean": "L",
+   "published": "2026-10-30T13:20:22+00:00",
    "focus": "R",
+   "also": [],
+   "n_outlets": 1,
+   "coverage": {
+    "L": 1,
+    "C": 0,
+    "R": 0
+   }
+  },
+  {
+   "title": "Hamilton holds slight lead over Marshall in Kansas Senate contest: Poll",
+   "link": "https://thehill.com/homenews/campaign/6181812-hamilton-marshall-kansas-senate-poll/",
+   "outlet": "The Hill",
+   "lean": "C",
+   "published": "2026-10-30T13:00:00+00:00",
+   "focus": "D",
    "also": [],
    "n_outlets": 1,
    "coverage": {
@@ -390,11 +421,11 @@
    }
   },
   {
-   "title": "Steve Hilton rips Xavier Becerra’s proposed mileage tax: ‘They never stop gouging you’",
-   "link": "https://nypost.com/2026/10/29/us-news/steve-hilton-rips-xavier-becerras-proposed-mileage-tax-on-drivers/",
+   "title": "Meet Bruce Blakeman, the NY pol taking on Dem Gov. Hochul — who started campaigning at age 7, served as Nancy Reagan’s driver",
+   "link": "https://nypost.com/2026/10/30/us-news/meet-bruce-blakeman-the-ny-pol-taking-on-dem-gov-hochul/",
    "outlet": "New York Post",
    "lean": "R",
-   "published": "2026-10-29T19:33:06+00:00",
+   "published": "2026-10-30T10:00:00+00:00",
    "focus": "both",
    "also": [],
    "n_outlets": 1,
@@ -403,44 +434,14 @@
     "C": 0,
     "R": 1
    }
-  },
-  {
-   "title": "Report on alleged ‘second Dan Sullivan’ effort emerges after nearly 1 in 10 Alaskans voted",
-   "link": "https://www.foxnews.com/politics/report-alleged-second-dan-sullivan-effort-emerges-early-1-10-alaskans-voted",
-   "outlet": "Fox News",
-   "lean": "R",
-   "published": "2026-10-29T19:19:21+00:00",
-   "focus": "R",
-   "also": [],
-   "n_outlets": 1,
-   "coverage": {
-    "L": 0,
-    "C": 0,
-    "R": 1
-   }
-  },
-  {
-   "title": "El-Sayed's faith, family under scrutiny in campaign. Here's what we know.",
-   "link": "https://www.cbsnews.com/news/abdul-el-sayed-faith-family-michigan-senate-campaign/",
-   "outlet": "CBS News",
-   "lean": "L",
-   "published": "2026-10-29T14:42:48+00:00",
-   "focus": "D",
-   "also": [],
-   "n_outlets": 1,
-   "coverage": {
-    "L": 1,
-    "C": 0,
-    "R": 0
-   }
   }
  ],
  "balance": {
   "D": 6,
   "R": 6,
   "both": 2,
-  "left_outlets": 4,
-  "right_outlets": 4,
-  "center_outlets": 6
+  "left_outlets": 5,
+  "right_outlets": 5,
+  "center_outlets": 4
  }
 }

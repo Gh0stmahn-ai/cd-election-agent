@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-30T02:34:01+00:00",
+ "as_of": "2026-10-30T17:01:57+00:00",
  "source": "Wikipedia per-race election articles",
  "half_life_days": 10,
  "max_age_days": 120,
@@ -36,7 +36,123 @@
    "undecided": 4.3,
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-10-30T02:33:31+00:00"
+   "read_at": "2026-10-30T17:01:25+00:00"
+  },
+  "FL-2026-special": {
+   "state": "FL",
+   "dem_candidate": "Angie Nixon",
+   "rep_candidate": "Ashley Moody",
+   "dem_margin": -6.3,
+   "method": "mean of 5 aggregators, averaged with 21 polls adjusted for sponsors",
+   "n_used": 21,
+   "detail": [
+    {
+     "label": "270toWin",
+     "margin": -6.4
+    },
+    {
+     "label": "Decision Desk HQ",
+     "margin": -6.5
+    },
+    {
+     "label": "FiftyPlusOne",
+     "margin": -6.4
+    },
+    {
+     "label": "RealClearPolitics",
+     "margin": -6.3
+    },
+    {
+     "label": "Silver Bulletin",
+     "margin": -6.6
+    },
+    {
+     "label": "ActiVote",
+     "dem": 47.0,
+     "rep": 53.0,
+     "date": "2026-10-28",
+     "n": 400,
+     "weight": 0.616,
+     "margin": -6.0,
+     "sponsor": null
+    },
+    {
+     "label": "Workbench Strategy (D)",
+     "dem": 47.0,
+     "rep": 49.0,
+     "date": "2026-10-28",
+     "n": 800,
+     "weight": 0.435,
+     "margin": -4.5,
+     "sponsor": "D"
+    },
+    {
+     "label": "co/efficient (R)",
+     "dem": 40.0,
+     "rep": 48.0,
+     "date": "2026-10-11",
+     "n": 1014,
+     "weight": 0.151,
+     "margin": -5.5,
+     "sponsor": "R"
+    },
+    {
+     "label": "MDW Communications",
+     "dem": 42.0,
+     "rep": 48.0,
+     "date": "2026-10-10",
+     "n": 2351,
+     "weight": 0.4,
+     "margin": -6.0,
+     "sponsor": null
+    },
+    {
+     "label": "Mason-Dixon",
+     "dem": 40.0,
+     "rep": 50.0,
+     "date": "2026-10-08",
+     "n": 625,
+     "weight": 0.192,
+     "margin": -10.0,
+     "sponsor": null
+    },
+    {
+     "label": "Univision / YouGov",
+     "dem": 42.0,
+     "rep": 51.0,
+     "date": "2026-10-07",
+     "n": 825,
+     "weight": 0.206,
+     "margin": -9.0,
+     "sponsor": null
+    },
+    {
+     "label": "Stetson University",
+     "dem": 41.0,
+     "rep": 52.0,
+     "date": "2026-10-06",
+     "n": 716,
+     "weight": 0.179,
+     "margin": -11.0,
+     "sponsor": null
+    },
+    {
+     "label": "St. Pete Polls",
+     "dem": 45.0,
+     "rep": 47.0,
+     "date": "2026-10-06",
+     "n": 836,
+     "weight": 0.194,
+     "margin": -2.0,
+     "sponsor": null
+    }
+   ],
+   "aggregator_margin": -6.4,
+   "poll_margin": -6.2,
+   "undecided": 6.0,
+   "rating": "likely",
+   "rating_lean": "R",
+   "read_at": "2026-10-30T17:01:27+00:00"
   },
   "GA-2026": {
    "state": "GA",
@@ -152,7 +268,7 @@
    "undecided": 4.6,
    "rating": "likely",
    "rating_lean": "D",
-   "read_at": "2026-10-30T02:33:33+00:00"
+   "read_at": "2026-10-30T17:01:29+00:00"
   },
   "IA-2026": {
    "state": "IA",
@@ -268,35 +384,35 @@
    "undecided": 8.5,
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-10-30T02:33:35+00:00"
+   "read_at": "2026-10-30T17:01:32+00:00"
   },
   "KS-2026": {
    "state": "KS",
    "dem_candidate": "Adam Hamilton",
    "rep_candidate": "Roger Marshall",
-   "dem_margin": 1.2,
-   "method": "mean of 5 aggregators, averaged with 12 polls adjusted for sponsors",
-   "n_used": 12,
+   "dem_margin": 2.7,
+   "method": "mean of 5 aggregators, averaged with 14 polls adjusted for sponsors",
+   "n_used": 14,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 1.5
+     "margin": 3.0
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 1.3
+     "margin": 2.9
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 1.5
+     "margin": 3.3
     },
     {
      "label": "RealClearPolitics",
-     "margin": 0.2
+     "margin": 2.6
     },
     {
      "label": "Silver Bulletin",
-     "margin": 0.8
+     "margin": 1.3
     },
     {
      "label": "Trafalgar Group (R)",
@@ -329,6 +445,16 @@
      "sponsor": null
     },
     {
+     "label": "The Washington Post / SSPG",
+     "dem": 52.0,
+     "rep": 43.0,
+     "date": "2026-10-04",
+     "n": 801,
+     "weight": 0.165,
+     "margin": 9.0,
+     "sponsor": null
+    },
+    {
      "label": "RedBox Research (D)",
      "dem": 45.0,
      "rep": 46.0,
@@ -337,6 +463,16 @@
      "weight": 0.105,
      "margin": -3.5,
      "sponsor": "D"
+    },
+    {
+     "label": "Emerson College",
+     "dem": 50.0,
+     "rep": 47.0,
+     "date": "2026-10-03",
+     "n": 800,
+     "weight": 0.154,
+     "margin": 3.0,
+     "sponsor": null
     },
     {
      "label": "InsiderAdvantage (R)",
@@ -357,34 +493,14 @@
      "weight": 0.054,
      "margin": -0.5,
      "sponsor": "D"
-    },
-    {
-     "label": "Emerson College",
-     "dem": 45.0,
-     "rep": 43.0,
-     "date": "2026-09-08",
-     "n": 750,
-     "weight": 0.026,
-     "margin": 2.0,
-     "sponsor": null
-    },
-    {
-     "label": "New York Times / Siena University",
-     "dem": 45.0,
-     "rep": 45.0,
-     "date": "2026-09-06",
-     "n": 605,
-     "weight": 0.021,
-     "margin": 0.0,
-     "sponsor": null
     }
    ],
-   "aggregator_margin": 1.1,
-   "poll_margin": 1.4,
-   "undecided": 8.6,
+   "aggregator_margin": 2.6,
+   "poll_margin": 2.7,
+   "undecided": 7.3,
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-10-30T02:33:38+00:00"
+   "read_at": "2026-10-30T17:01:34+00:00"
   },
   "ME-2026": {
    "state": "ME",
@@ -500,13 +616,13 @@
    "undecided": 2.6,
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-10-30T02:33:40+00:00"
+   "read_at": "2026-10-30T17:01:36+00:00"
   },
   "MI-2026": {
    "state": "MI",
    "dem_candidate": "Abdul El-Sayed",
    "rep_candidate": "Mike Rogers",
-   "dem_margin": 3.9,
+   "dem_margin": 4.0,
    "method": "mean of 5 aggregators, averaged with 45 polls adjusted for sponsors",
    "n_used": 45,
    "detail": [
@@ -516,11 +632,11 @@
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 4.2
+     "margin": 4.5
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 4.4
+     "margin": 4.8
     },
     {
      "label": "RealClearPolitics",
@@ -528,7 +644,7 @@
     },
     {
      "label": "Silver Bulletin",
-     "margin": 3.3
+     "margin": 3.7
     },
     {
      "label": "The Tyson Group (R)",
@@ -611,12 +727,12 @@
      "sponsor": "R"
     }
    ],
-   "aggregator_margin": 3.9,
+   "aggregator_margin": 4.2,
    "poll_margin": 3.9,
    "undecided": 7.3,
    "rating": "tossup",
    "rating_lean": "D",
-   "read_at": "2026-10-30T02:33:43+00:00"
+   "read_at": "2026-10-30T17:01:38+00:00"
   },
   "MN-2026": {
    "state": "MN",
@@ -732,7 +848,7 @@
    "undecided": 10.4,
    "rating": "lean",
    "rating_lean": "D",
-   "read_at": "2026-10-30T02:33:45+00:00"
+   "read_at": "2026-10-30T17:01:41+00:00"
   },
   "MS-2026": {
    "state": "MS",
@@ -768,7 +884,7 @@
    "undecided": 17.0,
    "rating": "likely",
    "rating_lean": "R",
-   "read_at": "2026-10-30T02:33:47+00:00"
+   "read_at": "2026-10-30T17:01:43+00:00"
   },
   "NC-2026": {
    "state": "NC",
@@ -884,7 +1000,7 @@
    "undecided": 6.1,
    "rating": "likely",
    "rating_lean": "D",
-   "read_at": "2026-10-30T02:33:50+00:00"
+   "read_at": "2026-10-30T17:01:45+00:00"
   },
   "NE-2026": {
    "state": "NE",
@@ -994,9 +1110,9 @@
    "aggregator_margin": -0.7,
    "poll_margin": 0.3,
    "undecided": 7.6,
-   "rating": "likely",
+   "rating": "lean",
    "rating_lean": "R",
-   "read_at": "2026-10-30T02:33:52+00:00"
+   "read_at": "2026-10-30T17:01:47+00:00"
   },
   "NH-2026": {
    "state": "NH",
@@ -1112,7 +1228,7 @@
    "undecided": 7.1,
    "rating": "lean",
    "rating_lean": "D",
-   "read_at": "2026-10-30T02:33:54+00:00"
+   "read_at": "2026-10-30T17:01:50+00:00"
   },
   "OH-2026-special": {
    "state": "OH",
@@ -1228,31 +1344,31 @@
    "undecided": 5.9,
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-10-30T02:33:57+00:00"
+   "read_at": "2026-10-30T17:01:52+00:00"
   },
   "SC-2026": {
    "state": "SC",
    "dem_candidate": "Annie Andrews",
    "rep_candidate": "Darline Graham",
-   "dem_margin": -1.9,
+   "dem_margin": -2.1,
    "method": "mean of 5 aggregators, averaged with 13 polls adjusted for sponsors",
    "n_used": 13,
    "detail": [
     {
      "label": "270toWin",
-     "margin": -1.8
+     "margin": -2.4
     },
     {
      "label": "Decision Desk HQ",
-     "margin": -1.4
+     "margin": -1.7
     },
     {
      "label": "FiftyPlusOne",
-     "margin": -0.8
+     "margin": -1.1
     },
     {
      "label": "RealClearPolitics",
-     "margin": -2.4
+     "margin": -2.7
     },
     {
      "label": "Silver Bulletin",
@@ -1339,36 +1455,36 @@
      "sponsor": "R"
     }
    ],
-   "aggregator_margin": -1.6,
+   "aggregator_margin": -1.9,
    "poll_margin": -2.2,
    "undecided": 9.8,
    "rating": "lean",
    "rating_lean": "R",
-   "read_at": "2026-10-30T02:33:59+00:00"
+   "read_at": "2026-10-30T17:01:54+00:00"
   },
   "TX-2026": {
    "state": "TX",
    "dem_candidate": "James Talarico",
    "rep_candidate": "Ken Paxton",
-   "dem_margin": 3.1,
-   "method": "mean of 6 aggregators, averaged with 50 polls adjusted for sponsors",
-   "n_used": 50,
+   "dem_margin": 2.9,
+   "method": "mean of 6 aggregators, averaged with 51 polls adjusted for sponsors",
+   "n_used": 51,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 3.5
+     "margin": 3.2
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 4.0
+     "margin": 3.7
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 3.5
+     "margin": 3.3
     },
     {
      "label": "RealClearPolitics",
-     "margin": 2.1
+     "margin": 1.8
     },
     {
      "label": "The Texas Tribune",
@@ -1459,12 +1575,12 @@
      "sponsor": null
     }
    ],
-   "aggregator_margin": 3.2,
-   "poll_margin": 3.0,
-   "undecided": 4.6,
+   "aggregator_margin": 3.0,
+   "poll_margin": 2.8,
+   "undecided": 4.5,
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-10-30T02:34:01+00:00"
+   "read_at": "2026-10-30T17:01:57+00:00"
   }
  },
  "issues": []

@@ -4319,15 +4319,15 @@
    "rep": {
     "name": "Rodriguez, Maria Teresa",
     "incumbent": false,
-    "receipts": 75079,
-    "spent": 42618,
-    "cash": 32361,
+    "receipts": 84149,
+    "spent": 43768,
+    "cash": 40281,
     "debts": 0,
-    "as_of": "2026-09-30",
+    "as_of": "2026-10-14",
     "named": false
    },
-   "dem_cash_share": 0.9835,
-   "cash_gap": 1901485
+   "dem_cash_share": 0.9796,
+   "cash_gap": 1893565
   },
   "KY-4": {
    "chamber": "house",
@@ -10410,8 +10410,8 @@
    "dem": {
     "name": "Taylor, Shannon Leigh",
     "incumbent": false,
-    "receipts": 4604761,
-    "spent": 4006027,
+    "receipts": 4607379,
+    "spent": 4008645,
     "cash": 598734,
     "debts": 0,
     "as_of": "2026-10-14",
@@ -11076,15 +11076,15 @@
    "rep": {
     "name": "Grothman, Glenn S.",
     "incumbent": true,
-    "receipts": 1193555,
+    "receipts": 1209007,
     "spent": 1115972,
-    "cash": 600073,
+    "cash": 615525,
     "debts": 139110,
     "as_of": "2026-10-14",
     "named": false
    },
-   "dem_cash_share": 0.1321,
-   "cash_gap": -508770
+   "dem_cash_share": 0.1292,
+   "cash_gap": -524222
   },
   "WI-7": {
    "chamber": "house",

@@ -1,7 +1,7 @@
 {
  "as_of": "2026-10-30",
- "ratings_environment_dem_margin": 9.3,
- "ratings_source": "Cook Political Report governor ratings, via Wikipedia (revision 1382667605, 2026-10-29)",
+ "ratings_environment_dem_margin": 8.97,
+ "ratings_source": "Cook Political Report governor ratings, via Wikipedia (revision 1382832809, 2026-10-30)",
  "not_up": {
   "D": 6,
   "R": 8,
@@ -69,7 +69,7 @@
    "race_id": "AZ-GOV",
    "state": "AZ",
    "held_by": "D",
-   "rating": "lean",
+   "rating": "likely",
    "lean": "D",
    "pvi": -2.0,
    "incumbent": "Katie Hobbs",
@@ -503,7 +503,7 @@
    "race_id": "WI-GOV",
    "state": "WI",
    "held_by": "D",
-   "rating": "tossup",
+   "rating": "lean",
    "lean": "D",
    "pvi": 0.0,
    "incumbent": "Tony Evers",
