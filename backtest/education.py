@@ -45,7 +45,16 @@ def fetch_shares(key):
     url = ACS + "?" + urllib.parse.urlencode({"get": ",".join(VARS), "for": "state:*", "key": key})
     req = urllib.request.Request(url, headers={"User-Agent": "cd-election-agent/1.0"})
     with urllib.request.urlopen(req, timeout=60) as resp:
-        rows = json.loads(resp.read().decode("utf-8"))
+        final, body = resp.geturl(), resp.read().decode("utf-8", "replace")
+    try:
+        rows = json.loads(body)
+    except ValueError:
+        # The Census API answers a bad or not-yet-activated key by redirecting
+        # to an HTML page (invalid_key.html, missing_key.html) instead of an error.
+        page = final.split("?")[0].rsplit("/", 1)[-1]
+        raise SystemExit(f"The Census API did not return data (it sent {page}). "
+                         "If that is invalid_key.html, the key has not been activated yet: "
+                         "click the link in the Census email, then run this again.")
     head, out = rows[0], {}
     for row in rows[1:]:
         r = dict(zip(head, row))
