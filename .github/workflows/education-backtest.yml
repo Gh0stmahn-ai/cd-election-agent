@@ -1,0 +1,50 @@
+name: Education backtest
+
+# One-off research run: do polling and rating misses line up with each
+# state's share of white adults without a college degree, the same way in a
+# given year? Reads the Census Bureau's American Community Survey with the
+# CENSUS_API_KEY repository secret, runs backtest/education.py, and commits
+# the inputs and the result (backtest/state_education.json,
+# backtest/education_fit.json). It changes nothing in the forecast.
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - name: Run the education backtest
+        env:
+          CENSUS_API_KEY: ${{ secrets.CENSUS_API_KEY }}
+        run: |
+          if [ -z "$CENSUS_API_KEY" ]; then
+            echo "The CENSUS_API_KEY secret is not set."
+            exit 1
+          fi
+          python3 backtest/education.py
+      - name: Commit the result
+        run: |
+          git config user.name "election-agent[bot]"
+          git config user.email "actions@users.noreply.github.com"
+          git add backtest/state_education.json backtest/education_fit.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "Education backtest result"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main || { git rebase --abort; exit 1; }
+            if git push origin HEAD:main; then exit 0; fi
+            sleep $((attempt * 5))
+          done
+          exit 1
