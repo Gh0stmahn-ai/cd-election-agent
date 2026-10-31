@@ -49,6 +49,15 @@ way in every red state, or every blue one, in a given year) was tested on the
 cycle-adjusted miss on Cook PVI in competitive races varied by 0.17 per PVI
 point against a sampling error of 0.16, an implied factor of 0.08 per point:
 under a point of extra correlated error even in a state at PVI 10. Too small
-and too uncertain to add, so the model does not carry it. The education
-version of the same test (non-college white share) needs Census data that now
-requires an API key, and was not run.
+and too uncertain to add, so the model does not carry it.
+
+The education version of the same test (`education.py`, run by the
+"Education backtest" workflow with the CENSUS_API_KEY secret) did find a
+pattern. In competitive races, holding PVI fixed, the yearly slope of the miss
+on a state's share of white adults without a college degree (ACS 2023) varied
+across cycles far more than its sampling error (p = 0.03): a factor of 1.38
+points per standard deviation of the share, running one way in 2020 (-2.9) and
+the other in 2022 (+2.2). The model now draws that part of the state error as
+one shared factor (`EDUCATION_FACTOR_SD`), shrinking the independent state
+draw to keep each race's total uncertainty the same. Results are in
+`education_fit.json`; the state shares in `state_education.json`.
