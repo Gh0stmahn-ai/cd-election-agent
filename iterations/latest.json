@@ -1,18 +1,18 @@
 {
  "schema_version": 2,
- "timestamp": "2026-10-31T02:19:23.664673+00:00",
+ "timestamp": "2026-10-31T16:05:37.461318+00:00",
  "status": {
   "state": "success",
   "issues": []
  },
  "environment": {
-  "generic_ballot": 8.9,
+  "generic_ballot": 8.91,
   "generic_ballot_as_of": "2026-10-31",
   "poll_weight": 0.95,
   "fundamentals": {
    "midterm_baseline_pts": 3.5,
-   "approval_net": -24.0,
-   "approval_pts": 4.8,
+   "approval_net": -23.7,
+   "approval_pts": 4.74,
    "economic_index": -0.588,
    "economic_pts": 1.76,
    "economic_components": [
@@ -80,17 +80,17 @@
      "contribution": 0.027
     }
    ],
-   "prior_dem_margin": 10.06
+   "prior_dem_margin": 10.0
   },
   "dem_margin": 8.96,
   "days_to_election": 3,
   "national_error_sd": 2.94
  },
  "senate": {
-  "dem_control_prob": 0.7175,
-  "tie_prob": 0.1301,
-  "mean_dem_seats": 51.59,
-  "mean_rep_seats": 48.01,
+  "dem_control_prob": 0.7163,
+  "tie_prob": 0.1307,
+  "mean_dem_seats": 51.58,
+  "mean_rep_seats": 48.07,
   "not_up": {
    "D": 34,
    "R": 31,
@@ -112,19 +112,19 @@
    "42": 0.00012,
    "43": 0.00052,
    "44": 0.00117,
-   "45": 0.00326,
-   "46": 0.00786,
+   "45": 0.00327,
+   "46": 0.00794,
    "47": 0.01915,
-   "48": 0.04154,
-   "49": 0.0787,
-   "50": 0.13009,
-   "51": 0.17715,
-   "52": 0.19545,
-   "53": 0.1686,
-   "54": 0.10902,
-   "55": 0.0485,
-   "56": 0.01522,
-   "57": 0.00288,
+   "48": 0.04186,
+   "49": 0.07886,
+   "50": 0.13068,
+   "51": 0.17718,
+   "52": 0.1954,
+   "53": 0.1682,
+   "54": 0.10848,
+   "55": 0.04839,
+   "56": 0.01514,
+   "57": 0.00287,
    "58": 0.0005,
    "59": 7e-05,
    "60": 3e-05,
@@ -153,7 +153,7 @@
     },
     "expected_margin": 1.78,
     "dem_win_prob": 0.6166,
-    "tipping_prob": 0.0985,
+    "tipping_prob": 0.0984,
     "rating_prob": 0.3988,
     "poll_prob": 0.6582
    },
@@ -277,7 +277,7 @@
     },
     "expected_margin": 9.3,
     "dem_win_prob": 0.9444,
-    "tipping_prob": 0.036,
+    "tipping_prob": 0.0359,
     "rating_prob": 0.983,
     "poll_prob": 0.9302
    },
@@ -301,7 +301,7 @@
     },
     "expected_margin": -0.46,
     "dem_win_prob": 0.4687,
-    "tipping_prob": 0.0925,
+    "tipping_prob": 0.0927,
     "rating_prob": 0.3988,
     "poll_prob": 0.5068
    },
@@ -357,15 +357,15 @@
     "atmospherics_adj": -0.01,
     "polling": {
      "weight": 0.841,
-     "poll_margin": 2.9,
+     "poll_margin": 2.8,
      "n_used": 14,
      "rating_margin": -1.51
     },
-    "expected_margin": 2.05,
-    "dem_win_prob": 0.6401,
-    "tipping_prob": 0.1064,
+    "expected_margin": 1.97,
+    "dem_win_prob": 0.6344,
+    "tipping_prob": 0.1062,
     "rating_prob": 0.3988,
-    "poll_prob": 0.6888
+    "poll_prob": 0.6827
    },
    {
     "seat_id": "KY-2026",
@@ -439,12 +439,12 @@
     "polling": {
      "weight": 0.841,
      "poll_margin": 2.2,
-     "n_used": 28,
+     "n_used": 29,
      "rating_margin": -1.51
     },
     "expected_margin": 1.61,
     "dem_win_prob": 0.6082,
-    "tipping_prob": 0.1036,
+    "tipping_prob": 0.1035,
     "rating_prob": 0.3988,
     "poll_prob": 0.6456
    },
@@ -468,7 +468,7 @@
     },
     "expected_margin": 3.62,
     "dem_win_prob": 0.7352,
-    "tipping_prob": 0.0986,
+    "tipping_prob": 0.0988,
     "rating_prob": 0.5999,
     "poll_prob": 0.7621
    },
@@ -492,7 +492,7 @@
     },
     "expected_margin": 6.4,
     "dem_win_prob": 0.866,
-    "tipping_prob": 0.0676,
+    "tipping_prob": 0.0675,
     "rating_prob": 0.9253,
     "poll_prob": 0.8458
    },
@@ -516,7 +516,7 @@
     },
     "expected_margin": -9.6,
     "dem_win_prob": 0.0669,
-    "tipping_prob": 0.0144,
+    "tipping_prob": 0.0145,
     "rating_prob": 0.0168,
     "poll_prob": 0.1709
    },
@@ -559,7 +559,7 @@
     },
     "expected_margin": 11.24,
     "dem_win_prob": 0.974,
-    "tipping_prob": 0.0198,
+    "tipping_prob": 0.0197,
     "rating_prob": 0.983,
     "poll_prob": 0.9691
    },
@@ -577,15 +577,15 @@
     "atmospherics_adj": 0.0,
     "polling": {
      "weight": 0.841,
-     "poll_margin": -0.2,
-     "n_used": 11,
+     "poll_margin": -1.2,
+     "n_used": 12,
      "rating_margin": -8.51
     },
-    "expected_margin": -1.52,
-    "dem_win_prob": 0.395,
+    "expected_margin": -2.36,
+    "dem_win_prob": 0.3393,
     "tipping_prob": 0.0,
     "rating_prob": 0.0743,
-    "poll_prob": 0.4865
+    "poll_prob": 0.4193
    },
    {
     "seat_id": "NH-2026",
@@ -607,7 +607,7 @@
     },
     "expected_margin": 7.04,
     "dem_win_prob": 0.8877,
-    "tipping_prob": 0.061,
+    "tipping_prob": 0.0608,
     "rating_prob": 0.9253,
     "poll_prob": 0.8924
    },
@@ -669,7 +669,7 @@
     },
     "expected_margin": 3.2,
     "dem_win_prob": 0.7099,
-    "tipping_prob": 0.0991,
+    "tipping_prob": 0.0992,
     "rating_prob": 0.3988,
     "poll_prob": 0.7065
    },
@@ -750,7 +750,7 @@
     },
     "expected_margin": -2.86,
     "dem_win_prob": 0.3099,
-    "tipping_prob": 0.0697,
+    "tipping_prob": 0.0699,
     "rating_prob": 0.0743,
     "poll_prob": 0.38
    },
@@ -807,12 +807,12 @@
     "polling": {
      "weight": 0.841,
      "poll_margin": 2.9,
-     "n_used": 51,
+     "n_used": 53,
      "rating_margin": -1.51
     },
     "expected_margin": 2.5,
     "dem_win_prob": 0.6588,
-    "tipping_prob": 0.0954,
+    "tipping_prob": 0.0955,
     "rating_prob": 0.3988,
     "poll_prob": 0.6888
    },
@@ -875,7 +875,7 @@
    }
   ],
   "ratings_as_of": "2026-10-31",
-  "ratings_source": "Cook Political Report Senate ratings of Oct 30, 2026, via Wikipedia (revision 1382915634, 2026-10-31)"
+  "ratings_source": "Cook Political Report Senate ratings of Oct 30, 2026, via Wikipedia (revision 1383022333, 2026-10-31)"
  },
  "house": {
   "dem_control_prob": 0.9018,
@@ -2571,8 +2571,8 @@
     "notes": "",
     "polling": {
      "weight": 0.841,
-     "poll_margin": 9.2,
-     "n_used": 18,
+     "poll_margin": 9.0,
+     "n_used": 19,
      "rating_margin": 11.29,
      "adjustment": 0.0
     },
@@ -2598,10 +2598,10 @@
      "adjustment_applied": 0.0
     },
     "adjustment": 0.0,
-    "expected_margin": 9.53,
-    "dem_win_prob": 0.9586,
+    "expected_margin": 9.36,
+    "dem_win_prob": 0.9565,
     "rating_prob": 0.9792,
-    "poll_prob": 0.9516
+    "poll_prob": 0.9478
    },
    {
     "race_id": "CA-GOV",
@@ -3476,7 +3476,7 @@
     "polling": {
      "weight": 0.841,
      "poll_margin": -2.6,
-     "n_used": 42,
+     "n_used": 43,
      "rating_margin": -9.71,
      "adjustment": 0.0
     },
@@ -3649,8 +3649,8 @@
    "R": 26
   },
   "mean_dem": 27.46,
-  "dem_majority_prob": 0.8555,
-  "dem_gain_prob": 0.9421,
+  "dem_majority_prob": 0.8551,
+  "dem_gain_prob": 0.9418,
   "percentiles": {
    "5": 24,
    "10": 25,
@@ -3665,20 +3665,20 @@
    "16": 1e-05,
    "17": 4e-05,
    "18": 6e-05,
-   "19": 0.00014,
-   "20": 0.0005,
-   "21": 0.00133,
-   "22": 0.00424,
-   "23": 0.01342,
-   "24": 0.03818,
-   "25": 0.08658,
-   "26": 0.15396,
-   "27": 0.20889,
-   "28": 0.20491,
-   "29": 0.15139,
-   "30": 0.08301,
-   "31": 0.03552,
-   "32": 0.01271,
+   "19": 0.00016,
+   "20": 0.00049,
+   "21": 0.00135,
+   "22": 0.00426,
+   "23": 0.01351,
+   "24": 0.03831,
+   "25": 0.08668,
+   "26": 0.15403,
+   "27": 0.20884,
+   "28": 0.20476,
+   "29": 0.15124,
+   "30": 0.08295,
+   "31": 0.0355,
+   "32": 0.0127,
    "33": 0.00375,
    "34": 0.00098,
    "35": 0.00024,
@@ -3688,7 +3688,7 @@
   },
   "majority": 26,
   "ratings_as_of": "2026-10-31",
-  "ratings_source": "Cook Political Report governor ratings, via Wikipedia (revision 1382860978, 2026-10-30)",
+  "ratings_source": "Cook Political Report governor ratings, via Wikipedia (revision 1382943703, 2026-10-31)",
   "research": {
    "as_of": "2026-10-24",
    "cap_points": 2.0,
@@ -3698,10 +3698,10 @@
   }
  },
  "joint": {
-  "dem_both": 0.6969,
-  "dem_house_rep_senate": 0.2049,
-  "rep_house_dem_senate": 0.0205,
-  "rep_both": 0.0776
+  "dem_both": 0.6959,
+  "dem_house_rep_senate": 0.2059,
+  "rep_house_dem_senate": 0.0204,
+  "rep_both": 0.0778
  },
  "n_sims": 100000,
  "fundamentals_display": {
@@ -3902,11 +3902,11 @@
    {
     "id": "approval",
     "label": "Trump job approval",
-    "value_net": -24.0,
-    "approve": 36.7,
-    "disapprove": 60.7,
-    "display": "37% / 61%",
-    "as_of": "2026-10-29",
+    "value_net": -23.7,
+    "approve": 36.8,
+    "disapprove": 60.5,
+    "display": "37% / 60%",
+    "as_of": "2026-10-30",
     "context": "Average of 9 public approval aggregators as collated on Wikipedia.",
     "why": "The single strongest predictor of midterm losses. Since WWII the president's party has lost House seats in all but two midterms (1998, 2002), and presidents under 50% approval have lost about 37 seats on average (Gallup).",
     "sources": [
@@ -3951,223 +3951,61 @@
   ]
  },
  "change": {
-  "from": "2026-10-30T02:36:02.883136+00:00",
-  "to": "2026-10-31T02:19:23.664673+00:00",
+  "from": "2026-10-31T02:19:23.664673+00:00",
+  "to": "2026-10-31T16:05:37.461318+00:00",
   "total": {
-   "senate": 2.96,
-   "house": 5.8
+   "senate": -0.28,
+   "house": 0.0
   },
   "drivers": [
-   {
-    "id": "senate_polls",
-    "label": "Senate state polling",
-    "points": {
-     "senate": 3.245,
-     "house": 0.0
-    }
-   },
    {
     "id": "model",
     "label": "Model recalibration",
     "points": {
-     "senate": -0.14,
-     "house": 2.92
-    }
-   },
-   {
-    "id": "house_ratings",
-    "label": "House rating changes",
-    "points": {
-     "senate": 0.0,
-     "house": 2.885
-    }
-   },
-   {
-    "id": "senate_ratings",
-    "label": "Senate rating changes",
-    "points": {
-     "senate": -0.265,
+     "senate": -0.16,
      "house": 0.0
     }
    },
    {
-    "id": "clock",
-    "label": "Election Day getting closer",
+    "id": "senate_polls",
+    "label": "Senate state polling",
     "points": {
-     "senate": 0.135,
-     "house": 0.055
+     "senate": -0.12,
+     "house": 0.0
     }
    },
    {
     "id": "generic_ballot",
     "label": "Generic ballot",
     "points": {
-     "senate": -0.02,
-     "house": -0.06
+     "senate": 0.01,
+     "house": 0.025
+    }
+   },
+   {
+    "id": "approval",
+    "label": "Presidential approval",
+    "points": {
+     "senate": -0.01,
+     "house": -0.025
     }
    }
   ],
   "residual": {
-   "senate": 0.005,
+   "senate": -0.0,
    "house": 0.0
   },
   "facts": [
    {
-    "kind": "rating",
-    "text": "FL Senate moved from Solid R to Likely R"
-   },
-   {
-    "kind": "rating",
-    "text": "NE Senate moved from Likely R to Lean R"
-   },
-   {
-    "kind": "rating",
-    "text": "CO-5 moved from Lean R to Toss-up R"
-   },
-   {
-    "kind": "rating",
-    "text": "FL-7 moved from Likely R to Lean R"
-   },
-   {
-    "kind": "rating",
-    "text": "FL-9 moved from Likely R to Lean R"
-   },
-   {
-    "kind": "rating",
-    "text": "IN-5 moved from Likely R to Lean R"
-   },
-   {
-    "kind": "rating",
-    "text": "NC-5 moved from Solid R to Likely R"
-   },
-   {
-    "kind": "rating",
-    "text": "NC-9 moved from Solid R to Likely R"
-   },
-   {
-    "kind": "rating",
-    "text": "and 6 more House districts re-rated"
+    "kind": "poll",
+    "text": "Presidential approval went from net -24.0 to -23.7"
    },
    {
     "kind": "poll",
-    "text": "FL Senate has a polling average for the first time, at R+6.3"
-   },
-   {
-    "kind": "poll",
-    "text": "KS Senate polling average moved D+1.2 to D+2.9"
-   },
-   {
-    "kind": "poll",
-    "text": "MI Senate polling average moved D+3.9 to D+4.2"
+    "text": "NE Senate polling average moved R+0.2 to R+1.2"
    }
   ],
   "races": [
-   {
-    "kind": "house",
-    "id": "PA-8",
-    "state": "PA",
-    "label": "PA-8",
-    "from": 39.8,
-    "to": 88.4,
-    "shift": 48.6,
-    "why": "re-rated Toss-up R to Lean D"
-   },
-   {
-    "kind": "house",
-    "id": "PA-1",
-    "state": "PA",
-    "label": "PA-1",
-    "from": 15.0,
-    "to": 51.9,
-    "shift": 36.9,
-    "why": "re-rated Lean R to Toss-up R"
-   },
-   {
-    "kind": "house",
-    "id": "OH-9",
-    "state": "OH",
-    "label": "OH-9",
-    "from": 51.2,
-    "to": 87.1,
-    "shift": 35.9,
-    "why": "re-rated Toss-up D to Lean D"
-   },
-   {
-    "kind": "house",
-    "id": "CO-5",
-    "state": "CO",
-    "label": "CO-5",
-    "from": 9.6,
-    "to": 40.7,
-    "shift": 31.2,
-    "why": "re-rated Lean R to Toss-up R"
-   },
-   {
-    "kind": "house",
-    "id": "SC-1",
-    "state": "SC",
-    "label": "SC-1",
-    "from": 8.8,
-    "to": 38.7,
-    "shift": 29.8,
-    "why": "re-rated Lean R to Toss-up R"
-   },
-   {
-    "kind": "senate",
-    "id": "FL-2026-special",
-    "seat_id": "FL-2026-special",
-    "state": "FL",
-    "label": "FL Senate",
-    "dem_candidate": "Angie Nixon",
-    "rep_candidate": "Ashley Moody",
-    "from": 0.2,
-    "to": 10.4,
-    "shift": 10.3,
-    "why": "re-rated Solid R to Likely R and a state polling average arriving"
-   },
-   {
-    "kind": "senate",
-    "id": "KS-2026",
-    "seat_id": "KS-2026",
-    "state": "KS",
-    "label": "KS Senate",
-    "dem_candidate": "Adam Hamilton",
-    "rep_candidate": "Roger Marshall",
-    "from": 54.2,
-    "to": 64.0,
-    "shift": 9.8,
-    "why": "its own state polling"
-   },
-   {
-    "kind": "house",
-    "id": "FL-7",
-    "state": "FL",
-    "label": "FL-7",
-    "from": 2.6,
-    "to": 11.0,
-    "shift": 8.3,
-    "why": "re-rated Likely R to Lean R"
-   },
-   {
-    "kind": "house",
-    "id": "IN-5",
-    "state": "IN",
-    "label": "IN-5",
-    "from": 1.9,
-    "to": 8.9,
-    "shift": 7.0,
-    "why": "re-rated Likely R to Lean R"
-   },
-   {
-    "kind": "house",
-    "id": "FL-9",
-    "state": "FL",
-    "label": "FL-9",
-    "from": 2.0,
-    "to": 8.7,
-    "shift": 6.8,
-    "why": "re-rated Likely R to Lean R"
-   },
    {
     "kind": "senate",
     "id": "NE-2026",
@@ -4176,396 +4014,10 @@
     "label": "NE Senate",
     "dem_candidate": "Dan Osborn (I)",
     "rep_candidate": "Pete Ricketts",
-    "from": 35.5,
-    "to": 39.5,
-    "shift": 4.0,
-    "why": "re-rated Likely R to Lean R"
-   },
-   {
-    "kind": "house",
-    "id": "KY-6",
-    "state": "KY",
-    "label": "KY-6",
-    "from": 34.6,
-    "to": 37.9,
-    "shift": 3.4,
-    "why": "a change to the model itself"
-   },
-   {
-    "kind": "house",
-    "id": "IA-2",
-    "state": "IA",
-    "label": "IA-2",
-    "from": 39.6,
-    "to": 42.9,
-    "shift": 3.3,
-    "why": "a change to the model itself"
-   },
-   {
-    "kind": "house",
-    "id": "TX-15",
-    "state": "TX",
-    "label": "TX-15",
-    "from": 34.5,
-    "to": 37.7,
-    "shift": 3.2,
-    "why": "a change to the model itself"
-   },
-   {
-    "kind": "house",
-    "id": "MI-7",
-    "state": "MI",
-    "label": "MI-7",
-    "from": 46.5,
-    "to": 49.6,
-    "shift": 3.1,
-    "why": "a change to the model itself"
-   },
-   {
-    "kind": "house",
-    "id": "FL-22",
-    "state": "FL",
-    "label": "FL-22",
-    "from": 53.1,
-    "to": 56.0,
-    "shift": 3.0,
-    "why": "a change to the model itself"
-   },
-   {
-    "kind": "house",
-    "id": "MI-4",
-    "state": "MI",
-    "label": "MI-4",
-    "from": 41.5,
-    "to": 44.5,
-    "shift": 3.0,
-    "why": "a change to the model itself"
-   },
-   {
-    "kind": "house",
-    "id": "NY-17",
-    "state": "NY",
-    "label": "NY-17",
-    "from": 48.6,
-    "to": 51.6,
-    "shift": 3.0,
-    "why": "a change to the model itself"
-   },
-   {
-    "kind": "house",
-    "id": "MI-10",
-    "state": "MI",
-    "label": "MI-10",
-    "from": 41.4,
-    "to": 44.3,
-    "shift": 2.9,
-    "why": "a change to the model itself"
-   },
-   {
-    "kind": "house",
-    "id": "MT-1",
-    "state": "MT",
-    "label": "MT-1",
-    "from": 38.0,
-    "to": 40.8,
-    "shift": 2.9,
-    "why": "a change to the model itself"
-   },
-   {
-    "kind": "house",
-    "id": "NC-1",
-    "state": "NC",
-    "label": "NC-1",
-    "from": 51.7,
-    "to": 54.7,
-    "shift": 2.9,
-    "why": "a change to the model itself"
-   },
-   {
-    "kind": "house",
-    "id": "CA-22",
-    "state": "CA",
-    "label": "CA-22",
-    "from": 48.5,
-    "to": 51.3,
-    "shift": 2.8,
-    "why": "a change to the model itself"
-   },
-   {
-    "kind": "house",
-    "id": "FL-14",
-    "state": "FL",
-    "label": "FL-14",
-    "from": 53.2,
-    "to": 56.0,
-    "shift": 2.8,
-    "why": "a change to the model itself"
-   },
-   {
-    "kind": "house",
-    "id": "OH-7",
-    "state": "OH",
-    "label": "OH-7",
-    "from": 37.9,
-    "to": 40.7,
-    "shift": 2.8,
-    "why": "a change to the model itself"
-   },
-   {
-    "kind": "house",
-    "id": "VA-1",
-    "state": "VA",
-    "label": "VA-1",
-    "from": 41.5,
-    "to": 44.3,
-    "shift": 2.8,
-    "why": "a change to the model itself"
-   },
-   {
-    "kind": "house",
-    "id": "NC-11",
-    "state": "NC",
-    "label": "NC-11",
-    "from": 84.8,
-    "to": 87.5,
-    "shift": 2.7,
-    "why": "a change to the model itself"
-   },
-   {
-    "kind": "house",
-    "id": "NJ-2",
-    "state": "NJ",
-    "label": "NJ-2",
-    "from": 0.6,
-    "to": 3.2,
-    "shift": 2.6,
-    "why": "re-rated Solid R to Likely R"
-   },
-   {
-    "kind": "house",
-    "id": "ME-2",
-    "state": "ME",
-    "label": "ME-2",
-    "from": 10.2,
-    "to": 12.8,
-    "shift": 2.5,
-    "why": "a change to the model itself"
-   },
-   {
-    "kind": "house",
-    "id": "PA-10",
-    "state": "PA",
-    "label": "PA-10",
-    "from": 86.8,
-    "to": 89.2,
-    "shift": 2.5,
-    "why": "a change to the model itself"
-   },
-   {
-    "kind": "house",
-    "id": "TX-23",
-    "state": "TX",
-    "label": "TX-23",
-    "from": 8.2,
-    "to": 10.7,
-    "shift": 2.5,
-    "why": "a change to the model itself"
-   },
-   {
-    "kind": "house",
-    "id": "TX-35",
-    "state": "TX",
-    "label": "TX-35",
-    "from": 53.2,
-    "to": 55.6,
-    "shift": 2.4,
-    "why": "a change to the model itself"
-   },
-   {
-    "kind": "house",
-    "id": "WA-3",
-    "state": "WA",
-    "label": "WA-3",
-    "from": 87.7,
-    "to": 90.1,
-    "shift": 2.4,
-    "why": "a change to the model itself"
-   },
-   {
-    "kind": "house",
-    "id": "FL-25",
-    "state": "FL",
-    "label": "FL-25",
-    "from": 86.8,
-    "to": 89.0,
-    "shift": 2.2,
-    "why": "a change to the model itself"
-   },
-   {
-    "kind": "house",
-    "id": "PA-7",
-    "state": "PA",
-    "label": "PA-7",
-    "from": 88.5,
-    "to": 90.7,
-    "shift": 2.2,
-    "why": "a change to the model itself"
-   },
-   {
-    "kind": "house",
-    "id": "AZ-1",
-    "state": "AZ",
-    "label": "AZ-1",
-    "from": 88.6,
-    "to": 90.7,
-    "shift": 2.1,
-    "why": "a change to the model itself"
-   },
-   {
-    "kind": "house",
-    "id": "WA-5",
-    "state": "WA",
-    "label": "WA-5",
-    "from": 0.6,
-    "to": 2.7,
-    "shift": 2.1,
-    "why": "re-rated Solid R to Likely R"
-   },
-   {
-    "kind": "house",
-    "id": "AZ-6",
-    "state": "AZ",
-    "label": "AZ-6",
-    "from": 89.4,
-    "to": 91.4,
-    "shift": 2.0,
-    "why": "a change to the model itself"
-   },
-   {
-    "kind": "house",
-    "id": "WI-1",
-    "state": "WI",
-    "label": "WI-1",
-    "from": 11.9,
-    "to": 13.9,
-    "shift": 2.0,
-    "why": "a change to the model itself"
-   },
-   {
-    "kind": "house",
-    "id": "WI-3",
-    "state": "WI",
-    "label": "WI-3",
-    "from": 86.8,
-    "to": 88.8,
-    "shift": 2.0,
-    "why": "a change to the model itself"
-   },
-   {
-    "kind": "house",
-    "id": "NC-9",
-    "state": "NC",
-    "label": "NC-9",
-    "from": 0.1,
-    "to": 2.0,
-    "shift": 1.9,
-    "why": "re-rated Solid R to Likely R"
-   },
-   {
-    "kind": "senate",
-    "id": "MI-2026",
-    "seat_id": "MI-2026",
-    "state": "MI",
-    "label": "MI Senate",
-    "dem_candidate": "Abdul El-Sayed",
-    "rep_candidate": "Mike Rogers",
-    "from": 71.7,
-    "to": 73.5,
-    "shift": 1.8,
+    "from": 39.5,
+    "to": 33.9,
+    "shift": -5.6,
     "why": "its own state polling"
-   },
-   {
-    "kind": "senate",
-    "id": "TX-2026",
-    "seat_id": "TX-2026",
-    "state": "TX",
-    "label": "TX Senate",
-    "dem_candidate": "James Talarico",
-    "rep_candidate": "Ken Paxton",
-    "from": 67.7,
-    "to": 65.9,
-    "shift": -1.8,
-    "why": "a change to the model itself"
-   },
-   {
-    "kind": "house",
-    "id": "OH-10",
-    "state": "OH",
-    "label": "OH-10",
-    "from": 10.3,
-    "to": 12.1,
-    "shift": 1.8,
-    "why": "a change to the model itself"
-   },
-   {
-    "kind": "house",
-    "id": "CO-8",
-    "state": "CO",
-    "label": "CO-8",
-    "from": 89.5,
-    "to": 91.2,
-    "shift": 1.7,
-    "why": "a change to the model itself"
-   },
-   {
-    "kind": "house",
-    "id": "NC-5",
-    "state": "NC",
-    "label": "NC-5",
-    "from": 0.0,
-    "to": 1.8,
-    "shift": 1.7,
-    "why": "re-rated Solid R to Likely R"
-   },
-   {
-    "kind": "house",
-    "id": "OH-15",
-    "state": "OH",
-    "label": "OH-15",
-    "from": 9.5,
-    "to": 11.2,
-    "shift": 1.7,
-    "why": "a change to the model itself"
-   },
-   {
-    "kind": "house",
-    "id": "VA-2",
-    "state": "VA",
-    "label": "VA-2",
-    "from": 89.4,
-    "to": 91.1,
-    "shift": 1.7,
-    "why": "a change to the model itself"
-   },
-   {
-    "kind": "house",
-    "id": "NY-21",
-    "state": "NY",
-    "label": "NY-21",
-    "from": 6.3,
-    "to": 7.9,
-    "shift": 1.6,
-    "why": "a change to the model itself"
-   },
-   {
-    "kind": "house",
-    "id": "IA-1",
-    "state": "IA",
-    "label": "IA-1",
-    "from": 85.7,
-    "to": 87.2,
-    "shift": 1.5,
-    "why": "a change to the model itself"
    }
   ],
   "n_sims": 100000

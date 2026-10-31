@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-31T02:17:50+00:00",
+ "as_of": "2026-10-31T16:04:01+00:00",
  "source": "Wikipedia per-race election articles",
  "half_life_days": 10,
  "max_age_days": 120,
@@ -10,9 +10,9 @@
    "state": "AZ",
    "dem_candidate": "Katie Hobbs",
    "rep_candidate": "Andy Biggs",
-   "dem_margin": 9.2,
-   "method": "mean of 5 aggregators, averaged with 18 polls adjusted for sponsors",
-   "n_used": 18,
+   "dem_margin": 9.0,
+   "method": "mean of 5 aggregators, averaged with 19 polls adjusted for sponsors",
+   "n_used": 19,
    "detail": [
     {
      "label": "270toWin",
@@ -33,6 +33,16 @@
     {
      "label": "Silver Bulletin",
      "margin": 9.8
+    },
+    {
+     "label": "GrayHouse (R)",
+     "dem": 50.0,
+     "rep": 45.0,
+     "date": "2026-10-28",
+     "n": 500,
+     "weight": 0.321,
+     "margin": 7.5,
+     "sponsor": "R"
     },
     {
      "label": "HighGround, Inc.",
@@ -103,24 +113,14 @@
      "weight": 0.115,
      "margin": 6.0,
      "sponsor": null
-    },
-    {
-     "label": "GrayHouse (R)",
-     "dem": 51.0,
-     "rep": 45.0,
-     "date": "2026-10-02",
-     "n": 550,
-     "weight": 0.056,
-     "margin": 8.5,
-     "sponsor": "R"
     }
    ],
    "aggregator_margin": 9.2,
-   "poll_margin": 9.1,
-   "undecided": 9.6,
+   "poll_margin": 8.7,
+   "undecided": 8.5,
    "rating": "likely",
    "rating_lean": "D",
-   "read_at": "2026-10-31T02:17:16+00:00"
+   "read_at": "2026-10-31T16:03:28+00:00"
   },
   "FL-GOV": {
    "state": "FL",
@@ -236,7 +236,7 @@
    "undecided": 6.7,
    "rating": "lean",
    "rating_lean": "R",
-   "read_at": "2026-10-31T02:17:18+00:00"
+   "read_at": "2026-10-31T16:03:30+00:00"
   },
   "GA-GOV": {
    "state": "GA",
@@ -352,7 +352,7 @@
    "undecided": 4.9,
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-10-31T02:17:21+00:00"
+   "read_at": "2026-10-31T16:03:32+00:00"
   },
   "IA-GOV": {
    "state": "IA",
@@ -468,7 +468,7 @@
    "undecided": 5.5,
    "rating": "lean",
    "rating_lean": "D",
-   "read_at": "2026-10-31T02:17:23+00:00"
+   "read_at": "2026-10-31T16:03:35+00:00"
   },
   "KS-GOV": {
    "state": "KS",
@@ -584,7 +584,7 @@
    "undecided": 6.5,
    "rating": "tossup",
    "rating_lean": "D",
-   "read_at": "2026-10-31T02:17:26+00:00"
+   "read_at": "2026-10-31T16:03:37+00:00"
   },
   "MI-GOV": {
    "state": "MI",
@@ -700,7 +700,7 @@
    "undecided": 8.0,
    "rating": "lean",
    "rating_lean": "D",
-   "read_at": "2026-10-31T02:17:28+00:00"
+   "read_at": "2026-10-31T16:03:40+00:00"
   },
   "NE-GOV": {
    "state": "NE",
@@ -732,7 +732,7 @@
    "undecided": 15.2,
    "rating": "lean",
    "rating_lean": "R",
-   "read_at": "2026-10-31T02:17:30+00:00"
+   "read_at": "2026-10-31T16:03:42+00:00"
   },
   "NH-GOV": {
    "state": "NH",
@@ -848,7 +848,7 @@
    "undecided": 9.2,
    "rating": "likely",
    "rating_lean": "R",
-   "read_at": "2026-10-31T02:17:33+00:00"
+   "read_at": "2026-10-31T16:03:44+00:00"
   },
   "NV-GOV": {
    "state": "NV",
@@ -964,7 +964,7 @@
    "undecided": 9.1,
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-10-31T02:17:35+00:00"
+   "read_at": "2026-10-31T16:03:47+00:00"
   },
   "OH-GOV": {
    "state": "OH",
@@ -1080,7 +1080,7 @@
    "undecided": 5.1,
    "rating": "lean",
    "rating_lean": "D",
-   "read_at": "2026-10-31T02:17:38+00:00"
+   "read_at": "2026-10-31T16:03:49+00:00"
   },
   "OK-GOV": {
    "state": "OK",
@@ -1116,7 +1116,7 @@
    "undecided": 24.2,
    "rating": "likely",
    "rating_lean": "R",
-   "read_at": "2026-10-31T02:17:40+00:00"
+   "read_at": "2026-10-31T16:03:51+00:00"
   },
   "OR-GOV": {
    "state": "OR",
@@ -1136,15 +1136,15 @@
    "undecided": 10.2,
    "rating": "lean",
    "rating_lean": "D",
-   "read_at": "2026-10-31T02:17:43+00:00"
+   "read_at": "2026-10-31T16:03:54+00:00"
   },
   "TX-GOV": {
    "state": "TX",
    "dem_candidate": "Gina Hinojosa",
    "rep_candidate": "Greg Abbott",
    "dem_margin": -2.6,
-   "method": "mean of 5 aggregators, averaged with 42 polls adjusted for sponsors",
-   "n_used": 42,
+   "method": "mean of 5 aggregators, averaged with 43 polls adjusted for sponsors",
+   "n_used": 43,
    "detail": [
     {
      "label": "270toWin",
@@ -1252,7 +1252,7 @@
    "undecided": 3.2,
    "rating": "lean",
    "rating_lean": "R",
-   "read_at": "2026-10-31T02:17:45+00:00"
+   "read_at": "2026-10-31T16:03:56+00:00"
   },
   "VT-GOV": {
    "state": "VT",
@@ -1318,7 +1318,7 @@
    "undecided": 10.1,
    "rating": "likely",
    "rating_lean": "R",
-   "read_at": "2026-10-31T02:17:47+00:00"
+   "read_at": "2026-10-31T16:03:58+00:00"
   },
   "WI-GOV": {
    "state": "WI",
@@ -1434,7 +1434,7 @@
    "undecided": 7.9,
    "rating": "lean",
    "rating_lean": "D",
-   "read_at": "2026-10-31T02:17:50+00:00"
+   "read_at": "2026-10-31T16:04:01+00:00"
   }
  },
  "issues": [

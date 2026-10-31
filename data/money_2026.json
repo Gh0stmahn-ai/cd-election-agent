@@ -3531,9 +3531,9 @@
    "dem": {
     "name": "Fortier, Julie Dr.",
     "incumbent": false,
-    "receipts": 159061,
-    "spent": 125311,
-    "cash": 33749,
+    "receipts": 161511,
+    "spent": 127866,
+    "cash": 33644,
     "debts": 0,
     "as_of": "2026-10-14",
     "named": false
@@ -3548,8 +3548,8 @@
     "as_of": "2026-10-14",
     "named": false
    },
-   "dem_cash_share": 0.0384,
-   "cash_gap": -811060
+   "dem_cash_share": 0.0383,
+   "cash_gap": -811165
   },
   "IL-13": {
    "chamber": "house",
@@ -5751,11 +5751,11 @@
    "dem": {
     "name": "Hesketh, Missi",
     "incumbent": false,
-    "receipts": 50540,
-    "spent": 22134,
-    "cash": 33543,
+    "receipts": 65740,
+    "spent": 43642,
+    "cash": 60779,
     "debts": 0,
-    "as_of": "2026-07-15",
+    "as_of": "2026-09-30",
     "named": false
    },
    "rep": {
@@ -5768,8 +5768,8 @@
     "as_of": "2026-10-14",
     "named": false
    },
-   "dem_cash_share": 0.0337,
-   "cash_gap": -928821
+   "dem_cash_share": 0.0594,
+   "cash_gap": -901585
   },
   "MO-8": {
    "chamber": "house",
