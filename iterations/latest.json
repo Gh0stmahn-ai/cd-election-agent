@@ -1,6 +1,6 @@
 {
  "schema_version": 2,
- "timestamp": "2026-10-31T01:06:09.480734+00:00",
+ "timestamp": "2026-10-31T02:19:23.664673+00:00",
  "status": {
   "state": "success",
   "issues": []
@@ -87,10 +87,10 @@
   "national_error_sd": 2.94
  },
  "senate": {
-  "dem_control_prob": 0.7164,
-  "tie_prob": 0.1304,
-  "mean_dem_seats": 51.58,
-  "mean_rep_seats": 48.02,
+  "dem_control_prob": 0.7175,
+  "tie_prob": 0.1301,
+  "mean_dem_seats": 51.59,
+  "mean_rep_seats": 48.01,
   "not_up": {
    "D": 34,
    "R": 31,
@@ -110,20 +110,20 @@
    "40": 2e-05,
    "41": 0.0001,
    "42": 0.00012,
-   "43": 0.00053,
-   "44": 0.00116,
-   "45": 0.00329,
-   "46": 0.00788,
-   "47": 0.01934,
-   "48": 0.04162,
-   "49": 0.07908,
-   "50": 0.13041,
-   "51": 0.17727,
-   "52": 0.19507,
-   "53": 0.16818,
-   "54": 0.10887,
-   "55": 0.04833,
-   "56": 0.0152,
+   "43": 0.00052,
+   "44": 0.00117,
+   "45": 0.00326,
+   "46": 0.00786,
+   "47": 0.01915,
+   "48": 0.04154,
+   "49": 0.0787,
+   "50": 0.13009,
+   "51": 0.17715,
+   "52": 0.19545,
+   "53": 0.1686,
+   "54": 0.10902,
+   "55": 0.0485,
+   "56": 0.01522,
    "57": 0.00288,
    "58": 0.0005,
    "59": 7e-05,
@@ -277,7 +277,7 @@
     },
     "expected_margin": 9.3,
     "dem_win_prob": 0.9444,
-    "tipping_prob": 0.0359,
+    "tipping_prob": 0.036,
     "rating_prob": 0.983,
     "poll_prob": 0.9302
    },
@@ -363,7 +363,7 @@
     },
     "expected_margin": 2.05,
     "dem_win_prob": 0.6401,
-    "tipping_prob": 0.1063,
+    "tipping_prob": 0.1064,
     "rating_prob": 0.3988,
     "poll_prob": 0.6888
    },
@@ -420,7 +420,7 @@
     "polling": null,
     "expected_margin": 25.99,
     "dem_win_prob": 0.9984,
-    "tipping_prob": 0.0011,
+    "tipping_prob": 0.0012,
     "rating_prob": 0.9984,
     "poll_prob": null
    },
@@ -444,7 +444,7 @@
     },
     "expected_margin": 1.61,
     "dem_win_prob": 0.6082,
-    "tipping_prob": 0.1035,
+    "tipping_prob": 0.1036,
     "rating_prob": 0.3988,
     "poll_prob": 0.6456
    },
@@ -462,15 +462,15 @@
     "atmospherics_adj": -0.01,
     "polling": {
      "weight": 0.841,
-     "poll_margin": 4.1,
+     "poll_margin": 4.2,
      "n_used": 46,
      "rating_margin": 1.49
     },
-    "expected_margin": 3.54,
-    "dem_win_prob": 0.7304,
-    "tipping_prob": 0.0993,
+    "expected_margin": 3.62,
+    "dem_win_prob": 0.7352,
+    "tipping_prob": 0.0986,
     "rating_prob": 0.5999,
-    "poll_prob": 0.7568
+    "poll_prob": 0.7621
    },
    {
     "seat_id": "MN-2026",
@@ -492,7 +492,7 @@
     },
     "expected_margin": 6.4,
     "dem_win_prob": 0.866,
-    "tipping_prob": 0.0675,
+    "tipping_prob": 0.0676,
     "rating_prob": 0.9253,
     "poll_prob": 0.8458
    },
@@ -607,7 +607,7 @@
     },
     "expected_margin": 7.04,
     "dem_win_prob": 0.8877,
-    "tipping_prob": 0.0608,
+    "tipping_prob": 0.061,
     "rating_prob": 0.9253,
     "poll_prob": 0.8924
    },
@@ -669,7 +669,7 @@
     },
     "expected_margin": 3.2,
     "dem_win_prob": 0.7099,
-    "tipping_prob": 0.0989,
+    "tipping_prob": 0.0991,
     "rating_prob": 0.3988,
     "poll_prob": 0.7065
    },
@@ -750,7 +750,7 @@
     },
     "expected_margin": -2.86,
     "dem_win_prob": 0.3099,
-    "tipping_prob": 0.07,
+    "tipping_prob": 0.0697,
     "rating_prob": 0.0743,
     "poll_prob": 0.38
    },
@@ -812,7 +812,7 @@
     },
     "expected_margin": 2.5,
     "dem_win_prob": 0.6588,
-    "tipping_prob": 0.0952,
+    "tipping_prob": 0.0954,
     "rating_prob": 0.3988,
     "poll_prob": 0.6888
    },
@@ -3698,10 +3698,10 @@
   }
  },
  "joint": {
-  "dem_both": 0.696,
-  "dem_house_rep_senate": 0.2058,
-  "rep_house_dem_senate": 0.0204,
-  "rep_both": 0.0777
+  "dem_both": 0.6969,
+  "dem_house_rep_senate": 0.2049,
+  "rep_house_dem_senate": 0.0205,
+  "rep_both": 0.0776
  },
  "n_sims": 100000,
  "fundamentals_display": {
@@ -3952,9 +3952,9 @@
  },
  "change": {
   "from": "2026-10-30T02:36:02.883136+00:00",
-  "to": "2026-10-31T01:06:09.480734+00:00",
+  "to": "2026-10-31T02:19:23.664673+00:00",
   "total": {
-   "senate": 2.86,
+   "senate": 2.96,
    "house": 5.8
   },
   "drivers": [
@@ -3962,7 +3962,7 @@
     "id": "senate_polls",
     "label": "Senate state polling",
     "points": {
-     "senate": 3.145,
+     "senate": 3.245,
      "house": 0.0
     }
    },
@@ -4002,13 +4002,13 @@
     "id": "generic_ballot",
     "label": "Generic ballot",
     "points": {
-     "senate": -0.015,
+     "senate": -0.02,
      "house": -0.06
     }
    }
   ],
   "residual": {
-   "senate": -0.0,
+   "senate": 0.005,
    "house": 0.0
   },
   "facts": [
@@ -4055,6 +4055,10 @@
    {
     "kind": "poll",
     "text": "KS Senate polling average moved D+1.2 to D+2.9"
+   },
+   {
+    "kind": "poll",
+    "text": "MI Senate polling average moved D+3.9 to D+4.2"
    }
   ],
   "races": [
@@ -4466,6 +4470,19 @@
     "to": 2.0,
     "shift": 1.9,
     "why": "re-rated Solid R to Likely R"
+   },
+   {
+    "kind": "senate",
+    "id": "MI-2026",
+    "seat_id": "MI-2026",
+    "state": "MI",
+    "label": "MI Senate",
+    "dem_candidate": "Abdul El-Sayed",
+    "rep_candidate": "Mike Rogers",
+    "from": 71.7,
+    "to": 73.5,
+    "shift": 1.8,
+    "why": "its own state polling"
    },
    {
     "kind": "senate",

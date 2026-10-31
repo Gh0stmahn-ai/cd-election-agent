@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-31T01:03:56+00:00",
+ "as_of": "2026-10-31T02:17:13+00:00",
  "source": "Wikipedia per-race election articles",
  "half_life_days": 10,
  "max_age_days": 120,
@@ -36,7 +36,7 @@
    "undecided": 4.3,
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-10-31T01:03:20+00:00"
+   "read_at": "2026-10-31T02:16:38+00:00"
   },
   "FL-2026-special": {
    "state": "FL",
@@ -152,7 +152,7 @@
    "undecided": 6.0,
    "rating": "likely",
    "rating_lean": "R",
-   "read_at": "2026-10-31T01:03:23+00:00"
+   "read_at": "2026-10-31T02:16:41+00:00"
   },
   "GA-2026": {
    "state": "GA",
@@ -268,7 +268,7 @@
    "undecided": 4.6,
    "rating": "likely",
    "rating_lean": "D",
-   "read_at": "2026-10-31T01:03:25+00:00"
+   "read_at": "2026-10-31T02:16:43+00:00"
   },
   "IA-2026": {
    "state": "IA",
@@ -384,7 +384,7 @@
    "undecided": 8.5,
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-10-31T01:03:28+00:00"
+   "read_at": "2026-10-31T02:16:46+00:00"
   },
   "KS-2026": {
    "state": "KS",
@@ -500,7 +500,7 @@
    "undecided": 7.3,
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-10-31T01:03:30+00:00"
+   "read_at": "2026-10-31T02:16:48+00:00"
   },
   "ME-2026": {
    "state": "ME",
@@ -616,23 +616,23 @@
    "undecided": 2.6,
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-10-31T01:03:33+00:00"
+   "read_at": "2026-10-31T02:16:51+00:00"
   },
   "MI-2026": {
    "state": "MI",
    "dem_candidate": "Abdul El-Sayed",
    "rep_candidate": "Mike Rogers",
-   "dem_margin": 4.1,
+   "dem_margin": 4.2,
    "method": "mean of 5 aggregators, averaged with 46 polls adjusted for sponsors",
    "n_used": 46,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 4.6
+     "margin": 5.8
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 4.5
+     "margin": 4.7
     },
     {
      "label": "FiftyPlusOne",
@@ -640,7 +640,7 @@
     },
     {
      "label": "RealClearPolitics",
-     "margin": 3.2
+     "margin": 3.5
     },
     {
      "label": "Silver Bulletin",
@@ -727,12 +727,12 @@
      "sponsor": null
     }
    ],
-   "aggregator_margin": 4.2,
+   "aggregator_margin": 4.5,
    "poll_margin": 4.0,
    "undecided": 7.3,
    "rating": "tossup",
    "rating_lean": "D",
-   "read_at": "2026-10-31T01:03:35+00:00"
+   "read_at": "2026-10-31T02:16:53+00:00"
   },
   "MN-2026": {
    "state": "MN",
@@ -848,7 +848,7 @@
    "undecided": 10.5,
    "rating": "lean",
    "rating_lean": "D",
-   "read_at": "2026-10-31T01:03:38+00:00"
+   "read_at": "2026-10-31T02:16:56+00:00"
   },
   "MS-2026": {
    "state": "MS",
@@ -884,7 +884,7 @@
    "undecided": 17.0,
    "rating": "likely",
    "rating_lean": "R",
-   "read_at": "2026-10-31T01:03:40+00:00"
+   "read_at": "2026-10-31T02:16:58+00:00"
   },
   "NC-2026": {
    "state": "NC",
@@ -1000,7 +1000,7 @@
    "undecided": 6.1,
    "rating": "likely",
    "rating_lean": "D",
-   "read_at": "2026-10-31T01:03:43+00:00"
+   "read_at": "2026-10-31T02:17:01+00:00"
   },
   "NE-2026": {
    "state": "NE",
@@ -1112,7 +1112,7 @@
    "undecided": 7.6,
    "rating": "lean",
    "rating_lean": "R",
-   "read_at": "2026-10-31T01:03:46+00:00"
+   "read_at": "2026-10-31T02:17:03+00:00"
   },
   "NH-2026": {
    "state": "NH",
@@ -1228,7 +1228,7 @@
    "undecided": 7.1,
    "rating": "lean",
    "rating_lean": "D",
-   "read_at": "2026-10-31T01:03:48+00:00"
+   "read_at": "2026-10-31T02:17:05+00:00"
   },
   "OH-2026-special": {
    "state": "OH",
@@ -1344,7 +1344,7 @@
    "undecided": 5.9,
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-10-31T01:03:51+00:00"
+   "read_at": "2026-10-31T02:17:08+00:00"
   },
   "SC-2026": {
    "state": "SC",
@@ -1460,7 +1460,7 @@
    "undecided": 9.8,
    "rating": "lean",
    "rating_lean": "R",
-   "read_at": "2026-10-31T01:03:53+00:00"
+   "read_at": "2026-10-31T02:17:10+00:00"
   },
   "TX-2026": {
    "state": "TX",
@@ -1580,7 +1580,7 @@
    "undecided": 4.5,
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-10-31T01:03:56+00:00"
+   "read_at": "2026-10-31T02:17:13+00:00"
   }
  },
  "issues": []
