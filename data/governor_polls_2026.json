@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-30T17:02:31+00:00",
+ "as_of": "2026-10-31T01:04:34+00:00",
  "source": "Wikipedia per-race election articles",
  "half_life_days": 10,
  "max_age_days": 120,
@@ -10,9 +10,9 @@
    "state": "AZ",
    "dem_candidate": "Katie Hobbs",
    "rep_candidate": "Andy Biggs",
-   "dem_margin": 9.4,
-   "method": "mean of 5 aggregators, averaged with 17 polls adjusted for sponsors",
-   "n_used": 17,
+   "dem_margin": 9.2,
+   "method": "mean of 5 aggregators, averaged with 18 polls adjusted for sponsors",
+   "n_used": 18,
    "detail": [
     {
      "label": "270toWin",
@@ -40,7 +40,7 @@
      "rep": 34.0,
      "date": "2026-10-10",
      "n": 400,
-     "weight": 0.177,
+     "weight": 0.165,
      "margin": 17.0,
      "sponsor": null
     },
@@ -50,7 +50,7 @@
      "rep": 39.0,
      "date": "2026-10-06",
      "n": 400,
-     "weight": 0.134,
+     "weight": 0.125,
      "margin": 13.0,
      "sponsor": null
     },
@@ -60,7 +60,7 @@
      "rep": 42.0,
      "date": "2026-10-05",
      "n": 2686,
-     "weight": 0.141,
+     "weight": 0.132,
      "margin": 2.5,
      "sponsor": "D"
     },
@@ -70,7 +70,7 @@
      "rep": 43.0,
      "date": "2026-10-05",
      "n": 1513,
-     "weight": 0.122,
+     "weight": 0.113,
      "margin": 8.5,
      "sponsor": "R"
     },
@@ -80,7 +80,7 @@
      "rep": 44.0,
      "date": "2026-10-04",
      "n": 550,
-     "weight": 0.068,
+     "weight": 0.064,
      "margin": 8.5,
      "sponsor": "R"
     },
@@ -90,9 +90,19 @@
      "rep": 45.0,
      "date": "2026-10-04",
      "n": 600,
-     "weight": 0.071,
+     "weight": 0.067,
      "margin": 1.5,
      "sponsor": "D"
+    },
+    {
+     "label": "Noble Predictive Insights",
+     "dem": 51.0,
+     "rep": 45.0,
+     "date": "2026-10-03",
+     "n": 511,
+     "weight": 0.115,
+     "margin": 6.0,
+     "sponsor": null
     },
     {
      "label": "GrayHouse (R)",
@@ -100,27 +110,17 @@
      "rep": 45.0,
      "date": "2026-10-02",
      "n": 550,
-     "weight": 0.06,
+     "weight": 0.056,
      "margin": 8.5,
      "sponsor": "R"
-    },
-    {
-     "label": "Arizona State University",
-     "dem": 47.0,
-     "rep": 34.0,
-     "date": "2026-09-16",
-     "n": 1300,
-     "weight": 0.06,
-     "margin": 13.0,
-     "sponsor": null
     }
    ],
    "aggregator_margin": 9.2,
-   "poll_margin": 9.5,
-   "undecided": 10.4,
+   "poll_margin": 9.1,
+   "undecided": 9.6,
    "rating": "likely",
    "rating_lean": "D",
-   "read_at": "2026-10-30T17:01:59+00:00"
+   "read_at": "2026-10-31T01:03:59+00:00"
   },
   "FL-GOV": {
    "state": "FL",
@@ -156,7 +156,7 @@
      "rep": 46.0,
      "date": "2026-10-28",
      "n": 800,
-     "weight": 0.435,
+     "weight": 0.406,
      "margin": -0.5,
      "sponsor": "D"
     },
@@ -166,7 +166,7 @@
      "rep": 52.0,
      "date": "2026-10-28",
      "n": 400,
-     "weight": 0.616,
+     "weight": 0.574,
      "margin": -4.0,
      "sponsor": null
     },
@@ -176,7 +176,7 @@
      "rep": 49.0,
      "date": "2026-10-11",
      "n": 1014,
-     "weight": 0.151,
+     "weight": 0.141,
      "margin": -6.5,
      "sponsor": "R"
     },
@@ -186,7 +186,7 @@
      "rep": 46.0,
      "date": "2026-10-10",
      "n": 2351,
-     "weight": 0.4,
+     "weight": 0.373,
      "margin": -2.0,
      "sponsor": null
     },
@@ -196,7 +196,7 @@
      "rep": 48.0,
      "date": "2026-10-10",
      "n": 625,
-     "weight": 0.221,
+     "weight": 0.206,
      "margin": -7.0,
      "sponsor": null
     },
@@ -206,7 +206,7 @@
      "rep": 50.0,
      "date": "2026-10-08",
      "n": 825,
-     "weight": 0.221,
+     "weight": 0.206,
      "margin": -8.0,
      "sponsor": null
     },
@@ -216,7 +216,7 @@
      "rep": 49.0,
      "date": "2026-10-08",
      "n": 1200,
-     "weight": 0.133,
+     "weight": 0.124,
      "margin": -3.5,
      "sponsor": "R"
     },
@@ -226,7 +226,7 @@
      "rep": 48.0,
      "date": "2026-10-07",
      "n": 813,
-     "weight": 0.205,
+     "weight": 0.191,
      "margin": -4.0,
      "sponsor": null
     }
@@ -236,7 +236,7 @@
    "undecided": 6.7,
    "rating": "lean",
    "rating_lean": "R",
-   "read_at": "2026-10-30T17:02:02+00:00"
+   "read_at": "2026-10-31T01:04:01+00:00"
   },
   "GA-GOV": {
    "state": "GA",
@@ -272,7 +272,7 @@
      "rep": 46.0,
      "date": "2026-10-08",
      "n": 1000,
-     "weight": 0.243,
+     "weight": 0.227,
      "margin": -1.0,
      "sponsor": null
     },
@@ -282,7 +282,7 @@
      "rep": 51.5,
      "date": "2026-10-05",
      "n": 400,
-     "weight": 0.125,
+     "weight": 0.117,
      "margin": -3.0,
      "sponsor": null
     },
@@ -292,7 +292,7 @@
      "rep": 49.0,
      "date": "2026-10-04",
      "n": 800,
-     "weight": 0.082,
+     "weight": 0.077,
      "margin": 0.5,
      "sponsor": "R"
     },
@@ -302,7 +302,7 @@
      "rep": 48.0,
      "date": "2026-10-03",
      "n": 508,
-     "weight": 0.061,
+     "weight": 0.057,
      "margin": 3.5,
      "sponsor": "R"
     },
@@ -312,7 +312,7 @@
      "rep": 47.0,
      "date": "2026-10-02",
      "n": 679,
-     "weight": 0.132,
+     "weight": 0.123,
      "margin": 3.0,
      "sponsor": null
     },
@@ -322,7 +322,7 @@
      "rep": 48.0,
      "date": "2026-10-01",
      "n": 755,
-     "weight": 0.065,
+     "weight": 0.061,
      "margin": 1.5,
      "sponsor": "R"
     },
@@ -332,7 +332,7 @@
      "rep": 50.0,
      "date": "2026-09-28",
      "n": 712,
-     "weight": 0.051,
+     "weight": 0.048,
      "margin": 2.5,
      "sponsor": "R"
     },
@@ -342,7 +342,7 @@
      "rep": 45.0,
      "date": "2026-09-09",
      "n": 3414,
-     "weight": 0.047,
+     "weight": 0.044,
      "margin": -1.0,
      "sponsor": null
     }
@@ -352,7 +352,7 @@
    "undecided": 4.9,
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-10-30T17:02:04+00:00"
+   "read_at": "2026-10-31T01:04:04+00:00"
   },
   "IA-GOV": {
    "state": "IA",
@@ -388,7 +388,7 @@
      "rep": 42.0,
      "date": "2026-10-07",
      "n": 801,
-     "weight": 0.203,
+     "weight": 0.19,
      "margin": 9.0,
      "sponsor": null
     },
@@ -398,7 +398,7 @@
      "rep": 41.0,
      "date": "2026-10-07",
      "n": 606,
-     "weight": 0.177,
+     "weight": 0.165,
      "margin": 11.0,
      "sponsor": null
     },
@@ -408,7 +408,7 @@
      "rep": 45.0,
      "date": "2026-10-06",
      "n": 678,
-     "weight": 0.087,
+     "weight": 0.081,
      "margin": 6.5,
      "sponsor": "R"
     },
@@ -418,7 +418,7 @@
      "rep": 44.0,
      "date": "2026-10-06",
      "n": 2245,
-     "weight": 0.303,
+     "weight": 0.283,
      "margin": 6.0,
      "sponsor": null
     },
@@ -428,7 +428,7 @@
      "rep": 45.0,
      "date": "2026-10-06",
      "n": 650,
-     "weight": 0.171,
+     "weight": 0.159,
      "margin": 4.0,
      "sponsor": null
     },
@@ -438,7 +438,7 @@
      "rep": 45.0,
      "date": "2026-10-05",
      "n": 1020,
-     "weight": 0.1,
+     "weight": 0.093,
      "margin": 7.5,
      "sponsor": "R"
     },
@@ -448,7 +448,7 @@
      "rep": 45.0,
      "date": "2026-10-05",
      "n": 678,
-     "weight": 0.163,
+     "weight": 0.152,
      "margin": 5.0,
      "sponsor": null
     },
@@ -458,7 +458,7 @@
      "rep": 46.0,
      "date": "2026-10-03",
      "n": 403,
-     "weight": 0.055,
+     "weight": 0.051,
      "margin": 6.5,
      "sponsor": "R"
     }
@@ -468,19 +468,19 @@
    "undecided": 5.5,
    "rating": "lean",
    "rating_lean": "D",
-   "read_at": "2026-10-30T17:02:06+00:00"
+   "read_at": "2026-10-31T01:04:06+00:00"
   },
   "KS-GOV": {
    "state": "KS",
    "dem_candidate": "Cindy Holscher",
    "rep_candidate": "Ty Masterson",
-   "dem_margin": -2.2,
+   "dem_margin": -2.0,
    "method": "mean of 5 aggregators, averaged with 9 polls adjusted for sponsors",
    "n_used": 9,
    "detail": [
     {
      "label": "270toWin",
-     "margin": -1.8
+     "margin": -2.2
     },
     {
      "label": "Decision Desk HQ",
@@ -496,7 +496,7 @@
     },
     {
      "label": "Silver Bulletin",
-     "margin": -4.5
+     "margin": -1.9
     },
     {
      "label": "YouGov",
@@ -504,7 +504,7 @@
      "rep": 47.0,
      "date": "2026-10-07",
      "n": 2255,
-     "weight": 0.325,
+     "weight": 0.303,
      "margin": -3.0,
      "sponsor": null
     },
@@ -514,7 +514,7 @@
      "rep": 47.0,
      "date": "2026-10-06",
      "n": 600,
-     "weight": 0.082,
+     "weight": 0.077,
      "margin": -2.5,
      "sponsor": "D"
     },
@@ -524,7 +524,7 @@
      "rep": 50.0,
      "date": "2026-10-04",
      "n": 800,
-     "weight": 0.165,
+     "weight": 0.154,
      "margin": -4.0,
      "sponsor": null
     },
@@ -534,7 +534,7 @@
      "rep": 45.0,
      "date": "2026-10-01",
      "n": 801,
-     "weight": 0.134,
+     "weight": 0.125,
      "margin": 6.0,
      "sponsor": null
     },
@@ -544,7 +544,7 @@
      "rep": 49.0,
      "date": "2026-09-07",
      "n": 605,
-     "weight": 0.022,
+     "weight": 0.021,
      "margin": -5.0,
      "sponsor": null
     },
@@ -554,7 +554,7 @@
      "rep": 51.0,
      "date": "2026-09-06",
      "n": 750,
-     "weight": 0.023,
+     "weight": 0.021,
      "margin": -7.0,
      "sponsor": null
     },
@@ -564,7 +564,7 @@
      "rep": 51.0,
      "date": "2026-09-06",
      "n": 915,
-     "weight": 0.013,
+     "weight": 0.012,
      "margin": -5.5,
      "sponsor": "R"
     },
@@ -574,45 +574,45 @@
      "rep": 46.0,
      "date": "2026-09-05",
      "n": 800,
-     "weight": 0.011,
+     "weight": 0.01,
      "margin": 0.5,
      "sponsor": "D"
     }
    ],
-   "aggregator_margin": -2.6,
+   "aggregator_margin": -2.2,
    "poll_margin": -1.8,
    "undecided": 6.5,
    "rating": "tossup",
    "rating_lean": "D",
-   "read_at": "2026-10-30T17:02:08+00:00"
+   "read_at": "2026-10-31T01:04:09+00:00"
   },
   "MI-GOV": {
    "state": "MI",
    "dem_candidate": "Jocelyn Benson",
    "rep_candidate": "John James",
-   "dem_margin": 6.8,
-   "method": "mean of 5 aggregators, averaged with 27 polls adjusted for sponsors",
-   "n_used": 27,
+   "dem_margin": 7.4,
+   "method": "mean of 5 aggregators, averaged with 28 polls adjusted for sponsors",
+   "n_used": 28,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 7.8
+     "margin": 8.6
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 7.0
+     "margin": 7.8
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 7.2
+     "margin": 8.1
     },
     {
      "label": "RealClearPolitics",
-     "margin": 7.2
+     "margin": 7.6
     },
     {
      "label": "Silver Bulletin",
-     "margin": 7.5
+     "margin": 8.0
     },
     {
      "label": "Mitchell Research & Communications",
@@ -620,8 +620,18 @@
      "rep": 39.0,
      "date": "2026-10-09",
      "n": 682,
-     "weight": 0.215,
+     "weight": 0.201,
      "margin": 7.0,
+     "sponsor": null
+    },
+    {
+     "label": "Michigan State University /Verasight",
+     "dem": 51.0,
+     "rep": 42.0,
+     "date": "2026-10-08",
+     "n": 1383,
+     "weight": 0.267,
+     "margin": 9.0,
      "sponsor": null
     },
     {
@@ -630,7 +640,7 @@
      "rep": 45.0,
      "date": "2026-10-06",
      "n": 3949,
-     "weight": 0.303,
+     "weight": 0.283,
      "margin": 3.0,
      "sponsor": null
     },
@@ -640,7 +650,7 @@
      "rep": 44.0,
      "date": "2026-10-04",
      "n": 636,
-     "weight": 0.147,
+     "weight": 0.137,
      "margin": 5.0,
      "sponsor": null
     },
@@ -650,7 +660,7 @@
      "rep": 45.0,
      "date": "2026-10-04",
      "n": 600,
-     "weight": 0.143,
+     "weight": 0.133,
      "margin": 6.0,
      "sponsor": null
     },
@@ -660,7 +670,7 @@
      "rep": 40.0,
      "date": "2026-10-02",
      "n": 483,
-     "weight": 0.056,
+     "weight": 0.052,
      "margin": 7.5,
      "sponsor": "D"
     },
@@ -670,7 +680,7 @@
      "rep": 41.0,
      "date": "2026-10-01",
      "n": 768,
-     "weight": 0.131,
+     "weight": 0.122,
      "margin": 12.0,
      "sponsor": null
     },
@@ -680,27 +690,17 @@
      "rep": 45.0,
      "date": "2026-10-01",
      "n": null,
-     "weight": 0.134,
+     "weight": 0.125,
      "margin": 6.0,
      "sponsor": null
-    },
-    {
-     "label": "Torchlight Strategies (R)",
-     "dem": 42.0,
-     "rep": 41.0,
-     "date": "2026-09-13",
-     "n": 643,
-     "weight": 0.017,
-     "margin": 3.5,
-     "sponsor": "R"
     }
    ],
-   "aggregator_margin": 7.3,
-   "poll_margin": 6.4,
-   "undecided": 8.1,
+   "aggregator_margin": 8.0,
+   "poll_margin": 6.8,
+   "undecided": 8.0,
    "rating": "lean",
    "rating_lean": "D",
-   "read_at": "2026-10-30T17:02:11+00:00"
+   "read_at": "2026-10-31T01:04:11+00:00"
   },
   "NE-GOV": {
    "state": "NE",
@@ -732,7 +732,7 @@
    "undecided": 15.2,
    "rating": "lean",
    "rating_lean": "R",
-   "read_at": "2026-10-30T17:02:13+00:00"
+   "read_at": "2026-10-31T01:04:14+00:00"
   },
   "NH-GOV": {
    "state": "NH",
@@ -768,7 +768,7 @@
      "rep": 49.0,
      "date": "2026-10-11",
      "n": 1520,
-     "weight": 0.369,
+     "weight": 0.345,
      "margin": -9.0,
      "sponsor": null
     },
@@ -778,7 +778,7 @@
      "rep": 48.0,
      "date": "2026-10-07",
      "n": 600,
-     "weight": 0.176,
+     "weight": 0.164,
      "margin": -6.0,
      "sponsor": null
     },
@@ -788,7 +788,7 @@
      "rep": 50.0,
      "date": "2026-10-05",
      "n": 1672,
-     "weight": 0.256,
+     "weight": 0.238,
      "margin": -8.0,
      "sponsor": null
     },
@@ -798,7 +798,7 @@
      "rep": 54.0,
      "date": "2026-10-05",
      "n": 600,
-     "weight": 0.077,
+     "weight": 0.071,
      "margin": -13.5,
      "sponsor": "R"
     },
@@ -808,7 +808,7 @@
      "rep": 52.0,
      "date": "2026-10-04",
      "n": 970,
-     "weight": 0.091,
+     "weight": 0.085,
      "margin": -7.5,
      "sponsor": "R"
     },
@@ -818,7 +818,7 @@
      "rep": 55.0,
      "date": "2026-09-09",
      "n": 958,
-     "weight": 0.016,
+     "weight": 0.015,
      "margin": -18.5,
      "sponsor": "R"
     },
@@ -828,7 +828,7 @@
      "rep": 47.0,
      "date": "2026-09-07",
      "n": 1418,
-     "weight": 0.034,
+     "weight": 0.032,
      "margin": -4.0,
      "sponsor": null
     },
@@ -838,7 +838,7 @@
      "rep": 52.0,
      "date": "2026-09-06",
      "n": 613,
-     "weight": 0.021,
+     "weight": 0.019,
      "margin": -11.0,
      "sponsor": null
     }
@@ -848,15 +848,15 @@
    "undecided": 9.2,
    "rating": "likely",
    "rating_lean": "R",
-   "read_at": "2026-10-30T17:02:15+00:00"
+   "read_at": "2026-10-31T01:04:16+00:00"
   },
   "NV-GOV": {
    "state": "NV",
    "dem_candidate": "Aaron Ford",
    "rep_candidate": "Joe Lombardo",
    "dem_margin": -0.2,
-   "method": "mean of 5 aggregators, averaged with 9 polls adjusted for sponsors",
-   "n_used": 9,
+   "method": "mean of 5 aggregators, averaged with 10 polls adjusted for sponsors",
+   "n_used": 10,
    "detail": [
     {
      "label": "270toWin",
@@ -884,7 +884,7 @@
      "rep": 45.0,
      "date": "2026-10-06",
      "n": 950,
-     "weight": 0.103,
+     "weight": 0.096,
      "margin": 1.5,
      "sponsor": "D"
     },
@@ -894,9 +894,19 @@
      "rep": 48.0,
      "date": "2026-10-05",
      "n": 700,
-     "weight": 0.083,
+     "weight": 0.077,
      "margin": -3.5,
      "sponsor": "D"
+    },
+    {
+     "label": "Noble Predictive Insights",
+     "dem": 47.0,
+     "rep": 47.0,
+     "date": "2026-10-04",
+     "n": 487,
+     "weight": 0.12,
+     "margin": 0.0,
+     "sponsor": null
     },
     {
      "label": "RedBox Research (D)",
@@ -904,7 +914,7 @@
      "rep": 43.0,
      "date": "2026-10-04",
      "n": 1407,
-     "weight": 0.109,
+     "weight": 0.102,
      "margin": 0.5,
      "sponsor": "D"
     },
@@ -914,7 +924,7 @@
      "rep": 38.0,
      "date": "2026-09-13",
      "n": 800,
-     "weight": 0.038,
+     "weight": 0.036,
      "margin": -1.0,
      "sponsor": null
     },
@@ -924,7 +934,7 @@
      "rep": 42.0,
      "date": "2026-09-11",
      "n": 680,
-     "weight": 0.031,
+     "weight": 0.029,
      "margin": 2.0,
      "sponsor": null
     },
@@ -947,24 +957,14 @@
      "weight": 0.0,
      "margin": -2.5,
      "sponsor": "D"
-    },
-    {
-     "label": "Grassroots Targeting (R)",
-     "dem": 40.0,
-     "rep": 52.0,
-     "date": "2026-07-08",
-     "n": null,
-     "weight": 0.0,
-     "margin": -9.5,
-     "sponsor": "R"
     }
    ],
    "aggregator_margin": -0.2,
-   "poll_margin": -0.3,
-   "undecided": 10.1,
+   "poll_margin": -0.2,
+   "undecided": 9.1,
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-10-30T17:02:17+00:00"
+   "read_at": "2026-10-31T01:04:19+00:00"
   },
   "OH-GOV": {
    "state": "OH",
@@ -1000,7 +1000,7 @@
      "rep": 51.0,
      "date": "2026-10-28",
      "n": 400,
-     "weight": 0.616,
+     "weight": 0.574,
      "margin": -2.0,
      "sponsor": null
     },
@@ -1010,7 +1010,7 @@
      "rep": 45.0,
      "date": "2026-10-08",
      "n": 925,
-     "weight": 0.117,
+     "weight": 0.109,
      "margin": 0.5,
      "sponsor": "R"
     },
@@ -1020,7 +1020,7 @@
      "rep": 45.0,
      "date": "2026-10-06",
      "n": 531,
-     "weight": 0.154,
+     "weight": 0.144,
      "margin": 1.0,
      "sponsor": null
     },
@@ -1030,7 +1030,7 @@
      "rep": 44.0,
      "date": "2026-10-06",
      "n": 1000,
-     "weight": 0.212,
+     "weight": 0.198,
      "margin": 6.0,
      "sponsor": null
     },
@@ -1040,7 +1040,7 @@
      "rep": 45.0,
      "date": "2026-10-06",
      "n": 616,
-     "weight": 0.166,
+     "weight": 0.155,
      "margin": 4.0,
      "sponsor": null
     },
@@ -1050,7 +1050,7 @@
      "rep": 44.0,
      "date": "2026-10-03",
      "n": 500,
-     "weight": 0.122,
+     "weight": 0.114,
      "margin": 4.0,
      "sponsor": null
     },
@@ -1060,7 +1060,7 @@
      "rep": 44.0,
      "date": "2026-10-03",
      "n": 2998,
-     "weight": 0.123,
+     "weight": 0.115,
      "margin": 1.5,
      "sponsor": "D"
     },
@@ -1070,7 +1070,7 @@
      "rep": 47.0,
      "date": "2026-10-03",
      "n": 508,
-     "weight": 0.061,
+     "weight": 0.057,
      "margin": 0.5,
      "sponsor": "R"
     }
@@ -1080,7 +1080,7 @@
    "undecided": 5.1,
    "rating": "lean",
    "rating_lean": "D",
-   "read_at": "2026-10-30T17:02:20+00:00"
+   "read_at": "2026-10-31T01:04:21+00:00"
   },
   "OK-GOV": {
    "state": "OK",
@@ -1096,7 +1096,7 @@
      "rep": 39.0,
      "date": "2026-10-17",
      "n": null,
-     "weight": 0.406,
+     "weight": 0.379,
      "margin": -3.0,
      "sponsor": null
     },
@@ -1106,7 +1106,7 @@
      "rep": 46.0,
      "date": "2026-09-18",
      "n": null,
-     "weight": 0.054,
+     "weight": 0.051,
      "margin": -10.0,
      "sponsor": null
     }
@@ -1116,7 +1116,7 @@
    "undecided": 24.2,
    "rating": "likely",
    "rating_lean": "R",
-   "read_at": "2026-10-30T17:02:22+00:00"
+   "read_at": "2026-10-31T01:04:24+00:00"
   },
   "OR-GOV": {
    "state": "OR",
@@ -1136,13 +1136,13 @@
    "undecided": 10.2,
    "rating": "lean",
    "rating_lean": "D",
-   "read_at": "2026-10-30T17:02:24+00:00"
+   "read_at": "2026-10-31T01:04:26+00:00"
   },
   "TX-GOV": {
    "state": "TX",
    "dem_candidate": "Gina Hinojosa",
    "rep_candidate": "Greg Abbott",
-   "dem_margin": -2.5,
+   "dem_margin": -2.6,
    "method": "mean of 5 aggregators, averaged with 42 polls adjusted for sponsors",
    "n_used": 42,
    "detail": [
@@ -1160,7 +1160,7 @@
     },
     {
      "label": "RealClearPolitics",
-     "margin": -3.0
+     "margin": -3.7
     },
     {
      "label": "Silver Bulletin",
@@ -1172,7 +1172,7 @@
      "rep": 46.0,
      "date": "2026-10-28",
      "n": 1000,
-     "weight": 0.487,
+     "weight": 0.454,
      "margin": 0.5,
      "sponsor": "D"
     },
@@ -1182,7 +1182,7 @@
      "rep": 53.0,
      "date": "2026-10-28",
      "n": 400,
-     "weight": 0.616,
+     "weight": 0.574,
      "margin": -5.0,
      "sponsor": null
     },
@@ -1192,7 +1192,7 @@
      "rep": 52.0,
      "date": "2026-10-28",
      "n": 1492,
-     "weight": 1.189,
+     "weight": 1.109,
      "margin": -4.0,
      "sponsor": null
     },
@@ -1202,7 +1202,7 @@
      "rep": 48.0,
      "date": "2026-10-05",
      "n": 1000,
-     "weight": 0.198,
+     "weight": 0.184,
      "margin": -2.0,
      "sponsor": null
     },
@@ -1212,7 +1212,7 @@
      "rep": 48.0,
      "date": "2026-10-05",
      "n": 509,
-     "weight": 0.141,
+     "weight": 0.132,
      "margin": -2.0,
      "sponsor": null
     },
@@ -1222,7 +1222,7 @@
      "rep": 46.0,
      "date": "2026-10-05",
      "n": 278,
-     "weight": 0.104,
+     "weight": 0.097,
      "margin": -1.0,
      "sponsor": null
     },
@@ -1232,7 +1232,7 @@
      "rep": 47.0,
      "date": "2026-10-05",
      "n": 3625,
-     "weight": 0.283,
+     "weight": 0.264,
      "margin": 1.0,
      "sponsor": null
     },
@@ -1242,17 +1242,17 @@
      "rep": 46.0,
      "date": "2026-10-05",
      "n": 615,
-     "weight": 0.155,
+     "weight": 0.145,
      "margin": 3.0,
      "sponsor": null
     }
    ],
-   "aggregator_margin": -2.7,
+   "aggregator_margin": -2.8,
    "poll_margin": -2.4,
    "undecided": 3.2,
    "rating": "lean",
    "rating_lean": "R",
-   "read_at": "2026-10-30T17:02:26+00:00"
+   "read_at": "2026-10-31T01:04:29+00:00"
   },
   "VT-GOV": {
    "state": "VT",
@@ -1268,7 +1268,7 @@
      "rep": 46.0,
      "date": "2026-10-08",
      "n": 948,
-     "weight": 0.237,
+     "weight": 0.221,
      "margin": -3.0,
      "sponsor": null
     },
@@ -1278,7 +1278,7 @@
      "rep": 49.0,
      "date": "2026-10-03",
      "n": 1752,
-     "weight": 0.228,
+     "weight": 0.212,
      "margin": -3.0,
      "sponsor": null
     },
@@ -1288,7 +1288,7 @@
      "rep": 42.0,
      "date": "2026-09-20",
      "n": 817,
-     "weight": 0.063,
+     "weight": 0.059,
      "margin": -10.0,
      "sponsor": null
     },
@@ -1298,7 +1298,7 @@
      "rep": 43.0,
      "date": "2026-09-06",
      "n": 829,
-     "weight": 0.024,
+     "weight": 0.022,
      "margin": 6.0,
      "sponsor": null
     },
@@ -1318,7 +1318,7 @@
    "undecided": 10.1,
    "rating": "likely",
    "rating_lean": "R",
-   "read_at": "2026-10-30T17:02:29+00:00"
+   "read_at": "2026-10-31T01:04:31+00:00"
   },
   "WI-GOV": {
    "state": "WI",
@@ -1354,7 +1354,7 @@
      "rep": 42.0,
      "date": "2026-10-09",
      "n": 1715,
-     "weight": 0.171,
+     "weight": 0.159,
      "margin": 1.5,
      "sponsor": "D"
     },
@@ -1364,7 +1364,7 @@
      "rep": 45.0,
      "date": "2026-10-08",
      "n": 1213,
-     "weight": 0.134,
+     "weight": 0.125,
      "margin": 5.5,
      "sponsor": "R"
     },
@@ -1374,7 +1374,7 @@
      "rep": 44.0,
      "date": "2026-10-05",
      "n": 662,
-     "weight": 0.08,
+     "weight": 0.075,
      "margin": 2.5,
      "sponsor": "D"
     },
@@ -1384,7 +1384,7 @@
      "rep": 44.0,
      "date": "2026-10-04",
      "n": 668,
-     "weight": 0.151,
+     "weight": 0.141,
      "margin": 7.0,
      "sponsor": null
     },
@@ -1394,7 +1394,7 @@
      "rep": 46.0,
      "date": "2026-09-05",
      "n": 692,
-     "weight": 0.021,
+     "weight": 0.019,
      "margin": 3.0,
      "sponsor": null
     },
@@ -1434,7 +1434,7 @@
    "undecided": 7.9,
    "rating": "lean",
    "rating_lean": "D",
-   "read_at": "2026-10-30T17:02:31+00:00"
+   "read_at": "2026-10-31T01:04:34+00:00"
   }
  },
  "issues": [

@@ -1,22 +1,22 @@
 {
- "as_of": "2026-10-30",
- "dem_margin_points": 8.91,
- "note": "Our own average of 89 individual polls from 48 pollsters, 2026-08-31 to 2026-10-27, plus or minus 0.4. Published aggregators say D+8.9",
+ "as_of": "2026-10-31",
+ "dem_margin_points": 8.9,
+ "note": "Our own average of 88 individual polls from 48 pollsters, 2026-09-02 to 2026-10-27, plus or minus 0.5. Published aggregators say D+8.9",
  "sources": [
   "https://en.wikipedia.org/wiki/2026_United_States_elections",
   "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections"
  ],
  "detail": {
-  "stderr": 0.44,
+  "stderr": 0.45,
   "spread": 1.89,
-  "flat": 8.65,
-  "trend_per_week": 0.08,
-  "mean_age_days": 22.9,
-  "n_polls": 89,
-  "n_effective": 62.8,
+  "flat": 8.66,
+  "trend_per_week": 0.07,
+  "mean_age_days": 23.8,
+  "n_polls": 88,
+  "n_effective": 62.5,
   "n_pollsters": 48,
   "newest": "2026-10-27",
-  "oldest": "2026-08-31",
+  "oldest": "2026-09-02",
   "house_effects": [
    {
     "pollster": "Harvard",
@@ -76,7 +76,7 @@
     "population": "LV",
     "margin": 12.0,
     "adjusted": 11.31,
-    "weight": 0.715
+    "weight": 0.692
    },
    {
     "source": "Harvard / Harris Poll / HarrisX",
@@ -85,7 +85,7 @@
     "population": "LV",
     "margin": 4.0,
     "adjusted": 7.3,
-    "weight": 0.98
+    "weight": 0.948
    },
    {
     "source": "The Economist / YouGov",
@@ -94,7 +94,7 @@
     "population": "LV",
     "margin": 11.0,
     "adjusted": 11.17,
-    "weight": 1.038
+    "weight": 1.005
    },
    {
     "source": "Reuters / Ipsos",
@@ -103,7 +103,7 @@
     "population": "LV",
     "margin": 9.0,
     "adjusted": 10.58,
-    "weight": 1.057
+    "weight": 1.023
    },
    {
     "source": "NPR / PBS / Marist University",
@@ -112,7 +112,7 @@
     "population": "LV",
     "margin": 8.0,
     "adjusted": 8.12,
-    "weight": 1.108
+    "weight": 1.072
    },
    {
     "source": "Cygnal (R)",
@@ -121,7 +121,7 @@
     "population": "LV",
     "margin": 9.0,
     "adjusted": 8.92,
-    "weight": 1.123
+    "weight": 1.087
    },
    {
     "source": "CBS / YouGov",
@@ -130,7 +130,7 @@
     "population": "LV",
     "margin": 8.0,
     "adjusted": 8.12,
-    "weight": 1.174
+    "weight": 1.135
    },
    {
     "source": "Echelon Insights",
@@ -139,7 +139,7 @@
     "population": "LV",
     "margin": 5.0,
     "adjusted": 5.82,
-    "weight": 1.694
+    "weight": 1.639
    },
    {
     "source": "Prolific",
@@ -148,7 +148,7 @@
     "population": "LV",
     "margin": 11.0,
     "adjusted": 10.51,
-    "weight": 0.725
+    "weight": 0.701
    },
    {
     "source": "Clarity Campaign Labs",
@@ -157,7 +157,7 @@
     "population": "LV",
     "margin": 8.0,
     "adjusted": 7.85,
-    "weight": 0.837
+    "weight": 0.81
    },
    {
     "source": "ActiVote",
@@ -166,7 +166,7 @@
     "population": "LV",
     "margin": 6.0,
     "adjusted": 7.68,
-    "weight": 0.831
+    "weight": 0.804
    },
    {
     "source": "The Economist / YouGov",
@@ -175,7 +175,7 @@
     "population": "LV",
     "margin": 9.0,
     "adjusted": 9.17,
-    "weight": 0.873
+    "weight": 0.844
    }
   ],
   "aggregators": {
