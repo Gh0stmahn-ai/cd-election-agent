@@ -26,6 +26,7 @@ Writes backtest/education_fit.json.
 import json
 import math
 import os
+import re
 import sys
 import urllib.parse
 import urllib.request
@@ -129,7 +130,12 @@ def factor(slopes, ses):
 
 
 def main():
-    key = os.environ.get("CENSUS_API_KEY")
+    key = (os.environ.get("CENSUS_API_KEY") or "").strip().strip('"').strip("'").strip()
+    if key:
+        # The key itself is never printed; only whether it looks like one.
+        # Census keys are 40 hexadecimal characters.
+        looks = bool(re.fullmatch(r"[0-9a-fA-F]{40}", key))
+        print(f"Census key: {len(key)} characters, {'looks like a Census key' if looks else 'NOT the usual 40 hex characters'}")
     path = os.path.join(HERE, "state_education.json")
     if key:
         shares = fetch_shares(key)
