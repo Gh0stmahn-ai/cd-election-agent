@@ -162,6 +162,28 @@ TOTAL_SD = {
 }
 
 
+# The education factor (backtest/education.py, run on 2014-2024 Senate and
+# governor races against the Census Bureau's 2023 American Community Survey):
+# in competitive races, holding Cook PVI fixed, the slope of each year's miss
+# on a state's share of white adults without a college degree varied from
+# cycle to cycle far more than chance allows (p = 0.03), by 1.38 points per
+# standard deviation of that share. 2020 ran one way (-2.9), 2022 the other
+# (+2.2). The direction is not predictable, so it enters as a random factor.
+EDUCATION_FACTOR_SD = 1.38
+
+
+def load_state_education_z():
+    """Each state's non-college white share as a z-score, or {} if never fetched."""
+    try:
+        states = json.loads((Path(__file__).parent / "backtest" / "state_education.json").read_text())["states"]
+    except (OSError, KeyError, ValueError):
+        return {}
+    vals = list(states.values())
+    mu = sum(vals) / len(vals)
+    sd = (sum((v - mu) ** 2 for v in vals) / len(vals)) ** 0.5
+    return {k: (v - mu) / sd for k, v in states.items()} if sd else {}
+
+
 def race_sd(chamber, rating):
     """What is left for the race itself once the shared state miss is removed."""
     total = TOTAL_SD[chamber][rating]
@@ -725,7 +747,23 @@ def run_simulation(n_sims=N_SIMS, seed=SEED, env_margin=None):
     # The state layer, drawn once and reused by every race in that state. This
     # is what makes a state's Senate race and its districts go wrong together.
     state_index = {code: i for i, code in enumerate(sorted(STATE_DIVISION))}
-    state_err = rng.normal(0.0, STATE_SD, (n_sims, len(state_index)))
+    # Part of that state layer is not independent from state to state: in a
+    # given year the misses run the same way wherever many adults are white
+    # without a college degree (backtest/education.py). That part is drawn as
+    # one shared factor per simulation, times each state's standardized share,
+    # and the independent state draw shrinks by the same amount, so every
+    # race's total uncertainty is unchanged on average and only the way close
+    # races move together changes. It uses its own random stream, so it leaves
+    # every other draw exactly where it was.
+    edu_z = load_state_education_z()
+    if edu_z:
+        state_sd_draw = (STATE_SD ** 2 - EDUCATION_FACTOR_SD ** 2) ** 0.5
+        edu_f = np.random.default_rng(seed + 7919).normal(0.0, EDUCATION_FACTOR_SD, n_sims)
+    else:
+        state_sd_draw, edu_f = STATE_SD, None
+    state_err = rng.normal(0.0, 1.0, (n_sims, len(state_index))) * state_sd_draw
+    if edu_f is not None:
+        state_err += edu_f[:, None] * np.array([edu_z.get(c, 0.0) for c in sorted(STATE_DIVISION)])[None, :]
 
     def shared_for(state_codes):
         """The state error column lined up with a list of races."""

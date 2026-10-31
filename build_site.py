@@ -1866,6 +1866,14 @@ def build_methodology(snap):
     transfer, adds 2 points of spread to its races. Neither moves who is favored; both make the odds in the
     closest races more honest about what is not yet known.</p>
 
+    <p><b>States with many white voters without a college degree can miss together.</b> Tested on the
+    2014-2024 Senate and governor races against the Census Bureau's education figures for each state, the
+    misses in competitive races lined up with that share far more than chance allows, in a direction that
+    changes from year to year (against Democrats in 2020, toward them in 2022). So part of each state's
+    shared error, 1.4 points per standard deviation of that share, is now drawn once for the whole country.
+    Each race's own uncertainty is unchanged; what changes is that Iowa, Maine and Ohio, say, tend to miss
+    together, and in the opposite direction from Texas and Georgia.</p>
+
     <p><b>House seats are separated by partisan lean.</b> A rating puts a seat in a class; Cook's Partisan
     Voting Index says where inside that class it sits. Each district's baseline is nudged by how far its
     index is from the typical index of seats with the same rating, centred so a rating's average is left
