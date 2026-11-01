@@ -1,5 +1,5 @@
 {
- "as_of": "2026-11-01T02:08:15+00:00",
+ "as_of": "2026-11-01T17:07:57+00:00",
  "window_hours": 48,
  "rules": "Equal numbers of stories about each party, and equal numbers of headlines from left-leaning and right-leaning outlets within each party's list; center outlets count toward neither. Ranked by how many outlets are carrying the story, newer first.",
  "outlets": [
@@ -211,7 +211,7 @@
   "R": 7,
   "C": 6
  },
- "candidates_considered": 73,
+ "candidates_considered": 83,
  "stories": [
   {
    "title": "El-Sayed asks fellow Democrat Stevens not to attend final campaign events",
@@ -222,26 +222,44 @@
    "focus": "D",
    "also": [
     "NBC News",
+    "New York Post",
     "NewsNation",
-    "Politico",
-    "The Hill"
+    "Politico"
    ],
    "n_outlets": 5,
    "coverage": {
     "L": 3,
-    "C": 2,
-    "R": 0
+    "C": 1,
+    "R": 1
    }
   },
   {
-   "title": "Attorneys for Alaska say 'meritless' Trump demand to set aside Senate ballots 'not even possible'",
-   "link": "https://abcnews.com/Politics/wireStory/attorneys-alaska-meritless-trump-demand-set-aside-senate-137738992",
+   "title": "FBI visits Dan J. Sullivan donor in candidate's hometown as Alaska Senate inquiry widens",
+   "link": "https://abcnews.com/Politics/wireStory/fbi-visits-dan-sullivan-donor-candidates-hometown-alaska-137728566",
    "outlet": "ABC News",
    "lean": "L",
-   "published": "2026-10-31T20:14:48+00:00",
+   "published": "2026-11-01T04:22:14+00:00",
    "focus": "R",
    "also": [
-    "New York Post",
+    "CBS News",
+    "New York Post"
+   ],
+   "n_outlets": 3,
+   "coverage": {
+    "L": 2,
+    "C": 0,
+    "R": 1
+   }
+  },
+  {
+   "title": "Trump ask to set aside ‘Decoy Dan’ Alaska Senate ballots ‘not even possible’: attorneys",
+   "link": "https://nypost.com/2026/10/31/us-news/trump-ask-to-set-aside-decoy-dan-alaska-senate-ballots-not-even-possible/",
+   "outlet": "New York Post",
+   "lean": "R",
+   "published": "2026-10-31T21:22:42+00:00",
+   "focus": "R",
+   "also": [
+    "ABC News",
     "NewsNation"
    ],
    "n_outlets": 3,
@@ -269,106 +287,27 @@
    }
   },
   {
-   "title": "Ricketts leads independent candidate Osborn by 6 points in latest Nebraska Senate poll",
-   "link": "https://thehill.com/homenews/campaign/6186054-ricketts-osborn-nebraska-senate/",
-   "outlet": "The Hill",
-   "lean": "C",
-   "published": "2026-10-31T14:03:52+00:00",
-   "focus": "R",
-   "also": [
-    "The New York Times"
-   ],
-   "n_outlets": 2,
+   "title": "Turmoil in Michigan's Senate race as Democrat Haley Stevens appears with Republican Mike Rogers",
+   "link": "https://abcnews.com/Politics/wireStory/turmoil-michigans-senate-race-democrat-haley-stevens-appears-137749194",
+   "outlet": "ABC News",
+   "lean": "L",
+   "published": "2026-11-01T16:52:49+00:00",
+   "focus": "both",
+   "also": [],
+   "n_outlets": 1,
    "coverage": {
     "L": 1,
-    "C": 1,
+    "C": 0,
     "R": 0
    }
   },
   {
-   "title": "El-Sayed to campaign with Rep. Stevens for first time days before midterms",
-   "link": "https://www.newsnationnow.com/politics/2026-midterm-elections/rep-haley-stevens-campaign-el-sayed/",
-   "outlet": "NewsNation",
-   "lean": "C",
-   "published": "2026-10-30T16:17:57+00:00",
-   "focus": "D",
-   "also": [
-    "New York Post"
-   ],
-   "n_outlets": 2,
-   "coverage": {
-    "L": 0,
-    "C": 1,
-    "R": 1
-   }
-  },
-  {
-   "title": "Polls suggest that Darline Graham is tied with, or trailing, Dr. Annie Andrews in a South Carolina race for the U.S. Senate",
-   "link": "https://www.wsj.com/politics/elections/darline-graham-senate-race-da6227b0?mod=rss_socialpoliticsfeed",
-   "outlet": "The Wall Street Journal",
-   "lean": "C",
-   "published": "2026-11-01T01:00:00+00:00",
-   "focus": "both",
-   "also": [],
-   "n_outlets": 1,
-   "coverage": {
-    "L": 0,
-    "C": 1,
-    "R": 0
-   }
-  },
-  {
-   "title": "Paxton, Talarico make final push in Texas Senate race as early vote tops 6.7 million",
-   "link": "https://www.newsnationnow.com/politics/2026-midterm-elections/paxton-talarico-final-push-texas-senate-early-vote/",
-   "outlet": "NewsNation",
-   "lean": "C",
-   "published": "2026-10-31T22:54:58+00:00",
-   "focus": "both",
-   "also": [],
-   "n_outlets": 1,
-   "coverage": {
-    "L": 0,
-    "C": 1,
-    "R": 0
-   }
-  },
-  {
-   "title": "Scott Colom releases ‘Sinners’-themed campaign ad as Mississippi Senate race heats up",
-   "link": "https://thehill.com/homenews/campaign/6186475-scott-colom-releases-sinners-themed-campaign-ad-as-mississippi-senate-race-heats-up/",
-   "outlet": "The Hill",
-   "lean": "C",
-   "published": "2026-10-31T22:50:05+00:00",
-   "focus": "D",
-   "also": [],
-   "n_outlets": 1,
-   "coverage": {
-    "L": 0,
-    "C": 1,
-    "R": 0
-   }
-  },
-  {
-   "title": "Mike Rogers claims he's ahead by 7 percent on ballots returned so far ‘by our models’",
-   "link": "https://thehill.com/homenews/campaign/6186460-rogers-claims-early-ballot-lead/",
-   "outlet": "The Hill",
-   "lean": "C",
-   "published": "2026-10-31T21:50:45+00:00",
-   "focus": "R",
-   "also": [],
-   "n_outlets": 1,
-   "coverage": {
-    "L": 0,
-    "C": 1,
-    "R": 0
-   }
-  },
-  {
-   "title": "Dems try to ride blue wave to flood Congress in final midterm blitz",
-   "link": "https://nypost.com/2026/10/31/us-news/dems-try-to-ride-blue-wave-in-final-midterm-blitz/",
+   "title": "President Trump reveals how he’ll still be able to get things done if Dems take over after midterms",
+   "link": "https://nypost.com/2026/11/01/us-news/trump-reveals-how-hell-still-be-able-to-get-things-done-if-dems-take-over-after-midterms/",
    "outlet": "New York Post",
    "lean": "R",
-   "published": "2026-10-31T21:12:50+00:00",
-   "focus": "D",
+   "published": "2026-11-01T16:51:49+00:00",
+   "focus": "both",
    "also": [],
    "n_outlets": 1,
    "coverage": {
@@ -378,12 +317,12 @@
    }
   },
   {
-   "title": "Ramaswamy among nearly $700K in donations for harassed Red Baron worker",
-   "link": "https://thehill.com/blogs/in-the-know/6186292-ramaswamy-donates-red-baron/",
+   "title": "Tim Scott dodges question on accepting Alaska Senate race results if Peltola wins",
+   "link": "https://thehill.com/homenews/campaign/6186830-tim-scott-dodges-alaska-results/",
    "outlet": "The Hill",
    "lean": "C",
-   "published": "2026-10-31T19:02:02+00:00",
-   "focus": "R",
+   "published": "2026-11-01T16:26:59+00:00",
+   "focus": "D",
    "also": [],
    "n_outlets": 1,
    "coverage": {
@@ -393,41 +332,11 @@
    }
   },
   {
-   "title": "Erika Donalds: Why voters still trust Trump on key issues",
-   "link": "https://www.newsnationnow.com/politics/2026-midterm-elections/erika-byron-donalds-midterms-trump-florida/",
-   "outlet": "NewsNation",
-   "lean": "C",
-   "published": "2026-10-31T17:59:14+00:00",
-   "focus": "R",
-   "also": [],
-   "n_outlets": 1,
-   "coverage": {
-    "L": 0,
-    "C": 1,
-    "R": 0
-   }
-  },
-  {
-   "title": "US, Iran race to revive Qatar talks as Trump weighs new strikes after midterms",
-   "link": "https://nypost.com/2026/10/31/world-news/us-delegation-set-to-join-iran-talks-in-qatar/",
-   "outlet": "New York Post",
-   "lean": "R",
-   "published": "2026-10-31T15:59:12+00:00",
-   "focus": "R",
-   "also": [],
-   "n_outlets": 1,
-   "coverage": {
-    "L": 0,
-    "C": 0,
-    "R": 1
-   }
-  },
-  {
-   "title": "As Texas Dems predict a Hispanic wave, Hinojosa takes her pitch ringside",
-   "link": "https://www.cbsnews.com/news/texas-hinojosa-abbott-boxing-ad-latino-voters/",
+   "title": "Shapiro says officials must \"lead by example\" in heated rhetoric",
+   "link": "https://www.cbsnews.com/news/josh-shapiro-pennsylvania-threats-campaign-rhetoric/",
    "outlet": "CBS News",
    "lean": "L",
-   "published": "2026-10-31T14:39:42+00:00",
+   "published": "2026-11-01T16:07:24+00:00",
    "focus": "D",
    "also": [],
    "n_outlets": 1,
@@ -435,6 +344,96 @@
     "L": 1,
     "C": 0,
     "R": 0
+   }
+  },
+  {
+   "title": "Trump administration lawsuits target Alaska, California before Election Day",
+   "link": "https://www.newsnationnow.com/politics/2026-midterm-elections/election-lawsuits-trump-administration-alaska-califronia/",
+   "outlet": "NewsNation",
+   "lean": "C",
+   "published": "2026-11-01T15:53:14+00:00",
+   "focus": "R",
+   "also": [],
+   "n_outlets": 1,
+   "coverage": {
+    "L": 0,
+    "C": 1,
+    "R": 0
+   }
+  },
+  {
+   "title": "Data analysts flag mismatches in Trump administration California voter eligibility list",
+   "link": "https://thehill.com/homenews/campaign/6186744-trump-administration-voter-list-mismatches/",
+   "outlet": "The Hill",
+   "lean": "C",
+   "published": "2026-11-01T15:15:32+00:00",
+   "focus": "R",
+   "also": [],
+   "n_outlets": 1,
+   "coverage": {
+    "L": 0,
+    "C": 1,
+    "R": 0
+   }
+  },
+  {
+   "title": "Democrats criticize Turek over ad on trans issues",
+   "link": "https://thehill.com/homenews/campaign/6186719-iowa-democrats-criticize-josh-turek/",
+   "outlet": "The Hill",
+   "lean": "C",
+   "published": "2026-11-01T14:55:56+00:00",
+   "focus": "D",
+   "also": [],
+   "n_outlets": 1,
+   "coverage": {
+    "L": 0,
+    "C": 1,
+    "R": 0
+   }
+  },
+  {
+   "title": "Trump administration promises US farmers $15 billion in weeks before the midterms",
+   "link": "https://abcnews.com/Politics/wireStory/trump-administration-promises-us-farmers-15-billion-weeks-137746731",
+   "outlet": "ABC News",
+   "lean": "L",
+   "published": "2026-11-01T14:50:24+00:00",
+   "focus": "R",
+   "also": [],
+   "n_outlets": 1,
+   "coverage": {
+    "L": 1,
+    "C": 0,
+    "R": 0
+   }
+  },
+  {
+   "title": "Midterm Election Watch Guide: When GOP Will Know If It’s Time To Hit Panic Button Or Reach For Champagne",
+   "link": "https://dailycaller.com/2026/11/01/midterm-elections-races-republicans-democrats-polls",
+   "outlet": "Daily Caller",
+   "lean": "R",
+   "published": "2026-11-01T14:11:26+00:00",
+   "focus": "R",
+   "also": [],
+   "n_outlets": 1,
+   "coverage": {
+    "L": 0,
+    "C": 0,
+    "R": 1
+   }
+  },
+  {
+   "title": "AOC-backed Alaska Senate hopeful Mary Peltola accused of using n-word",
+   "link": "https://nypost.com/2026/11/01/us-news/aoc-backed-alaska-senate-hopeful-mary-peltola-accused-of-using-n-word/",
+   "outlet": "New York Post",
+   "lean": "R",
+   "published": "2026-11-01T10:31:20+00:00",
+   "focus": "D",
+   "also": [],
+   "n_outlets": 1,
+   "coverage": {
+    "L": 0,
+    "C": 0,
+    "R": 1
    }
   }
  ],
@@ -442,8 +441,8 @@
   "D": 6,
   "R": 6,
   "both": 2,
-  "left_outlets": 3,
-  "right_outlets": 3,
-  "center_outlets": 8
+  "left_outlets": 5,
+  "right_outlets": 5,
+  "center_outlets": 4
  }
 }

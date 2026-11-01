@@ -1,5 +1,5 @@
 {
- "as_of": "2026-11-01T02:08:15+00:00",
+ "as_of": "2026-11-01T17:07:57+00:00",
  "source": "Wikipedia per-race election articles",
  "half_life_days": 10,
  "max_age_days": 120,
@@ -120,15 +120,15 @@
    "undecided": 8.5,
    "rating": "likely",
    "rating_lean": "D",
-   "read_at": "2026-11-01T02:07:44+00:00"
+   "read_at": "2026-11-01T17:07:24+00:00"
   },
   "FL-GOV": {
    "state": "FL",
    "dem_candidate": "David Jolly",
    "rep_candidate": "Byron Donalds",
-   "dem_margin": -4.0,
-   "method": "mean of 5 aggregators, averaged with 28 polls adjusted for sponsors",
-   "n_used": 28,
+   "dem_margin": -3.9,
+   "method": "mean of 5 aggregators, averaged with 29 polls adjusted for sponsors",
+   "n_used": 29,
    "detail": [
     {
      "label": "270toWin",
@@ -151,16 +151,6 @@
      "margin": -4.1
     },
     {
-     "label": "Workbench Strategy (D)",
-     "dem": 48.0,
-     "rep": 46.0,
-     "date": "2026-10-28",
-     "n": 800,
-     "weight": 0.379,
-     "margin": -0.5,
-     "sponsor": "D"
-    },
-    {
      "label": "ActiVote",
      "dem": 48.0,
      "rep": 52.0,
@@ -169,6 +159,16 @@
      "weight": 0.536,
      "margin": -4.0,
      "sponsor": null
+    },
+    {
+     "label": "Workbench Strategy (D)",
+     "dem": 48.0,
+     "rep": 46.0,
+     "date": "2026-10-28",
+     "n": 800,
+     "weight": 0.379,
+     "margin": -0.5,
+     "sponsor": "D"
     },
     {
      "label": "Political Matrix/The Listener Group",
@@ -211,6 +211,16 @@
      "sponsor": null
     },
     {
+     "label": "Big Data Poll",
+     "dem": 44.0,
+     "rep": 47.0,
+     "date": "2026-10-09",
+     "n": 1067,
+     "weight": 0.235,
+     "margin": -3.0,
+     "sponsor": null
+    },
+    {
      "label": "Univision / YouGov",
      "dem": 42.0,
      "rep": 50.0,
@@ -219,24 +229,14 @@
      "weight": 0.192,
      "margin": -8.0,
      "sponsor": null
-    },
-    {
-     "label": "Fabrizio, Lee & Associates (R)",
-     "dem": 43.0,
-     "rep": 49.0,
-     "date": "2026-10-08",
-     "n": 1200,
-     "weight": 0.116,
-     "margin": -3.5,
-     "sponsor": "R"
     }
    ],
    "aggregator_margin": -4.3,
    "poll_margin": -3.6,
-   "undecided": 7.8,
+   "undecided": 7.9,
    "rating": "lean",
    "rating_lean": "R",
-   "read_at": "2026-11-01T02:07:46+00:00"
+   "read_at": "2026-11-01T17:07:26+00:00"
   },
   "GA-GOV": {
    "state": "GA",
@@ -352,7 +352,7 @@
    "undecided": 4.9,
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-11-01T02:07:48+00:00"
+   "read_at": "2026-11-01T17:07:28+00:00"
   },
   "IA-GOV": {
    "state": "IA",
@@ -468,13 +468,13 @@
    "undecided": 5.5,
    "rating": "lean",
    "rating_lean": "D",
-   "read_at": "2026-11-01T02:07:50+00:00"
+   "read_at": "2026-11-01T17:07:31+00:00"
   },
   "KS-GOV": {
    "state": "KS",
    "dem_candidate": "Cindy Holscher",
    "rep_candidate": "Ty Masterson",
-   "dem_margin": -2.0,
+   "dem_margin": -2.8,
    "method": "mean of 5 aggregators, averaged with 9 polls adjusted for sponsors",
    "n_used": 9,
    "detail": [
@@ -499,6 +499,16 @@
      "margin": -1.9
     },
     {
+     "label": "Emerson College",
+     "dem": 48.0,
+     "rep": 53.0,
+     "date": "2026-10-28",
+     "n": 800,
+     "weight": 0.758,
+     "margin": -5.0,
+     "sponsor": null
+    },
+    {
      "label": "YouGov",
      "dem": 44.0,
      "rep": 47.0,
@@ -517,16 +527,6 @@
      "weight": 0.071,
      "margin": -2.5,
      "sponsor": "D"
-    },
-    {
-     "label": "Emerson College",
-     "dem": 46.0,
-     "rep": 50.0,
-     "date": "2026-10-04",
-     "n": 800,
-     "weight": 0.144,
-     "margin": -4.0,
-     "sponsor": null
     },
     {
      "label": "The Washington Post / SSPG",
@@ -580,11 +580,11 @@
     }
    ],
    "aggregator_margin": -2.2,
-   "poll_margin": -1.8,
-   "undecided": 6.5,
+   "poll_margin": -3.4,
+   "undecided": 2.9,
    "rating": "tossup",
    "rating_lean": "D",
-   "read_at": "2026-11-01T02:07:53+00:00"
+   "read_at": "2026-11-01T17:07:33+00:00"
   },
   "MI-GOV": {
    "state": "MI",
@@ -700,7 +700,7 @@
    "undecided": 7.8,
    "rating": "lean",
    "rating_lean": "D",
-   "read_at": "2026-11-01T02:07:55+00:00"
+   "read_at": "2026-11-01T17:07:35+00:00"
   },
   "NE-GOV": {
    "state": "NE",
@@ -732,7 +732,7 @@
    "undecided": 12.9,
    "rating": "lean",
    "rating_lean": "R",
-   "read_at": "2026-11-01T02:07:57+00:00"
+   "read_at": "2026-11-01T17:07:38+00:00"
   },
   "NH-GOV": {
    "state": "NH",
@@ -848,7 +848,7 @@
    "undecided": 9.2,
    "rating": "likely",
    "rating_lean": "R",
-   "read_at": "2026-11-01T02:07:59+00:00"
+   "read_at": "2026-11-01T17:07:40+00:00"
   },
   "NV-GOV": {
    "state": "NV",
@@ -964,7 +964,7 @@
    "undecided": 9.1,
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-11-01T02:08:02+00:00"
+   "read_at": "2026-11-01T17:07:42+00:00"
   },
   "OH-GOV": {
    "state": "OH",
@@ -1080,7 +1080,7 @@
    "undecided": 5.1,
    "rating": "lean",
    "rating_lean": "D",
-   "read_at": "2026-11-01T02:08:04+00:00"
+   "read_at": "2026-11-01T17:07:45+00:00"
   },
   "OK-GOV": {
    "state": "OK",
@@ -1116,7 +1116,7 @@
    "undecided": 24.2,
    "rating": "likely",
    "rating_lean": "R",
-   "read_at": "2026-11-01T02:08:06+00:00"
+   "read_at": "2026-11-01T17:07:47+00:00"
   },
   "OR-GOV": {
    "state": "OR",
@@ -1136,15 +1136,15 @@
    "undecided": 10.2,
    "rating": "lean",
    "rating_lean": "D",
-   "read_at": "2026-11-01T02:08:08+00:00"
+   "read_at": "2026-11-01T17:07:50+00:00"
   },
   "TX-GOV": {
    "state": "TX",
    "dem_candidate": "Gina Hinojosa",
    "rep_candidate": "Greg Abbott",
-   "dem_margin": -2.6,
-   "method": "mean of 5 aggregators, averaged with 43 polls adjusted for sponsors",
-   "n_used": 43,
+   "dem_margin": -2.5,
+   "method": "mean of 5 aggregators, averaged with 44 polls adjusted for sponsors",
+   "n_used": 44,
    "detail": [
     {
      "label": "270toWin",
@@ -1179,11 +1179,11 @@
     {
      "label": "ActiVote",
      "dem": 48.0,
-     "rep": 53.0,
+     "rep": 52.0,
      "date": "2026-10-28",
      "n": 400,
      "weight": 0.536,
-     "margin": -5.0,
+     "margin": -4.0,
      "sponsor": null
     },
     {
@@ -1248,11 +1248,11 @@
     }
    ],
    "aggregator_margin": -2.7,
-   "poll_margin": -2.4,
+   "poll_margin": -2.3,
    "undecided": 3.2,
    "rating": "lean",
    "rating_lean": "R",
-   "read_at": "2026-11-01T02:08:11+00:00"
+   "read_at": "2026-11-01T17:07:52+00:00"
   },
   "VT-GOV": {
    "state": "VT",
@@ -1318,7 +1318,7 @@
    "undecided": 10.1,
    "rating": "likely",
    "rating_lean": "R",
-   "read_at": "2026-11-01T02:08:13+00:00"
+   "read_at": "2026-11-01T17:07:54+00:00"
   },
   "WI-GOV": {
    "state": "WI",
@@ -1434,7 +1434,7 @@
    "undecided": 7.9,
    "rating": "lean",
    "rating_lean": "D",
-   "read_at": "2026-11-01T02:08:15+00:00"
+   "read_at": "2026-11-01T17:07:57+00:00"
   }
  },
  "issues": [
