@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-31T16:04:01+00:00",
+ "as_of": "2026-11-01T02:08:15+00:00",
  "window_hours": 48,
  "rules": "Equal numbers of stories about each party, and equal numbers of headlines from left-leaning and right-leaning outlets within each party's list; center outlets count toward neither. Ranked by how many outlets are carrying the story, newer first.",
  "outlets": [
@@ -95,7 +95,7 @@
    "outlet": "The New York Times",
    "lean": "L",
    "ok": true,
-   "items": 21
+   "items": 20
   },
   {
    "outlet": "CNN",
@@ -211,15 +211,35 @@
   "R": 7,
   "C": 6
  },
- "candidates_considered": 71,
+ "candidates_considered": 73,
  "stories": [
   {
-   "title": "El-Sayed campaign wants Stevens to stay away after day of back-and-forth sniping",
-   "link": "https://www.politico.com/news/2026/10/30/el-sayed-stevens-senate-race-fight-01144423",
-   "outlet": "Politico",
+   "title": "El-Sayed asks fellow Democrat Stevens not to attend final campaign events",
+   "link": "https://www.cbsnews.com/news/abdul-el-sayed-haley-stevens-feud-michigan-senate/",
+   "outlet": "CBS News",
    "lean": "L",
-   "published": "2026-10-31T00:46:59+00:00",
+   "published": "2026-11-01T00:53:26+00:00",
    "focus": "D",
+   "also": [
+    "NBC News",
+    "NewsNation",
+    "Politico",
+    "The Hill"
+   ],
+   "n_outlets": 5,
+   "coverage": {
+    "L": 3,
+    "C": 2,
+    "R": 0
+   }
+  },
+  {
+   "title": "Attorneys for Alaska say 'meritless' Trump demand to set aside Senate ballots 'not even possible'",
+   "link": "https://abcnews.com/Politics/wireStory/attorneys-alaska-meritless-trump-demand-set-aside-senate-137738992",
+   "outlet": "ABC News",
+   "lean": "L",
+   "published": "2026-10-31T20:14:48+00:00",
+   "focus": "R",
    "also": [
     "New York Post",
     "NewsNation"
@@ -232,14 +252,31 @@
    }
   },
   {
-   "title": "Pete Ricketts Leads Dan Osborn in Nebraska Senate Race, Poll Finds",
-   "link": "https://www.nytimes.com/2026/10/31/us/politics/nebraska-senate-poll.html",
-   "outlet": "The New York Times",
-   "lean": "L",
-   "published": "2026-10-31T09:05:31+00:00",
-   "focus": "R",
+   "title": "Closing Catfight: El-Sayed Disinvites Haley Stevens From ‘Unity’ Event After Refusing To Condemn Antisemitic Ad",
+   "link": "https://freebeacon.com/democrats/closing-catfight-el-sayed-disinvites-haley-stevens-from-unity-event-after-refusing-to-condemn-antisemitic-ad/",
+   "outlet": "Washington Free Beacon",
+   "lean": "R",
+   "published": "2026-10-31T16:45:33+00:00",
+   "focus": "D",
    "also": [
     "The Hill"
+   ],
+   "n_outlets": 2,
+   "coverage": {
+    "L": 0,
+    "C": 1,
+    "R": 1
+   }
+  },
+  {
+   "title": "Ricketts leads independent candidate Osborn by 6 points in latest Nebraska Senate poll",
+   "link": "https://thehill.com/homenews/campaign/6186054-ricketts-osborn-nebraska-senate/",
+   "outlet": "The Hill",
+   "lean": "C",
+   "published": "2026-10-31T14:03:52+00:00",
+   "focus": "R",
+   "also": [
+    "The New York Times"
    ],
    "n_outlets": 2,
    "coverage": {
@@ -249,52 +286,123 @@
    }
   },
   {
-   "title": "Flavored Zyn could return to California under plan by Steve Hilton to undo ‘pointless killjoy rules’",
-   "link": "https://nypost.com/2026/10/30/health/flavored-nicotine-pouches-could-return-to-california-under-steve-hilton/",
-   "outlet": "New York Post",
-   "lean": "R",
-   "published": "2026-10-30T21:25:27+00:00",
-   "focus": "R",
-   "also": [
-    "NBC News"
-   ],
-   "n_outlets": 2,
-   "coverage": {
-    "L": 1,
-    "C": 0,
-    "R": 1
-   }
-  },
-  {
-   "title": "Trump meets with Stephen Hubbard after release from Russian jail",
-   "link": "https://www.cbsnews.com/news/trump-meeting-stephen-hubbard-white-house-russia-release/",
-   "outlet": "CBS News",
-   "lean": "L",
-   "published": "2026-10-30T20:38:00+00:00",
-   "focus": "both",
+   "title": "El-Sayed to campaign with Rep. Stevens for first time days before midterms",
+   "link": "https://www.newsnationnow.com/politics/2026-midterm-elections/rep-haley-stevens-campaign-el-sayed/",
+   "outlet": "NewsNation",
+   "lean": "C",
+   "published": "2026-10-30T16:17:57+00:00",
+   "focus": "D",
    "also": [
     "New York Post"
    ],
    "n_outlets": 2,
    "coverage": {
-    "L": 1,
+    "L": 0,
+    "C": 1,
+    "R": 1
+   }
+  },
+  {
+   "title": "Polls suggest that Darline Graham is tied with, or trailing, Dr. Annie Andrews in a South Carolina race for the U.S. Senate",
+   "link": "https://www.wsj.com/politics/elections/darline-graham-senate-race-da6227b0?mod=rss_socialpoliticsfeed",
+   "outlet": "The Wall Street Journal",
+   "lean": "C",
+   "published": "2026-11-01T01:00:00+00:00",
+   "focus": "both",
+   "also": [],
+   "n_outlets": 1,
+   "coverage": {
+    "L": 0,
+    "C": 1,
+    "R": 0
+   }
+  },
+  {
+   "title": "Paxton, Talarico make final push in Texas Senate race as early vote tops 6.7 million",
+   "link": "https://www.newsnationnow.com/politics/2026-midterm-elections/paxton-talarico-final-push-texas-senate-early-vote/",
+   "outlet": "NewsNation",
+   "lean": "C",
+   "published": "2026-10-31T22:54:58+00:00",
+   "focus": "both",
+   "also": [],
+   "n_outlets": 1,
+   "coverage": {
+    "L": 0,
+    "C": 1,
+    "R": 0
+   }
+  },
+  {
+   "title": "Scott Colom releases ‘Sinners’-themed campaign ad as Mississippi Senate race heats up",
+   "link": "https://thehill.com/homenews/campaign/6186475-scott-colom-releases-sinners-themed-campaign-ad-as-mississippi-senate-race-heats-up/",
+   "outlet": "The Hill",
+   "lean": "C",
+   "published": "2026-10-31T22:50:05+00:00",
+   "focus": "D",
+   "also": [],
+   "n_outlets": 1,
+   "coverage": {
+    "L": 0,
+    "C": 1,
+    "R": 0
+   }
+  },
+  {
+   "title": "Mike Rogers claims he's ahead by 7 percent on ballots returned so far ‘by our models’",
+   "link": "https://thehill.com/homenews/campaign/6186460-rogers-claims-early-ballot-lead/",
+   "outlet": "The Hill",
+   "lean": "C",
+   "published": "2026-10-31T21:50:45+00:00",
+   "focus": "R",
+   "also": [],
+   "n_outlets": 1,
+   "coverage": {
+    "L": 0,
+    "C": 1,
+    "R": 0
+   }
+  },
+  {
+   "title": "Dems try to ride blue wave to flood Congress in final midterm blitz",
+   "link": "https://nypost.com/2026/10/31/us-news/dems-try-to-ride-blue-wave-in-final-midterm-blitz/",
+   "outlet": "New York Post",
+   "lean": "R",
+   "published": "2026-10-31T21:12:50+00:00",
+   "focus": "D",
+   "also": [],
+   "n_outlets": 1,
+   "coverage": {
+    "L": 0,
     "C": 0,
     "R": 1
    }
   },
   {
-   "title": "DOJ requests separating Alaska ballots that rank Dan J. Sullivan in Senate race",
-   "link": "https://www.nbcnews.com/politics/2026-election/doj-requests-separating-alaska-ballots-rank-dan-j-sullivan-senate-race-rcna606646",
-   "outlet": "NBC News",
-   "lean": "L",
-   "published": "2026-10-30T22:38:13+00:00",
+   "title": "Ramaswamy among nearly $700K in donations for harassed Red Baron worker",
+   "link": "https://thehill.com/blogs/in-the-know/6186292-ramaswamy-donates-red-baron/",
+   "outlet": "The Hill",
+   "lean": "C",
+   "published": "2026-10-31T19:02:02+00:00",
    "focus": "R",
-   "also": [
-    "The Wall Street Journal"
-   ],
-   "n_outlets": 2,
+   "also": [],
+   "n_outlets": 1,
    "coverage": {
-    "L": 1,
+    "L": 0,
+    "C": 1,
+    "R": 0
+   }
+  },
+  {
+   "title": "Erika Donalds: Why voters still trust Trump on key issues",
+   "link": "https://www.newsnationnow.com/politics/2026-midterm-elections/erika-byron-donalds-midterms-trump-florida/",
+   "outlet": "NewsNation",
+   "lean": "C",
+   "published": "2026-10-31T17:59:14+00:00",
+   "focus": "R",
+   "also": [],
+   "n_outlets": 1,
+   "coverage": {
+    "L": 0,
     "C": 1,
     "R": 0
    }
@@ -315,86 +423,11 @@
    }
   },
   {
-   "title": "Susan Collins Is Always Keeping Score",
-   "link": "https://www.nytimes.com/2026/10/31/us/politics/susan-collins-maine-senate-election.html",
-   "outlet": "The New York Times",
+   "title": "As Texas Dems predict a Hispanic wave, Hinojosa takes her pitch ringside",
+   "link": "https://www.cbsnews.com/news/texas-hinojosa-abbott-boxing-ad-latino-voters/",
+   "outlet": "CBS News",
    "lean": "L",
-   "published": "2026-10-31T15:46:42+00:00",
-   "focus": "R",
-   "also": [],
-   "n_outlets": 1,
-   "coverage": {
-    "L": 1,
-    "C": 0,
-    "R": 0
-   }
-  },
-  {
-   "title": "Lefty late-night TV hosts targeted Republicans in 87% of jokes about Senate candidates: study",
-   "link": "https://nypost.com/2026/10/31/us-news/late-night-tv-hosts-targeted-republicans-in-87-of-jokes-about-senate-candidates-study/",
-   "outlet": "New York Post",
-   "lean": "R",
-   "published": "2026-10-31T13:46:27+00:00",
-   "focus": "R",
-   "also": [],
-   "n_outlets": 1,
-   "coverage": {
-    "L": 0,
-    "C": 0,
-    "R": 1
-   }
-  },
-  {
-   "title": "DOJ pushes to isolate Alaska ballots in Peltola probe",
-   "link": "https://thehill.com/homenews/campaign/6186007-peltola-sullivan-vote-confusion-lawsuit/",
-   "outlet": "The Hill",
-   "lean": "C",
-   "published": "2026-10-31T12:47:30+00:00",
-   "focus": "D",
-   "also": [],
-   "n_outlets": 1,
-   "coverage": {
-    "L": 0,
-    "C": 1,
-    "R": 0
-   }
-  },
-  {
-   "title": "El-Sayed accuses Stevens of 'relitigating' primary after calls for apology on Israel",
-   "link": "https://thehill.com/homenews/campaign/6185985-el-sayed-stevens-michigan-senate/",
-   "outlet": "The Hill",
-   "lean": "C",
-   "published": "2026-10-31T12:05:59+00:00",
-   "focus": "D",
-   "also": [],
-   "n_outlets": 1,
-   "coverage": {
-    "L": 0,
-    "C": 1,
-    "R": 0
-   }
-  },
-  {
-   "title": "Dems' dire warnings about threats to democracy face an uncomfortable reckoning after Alaska election report",
-   "link": "https://www.foxnews.com/politics/dems-dire-warnings-about-threats-democracy-face-uncomfortable-reckoning-after-alaska-election-report",
-   "outlet": "Fox News",
-   "lean": "R",
-   "published": "2026-10-31T08:00:46+00:00",
-   "focus": "D",
-   "also": [],
-   "n_outlets": 1,
-   "coverage": {
-    "L": 0,
-    "C": 0,
-    "R": 1
-   }
-  },
-  {
-   "title": "Peltola says she is 'deeply offended' by accusations over Senate campaign",
-   "link": "https://www.nbcnews.com/video/peltola-says-she-is-deeply-offended-by-accusations-over-senate-campaign-272592453713",
-   "outlet": "NBC News",
-   "lean": "L",
-   "published": "2026-10-31T04:39:28+00:00",
+   "published": "2026-10-31T14:39:42+00:00",
    "focus": "D",
    "also": [],
    "n_outlets": 1,
@@ -402,36 +435,6 @@
     "L": 1,
     "C": 0,
     "R": 0
-   }
-  },
-  {
-   "title": "At Talarico Rally, Jasmine Crockett’s Pastor Calls ICE ‘the New KKK’: Talarico Thanks Him for His ‘Kind Words’",
-   "link": "https://freebeacon.com/democrats/at-talarico-rally-jasmine-crocketts-pastor-calls-ice-the-new-kkk-talarico-thanks-him-for-his-kind-words/",
-   "outlet": "Washington Free Beacon",
-   "lean": "R",
-   "published": "2026-10-30T21:26:58+00:00",
-   "focus": "D",
-   "also": [],
-   "n_outlets": 1,
-   "coverage": {
-    "L": 0,
-    "C": 0,
-    "R": 1
-   }
-  },
-  {
-   "title": "Election countdown: Steve Hilton talks jobs, Xavier Becerra hangs with LGBTQ leaders with 4 days to go",
-   "link": "https://nypost.com/2026/10/30/us-news/steve-hilton-xavier-becerra-make-final-campaign-moves-as-election-nears/",
-   "outlet": "New York Post",
-   "lean": "R",
-   "published": "2026-10-30T21:08:25+00:00",
-   "focus": "both",
-   "also": [],
-   "n_outlets": 1,
-   "coverage": {
-    "L": 0,
-    "C": 0,
-    "R": 1
    }
   }
  ],
@@ -439,8 +442,8 @@
   "D": 6,
   "R": 6,
   "both": 2,
-  "left_outlets": 6,
-  "right_outlets": 6,
-  "center_outlets": 2
+  "left_outlets": 3,
+  "right_outlets": 3,
+  "center_outlets": 8
  }
 }
