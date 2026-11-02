@@ -1,5 +1,5 @@
 {
- "as_of": "2026-11-01T17:07:57+00:00",
+ "as_of": "2026-11-02T02:23:03+00:00",
  "window_hours": 48,
  "rules": "Equal numbers of stories about each party, and equal numbers of headlines from left-leaning and right-leaning outlets within each party's list; center outlets count toward neither. Ranked by how many outlets are carrying the story, newer first.",
  "outlets": [
@@ -211,25 +211,80 @@
   "R": 7,
   "C": 6
  },
- "candidates_considered": 83,
+ "candidates_considered": 87,
  "stories": [
   {
-   "title": "El-Sayed asks fellow Democrat Stevens not to attend final campaign events",
-   "link": "https://www.cbsnews.com/news/abdul-el-sayed-haley-stevens-feud-michigan-senate/",
+   "title": "Stevens endorses Rogers amid rift with El-Sayed",
+   "link": "https://www.cbsnews.com/news/haley-stevens-mike-rogers-together-church-abdul-el-sayed-michigan-senate/",
    "outlet": "CBS News",
    "lean": "L",
-   "published": "2026-11-01T00:53:26+00:00",
-   "focus": "D",
+   "published": "2026-11-02T01:58:35+00:00",
+   "focus": "both",
    "also": [
+    "ABC News",
+    "Fox News",
     "NBC News",
-    "New York Post",
-    "NewsNation",
-    "Politico"
+    "NPR",
+    "Politico",
+    "The Hill"
    ],
-   "n_outlets": 5,
+   "n_outlets": 7,
+   "coverage": {
+    "L": 6,
+    "C": 1,
+    "R": 1
+   }
+  },
+  {
+   "title": "Dem Rep Haley Stevens, Fresh From Split With Abdul El-Sayed, Endorses Republican Challenger Mike Rogers Two Days Before Midterms",
+   "link": "https://dailycaller.com/2026/11/01/michigan-democrat-haley-stevens-endorses-republican-senate-nominee-mike-rogers-abdul-el-sayed",
+   "outlet": "Daily Caller",
+   "lean": "R",
+   "published": "2026-11-01T19:49:55+00:00",
+   "focus": "both",
+   "also": [
+    "NewsNation",
+    "The New York Times"
+   ],
+   "n_outlets": 3,
+   "coverage": {
+    "L": 1,
+    "C": 1,
+    "R": 1
+   }
+  },
+  {
+   "title": "Judge dismisses Trump lawsuit in Alaska Senate race",
+   "link": "https://www.nbcnews.com/nightly-news/video/judge-dismisses-trump-lawsuit-in-alaska-senate-race-272667717592",
+   "outlet": "NBC News",
+   "lean": "L",
+   "published": "2026-11-01T23:52:39+00:00",
+   "focus": "R",
+   "also": [
+    "NPR",
+    "NewsNation"
+   ],
+   "n_outlets": 3,
    "coverage": {
     "L": 3,
     "C": 1,
+    "R": 0
+   }
+  },
+  {
+   "title": "Detroit Churchgoers Say Haley Stevens’s Stunning Endorsement of Republican Mike Rogers Could Move Votes",
+   "link": "https://freebeacon.com/elections/detroit-churchgoers-say-haley-stevenss-stunning-endorsement-of-republican-mike-rogers-could-move-votes/",
+   "outlet": "Washington Free Beacon",
+   "lean": "R",
+   "published": "2026-11-01T21:15:51+00:00",
+   "focus": "R",
+   "also": [
+    "NBC News"
+   ],
+   "n_outlets": 2,
+   "coverage": {
+    "L": 1,
+    "C": 0,
     "R": 1
    }
   },
@@ -241,14 +296,30 @@
    "published": "2026-11-01T04:22:14+00:00",
    "focus": "R",
    "also": [
-    "CBS News",
     "New York Post"
    ],
-   "n_outlets": 3,
+   "n_outlets": 2,
    "coverage": {
-    "L": 2,
+    "L": 1,
     "C": 0,
-    "R": 1
+    "R": 2
+   }
+  },
+  {
+   "title": "DNC chair defends El-Sayed, Peltola as Democrats brace for post-election legal fights",
+   "link": "https://www.newsnationnow.com/the-hill/the-hill-sunday/dnc-chair-defends-el-sayed-peltola-as-democrats-brace-for-post-election-legal-fights/",
+   "outlet": "NewsNation",
+   "lean": "C",
+   "published": "2026-11-01T20:14:58+00:00",
+   "focus": "D",
+   "also": [
+    "The Hill"
+   ],
+   "n_outlets": 2,
+   "coverage": {
+    "L": 0,
+    "C": 3,
+    "R": 0
    }
   },
   {
@@ -270,118 +341,29 @@
    }
   },
   {
-   "title": "Closing Catfight: El-Sayed Disinvites Haley Stevens From ‘Unity’ Event After Refusing To Condemn Antisemitic Ad",
-   "link": "https://freebeacon.com/democrats/closing-catfight-el-sayed-disinvites-haley-stevens-from-unity-event-after-refusing-to-condemn-antisemitic-ad/",
-   "outlet": "Washington Free Beacon",
-   "lean": "R",
-   "published": "2026-10-31T16:45:33+00:00",
-   "focus": "D",
-   "also": [
-    "The Hill"
-   ],
-   "n_outlets": 2,
-   "coverage": {
-    "L": 0,
-    "C": 1,
-    "R": 1
-   }
-  },
-  {
-   "title": "Turmoil in Michigan's Senate race as Democrat Haley Stevens appears with Republican Mike Rogers",
-   "link": "https://abcnews.com/Politics/wireStory/turmoil-michigans-senate-race-democrat-haley-stevens-appears-137749194",
-   "outlet": "ABC News",
-   "lean": "L",
-   "published": "2026-11-01T16:52:49+00:00",
-   "focus": "both",
-   "also": [],
-   "n_outlets": 1,
-   "coverage": {
-    "L": 1,
-    "C": 0,
-    "R": 0
-   }
-  },
-  {
-   "title": "President Trump reveals how he’ll still be able to get things done if Dems take over after midterms",
-   "link": "https://nypost.com/2026/11/01/us-news/trump-reveals-how-hell-still-be-able-to-get-things-done-if-dems-take-over-after-midterms/",
-   "outlet": "New York Post",
-   "lean": "R",
-   "published": "2026-11-01T16:51:49+00:00",
-   "focus": "both",
-   "also": [],
-   "n_outlets": 1,
-   "coverage": {
-    "L": 0,
-    "C": 0,
-    "R": 1
-   }
-  },
-  {
-   "title": "Tim Scott dodges question on accepting Alaska Senate race results if Peltola wins",
-   "link": "https://thehill.com/homenews/campaign/6186830-tim-scott-dodges-alaska-results/",
-   "outlet": "The Hill",
-   "lean": "C",
-   "published": "2026-11-01T16:26:59+00:00",
-   "focus": "D",
-   "also": [],
-   "n_outlets": 1,
-   "coverage": {
-    "L": 0,
-    "C": 1,
-    "R": 0
-   }
-  },
-  {
-   "title": "Shapiro says officials must \"lead by example\" in heated rhetoric",
-   "link": "https://www.cbsnews.com/news/josh-shapiro-pennsylvania-threats-campaign-rhetoric/",
+   "title": "El-Sayed asks fellow Democrat Stevens not to attend final campaign events",
+   "link": "https://www.cbsnews.com/news/abdul-el-sayed-haley-stevens-feud-michigan-senate/",
    "outlet": "CBS News",
    "lean": "L",
-   "published": "2026-11-01T16:07:24+00:00",
+   "published": "2026-11-01T00:53:26+00:00",
    "focus": "D",
-   "also": [],
-   "n_outlets": 1,
+   "also": [
+    "NBC News",
+    "NewsNation"
+   ],
+   "n_outlets": 3,
    "coverage": {
-    "L": 1,
-    "C": 0,
-    "R": 0
-   }
-  },
-  {
-   "title": "Trump administration lawsuits target Alaska, California before Election Day",
-   "link": "https://www.newsnationnow.com/politics/2026-midterm-elections/election-lawsuits-trump-administration-alaska-califronia/",
-   "outlet": "NewsNation",
-   "lean": "C",
-   "published": "2026-11-01T15:53:14+00:00",
-   "focus": "R",
-   "also": [],
-   "n_outlets": 1,
-   "coverage": {
-    "L": 0,
+    "L": 2,
     "C": 1,
     "R": 0
    }
   },
   {
-   "title": "Data analysts flag mismatches in Trump administration California voter eligibility list",
-   "link": "https://thehill.com/homenews/campaign/6186744-trump-administration-voter-list-mismatches/",
+   "title": "Newsom on possible Democrat 'tsunami' on Election Day: 'That's a word I haven't used lightly'",
+   "link": "https://thehill.com/homenews/campaign/6187619-gavin-newsom-predicts-democrat-tsunami-election-day/",
    "outlet": "The Hill",
    "lean": "C",
-   "published": "2026-11-01T15:15:32+00:00",
-   "focus": "R",
-   "also": [],
-   "n_outlets": 1,
-   "coverage": {
-    "L": 0,
-    "C": 1,
-    "R": 0
-   }
-  },
-  {
-   "title": "Democrats criticize Turek over ad on trans issues",
-   "link": "https://thehill.com/homenews/campaign/6186719-iowa-democrats-criticize-josh-turek/",
-   "outlet": "The Hill",
-   "lean": "C",
-   "published": "2026-11-01T14:55:56+00:00",
+   "published": "2026-11-02T02:09:34+00:00",
    "focus": "D",
    "also": [],
    "n_outlets": 1,
@@ -392,11 +374,11 @@
    }
   },
   {
-   "title": "Trump administration promises US farmers $15 billion in weeks before the midterms",
-   "link": "https://abcnews.com/Politics/wireStory/trump-administration-promises-us-farmers-15-billion-weeks-137746731",
-   "outlet": "ABC News",
+   "title": "Trump makes final campaign push in Iowa and Kansas as Republicans try to hang on to majority",
+   "link": "https://www.cbsnews.com/video/trump-final-campaign-push-in-iowa-kansas/",
+   "outlet": "CBS News",
    "lean": "L",
-   "published": "2026-11-01T14:50:24+00:00",
+   "published": "2026-11-02T01:59:17+00:00",
    "focus": "R",
    "also": [],
    "n_outlets": 1,
@@ -407,11 +389,11 @@
    }
   },
   {
-   "title": "Midterm Election Watch Guide: When GOP Will Know If It’s Time To Hit Panic Button Or Reach For Champagne",
-   "link": "https://dailycaller.com/2026/11/01/midterm-elections-races-republicans-democrats-polls",
+   "title": "Americans’ Disapproval Of Trump, Economy Loom Over Midterm Elections",
+   "link": "https://dailycaller.com/2026/11/01/americans-disapproval-donald-trump-economy-loom-over-midterm-elections-nbc-news-poll-meet-press-steve-kornacki",
    "outlet": "Daily Caller",
    "lean": "R",
-   "published": "2026-11-01T14:11:26+00:00",
+   "published": "2026-11-01T20:49:51+00:00",
    "focus": "R",
    "also": [],
    "n_outlets": 1,
@@ -419,6 +401,36 @@
     "L": 0,
     "C": 0,
     "R": 1
+   }
+  },
+  {
+   "title": "In the Florida governor’s race, Democrat David Jolly has made political decency a central part of his campaign during one of the nastiest midterm seasons in recent memory",
+   "link": "https://www.wsj.com/politics/elections/democrat-david-jolly-tests-if-a-ted-lasso-strategy-can-flip-florida-80e7eacb?mod=rss_socialpoliticsfeed",
+   "outlet": "The Wall Street Journal",
+   "lean": "C",
+   "published": "2026-11-01T20:00:00+00:00",
+   "focus": "D",
+   "also": [],
+   "n_outlets": 1,
+   "coverage": {
+    "L": 0,
+    "C": 1,
+    "R": 0
+   }
+  },
+  {
+   "title": "Schumer calls Stevens's Rogers endorsement 'a despicable betrayal'",
+   "link": "https://thehill.com/homenews/campaign/6187117-schumer-rips-stevens-rogers-endorsement/",
+   "outlet": "The Hill",
+   "lean": "C",
+   "published": "2026-11-01T19:48:32+00:00",
+   "focus": "D",
+   "also": [],
+   "n_outlets": 1,
+   "coverage": {
+    "L": 0,
+    "C": 1,
+    "R": 0
    }
   },
   {

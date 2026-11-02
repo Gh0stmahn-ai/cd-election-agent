@@ -1,8 +1,8 @@
 {
- "as_of": "2026-11-01T17:09:26+00:00",
+ "as_of": "2026-11-02T02:24:29+00:00",
  "window": {
-  "start": "2026-09-16",
-  "end": "2026-10-31",
+  "start": "2026-09-17",
+  "end": "2026-11-01",
   "recent_days": 7
  },
  "source": "Wikipedia daily pageviews (Wikimedia REST API)",
@@ -18,18 +18,18 @@
      "article": "Mary Peltola",
      "url": "https://en.wikipedia.org/wiki/Mary_Peltola",
      "recent_daily": 14205,
-     "baseline_daily": 3555,
-     "surge": 4.0,
-     "days": 46
+     "baseline_daily": 3603,
+     "surge": 3.94,
+     "days": 45
     },
     "R": {
      "candidate": "Dan S. Sullivan",
      "article": "Dan Sullivan (U.S. senator)",
      "url": "https://en.wikipedia.org/wiki/Dan_Sullivan_%28U.S._senator%29",
      "recent_daily": 5989,
-     "baseline_daily": 1422,
-     "surge": 4.21,
-     "days": 46
+     "baseline_daily": 1437,
+     "surge": 4.17,
+     "days": 45
     }
    },
    "dem_share": 0.7034,
@@ -43,18 +43,18 @@
      "article": "Josh Turek",
      "url": "https://en.wikipedia.org/wiki/Josh_Turek",
      "recent_daily": 6617,
-     "baseline_daily": 2936,
-     "surge": 2.25,
-     "days": 46
+     "baseline_daily": 2977,
+     "surge": 2.22,
+     "days": 45
     },
     "R": {
      "candidate": "Ashley Hinson",
      "article": "Ashley Hinson",
      "url": "https://en.wikipedia.org/wiki/Ashley_Hinson",
      "recent_daily": 4399,
-     "baseline_daily": 2967,
-     "surge": 1.48,
-     "days": 46
+     "baseline_daily": 3007,
+     "surge": 1.46,
+     "days": 45
     }
    },
    "dem_share": 0.6007,
@@ -70,7 +70,7 @@
      "recent_daily": 3320,
      "baseline_daily": 2262,
      "surge": 1.47,
-     "days": 46
+     "days": 45
     },
     "R": {
      "candidate": "Roger Marshall",
@@ -79,7 +79,7 @@
      "recent_daily": 3320,
      "baseline_daily": 2262,
      "surge": 1.47,
-     "days": 46
+     "days": 45
     }
    },
    "dem_share": 0.5,
@@ -93,18 +93,18 @@
      "article": "Troy Jackson",
      "url": "https://en.wikipedia.org/wiki/Troy_Jackson",
      "recent_daily": 4107,
-     "baseline_daily": 2815,
-     "surge": 1.46,
-     "days": 46
+     "baseline_daily": 2861,
+     "surge": 1.44,
+     "days": 45
     },
     "R": {
      "candidate": "Susan Collins",
      "article": "Susan Collins",
      "url": "https://en.wikipedia.org/wiki/Susan_Collins",
      "recent_daily": 4269,
-     "baseline_daily": 4857,
-     "surge": 0.88,
-     "days": 46
+     "baseline_daily": 4942,
+     "surge": 0.86,
+     "days": 45
     }
    },
    "dem_share": 0.4903,
@@ -118,18 +118,18 @@
      "article": "Abdul El-Sayed",
      "url": "https://en.wikipedia.org/wiki/Abdul_El-Sayed",
      "recent_daily": 81886,
-     "baseline_daily": 33391,
-     "surge": 2.45,
-     "days": 46
+     "baseline_daily": 33803,
+     "surge": 2.42,
+     "days": 45
     },
     "R": {
      "candidate": "Mike Rogers",
      "article": "Mike Rogers (Michigan politician)",
      "url": "https://en.wikipedia.org/wiki/Mike_Rogers_%28Michigan_politician%29",
      "recent_daily": 14009,
-     "baseline_daily": 6541,
+     "baseline_daily": 6552,
      "surge": 2.14,
-     "days": 46
+     "days": 45
     }
    },
    "dem_share": 0.8539,
@@ -143,18 +143,18 @@
      "article": "Peggy Flanagan",
      "url": "https://en.wikipedia.org/wiki/Peggy_Flanagan",
      "recent_daily": 3037,
-     "baseline_daily": 2093,
-     "surge": 1.45,
-     "days": 46
+     "baseline_daily": 2125,
+     "surge": 1.43,
+     "days": 45
     },
     "R": {
      "candidate": "Michele Tafoya",
      "article": "Peggy Flanagan",
      "url": "https://en.wikipedia.org/wiki/Peggy_Flanagan",
      "recent_daily": 3037,
-     "baseline_daily": 2093,
-     "surge": 1.45,
-     "days": 46
+     "baseline_daily": 2125,
+     "surge": 1.43,
+     "days": 45
     }
    },
    "dem_share": 0.5,
@@ -169,17 +169,17 @@
      "url": "https://en.wikipedia.org/wiki/Deb_Fischer",
      "recent_daily": 235,
      "baseline_daily": 209,
-     "surge": 1.12,
-     "days": 46
+     "surge": 1.13,
+     "days": 45
     },
     "R": {
      "candidate": "Pete Ricketts",
      "article": "Pete Ricketts",
      "url": "https://en.wikipedia.org/wiki/Pete_Ricketts",
      "recent_daily": 1127,
-     "baseline_daily": 1058,
-     "surge": 1.07,
-     "days": 46
+     "baseline_daily": 1065,
+     "surge": 1.06,
+     "days": 45
     }
    },
    "dem_share": 0.1725,
@@ -193,18 +193,18 @@
      "article": "Chris Pappas (American politician)",
      "url": "https://en.wikipedia.org/wiki/Chris_Pappas_%28American_politician%29",
      "recent_daily": 2402,
-     "baseline_daily": 2464,
+     "baseline_daily": 2471,
      "surge": 0.97,
-     "days": 46
+     "days": 45
     },
     "R": {
      "candidate": "John E. Sununu",
      "article": "John E. Sununu",
      "url": "https://en.wikipedia.org/wiki/John_E._Sununu",
      "recent_daily": 2651,
-     "baseline_daily": 2167,
-     "surge": 1.22,
-     "days": 46
+     "baseline_daily": 2154,
+     "surge": 1.23,
+     "days": 45
     }
    },
    "dem_share": 0.4754,
@@ -218,18 +218,18 @@
      "article": "Sherrod Brown",
      "url": "https://en.wikipedia.org/wiki/Sherrod_Brown",
      "recent_daily": 6707,
-     "baseline_daily": 4453,
-     "surge": 1.51,
-     "days": 46
+     "baseline_daily": 4499,
+     "surge": 1.49,
+     "days": 45
     },
     "R": {
      "candidate": "Jon Husted",
      "article": "Jon Husted",
      "url": "https://en.wikipedia.org/wiki/Jon_Husted",
      "recent_daily": 12148,
-     "baseline_daily": 5839,
-     "surge": 2.08,
-     "days": 46
+     "baseline_daily": 5947,
+     "surge": 2.04,
+     "days": 45
     }
    },
    "dem_share": 0.3557,
@@ -252,9 +252,9 @@
      "article": "Darline Graham",
      "url": "https://en.wikipedia.org/wiki/Darline_Graham",
      "recent_daily": 7058,
-     "baseline_daily": 3181,
-     "surge": 2.22,
-     "days": 46
+     "baseline_daily": 3217,
+     "surge": 2.19,
+     "days": 45
     }
    },
    "dem_share": 0.6308,
@@ -268,18 +268,18 @@
      "article": "James Talarico",
      "url": "https://en.wikipedia.org/wiki/James_Talarico",
      "recent_daily": 37764,
-     "baseline_daily": 25529,
-     "surge": 1.48,
-     "days": 46
+     "baseline_daily": 25618,
+     "surge": 1.47,
+     "days": 45
     },
     "R": {
      "candidate": "Ken Paxton",
      "article": "Ken Paxton",
      "url": "https://en.wikipedia.org/wiki/Ken_Paxton",
      "recent_daily": 14155,
-     "baseline_daily": 10267,
+     "baseline_daily": 10264,
      "surge": 1.38,
-     "days": 46
+     "days": 45
     }
    },
    "dem_share": 0.7274,

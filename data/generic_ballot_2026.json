@@ -1,46 +1,46 @@
 {
- "as_of": "2026-11-01",
- "dem_margin_points": 8.63,
- "note": "Our own average of 92 individual polls from 50 pollsters, 2026-09-02 to 2026-10-30, plus or minus 0.4. Published aggregators say D+8.6",
+ "as_of": "2026-11-02",
+ "dem_margin_points": 8.62,
+ "note": "Our own average of 90 individual polls from 50 pollsters, 2026-09-06 to 2026-10-30, plus or minus 0.4. Published aggregators say D+8.6",
  "sources": [
   "https://en.wikipedia.org/wiki/2026_United_States_elections",
   "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections"
  ],
  "detail": {
-  "stderr": 0.43,
-  "spread": 1.89,
+  "stderr": 0.44,
+  "spread": 1.88,
   "flat": 8.55,
   "trend_per_week": 0.02,
-  "mean_age_days": 23.2,
-  "n_polls": 92,
-  "n_effective": 65.3,
+  "mean_age_days": 23.9,
+  "n_polls": 90,
+  "n_effective": 64.4,
   "n_pollsters": 50,
   "newest": "2026-10-30",
-  "oldest": "2026-09-02",
+  "oldest": "2026-09-06",
   "house_effects": [
    {
     "pollster": "Harvard",
     "polls": 9,
     "in_average": 2,
-    "effect": -3.29
-   },
-   {
-    "pollster": "RMG Research",
-    "polls": 15,
-    "in_average": 2,
-    "effect": -3.01
+    "effect": -3.28
    },
    {
     "pollster": "McLaughlin & Associates",
     "polls": 15,
     "in_average": 1,
-    "effect": -2.78
+    "effect": -2.79
    },
    {
     "pollster": "Marist University",
     "polls": 4,
     "in_average": 1,
-    "effect": 2.75
+    "effect": 2.76
+   },
+   {
+    "pollster": "RMG Research",
+    "polls": 14,
+    "in_average": 2,
+    "effect": -2.73
    },
    {
     "pollster": "Quinnipiac University",
@@ -52,13 +52,13 @@
     "pollster": "Strength In Numbers",
     "polls": 11,
     "in_average": 1,
-    "effect": 1.8
+    "effect": 1.81
    },
    {
     "pollster": "Morning Consult",
     "polls": 52,
     "in_average": 8,
-    "effect": -1.79
+    "effect": -1.78
    },
    {
     "pollster": "Angus Reid Global",
@@ -76,7 +76,7 @@
     "population": "LV",
     "margin": 7.0,
     "adjusted": 8.62,
-    "weight": 1.48
+    "weight": 1.432
    },
    {
     "source": "Ipsos",
@@ -85,7 +85,7 @@
     "population": "LV",
     "margin": 6.0,
     "adjusted": 6.5,
-    "weight": 1.077
+    "weight": 1.042
    },
    {
     "source": "Tufts University / YouGov",
@@ -94,7 +94,7 @@
     "population": "LV",
     "margin": 12.0,
     "adjusted": 11.29,
-    "weight": 0.67
+    "weight": 0.648
    },
    {
     "source": "Emerson College",
@@ -102,8 +102,8 @@
     "n": 1000,
     "population": "LV",
     "margin": 10.0,
-    "adjusted": 9.0,
-    "weight": 0.917
+    "adjusted": 9.02,
+    "weight": 0.887
    },
    {
     "source": "Harvard / Harris Poll / HarrisX",
@@ -111,8 +111,8 @@
     "n": 1000,
     "population": "LV",
     "margin": 4.0,
-    "adjusted": 7.29,
-    "weight": 0.917
+    "adjusted": 7.28,
+    "weight": 0.887
    },
    {
     "source": "The Economist / YouGov",
@@ -120,8 +120,8 @@
     "n": 1123,
     "population": "LV",
     "margin": 11.0,
-    "adjusted": 11.16,
-    "weight": 0.972
+    "adjusted": 11.15,
+    "weight": 0.94
    },
    {
     "source": "Reuters / Ipsos",
@@ -129,8 +129,8 @@
     "n": 1164,
     "population": "LV",
     "margin": 9.0,
-    "adjusted": 10.57,
-    "weight": 0.99
+    "adjusted": 10.56,
+    "weight": 0.957
    },
    {
     "source": "NPR / PBS / Marist University",
@@ -139,7 +139,7 @@
     "population": "LV",
     "margin": 8.0,
     "adjusted": 8.1,
-    "weight": 1.038
+    "weight": 1.004
    },
    {
     "source": "Cygnal (R)",
@@ -147,8 +147,8 @@
     "n": 1500,
     "population": "LV",
     "margin": 9.0,
-    "adjusted": 8.91,
-    "weight": 1.052
+    "adjusted": 8.93,
+    "weight": 1.017
    },
    {
     "source": "CBS / YouGov",
@@ -157,7 +157,7 @@
     "population": "LV",
     "margin": 8.0,
     "adjusted": 8.1,
-    "weight": 1.099
+    "weight": 1.063
    },
    {
     "source": "Echelon Insights",
@@ -165,8 +165,8 @@
     "n": 3644,
     "population": "LV",
     "margin": 5.0,
-    "adjusted": 5.8,
-    "weight": 1.586
+    "adjusted": 5.81,
+    "weight": 1.534
    },
    {
     "source": "Prolific",
@@ -175,7 +175,7 @@
     "population": "LV",
     "margin": 11.0,
     "adjusted": 10.5,
-    "weight": 0.679
+    "weight": 0.657
    }
   ],
   "aggregators": {
