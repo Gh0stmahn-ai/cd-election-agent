@@ -1,5 +1,5 @@
 {
- "as_of": "2026-11-02T02:23:03+00:00",
+ "as_of": "2026-11-02T20:46:46+00:00",
  "source": "Wikipedia per-race election articles",
  "half_life_days": 10,
  "max_age_days": 120,
@@ -120,7 +120,7 @@
    "undecided": 8.5,
    "rating": "likely",
    "rating_lean": "D",
-   "read_at": "2026-11-02T02:22:31+00:00"
+   "read_at": "2026-11-02T20:46:12+00:00"
   },
   "FL-GOV": {
    "state": "FL",
@@ -236,15 +236,15 @@
    "undecided": 7.9,
    "rating": "lean",
    "rating_lean": "R",
-   "read_at": "2026-11-02T02:22:34+00:00"
+   "read_at": "2026-11-02T20:46:14+00:00"
   },
   "GA-GOV": {
    "state": "GA",
    "dem_candidate": "Keisha Lance Bottoms",
    "rep_candidate": "Rick Jackson",
-   "dem_margin": -0.1,
-   "method": "mean of 5 aggregators, averaged with 13 polls adjusted for sponsors",
-   "n_used": 13,
+   "dem_margin": 0.5,
+   "method": "mean of 5 aggregators, averaged with 14 polls adjusted for sponsors",
+   "n_used": 14,
    "detail": [
     {
      "label": "270toWin",
@@ -265,6 +265,16 @@
     {
      "label": "Silver Bulletin",
      "margin": 0.0
+    },
+    {
+     "label": "InsiderAdvantage (R)",
+     "dem": 49.0,
+     "rep": 49.0,
+     "date": "2026-11-02",
+     "n": 2500,
+     "weight": 0.8,
+     "margin": 2.5,
+     "sponsor": "R"
     },
     {
      "label": "University of Georgia",
@@ -335,24 +345,14 @@
      "weight": 0.042,
      "margin": 2.5,
      "sponsor": "R"
-    },
-    {
-     "label": "YouGov",
-     "dem": 44.0,
-     "rep": 45.0,
-     "date": "2026-09-09",
-     "n": 3414,
-     "weight": 0.038,
-     "margin": -1.0,
-     "sponsor": null
     }
    ],
    "aggregator_margin": -0.5,
-   "poll_margin": 0.3,
-   "undecided": 4.9,
+   "poll_margin": 1.5,
+   "undecided": 3.4,
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-11-02T02:22:36+00:00"
+   "read_at": "2026-11-02T20:46:17+00:00"
   },
   "IA-GOV": {
    "state": "IA",
@@ -468,35 +468,35 @@
    "undecided": 5.5,
    "rating": "lean",
    "rating_lean": "D",
-   "read_at": "2026-11-02T02:22:38+00:00"
+   "read_at": "2026-11-02T20:46:19+00:00"
   },
   "KS-GOV": {
    "state": "KS",
    "dem_candidate": "Cindy Holscher",
    "rep_candidate": "Ty Masterson",
-   "dem_margin": -2.7,
+   "dem_margin": -2.3,
    "method": "mean of 5 aggregators, averaged with 9 polls adjusted for sponsors",
    "n_used": 9,
    "detail": [
     {
      "label": "270toWin",
-     "margin": -1.8
+     "margin": -0.6
     },
     {
      "label": "Decision Desk HQ",
-     "margin": -1.4
+     "margin": -0.7
     },
     {
      "label": "FiftyPlusOne",
-     "margin": -1.9
+     "margin": -1.3
     },
     {
      "label": "RealClearPolitics",
-     "margin": -2.9
+     "margin": -1.8
     },
     {
      "label": "Silver Bulletin",
-     "margin": -2.1
+     "margin": -1.2
     },
     {
      "label": "Emerson College",
@@ -579,40 +579,40 @@
      "sponsor": "D"
     }
    ],
-   "aggregator_margin": -2.0,
+   "aggregator_margin": -1.1,
    "poll_margin": -3.4,
    "undecided": 2.9,
    "rating": "tossup",
    "rating_lean": "D",
-   "read_at": "2026-11-02T02:22:40+00:00"
+   "read_at": "2026-11-02T20:46:22+00:00"
   },
   "MI-GOV": {
    "state": "MI",
    "dem_candidate": "Jocelyn Benson",
    "rep_candidate": "John James",
-   "dem_margin": 7.4,
-   "method": "mean of 5 aggregators, averaged with 29 polls adjusted for sponsors",
-   "n_used": 29,
+   "dem_margin": 8.1,
+   "method": "mean of 5 aggregators, averaged with 30 polls adjusted for sponsors",
+   "n_used": 30,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 8.4
+     "margin": 9.7
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 7.6
+     "margin": 8.9
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 8.1
+     "margin": 9.4
     },
     {
      "label": "RealClearPolitics",
-     "margin": 8.2
+     "margin": 8.8
     },
     {
      "label": "Silver Bulletin",
-     "margin": 8.4
+     "margin": 9.4
     },
     {
      "label": "Mitchell Research & Communications",
@@ -633,6 +633,16 @@
      "weight": 0.232,
      "margin": 9.0,
      "sponsor": null
+    },
+    {
+     "label": "Rasmussen Reports (R)",
+     "dem": 50.0,
+     "rep": 40.0,
+     "date": "2026-10-07",
+     "n": 745,
+     "weight": 0.08,
+     "margin": 12.5,
+     "sponsor": "R"
     },
     {
      "label": "YouGov",
@@ -683,24 +693,14 @@
      "weight": 0.045,
      "margin": 7.5,
      "sponsor": "D"
-    },
-    {
-     "label": "SSRS",
-     "dem": 53.0,
-     "rep": 41.0,
-     "date": "2026-10-01",
-     "n": 768,
-     "weight": 0.107,
-     "margin": 12.0,
-     "sponsor": null
     }
    ],
-   "aggregator_margin": 8.1,
-   "poll_margin": 6.6,
-   "undecided": 7.8,
+   "aggregator_margin": 9.2,
+   "poll_margin": 6.9,
+   "undecided": 7.9,
    "rating": "lean",
    "rating_lean": "D",
-   "read_at": "2026-11-02T02:22:43+00:00"
+   "read_at": "2026-11-02T20:46:24+00:00"
   },
   "NE-GOV": {
    "state": "NE",
@@ -732,15 +732,15 @@
    "undecided": 10.7,
    "rating": "lean",
    "rating_lean": "R",
-   "read_at": "2026-11-02T02:22:45+00:00"
+   "read_at": "2026-11-02T20:46:26+00:00"
   },
   "NH-GOV": {
    "state": "NH",
    "dem_candidate": "Cinde Warmington",
    "rep_candidate": "Kelly Ayotte",
-   "dem_margin": -8.9,
-   "method": "mean of 5 aggregators, averaged with 11 polls adjusted for sponsors",
-   "n_used": 11,
+   "dem_margin": -8.2,
+   "method": "mean of 5 aggregators, averaged with 13 polls adjusted for sponsors",
+   "n_used": 13,
    "detail": [
     {
      "label": "270toWin",
@@ -813,6 +813,26 @@
      "sponsor": "R"
     },
     {
+     "label": "National Public Affairs (R)",
+     "dem": 43.0,
+     "rep": 52.0,
+     "date": "2026-10-02",
+     "n": 800,
+     "weight": 0.058,
+     "margin": -6.5,
+     "sponsor": "R"
+    },
+    {
+     "label": "University of New Hampshire",
+     "dem": 48.0,
+     "rep": 48.0,
+     "date": "2026-10-01",
+     "n": 2040,
+     "weight": 0.174,
+     "margin": 0.0,
+     "sponsor": null
+    },
+    {
      "label": "co/efficient (R)",
      "dem": 34.0,
      "rep": 55.0,
@@ -821,34 +841,14 @@
      "weight": 0.013,
      "margin": -18.5,
      "sponsor": "R"
-    },
-    {
-     "label": "University of New Hampshire",
-     "dem": 43.0,
-     "rep": 47.0,
-     "date": "2026-09-07",
-     "n": 1418,
-     "weight": 0.027,
-     "margin": -4.0,
-     "sponsor": null
-    },
-    {
-     "label": "The New York Times / Siena University",
-     "dem": 41.0,
-     "rep": 52.0,
-     "date": "2026-09-06",
-     "n": 613,
-     "weight": 0.017,
-     "margin": -11.0,
-     "sponsor": null
     }
    ],
    "aggregator_margin": -9.3,
-   "poll_margin": -8.5,
-   "undecided": 9.2,
+   "poll_margin": -7.0,
+   "undecided": 8.2,
    "rating": "likely",
    "rating_lean": "R",
-   "read_at": "2026-11-02T02:22:47+00:00"
+   "read_at": "2026-11-02T20:46:29+00:00"
   },
   "NV-GOV": {
    "state": "NV",
@@ -964,35 +964,35 @@
    "undecided": 9.1,
    "rating": "tossup",
    "rating_lean": "R",
-   "read_at": "2026-11-02T02:22:49+00:00"
+   "read_at": "2026-11-02T20:46:31+00:00"
   },
   "OH-GOV": {
    "state": "OH",
    "dem_candidate": "Amy Acton",
    "rep_candidate": "Vivek Ramaswamy",
-   "dem_margin": 3.4,
-   "method": "mean of 5 aggregators, averaged with 21 polls adjusted for sponsors",
-   "n_used": 21,
+   "dem_margin": 3.9,
+   "method": "mean of 5 aggregators, averaged with 22 polls adjusted for sponsors",
+   "n_used": 22,
    "detail": [
     {
      "label": "270toWin",
-     "margin": 2.2
+     "margin": 3.7
     },
     {
      "label": "Decision Desk HQ",
-     "margin": 2.9
+     "margin": 4.0
     },
     {
      "label": "FiftyPlusOne",
-     "margin": 3.3
+     "margin": 4.2
     },
     {
      "label": "RealClearPolitics",
-     "margin": 4.5
+     "margin": 4.7
     },
     {
      "label": "Silver Bulletin",
-     "margin": 3.1
+     "margin": 4.1
     },
     {
      "label": "ActiVote",
@@ -1013,6 +1013,16 @@
      "weight": 0.095,
      "margin": 0.5,
      "sponsor": "R"
+    },
+    {
+     "label": "Concord Public Opinion Partners (D)",
+     "dem": 49.0,
+     "rep": 39.0,
+     "date": "2026-10-06",
+     "n": 496,
+     "weight": 0.061,
+     "margin": 7.5,
+     "sponsor": "D"
     },
     {
      "label": "Verasight/VoteHub",
@@ -1063,24 +1073,14 @@
      "weight": 0.1,
      "margin": 1.5,
      "sponsor": "D"
-    },
-    {
-     "label": "Echelon Insights (R)",
-     "dem": 45.0,
-     "rep": 47.0,
-     "date": "2026-10-03",
-     "n": 508,
-     "weight": 0.05,
-     "margin": 0.5,
-     "sponsor": "R"
     }
    ],
-   "aggregator_margin": 3.2,
-   "poll_margin": 3.6,
-   "undecided": 5.1,
+   "aggregator_margin": 4.1,
+   "poll_margin": 3.7,
+   "undecided": 5.4,
    "rating": "lean",
    "rating_lean": "D",
-   "read_at": "2026-11-02T02:22:52+00:00"
+   "read_at": "2026-11-02T20:46:34+00:00"
   },
   "OK-GOV": {
    "state": "OK",
@@ -1116,7 +1116,7 @@
    "undecided": 24.2,
    "rating": "likely",
    "rating_lean": "R",
-   "read_at": "2026-11-02T02:22:54+00:00"
+   "read_at": "2026-11-02T20:46:36+00:00"
   },
   "OR-GOV": {
    "state": "OR",
@@ -1136,35 +1136,45 @@
    "undecided": 10.2,
    "rating": "lean",
    "rating_lean": "D",
-   "read_at": "2026-11-02T02:22:56+00:00"
+   "read_at": "2026-11-02T20:46:39+00:00"
   },
   "TX-GOV": {
    "state": "TX",
    "dem_candidate": "Gina Hinojosa",
    "rep_candidate": "Greg Abbott",
-   "dem_margin": -2.4,
-   "method": "mean of 5 aggregators, averaged with 44 polls adjusted for sponsors",
-   "n_used": 44,
+   "dem_margin": -1.7,
+   "method": "mean of 5 aggregators, averaged with 45 polls adjusted for sponsors",
+   "n_used": 45,
    "detail": [
     {
      "label": "270toWin",
-     "margin": -2.6
-    },
-    {
-     "label": "Decision Desk HQ",
-     "margin": -2.3
-    },
-    {
-     "label": "FiftyPlusOne",
      "margin": -2.2
     },
     {
+     "label": "Decision Desk HQ",
+     "margin": -1.6
+    },
+    {
+     "label": "FiftyPlusOne",
+     "margin": -1.5
+    },
+    {
      "label": "RealClearPolitics",
-     "margin": -3.3
+     "margin": -2.5
     },
     {
      "label": "Silver Bulletin",
-     "margin": -2.4
+     "margin": -1.7
+    },
+    {
+     "label": "AtlasIntel",
+     "dem": 49.0,
+     "rep": 48.0,
+     "date": "2026-11-01",
+     "n": 1678,
+     "weight": 1.351,
+     "margin": 1.0,
+     "sponsor": null
     },
     {
      "label": "YouGov Blue (D)",
@@ -1235,32 +1245,22 @@
      "weight": 0.23,
      "margin": 1.0,
      "sponsor": null
-    },
-    {
-     "label": "New York Times / Siena University",
-     "dem": 49.0,
-     "rep": 46.0,
-     "date": "2026-10-05",
-     "n": 615,
-     "weight": 0.126,
-     "margin": 3.0,
-     "sponsor": null
     }
    ],
-   "aggregator_margin": -2.6,
-   "poll_margin": -2.3,
+   "aggregator_margin": -1.9,
+   "poll_margin": -1.5,
    "undecided": 3.2,
    "rating": "lean",
    "rating_lean": "R",
-   "read_at": "2026-11-02T02:22:58+00:00"
+   "read_at": "2026-11-02T20:46:41+00:00"
   },
   "VT-GOV": {
    "state": "VT",
    "dem_candidate": "Amanda Janoo",
    "rep_candidate": "Phil Scott",
-   "dem_margin": -3.4,
-   "method": "5 polls, recency and sample weighted, adjusted for sponsors",
-   "n_used": 5,
+   "dem_margin": -0.8,
+   "method": "6 polls, recency and sample weighted, adjusted for sponsors",
+   "n_used": 6,
    "detail": [
     {
      "label": "State Navigate",
@@ -1280,6 +1280,16 @@
      "n": 1752,
      "weight": 0.185,
      "margin": -3.0,
+     "sponsor": null
+    },
+    {
+     "label": "University of New Hampshire",
+     "dem": 51.0,
+     "rep": 43.0,
+     "date": "2026-10-01",
+     "n": 1172,
+     "weight": 0.132,
+     "margin": 8.0,
      "sponsor": null
     },
     {
@@ -1314,11 +1324,11 @@
     }
    ],
    "aggregator_margin": null,
-   "poll_margin": -3.4,
-   "undecided": 10.1,
+   "poll_margin": -0.8,
+   "undecided": 9.2,
    "rating": "likely",
    "rating_lean": "R",
-   "read_at": "2026-11-02T02:23:00+00:00"
+   "read_at": "2026-11-02T20:46:44+00:00"
   },
   "WI-GOV": {
    "state": "WI",
@@ -1434,7 +1444,7 @@
    "undecided": 7.9,
    "rating": "lean",
    "rating_lean": "D",
-   "read_at": "2026-11-02T02:23:03+00:00"
+   "read_at": "2026-11-02T20:46:46+00:00"
   }
  },
  "issues": [

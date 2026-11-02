@@ -1,6 +1,6 @@
 {
  "as_of": "2026-11-02",
- "ratings_source": "Cook Political Report House ratings of Oct 30, 2026, via Wikipedia (revision 1383267721); unlisted seats Solid for the party the 2026 PVI favours",
+ "ratings_source": "Cook Political Report House ratings of Oct 30, 2026, via Wikipedia (revision 1383431812); unlisted seats Solid for the party the 2026 PVI favours",
  "ratings_environment_dem_margin": 8.97,
  "ratings_environment_note": "The national environment on the day these ratings were published; the model shifts every seat by how far it has moved since.",
  "majority": 218,
@@ -6097,5 +6097,5 @@
   }
  ],
  "ratings_date": "2026-10-30",
- "candidates_source": "Wikipedia, 2026 United States House of Representatives elections (revision 1383296328, 2026-11-02)"
+ "candidates_source": "Wikipedia, 2026 United States House of Representatives elections (revision 1383462398, 2026-11-02)"
 }

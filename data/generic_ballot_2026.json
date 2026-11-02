@@ -1,20 +1,20 @@
 {
  "as_of": "2026-11-02",
- "dem_margin_points": 8.62,
- "note": "Our own average of 90 individual polls from 50 pollsters, 2026-09-06 to 2026-10-30, plus or minus 0.4. Published aggregators say D+8.6",
+ "dem_margin_points": 8.48,
+ "note": "Our own average of 91 individual polls from 51 pollsters, 2026-09-06 to 2026-10-30, plus or minus 0.5. Published aggregators say D+8.7",
  "sources": [
   "https://en.wikipedia.org/wiki/2026_United_States_elections",
   "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections"
  ],
  "detail": {
-  "stderr": 0.44,
-  "spread": 1.88,
-  "flat": 8.55,
-  "trend_per_week": 0.02,
-  "mean_age_days": 23.9,
-  "n_polls": 90,
-  "n_effective": 64.4,
-  "n_pollsters": 50,
+  "stderr": 0.45,
+  "spread": 1.95,
+  "flat": 8.47,
+  "trend_per_week": 0.0,
+  "mean_age_days": 23.7,
+  "n_polls": 91,
+  "n_effective": 65.4,
+  "n_pollsters": 51,
   "newest": "2026-10-30",
   "oldest": "2026-09-06",
   "house_effects": [
@@ -22,13 +22,13 @@
     "pollster": "Harvard",
     "polls": 9,
     "in_average": 2,
-    "effect": -3.28
+    "effect": -3.27
    },
    {
     "pollster": "McLaughlin & Associates",
     "polls": 15,
     "in_average": 1,
-    "effect": -2.79
+    "effect": -2.78
    },
    {
     "pollster": "Marist University",
@@ -40,31 +40,31 @@
     "pollster": "RMG Research",
     "polls": 14,
     "in_average": 2,
-    "effect": -2.73
+    "effect": -2.72
    },
    {
     "pollster": "Quinnipiac University",
     "polls": 8,
     "in_average": 2,
-    "effect": 2.15
+    "effect": 2.16
    },
    {
     "pollster": "Strength In Numbers",
     "polls": 11,
     "in_average": 1,
-    "effect": 1.81
+    "effect": 1.82
    },
    {
     "pollster": "Morning Consult",
     "polls": 52,
     "in_average": 8,
-    "effect": -1.78
+    "effect": -1.77
    },
    {
     "pollster": "Angus Reid Global",
     "polls": 2,
     "in_average": 1,
-    "effect": 1.64
+    "effect": 1.65
    }
   ],
   "method": "Weighted by recency (21-day half-life), sample size and population, with each pollster's standing lean removed and no pollster allowed more than a fifth of the total weight. The average is then read off a line fitted through the polls at today's date rather than taken flat, because a weighted mean sits at the middle of its window and lags whenever the race is moving.",
@@ -75,7 +75,7 @@
     "n": 2000,
     "population": "LV",
     "margin": 7.0,
-    "adjusted": 8.62,
+    "adjusted": 8.59,
     "weight": 1.432
    },
    {
@@ -84,7 +84,7 @@
     "n": 1209,
     "population": "LV",
     "margin": 6.0,
-    "adjusted": 6.5,
+    "adjusted": 6.48,
     "weight": 1.042
    },
    {
@@ -93,7 +93,7 @@
     "n": 499,
     "population": "LV",
     "margin": 12.0,
-    "adjusted": 11.29,
+    "adjusted": 11.27,
     "weight": 0.648
    },
    {
@@ -102,7 +102,7 @@
     "n": 1000,
     "population": "LV",
     "margin": 10.0,
-    "adjusted": 9.02,
+    "adjusted": 9.0,
     "weight": 0.887
    },
    {
@@ -111,7 +111,7 @@
     "n": 1000,
     "population": "LV",
     "margin": 4.0,
-    "adjusted": 7.28,
+    "adjusted": 7.27,
     "weight": 0.887
    },
    {
@@ -120,7 +120,7 @@
     "n": 1123,
     "population": "LV",
     "margin": 11.0,
-    "adjusted": 11.15,
+    "adjusted": 11.14,
     "weight": 0.94
    },
    {
@@ -129,7 +129,7 @@
     "n": 1164,
     "population": "LV",
     "margin": 9.0,
-    "adjusted": 10.56,
+    "adjusted": 10.55,
     "weight": 0.957
    },
    {
@@ -138,7 +138,7 @@
     "n": 1280,
     "population": "LV",
     "margin": 8.0,
-    "adjusted": 8.1,
+    "adjusted": 8.08,
     "weight": 1.004
    },
    {
@@ -147,7 +147,7 @@
     "n": 1500,
     "population": "LV",
     "margin": 9.0,
-    "adjusted": 8.93,
+    "adjusted": 8.92,
     "weight": 1.017
    },
    {
@@ -156,7 +156,7 @@
     "n": 1749,
     "population": "LV",
     "margin": 8.0,
-    "adjusted": 8.1,
+    "adjusted": 8.08,
     "weight": 1.063
    },
    {
@@ -165,7 +165,7 @@
     "n": 3644,
     "population": "LV",
     "margin": 5.0,
-    "adjusted": 5.81,
+    "adjusted": 5.8,
     "weight": 1.534
    },
    {
@@ -174,16 +174,16 @@
     "n": 713,
     "population": "LV",
     "margin": 11.0,
-    "adjusted": 10.5,
+    "adjusted": 10.48,
     "weight": 0.657
    }
   ],
   "aggregators": {
-   "margin": 8.6,
+   "margin": 8.7,
    "rep": 43.1,
-   "dem": 51.7,
+   "dem": 51.8,
    "n_aggregators": 5,
-   "as_of": "2026-10-30"
+   "as_of": "2026-11-01"
   }
  }
 }

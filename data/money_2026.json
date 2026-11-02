@@ -5751,11 +5751,11 @@
    "dem": {
     "name": "Hesketh, Missi",
     "incumbent": false,
-    "receipts": 65740,
-    "spent": 43642,
-    "cash": 60779,
+    "receipts": 66640,
+    "spent": 60169,
+    "cash": 45852,
     "debts": 0,
-    "as_of": "2026-09-30",
+    "as_of": "2026-10-14",
     "named": false
    },
    "rep": {
@@ -5768,8 +5768,8 @@
     "as_of": "2026-10-14",
     "named": false
    },
-   "dem_cash_share": 0.0594,
-   "cash_gap": -901585
+   "dem_cash_share": 0.0455,
+   "cash_gap": -916512
   },
   "MO-8": {
    "chamber": "house",
