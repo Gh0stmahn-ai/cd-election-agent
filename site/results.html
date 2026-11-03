@@ -23,12 +23,7 @@
 <header class="site-head"><div class="bar">
   <a class="brand plain" href="index.html"><span class="mark"><i></i><i></i></span>2026 Midterm Forecast</a>
   <nav class="main" aria-label="Sections"><a href="index.html">Overview</a><a href="results.html" aria-current="page">Results</a><a href="senate.html">Senate</a><a href="house.html">House</a><a href="governors.html">Governors</a><a href="scenarios.html">Scenarios</a><a href="economy.html">Economy</a><a href="trend.html">Trend</a><a href="markets.html">Markets</a><a href="methodology.html">Methodology</a></nav>
-  <a class="refresh" href="https://github.com/Gh0stmahn-ai/cd-election-agent/actions/workflows/daily-forecast.yml" target="_blank" rel="noopener"
-     title="Re-run the forecast now on the latest public data (opens GitHub Actions)">
-    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7"
-         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <path d="M14 8a6 6 0 1 1-1.8-4.3"></path><path d="M14 2v4h-4"></path>
-    </svg>Refresh</a>
+  <span class="refresh" title="The final forecast is sealed and no longer re-runs">Final forecast</span>
 </div></header>
 
 <div class="wrap">
@@ -36,7 +31,11 @@
   <h1>Results</h1>
   <div class="sub">Every race's call and count as they come in, set against the forecast that was sealed before the polls opened.</div>
 </div>
-
+<div class="final-banner" role="note">
+  <span class="pill"><span class="dot" style="background:var(--ink)"></span>Final forecast</span>
+  <span>Made at 10:59 pm Eastern on November 2, before any polls opened, and sealed at 12:40 pm Eastern on November 3. These numbers will not change; they are what the results get
+    graded against. <a href="results.html">Results and the scorecard &#8594;</a></span>
+</div>
 
 <div class="res-status" id="res-status"></div>
 
@@ -85,7 +84,7 @@
 <section>
   <h2>Where these numbers come from</h2>
   <div class="card prose">
-    <p>The forecast is sealed at 5 am Eastern on Election Day, before any poll opens; that sealed version is what every result is graded against.</p>
+    <p>The forecast these results are graded against is the sealed final forecast. Made at 10:59 pm Eastern on November 2, before any polls opened, and sealed at 12:40 pm Eastern on November 3.</p>
     <p><b>Calls</b> come from Wikipedia's 2026 Senate, House and governor articles, where editors mark a winner
       as the networks call each race. A call is taken here only after it has stood for four minutes and
       only once every poll in that state has closed, and a call that is taken down there is withdrawn
@@ -106,15 +105,14 @@
 
 <footer class="site"><div class="wrap" style="padding-bottom:0">
   <div id="foot-updated"></div>
-  <div style="margin-top:6px">Rebuilt twice a day, at about 7 am and 7 pm Eastern, and any time someone
-    presses <a href="https://github.com/Gh0stmahn-ai/cd-election-agent/actions/workflows/daily-forecast.yml">Refresh</a>.
+  <div style="margin-top:6px">The forecast was sealed on the morning of Election Day and no longer changes. Results update every few minutes from official state feeds and Wikipedia.
     <a href="https://github.com/Gh0stmahn-ai/cd-election-agent">Source code and data on GitHub</a>.
     Forecast, not a prediction: read the <a href="methodology.html">methodology</a> first.</div>
 </div></footer>
 
 <script src="assets/app.js?v=6482eff1"></script>
 <script>
-const PAGE_DATA = {"site":{"timestamp":"2026-11-03T03:59:09.768138+00:00","status":"success"},"results_config":{"raw":"https://raw.githubusercontent.com/Gh0stmahn-ai/cd-election-agent/main/data/results_2026.json","local":"data/results_2026.json","forecast":{"senate":{"p":0.7806,"median":52,"p10":49,"p90":54,"not_up":{"D":34,"R":31,"note":"65 seats not up in 2026: 34 in the Democratic caucus (incl. King and Sanders), 31 Republican."},"seats":100,"needed":51},"house":{"p":0.9069,"median":230,"p10":218,"p90":240,"seats":435,"needed":218},"governor":{"p":0.8877,"median":28,"p10":25,"p90":30,"not_up":{"D":6,"R":8,"states":{"DE":"D","KY":"D","NJ":"D","NC":"D","VA":"D","WA":"D","IN":"R","LA":"R","MS":"R","MO":"R","MT":"R","ND":"R","UT":"R","WV":"R"}},"seats":50,"needed":26}}}};
+const PAGE_DATA = {"site":{"timestamp":"2026-11-03T03:59:09.768138+00:00","status":"success","final":true},"results_config":{"raw":"https://raw.githubusercontent.com/Gh0stmahn-ai/cd-election-agent/main/data/results_2026.json","local":"data/results_2026.json","forecast":{"senate":{"p":0.7806,"median":52,"p10":49,"p90":54,"not_up":{"D":34,"R":31,"note":"65 seats not up in 2026: 34 in the Democratic caucus (incl. King and Sanders), 31 Republican."},"seats":100,"needed":51},"house":{"p":0.9069,"median":230,"p10":218,"p90":240,"seats":435,"needed":218},"governor":{"p":0.8877,"median":28,"p10":25,"p90":30,"not_up":{"D":6,"R":8,"states":{"DE":"D","KY":"D","NJ":"D","NC":"D","VA":"D","WA":"D","IN":"R","LA":"R","MS":"R","MO":"R","MT":"R","ND":"R","UT":"R","WV":"R"}},"seats":50,"needed":26}}}};
 FC.init();
 (function () {
   var s = PAGE_DATA.site;
