@@ -1,7 +1,7 @@
 {
- "as_of": "2026-11-02",
- "ratings_source": "Cook Political Report Senate ratings of Oct 30, 2026, via Wikipedia (revision 1383457477, 2026-11-02)",
- "ratings_environment_dem_margin": 8.97,
+ "as_of": "2026-11-03",
+ "ratings_source": "Cook Political Report Senate ratings of Nov 2, 2026, via Wikipedia (revision 1383523717, 2026-11-03)",
+ "ratings_environment_dem_margin": 8.56,
  "not_up": {
   "D": 34,
   "R": 31,
@@ -179,7 +179,7 @@
    "state": "MI",
    "seat_id": "MI-2026",
    "held_by": "D",
-   "rating": "tossup",
+   "rating": "lean",
    "lean": "D",
    "incumbent": null,
    "dem_candidate": "Abdul El-Sayed",
@@ -399,5 +399,5 @@
    "notes": "Open: Cynthia Lummis not on the ballot"
   }
  ],
- "ratings_date": "2026-10-30"
+ "ratings_date": "2026-11-02"
 }
