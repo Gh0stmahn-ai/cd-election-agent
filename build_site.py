@@ -1597,6 +1597,18 @@ def build_results(snap):
   <noscript>{nojs}</noscript>
 </section>
 
+<section>
+  <h2>The map</h2>
+  <p class="lede">Where every race stands now: called, leading in the count, or not in yet. Hover or tap for
+    the count and the forecast it is being graded against.</p>
+  <div class="card">
+    <div class="tabs" id="res-map-tabs" role="group" aria-label="Choose a map"></div>
+    <svg id="res-map" viewBox="0 0 980 600" role="img" aria-label="Map of race results"></svg>
+    <div class="legend" id="res-map-legend"></div>
+    <p class="note" id="res-map-note"></p>
+  </div>
+</section>
+
 <section id="res-events-wrap" hidden>
   <h2>Latest calls</h2>
   <div class="card"><ol class="res-events" id="res-events"></ol></div>
@@ -1666,6 +1678,9 @@ def build_results(snap):
             "p": g["dem_majority_prob"], "median": g["percentiles"].get("50"),
             "p10": g["percentiles"].get("10"), "p90": g["percentiles"].get("90"),
             "not_up": g.get("not_up"), "seats": 50, "needed": g.get("majority", 26)}
+    config["geo"] = {"states": {k: {"d": v["d"], "cx": v["cx"], "cy": v["cy"]}
+                                for k, v in json.loads((GEO_DIR / "states.json").read_text())["states"].items()}}
+    config["hex"] = json.loads((GEO_DIR / "house_hex.json").read_text())
     data = {"site": site_meta(snap), "results_config": config}
     scripts = """
 FC.renderResults(PAGE_DATA.results_config);
