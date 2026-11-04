@@ -122,3 +122,4 @@
 {"t": "2026-11-04T06:30:30+00:00", "type": "control", "chamber": "governor", "winner": "D"}
 {"t": "2026-11-04T06:32:30+00:00", "type": "call", "race": "AR-GOV", "winner": "R", "name": "Sarah Huckabee Sanders", "dem_side": false}
 {"t": "2026-11-04T06:32:30+00:00", "type": "call", "race": "TN-GOV", "winner": "R", "name": "Marsha Blackburn", "dem_side": false}
+{"t": "2026-11-04T06:36:30+00:00", "type": "call", "race": "SC-GOV", "winner": "R", "name": "Alan Wilson", "dem_side": false}
