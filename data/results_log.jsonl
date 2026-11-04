@@ -88,3 +88,6 @@
 {"t": "2026-11-04T04:36:30+00:00", "type": "call", "race": "IA-GOV", "winner": "D", "name": "Rob Sand", "dem_side": true}
 {"t": "2026-11-04T04:36:30+00:00", "type": "call", "race": "NM-GOV", "winner": "D", "name": "Deb Haaland", "dem_side": true}
 {"t": "2026-11-04T04:36:30+00:00", "type": "call", "race": "VT-GOV", "winner": "R", "name": "Phil Scott", "dem_side": false}
+{"t": "2026-11-04T04:49:30+00:00", "type": "call", "race": "MD-1", "winner": "R", "name": "Andy Harris", "dem_side": false}
+{"t": "2026-11-04T04:49:30+00:00", "type": "call", "race": "MD-2", "winner": "D", "name": "Johnny Olszewski", "dem_side": true}
+{"t": "2026-11-04T04:49:30+00:00", "type": "call", "race": "MD-6", "winner": "D", "name": "April McClain Delaney", "dem_side": true}
