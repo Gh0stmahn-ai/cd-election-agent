@@ -173,3 +173,5 @@
 {"t": "2026-11-04T08:02:30+00:00", "type": "call", "race": "CT-4", "winner": "D", "name": "Jim Himes", "dem_side": true}
 {"t": "2026-11-04T08:02:30+00:00", "type": "call", "race": "CT-5", "winner": "D", "name": "Jahana Hayes", "dem_side": true}
 {"t": "2026-11-04T08:02:30+00:00", "type": "call", "race": "NE-GOV", "winner": "R", "name": "Jim Pillen", "dem_side": false}
+{"t": "2026-11-04T08:03:47+00:00", "type": "call", "race": "HI-GOV", "winner": "D", "name": "Josh Green", "dem_side": true}
+{"t": "2026-11-04T08:03:47+00:00", "type": "control", "chamber": "governor", "winner": "D"}
