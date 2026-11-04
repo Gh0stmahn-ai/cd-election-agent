@@ -226,3 +226,5 @@
 {"t": "2026-11-04T09:18:47+00:00", "type": "call", "race": "LA-3", "winner": "R", "name": "Clay Higgins", "dem_side": false}
 {"t": "2026-11-04T09:18:47+00:00", "type": "call", "race": "LA-4", "winner": "R", "name": "Mike Johnson", "dem_side": false}
 {"t": "2026-11-04T09:26:47+00:00", "type": "call", "race": "DE-AL", "winner": "D", "name": "Sarah McBride", "dem_side": true}
+{"t": "2026-11-04T09:28:47+00:00", "type": "call", "race": "HI-1", "winner": "D", "name": "Ed Case", "dem_side": true}
+{"t": "2026-11-04T09:28:47+00:00", "type": "call", "race": "HI-2", "winner": "D", "name": "Jill Tokuda", "dem_side": true}
