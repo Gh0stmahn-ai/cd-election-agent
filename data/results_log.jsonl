@@ -435,3 +435,10 @@
 {"t": "2026-11-04T15:25:37+00:00", "type": "call", "race": "VA-11", "winner": "D", "name": "James Walkinshaw", "dem_side": true}
 {"t": "2026-11-04T15:25:37+00:00", "type": "control", "chamber": "house", "winner": "D"}
 {"t": "2026-11-04T15:32:37+00:00", "type": "retraction", "race": "NC-13", "was": {"party": "D", "name": "Paul Barringer", "dem_side": true, "at": "2026-11-04T06:29:30+00:00", "source": "wikipedia"}}
+{"t": "2026-11-04T15:39:37+00:00", "type": "call", "race": "WA-1", "winner": "D", "name": "Suzan DelBene", "dem_side": true}
+{"t": "2026-11-04T15:39:37+00:00", "type": "call", "race": "WA-2", "winner": "D", "name": "Rick Larsen", "dem_side": true}
+{"t": "2026-11-04T15:39:37+00:00", "type": "call", "race": "WA-6", "winner": "D", "name": "Emily Randall", "dem_side": true}
+{"t": "2026-11-04T15:39:37+00:00", "type": "call", "race": "WA-7", "winner": "D", "name": "Pramila Jayapal", "dem_side": true}
+{"t": "2026-11-04T15:39:37+00:00", "type": "call", "race": "WA-8", "winner": "D", "name": "Kim Schrier", "dem_side": true}
+{"t": "2026-11-04T15:39:37+00:00", "type": "call", "race": "WA-9", "winner": "D", "name": "Adam Smith", "dem_side": true}
+{"t": "2026-11-04T15:39:37+00:00", "type": "call", "race": "WA-10", "winner": "D", "name": "Marilyn Strickland", "dem_side": true}
