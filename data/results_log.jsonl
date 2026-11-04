@@ -40,3 +40,5 @@
 {"t": "2026-11-04T02:28:30+00:00", "type": "call", "race": "PA-GOV", "winner": "D", "name": "Josh Shapiro", "dem_side": true}
 {"t": "2026-11-04T02:28:30+00:00", "type": "call", "race": "RI-GOV", "winner": "D", "name": "Helena Foulkes", "dem_side": true}
 {"t": "2026-11-04T02:28:30+00:00", "type": "call", "race": "WY-GOV", "winner": "R", "name": "Eric Barlow", "dem_side": false}
+{"t": "2026-11-04T02:29:30+00:00", "type": "call", "race": "KY-2026", "winner": "R", "name": "Andy Barr", "dem_side": false}
+{"t": "2026-11-04T02:29:30+00:00", "type": "call", "race": "FL-GOV", "winner": "R", "name": "Byron Donalds", "dem_side": false}
