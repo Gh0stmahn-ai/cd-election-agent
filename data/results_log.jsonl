@@ -62,3 +62,4 @@
 {"t": "2026-11-04T03:05:30+00:00", "type": "call", "race": "SC-2026", "winner": "D", "name": "Annie Andrews", "dem_side": true}
 {"t": "2026-11-04T03:20:30+00:00", "type": "call", "race": "AL-2026", "winner": "R", "name": "Barry Moore", "dem_side": false}
 {"t": "2026-11-04T03:25:30+00:00", "type": "call", "race": "AR-GOV", "winner": "R", "name": "Sarah Huckabee Sanders", "dem_side": false}
+{"t": "2026-11-04T03:35:30+00:00", "type": "call", "race": "PA-7", "winner": "D", "name": "Bob Brooks", "dem_side": true}
