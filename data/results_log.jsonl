@@ -273,3 +273,7 @@
 {"t": "2026-11-04T10:19:20+00:00", "type": "call", "race": "NJ-12", "winner": "D", "name": "Adam Hamawy", "dem_side": true}
 {"t": "2026-11-04T10:46:20+00:00", "type": "call", "race": "NH-GOV", "winner": "R", "name": "Kelly Ayotte", "dem_side": false}
 {"t": "2026-11-04T10:46:20+00:00", "type": "call", "race": "NV-GOV", "winner": "D", "name": "Aaron Ford", "dem_side": true}
+{"t": "2026-11-04T10:50:20+00:00", "type": "call", "race": "KS-1", "winner": "R", "name": "Tracey Mann", "dem_side": false}
+{"t": "2026-11-04T10:50:20+00:00", "type": "call", "race": "KS-2", "winner": "R", "name": "Derek Schmidt", "dem_side": false}
+{"t": "2026-11-04T10:50:20+00:00", "type": "call", "race": "KS-3", "winner": "D", "name": "Sharice Davids", "dem_side": true}
+{"t": "2026-11-04T10:50:20+00:00", "type": "call", "race": "KS-4", "winner": "R", "name": "Ron Estes", "dem_side": false}
