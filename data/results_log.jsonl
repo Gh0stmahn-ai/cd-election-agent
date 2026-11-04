@@ -2,3 +2,31 @@
 {"t": "2026-11-04T02:10:42+00:00", "type": "call", "race": "MA-5", "winner": "D", "name": "Katherine Clark", "dem_side": true, "uncontested": true}
 {"t": "2026-11-04T02:10:42+00:00", "type": "call", "race": "MA-7", "winner": "D", "name": "Ayanna Pressley", "dem_side": true, "uncontested": true}
 {"t": "2026-11-04T02:10:42+00:00", "type": "call", "race": "WI-2", "winner": "D", "name": "Mark Pocan", "dem_side": true, "uncontested": true}
+{"t": "2026-11-04T02:14:42+00:00", "type": "call", "race": "CO-2026", "winner": "D", "name": "John Hickenlooper", "dem_side": true}
+{"t": "2026-11-04T02:14:42+00:00", "type": "call", "race": "DE-2026", "winner": "D", "name": "Chris Coons", "dem_side": true}
+{"t": "2026-11-04T02:14:42+00:00", "type": "call", "race": "FL-2026-special", "winner": "R", "name": "Ashley Moody", "dem_side": false}
+{"t": "2026-11-04T02:14:42+00:00", "type": "call", "race": "GA-2026", "winner": "D", "name": "Jon Ossoff", "dem_side": true}
+{"t": "2026-11-04T02:14:42+00:00", "type": "call", "race": "IL-2026", "winner": "D", "name": "Juliana Stratton", "dem_side": true}
+{"t": "2026-11-04T02:14:42+00:00", "type": "call", "race": "MA-2026", "winner": "D", "name": "Ed Markey", "dem_side": true}
+{"t": "2026-11-04T02:14:42+00:00", "type": "call", "race": "NC-2026", "winner": "D", "name": "Roy Cooper", "dem_side": true}
+{"t": "2026-11-04T02:14:42+00:00", "type": "call", "race": "NH-2026", "winner": "D", "name": "Chris Pappas", "dem_side": true}
+{"t": "2026-11-04T02:14:42+00:00", "type": "call", "race": "NJ-2026", "winner": "D", "name": "Cory Booker", "dem_side": true}
+{"t": "2026-11-04T02:14:42+00:00", "type": "call", "race": "NM-2026", "winner": "D", "name": "Ben Ray Luj\u00e1n", "dem_side": true}
+{"t": "2026-11-04T02:14:42+00:00", "type": "call", "race": "RI-2026", "winner": "D", "name": "Jack Reed", "dem_side": true}
+{"t": "2026-11-04T02:14:42+00:00", "type": "call", "race": "VA-2026", "winner": "D", "name": "Mark Warner", "dem_side": true}
+{"t": "2026-11-04T02:14:42+00:00", "type": "call", "race": "WV-2026", "winner": "R", "name": "Shelley Moore Capito", "dem_side": false}
+{"t": "2026-11-04T02:14:42+00:00", "type": "call", "race": "WY-2026", "winner": "R", "name": "Harriet Hageman", "dem_side": false}
+{"t": "2026-11-04T02:14:42+00:00", "type": "call", "race": "FL-6", "winner": "R", "name": "Randy Fine", "dem_side": false}
+{"t": "2026-11-04T02:14:42+00:00", "type": "call", "race": "FL-10", "winner": "D", "name": "Maxwell Frost", "dem_side": true}
+{"t": "2026-11-04T02:14:42+00:00", "type": "call", "race": "FL-19", "winner": "R", "name": "Jim Schwartzel", "dem_side": false}
+{"t": "2026-11-04T02:14:42+00:00", "type": "call", "race": "FL-20", "winner": "D", "name": "Debbie Wasserman Schultz", "dem_side": true}
+{"t": "2026-11-04T02:14:42+00:00", "type": "call", "race": "FL-24", "winner": "D", "name": "Oliver Gilbert", "dem_side": true}
+{"t": "2026-11-04T02:14:42+00:00", "type": "call", "race": "GA-4", "winner": "D", "name": "Hank Johnson", "dem_side": true}
+{"t": "2026-11-04T02:14:42+00:00", "type": "call", "race": "GA-5", "winner": "D", "name": "Nikema Williams", "dem_side": true}
+{"t": "2026-11-04T02:14:42+00:00", "type": "call", "race": "GA-6", "winner": "D", "name": "Lucy McBath", "dem_side": true}
+{"t": "2026-11-04T02:14:42+00:00", "type": "call", "race": "GA-13", "winner": "D", "name": "Jasmine Clark", "dem_side": true}
+{"t": "2026-11-04T02:14:42+00:00", "type": "call", "race": "KY-3", "winner": "D", "name": "Morgan McGarvey", "dem_side": true}
+{"t": "2026-11-04T02:14:42+00:00", "type": "call", "race": "KY-5", "winner": "R", "name": "Hal Rogers", "dem_side": false}
+{"t": "2026-11-04T02:14:42+00:00", "type": "call", "race": "OH-3", "winner": "D", "name": "Joyce Beatty", "dem_side": true}
+{"t": "2026-11-04T02:14:42+00:00", "type": "call", "race": "OH-13", "winner": "D", "name": "Emilia Sykes", "dem_side": true}
+{"t": "2026-11-04T02:14:42+00:00", "type": "call", "race": "VA-9", "winner": "R", "name": "Morgan Griffith", "dem_side": false}
