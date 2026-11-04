@@ -85,3 +85,6 @@
 {"t": "2026-11-04T04:26:30+00:00", "type": "call", "race": "KS-2026", "winner": "D", "name": "Adam Hamilton", "dem_side": true}
 {"t": "2026-11-04T04:31:30+00:00", "type": "call", "race": "IA-2026", "winner": "D", "name": "Josh Turek", "dem_side": true}
 {"t": "2026-11-04T04:31:30+00:00", "type": "control", "chamber": "senate", "winner": "D"}
+{"t": "2026-11-04T04:36:30+00:00", "type": "call", "race": "IA-GOV", "winner": "D", "name": "Rob Sand", "dem_side": true}
+{"t": "2026-11-04T04:36:30+00:00", "type": "call", "race": "NM-GOV", "winner": "D", "name": "Deb Haaland", "dem_side": true}
+{"t": "2026-11-04T04:36:30+00:00", "type": "call", "race": "VT-GOV", "winner": "R", "name": "Phil Scott", "dem_side": false}
