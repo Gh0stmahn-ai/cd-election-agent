@@ -175,3 +175,22 @@
 {"t": "2026-11-04T08:02:30+00:00", "type": "call", "race": "NE-GOV", "winner": "R", "name": "Jim Pillen", "dem_side": false}
 {"t": "2026-11-04T08:03:47+00:00", "type": "call", "race": "HI-GOV", "winner": "D", "name": "Josh Green", "dem_side": true}
 {"t": "2026-11-04T08:03:47+00:00", "type": "control", "chamber": "governor", "winner": "D"}
+{"t": "2026-11-04T08:39:47+00:00", "type": "call", "race": "NE-2026", "winner": "R", "name": "Pete Ricketts", "dem_side": false}
+{"t": "2026-11-04T08:39:47+00:00", "type": "call", "race": "FL-1", "winner": "R", "name": "Jimmy Patronis", "dem_side": false}
+{"t": "2026-11-04T08:39:47+00:00", "type": "call", "race": "FL-2", "winner": "R", "name": "Austin Rogers", "dem_side": false}
+{"t": "2026-11-04T08:39:47+00:00", "type": "call", "race": "FL-3", "winner": "R", "name": "Kat Cammack", "dem_side": false}
+{"t": "2026-11-04T08:39:47+00:00", "type": "call", "race": "FL-4", "winner": "R", "name": "Aaron Bean", "dem_side": false}
+{"t": "2026-11-04T08:39:47+00:00", "type": "call", "race": "FL-5", "winner": "R", "name": "John Rutherford", "dem_side": false}
+{"t": "2026-11-04T08:39:47+00:00", "type": "call", "race": "FL-8", "winner": "R", "name": "Mike Haridopolos", "dem_side": false}
+{"t": "2026-11-04T08:39:47+00:00", "type": "call", "race": "FL-11", "winner": "R", "name": "Joe Strada", "dem_side": false}
+{"t": "2026-11-04T08:39:47+00:00", "type": "call", "race": "FL-12", "winner": "R", "name": "Gus Bilirakis", "dem_side": false}
+{"t": "2026-11-04T08:39:47+00:00", "type": "call", "race": "FL-14", "winner": "D", "name": "Kathy Castor", "dem_side": true}
+{"t": "2026-11-04T08:39:47+00:00", "type": "call", "race": "FL-15", "winner": "R", "name": "Laurel Lee", "dem_side": false}
+{"t": "2026-11-04T08:39:47+00:00", "type": "call", "race": "FL-16", "winner": "R", "name": "Sydney Gruters", "dem_side": false}
+{"t": "2026-11-04T08:39:47+00:00", "type": "call", "race": "FL-17", "winner": "R", "name": "Greg Steube", "dem_side": false}
+{"t": "2026-11-04T08:39:47+00:00", "type": "call", "race": "FL-18", "winner": "R", "name": "Scott Franklin", "dem_side": false}
+{"t": "2026-11-04T08:39:47+00:00", "type": "call", "race": "FL-21", "winner": "R", "name": "Brian Mast", "dem_side": false}
+{"t": "2026-11-04T08:39:47+00:00", "type": "call", "race": "FL-22", "winner": "D", "name": "Pia Dandiya", "dem_side": true}
+{"t": "2026-11-04T08:39:47+00:00", "type": "call", "race": "FL-23", "winner": "D", "name": "Lois Frankel", "dem_side": true}
+{"t": "2026-11-04T08:39:47+00:00", "type": "call", "race": "FL-25", "winner": "D", "name": "Jared Moskowitz", "dem_side": true}
+{"t": "2026-11-04T08:39:47+00:00", "type": "call", "race": "FL-28", "winner": "R", "name": "Carlos A. Gim\u00e9nez", "dem_side": false}
