@@ -509,14 +509,16 @@ def parse_ak(data, senate_seat):
 
 
 # ======================================================================= FL
-FL_URL = ("https://results.elections.myflorida.com/ResultsExtract.Asp?ElectionDate=11/3/2026"
-          "&OfficialResults=N&PartyRaces=N&DataMode=&FormsButton2=Download")
+# Florida moved election-night results to Florida Election Watch; the same
+# tab-separated extract is published there (Downloads page). Its CDN serves a
+# stale copy without a cache-buster, so each read asks for a fresh one.
+FL_URL = "https://flelectionfiles.floridados.gov/enightfilespublic/20261103_ElecResultsFL.txt"
 
 
 def fetch_fl(cache, senate_seat):
     """Florida's tab-separated extract, one row per candidate per county. No
     timestamp inside, so the file hash is the change detector."""
-    text = get(FL_URL)
+    text = get(f"{FL_URL}?v={int(time.time()) // 30}")
     digest = hashlib.sha256(text.encode()).hexdigest()
     if digest == cache.get("digest"):
         return None
@@ -540,7 +542,12 @@ def parse_fl(text, senate_seat, as_of=None):
         if not rid:
             continue
         g = groups.setdefault(rid, {"chamber": chamber, "cands": {}, "counties": {}})
-        name = " ".join(x for x in (row.get("CanNameFirst"), row.get("CanNameLast")) if x and x.strip() != "_")
+        if code == "GOV" and (row.get("CanNameMiddle") or "").strip() == "/":
+            # A governor ticket: CanNameFirst holds the governor's surname and
+            # CanNameLast the running mate's.
+            name = (row.get("CanNameFirst") or "").strip()
+        else:
+            name = " ".join(x for x in (row.get("CanNameFirst"), row.get("CanNameLast")) if x and x.strip() != "_")
         party = (row.get("PartyCode") or "").strip()
         if party == "WRI":
             continue
