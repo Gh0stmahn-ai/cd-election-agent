@@ -67,3 +67,13 @@
 {"t": "2026-11-04T03:49:30+00:00", "type": "call", "race": "AR-2026", "winner": "R", "name": "Tom Cotton", "dem_side": false}
 {"t": "2026-11-04T03:52:30+00:00", "type": "call", "race": "PA-10", "winner": "D", "name": "Janelle Stelson", "dem_side": true}
 {"t": "2026-11-04T03:59:30+00:00", "type": "call", "race": "TX-2026", "winner": "D", "name": "James Talarico", "dem_side": true}
+{"t": "2026-11-04T04:00:30+00:00", "type": "call", "race": "CA-4", "winner": "D", "name": "2 Democrats", "dem_side": true, "uncontested": true}
+{"t": "2026-11-04T04:00:30+00:00", "type": "call", "race": "CA-7", "winner": "D", "name": "2 Democrats", "dem_side": true, "uncontested": true}
+{"t": "2026-11-04T04:00:30+00:00", "type": "call", "race": "CA-11", "winner": "D", "name": "2 Democrats", "dem_side": true, "uncontested": true}
+{"t": "2026-11-04T04:00:30+00:00", "type": "call", "race": "CA-12", "winner": "D", "name": "2 Democrats", "dem_side": true, "uncontested": true}
+{"t": "2026-11-04T04:00:30+00:00", "type": "call", "race": "CA-14", "winner": "D", "name": "2 Democrats", "dem_side": true, "uncontested": true}
+{"t": "2026-11-04T04:00:30+00:00", "type": "call", "race": "CA-29", "winner": "D", "name": "2 Democrats", "dem_side": true, "uncontested": true}
+{"t": "2026-11-04T04:00:30+00:00", "type": "call", "race": "CA-34", "winner": "D", "name": "2 Democrats", "dem_side": true, "uncontested": true}
+{"t": "2026-11-04T04:00:30+00:00", "type": "call", "race": "CA-37", "winner": "D", "name": "2 Democrats", "dem_side": true, "uncontested": true}
+{"t": "2026-11-04T04:00:30+00:00", "type": "call", "race": "CA-40", "winner": "R", "name": "2 Republicans", "dem_side": false, "uncontested": true}
+{"t": "2026-11-04T04:00:30+00:00", "type": "call", "race": "OH-GOV", "winner": "D", "name": "Amy Acton", "dem_side": true}
