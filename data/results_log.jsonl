@@ -228,3 +228,5 @@
 {"t": "2026-11-04T09:26:47+00:00", "type": "call", "race": "DE-AL", "winner": "D", "name": "Sarah McBride", "dem_side": true}
 {"t": "2026-11-04T09:28:47+00:00", "type": "call", "race": "HI-1", "winner": "D", "name": "Ed Case", "dem_side": true}
 {"t": "2026-11-04T09:28:47+00:00", "type": "call", "race": "HI-2", "winner": "D", "name": "Jill Tokuda", "dem_side": true}
+{"t": "2026-11-04T09:32:47+00:00", "type": "call", "race": "ID-1", "winner": "R", "name": "Russ Fulcher", "dem_side": false}
+{"t": "2026-11-04T09:32:47+00:00", "type": "call", "race": "ID-2", "winner": "R", "name": "Mike Simpson", "dem_side": false}
