@@ -425,3 +425,12 @@
 {"t": "2026-11-04T15:06:37+00:00", "type": "call", "race": "NC-9", "winner": "D", "name": "Richard Ojeda", "dem_side": true}
 {"t": "2026-11-04T15:06:37+00:00", "type": "call", "race": "UT-1", "winner": "D", "name": "Ben McAdams", "dem_side": true}
 {"t": "2026-11-04T15:16:37+00:00", "type": "call", "race": "VT-AL", "winner": "D", "name": "Becca Balint", "dem_side": true}
+{"t": "2026-11-04T15:25:37+00:00", "type": "call", "race": "VA-2", "winner": "D", "name": "Elaine Luria", "dem_side": true}
+{"t": "2026-11-04T15:25:37+00:00", "type": "call", "race": "VA-3", "winner": "D", "name": "Bobby Scott", "dem_side": true}
+{"t": "2026-11-04T15:25:37+00:00", "type": "call", "race": "VA-4", "winner": "D", "name": "Jennifer McClellan", "dem_side": true}
+{"t": "2026-11-04T15:25:37+00:00", "type": "call", "race": "VA-6", "winner": "R", "name": "Ben Cline", "dem_side": false}
+{"t": "2026-11-04T15:25:37+00:00", "type": "call", "race": "VA-7", "winner": "D", "name": "Eugene Vindman", "dem_side": true}
+{"t": "2026-11-04T15:25:37+00:00", "type": "call", "race": "VA-8", "winner": "D", "name": "Don Beyer", "dem_side": true}
+{"t": "2026-11-04T15:25:37+00:00", "type": "call", "race": "VA-10", "winner": "D", "name": "Suhas Subramanyam", "dem_side": true}
+{"t": "2026-11-04T15:25:37+00:00", "type": "call", "race": "VA-11", "winner": "D", "name": "James Walkinshaw", "dem_side": true}
+{"t": "2026-11-04T15:25:37+00:00", "type": "control", "chamber": "house", "winner": "D"}
