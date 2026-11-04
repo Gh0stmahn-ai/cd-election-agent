@@ -2025,6 +2025,7 @@ function renderResultsAll(d, failed) {
     resCalib("res-calib", d.scorecard.calibration, "res-calib-note");
     resMisses("res-misses", d.scorecard);
   }
+  resMap("res-map-tabs", "res-map", "res-map-legend", "res-map-note", d);
   resTable("res-tabs", "res-table", d, started);
   resSources("res-sources", d);
 }
@@ -2268,6 +2269,169 @@ function resTable(tabsId, tableId, d, started) {
       return "<tr><td>" + esc(r.label) + '</td><td class="num">' + pct(r.forecast.p) + "</td><td>" + status(r) +
         "</td>" + count(r) + versus(r) + "</tr>";
     }).join("") + "</tbody>";
+}
+
+/* The results map: one per chamber, coloured by where each race stands now
+   (called, leading in the count, or not yet in), with the sealed forecast and
+   the live count side by side in the tooltip. */
+RES.mapChamber = "senate";
+var RES_MAP_KEY = [
+  ["c5", "Called, Democrat"], ["c4", "Leading in the count, Democrat"], ["c3", "Not called, no count yet"],
+  ["c2", "Leading in the count, Republican"], ["c1", "Called, Republican"]
+];
+function resFill(r) {
+  if (!r) return css("--notup");
+  if (r.call) return r.call.party === "D" ? css("--c5") : r.call.party === "R" ? css("--c1") : css("--ink-2");
+  var c = r.count;
+  if (c && c.margin != null && (c.reporting == null || c.reporting > 0) && (c.dem_votes || c.rep_votes)) {
+    return c.margin >= 0 ? (r.independent_side ? css("--ink-2") : css("--c4")) : css("--c2");
+  }
+  return css("--c3");
+}
+function resMapTip(r, title) {
+  if (!r) return "<b>" + esc(title) + "</b><br>No race here in 2026";
+  var lines = ["<b>" + esc(r.label || title) + "</b>"];
+  var now = Date.now();
+  if (r.call) {
+    var fav = (r.call.dem_side ? r.forecast.p : 1 - r.forecast.p);
+    lines.push("<b>Called:</b> " + swatch(partyColor(r.call.party)) + esc(titleCase(String(r.call.name || "").toLowerCase())) +
+      " (" + r.call.party + ")" + (r.call.at ? " at " + fmtTime(r.call.at) : "") +
+      (fav < 0.5 ? " <b>· an upset by the forecast</b>" : ""));
+  } else if (r.polls_close && new Date(r.polls_close).getTime() > now) {
+    lines.push("Polls close " + fmtTime(r.polls_close));
+  } else {
+    lines.push("Not called yet");
+  }
+  var c = r.count;
+  if (c && c.candidates && c.candidates.length && (c.dem_votes || c.rep_votes)) {
+    var cands = c.candidates.slice().sort(function (a, b) { return (b.votes || 0) - (a.votes || 0); }).slice(0, 3);
+    lines.push("<b>Count</b>" + (c.reporting != null ? " · " + Math.round(c.reporting * 100) + "% in" : "") +
+      (c.reporting_label ? ' <span style="opacity:.8">(' + esc(c.reporting_label) + ")</span>" : ""));
+    cands.forEach(function (x) {
+      lines.push(swatch(partyColor(x.party)) + esc(titleCase(String(x.name || "").toLowerCase())) +
+        (x.party === "D" || x.party === "R" ? " (" + x.party + ")" : "") + (x.pct != null ? " " + x.pct.toFixed(1) + "%" : ""));
+    });
+  } else if (r.call || (r.polls_close && new Date(r.polls_close).getTime() <= now)) {
+    lines.push('<span style="opacity:.8">No running count read for this race</span>');
+  }
+  var who = r.independent_side ? (r.dem_candidate || "The independent") : "Democrats";
+  lines.push("<b>Forecast:</b> " + esc(who) + " " + pct(r.forecast.p) + " · Republicans " + pct(1 - r.forecast.p) +
+    (r.forecast.margin != null ? "<br>Expected margin " + (r.independent_side && r.forecast.margin >= 0 ? "I+" + Math.abs(r.forecast.margin).toFixed(1) : margin(r.forecast.margin)) : ""));
+  if (c && c.margin != null && r.forecast.margin != null && (c.dem_votes || c.rep_votes)) {
+    var dlt = c.margin - r.forecast.margin;
+    lines.push("Count vs forecast: " + (dlt >= 0 ? (r.independent_side ? "I" : "D") : "R") + " +" + Math.abs(dlt).toFixed(1) + " pts");
+  }
+  return lines.join("<br>");
+}
+function resStateMap(svg, byState, geo, kind) {
+  svg.setAttribute("viewBox", "0 0 980 600");
+  Object.keys(geo.states).forEach(function (code) {
+    var g = geo.states[code], race = byState[code];
+    var p = el("path", {d: g.d, "class": "state", fill: resFill(race)}, svg);
+    p.setAttribute("aria-label", STATE_NAMES[code] + (race ? "" : ": no " + kind + " race"));
+    bindTip(p, function () { return resMapTip(race, STATE_NAMES[code]); }, !!race);
+  });
+  var SMALL = {NH: 1, MA: 1, RI: 1, CT: 1, NJ: 1, DE: 1, MD: 1, VT: 1};
+  Object.keys(geo.states).forEach(function (code) {
+    if (SMALL[code]) return;
+    var g = geo.states[code], race = byState[code];
+    var fill = resFill(race);
+    el("text", {x: g.cx, y: g.cy + 4, "text-anchor": "middle", "class": "maplabel",
+      style: race ? "fill:" + inkOn(fill) + ";stroke:none" : "fill:var(--muted)"}, svg).textContent = code;
+  });
+  var chips = ["VT", "NH", "MA", "RI", "CT", "NJ", "DE", "MD"].map(function (c) {
+    return {c: c, g: geo.states[c]};
+  }).sort(function (a, b) { return a.g.cy - b.g.cy; });
+  var yy = 150;
+  chips.forEach(function (item) {
+    var race = byState[item.c], fill = resFill(race);
+    var cy = Math.max(yy, item.g.cy - 20); yy = cy + 30;
+    el("line", {x1: item.g.cx, y1: item.g.cy, x2: 928, y2: cy, stroke: css("--axis"), "stroke-width": 1}, svg);
+    var r = el("rect", {x: 930, y: cy - 11, width: 44, height: 22, rx: 4, fill: fill,
+      stroke: race ? "none" : css("--axis"), "class": "state"}, svg);
+    bindTip(r, function () { return resMapTip(race, STATE_NAMES[item.c]); }, !!race);
+    el("text", {x: 952, y: cy + 4, "text-anchor": "middle",
+      style: "font-size:11px;font-weight:600;pointer-events:none;fill:" + (race ? inkOn(fill) : css("--muted"))},
+      svg).textContent = item.c;
+  });
+}
+function resHouseMap(svg, races, hex) {
+  svg.setAttribute("viewBox", "0 0 " + hex.width + " " + hex.height);
+  var size = hex.hex_size * 0.965, i, corners = [];
+  for (i = 0; i < 6; i++) corners.push([Math.cos(Math.PI / 180 * (60 * i - 30)), Math.sin(Math.PI / 180 * (60 * i - 30))]);
+  var byState = {};
+  hex.districts.forEach(function (d) { (byState[d.state] = byState[d.state] || []).push(d); });
+  Object.keys(byState).forEach(function (st) {
+    var cells = byState[st], label = hex.labels[st];
+    // As on the House page, each state's hexes are a block, not a map of its
+    // districts: the most Democratic-leaning seats (by the forecast) sit
+    // nearest the state's label.
+    var order = cells.slice().sort(function (a, b) {
+      return Math.hypot(a.x - label[0], a.y - label[1]) - Math.hypot(b.x - label[0], b.y - label[1]);
+    });
+    var ids = cells.map(function (c) { return c.id; }).sort(function (a, b) {
+      var pa = races[a] ? races[a].forecast.p : 0, pb = races[b] ? races[b].forecast.p : 0;
+      return (pb - pa) || a.localeCompare(b, "en", {numeric: true});
+    });
+    order.forEach(function (cell, idx) {
+      var id = ids[idx], race = races[id];
+      var pts = corners.map(function (c) {
+        return (cell.x + c[0] * size).toFixed(1) + "," + (cell.y + c[1] * size).toFixed(1);
+      }).join(" ");
+      var h = el("polygon", {points: pts, "class": "hex", fill: resFill(race)}, svg);
+      h.setAttribute("aria-label", id);
+      bindTip(h, function () { return resMapTip(race, id); });
+    });
+  });
+  el("path", {d: hex.borders, "class": "borders"}, svg);
+  Object.keys(hex.labels).forEach(function (code) {
+    var xy = hex.labels[code];
+    el("text", {x: xy[0], y: xy[1] + 4, "text-anchor": "middle", "class": "maplabel"}, svg).textContent = code;
+  });
+}
+function resMap(tabsId, svgId, legendId, noteId, d) {
+  var svg = $(svgId), tabs = $(tabsId), geo = (RES.cfg || {}).geo, hex = (RES.cfg || {}).hex;
+  if (!svg || !d || !d.races || !geo) return;
+  var all = Object.keys(d.races).map(function (k) { return d.races[k]; });
+  var CH = {senate: "Senate", house: "House", governor: "Governors"};
+  if (tabs) {
+    tabs.innerHTML = "";
+    Object.keys(CH).forEach(function (k) {
+      if (k === "house" && !hex) return;
+      var b = document.createElement("button");
+      b.type = "button";
+      b.textContent = CH[k];
+      b.setAttribute("aria-pressed", k === RES.mapChamber ? "true" : "false");
+      b.addEventListener("click", function () { RES.mapChamber = k; resMap(tabsId, svgId, legendId, noteId, d); });
+      tabs.appendChild(b);
+    });
+  }
+  clear(svg);
+  var mine = all.filter(function (r) { return r.chamber === RES.mapChamber; });
+  if (RES.mapChamber === "house") {
+    var byId = {};
+    mine.forEach(function (r) { byId[r.id] = r; });
+    resHouseMap(svg, byId, hex);
+  } else {
+    var byState = {};
+    mine.forEach(function (r) { byState[r.state] = r; });
+    resStateMap(svg, byState, geo, RES.mapChamber === "senate" ? "Senate" : "governor's");
+  }
+  var L = $(legendId);
+  if (L) {
+    L.innerHTML = RES_MAP_KEY.map(function (k) {
+      return '<span><i class="sw" style="background:' + css("--" + k[0]) + '"></i>' + k[1] + "</span>";
+    }).join("") + (RES.mapChamber !== "house" ? '<span><i class="sw" style="background:' + css("--notup") +
+      ";border:1px solid " + css("--axis") + '"></i>No race</span>' : "");
+  }
+  var note = $(noteId);
+  if (note) {
+    var called = mine.filter(function (r) { return r.call; }).length;
+    note.textContent = called + " of " + mine.length + " " + (RES.mapChamber === "governor" ? "governor's races" :
+      RES.mapChamber + " races") + " called. Hover or tap any " + (RES.mapChamber === "house" ? "hexagon" : "state") +
+      " for its count and the forecast." + (RES.mapChamber === "house" ? " Each state's hexagons are a block, " +
+      "not a map of its districts: the seats the forecast rated most Democratic sit nearest the label." : "");
+  }
 }
 
 function resSources(id, d) {
