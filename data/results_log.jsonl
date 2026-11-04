@@ -313,3 +313,7 @@
 {"t": "2026-11-04T12:33:20+00:00", "type": "call", "race": "MN-6", "winner": "R", "name": "Tom Emmer", "dem_side": false}
 {"t": "2026-11-04T12:33:20+00:00", "type": "call", "race": "MN-7", "winner": "R", "name": "Michelle Fischbach", "dem_side": false}
 {"t": "2026-11-04T12:33:20+00:00", "type": "call", "race": "MN-8", "winner": "R", "name": "Pete Stauber", "dem_side": false}
+{"t": "2026-11-04T12:35:20+00:00", "type": "call", "race": "MS-1", "winner": "R", "name": "Trent Kelly", "dem_side": false}
+{"t": "2026-11-04T12:35:20+00:00", "type": "call", "race": "MS-2", "winner": "D", "name": "Bennie Thompson", "dem_side": true}
+{"t": "2026-11-04T12:35:20+00:00", "type": "call", "race": "MS-3", "winner": "R", "name": "Michael Guest", "dem_side": false}
+{"t": "2026-11-04T12:35:20+00:00", "type": "call", "race": "MS-4", "winner": "R", "name": "Mike Ezell", "dem_side": false}
