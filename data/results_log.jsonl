@@ -221,3 +221,7 @@
 {"t": "2026-11-04T09:06:47+00:00", "type": "call", "race": "KY-2", "winner": "R", "name": "Brett Guthrie", "dem_side": false}
 {"t": "2026-11-04T09:06:47+00:00", "type": "call", "race": "KY-4", "winner": "R", "name": "Ed Gallrein", "dem_side": false}
 {"t": "2026-11-04T09:06:47+00:00", "type": "call", "race": "KY-6", "winner": "D", "name": "Zach Dembo", "dem_side": true}
+{"t": "2026-11-04T09:18:47+00:00", "type": "call", "race": "LA-1", "winner": "R", "name": "Steve Scalise", "dem_side": false}
+{"t": "2026-11-04T09:18:47+00:00", "type": "call", "race": "LA-2", "winner": "D", "name": "Troy Carter", "dem_side": true}
+{"t": "2026-11-04T09:18:47+00:00", "type": "call", "race": "LA-3", "winner": "R", "name": "Clay Higgins", "dem_side": false}
+{"t": "2026-11-04T09:18:47+00:00", "type": "call", "race": "LA-4", "winner": "R", "name": "Mike Johnson", "dem_side": false}
