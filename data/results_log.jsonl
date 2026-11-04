@@ -65,3 +65,4 @@
 {"t": "2026-11-04T03:35:30+00:00", "type": "call", "race": "PA-7", "winner": "D", "name": "Bob Brooks", "dem_side": true}
 {"t": "2026-11-04T03:40:30+00:00", "type": "retraction", "race": "AR-GOV", "was": {"party": "R", "name": "Sarah Huckabee Sanders", "dem_side": false, "at": "2026-11-04T03:25:30+00:00", "source": "wikipedia"}}
 {"t": "2026-11-04T03:49:30+00:00", "type": "call", "race": "AR-2026", "winner": "R", "name": "Tom Cotton", "dem_side": false}
+{"t": "2026-11-04T03:52:30+00:00", "type": "call", "race": "PA-10", "winner": "D", "name": "Janelle Stelson", "dem_side": true}
