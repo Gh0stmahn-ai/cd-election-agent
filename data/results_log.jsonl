@@ -434,3 +434,4 @@
 {"t": "2026-11-04T15:25:37+00:00", "type": "call", "race": "VA-10", "winner": "D", "name": "Suhas Subramanyam", "dem_side": true}
 {"t": "2026-11-04T15:25:37+00:00", "type": "call", "race": "VA-11", "winner": "D", "name": "James Walkinshaw", "dem_side": true}
 {"t": "2026-11-04T15:25:37+00:00", "type": "control", "chamber": "house", "winner": "D"}
+{"t": "2026-11-04T15:32:37+00:00", "type": "retraction", "race": "NC-13", "was": {"party": "D", "name": "Paul Barringer", "dem_side": true, "at": "2026-11-04T06:29:30+00:00", "source": "wikipedia"}}
