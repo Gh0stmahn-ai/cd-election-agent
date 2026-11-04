@@ -116,3 +116,7 @@
 {"t": "2026-11-04T06:29:30+00:00", "type": "call", "race": "NC-12", "winner": "D", "name": "Alma Adams", "dem_side": true}
 {"t": "2026-11-04T06:29:30+00:00", "type": "call", "race": "NC-13", "winner": "D", "name": "Paul Barringer", "dem_side": true}
 {"t": "2026-11-04T06:29:30+00:00", "type": "call", "race": "NC-14", "winner": "D", "name": "Lakesha Womack", "dem_side": true}
+{"t": "2026-11-04T06:30:30+00:00", "type": "call", "race": "AZ-GOV", "winner": "D", "name": "Katie Hobbs", "dem_side": true}
+{"t": "2026-11-04T06:30:30+00:00", "type": "call", "race": "ID-GOV", "winner": "R", "name": "Brad Little", "dem_side": false}
+{"t": "2026-11-04T06:30:30+00:00", "type": "call", "race": "MI-GOV", "winner": "D", "name": "Jocelyn Benson", "dem_side": true}
+{"t": "2026-11-04T06:30:30+00:00", "type": "control", "chamber": "governor", "winner": "D"}
