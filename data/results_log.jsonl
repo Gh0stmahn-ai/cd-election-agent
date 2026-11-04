@@ -277,3 +277,7 @@
 {"t": "2026-11-04T10:50:20+00:00", "type": "call", "race": "KS-2", "winner": "R", "name": "Derek Schmidt", "dem_side": false}
 {"t": "2026-11-04T10:50:20+00:00", "type": "call", "race": "KS-3", "winner": "D", "name": "Sharice Davids", "dem_side": true}
 {"t": "2026-11-04T10:50:20+00:00", "type": "call", "race": "KS-4", "winner": "R", "name": "Ron Estes", "dem_side": false}
+{"t": "2026-11-04T11:15:20+00:00", "type": "call", "race": "AZ-3", "winner": "D", "name": "Yassamin Ansari", "dem_side": true}
+{"t": "2026-11-04T11:15:20+00:00", "type": "call", "race": "AZ-4", "winner": "D", "name": "Greg Stanton", "dem_side": true}
+{"t": "2026-11-04T11:15:20+00:00", "type": "call", "race": "AZ-7", "winner": "D", "name": "Adelita Grijalva", "dem_side": true}
+{"t": "2026-11-04T11:15:20+00:00", "type": "call", "race": "AZ-9", "winner": "R", "name": "Paul Gosar", "dem_side": false}
