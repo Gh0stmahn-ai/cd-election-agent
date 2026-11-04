@@ -318,3 +318,6 @@
 {"t": "2026-11-04T12:35:20+00:00", "type": "call", "race": "MS-3", "winner": "R", "name": "Michael Guest", "dem_side": false}
 {"t": "2026-11-04T12:35:20+00:00", "type": "call", "race": "MS-4", "winner": "R", "name": "Mike Ezell", "dem_side": false}
 {"t": "2026-11-04T12:39:20+00:00", "type": "call", "race": "MT-2", "winner": "R", "name": "Troy Downing", "dem_side": false}
+{"t": "2026-11-04T12:42:20+00:00", "type": "call", "race": "NV-1", "winner": "D", "name": "Dina Titus", "dem_side": true}
+{"t": "2026-11-04T12:42:20+00:00", "type": "call", "race": "NV-3", "winner": "D", "name": "Susie Lee", "dem_side": true}
+{"t": "2026-11-04T12:42:20+00:00", "type": "call", "race": "NV-4", "winner": "D", "name": "Steven Horsford", "dem_side": true}
