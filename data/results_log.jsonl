@@ -421,3 +421,6 @@
 {"t": "2026-11-04T15:02:37+00:00", "type": "call", "race": "TX-35", "winner": "D", "name": "Johnny Garcia", "dem_side": true}
 {"t": "2026-11-04T15:02:37+00:00", "type": "call", "race": "TX-36", "winner": "R", "name": "Brian Babin", "dem_side": false}
 {"t": "2026-11-04T15:02:37+00:00", "type": "call", "race": "TX-37", "winner": "D", "name": "Greg Casar", "dem_side": true}
+{"t": "2026-11-04T15:06:37+00:00", "type": "call", "race": "NC-1", "winner": "D", "name": "Don Davis", "dem_side": true}
+{"t": "2026-11-04T15:06:37+00:00", "type": "call", "race": "NC-9", "winner": "D", "name": "Richard Ojeda", "dem_side": true}
+{"t": "2026-11-04T15:06:37+00:00", "type": "call", "race": "UT-1", "winner": "D", "name": "Ben McAdams", "dem_side": true}
