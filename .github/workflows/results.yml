@@ -10,6 +10,12 @@ name: Election night results
 # group below queues the next run behind the current one (GitHub keeps only
 # the newest queued run and cancels older ones, which is expected and fine).
 # Everything a run needs to carry on is in the committed data/results_state.json.
+#
+# GitHub's scheduler runs late on busy days (on November 3 the 5:07 pm start
+# began at 9:09 pm), so the hourly schedule is not relied on alone: each
+# looping run ends by starting the next one itself (the relay step), which
+# GitHub begins within a minute or two. That holds until 06:00 UTC on
+# November 6; after that the half-hourly single reads take over.
 
 on:
   schedule:
@@ -38,9 +44,14 @@ on:
         description: 'Branch to push to (use a scratch branch for a rehearsal)'
         required: false
         default: 'main'
+      relay:
+        description: 'When done, start the next run (election night relay)'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: election-results
@@ -94,4 +105,26 @@ jobs:
             python3 -u results.py once --push
           else
             python3 -u results.py loop --minutes 340 --interval 60
+          fi
+
+      # Start the next run before this one ends, so the night has no gap even
+      # when the schedule is hours late. The new run queues behind this one in
+      # the concurrency group and starts the moment this job finishes.
+      - name: Hand over to the next run
+        if: >-
+          always() &&
+          ((github.event_name == 'schedule' && github.event.schedule != '17,47 * 6-30 11 *' &&
+            github.event.schedule != '17,47 * 1-3 12 *') ||
+           (github.event_name == 'workflow_dispatch' && inputs.relay))
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          now=$(date -u +%s)
+          until=$(date -u -d '2026-11-06T06:00:00Z' +%s)
+          if [ "$now" -lt "$until" ]; then
+            gh workflow run results.yml --repo "$GITHUB_REPOSITORY" --ref main \
+              -f minutes=340 -f push=true -f branch=main -f relay=true
+            echo "Next run requested."
+          else
+            echo "Past November 6 06:00 UTC: the half-hourly schedule takes over."
           fi
