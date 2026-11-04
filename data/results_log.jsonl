@@ -77,3 +77,4 @@
 {"t": "2026-11-04T04:00:30+00:00", "type": "call", "race": "CA-37", "winner": "D", "name": "2 Democrats", "dem_side": true, "uncontested": true}
 {"t": "2026-11-04T04:00:30+00:00", "type": "call", "race": "CA-40", "winner": "R", "name": "2 Republicans", "dem_side": false, "uncontested": true}
 {"t": "2026-11-04T04:00:30+00:00", "type": "call", "race": "OH-GOV", "winner": "D", "name": "Amy Acton", "dem_side": true}
+{"t": "2026-11-04T04:07:30+00:00", "type": "call", "race": "OR-2026", "winner": "D", "name": "Jeff Merkley", "dem_side": true}
