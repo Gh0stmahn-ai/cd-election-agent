@@ -358,3 +358,6 @@
 {"t": "2026-11-04T14:04:37+00:00", "type": "call", "race": "OH-12", "winner": "R", "name": "Troy Balderson", "dem_side": false}
 {"t": "2026-11-04T14:04:37+00:00", "type": "call", "race": "OH-14", "winner": "R", "name": "David Joyce", "dem_side": false}
 {"t": "2026-11-04T14:04:37+00:00", "type": "call", "race": "OH-15", "winner": "D", "name": "Don Leonard", "dem_side": true}
+{"t": "2026-11-04T14:11:37+00:00", "type": "retraction", "race": "NC-6", "was": {"party": "D", "name": "Cyril Jefferson", "dem_side": true, "at": "2026-11-04T06:29:30+00:00", "source": "wikipedia"}}
+{"t": "2026-11-04T14:11:37+00:00", "type": "retraction", "race": "NC-9", "was": {"party": "D", "name": "Richard Ojeda", "dem_side": true, "at": "2026-11-04T06:29:30+00:00", "source": "wikipedia"}}
+{"t": "2026-11-04T14:11:37+00:00", "type": "retraction", "race": "NC-14", "was": {"party": "D", "name": "Lakesha Womack", "dem_side": true, "at": "2026-11-04T06:29:30+00:00", "source": "wikipedia"}}
