@@ -361,3 +361,7 @@
 {"t": "2026-11-04T14:11:37+00:00", "type": "retraction", "race": "NC-6", "was": {"party": "D", "name": "Cyril Jefferson", "dem_side": true, "at": "2026-11-04T06:29:30+00:00", "source": "wikipedia"}}
 {"t": "2026-11-04T14:11:37+00:00", "type": "retraction", "race": "NC-9", "was": {"party": "D", "name": "Richard Ojeda", "dem_side": true, "at": "2026-11-04T06:29:30+00:00", "source": "wikipedia"}}
 {"t": "2026-11-04T14:11:37+00:00", "type": "retraction", "race": "NC-14", "was": {"party": "D", "name": "Lakesha Womack", "dem_side": true, "at": "2026-11-04T06:29:30+00:00", "source": "wikipedia"}}
+{"t": "2026-11-04T14:18:37+00:00", "type": "call", "race": "OK-1", "winner": "R", "name": "Mark Tedford", "dem_side": false}
+{"t": "2026-11-04T14:18:37+00:00", "type": "call", "race": "OK-2", "winner": "R", "name": "Josh Brecheen", "dem_side": false}
+{"t": "2026-11-04T14:18:37+00:00", "type": "call", "race": "OK-3", "winner": "R", "name": "Frank Lucas", "dem_side": false}
+{"t": "2026-11-04T14:18:37+00:00", "type": "call", "race": "OK-4", "winner": "R", "name": "Tom Cole", "dem_side": false}
