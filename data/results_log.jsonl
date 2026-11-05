@@ -489,3 +489,4 @@
 {"t": "2026-11-05T18:37:07+00:00", "type": "call", "race": "AZ-1", "winner": "D", "name": "Amish Shah", "dem_side": true}
 {"t": "2026-11-05T19:35:07+00:00", "type": "call", "race": "CA-11", "winner": "D", "name": "Scott Wiener", "dem_side": true}
 {"t": "2026-11-05T19:40:07+00:00", "type": "call", "race": "VA-5", "winner": "R", "name": "John McGuire", "dem_side": false}
+{"t": "2026-11-05T19:41:07+00:00", "type": "call", "race": "NY-1", "winner": "R", "name": "Nick LaLota", "dem_side": false}
