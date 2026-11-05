@@ -490,3 +490,4 @@
 {"t": "2026-11-05T19:35:07+00:00", "type": "call", "race": "CA-11", "winner": "D", "name": "Scott Wiener", "dem_side": true}
 {"t": "2026-11-05T19:40:07+00:00", "type": "call", "race": "VA-5", "winner": "R", "name": "John McGuire", "dem_side": false}
 {"t": "2026-11-05T19:41:07+00:00", "type": "call", "race": "NY-1", "winner": "R", "name": "Nick LaLota", "dem_side": false}
+{"t": "2026-11-05T19:43:07+00:00", "type": "call", "race": "TN-7", "winner": "R", "name": "Matt Van Epps", "dem_side": false}
