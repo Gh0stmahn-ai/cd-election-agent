@@ -509,3 +509,5 @@
 {"t": "2026-11-07T13:35:05+00:00", "type": "call", "race": "NY-2", "winner": "R", "name": "Andrew Garbarino", "dem_side": false}
 {"t": "2026-11-07T18:19:50+00:00", "type": "call", "race": "FL-9", "winner": "D", "name": "Darren Soto", "dem_side": true}
 {"t": "2026-11-07T18:19:50+00:00", "type": "call", "race": "TN-4", "winner": "D", "name": "Victoria Broderick", "dem_side": true}
+{"t": "2026-11-09T16:52:47+00:00", "type": "call", "race": "MN-1", "winner": "D", "name": "Jake Johnson", "dem_side": true}
+{"t": "2026-11-09T16:52:47+00:00", "type": "call", "race": "NC-7", "winner": "R", "name": "David Rouzer", "dem_side": false}
