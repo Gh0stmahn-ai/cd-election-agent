@@ -511,3 +511,6 @@
 {"t": "2026-11-07T18:19:50+00:00", "type": "call", "race": "TN-4", "winner": "D", "name": "Victoria Broderick", "dem_side": true}
 {"t": "2026-11-09T16:52:47+00:00", "type": "call", "race": "MN-1", "winner": "D", "name": "Jake Johnson", "dem_side": true}
 {"t": "2026-11-09T16:52:47+00:00", "type": "call", "race": "NC-7", "winner": "R", "name": "David Rouzer", "dem_side": false}
+{"t": "2026-11-10T07:45:42+00:00", "type": "call", "race": "AZ-2", "winner": "R", "name": "Eli Crane", "dem_side": false}
+{"t": "2026-11-10T07:45:42+00:00", "type": "call", "race": "CO-4", "winner": "D", "name": "Eileen Laubacher", "dem_side": true}
+{"t": "2026-11-10T07:45:42+00:00", "type": "call", "race": "FL-26", "winner": "R", "name": "Mario D\u00edaz-Balart", "dem_side": false}
