@@ -518,3 +518,9 @@
 {"t": "2026-11-10T15:48:58+00:00", "type": "call", "race": "WA-5", "winner": "R", "name": "Michael Baumgartner", "dem_side": false}
 {"t": "2026-11-10T21:48:39+00:00", "type": "call", "race": "NC-5", "winner": "D", "name": "Chuck Hubbard", "dem_side": true}
 {"t": "2026-11-11T01:57:07+00:00", "type": "call", "race": "FL-7", "winner": "R", "name": "Ryan Elijah", "dem_side": false}
+{"t": "2026-11-11T09:26:27+00:00", "type": "call", "race": "CA-7", "winner": "D", "name": "Doris Matsui", "dem_side": true}
+{"t": "2026-11-11T09:26:27+00:00", "type": "call", "race": "FL-27", "winner": "R", "name": "Mar\u00eda Elvira Salazar", "dem_side": false}
+{"t": "2026-11-11T09:26:27+00:00", "type": "retraction", "race": "MN-1", "was": {"party": "D", "name": "Jake Johnson", "dem_side": true, "at": "2026-11-09T16:52:47+00:00", "source": "wikipedia"}}
+{"t": "2026-11-11T09:26:27+00:00", "type": "retraction", "race": "NC-5", "was": {"party": "D", "name": "Chuck Hubbard", "dem_side": true, "at": "2026-11-10T21:48:39+00:00", "source": "wikipedia"}}
+{"t": "2026-11-11T09:26:27+00:00", "type": "retraction", "race": "NC-7", "was": {"party": "R", "name": "David Rouzer", "dem_side": false, "at": "2026-11-09T16:52:47+00:00", "source": "wikipedia"}}
+{"t": "2026-11-11T09:26:27+00:00", "type": "retraction", "race": "TN-4", "was": {"party": "D", "name": "Victoria Broderick", "dem_side": true, "at": "2026-11-07T18:19:50+00:00", "source": "wikipedia"}}
